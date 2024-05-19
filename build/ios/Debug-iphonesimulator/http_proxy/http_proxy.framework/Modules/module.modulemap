@@ -1,0 +1,6 @@
+framework module http_proxy {
+  umbrella header "http_proxy-umbrella.h"
+
+  export *
+  module * { export * }
+}

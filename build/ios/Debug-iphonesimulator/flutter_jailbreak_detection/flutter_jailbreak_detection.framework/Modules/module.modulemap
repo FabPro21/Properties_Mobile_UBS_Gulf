@@ -1,0 +1,11 @@
+framework module flutter_jailbreak_detection {
+  umbrella header "flutter_jailbreak_detection-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module flutter_jailbreak_detection.Swift {
+  header "flutter_jailbreak_detection-Swift.h"
+  requires objc
+}

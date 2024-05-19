@@ -1,0 +1,11 @@
+framework module system_proxy {
+  umbrella header "system_proxy-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module system_proxy.Swift {
+  header "system_proxy-Swift.h"
+  requires objc
+}

@@ -1,0 +1,11 @@
+framework module ssl_pinning_plugin {
+  umbrella header "ssl_pinning_plugin-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module ssl_pinning_plugin.Swift {
+  header "ssl_pinning_plugin-Swift.h"
+  requires objc
+}

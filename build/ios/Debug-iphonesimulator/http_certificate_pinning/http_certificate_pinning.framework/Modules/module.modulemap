@@ -1,0 +1,11 @@
+framework module http_certificate_pinning {
+  umbrella header "http_certificate_pinning-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module http_certificate_pinning.Swift {
+  header "http_certificate_pinning-Swift.h"
+  requires objc
+}
