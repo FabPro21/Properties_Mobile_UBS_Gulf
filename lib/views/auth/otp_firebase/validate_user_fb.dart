@@ -87,13 +87,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                 ? 2.0.h
                                 : 7.0.h,
                           ),
-                          // const AppLogo(),
-                          AppLogoMenaRealEstate(
-                            menaFontSize: AppTextStyle.semiBoldWhite36,
-                            menaReaEstateEnglishFont:
-                                AppTextStyle.semiBoldWhite12,
-                            height: 10.0.h,
-                          ),
+                          const AppLogo(),
                           SizedBox(
                             height: authController.textFieldTap.value == true
                                 ? 2.0.h

@@ -124,7 +124,7 @@ class _AppUpdateState extends State<AppUpdate> {
                                         .copyWith(height: 1.2),
                                   ),
                                   TextSpan(
-                                    text: AppMetaLabels().menaRealEstate,
+                                    text: AppMetaLabels().fabProps,
                                     style: AppTextStyle.semiBoldBlack12
                                         .copyWith(height: 1.2),
                                   ),
@@ -194,9 +194,8 @@ class _AppUpdateState extends State<AppUpdate> {
                                 if (PlatformCheck.isIOS) {
                                   print('iOS');
                                   try {
-                                    // Must Add iosAppID
                                     LaunchReview.launch(
-                                      androidAppId: "com.mena.realestate",
+                                      androidAppId: "com.fab.properties",
                                       writeReview: false,
                                       isiOSBeta: false,
                                       iOSAppId: '1588897544',
@@ -210,9 +209,9 @@ class _AppUpdateState extends State<AppUpdate> {
                                 } else {
                                   try {
                                     print('Android');
-
                                     LaunchReview.launch(
-                                      androidAppId: "com.mena.realestate",
+                                      androidAppId:
+                                          "com.fab.fabpropertiesEnterprise",
                                     );
                                   } catch (e) {
                                     print('Exception ::: $e');

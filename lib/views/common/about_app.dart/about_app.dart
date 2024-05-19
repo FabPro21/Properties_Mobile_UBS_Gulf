@@ -39,8 +39,8 @@ class AboutApp extends StatelessWidget {
                         style: AppTextStyle.normalBlack14)
                     : Text('اكمل العدد:  ${controller.buildNo}',
                         style: AppTextStyle.normalBlack14),
-                 Text('Package:  ${controller.packageName.value }',
-                    style: AppTextStyle.normalBlack14),
+                //  Text('Package:  ${controller.packageName.value }',
+                //     style: AppTextStyle.normalBlack14),
                 Spacer(),
               ],
             );

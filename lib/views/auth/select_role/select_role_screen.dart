@@ -413,18 +413,13 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 2.0.h),
                         child: Text(
-                          AppMetaLabels().login,
+                          AppMetaLabels().login ,
                           style: AppTextStyle.semiBoldWhite12,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 6.0.h),
-                        child: AppLogoMenaRealEstate(
-                          menaFontSize: AppTextStyle.semiBoldWhite36,
-                          menaReaEstateEnglishFont:
-                              AppTextStyle.semiBoldWhite12,
-                          height: 10.0.h,
-                        ),
+                        child: const AppLogo(),
                       ),
                       Obx(() {
                         return selectRoloesController.loadingData.value == true

@@ -986,14 +986,17 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                         )),
                     backgroundColor: AppColors.whiteColor,
                     shadowColor: AppColors.blueColor),
-                onPressed: () {
-                  Get.to(() => ContractRenewel(
+                onPressed: () async {
+                  await Get.to(() => ContractRenewel(
                         contractNo: controller.contractsList[index].contractno,
                         contractId: controller.contractsList[index].contractid,
                         caller: 'contracts_with_actions',
                         dueActionid:
                             controller.contractsList[index].dueActionid,
                       ));
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    controller.getContracts();
+                  });
                 },
                 child: Text(
                   AppMetaLabels().renew,
@@ -1008,8 +1011,8 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                 padding: EdgeInsets.all(0.0.h),
                 child: CustomButtonWithoutBackgroud(
                   text: AppMetaLabels().extend,
-                  onPressed: () {
-                    Get.to(() => ContractExtend(
+                  onPressed: () async {
+                    await Get.to(() => ContractExtend(
                           contractNo:
                               controller.contractsList[index].contractno,
                           contractId:
@@ -1018,6 +1021,9 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                           dueActionId:
                               controller.contractsList[index].dueActionid,
                         ));
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      controller.getContracts();
+                    });
                   },
                   borderColor: AppColors.blueColor,
                 )),
@@ -1029,14 +1035,17 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
               padding: EdgeInsets.all(0.0.h),
               child: CustomButtonWithoutBackgroud(
                 text: AppMetaLabels().terminate,
-                onPressed: () {
-                  Get.to(() => ContractTerminate(
+                onPressed: () async {
+                  await Get.to(() => ContractTerminate(
                         contractNo: controller.contractsList[index].contractno,
                         contractId: controller.contractsList[index].contractid,
                         caller: 'contracts_with_actions',
                         dueActionid:
                             controller.contractsList[index].dueActionid,
                       ));
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    controller.getContracts();
+                  });
                 },
                 borderColor: AppColors.blueColor,
               )),

@@ -8,13 +8,6 @@ class AppMetaLabels {
   String login =
       SessionController().getLanguage() == 1 ? "Login" : 'تسجيل الدخول';
   String color = SessionController().getLanguage() == 1 ? "Color" : 'لون';
-  String mena = SessionController().getLanguage() == 1 ? "Mena" : 'منة';
-  String real = SessionController().getLanguage() == 1 ? "Real" : 'حقيقي';
-  String estate = SessionController().getLanguage() == 1 ? "Estate" : 'ملكية';
-  String realEstateArabic = "مينا العقارية";
-  String menaRealEstateSol = SessionController().getLanguage() == 1
-      ? "MENA Real Estate \nSolutions"
-      : "مينا سوليوشن للعقارات";
   String rentPaidAmount = SessionController().getLanguage() == 1
       ? 'Rent Paid Amount'
       : 'مبلغ الإيجار المدفوع';
@@ -152,15 +145,23 @@ class AppMetaLabels {
       ? "Consent Settings"
       : "إعدادات الموافقة";
 
-  String fabPropertiesPrivacyPolicy = SessionController().getLanguage() == 1
-      ? "MENA Real Estate Solutions - Privacy Policy"
-      : "شركة مينا العقارية - سياسة الخصوصية";
+  String fabPropertiesPrivacyPolicy = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? "FAB Properties - Privacy Policy"
+          : "خصائص أبوظبي الأول العقارية - سياسة الخصوصية"
+      : SessionController().getLanguage() == 1
+          ? "MENA Real Estate - Privacy Policy"
+          : "شركة مينا العقارية - سياسة الخصوصية";
 
-  String fabPropertiesSource = SessionController().getLanguage() == 1
-      ? '"MENA Real Estate Solutions" Would Like to Access the '
-      : "شركة الشرق الأوسط وشمال أفريقيا العقارية ترغب في الوصول إلى ";
+  String fabPropertiesSource = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? '"FAB Properties" Would Like to Access the '
+          : "أبوظبي الأول العقارية ترغب في الوصول إلى"
+      : SessionController().getLanguage() == 1
+          ? '"MENA Real Estate" Would Like to Access the '
+          : "شركة الشرق الأوسط وشمال أفريقيا العقارية ترغب في الوصول إلى ";
 
-  String fabPropertiesPrivacyPolicyLink = SessionController().isFabApp == 1
+  String fabPropertiesPrivacyPolicyLink = SessionController().isFabApp==1
       ? "https://www.fabproperties.ae/en/privacypolicy"
       : '';
 
@@ -318,7 +319,7 @@ class AppMetaLabels {
   //     : "+971 2 681 1511 (من خارج الإمارات العربية المتحدة)	";
 
   String fabEmail =
-      SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
+      SessionController().isFabApp==1 ? 'FABProp.care@bankfab.com' : '';
   // String fabEmail = 'fabprop.care@bankfab.com';
 
   ///////////////////////////////////
@@ -344,9 +345,13 @@ class AppMetaLabels {
       ? "Properties Details"
       : "تفاصيل العقارات";
 
-  String menaRealEstate = SessionController().getLanguage() == 1
-      ? "MENA Real Estate Solutions"
-      : "مينا العقارية";
+  String fabProps = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? "FAB Properties"
+          : "أبوظبي الأول العقارية"
+      : SessionController().getLanguage() == 1
+          ? "MENA Real Estate"
+          : "مينا العقارية";
 
   String propertyDetails = SessionController().getLanguage() == 1
       ? "Property Details "
@@ -836,9 +841,13 @@ class AppMetaLabels {
       ? 'A new version of app '
       : 'نسخة جديدة من التطبيق ';
 
-  String fabProperties = SessionController().getLanguage() == 1
-      ? "MENA Real Estate Solutions"
-      : "مينا العقارية";
+  String fabProperties = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'FAB Properties '
+          : ' أبوظبي الأول العقارية'
+      : SessionController().getLanguage() == 1
+          ? "MENA Real Estate"
+          : "مينا العقارية";
 
   String isAvailableAndFeatures =
       SessionController().getLanguage() == 1 ? 'is available.\n' : 'متاح. \n';
@@ -2416,9 +2425,13 @@ class AppMetaLabels {
       ? 'You can use the communication tab to get more information after submitting.'
       : 'يمكنك استخدام علامة تبويب الاتصال للحصول على مزيد من المعلومات بعد الإرسال.';
 
-  String personalDocUploadInfo = SessionController().getLanguage() == 1
-      ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate Solutions as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate Solutions.'
-      : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
+  String personalDocUploadInfo = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'I understand that I need to share my Emirates ID, passport and any other related documents with FAB Properties as this is necessary for the renewal of my Tenancy agreement with FAB Properties.'
+          : 'أدرك أنني بحاجة إلى مشاركة هوية الإمارات وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول لأن هذا ضروري لتجديد عقد الإيجار الخاص بي مع بنك أبوظبي الأول.'
+      : SessionController().getLanguage() == 1
+          ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
+          : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
 
   // String personalDocUploadInfo = SessionController().getLanguage() == 1
   //     ? 'I agree to share my Emirates ID, passport, and any other related documents with FAB Properties for the renewal of my tenancy contract.'
@@ -3080,21 +3093,33 @@ class AppMetaLabels {
       ? 'Please upload the required documents to proceed with your Renewal Request.'
       : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
 
-  String stage3 = SessionController().getLanguage() == 1
-      ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the MENA Real Estate Solutions team.'
-      : 'تم تقديم المستندات بنجاح. سيتم إخطارك خلال يومي عمل بمجرد اكتمال عملية التحقق من قبل فريق عقارات الشرق الأوسط وشمال إفريقيا';
+  String stage3 = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the FABP team.'
+          : 'تم تقديم المستندات بنجاح. سيتم إخطارك في غضون يومي عمل بمجرد اكتمال التحقق من قبل  فريق العمل.'
+      : SessionController().getLanguage() == 1
+          ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the MENA Real Estate team.'
+          : 'تم تقديم المستندات بنجاح. سيتم إخطارك خلال يومي عمل بمجرد اكتمال عملية التحقق من قبل فريق عقارات الشرق الأوسط وشمال إفريقيا';
 
-  String stage4 = SessionController().getLanguage() == 1
-      ? 'Your documents have been approved by MENA Real Estate Solutions and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
-      : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
+  String stage4 = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'Your documents have been approved by FAB Properties and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
+          : 'تمت الموافقة على مستنداتك من قبل ابوظبى الاولى العقارية  وبدأت عملية التجديد.يمكنك توقع مشاركة تفاصيل العقد الجديد في غضون يوم إلى يومي عمل.'
+      : SessionController().getLanguage() == 1
+          ? 'Your documents have been approved by MENA Real Estate and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
+          : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
 
   // String stage4 = SessionController().getLanguage() == 1
   //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
   //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
 
-  String stage5 = SessionController().getLanguage() == 1
-      ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "MENA Real Estate Solutions") which can be submitted through the Aramex service (at no additional cost) initiated by MENA Real Estate Solutions.'
-      : "يجب دفع القسط الإيجاري الأول وجميع الرسوم الأخرى من خلال \"أون لاين\".\n\nيمكن دفع أقساط الإيجار المتبقية عن طريق الشيكات (المحررة لصالح \"شركة مينا العقارية\") والتي يمكن تقديمها من خلال خدمة أرامكس (بدون أي رسوم إضافية). التكلفة) بمبادرة من شركة مينا العقارية.";
+  String stage5 = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "FAB Properties") which can be submitted through the Aramex service (at no additional cost) initiated by FABP.'
+          : "يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى \"ابوظبى الاول العقارية\" من خلال خدمة \"ارامكس\" بدون تكلفة اضافية . "
+      : SessionController().getLanguage() == 1
+          ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "MENA Real Estate") which can be submitted through the Aramex service (at no additional cost) initiated by MENA Real Estate.'
+          : "يجب دفع القسط الإيجاري الأول وجميع الرسوم الأخرى من خلال \"أون لاين\".\n\nيمكن دفع أقساط الإيجار المتبقية عن طريق الشيكات (المحررة لصالح \"شركة مينا العقارية\") والتي يمكن تقديمها من خلال خدمة أرامكس (بدون أي رسوم إضافية). التكلفة) بمبادرة من شركة مينا العقارية.";
 
   // : 'يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى " ابوظبى الاول العقارية" من خلال خدمة " ارامكس" بدون تكلفة اضافية ';
   // : 'يجب دفع قسط الإيجار الأول وجميع الرسوم الأخرى من خلال "عبر الإنترنت". \ n يمكن سداد أقساط الإيجار المتبقية عن طريق الشيكات (الصادرة إلى"ابوظبى الاولى العقارية") والتي يمكن تقديمها من خلال خدمة Aramex (بدون تكلفة إضافية) التي تم البدء فيها بواسطة FABP.';
@@ -3131,9 +3156,13 @@ class AppMetaLabels {
       ? 'Please click on the Login To Tawtheeq link to complete the municipality process.'
       : 'الرجاء الضغط على رابط تسجيل الدخول إلى توثيق لإتمام إجراءات البلدية.';
 
-  String stage9 = SessionController().getLanguage() == 1
-      ? 'Dear Tenant, Thanks for choosing MENA Real Estate Solutions as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
-      : 'عزيزي المستأجر، شكرًا لاختيارك شركة مينا العقارية كمزود للخدمات العقارية، سيكون عقدك جاهزًا للتنزيل خلال يوم إلى يومي عمل.';
+  String stage9 = SessionController().isFabApp==1
+      ? SessionController().getLanguage() == 1
+          ? 'Dear Tenant, Thanks for choosing FABP as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
+          : 'عزيزي المستأجر ، شكرًا لاختيارك ابوظبي الاول العقارية كمزود خدمة عقارية لك ، سيكون عقدك جاهزًا للتنزيل في غضون يوم إلى يومين عمل.'
+      : SessionController().getLanguage() == 1
+          ? 'Dear Tenant, Thanks for choosing MENA Real Estate as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
+          : 'عزيزي المستأجر، شكرًا لاختيارك شركة مينا العقارية كمزود للخدمات العقارية، سيكون عقدك جاهزًا للتنزيل خلال يوم إلى يومي عمل.';
 
   // String stage1 = SessionController().getLanguage() == 1
   //     ? 'If you wish to renew your Tenancy Contract for less than one year please procced with \'Extend\' Option.'

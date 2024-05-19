@@ -225,31 +225,29 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              //  ListTile(
-                              //             onTap: () async {
-                              //               await showDialog(
-                              //                   context: context,
-                              //                   barrierDismissible: false,
-                              //                   builder: (BuildContext context) {
-                              //                     return AlertDialog(
-                              //                       contentPadding: EdgeInsets.zero,
-                              //                       backgroundColor:
-                              //                           Colors.transparent,
-                              //                       content: showDialogForVideo(),
-                              //                     );
-                              //                   });
-                              //             },
-                              //             leading: Icon(
-                              //               Icons.play_arrow,
-                              //               size: 3.3.h,
-                              //               color: AppColors.blackColor,
-                              //             ),
-                              //             title: Text(
-                              //               AppMetaLabels().renewalFlowMore,
-                              //               style: AppTextStyle.normalBlack12,
-                              //             ),
-                              //           )
-                              //  ,
+                              ListTile(
+                                onTap: () async {
+                                  await showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          contentPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          content: showDialogForVideo(),
+                                        );
+                                      });
+                                },
+                                leading: Icon(
+                                  Icons.play_arrow,
+                                  size: 3.3.h,
+                                  color: AppColors.blackColor,
+                                ),
+                                title: Text(
+                                  AppMetaLabels().renewalFlowMore,
+                                  style: AppTextStyle.normalBlack12,
+                                ),
+                              ),
                               ListTile(
                                 onTap: () {
                                   Get.off(() => TenantSettings());

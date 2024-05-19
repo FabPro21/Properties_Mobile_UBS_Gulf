@@ -73,17 +73,10 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                   ),
                                 )
                               : Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(top: 9.0.h),
-                                      child: AppLogoMenaRealEstate(
-                                        menaFontSize:
-                                            AppTextStyle.semiBoldWhite36,
-                                        menaReaEstateEnglishFont:
-                                            AppTextStyle.semiBoldWhite12,
-                                        height: 10.0.h,
-                                      ),
+                                      child: const AppLogo(),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 6.0.h),

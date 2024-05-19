@@ -9,7 +9,7 @@ class SessionController {
   // 1 Fab Properties
   // 2 MENA Real Estate
   // Must Add iosAppID *******
-  int isFabApp = 2;
+  int isFabApp = 1;
 
   User _user;
   String vendorUserType = "";
