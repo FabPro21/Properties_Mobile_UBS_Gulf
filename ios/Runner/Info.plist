@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MENA Real Estate</string>
+	<string>FAB Properties</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -36,14 +36,6 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>app-1-166669147827-ios-493cd309334a30fea31ac6</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>app-1-166669147827-ios-0a0f4e919fc24f07a31ac6</string>
 			</array>
 		</dict>
 	</array>

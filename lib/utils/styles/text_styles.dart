@@ -243,7 +243,7 @@ class AppTextStyle {
   static TextStyle normalWhiteul10 = TextStyle(
       color: AppColors.whiteColor,
       fontFamily: AppFonts.graphikRegular,
-      fontSize: 10.0.sp,
+         fontSize: 10.0.sp,
       decoration: TextDecoration.underline);
   static TextStyle normalWhite10 = TextStyle(
     color: AppColors.whiteColor,
@@ -330,76 +330,6 @@ class AppTextStyle {
     color: AppColors.whiteColor,
     fontFamily: AppFonts.graphikSemibold,
     fontSize: 16.0.sp,
-  );
-  static TextStyle semiBoldWhite17 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 17.0.sp,
-  );
-  static TextStyle semiBoldWhite18 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 18.0.sp,
-  );
-  static TextStyle semiBoldWhite19 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 19.0.sp,
-  );
-  static TextStyle semiBoldWhite20 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 20.0.sp,
-  );
-  static TextStyle semiBoldWhite21= TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 21.0.sp,
-  );
-  static TextStyle semiBoldWhite22= TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 22.0.sp,
-  );
-  static TextStyle semiBoldWhite23= TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 23.0.sp,
-  );
-  static TextStyle semiBoldWhite24= TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikSemibold,
-    fontSize: 24.0.sp,
-  );
-  static TextStyle semiBoldWhite36 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikbold,
-    fontWeight: FontWeight.bold,
-    fontSize: 36.0.sp,
-  );
-  static TextStyle semiBoldWhite37 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikbold,
-    fontWeight: FontWeight.bold,
-    fontSize: 37.0.sp,
-  );
-  static TextStyle semiBoldWhite38 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikbold,
-    fontWeight: FontWeight.bold,
-    fontSize: 38.0.sp,
-  );
-  static TextStyle semiBoldWhite39 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikbold,
-    fontWeight: FontWeight.bold,
-    fontSize: 39.0.sp,
-  );
-  static TextStyle semiBoldWhite40 = TextStyle(
-    color: AppColors.whiteColor,
-    fontFamily: AppFonts.graphikbold,
-    fontWeight: FontWeight.bold,
-    fontSize: 40.0.sp,
   );
 
   ///////////////////////

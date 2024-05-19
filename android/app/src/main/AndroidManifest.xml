@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  package="com.mena.realestate">
+  package="com.fab.fabpropertiesEnterprise">
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- adding this for
   unregister DNS*  -->
@@ -16,7 +16,7 @@
     tools:replace="android:allowBackup"
     android:allowBackup="false"
     android:fullBackupOnly="false"
-    android:label="MENA Real Estate"
+    android:label="FAB Properties"
     android:icon="@mipmap/ic_launcher"
     android:usesCleartextTraffic="true"
     android:extractNativeLibs="true">

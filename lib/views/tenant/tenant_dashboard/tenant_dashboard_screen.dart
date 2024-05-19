@@ -141,15 +141,10 @@ class _TenantDashboardState extends State<TenantDashboard>
               return Column(
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 2.0.h, vertical: 1.h),
+                    padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                     child: Row(
                       children: [
-                        AppLogoMenaRealEstateDB(
-                          menaFontSize: AppTextStyle.semiBoldWhite24,
-                          menaRealEstateSolFont: AppTextStyle.semiBoldWhite10,
-                          height: 4.3.h,
-                        ),
+                        SizedBox(width: 45.0.w, child: AppLogo()),
                         const Spacer(),
                         Container(
                           decoration: const BoxDecoration(

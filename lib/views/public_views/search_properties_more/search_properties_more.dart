@@ -235,7 +235,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                   color: AppColors.blackColor,
                                 ),
                                 title: Text(
-                                  AppMetaLabels().menaRealEstate,
+                                  AppMetaLabels().fabProps,
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
