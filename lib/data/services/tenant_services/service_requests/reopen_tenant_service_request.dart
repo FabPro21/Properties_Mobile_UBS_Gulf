@@ -1,0 +1,22 @@
+import 'dart:convert';
+
+import 'package:fap_properties/data/helpers/base_client.dart';
+import 'package:fap_properties/utils/constants/app_config.dart';
+import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:http/http.dart' as http;
+
+class ReopenTenantServiceRequest {
+  static Future<String> reopenServiceRequest(var caseNo) async {
+    var resp =
+        await BaseClientClass.post(AppConfig().reopenSvcReq, {"CaseNo":caseNo.toString()});
+    if (resp is http.Response) {
+      try {
+        var jsonResp = jsonDecode(resp.body);
+        return jsonResp['status'];
+      } catch (e) {
+        return AppMetaLabels().someThingWentWrong;
+      }
+    }
+    return resp;
+  }
+}

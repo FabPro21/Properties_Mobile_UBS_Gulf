@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "166669147827",
+    "project_id": "project-platinum-6019d",
+    "storage_bucket": "project-platinum-6019d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166669147827:android:a4d3ad590f0ce1b7a31ac6",
+        "android_client_info": {
+          "package_name": "com.fab.fabpropertiesEnterprise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVz2MCCLT71kpgLkpPteTllOgJU2CW3gs"
+        },
+        {
+          "current_key": "AIzaSyDpe8QCg_lQK1Ljdoaj834a1wdYzJmUisY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166669147827:android:a5e14455785021cda31ac6",
+        "android_client_info": {
+          "package_name": "com.mena.realestate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVz2MCCLT71kpgLkpPteTllOgJU2CW3gs"
+        },
+        {
+          "current_key": "AIzaSyDpe8QCg_lQK1Ljdoaj834a1wdYzJmUisY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
