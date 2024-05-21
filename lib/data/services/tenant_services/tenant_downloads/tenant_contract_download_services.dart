@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -16,6 +17,7 @@ class ContractDownloadService {
     print(response);
     if (response is http.Response) {
       print(response);
+      log(response.body.toString());
       try {
         var jsonResp = json.decode(response.body);
         String doc = jsonResp['path'];
