@@ -48,3 +48,5 @@ app.*.map.json
 /android/app/release
 .dart_tool/package_config.json
 .flutter-plugins-dependencies
+.DS_Store
+.dart_tool/package_config.json
