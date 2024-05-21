@@ -38,7 +38,7 @@ class _AppUpdateState extends State<AppUpdate> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImagesPath.splashGif),
+              image: AssetImage(AppImagesPath.backgroundImage),
               fit: BoxFit.cover,
             ),
           ),

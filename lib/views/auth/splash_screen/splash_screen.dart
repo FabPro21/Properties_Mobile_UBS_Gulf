@@ -2,9 +2,12 @@
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
+import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen_controller.dart';
+import 'package:fap_properties/views/widgets/common_widgets/app_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -20,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // Enable Firebase
     // From SessionController().enableFireBaseOTP this flag we are enabling and disable firebase
-    SessionController().enableFireBaseOTP = true; 
+    SessionController().enableFireBaseOTP = true;
     splashScreenController.isSetupMpin();
     super.initState();
   }
@@ -31,11 +34,18 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF001838),
       body: Container(
+        child: Center(
+          child: AppLogoMenaRealEstate(
+            menaFontSize: AppTextStyle.semiBoldWhite36,
+            menaReaEstateEnglishFont: AppTextStyle.semiBoldWhite12,
+            height: 10.0.h,
+          ),
+        ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImagesPath.splashGif),
+            image: AssetImage(AppImagesPath.backgroundImage),
             fit: BoxFit.cover,
           ),
         ),

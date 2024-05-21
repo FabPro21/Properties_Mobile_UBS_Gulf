@@ -31,7 +31,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImagesPath.splashGif),
+            image: AssetImage(AppImagesPath.backgroundImage),
             fit: BoxFit.cover,
           ),
         ),
