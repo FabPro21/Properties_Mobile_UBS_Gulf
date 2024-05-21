@@ -1,6 +1,0 @@
-framework module google_mlkit_text_recognition {
-  umbrella header "google_mlkit_text_recognition-umbrella.h"
-
-  export *
-  module * { export * }
-}
