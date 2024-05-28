@@ -13,7 +13,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/foundation.dart';
 
-
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                       */
 /* -------------------------------------------------------------------------- */
