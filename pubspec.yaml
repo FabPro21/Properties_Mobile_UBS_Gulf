@@ -26,6 +26,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 #  // // For Production (Leasing)
 #  // =====================>
 # // // remove +92 
+# // // Must remove the app version condition
 # Must check both places before going the live
 
 

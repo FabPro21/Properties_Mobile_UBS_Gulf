@@ -5,6 +5,7 @@ import 'dart:io' as ui;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/app_update_manually/app_version.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/constants/version/update_app.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,18 +81,18 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       selectRoloesController.loadingData.value = true;
       await checkForUpdateAndroid();
       selectRoloesController.loadingData.value = false;
-      selectRoloesController.initialize();
+      // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      // if (updateInfo?.updateAvailability ==
-      //     UpdateAvailability.updateAvailable) {
-      //   Get.off(() => AppUpdate(
-      //         appVersion: updateInfo.availableVersionCode.toString(),
-      //         availableVersion: SessionController().storeAppVerison,
-      //       ));
-      // } else {
-      //   selectRoloesController.initialize();
-      // }
+      if (updateInfo?.updateAvailability !=
+          UpdateAvailability.updateAvailable) {
+        Get.off(() => AppUpdate(
+              appVersion: updateInfo.availableVersionCode.toString(),
+              availableVersion: SessionController().storeAppVerison,
+            ));
+      } else {
+        selectRoloesController.initialize();
+      }
     } else {
       print(':::: iOS ::::');
       selectRoloesController.loadingData.value = true;
@@ -103,17 +104,17 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // then will move toward AppUpdate where we define the
       // the deatil and update update button set
       // this this this
-      selectRoloesController.initialize();
+      // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      // if (SessionController().storeAppVerison == appVersion) {
-      //   selectRoloesController.initialize();
-      // } else {
-      //   Get.off(() => AppUpdate(
-      //         appVersion: appVersion,
-      //         availableVersion: SessionController().storeAppVerison,
-      //       ));
-      // }
+      if (SessionController().storeAppVerison != appVersion) {
+        selectRoloesController.initialize();
+      } else {
+        Get.off(() => AppUpdate(
+              appVersion: appVersion,
+              availableVersion: SessionController().storeAppVerison,
+            ));
+      }
     }
   }
 
