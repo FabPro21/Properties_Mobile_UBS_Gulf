@@ -75,7 +75,7 @@ class SplashScreenController extends GetxController {
     }
     // For video Tutorial START
 
-    Future.delayed(const Duration(seconds: kDebugMode ? 3 : 7), () async {
+    Future.delayed(const Duration(seconds: kDebugMode ? 7 : 7), () async {
       if (isBlocked) {
         Get.to(() => BlockedDeviceScreen());
       } else {

@@ -34,18 +34,11 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF001838),
       body: Container(
-        child: Center(
-          child: AppLogoMenaRealEstate(
-            menaFontSize: AppTextStyle.semiBoldWhite36,
-            menaReaEstateEnglishFont: AppTextStyle.semiBoldWhite12,
-            height: 10.0.h,
-          ),
-        ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImagesPath.backgroundImage),
+            image: AssetImage(AppImagesPath.splashGif),
             fit: BoxFit.cover,
           ),
         ),
