@@ -209,7 +209,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                                         .value,
                                                 style: AppTextStyle
                                                     .semiBoldWhite11,
-                                                maxLines: 3,
+                                                maxLines: 8,
                                               ),
                                             ),
                                           ),
