@@ -84,7 +84,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      if (updateInfo?.updateAvailability !=
+      if (updateInfo?.updateAvailability ==
           UpdateAvailability.updateAvailable) {
         Get.off(() => AppUpdate(
               appVersion: updateInfo.availableVersionCode.toString(),
@@ -98,6 +98,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       selectRoloesController.loadingData.value = true;
       await CheckVerion().fetchAppVersion();
       selectRoloesController.loadingData.value = false;
+
       // IF storeAppVersion & appVersion are same
       // then will call normal func
       // & IF storeAppVersion & appVersion are not same
@@ -107,9 +108,15 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      if (SessionController().storeAppVerison != appVersion) {
+
+      if (SessionController().storeAppVerison == null) {
+        print('IF :::::::::::: ');
+        selectRoloesController.initialize();
+      } else if (SessionController().storeAppVerison != appVersion) {
+        print('Else IF :::::::::::: ');
         selectRoloesController.initialize();
       } else {
+        print('Else :::::::::::: ');
         Get.off(() => AppUpdate(
               appVersion: appVersion,
               availableVersion: SessionController().storeAppVerison,
