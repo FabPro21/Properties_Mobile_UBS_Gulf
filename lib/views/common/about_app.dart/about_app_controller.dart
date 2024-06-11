@@ -11,7 +11,7 @@ class AboutAppController extends GetxController {
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
       version.value = packageInfo.version;
       buildNo.value = packageInfo.buildNumber;
-      packageName.value = packageInfo.packageName;
+      packageName.value = packageInfo.appName;
     });
     super.onInit();
   }

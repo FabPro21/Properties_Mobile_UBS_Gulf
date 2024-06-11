@@ -16,7 +16,7 @@
     tools:replace="android:allowBackup"
     android:allowBackup="false"
     android:fullBackupOnly="false"
-    android:label="MENA Real Estate"
+    android:label="MENA Real Estate Solutions"
     android:icon="@mipmap/ic_launcher"
     android:usesCleartextTraffic="true"
     android:extractNativeLibs="true">
