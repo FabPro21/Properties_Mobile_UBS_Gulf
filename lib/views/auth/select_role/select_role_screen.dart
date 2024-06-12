@@ -84,7 +84,18 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
+      print('Install Status ::::: ${updateInfo?.installStatus}');
+      print('availableVersionCodes ::::: ${updateInfo?.availableVersionCode}');
+      print(
+          'clientVersionStalenessDays ::::: ${updateInfo?.clientVersionStalenessDays}');
+      print('packageName ::::: ${updateInfo?.packageName}');
+      print('updateAvailability ::::: ${updateInfo?.updateAvailability}');
       if (updateInfo?.updateAvailability ==
+          UpdateAvailability.updateNotAvailable) {
+        print('IF :::::::::::: ');
+        selectRoloesController.initialize();
+        return;
+      } else if (updateInfo?.updateAvailability ==
           UpdateAvailability.updateAvailable) {
         Get.off(() => AppUpdate(
               appVersion: updateInfo.availableVersionCode.toString(),
@@ -112,7 +123,8 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       if (SessionController().storeAppVerison == null) {
         print('IF :::::::::::: ');
         selectRoloesController.initialize();
-      } else if (SessionController().storeAppVerison != appVersion) {
+        return;
+      } else if (SessionController().storeAppVerison == appVersion) {
         print('Else IF :::::::::::: ');
         selectRoloesController.initialize();
       } else {

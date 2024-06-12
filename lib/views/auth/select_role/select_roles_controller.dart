@@ -21,7 +21,6 @@ import '../../../data/models/auth_models/getNew_token_model.dart';
 import '../../../utils/constants/app_config.dart';
 import '../../common/no_internet_screen.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io' as ui;
 
 class SelectRoloesController extends GetxController {
   RxBool loadingData = false.obs;
@@ -40,10 +39,6 @@ class SelectRoloesController extends GetxController {
   }
 
   void initialize() async {
-    if (ui.Platform.isAndroid) {
-      print(':::: Without app update ::::');
-    }
-
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
       await Get.to(() => NoInternetScreen());
