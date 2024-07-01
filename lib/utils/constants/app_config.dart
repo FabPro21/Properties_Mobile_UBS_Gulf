@@ -486,22 +486,22 @@ class AppConfig {
 
 ///////////////////////////////////////////////////////////////////////////
     // Production
-    // baseUrl = 'https://landlord.fabproperties.ae';
-    // commonAppConfig = 'https://landlord.fabproperties.ae/auth01/api/';
-    // publicAppConfig = 'https://landlord.fabproperties.ae/public/';
-    // tenantAppConfig = 'https://landlord.fabproperties.ae/tenant01/api/';
-    // appConfigVendor = 'https://landlord.fabproperties.ae/vendor01/api/';
-    // landlordAppConfig = 'https://landlord.fabproperties.ae/landlord/api/';
+    baseUrl = 'https://landlord.fabproperties.ae';
+    commonAppConfig = 'https://landlord.fabproperties.ae/auth01/api/';
+    publicAppConfig = 'https://landlord.fabproperties.ae/public/';
+    tenantAppConfig = 'https://landlord.fabproperties.ae/tenant01/api/';
+    appConfigVendor = 'https://landlord.fabproperties.ae/vendor01/api/';
+    landlordAppConfig = 'https://landlord.fabproperties.ae/landlord/api/';
 
     // Internal Testing
 ///////////////////////////////////////////////////////////////////////////
 
     // 44 Server --> uat
-    commonAppConfig = 'https://20.174.25.44/Auth/api/';
-    publicAppConfig = 'https://20.174.25.44/Public/';
-    tenantAppConfig = 'https://20.174.25.44/Tenant/Api/';
-    appConfigVendor = 'https://20.174.25.44/Vendor/Api/';
-    landlordAppConfig = 'https://20.174.25.44/Landlord/Api/';
+    // commonAppConfig = 'https://20.174.25.44/Auth/api/';
+    // publicAppConfig = 'https://20.174.25.44/Public/';
+    // tenantAppConfig = 'https://20.174.25.44/Tenant/Api/';
+    // appConfigVendor = 'https://20.174.25.44/Vendor/Api/';
+    // landlordAppConfig = 'https://20.174.25.44/Landlord/Api/';
 
     // 43 Server
     ///////////////////////////////////////////////////////////////////////////
