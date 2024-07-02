@@ -304,7 +304,6 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                         Get.to(() => SafeDeviceCheck());
                                         return;
                                       }
-
                                       await authController.validateMobileUser();
                                     }
                                   },
