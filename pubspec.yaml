@@ -25,10 +25,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 #  // =====================>
 # // // remove +92 
 # // // must correct the condition of the Appversion
-# Must check both places before going the live
+# // For Production  Must uncomment before go live
+# // Must check both places before going the live
 
 
-version: 1.0.14+26
+version: 1.0.15+26
 # version: 1.0.14+25
 # version: 1.0.13+24
 # version: 1.0.12+20

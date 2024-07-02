@@ -28,6 +28,9 @@ class FirebaseAuthController extends GetxController {
   RxBool isError = false.obs;
   RxBool isPhoneValid = false.obs;
 
+  RxBool checkRooted = false.obs;
+  RxBool enableSSL = true.obs;
+
   bool resendEnabled = true;
 
   FirebaseAuth auth = FirebaseAuth.instance;

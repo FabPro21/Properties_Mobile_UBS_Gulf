@@ -14,6 +14,8 @@ import 'package:fap_properties/views/widgets/common_widgets/button_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_white.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import '../country_picker/country_picker.dart';
@@ -283,90 +285,90 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                           // 112233 comment the Rooted Device,UAT,cancel etc button
                           // for some time
                           // 101
-                          // authController.isUpdating.value == true
-                          //     ? Container()
-                          //     : Column(
-                          //         children: [
-                          //           SizedBox(
-                          //             height: 1.0.h,
-                          //           ),
-                          //           Container(
-                          //             width: 88.0.w,
-                          //             child: Row(
-                          //               children: [
-                          //                 Text(
-                          //                   AppMetaLabels().enableRooted,
-                          //                   style: AppTextStyle.semiBoldWhite11,
-                          //                 ),
-                          //                 const Spacer(),
-                          //                 Obx(() {
-                          //                   return FlutterSwitch(
-                          //                     inactiveColor: Color.fromRGBO(
-                          //                         188, 190, 192, 1),
-                          //                     activeColor: Colors.blue[600],
-                          //                     // toggleColor: Color.fromRGBO(76, 78, 84, 1),
-                          //                     activeToggleColor: Colors.white,
-                          //                     inactiveToggleColor:
-                          //                         Color.fromRGBO(76, 78, 84, 1),
-                          //                     width: 11.0.w,
-                          //                     height: 3.0.h,
-                          //                     toggleSize: 3.0.h,
-                          //                     value: authController
-                          //                         .checkRooted.value,
-                          //                     borderRadius: 2.0.h,
-                          //                     padding: 0.2.h,
-                          //                     onToggle: (val) {
-                          //                       authController.checkRooted.value =
-                          //                           val;
-                          //                     },
-                          //                   );
-                          //                 }),
-                          //               ],
-                          //             ),
-                          //           ),
-                          //           SizedBox(
-                          //             height: 2.0.h,
-                          //           ),
-                          //           Container(
-                          //             width: 88.0.w,
-                          //             child: Row(
-                          //               children: [
-                          //                 Text(
-                          //                   AppMetaLabels().enableSSL,
-                          //                   style: AppTextStyle.semiBoldWhite11,
-                          //                 ),
-                          //                 const Spacer(),
-                          //                 Obx(() {
-                          //                   return FlutterSwitch(
-                          //                     inactiveColor: Color.fromRGBO(
-                          //                         188, 190, 192, 1),
-                          //                     activeColor: Colors.blue[600],
-                          //                     // toggleColor: Color.fromRGBO(76, 78, 84, 1),
-                          //                     activeToggleColor: Colors.white,
-                          //                     inactiveToggleColor:
-                          //                         Color.fromRGBO(76, 78, 84, 1),
-                          //                     width: 11.0.w,
-                          //                     height: 3.0.h,
-                          //                     toggleSize: 3.0.h,
-                          //                     value:
-                          //                         authController.enableSSL.value,
-                          //                     borderRadius: 2.0.h,
-                          //                     padding: 0.2.h,
-                          //                     onToggle: (val) {
-                          //                       if (!SessionController()
-                          //                           .enableSSL) {
-                          //                         Phoenix.rebirth(context);
-                          //                       }
-                          //                       SessionController().enableSSL =
-                          //                           val;
-                          //                       authController.enableSSL.value =
-                          //                           val;
-                          //                     },
-                          //                   );
-                          //                 }),
-                          //               ],
-                          //             ),
-                          //           ),
+                          authController.isUpdating.value == true
+                              ? Container()
+                              : Column(children: [
+                                  SizedBox(
+                                    height: 1.0.h,
+                                  ),
+                                  Container(
+                                    width: 88.0.w,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          AppMetaLabels().enableRooted,
+                                          style: AppTextStyle.semiBoldWhite11,
+                                        ),
+                                        const Spacer(),
+                                        Obx(() {
+                                          return FlutterSwitch(
+                                            inactiveColor: Color.fromRGBO(
+                                                188, 190, 192, 1),
+                                            activeColor: Colors.blue[600],
+                                            // toggleColor: Color.fromRGBO(76, 78, 84, 1),
+                                            activeToggleColor: Colors.white,
+                                            inactiveToggleColor:
+                                                Color.fromRGBO(76, 78, 84, 1),
+                                            width: 11.0.w,
+                                            height: 3.0.h,
+                                            toggleSize: 3.0.h,
+                                            value: authController
+                                                .checkRooted.value,
+                                            borderRadius: 2.0.h,
+                                            padding: 0.2.h,
+                                            onToggle: (val) {
+                                              authController.checkRooted.value =
+                                                  val;
+                                            },
+                                          );
+                                        }),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 2.0.h,
+                                  ),
+                                  Container(
+                                    width: 88.0.w,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          AppMetaLabels().enableSSL,
+                                          style: AppTextStyle.semiBoldWhite11,
+                                        ),
+                                        const Spacer(),
+                                        Obx(() {
+                                          return FlutterSwitch(
+                                            inactiveColor: Color.fromRGBO(
+                                                188, 190, 192, 1),
+                                            activeColor: Colors.blue[600],
+                                            // toggleColor: Color.fromRGBO(76, 78, 84, 1),
+                                            activeToggleColor: Colors.white,
+                                            inactiveToggleColor:
+                                                Color.fromRGBO(76, 78, 84, 1),
+                                            width: 11.0.w,
+                                            height: 3.0.h,
+                                            toggleSize: 3.0.h,
+                                            value:
+                                                authController.enableSSL.value,
+                                            borderRadius: 2.0.h,
+                                            padding: 0.2.h,
+                                            onToggle: (val) {
+                                              if (!SessionController()
+                                                  .enableSSL) {
+                                                Phoenix.rebirth(context);
+                                              }
+                                              SessionController().enableSSL =
+                                                  val;
+                                              authController.enableSSL.value =
+                                                  val;
+                                            },
+                                          );
+                                        }),
+                                      ],
+                                    ),
+                                  ),
+                                ]),
                           Padding(
                             padding: EdgeInsets.only(top: 2.0.h),
                             child: TextButton(
