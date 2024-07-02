@@ -146,7 +146,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                     child: Row(
                       children: [
                         AppLogoMenaRealEstateDB(
-                          menaFontSize: AppTextStyle.semiBoldWhite24,
+                          menaFontSize: AppTextStyle.semiBoldWhite23,
                           menaRealEstateSolFont: AppTextStyle.semiBoldWhite10,
                           height: 4.3.h,
                         ),

@@ -1,5 +1,7 @@
 import 'package:fap_properties/utils/screen_disable.dart';
 import 'package:fap_properties/utils/styles/fonts.dart';
+import 'package:fap_properties/views/tenant/tenant_contracts/contract_extension/contract_extend.dart';
+import 'package:fap_properties/views/tenant/tenant_contracts/contract_termination/contract_terminate.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_tabs.dart/tenant_contracts_details.dart/municipal_approval/municipal_approval.dart';
 import 'package:fap_properties/views/widgets/due_action_List_button.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
@@ -966,108 +968,6 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
 // =====================>
 // For uat (Renew ,Vacat , Extend and Offer Letter)
   // Expiry
-  // Widget expiringContractActions(int index) {
-  //   return Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       children: [
-  //         // Renew
-  //         Padding(
-  //           padding: EdgeInsets.all(0.0.h),
-  //           child: ElevatedButton(
-  //               style: ElevatedButton.styleFrom(
-  //                   shape: RoundedRectangleBorder(
-  //                       borderRadius: BorderRadius.circular(3.0.sp),
-  //                       side: BorderSide(
-  //                         color: AppColors.blueColor,
-  //                         width: 1.0,
-  //                       )),
-  //                   backgroundColor: AppColors.whiteColor,
-  //                   shadowColor: AppColors.blueColor),
-  //               onPressed: () {
-  //                 Get.to(() => ContractRenewel(
-  //                       contractNo: controller.contractsList[index].contractno,
-  //                       contractId: controller.contractsList[index].contractid,
-  //                       caller: 'contracts_with_actions',
-  //                       dueActionid:
-  //                           controller.contractsList[index].dueActionid,
-  //                     ));
-  //               },
-  //               child: Text(
-  //                 AppMetaLabels().renew,
-  //                 style: AppTextStyle.normalBlue11,
-  //               )),
-  //         ),
-  //         SizedBox(
-  //           width: 3,
-  //         ),
-  //         if (controller.contractsList[index].showExtend)
-  //           Padding(
-  //               padding: EdgeInsets.all(0.0.h),
-  //               child: CustomButtonWithoutBackgroud(
-  //                 text: AppMetaLabels().extend,
-  //                 onPressed: () {
-  //                   Get.to(() => ContractExtend(
-  //                         contractNo:
-  //                             controller.contractsList[index].contractno,
-  //                         contractId:
-  //                             controller.contractsList[index].contractid,
-  //                         caller: 'contracts_with_actions',
-  //                         dueActionId:
-  //                             controller.contractsList[index].dueActionid,
-  //                       ));
-  //                 },
-  //                 borderColor: AppColors.blueColor,
-  //               )),
-  //         SizedBox(
-  //           width: 3,
-  //         ),
-  //         // Vacant
-  //         Padding(
-  //             padding: EdgeInsets.all(0.0.h),
-  //             child: CustomButtonWithoutBackgroud(
-  //               text: AppMetaLabels().terminate,
-  //               onPressed: () {
-  //                 Get.to(() => ContractTerminate(
-  //                       contractNo: controller.contractsList[index].contractno,
-  //                       contractId: controller.contractsList[index].contractid,
-  //                       caller: 'contracts_with_actions',
-  //                       dueActionid:
-  //                           controller.contractsList[index].dueActionid,
-  //                     ));
-  //               },
-  //               borderColor: AppColors.blueColor,
-  //             )),
-  //         SizedBox(
-  //           width: 3,
-  //         ),
-
-  //         // showOfferLetter
-  //         if (controller.contractsList[index].showOfferLetter == 1)
-  //           Padding(
-  //               padding: EdgeInsets.all(0.0.h),
-  //               child: Obx(() {
-  //                 return CustomButtonWithoutBackgroud(
-  //                   loading: controller.contractsList[index].downloading.value,
-  //                   text: AppMetaLabels().offerLetter,
-  //                   onPressed: () async {
-  //                     controller.isEnableScreen.value = false;
-  //                     SnakBarWidget.getLoadingWithColor();
-  //                     await controller
-  //                         .downloadOfferLetter(controller.contractsList[index]);
-
-  //                     setState(() {
-  //                       controller.isEnableScreen.value = true;
-  //                     });
-  //                   },
-  //                   borderColor: AppColors.blueColor,
-  //                 );
-  //               })),
-  //       ]);
-  // }
-
-// =====================>
-// For Production (Renew  and Offer Letter)
   Widget expiringContractActions(int index) {
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -1103,46 +1003,46 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
           SizedBox(
             width: 3,
           ),
-          // if (controller.contractsList[index].showExtend)
-          //   Padding(
-          //       padding: EdgeInsets.all(0.0.h),
-          //       child: CustomButtonWithoutBackgroud(
-          //         text: AppMetaLabels().extend,
-          //         onPressed: () {
-          //           Get.to(() => ContractExtend(
-          //                 contractNo:
-          //                     controller.contractsList[index].contractno,
-          //                 contractId:
-          //                     controller.contractsList[index].contractid,
-          //                 caller: 'contracts_with_actions',
-          //                 dueActionId:
-          //                     controller.contractsList[index].dueActionid,
-          //               ));
-          //         },
-          //         borderColor: AppColors.blueColor,
-          //       )),
-          // SizedBox(
-          //   width: 3,
-          // ),
-          // // Vacant
-          // Padding(
-          //     padding: EdgeInsets.all(0.0.h),
-          //     child: CustomButtonWithoutBackgroud(
-          //       text: AppMetaLabels().terminate,
-          //       onPressed: () {
-          //         Get.to(() => ContractTerminate(
-          //               contractNo: controller.contractsList[index].contractno,
-          //               contractId: controller.contractsList[index].contractid,
-          //               caller: 'contracts_with_actions',
-          //               dueActionid:
-          //                   controller.contractsList[index].dueActionid,
-          //             ));
-          //       },
-          //       borderColor: AppColors.blueColor,
-          //     )),
-          // SizedBox(
-          //   width: 3,
-          // ),
+          if (controller.contractsList[index].showExtend)
+            Padding(
+                padding: EdgeInsets.all(0.0.h),
+                child: CustomButtonWithoutBackgroud(
+                  text: AppMetaLabels().extend,
+                  onPressed: () {
+                    Get.to(() => ContractExtend(
+                          contractNo:
+                              controller.contractsList[index].contractno,
+                          contractId:
+                              controller.contractsList[index].contractid,
+                          caller: 'contracts_with_actions',
+                          dueActionId:
+                              controller.contractsList[index].dueActionid,
+                        ));
+                  },
+                  borderColor: AppColors.blueColor,
+                )),
+          SizedBox(
+            width: 3,
+          ),
+          // Vacant
+          Padding(
+              padding: EdgeInsets.all(0.0.h),
+              child: CustomButtonWithoutBackgroud(
+                text: AppMetaLabels().terminate,
+                onPressed: () {
+                  Get.to(() => ContractTerminate(
+                        contractNo: controller.contractsList[index].contractno,
+                        contractId: controller.contractsList[index].contractid,
+                        caller: 'contracts_with_actions',
+                        dueActionid:
+                            controller.contractsList[index].dueActionid,
+                      ));
+                },
+                borderColor: AppColors.blueColor,
+              )),
+          SizedBox(
+            width: 3,
+          ),
 
           // showOfferLetter
           if (controller.contractsList[index].showOfferLetter == 1)
@@ -1167,6 +1067,108 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                 })),
         ]);
   }
+
+// =====================>
+// For Production (Renew  and Offer Letter)
+  // Widget expiringContractActions(int index) {
+  //   return Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children: [
+  //         // Renew
+  //         Padding(
+  //           padding: EdgeInsets.all(0.0.h),
+  //           child: ElevatedButton(
+  //               style: ElevatedButton.styleFrom(
+  //                   shape: RoundedRectangleBorder(
+  //                       borderRadius: BorderRadius.circular(3.0.sp),
+  //                       side: BorderSide(
+  //                         color: AppColors.blueColor,
+  //                         width: 1.0,
+  //                       )),
+  //                   backgroundColor: AppColors.whiteColor,
+  //                   shadowColor: AppColors.blueColor),
+  //               onPressed: () {
+  //                 Get.to(() => ContractRenewel(
+  //                       contractNo: controller.contractsList[index].contractno,
+  //                       contractId: controller.contractsList[index].contractid,
+  //                       caller: 'contracts_with_actions',
+  //                       dueActionid:
+  //                           controller.contractsList[index].dueActionid,
+  //                     ));
+  //               },
+  //               child: Text(
+  //                 AppMetaLabels().renew,
+  //                 style: AppTextStyle.normalBlue11,
+  //               )),
+  //         ),
+  //         SizedBox(
+  //           width: 3,
+  //         ),
+  //         // if (controller.contractsList[index].showExtend)
+  //         //   Padding(
+  //         //       padding: EdgeInsets.all(0.0.h),
+  //         //       child: CustomButtonWithoutBackgroud(
+  //         //         text: AppMetaLabels().extend,
+  //         //         onPressed: () {
+  //         //           Get.to(() => ContractExtend(
+  //         //                 contractNo:
+  //         //                     controller.contractsList[index].contractno,
+  //         //                 contractId:
+  //         //                     controller.contractsList[index].contractid,
+  //         //                 caller: 'contracts_with_actions',
+  //         //                 dueActionId:
+  //         //                     controller.contractsList[index].dueActionid,
+  //         //               ));
+  //         //         },
+  //         //         borderColor: AppColors.blueColor,
+  //         //       )),
+  //         // SizedBox(
+  //         //   width: 3,
+  //         // ),
+  //         // // Vacant
+  //         // Padding(
+  //         //     padding: EdgeInsets.all(0.0.h),
+  //         //     child: CustomButtonWithoutBackgroud(
+  //         //       text: AppMetaLabels().terminate,
+  //         //       onPressed: () {
+  //         //         Get.to(() => ContractTerminate(
+  //         //               contractNo: controller.contractsList[index].contractno,
+  //         //               contractId: controller.contractsList[index].contractid,
+  //         //               caller: 'contracts_with_actions',
+  //         //               dueActionid:
+  //         //                   controller.contractsList[index].dueActionid,
+  //         //             ));
+  //         //       },
+  //         //       borderColor: AppColors.blueColor,
+  //         //     )),
+  //         // SizedBox(
+  //         //   width: 3,
+  //         // ),
+
+  //         // showOfferLetter
+  //         if (controller.contractsList[index].showOfferLetter == 1)
+  //           Padding(
+  //               padding: EdgeInsets.all(0.0.h),
+  //               child: Obx(() {
+  //                 return CustomButtonWithoutBackgroud(
+  //                   loading: controller.contractsList[index].downloading.value,
+  //                   text: AppMetaLabels().offerLetter,
+  //                   onPressed: () async {
+  //                     controller.isEnableScreen.value = false;
+  //                     SnakBarWidget.getLoadingWithColor();
+  //                     await controller
+  //                         .downloadOfferLetter(controller.contractsList[index]);
+
+  //                     setState(() {
+  //                       controller.isEnableScreen.value = true;
+  //                     });
+  //                   },
+  //                   borderColor: AppColors.blueColor,
+  //                 );
+  //               })),
+  //       ]);
+  // }
 
   Widget checkIn(int index) {
     return Padding(
