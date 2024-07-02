@@ -11,8 +11,10 @@ import 'package:fap_properties/views/auth/otp_firebase/verify_user_otp_fb_contro
 import 'package:fap_properties/views/auth/setup_mpin/setup_mpin.dart';
 import 'package:fap_properties/views/auth/validate_user/phone_no_field.dart';
 import 'package:fap_properties/views/common/no_internet_screen.dart';
+import 'package:fap_properties/views/common/safe_device_check.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 
@@ -35,6 +37,10 @@ class FirebaseAuthController extends GetxController {
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
+
+  RxBool jailbroken = false.obs;
+  RxBool developerMode = false.obs;
+
   @override
   void onInit() {
     FirebaseAuth.instance.userChanges().listen((User user) {
@@ -53,6 +59,17 @@ class FirebaseAuthController extends GetxController {
     validOTP.value = true;
     otpAttemptsCounter.value = 0;
     super.onInit();
+  }
+
+  Future<void> rootCheck() async {
+    try {
+      jailbroken.value = await FlutterJailbreakDetection.jailbroken;
+      developerMode.value = await FlutterJailbreakDetection.developerMode;
+    } catch (e) {
+      isUpdating.value = false;
+      loadingData.value = false;
+      Get.to(() => SafeDeviceCheck());
+    }
   }
 
   String validateMobile(String value) {

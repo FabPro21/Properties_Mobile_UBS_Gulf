@@ -8,6 +8,7 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/auth/country_picker/country_picker_controller.dart';
 import 'package:fap_properties/views/choose_language/choose_language.dart';
 import 'package:fap_properties/views/auth/validate_user/phone_no_field.dart';
+import 'package:fap_properties/views/common/safe_device_check.dart';
 import 'package:fap_properties/views/widgets/common_widgets/app_logo_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/background_image_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/button_widget.dart';
@@ -16,6 +17,7 @@ import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:http_proxy/http_proxy.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import '../country_picker/country_picker.dart';
@@ -277,7 +279,25 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           authController.validateMobile(phone);
                                       print(
                                           'Phone Validation ::: $phoneNbrValidation');
+                                      // Without SSL pinning
+                                      // await authController.validateMobileUser();
 
+                                      // For SSL pinning
+                                      if (authController.checkRooted.value) {
+                                        await authController.rootCheck();
+                                      }
+                                      if (!authController.enableSSL.value) {
+                                        HttpProxy httpProxy =
+                                            await HttpProxy.createHttpProxy();
+                                        HttpOverrides.global = httpProxy;
+                                      }
+                                      if (authController.checkRooted.value &&
+                                          (authController.jailbroken.value ||
+                                              authController
+                                                  .developerMode.value)) {
+                                        Get.to(() => SafeDeviceCheck());
+                                        return;
+                                      }
                                       await authController.validateMobileUser();
                                     }
                                   },
