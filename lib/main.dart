@@ -37,13 +37,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-//  Must Uncomment For Production FirebaseAppCheck
+//****** */  Must Uncomment For Production FirebaseAppCheck
   // await FirebaseAppCheck.instance.activate(
   //   androidProvider:
   //       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
   //   appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
   // );
-  //  Must Uncomment For Production
+  //  Must Uncomment For Production******/
 
   // for download file
   await FlutterDownloader.initialize(

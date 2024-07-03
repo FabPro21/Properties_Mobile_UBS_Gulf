@@ -288,7 +288,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                       // Without SSL pinning
                                       // await authController.validateMobileUser();
 
-                                      // For SSL pinning
+                                      // For SSL pinning & rooted device
                                       if (authController.checkRooted.value) {
                                         await authController.rootCheck();
                                       }
@@ -303,8 +303,10 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                                   .developerMode.value)) {
                                         Get.to(() => SafeDeviceCheck());
                                         return;
+                                      } else {
+                                        await authController
+                                            .validateMobileUser();
                                       }
-                                      await authController.validateMobileUser();
                                     }
                                   },
                                 ),
