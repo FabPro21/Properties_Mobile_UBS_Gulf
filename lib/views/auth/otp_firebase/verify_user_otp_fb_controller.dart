@@ -66,6 +66,8 @@ class VerifyUserOtpControllerFB extends GetxController {
 
       // update public profile Start Logic from here
       User updatedUserModel;
+      print('Is New User :::::::::: ${model.value.isNewUser}');
+      print('Is New User :::::::::: ${(model.value.isNewUser == true)}');
       if (model.value.isNewUser == true) {
         updatedUserModel = await Get.to(() => UpdatePublicProfile(
               model: model.value,

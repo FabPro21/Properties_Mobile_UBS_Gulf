@@ -20,11 +20,12 @@ import 'package:flutter/foundation.dart';
 
 class FirebaseAuthController extends GetxController {
   static String verificationId;
+  bool otpManuallyVerified = false;
   RxBool isCodeSent = false.obs;
   RxBool verifying = false.obs;
   RxBool validOTP = true.obs;
   RxBool resending = false.obs;
-  bool isUserSignedIn = false;
+  // bool isUserSignedIn = false;
   int resendToken;
   var error = "".obs;
   RxBool isError = false.obs;
@@ -37,25 +38,24 @@ class FirebaseAuthController extends GetxController {
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
-
   RxBool jailbroken = false.obs;
   RxBool developerMode = false.obs;
 
   @override
   void onInit() {
-    FirebaseAuth.instance.userChanges().listen((User user) {
-      if (user == null) {
-        if (kDebugMode) {
-          print('User is currently signed out!');
-        }
-        isUserSignedIn = false;
-      } else {
-        if (kDebugMode) {
-          print('User is signed in!');
-        }
-        isUserSignedIn = true;
-      }
-    });
+    // FirebaseAuth.instance.userChanges().listen((User user) {
+    //   if (user == null) {
+    //     if (kDebugMode) {
+    //       print('User is currently signed out!');
+    //     }
+    //     isUserSignedIn = false;
+    //   } else {
+    //     if (kDebugMode) {
+    //       print('User is signed in!');
+    //     }
+    //     isUserSignedIn = true;
+    //   }
+    // });
     validOTP.value = true;
     otpAttemptsCounter.value = 0;
     super.onInit();
@@ -189,6 +189,7 @@ class FirebaseAuthController extends GetxController {
         if (kDebugMode) {
           print('otp verified');
         }
+        otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
         controller.verifyOtpBtn(code, verificationId, true);
@@ -251,6 +252,7 @@ class FirebaseAuthController extends GetxController {
         if (kDebugMode) {
           print('otp verified');
         }
+        otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
         Get.offAll(() => SetupMpinScreen());

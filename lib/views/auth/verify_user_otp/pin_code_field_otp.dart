@@ -159,10 +159,13 @@ class _PinCodeFieldFBState extends State<PinCodeFieldFB> {
                   widget.controller.validOTP.value = true;
                   widget.controller.error.value = '';
                 });
+
                 if (widget.isForgotMpin == true) {
                   widget.controller.signInWithPhoneNumberForgotMpin(v);
+                  widget.controller.otpManuallyVerified = true;
                 } else {
                   widget.controller.signInWithPhoneNumber(v);
+                  widget.controller.otpManuallyVerified = true;
                 }
                 // before forgot mpin
                 // widget.controller.signInWithPhoneNumber(v);

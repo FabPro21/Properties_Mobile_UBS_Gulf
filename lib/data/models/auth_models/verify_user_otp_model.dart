@@ -63,8 +63,8 @@ class User {
   });
 
   int userId;
-  dynamic name;
-  String fullNameAr;
+  dynamic name = '';
+  String fullNameAr = '';
   bool mpinSet;
   dynamic mobile;
   dynamic email;

@@ -38,19 +38,20 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
     return first + "****" + last;
   }
 
+
   @override
   void initState() {
     // Adding New Functionality
     FirebaseAuth.instance.authStateChanges().listen((User user) {
       print(' user state ============::::::::::::::::: IF === >  $user');
-      if (user != null) {
-        // Navigate the user away from the login screens   
+      if (user != null && !authController.otpManuallyVerified) {
+        // Navigate the user away from the login screens
         print(' user state ============::::::::::::::::: IF === > ');
         autoVerifyOtpBtn();
       } else {
         print('Resetting user state ============::::::::::::::::: ELSE === > ');
       }
-    });  
+    });
     setState(() {
       authController.isCodeSent.value = false;
     });
