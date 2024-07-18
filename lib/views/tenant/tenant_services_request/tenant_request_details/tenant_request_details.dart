@@ -57,7 +57,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       autoScroll();
       print(
-          '====> isRenwed Cace Main Class ::::::: ${tenantRDController.isContractRenewed}=====>');
+          '====> isRenwed Case Main Class ::::::: ${tenantRDController.isContractRenewed}=====>');
     });
     super.initState();
   }
