@@ -179,10 +179,15 @@ class StatusWidgetVendor extends StatelessWidget {
                               ? AppColors.blackColor
                               : AppColors.blackColor)
               .copyWith(
-            fontWeight: valueToCompare.contains('Under Approval')
+            fontWeight: valueToCompare.contains('Under Approval') ||
+                    valueToCompare.contains('Assigned to Department')
                 ? FontWeight.bold
                 : null,
-            fontSize: valueToCompare.contains('Under Approval') ? 10.sp : null,
+            fontSize: valueToCompare.contains('Under Approval')
+                ? 10.sp
+                : valueToCompare.contains('Assigned to Department')
+                    ? 8.sp
+                    : null,
           ),
           // style: AppTextStyle.statusStyle(valueToCompare.contains('Active') ||
           //         valueToCompare.contains('Posted') ||

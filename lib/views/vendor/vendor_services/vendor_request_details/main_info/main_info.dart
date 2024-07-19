@@ -119,13 +119,13 @@ class SvcReqMainInfo extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          '',
-                                          // controller.vendorRequestDetails.value
-                                          //         .detail.time ??
-                                          //     "",
-                                          style: AppTextStyle.normalGrey10,
-                                        ),
+                                        // Text(
+                                        //   '',
+                                        //   // controller.vendorRequestDetails.value
+                                        //   //         .detail.time ??
+                                        //   //     "",
+                                        //   style: AppTextStyle.normalGrey10,
+                                        // ),
                                         Padding(
                                           padding: EdgeInsets.only(left: 2.0.w),
                                           child: Text(

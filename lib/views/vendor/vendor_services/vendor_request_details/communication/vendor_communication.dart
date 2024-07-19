@@ -136,7 +136,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                             width: 2.w,
                                           ),
                                           SizedBox(
-                                            width: Get.width * 0.75,
+                                            width: Get.width * 0.7,
                                             child: Text(
                                               _controller.fileToUpload.value
                                                       .name ??
