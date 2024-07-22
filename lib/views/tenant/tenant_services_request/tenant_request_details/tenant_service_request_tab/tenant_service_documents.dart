@@ -78,7 +78,6 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
       print(
           '***********7**** ${mainScreenController.tenantRequestDetails.value.detail.caseType}');
       getInformation();
-      
     });
     super.initState();
   }
@@ -94,6 +93,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
     setState(() {
       _isSolving = false;
     });
+    
   }
 
   bool highLightExpiry = false;
@@ -1100,11 +1100,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         onTap: () async {
                           // if (!await Permission.storage.request().isGranted) {
                           //   print('Else');
-                          //   await permissions(
-                          //     'Storage',
-                          //     context,
-                          //   );
-                          //   return;
+                          //   await Permission.mediaLibrary .request();  
+                          //   // return;
                           // }
                           try {
                             // await controller.pickDoc(index);

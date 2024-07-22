@@ -235,6 +235,8 @@ class SvcReqDocsController extends GetxController {
   //   // passport and other select from gallery
   pickDocFilePicker(int index) async {
     docsModel.docs[index].loading.value = true;
+
+    await Permission.manageExternalStorage.request();
     FilePickerResult result =
         await FilePicker.platform.pickFiles(allowedExtensions: [
       'pdf',
@@ -242,8 +244,8 @@ class SvcReqDocsController extends GetxController {
       'jpg',
       'png',
     ], type: FileType.custom);
-    docsModel.docs[index].loading.value = false;
 
+    docsModel.docs[index].loading.value = false;
     if (!CheckFileExtenstion().checkFileExtFunc(result)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
           duration: Duration(seconds: 5),

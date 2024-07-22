@@ -113,7 +113,8 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
 
       // for app update
       // should uncomment the below lines
-      if (SessionController().storeAppVerison != appVersion) {
+      // must correct the condition of the Appversion
+      if (SessionController().storeAppVerison == appVersion) {
         selectRoloesController.initialize();
       } else {
         Get.off(() => AppUpdate(

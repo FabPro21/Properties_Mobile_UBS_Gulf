@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:fap_properties/utils/push_notifications_service.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 // import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
-// import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
 
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                       */
@@ -38,13 +39,13 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   // For Production  Must uncomment before go live
-  // await FirebaseAppCheck.instance.activate(
-  //   androidProvider:
-  //       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
-  //   appleProvider: kDebugMode
-  //       ? AppleProvider.debug
-  //       : AppleProvider.appAttestWithDeviceCheckFallback,
-  // );
+  await FirebaseAppCheck.instance.activate(
+    androidProvider:
+        kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
+    appleProvider: kDebugMode
+        ? AppleProvider.debug
+        : AppleProvider.appAttestWithDeviceCheckFallback,
+  );
   // await FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(true);
   // await FirebaseAppCheck.instance.getToken();
   // Must uncomment before go live
