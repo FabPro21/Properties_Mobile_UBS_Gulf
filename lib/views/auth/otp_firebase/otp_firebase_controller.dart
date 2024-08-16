@@ -33,7 +33,7 @@ class FirebaseAuthController extends GetxController {
 
   RxBool checkRooted = false.obs;
   RxBool enableSSL = true.obs;
-
+  String test = '';
   bool resendEnabled = true;
 
   FirebaseAuth auth = FirebaseAuth.instance;
