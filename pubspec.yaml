@@ -29,7 +29,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # // Must check both places before going the live
 
 
-version: 1.0.15+26
+version: 1.0.15+27
 # version: 1.0.14+25
 # version: 1.0.13+24
 # version: 1.0.12+20
