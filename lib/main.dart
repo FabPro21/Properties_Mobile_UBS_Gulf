@@ -44,8 +44,9 @@ Future<void> main() async {
         kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
     appleProvider: kDebugMode
         ? AppleProvider.debug
-        : AppleProvider.appAttestWithDeviceCheckFallback,
+        : AppleProvider.appAttest,
   );
+  
   // await FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(true);
   // await FirebaseAppCheck.instance.getToken();
   // Must uncomment before go live
