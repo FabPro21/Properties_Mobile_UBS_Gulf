@@ -14,7 +14,7 @@ import 'public_faqs_controller.dart';
 import 'public_faqs_question_and_description.dart';
 
 class PublicFaqsCategories extends StatefulWidget {
-  const PublicFaqsCategories({Key key}) : super(key: key);
+  const PublicFaqsCategories({Key? key}) : super(key: key);
 
   @override
   _PublicFaqsCategoriesState createState() => _PublicFaqsCategoriesState();
@@ -67,9 +67,8 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
                                                   categoryId: _controller
                                                           .faqsCategories
                                                           .value
-                                                          .faqCategories[index]
-                                                          .categoryId ??
-                                                      "",
+                                                          .faqCategories![index]
+                                                          .categoryId ,
                                                 ));
                                           },
                                           child: Directionality(
@@ -92,14 +91,14 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
                                                         ? _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .faqCategories[
+                                                                .faqCategories![
                                                                     index]
                                                                 .title ??
                                                             ""
                                                         : _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .faqCategories[
+                                                                .faqCategories![
                                                                     index]
                                                                 .titleAr ??
                                                             "",

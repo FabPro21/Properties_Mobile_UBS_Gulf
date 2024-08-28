@@ -1,6 +1,7 @@
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
@@ -14,8 +15,8 @@ import '../../../data/helpers/session_controller.dart';
 import 'services_categories_controller.dart';
 
 class SearchPropertiesServiceDetails extends StatefulWidget {
-  final int categoryId;
-  const SearchPropertiesServiceDetails({Key key, this.categoryId})
+  final int? categoryId;
+  const SearchPropertiesServiceDetails({Key? key, this.categoryId})
       : super(key: key);
 
   @override
@@ -34,7 +35,7 @@ class _SearchPropertiesServiceDetailsState
   }
 
   _getdata() async {
-    await _controller.getServiceCategoriesDetails(widget.categoryId);
+    await _controller.getServiceCategoriesDetails(widget.categoryId!);
   }
 
   @override
@@ -77,10 +78,10 @@ class _SearchPropertiesServiceDetailsState
                                   title: Text(
                                       SessionController().getLanguage() == 1
                                           ? _controller.getServiceDetails.value
-                                                  .services[index].title ??
+                                                  .services![index].title ??
                                               ""
                                           : _controller.getServiceDetails.value
-                                                  .services[index].titleAr ??
+                                                  .services![index].titleAr ??
                                               "",
                                       style: AppTextStyle.semiBoldBlack13),
                                   children: <Widget>[
@@ -92,28 +93,34 @@ class _SearchPropertiesServiceDetailsState
                                             bottom: 2.0.h,
                                             right: 4.0.w),
                                         child: Html(
-                                          customTextAlign: (_) =>
-                                              SessionController()
+                                          style: {
+                                            'html': Style(
+                                              textAlign: SessionController()
                                                           .getLanguage() ==
                                                       1
                                                   ? TextAlign.left
                                                   : TextAlign.right,
+                                              color: Colors.black,
+                                              fontFamily:
+                                                  AppFonts.graphikRegular,
+                                              fontSize: FontSize(10.0),
+                                            ),
+                                          },
                                           data: SessionController()
                                                       .getLanguage() ==
                                                   1
                                               ? _controller
                                                       .getServiceDetails
                                                       .value
-                                                      .services[index]
+                                                      .services![index]
                                                       .description ??
                                                   ""
                                               : _controller
                                                       .getServiceDetails
                                                       .value
-                                                      .services[index]
+                                                      .services![index]
                                                       .descriptionAr ??
                                                   "",
-                                          // style: AppTextStyle.normalBlack12,
                                         ),
                                       ),
                                     )

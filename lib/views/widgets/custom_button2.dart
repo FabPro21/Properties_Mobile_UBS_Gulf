@@ -6,22 +6,22 @@ import '../../utils/styles/colors.dart';
 import '../../utils/styles/text_styles.dart';
 
 class CustomButton2 extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final bool loading;
+  final Function? onPressed;
+  final String? text;
+  final bool? loading;
   const CustomButton2(
-      {Key key, this.onPressed, this.text, this.loading = false})
+      {Key? key, this.onPressed, this.text, this.loading = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: loading
+      onPressed: loading!
           ? null
           : () {
-              onPressed();
+              onPressed!();
             },
-      child: loading
+      child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,

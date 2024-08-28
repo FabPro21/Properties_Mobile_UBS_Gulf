@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProperties extends StatefulWidget {
-  const LandLordProperties({Key key}) : super(key: key);
+  const LandLordProperties({Key? key}) : super(key: key);
 
   @override
   _LandLordPropertiesState createState() => _LandLordPropertiesState();
@@ -433,9 +433,9 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
         Get.to(() => LandlordPropertDetailsTabs(
               propertyId: controller.props[index].propertyID.toString(),
               propertyNo: SessionController().getLanguage() == 1
-                  ? controller.propsModel.serviceRequests[index].emirateName
+                  ? controller.propsModel!.serviceRequests![index].emirateName
                       .toString()
-                  : controller.propsModel.serviceRequests[index].emirateNameAR
+                  : controller.propsModel!.serviceRequests![index].emirateNameAR
                       .toString(),
             ));
       },

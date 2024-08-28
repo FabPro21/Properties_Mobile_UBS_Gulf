@@ -7,10 +7,10 @@ import 'dart:convert';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:apple_maps_flutter/apple_maps_flutter.dart' as Am;
 
-PublicLocationModel publicLocationModelFromJson(String str) =>
-    PublicLocationModel.fromJson(json.decode(str));
+PublicLocationModel publicLocationModelFromJson(String? str) =>
+    PublicLocationModel.fromJson(json.decode(str!));
 
-String publicLocationModelToJson(PublicLocationModel data) =>
+String? publicLocationModelToJson(PublicLocationModel data) =>
     json.encode(data.toJson());
 
 class PublicLocationModel {
@@ -20,11 +20,11 @@ class PublicLocationModel {
     this.message,
   });
 
-  String status;
-  List<LocationVm> locationVm;
-  String message;
+  String? status;
+  List<LocationVm>? locationVm;
+  String? message;
 
-  factory PublicLocationModel.fromJson(Map<String, dynamic> json) =>
+  factory PublicLocationModel.fromJson(Map<String?, dynamic> json) =>
       PublicLocationModel(
         status: json["status"],
         locationVm: List<LocationVm>.from(
@@ -32,9 +32,9 @@ class PublicLocationModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "locationVm": List<dynamic>.from(locationVm.map((x) => x.toJson())),
+        "locationVm": List<dynamic>.from(locationVm!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -54,25 +54,25 @@ class LocationVm {
       this.cameraPosition,
       this.cameraPositionAm});
 
-  String title;
-  String titleAr;
-  String cellNumber;
-  String officeTiming;
-  String address;
-  String description;
-  String latLog;
-  double lat;
-  double lng;
-  String descriptionAr;
-  CameraPosition cameraPosition;
-  Am.CameraPosition cameraPositionAm;
+  String? title;
+  String? titleAr;
+  String? cellNumber;
+  String? officeTiming;
+  String? address;
+  String? description;
+  String? latLog;
+  double? lat;
+  double? lng;
+  String? descriptionAr;
+  CameraPosition? cameraPosition;
+  Am.CameraPosition? cameraPositionAm;
 
-  factory LocationVm.fromJson(Map<String, dynamic> json) {
-    List<String> latlan = json["latLog"].toString().contains(';')
+  factory LocationVm.fromJson(Map<String?, dynamic> json) {
+    List<String?> latlan = json["latLog"].toString().contains(';')
         ? json["latLog"].split(';')
         : json["latLog"].split(',');
 
-    // List<String> latlan = json["latLog"].split(',');
+    // List<String?> latlan = json["latLog"].split(',');
 
     CameraPosition position;
     Am.CameraPosition positionAm;
@@ -80,15 +80,15 @@ class LocationVm {
     double lng1;
     if (latlan.length >= 2) {
       position = CameraPosition(
-        target: LatLng(double.parse(latlan[0]), double.parse(latlan[1])),
+        target: LatLng(double.parse(latlan[0]!), double.parse(latlan[1]!)),
         zoom: 8,
       );
       positionAm = Am.CameraPosition(
-        target: Am.LatLng(double.parse(latlan[0]), double.parse(latlan[1])),
+        target: Am.LatLng(double.parse(latlan[0]!), double.parse(latlan[1]!)),
         zoom: 8,
       );
-      lat1 = double.parse(latlan[0]);
-      lng1 = double.parse(latlan[1]);
+      lat1 = double.parse(latlan[0]!);
+      lng1 = double.parse(latlan[1]!);
     } else {
       position = CameraPosition(
         target: LatLng(23.4241, 53.8478),
@@ -117,7 +117,7 @@ class LocationVm {
         lng: lng1);
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "title": title,
         "titleAR": titleAr,
         "cellNumber": cellNumber,

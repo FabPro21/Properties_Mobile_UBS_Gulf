@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/vendor_models/get_all_lpos_model.dart';
 import 'package:fap_properties/data/repository/vendor_repository.dart';
@@ -8,7 +10,7 @@ import 'package:get/get.dart';
 
 class GetAllLpoController extends GetxController {
   var getAllLpos = GetAllLpoModel().obs;
-  LpoFilterData filterDataVar;
+  LpoFilterData? filterDataVar;
   var loadingData = true.obs;
   RxString error = ''.obs;
   RxBool isFilter = false.obs;
@@ -38,7 +40,7 @@ class GetAllLpoController extends GetxController {
       } else {
         print('***** ::::===>');
         getAllLpos.value = result;
-        lpos = result.lpos;
+        lpos = result.lpos!;
         update();
         loadingData.value = false;
       }
@@ -66,7 +68,7 @@ class GetAllLpoController extends GetxController {
         loadingData.value = false;
       } else {
         getAllLpos.value = result;
-        lpos = result.lpos;
+        lpos = result.lpos!;
         update();
         loadingData.value = false;
       }
@@ -95,8 +97,8 @@ class GetAllLpoController extends GetxController {
         loadingDataLoadMore.value = false;
       } else {
         getAllLpos.value = result;
-        for (int i = 0; i < getAllLpos.value.lpos.length; i++) {
-          lpos.add(result.lpos[i]);
+        for (int i = 0; i < getAllLpos.value.lpos!.length; i++) {
+          lpos.add(result.lpos![i]);
         }
         update();
         loadingDataLoadMore.value = false;
@@ -128,7 +130,7 @@ class GetAllLpoController extends GetxController {
 
     if (result is GetAllLpoModel) {
       getAllLpos.value = result;
-      lpos = result.lpos;
+      lpos = result.lpos!;
       if (getAllLpos.value.status == AppMetaLabels().notFound) {
         error.value = AppMetaLabels().noDatafound;
       } else {
@@ -168,7 +170,7 @@ class GetAllLpoController extends GetxController {
         error.value = AppMetaLabels().noDatafound;
       } else {
         getAllLpos.value = result;
-        lpos = getAllLpos.value.lpos;
+        lpos = getAllLpos.value.lpos!;
       }
     } else {
       error.value = AppMetaLabels().noDatafound;
@@ -192,8 +194,8 @@ class GetAllLpoController extends GetxController {
         errorLoadMoreFilter.value = AppMetaLabels().noDatafound;
       } else {
         getAllLpos.value = result;
-        for (int i = 0; i < getAllLpos.value.lpos.length; i++) {
-          lpos.add(getAllLpos.value.lpos[i]);
+        for (int i = 0; i < getAllLpos.value.lpos!.length; i++) {
+          lpos.add(getAllLpos.value.lpos![i]);
         }
         update();
         loadingDataLoadMore.value = false;
@@ -204,15 +206,15 @@ class GetAllLpoController extends GetxController {
   }
 
   searchData(String qry) {
-    if (getAllLpos.value.lpos != null) {
+    if (getAllLpos.value.lpos! != null) {
       qry.toLowerCase();
       loadingData.value = true;
       List<Lpo> _searchedLpos = [];
-      for (int i = 0; i < getAllLpos.value.lpos.length; i++) {
-        if (getAllLpos.value.lpos[i].lpoReference.contains(qry) ||
-            getAllLpos.value.lpos[i].lpoStatus.toLowerCase().contains(qry) ||
-            getAllLpos.value.lpos[i].lpoStatusAr.contains(qry)) {
-          _searchedLpos.add(getAllLpos.value.lpos[i]);
+      for (int i = 0; i < getAllLpos.value.lpos!.length; i++) {
+        if (getAllLpos.value.lpos![i].lpoReference!.contains(qry) ||
+            getAllLpos.value.lpos![i].lpoStatus!.toLowerCase().contains(qry) ||
+            getAllLpos.value.lpos![i].lpoStatusAr!.contains(qry)) {
+          _searchedLpos.add(getAllLpos.value.lpos![i]);
         }
       }
       lpos = _searchedLpos;

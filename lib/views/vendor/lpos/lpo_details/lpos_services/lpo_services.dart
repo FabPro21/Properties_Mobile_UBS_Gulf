@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import 'lpo_services_controller.dart';
 
 class LpoServices extends StatefulWidget {
-  const LpoServices({Key key}) : super(key: key);
+  const LpoServices({Key? key}) : super(key: key);
 
   @override
   _LpoServicesState createState() => _LpoServicesState();
@@ -66,7 +66,7 @@ class _LpoServicesState extends State<LpoServices> {
                               borderRadius: BorderRadius.circular(2.0.h),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey[200],
+                                  color: Colors.grey[200] ?? Colors.grey,
                                   blurRadius: 0.4.h,
                                   spreadRadius: 0.8.h,
                                   offset: Offset(0.1.h, 0.1.h),
@@ -83,7 +83,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var d = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices[index]
+                                          .lpoServices![index]
                                           .discountPercentage;
                                       discountPercentage = d.toStringAsFixed(2);
                                       //////////////////////////
@@ -92,7 +92,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var ga = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices[index]
+                                          .lpoServices![index]
                                           .netAmount;
                                       final gFormatter =
                                           NumberFormat('#,##0.00', 'AR');
@@ -103,7 +103,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var da = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices[index]
+                                          .lpoServices![index]
                                           .discountAmount;
                                       final dFormatter =
                                           NumberFormat('#,##0.00', 'AR');
@@ -114,7 +114,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var na = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices[index]
+                                          .lpoServices![index]
                                           .totalAmount;
 
                                       final nFormatter =
@@ -169,14 +169,14 @@ class _LpoServicesState extends State<LpoServices> {
                                                             ? getLpoServicesController
                                                                     .lpoServices
                                                                     .value
-                                                                    .lpoServices[
+                                                                    .lpoServices![
                                                                         index]
                                                                     .description ??
                                                                 '_'
                                                             : getLpoServicesController
                                                                     .lpoServices
                                                                     .value
-                                                                    .lpoServices[
+                                                                    .lpoServices![
                                                                         index]
                                                                     .descriptionAr ??
                                                                 '_',
@@ -202,9 +202,9 @@ class _LpoServicesState extends State<LpoServices> {
                                                           getLpoServicesController
                                                               .lpoServices
                                                               .value
-                                                              .lpoServices[
+                                                              .lpoServices![
                                                                   index]
-                                                              .completionDate,
+                                                              .completionDate??"",
                                                           style: AppTextStyle
                                                               .normalBlack10,
                                                         ),

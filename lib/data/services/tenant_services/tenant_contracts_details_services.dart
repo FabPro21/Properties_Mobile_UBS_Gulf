@@ -16,7 +16,7 @@ class GetContractsDetailsServices {
     
     print('Contracts/GetContractDetails ::::::  $data');
     
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url??"", data);
     if (response is http.Response) {
       log(response.body);
       try {

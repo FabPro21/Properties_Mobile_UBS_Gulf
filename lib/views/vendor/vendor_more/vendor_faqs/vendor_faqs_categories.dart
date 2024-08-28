@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorFaqsCategories extends StatefulWidget {
-  const VendorFaqsCategories({Key key}) : super(key: key);
+  const VendorFaqsCategories({Key? key}) : super(key: key);
 
   @override
   _VendorFaqsCategoriesState createState() => _VendorFaqsCategoriesState();
@@ -72,12 +72,10 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                                               Get.to(() =>
                                                   VendorFaqsQuestionsAndDescription(
                                                     categoryId: _controller
-                                                            .faqsCategories
-                                                            .value
-                                                            .faqCategories[
-                                                                index]
-                                                            .categoryId ??
-                                                        "",
+                                                        .faqsCategories
+                                                        .value
+                                                        .faqCategories![index]
+                                                        .categoryId,
                                                   ));
                                             },
                                             child: Directionality(
@@ -97,19 +95,17 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                                                               1
                                                           // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
                                                           ? _controller
-                                                                  .faqsCategories
-                                                                  .value
-                                                                  .faqCategories[
-                                                                      index]
-                                                                  .title ??
-                                                              ""
+                                                              .faqsCategories
+                                                              .value
+                                                              .faqCategories![
+                                                                  index]
+                                                              .title??""
                                                           : _controller
-                                                                  .faqsCategories
-                                                                  .value
-                                                                  .faqCategories[
-                                                                      index]
-                                                                  .titleAr ??
-                                                              "",
+                                                              .faqsCategories
+                                                              .value
+                                                              .faqCategories![
+                                                                  index]
+                                                              .titleAr??"",
                                                       style: AppTextStyle
                                                           .semiBoldBlack13,
                                                       textAlign:

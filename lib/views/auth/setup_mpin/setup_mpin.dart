@@ -16,7 +16,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 
 class SetupMpinScreen extends StatefulWidget {
-  SetupMpinScreen({Key key}) : super(key: key);
+  SetupMpinScreen({Key? key}) : super(key: key);
 
   @override
   State<SetupMpinScreen> createState() => _SetupMpinScreenState();
@@ -170,7 +170,7 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                     return FlutterSwitch(
                                       inactiveColor:
                                           Color.fromRGBO(188, 190, 192, 1),
-                                      activeColor: Colors.blue[600],
+                                      activeColor: Colors.blue[600]??Colors.lightBlue,
                                       activeToggleColor: Colors.white,
                                       inactiveToggleColor:
                                           Color.fromRGBO(76, 78, 84, 1),
@@ -294,7 +294,7 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
 // import 'package:get/get.dart';
 
 // class SetupMpinScreen extends StatefulWidget {
-//   SetupMpinScreen({Key key}) : super(key: key);
+//   SetupMpinScreen({Key? key}) : super(key: key);
 
 //   @override
 //   State<SetupMpinScreen> createState() => _SetupMpinScreenState();

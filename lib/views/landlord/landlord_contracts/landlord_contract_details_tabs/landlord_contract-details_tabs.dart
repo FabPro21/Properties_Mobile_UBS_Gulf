@@ -18,10 +18,10 @@ class LandlordContractDetailsTabs extends StatefulWidget {
   final int contractId;
   final String prevContractNo;
   const LandlordContractDetailsTabs(
-      {Key key,
-      @required this.contractNo,
-      @required this.contractId,
-      this.prevContractNo})
+      {Key? key,
+      required this.contractNo,
+      required this.contractId,
+      required this.prevContractNo})
       : super(key: key);
 
   @override

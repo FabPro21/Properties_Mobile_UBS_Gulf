@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-UnitStatusReportSummaryModel getUnitStatusReportModelFromJson(String str) =>
-    UnitStatusReportSummaryModel.fromJson(json.decode(str));
+UnitStatusReportSummaryModel getUnitStatusReportModelFromJson(String? str) =>
+    UnitStatusReportSummaryModel.fromJson(json.decode(str!));
 
 class UnitStatusReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   UnitStatusReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  UnitStatusReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  UnitStatusReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,23 +28,23 @@ class UnitStatusReportSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String contractType;
-  String contractTypeAR;
-  String unitRef;
-  String unitStatus;
-  String unitStatusAR;
-  String unitType;
-  String unitTypeAR;
-  String unitCategory;
-  String unitCategoryAR;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? contractType;
+  String? contractTypeAR;
+  String? unitRef;
+  String? unitStatus;
+  String? unitStatusAR;
+  String? unitType;
+  String? unitTypeAR;
+  String? unitCategory;
+  String? unitCategoryAR;
   dynamic rent;
   dynamic annualRent;
   dynamic contractValue;
@@ -72,7 +72,7 @@ class ServiceRequests {
     this.contractValue,
   });
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final rentFormat = NumberFormat('#,##0.00', 'AR');
     final annualRentFormat = NumberFormat('#,##0.00', 'AR');
     final contractValueFormate = NumberFormat('#,##0.00', 'AR');

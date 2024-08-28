@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'services_categories_controller.dart';
 
 class SearchPropertiesServices extends StatefulWidget {
-  const SearchPropertiesServices({Key key}) : super(key: key);
+  const SearchPropertiesServices({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesServicesState createState() =>
@@ -85,9 +85,9 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
                                             categoryId: _controller
                                                     .getServicesCatg
                                                     .value
-                                                    .serviceCategories[index]
+                                                    .serviceCategories![index]
                                                     .categoryId ??
-                                                "",
+                                                0,
                                           ));
                                     },
                                     child: Row(children: [
@@ -99,14 +99,14 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
                                                 ? _controller
                                                         .getServicesCatg
                                                         .value
-                                                        .serviceCategories[
+                                                        .serviceCategories![
                                                             index]
                                                         .title ??
                                                     ""
                                                 : _controller
                                                         .getServicesCatg
                                                         .value
-                                                        .serviceCategories[
+                                                        .serviceCategories![
                                                             index]
                                                         .titleAr ??
                                                     "",

@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class ReopenTenantServiceRequest {
   static Future<String> reopenServiceRequest(var caseNo) async {
     var resp =
-        await BaseClientClass.post(AppConfig().reopenSvcReq, {"CaseNo":caseNo.toString()});
+        await BaseClientClass.post(AppConfig().reopenSvcReq??"", {"CaseNo":caseNo.toString()});
     if (resp is http.Response) {
       try {
         var jsonResp = jsonDecode(resp.body);

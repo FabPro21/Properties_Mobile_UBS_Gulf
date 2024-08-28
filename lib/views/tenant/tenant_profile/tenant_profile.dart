@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class TenantProfile extends StatefulWidget {
-  TenantProfile({Key key}) : super(key: key);
+  TenantProfile({Key? key}) : super(key: key);
 
   @override
   State<TenantProfile> createState() => _TenantProfileState();
@@ -137,7 +137,7 @@ class _TenantProfileState extends State<TenantProfile> {
                                         child: Padding(
                                           padding: EdgeInsets.all(3.0.h),
                                           child: Text(
-                                            name ?? "",
+                                            name,
                                             style: AppTextStyle.semiBoldWhite16
                                                 .copyWith(fontSize: 24.sp),
                                           ),
@@ -195,7 +195,7 @@ class _TenantProfileState extends State<TenantProfile> {
                                                     tenantProfileController
                                                             .tenantProfile
                                                             .value
-                                                            .profile
+                                                            .profile!
                                                             .mobile ??
                                                         "",
                                                     style: AppTextStyle
@@ -219,7 +219,7 @@ class _TenantProfileState extends State<TenantProfile> {
                                                   tenantProfileController
                                                           .tenantProfile
                                                           .value
-                                                          .profile
+                                                          .profile!
                                                           .email ??
                                                       "",
                                                   style: AppTextStyle
@@ -245,13 +245,13 @@ class _TenantProfileState extends State<TenantProfile> {
                                                       ? tenantProfileController
                                                               .tenantProfile
                                                               .value
-                                                              .profile
+                                                              .profile!
                                                               .address ??
                                                           ""
                                                       : tenantProfileController
                                                               .tenantProfile
                                                               .value
-                                                              .profile
+                                                              .profile!
                                                               .addressAr ??
                                                           "",
                                                   // SessionController(). ?? "",

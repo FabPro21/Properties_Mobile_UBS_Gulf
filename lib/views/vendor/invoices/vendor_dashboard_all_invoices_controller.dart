@@ -30,8 +30,8 @@ class VendorDashboardAllInvoicesController extends GetxController {
         loadingData.value = false;
       } else {
         allInvoicesData.value = result;
-        allInvoice = result.invoice.toList();
-        length = allInvoicesData.value.invoice.length;
+        allInvoice = result.invoice!.toList();
+        length = allInvoicesData.value.invoice!.length;
         update();
         loadingData.value = false;
       }
@@ -63,8 +63,8 @@ class VendorDashboardAllInvoicesController extends GetxController {
           loadingData.value = false;
         } else {
           allInvoicesData.value = result;
-          allInvoice = result.invoice.toList();
-          length = allInvoicesData.value.invoice.length;
+          allInvoice = result.invoice!.toList();
+          length = allInvoicesData.value.invoice!.length;
           update();
           loadingData.value = false;
         }
@@ -97,8 +97,8 @@ class VendorDashboardAllInvoicesController extends GetxController {
         errorLoadMore.value = AppMetaLabels().noDatafound;
         loadingDataLoadMore.value = false;
       } else {
-        for (int i = 0; i < allInvoicesData.value.invoice.length; i++) {
-          allInvoice.add(allInvoicesData.value.invoice[i]);
+        for (int i = 0; i < allInvoicesData.value.invoice!.length; i++) {
+          allInvoice.add(allInvoicesData.value.invoice![i]);
         }
         length = allInvoice.length;
         update();
@@ -115,16 +115,17 @@ class VendorDashboardAllInvoicesController extends GetxController {
   }
 
   searchData(String qry) {
-    if (allInvoicesData.value.invoice != null) {
+    if (allInvoicesData.value.invoice!.isNotEmpty) {
+    // if (allInvoicesData.value.invoice != null) { #1
       qry.toLowerCase();
       loadingData.value = true;
       allInvoice.clear();
-      for (int i = 0; i < allInvoicesData.value.invoice.length; i++) {
-        if (allInvoicesData.value.invoice[i].invoiceNumber.contains(qry) ||
-            allInvoicesData.value.invoice[i].statusName
+      for (int i = 0; i < allInvoicesData.value.invoice!.length; i++) {
+        if (allInvoicesData.value.invoice![i].invoiceNumber!.contains(qry) ||
+            allInvoicesData.value.invoice![i].statusName!
                 .toLowerCase()
                 .contains(qry)) {
-          allInvoice.add(allInvoicesData.value.invoice[i]);
+          allInvoice.add(allInvoicesData.value.invoice![i]);
         }
       }
       if (allInvoice.length == 0)

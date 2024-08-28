@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -14,8 +15,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantUnReadNotifications extends StatefulWidget {
-  final int index;
-  const TenantUnReadNotifications({Key key, this.index}) : super(key: key);
+  final int? index;
+  const TenantUnReadNotifications({Key? key, this.index}) : super(key: key);
 
   @override
   _TenantUnReadNotificationsState createState() =>
@@ -60,7 +61,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                           child: Row(
                             children: [
                               Checkbox(
-                                onChanged: (bool value) {
+                                onChanged: (bool? value) {
                                   getTNController.unreadCheckbox
                                       .toggleMarkAll();
                                 },
@@ -110,12 +111,12 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                         onTap: () async {
                                           SessionController().setNotificationId(
                                               getTNController
-                                                  .notificationsUnRead[index]
+                                                  .notificationsUnRead![index]
                                                   .notificationId
                                                   .toString());
                                           if (!getTNController
-                                              .notificationsUnRead[index]
-                                              .isRead) {
+                                              .notificationsUnRead![index]
+                                              .isRead!) {
                                             getTNController
                                                 .unreadNotificationsLoading
                                                 .value = true;
@@ -126,7 +127,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                             if (res) {
                                               setState(() {
                                                 getTNController
-                                                    .notificationsUnRead
+                                                    .notificationsUnRead!
                                                     .removeAt(index);
                                                 getTNController.unreadLength =
                                                     getTNController
@@ -151,9 +152,9 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                                     .unreadCheckbox
                                                     .marked[index]
                                                     .value,
-                                                onChanged: (val) {
+                                                onChanged: (bool? val) {
                                                   getTNController.unreadCheckbox
-                                                      .markItem(index, val);
+                                                      .markItem(index, val!);
                                                 },
                                               )
                                             : null,
@@ -248,105 +249,166 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
-          ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(getTNController
-                .notificationsUnRead[index].notificationId
-                .toString());
-            // await getTNController.readNotifications(index, 'unread');
-            if (getTNController.notificationsUnRead[index].isRead != true) {
-              getTNController.unreadNotificationsLoading.value = true;
-              bool res =
-                  await getTNController.readNotifications(index, 'unread');
-              print('Result ::::: $res');
-              if (res) {
-                setState(() {
-                  getTNController.notificationsUnRead.removeAt(index);
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(), // For the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200]?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            // color: Colors.blue,
+            onPressed: (context) async {
+              SessionController().setNotificationId(getTNController
+                  .notificationsUnRead![index].notificationId
+                  .toString());
+              if (getTNController.notificationsUnRead![index].isRead != true) {
+                getTNController.unreadNotificationsLoading.value = true;
+                bool res =
+                    await getTNController.readNotifications(index, 'unread');
+                print('Result ::::: $res');
+                if (res) {
+                  getTNController.notificationsUnRead!.removeAt(index);
                   getTNController.unreadLength =
                       getTNController.unreadLength - 1;
-                });
-                if (getTNController.notificationsUnRead.length == 0) {
-                  _getUnreadNotifications();
-                  print(' calling');
-                } else {
-                  print('Not calling');
+                  if (getTNController.notificationsUnRead!.isEmpty) {
+                    _getUnreadNotifications();
+                    print(' calling');
+                  } else {
+                    print('Not calling');
+                  }
                 }
+                getTNController.unreadNotificationsLoading.value = false;
               }
-              getTNController.unreadNotificationsLoading.value = false;
-            }
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () async {
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) async {
               SessionController().setNotificationId(getTNController
-                  .notificationsUnRead[index].notificationId
+                  .notificationsUnRead![index].notificationId
                   .toString());
               await getTNController.archiveNotifications();
-              setState(() {
-                getTNController.unreadLength = getTNController.unreadLength - 1;
-                getTNController.notificationsUnRead.removeAt(index);
-              });
-            }),
-      ],
+              getTNController.notificationsUnRead!.removeAt(index);
+              getTNController.unreadLength = getTNController.unreadLength - 1;
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: notification(index),
-      actionPane: SlidableDrawerActionPane(),
     );
+
+    //  Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(getTNController
+    //             .notificationsUnRead![index].notificationId
+    //             .toString());
+    //         // await getTNController.readNotifications(index, 'unread');
+    //         if (getTNController.notificationsUnRead![index].isRead != true) {
+    //           getTNController.unreadNotificationsLoading.value = true;
+    //           bool res =
+    //               await getTNController.readNotifications(index, 'unread');
+    //           print('Result ::::: $res');
+    //           if (res) {
+    //             setState(() {
+    //               getTNController.notificationsUnRead!.removeAt(index);
+    //               getTNController.unreadLength =
+    //                   getTNController.unreadLength - 1;
+    //             });
+    //             if (getTNController.notificationsUnRead!.length == 0) {
+    //               _getUnreadNotifications();
+    //               print(' calling');
+    //             } else {
+    //               print('Not calling');
+    //             }
+    //           }
+    //           getTNController.unreadNotificationsLoading.value = false;
+    //         }
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () async {
+    //           SessionController().setNotificationId(getTNController
+    //               .notificationsUnRead![index].notificationId
+    //               .toString());
+    //           await getTNController.archiveNotifications();
+    //           setState(() {
+    //             getTNController.unreadLength = getTNController.unreadLength - 1;
+    //             getTNController.notificationsUnRead!.removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: notification(index),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 
   Widget notification(int index) {
@@ -359,7 +421,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
             children: [
               Row(
                 children: [
-                  // if (!getTNController.notificationsUnRead[index].isRead)
+                  // if (!getTNController.notificationsUnRead![index].isRead)
                   Container(
                     height: 1.0.h,
                     width: 2.0.w,
@@ -375,10 +437,10 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                         getTNController.editTap.value == true ? 25.0.w : 55.0.w,
                     child: Text(
                       SessionController().getLanguage() == 1
-                          ? getTNController.notificationsUnRead[index].title ??
+                          ? getTNController.notificationsUnRead![index].title ??
                               ""
                           : getTNController
-                                  .notificationsUnRead[index].titleAR ??
+                                  .notificationsUnRead![index].titleAR ??
                               "",
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.semiBoldBlack11,
@@ -389,17 +451,23 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
               Padding(
                 padding: EdgeInsets.only(left: 5.5.w, right: 5.5.w),
                 child: Html(
-                  customTextAlign: (_) => SessionController().getLanguage() == 1
-                      ? TextAlign.left
-                      : TextAlign.right,
                   data: SessionController().getLanguage() == 1
                       ? getTNController
-                              .notificationsUnRead[index].description ??
+                              .notificationsUnRead![index].description ??
                           ""
                       : getTNController
-                              .notificationsUnRead[index].descriptionAR ??
+                              .notificationsUnRead![index].descriptionAR ??
                           "",
-                  defaultTextStyle: AppTextStyle.normalBlack10,
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                 ),
               ),
               Padding(
@@ -407,7 +475,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                   horizontal: 6.w,
                 ),
                 child: Text(
-                  getTNController.notificationsUnRead[index].createdOn,
+                  getTNController.notificationsUnRead![index].createdOn ?? "",
                   style: AppTextStyle.normalBlack10,
                 ),
               ),

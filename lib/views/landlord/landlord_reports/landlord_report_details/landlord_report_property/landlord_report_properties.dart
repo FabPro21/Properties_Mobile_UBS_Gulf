@@ -12,8 +12,8 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordReportProperties extends StatefulWidget {
-  final String dropDownType;
-  const LandlordReportProperties({Key key, @required this.dropDownType})
+  final String? dropDownType;
+  const LandlordReportProperties({Key? key, @required this.dropDownType})
       : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
   getData() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       print('DropDownType ::::::::: ${widget.dropDownType}');
-      _filterPropertyController.getDropdownType(widget.dropDownType);
+      _filterPropertyController.getDropdownType(widget.dropDownType!);
     });
   }
 
@@ -208,7 +208,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
 // import 'dart:ui' as ui;
 
 // class LandlordReportProperties extends StatefulWidget {
-//   const LandlordReportProperties({Key key}) : super(key: key);
+//   const LandlordReportProperties({Key? key}) : super(key: key);
 
 //   @override
 //   _LandlordReportPropertiesState createState() =>

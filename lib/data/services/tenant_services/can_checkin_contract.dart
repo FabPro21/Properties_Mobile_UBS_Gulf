@@ -8,7 +8,7 @@ class CanCheckinContractService {
   static Future<dynamic> getData(int contractId) async {
     Map data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().getCanCheckinContract, data);
+        await BaseClientClass.post(AppConfig().getCanCheckinContract??"", data);
     if (response is http.Response) {
       return canCheckinModelFromJson(response.body);
     }

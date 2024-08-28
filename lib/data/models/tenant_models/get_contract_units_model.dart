@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetContractUnitsModel getContractUnitsModelFromJson(String str) =>
-    GetContractUnitsModel.fromJson(json.decode(str));
+GetContractUnitsModel getContractUnitsModelFromJson(String? str) =>
+    GetContractUnitsModel.fromJson(json.decode(str!));
 
-String getContractUnitsModelToJson(GetContractUnitsModel data) =>
+String? getContractUnitsModelToJson(GetContractUnitsModel data) =>
     json.encode(data.toJson());
 
 class GetContractUnitsModel {
@@ -18,12 +18,12 @@ class GetContractUnitsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<ContractUnit> contractUnits;
-  String message;
+  String? status;
+  String? statusCode;
+  List<ContractUnit>? contractUnits;
+  String? message;
 
-  factory GetContractUnitsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContractUnitsModel.fromJson(Map<String?, dynamic> json) =>
       GetContractUnitsModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,11 +32,11 @@ class GetContractUnitsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "contractUnits":
-            List<dynamic>.from(contractUnits.map((x) => x.toJson())),
+            List<dynamic>.from(contractUnits!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -55,18 +55,18 @@ class ContractUnit {
     this.unitTypeAr,
   });
 
-  String propertyImage;
-  String propertyName;
-  String propertyNameAr;
+  String? propertyImage;
+  String? propertyName;
+  String? propertyNameAr;
   dynamic amount;
-  String unitRefNo;
+  String? unitRefNo;
   dynamic unitId;
-  String propertyType;
-  String propertyTypeAr;
-  String unitType;
-  String unitTypeAr;
+  String? propertyType;
+  String? propertyTypeAr;
+  String? unitType;
+  String? unitTypeAr;
 
-  factory ContractUnit.fromJson(Map<String, dynamic> json) => ContractUnit(
+  factory ContractUnit.fromJson(Map<String?, dynamic> json) => ContractUnit(
         propertyImage: json["propertyImage"],
         propertyName: json["propertyName"],
         propertyNameAr: json["propertyNameAR"],
@@ -79,7 +79,7 @@ class ContractUnit {
         unitTypeAr: json["unitTypeAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyImage": propertyImage,
         "propertyName": propertyName,
         "propertyNameAR": propertyNameAr,

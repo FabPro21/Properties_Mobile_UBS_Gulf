@@ -28,7 +28,7 @@ class TenantFaqsController extends GetxController {
       var result = await TenantRepository.getFaqs();
       if (result is TenantFaqsModel) {
         faqsCategories.value = result;
-        length = faqsCategories.value.faqCategories.length;
+        length = faqsCategories.value.faqCategories!.length;
 
         loadingFaqsCatg.value = false;
       } else {
@@ -50,7 +50,7 @@ class TenantFaqsController extends GetxController {
       var result = await TenantRepository.getFaqsQuestions(categoryId);
       if (result is TenantFaqsQuestionsModel) {
         faqsQuestions.value = result;
-        questionLength = faqsQuestions.value.faq.length;
+        questionLength = faqsQuestions.value.faq!.length;
         loadingQuestions.value = false;
       } else {
         errorQuestions.value = AppMetaLabels().noDatafound;

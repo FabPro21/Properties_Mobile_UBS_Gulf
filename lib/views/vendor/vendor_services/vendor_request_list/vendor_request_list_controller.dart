@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/chart_data.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -24,7 +26,7 @@ class GetVendorServiceRequestsController extends GetxController {
 
   RxInt open = 0.obs;
   RxInt close = 0.obs;
-  List<ChartData> chartData;
+  List<ChartData>? chartData;
   Future<void> getData() async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -35,18 +37,18 @@ class GetVendorServiceRequestsController extends GetxController {
     var result = await VendorRepository.getVendorServiceRequestsServices();
     loadingData.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests.length == 0) {
+      if (result.serviceRequests!.length == 0) {
         error.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
-        svcReqs = result.serviceRequests;
+        svcReqs = result.serviceRequests!;
         open.value = 0;
         close.value = 0;
         for (int i = 0; i < svcReqs.length; i++) {
-          if (svcReqs[i].status.contains('Close') ||
-              svcReqs[i].status.contains('close') ||
-              svcReqs[i].status.contains('Closed') ||
-              svcReqs[i].status.contains('closed')) {
+          if (svcReqs[i].status!.contains('Close') ||
+              svcReqs[i].status!.contains('close') ||
+              svcReqs[i].status!.contains('Closed') ||
+              svcReqs[i].status!.contains('closed')) {
             close.value = close.value + 1;
           } else {
             open.value = open.value + 1;
@@ -80,11 +82,11 @@ class GetVendorServiceRequestsController extends GetxController {
             pageNoP, searchtext);
     loadingData.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests.length == 0) {
+      if (result.serviceRequests!.length == 0) {
         error.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
-        svcReqs = result.serviceRequests;
+        svcReqs = result.serviceRequests!;
       }
     } else {
       error.value = result;
@@ -106,14 +108,14 @@ class GetVendorServiceRequestsController extends GetxController {
             pageNoP, searchtext);
     loadingDataLoadMore.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests.length == 0) {
+      if (result.serviceRequests!.length == 0) {
         errorLoadMore.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
         for (int i = 0;
-            i < getVendorServicesRequest.value.serviceRequests.length;
+            i < getVendorServicesRequest.value.serviceRequests!.length;
             i++) {
-          svcReqs.add(result.serviceRequests[i]);
+          svcReqs.add(result.serviceRequests![i]);
         }
         update();
       }
@@ -123,25 +125,25 @@ class GetVendorServiceRequestsController extends GetxController {
   }
 
   searchData(String qry) {
-    if (getVendorServicesRequest.value.serviceRequests != null) {
+    if (getVendorServicesRequest.value.serviceRequests! != null) {
       qry = qry.toLowerCase();
       loadingData.value = true;
       List<ServiceRequest> _searchedSvc = [];
       for (int i = 0;
-          i < getVendorServicesRequest.value.serviceRequests.length;
+          i < getVendorServicesRequest.value.serviceRequests!.length;
           i++) {
-        if (getVendorServicesRequest.value.serviceRequests[i].category
+        if (getVendorServicesRequest.value.serviceRequests![i].category!
                 .toLowerCase()
                 .contains(qry) ||
-            getVendorServicesRequest.value.serviceRequests[i].propertyName
+            getVendorServicesRequest.value.serviceRequests![i].propertyName!
                 .toLowerCase()
                 .contains(qry) ||
-            getVendorServicesRequest.value.serviceRequests[i].propertyNameAR
+            getVendorServicesRequest.value.serviceRequests![i].propertyNameAR!
                 .contains(qry) ||
-            getVendorServicesRequest.value.serviceRequests[i].requestNo
+            getVendorServicesRequest.value.serviceRequests![i].requestNo!
                 .toString()
                 .contains(qry)) {
-          _searchedSvc.add(getVendorServicesRequest.value.serviceRequests[i]);
+          _searchedSvc.add(getVendorServicesRequest.value.serviceRequests![i]);
         }
       }
       svcReqs = _searchedSvc.toList();

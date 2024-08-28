@@ -7,7 +7,7 @@ class VendorOffersSerice {
   static Future<dynamic> getOffers() async {
     var url = AppConfig().getVendorOffers;
 
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       var getModel = vendorOffersModelFromJson(response.body);

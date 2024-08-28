@@ -8,7 +8,7 @@ import 'package:shape_of_view_null_safe/shape_of_view_null_safe.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantServicesScreen extends StatefulWidget {
-  TenantServicesScreen({Key key}) : super(key: key);
+  TenantServicesScreen({Key? key}) : super(key: key);
 
   @override
   State<TenantServicesScreen> createState() => _TenantServicesScreenState();
@@ -17,7 +17,7 @@ class TenantServicesScreen extends StatefulWidget {
 class _TenantServicesScreenState extends State<TenantServicesScreen> {
   final TextEditingController searchControler = TextEditingController();
 
-  bool tooltip;
+  bool? tooltip;
 
   @override
   void initState() {

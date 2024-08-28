@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-LegalCaseReportSummaryModel getLeglCaseReportModelFromJson(String str) =>
-    LegalCaseReportSummaryModel.fromJson(json.decode(str));
+LegalCaseReportSummaryModel getLeglCaseReportModelFromJson(String? str) =>
+    LegalCaseReportSummaryModel.fromJson(json.decode(str!));
 
 class LegalCaseReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   LegalCaseReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  LegalCaseReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  LegalCaseReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,27 +28,27 @@ class LegalCaseReportSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String city;
-  String cityAR;
-  String owner;
-  String ownerAR;
-  String unitType;
-  String unitTypeAR;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? city;
+  String? cityAR;
+  String? owner;
+  String? ownerAR;
+  String? unitType;
+  String? unitTypeAR;
 
   dynamic rent;
   dynamic rentPaidAmount;
   dynamic prevRent;
   dynamic lossofRent;
-  int period;
-  int lossofRentDays;
+  int? period;
+  int? lossofRentDays;
 
   ServiceRequests({
     this.landlordName,
@@ -73,16 +73,16 @@ class ServiceRequests {
     this.lossofRentDays,
   });
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final rentFormat = NumberFormat('#,##0.00', 'AR');
     final rentPaidAmountFormat = NumberFormat('#,##0.00', 'AR');
     final prevRentFormat = NumberFormat('#,##0.00', 'AR');
     final lossofRentFormat = NumberFormat('#,##0.00', 'AR');
 
-    double rent1 =json['rent']==null||json['rent']==0?0: json['rent'].roundToDouble();
-    double rentPaidAmount1 = json['prevRent']==null||json['prevRent']==0?0:json['prevRent'].roundToDouble();
-    double prevRent1 =json['prevRent']==null||json['prevRent']==0?0 :json['prevRent'].roundToDouble();
-    double lossofRent1 = json['paidAmount']==null||json['paidAmount']==0?0:json['paidAmount'].roundToDouble();
+    double? rent1 =json['rent']==null||json['rent']==0?0: json['rent'].roundToDouble();
+    double? rentPaidAmount1 = json['prevRent']==null||json['prevRent']==0?0:json['prevRent'].roundToDouble();
+    double? prevRent1 =json['prevRent']==null||json['prevRent']==0?0 :json['prevRent'].roundToDouble();
+    double? lossofRent1 = json['paidAmount']==null||json['paidAmount']==0?0:json['paidAmount'].roundToDouble();
 
     landlordName = json['landlordName'];
     landlordNameAR = json['landlordNameAR'];

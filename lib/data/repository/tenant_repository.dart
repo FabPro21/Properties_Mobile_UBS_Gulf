@@ -127,7 +127,7 @@ class TenantRepository {
       TenantArchiveNotificationsServices.getData();
   static Future<dynamic> notificationDetails() =>
       TenantNotificationsDetailServices.getData(
-          SessionController().getNotificationId());
+          SessionController().getNotificationId()??"");
   static Future<dynamic> getNotificationFiles(int id) =>
       GetTenantNotificationsFiles.getData(id);
   static Future<dynamic> downloadNotificationFiles(int id) =>
@@ -327,10 +327,10 @@ class TenantRepository {
   static Future<String> reopenServiceRequest(var caseNo) =>
       ReopenTenantServiceRequest.reopenServiceRequest(caseNo);
 
-  static Future<dynamic> getContractPayable(int contractId) =>
-      TenantContractPayableService().getContractPayables(contractId);
-  static Future<dynamic> getOutstandingPayments(int contractId) =>
-      GetOutstandingPaymentsService().getOutstandingPayments(contractId);
+  static Future<dynamic> getContractPayable(int? contractId) =>
+      TenantContractPayableService().getContractPayables(contractId!);
+  static Future<dynamic> getOutstandingPayments(int? contractId) =>
+      GetOutstandingPaymentsService().getOutstandingPayments(contractId!);
   static Future<dynamic> getOutstandingPaymentsNewContract(int contractId) =>
       GetOutstandingPaymentsNewContractService().getOutstandingPaymentsNewContract(contractId);
   // *
@@ -356,8 +356,8 @@ class TenantRepository {
           int contractId, String address, int deliveryOption) =>
       AddAramexAddressNew.addAddressNew(contractId, address, deliveryOption);
 
-  static Future<dynamic> getContractOnlinePayable(int contractId) =>
-      OnlinePayablesService().getContractPayable(contractId);
+  static Future<dynamic> getContractOnlinePayable(int? contractId) =>
+      OnlinePayablesService().getContractPayable(contractId!);
   static Future<dynamic> getContractOnlinePayablNew(int contractId) =>
       OnlinePayablesServiceNew().getContractPayableNew(contractId);
 

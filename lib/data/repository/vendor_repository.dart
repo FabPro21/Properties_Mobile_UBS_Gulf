@@ -184,7 +184,7 @@ class VendorRepository {
 
   static Future<dynamic> getNotificationDetails() =>
       VendorNotificationsDetailServices.getNotificationDetails(
-          SessionController().getNotificationId());
+          SessionController().getNotificationId()??"");
   static Future<dynamic> getReadNotification() =>
       VendorReadNotificationsServices.getReadNotification();
   static Future<dynamic> getArchiveNotification() =>

@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-ContractSummaryModel getContractSUmmaryModelFromJson(String str) =>
-    ContractSummaryModel.fromJson(json.decode(str));
+ContractSummaryModel getContractSUmmaryModelFromJson(String? str) =>
+    ContractSummaryModel.fromJson(json.decode(str!));
 
 class ContractSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   ContractSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  ContractSummaryModel.fromJson(Map<String, dynamic> json) {
+  ContractSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,11 +28,11 @@ class ContractSummaryModel {
 }
 
 class ServiceRequests {
-  String contractno;
-  String propertyName;
-  String propertyNameAR;
-  String contractStatus;
-  String contractStatusAR;
+  String? contractno;
+  String? propertyName;
+  String? propertyNameAR;
+  String? contractStatus;
+  String? contractStatusAR;
   dynamic vATCharges;
   dynamic vATAmount;
   dynamic total;
@@ -48,7 +48,7 @@ class ServiceRequests {
       this.total,
       this.paid});
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final vATChargesFormat = NumberFormat('#,##0.00', 'AR');
     final vATAmountFormat = NumberFormat('#,##0.00', 'AR');
     final totalFormat = NumberFormat('#,##0.00', 'AR');

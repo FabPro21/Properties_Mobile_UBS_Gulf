@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/global_preferences.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
@@ -12,7 +14,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class PublicSettings extends StatefulWidget {
-  const PublicSettings({Key key}) : super(key: key);
+  const PublicSettings({Key? key}) : super(key: key);
 
   @override
   _PublicSettingsState createState() => _PublicSettingsState();
@@ -85,7 +87,7 @@ class _PublicSettingsState extends State<PublicSettings> {
                           ],
                           radiusStyle: true,
                           onToggle: (option) {
-                            setFingerPrintOption(option);
+                            setFingerPrintOption(option!);
                           },
                         ),
                       )

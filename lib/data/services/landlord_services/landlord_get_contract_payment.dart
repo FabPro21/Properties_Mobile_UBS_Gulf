@@ -9,7 +9,7 @@ class LandlordContractPaymentsServices {
     var url = AppConfig().getLandlordContractPayments;
     Map data = {"ContractId": SessionController().getContractID().toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       ContractPaymentModelLandlord paymentsModel =
           contractPaymentModelFromJson(response.body);

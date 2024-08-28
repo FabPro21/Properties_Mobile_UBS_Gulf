@@ -14,8 +14,8 @@ import 'package:sizer/sizer.dart';
 import 'contracts_widget_controller.dart';
 
 class YourContracts extends StatefulWidget {
-  final Function(int) manageContracts;
-  YourContracts({Key key, this.manageContracts}) : super(key: key);
+  final Function(int)? manageContracts;
+  YourContracts({Key? key, this.manageContracts}) : super(key: key);
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -74,7 +74,7 @@ class _YourContractsState extends State<YourContracts> {
                             itemCount: controller.length,
                             itemBuilder: (context, index) {
                               final contract =
-                                  controller.contractsModel.data[index];
+                                  controller.contractsModel!.data![index];
                               final bool isEng =
                                   SessionController().getLanguage() == 1;
                               return InkWell(
@@ -82,7 +82,8 @@ class _YourContractsState extends State<YourContracts> {
                                   Get.to(() => LandlordContractDetailsTabs(
                                         contractId: int.parse(
                                             contract.contractID.toString()),
-                                        contractNo: contract.contractno,
+                                        contractNo: contract.contractno!,
+                                        prevContractNo: '',
                                       ));
                                 },
                                 child: Column(
@@ -120,7 +121,8 @@ class _YourContractsState extends State<YourContracts> {
                                                                     .propertyName ??
                                                                 ''
                                                             : contract
-                                                                .propertyNameAR,
+                                                                    .propertyNameAR ??
+                                                                "",
                                                         style: AppTextStyle
                                                             .semiBoldBlack12,
                                                         overflow: TextOverflow
@@ -144,8 +146,8 @@ class _YourContractsState extends State<YourContracts> {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      contract
-                                                          .contractStartDate,
+                                                      contract.contractStartDate ??
+                                                          "",
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
@@ -160,7 +162,8 @@ class _YourContractsState extends State<YourContracts> {
                                                               .greyColor),
                                                     ),
                                                     Text(
-                                                      contract.contractEndDate,
+                                                      contract.contractEndDate ??
+                                                          "",
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
@@ -175,7 +178,8 @@ class _YourContractsState extends State<YourContracts> {
                                                       : contract
                                                           .contractStatusAR,
                                                   valueToCompare:
-                                                      contract.contractStatus,
+                                                      contract.contractStatus ??
+                                                          "",
                                                 )
                                               ],
                                             ),

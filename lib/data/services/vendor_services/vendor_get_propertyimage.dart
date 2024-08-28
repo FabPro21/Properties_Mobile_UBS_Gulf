@@ -8,7 +8,7 @@ class GetPropertyImageServiceVendor {
  
   static Future<dynamic> getData(int propId) async {
      print('====> Inside GetPropertyImageServiceVendor :::');
-    final String url = AppConfig().getPropertyImageVendor;
+    final String url = AppConfig().getPropertyImageVendor??"";
         print('====> Inside GetPropertyImageServiceVendor ::: $url');
     Map data = {"PropertyId": propId.toString()};
     var response = await BaseClientClass.post(url, data);

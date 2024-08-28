@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordFilterProperties extends StatefulWidget {
-  const LandlordFilterProperties({Key key}) : super(key: key);
+  const LandlordFilterProperties({Key? key}) : super(key: key);
 
   @override
   _LandlordFilterPropertiesState createState() =>
@@ -102,7 +102,7 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                                           result: _filterPropertyController
                                               .propertyTypesModel
                                               .value
-                                              .propertyType[index]);
+                                              .propertyType![index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -114,14 +114,14 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                                               ? _filterPropertyController
                                                       .propertyTypesModel
                                                       .value
-                                                      .propertyType[index]
+                                                      .propertyType![index]
                                                       .propertyType ??
                                                   ""
                                               : _filterPropertyController
                                                   .propertyTypesModel
                                                   .value
-                                                  .propertyType[index]
-                                                  .propertyTypeAR,
+                                                  .propertyType![index]
+                                                  .propertyTypeAR??"",
                                         ),
                                         SizedBox(height: 2.0.h),
                                         index ==

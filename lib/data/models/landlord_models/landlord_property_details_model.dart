@@ -1,36 +1,36 @@
 import 'dart:convert';
 
-LandlordPropertiesDetailsModel landlordPropertiesDetailsModelFromJson(String str) =>
-    LandlordPropertiesDetailsModel.fromJson(json.decode(str));
+LandlordPropertiesDetailsModel landlordPropertiesDetailsModelFromJson(String? str) =>
+    LandlordPropertiesDetailsModel.fromJson(json.decode(str!));
 
-String landlordPropertiesDetailsModeltoJson(LandlordPropertiesDetailsModel data) =>
+String? landlordPropertiesDetailsModeltoJson(LandlordPropertiesDetailsModel data) =>
     json.encode(data.toJson());
 
 class LandlordPropertiesDetailsModel {
-  String status;
-  List<PropertyDetails> propertyDetails;
-  String message;
+  String? status;
+  List<PropertyDetails>? propertyDetails;
+  String? message;
 
   LandlordPropertiesDetailsModel(
       {this.status, this.propertyDetails, this.message});
 
-  LandlordPropertiesDetailsModel.fromJson(Map<String, dynamic> json) {
+  LandlordPropertiesDetailsModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     if (json['propertyDetails'] != null) {
       propertyDetails = <PropertyDetails>[];
       json['propertyDetails'].forEach((v) {
-        propertyDetails.add(new PropertyDetails.fromJson(v));
+        propertyDetails!.add(new PropertyDetails.fromJson(v));
       });
     }
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['status'] = this.status;
     if (this.propertyDetails != null) {
       data['propertyDetails'] =
-          this.propertyDetails.map((v) => v.toJson()).toList();
+          this.propertyDetails!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -38,21 +38,21 @@ class LandlordPropertiesDetailsModel {
 }
 
 class PropertyDetails {
-  int propertyID;
-  String buildingRefNo;
-  String propertyName;
-  String propertyNameAR;
+  int? propertyID;
+  String? buildingRefNo;
+  String? propertyName;
+  String? propertyNameAR;
   dynamic landlordID;
-  String plotNumber;
-  String roadName;
-  String roadNameAR;
-  String sector;
-  String sectorAR;
+  String? plotNumber;
+  String? roadName;
+  String? roadNameAR;
+  String? sector;
+  String? sectorAR;
   dynamic propertyLocation;
   dynamic propertyLocationAR;
   dynamic landmark;
-  String propertyAddress;
-  String propertyAddressAR;
+  String? propertyAddress;
+  String? propertyAddressAR;
   dynamic plotSize;
   dynamic areaSize;
   dynamic cost;
@@ -72,13 +72,13 @@ class PropertyDetails {
   dynamic contactPhone;
   dynamic contactMobile;
   dynamic geoCode;
-  int noofBlocks;
-  int noofFloors;
+  int? noofBlocks;
+  int? noofFloors;
   dynamic isMizanFloor;
-  int noofStores;
-  int noofResidentialFlat;
-  int noofCommercialFlat;
-  int noofParkinglot;
+  int? noofStores;
+  int? noofResidentialFlat;
+  int? noofCommercialFlat;
+  int? noofParkinglot;
   dynamic parkinglotAvailability;
   dynamic ratePerParkinglot;
   dynamic propertyImage;
@@ -94,7 +94,7 @@ class PropertyDetails {
   dynamic dewAADWEA;
   dynamic waterMeter;
   dynamic handOverDate;
-  String relationshipOfProperty;
+  String? relationshipOfProperty;
   dynamic document;
   dynamic securityPhoneNo;
   dynamic isOnHold;
@@ -105,7 +105,7 @@ class PropertyDetails {
   dynamic cashUploadType;
   dynamic templateId;
   dynamic approvedForCardPayment;
-  String emirateName;
+  String? emirateName;
   dynamic emirateNameAR;
 
   PropertyDetails(
@@ -179,7 +179,7 @@ class PropertyDetails {
       this.emirateName,
       this.emirateNameAR});
 
-  PropertyDetails.fromJson(Map<String, dynamic> json) {
+  PropertyDetails.fromJson(Map<String?, dynamic> json) {
     propertyID = json['propertyID'];
     buildingRefNo = json['buildingRefNo'];
     propertyName = json['propertyName'];
@@ -251,8 +251,8 @@ class PropertyDetails {
     emirateNameAR = json['emirateNameAR'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['propertyID'] = this.propertyID;
     data['buildingRefNo'] = this.buildingRefNo;
     data['propertyName'] = this.propertyName;

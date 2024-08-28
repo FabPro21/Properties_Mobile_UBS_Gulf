@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetLpoServicesModel getLpoServicesModelFromJson(String str) =>
-    GetLpoServicesModel.fromJson(json.decode(str));
+GetLpoServicesModel getLpoServicesModelFromJson(String? str) =>
+    GetLpoServicesModel.fromJson(json.decode(str!));
 
-String getLpoServicesModelToJson(GetLpoServicesModel data) =>
+String? getLpoServicesModelToJson(GetLpoServicesModel data) =>
     json.encode(data.toJson());
 
 class GetLpoServicesModel {
@@ -18,12 +18,12 @@ class GetLpoServicesModel {
     this.lpoServices,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<LpoService> lpoServices;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<LpoService>? lpoServices;
 
-  factory GetLpoServicesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoServicesModel.fromJson(Map<String?, dynamic> json) =>
       GetLpoServicesModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetLpoServicesModel {
             json["lpoServices"].map((x) => LpoService.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "lpoServices": List<dynamic>.from(lpoServices.map((x) => x.toJson())),
+        "lpoServices": List<dynamic>.from(lpoServices!.map((x) => x.toJson())),
       };
 }
 
@@ -56,20 +56,20 @@ class LpoService {
     this.totalAmount,
   });
 
-  int serviceLpoId;
-  int lpoId;
-  String serviceLpoName;
+  int? serviceLpoId;
+  int? lpoId;
+  String? serviceLpoName;
   dynamic serviceLpoNameAr;
-  String description;
+  String? description;
   dynamic descriptionAr;
-  String completionDate;
+  String? completionDate;
   dynamic netAmount;
   dynamic discountAmount;
   dynamic discountPercentage;
   dynamic requestAmount;
   dynamic totalAmount;
 
-  factory LpoService.fromJson(Map<String, dynamic> json) => LpoService(
+  factory LpoService.fromJson(Map<String?, dynamic> json) => LpoService(
         serviceLpoId: json["serviceLpoId"],
         lpoId: json["lpoID"],
         serviceLpoName: json["serviceLpoName"],
@@ -84,7 +84,7 @@ class LpoService {
         totalAmount: json["totalAmount"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "serviceLpoId": serviceLpoId,
         "lpoID": lpoId,
         "serviceLpoName": serviceLpoName,

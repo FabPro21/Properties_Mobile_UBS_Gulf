@@ -14,9 +14,9 @@ import '../tenant_payment_download_receipt/tenant_payment_download_receipt_contr
 import 'tenant_payment_details_controller.dart';
 
 class TenantPaymentDetails extends StatefulWidget {
-  final Payment payment;
+  final Payment? payment;
 
-  const TenantPaymentDetails({Key key, this.payment}) : super(key: key);
+  const TenantPaymentDetails({Key? key, this.payment}) : super(key: key);
   @override
   State<TenantPaymentDetails> createState() => _TenantPaymentDetailsState();
 }
@@ -29,7 +29,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
 
   @override
   void initState() {
-    paymentDetailsController.getCheque(widget.payment);
+    paymentDetailsController.getCheque(widget.payment!);
     super.initState();
   }
 
@@ -58,7 +58,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                       Spacer(),
                       Padding(
                         padding: EdgeInsets.only(right: 2.0.h, left: 2.h),
-                        child: Text(widget.payment.receiptNo,
+                        child: Text(widget.payment!.receiptNo??"",
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyle.semiBoldBlack16),
                       ),
@@ -114,7 +114,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                 decoration: BoxDecoration(
                                   color: Color.fromRGBO(247, 247, 247, 1),
                                   borderRadius:
-                                      widget.payment.paymentType == 'Cheque'
+                                      widget.payment!.paymentType == 'Cheque'
                                           ? BorderRadius.only(
                                               topLeft: Radius.circular(1.0.h),
                                               topRight: Radius.circular(1.0.h))
@@ -133,7 +133,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                       ),
                                       Text(
                                         AppMetaLabels().aed +
-                                            " ${widget.payment.amount.toString()}",
+                                            " ${widget.payment!.amount.toString()}",
                                         style: AppTextStyle.semiBoldBlack11,
                                       ),
                                       SizedBox(
@@ -145,8 +145,8 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                       ),
                                       Text(
                                         SessionController().getLanguage() == 1
-                                            ? widget.payment.paymentFor??""
-                                            : widget.payment.paymentForAr??"",
+                                            ? widget.payment!.paymentFor??""
+                                            : widget.payment!.paymentForAr??"",
                                         style: AppTextStyle.semiBoldBlack11,
                                       ),
                                       SizedBox(
@@ -157,7 +157,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                         style: AppTextStyle.normalBlack10,
                                       ),
                                       Text(
-                                        widget.payment.paymentDate.toString(),
+                                        widget.payment!.paymentDate.toString(),
                                         style: AppTextStyle.semiBoldBlack11,
                                       ),
                                       SizedBox(
@@ -169,8 +169,8 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                       ),
                                       Text(
                                         SessionController().getLanguage() == 1
-                                            ? widget.payment.paymentType??""
-                                            : widget.payment.paymentTypeAr??"",
+                                            ? widget.payment!.paymentType??""
+                                            : widget.payment!.paymentTypeAr??"",
                                         style: AppTextStyle.semiBoldBlack11,
                                       ),
                                       SizedBox(
@@ -180,7 +180,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                   ),
                                 ),
                               ),
-                              widget.payment.paymentType == 'Cheque'
+                              widget.payment!.paymentType == 'Cheque'
                                   ? Wrap(
                                       children: [
                                         Padding(
@@ -230,7 +230,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                                                   paymentDetailsController
                                                                       .getcheque
                                                                       .value
-                                                                      .transactionCheque[
+                                                                      .transactionCheque![
                                                                           index]
                                                                       .chequeAmount);
                                                               return Container(
@@ -263,27 +263,25 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                                                     rowList(
                                                                         AppMetaLabels()
                                                                             .chequeNo,
-                                                                        paymentDetailsController.getcheque.value.transactionCheque[index].chequeNo.toString() ??
-                                                                            ""),
+                                                                        paymentDetailsController.getcheque.value.transactionCheque![index].chequeNo.toString() ),
                                                                     rowList(
                                                                         AppMetaLabels()
                                                                             .date,
-                                                                        paymentDetailsController.getcheque.value.transactionCheque[index].chequeDate.toString() ??
-                                                                            ""),
+                                                                        paymentDetailsController.getcheque.value.transactionCheque![index].chequeDate.toString() ),
                                                                     rowList(
                                                                         AppMetaLabels()
                                                                             .chqIssuerBank,
                                                                         SessionController().getLanguage() == 1
-                                                                            ? paymentDetailsController.getcheque.value.transactionCheque[index].bankName ??
+                                                                            ? paymentDetailsController.getcheque.value.transactionCheque![index].bankName ??
                                                                                 ""
-                                                                            : paymentDetailsController.getcheque.value.transactionCheque[index].bankNameAr),
+                                                                            : paymentDetailsController.getcheque.value.transactionCheque![index].bankNameAr),
                                                                     rowList(
                                                                         AppMetaLabels()
                                                                             .chqStatus,
                                                                         SessionController().getLanguage() == 1
-                                                                            ? paymentDetailsController.getcheque.value.transactionCheque[index].chequeStatus ??
+                                                                            ? paymentDetailsController.getcheque.value.transactionCheque![index].chequeStatus ??
                                                                                 ""
-                                                                            : paymentDetailsController.getcheque.value.transactionCheque[index].chequeStatus ??
+                                                                            : paymentDetailsController.getcheque.value.transactionCheque![index].chequeStatus ??
                                                                                 ""),
                                                                     SizedBox(
                                                                         height:
@@ -333,7 +331,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(2.0.h),
-                        child: widget.payment.downloadingReceipt.value == true
+                        child: widget.payment!.downloadingReceipt!.value == true
                             ? LoadingIndicatorBlue()
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -349,7 +347,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                   InkWell(
                                     onTap: () async {
                                       paymentDownloadReceiptController
-                                          .downloadReceipt(widget.payment);
+                                          .downloadReceipt(widget.payment!);
                                     },
                                     child: Row(
                                       mainAxisAlignment:
@@ -391,16 +389,16 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
     );
   }
 
-  Row rowList(String t1, String t2) {
+  Row rowList(String? t1, String? t2) {
     return Row(
       children: [
         Text(
-          t1,
+          t1??"",
           style: AppTextStyle.normalBlack10,
         ),
         Spacer(),
         Text(
-          t2,
+          t2??"",
           style: AppTextStyle.normalBlack10,
         ),
       ],

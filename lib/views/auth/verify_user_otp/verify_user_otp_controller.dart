@@ -27,14 +27,14 @@ class VerifyUserOtpController extends GetxController {
   RxBool hasError = false.obs;
   RxBool loadingData = false.obs;
   RxBool pinFieldTap = false.obs;
-  Color changeColor;
-  String userMpin;
-  String phoneNo;
-  String statusCode;
-  String deviceName;
-  String deviceToken;
-  String deviceType;
-  RxString error = "".obs;
+  Color? changeColor;
+  String? userMpin;
+  String? phoneNo;
+  String? statusCode;
+  String? deviceName;
+  String? deviceToken;
+  String? deviceType;
+  RxString? error = "".obs;
   RxBool resending = false.obs;
   RxInt resendCounter = 0.obs;
   RxInt otpAttemptsCounter = 0.obs;
@@ -50,7 +50,7 @@ class VerifyUserOtpController extends GetxController {
     super.onInit();
   }
 
-  Future<void> verifyOtpBtn(String otp, String otpCodeForVerifyOTP) async {
+  Future<void> verifyOtpBtn(String? otp, String? otpCodeForVerifyOTP) async {
     loadingData.value = true;
 
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
@@ -66,13 +66,13 @@ class VerifyUserOtpController extends GetxController {
       ////////////////////////////
       /// SessionController ///
       ////////////////////////////
-      print('User Model email::::: ${model.value.user.email}');
-      print('User Model name::::: ${model.value.user.name}');
-      print('User Model fullNameAr::::: ${model.value.user.fullNameAr}');
-      print('User Model language::::: ${model.value.user.language}');
-      print('User Model languageSet::::: ${model.value.user.languageSet}');
+      print('User Model email::::: ${model.value.user!.email}');
+      print('User Model name::::: ${model.value.user!.name}');
+      print('User Model fullNameAr::::: ${model.value.user!.fullNameAr}');
+      print('User Model language::::: ${model.value.user!.language}');
+      print('User Model languageSet::::: ${model.value.user!.languageSet}');
 
-      SessionController().setUser(model.value.user);
+      SessionController().setUser(model.value.user!);
       SessionController().setLoginToken(model.value.token);
       SessionController().setToken(model.value.token);
       /////////////////////////////////////
@@ -84,7 +84,7 @@ class VerifyUserOtpController extends GetxController {
       //////////////////////////////
       bool _updatedDeviceInfo = await updateDeviceInfo();
       if (_updatedDeviceInfo) {
-        if (model.value.user.mpinSet && !SessionController().getResetMpin())
+        if (model.value.user!.mpinSet! && !SessionController().getResetMpin())
           Get.offAll(() => SelectRoleScreen());
         else
           Get.offAll(() => SetupMpinScreen());
@@ -92,7 +92,7 @@ class VerifyUserOtpController extends GetxController {
     } else {
       validOTP.value = false;
       changeColor = AppColors.redColor;
-      error.value = AppMetaLabels().noDatafound;
+      error!.value = AppMetaLabels().noDatafound;
       loadingData.value = false;
       otpAttemptsCounter.value++;
       print(otpAttemptsCounter.value++);
@@ -115,20 +115,20 @@ class VerifyUserOtpController extends GetxController {
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userName,
-      model.value.user.name ?? "",
+      model.value.user!.name ?? "",
     );
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userNameAr,
-      model.value.user.fullNameAr ?? "",
+      model.value.user!.fullNameAr ?? "",
     );
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userID,
-      model.value.user.userId.toString(),
+      model.value.user!.userId.toString(),
     );
 
-    print('User ID from Data svaed Locally ::: ${model.value.user.userId.toString()}');
+    print('User ID from Data svaed Locally ::: ${model.value.user!.userId.toString()}');
 
     GlobalPreferences.setbool(
       GlobalPreferencesLabels.isLoginBool,
@@ -143,7 +143,7 @@ class VerifyUserOtpController extends GetxController {
     if (response is UpdateDeviceInfoModel) {
       return true;
     } else {
-      error.value = response;
+      error!.value = response;
       return false;
     }
   }
@@ -203,12 +203,12 @@ class VerifyUserOtpController extends GetxController {
   Future<void> _getDeviceTokken() async {
     FirebaseMessaging.instance.requestPermission();
     await FirebaseMessaging.instance.getToken().then(
-      (String token) {
+      (String? token) {
         assert(token != null);
         deviceToken = token;
         SessionController().setDeviceTokken(deviceToken);
         GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken);
+            GlobalPreferencesLabels.deviceToken, deviceToken??"");
       },
     );
   }
@@ -257,16 +257,16 @@ class VerifyUserOtpController extends GetxController {
 //   RxBool validOTP = true.obs;
 //   RxBool hasError = false.obs;
 //   RxBool loadingData = false.obs;
-//   // RxString currentText = "".obs;
+//   // RxString? currentText = "".obs;
 //   RxBool pinFieldTap = false.obs;
 //   Color changeColor;
-//   String userMpin;
-//   String phoneNo;
-//   String statusCode;
-//   String deviceName;
-//   String deviceToken;
-//   String deviceType;
-//   RxString error = "".obs;
+//   String? userMpin;
+//   String? phoneNo;
+//   String? statusCode;
+//   String? deviceName;
+//   String? deviceToken;
+//   String? deviceType;
+//   RxString? error = "".obs;
 //   RxBool resending = false.obs;
 //   RxInt resendCounter = 0.obs;
 //   RxInt otpAttemptsCounter = 0.obs;
@@ -282,7 +282,7 @@ class VerifyUserOtpController extends GetxController {
 //     super.onInit();
 //   }
 
-//   Future<void> verifyOtpBtn(String otp, String otpCodeForVerifyOTP) async {
+//   Future<void> verifyOtpBtn(String? otp, String? otpCodeForVerifyOTP) async {
 //     loadingData.value = true;
 //     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
 //     if (!_isInternetConnected) {
@@ -300,9 +300,9 @@ class VerifyUserOtpController extends GetxController {
 //       SessionController().setUser(model.value.user);
 //       SessionController().setLoginToken(model.value.token);
 //       SessionController().setToken(model.value.token);
-//       GlobalPreferencesEncrypted.setString(
+//       GlobalPreferencesEncrypted.setString?(
 //           GlobalPreferencesLabels.userNameAr, model.value.user.fullNameAr);
-//       await GlobalPreferencesEncrypted.getString(
+//       await GlobalPreferencesEncrypted.getString?(
 //         GlobalPreferencesLabels.userNameAr,
 //       );
 //       /////////////////////////////////////
@@ -347,24 +347,24 @@ class VerifyUserOtpController extends GetxController {
 //   }
 
 //   void saveDataLocally() async {
-//     GlobalPreferencesEncrypted.setString(
+//     GlobalPreferencesEncrypted.setString?(
 //       GlobalPreferencesLabels.loginToken,
 //       model.value.token ?? "",
 //     );
 
-//     GlobalPreferencesEncrypted.setString(
+//     GlobalPreferencesEncrypted.setString?(
 //       GlobalPreferencesLabels.userName,
 //       model.value.user.name ?? "",
 //     );
 
-//     GlobalPreferencesEncrypted.setString(
+//     GlobalPreferencesEncrypted.setString?(
 //       GlobalPreferencesLabels.userNameAr,
 //       model.value.user.fullNameAr ?? "",
 //     );
 
-//     GlobalPreferencesEncrypted.setString(
+//     GlobalPreferencesEncrypted.setString?(
 //       GlobalPreferencesLabels.userID,
-//       model.value.user.userId.toString(),
+//       model.value.user.userId.toString?(),
 //     );
 
 //     GlobalPreferences.setbool(
@@ -439,11 +439,11 @@ class VerifyUserOtpController extends GetxController {
 //   Future<void> _getDeviceTokken() async {
 //     FirebaseMessaging.instance.requestPermission();
 //     await FirebaseMessaging.instance.getToken().then(
-//       (String token) {
+//       (String? token) {
 //         assert(token != null);
 //         deviceToken = token;
 //         SessionController().setDeviceTokken(deviceToken);
-//         GlobalPreferencesEncrypted.setString(
+//         GlobalPreferencesEncrypted.setString?(
 //             GlobalPreferencesLabels.deviceToken, deviceToken);
 //       },
 //     );

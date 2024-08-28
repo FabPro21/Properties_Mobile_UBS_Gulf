@@ -24,7 +24,7 @@ import '../../../data/repository/auth_repository.dart';
 import 'dart:ui' as ui;
 
 class TenantMoreScreen extends StatefulWidget {
-  const TenantMoreScreen({Key key}) : super(key: key);
+  const TenantMoreScreen({Key? key}) : super(key: key);
 
   @override
   State<TenantMoreScreen> createState() => _TenantMoreScreenState();
@@ -162,7 +162,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(3.0.h),
                             child: Text(
-                              name ?? "",
+                              name ,
                               style: AppTextStyle.semiBoldWhite16
                                   .copyWith(fontSize: 24.sp),
                             ),
@@ -694,12 +694,12 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                         shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                            WidgetStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(3.0.w),
                                     side: BorderSide(color: Colors.blue))),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                            WidgetStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();

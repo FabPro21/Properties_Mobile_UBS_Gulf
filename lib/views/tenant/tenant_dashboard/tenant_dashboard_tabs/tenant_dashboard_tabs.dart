@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 
 import 'package:fap_properties/utils/constants/assets_path.dart';
@@ -20,9 +22,9 @@ import '../../../../data/helpers/session_controller.dart';
 import '../../tenant_payments/tenant_payments_screen.dart';
 
 class TenantDashboardTabs extends StatefulWidget {
-  final int initialIndex;
+  final int? initialIndex;
   const TenantDashboardTabs({
-    Key key,
+    Key? key,
     this.initialIndex = 0,
   }) : super(key: key);
 
@@ -35,7 +37,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
   TenantDashboardTabsController _dashboardTabsController =
       Get.put(TenantDashboardTabsController());
 
-  int _selectedIndex;
+  int? _selectedIndex;
   GlobalKey _toolTipKey = GlobalKey();
 
   @override
@@ -44,7 +46,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
     super.initState();
   }
 
-  List<Widget> _buildScreens;
+  List<Widget>? _buildScreens;
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +70,10 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
     ];
 
     return WillPopScope(
-        onWillPop: () {
+        onWillPop: ()async {
           settingModalBottomSheet(context);
-          return;
+          await Future.delayed(Duration(milliseconds: 100));
+          return false;
         },
         child: Directionality(
           textDirection: SessionController().getLanguage() == 1
@@ -86,7 +89,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                   child: Column(
                     children: [
                       Expanded(
-                        child: _buildScreens[_selectedIndex],
+                        child: _buildScreens![_selectedIndex!],
                       ),
                       CustomNavBar(
                         items: [
@@ -212,11 +215,11 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                             child: ElevatedButton(
                               style: ButtonStyle(
                                   elevation:
-                                      MaterialStateProperty.all<double>(0.0.h),
+                                      WidgetStateProperty.all<double>(0.0.h),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           AppColors.whiteColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
@@ -245,11 +248,11 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                             child: ElevatedButton(
                               style: ButtonStyle(
                                   elevation:
-                                      MaterialStateProperty.all<double>(0.0.h),
+                                      WidgetStateProperty.all<double>(0.0.h),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           AppColors.blueColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:

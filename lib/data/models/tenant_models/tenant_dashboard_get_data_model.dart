@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-TenantDashboardGetDataModel tenantDashboardGetDataModelFromJson(String str) =>
-    TenantDashboardGetDataModel.fromJson(json.decode(str));
+TenantDashboardGetDataModel tenantDashboardGetDataModelFromJson(String? str) =>
+    TenantDashboardGetDataModel.fromJson(json.decode(str!));
 
 class TenantDashboardGetDataModel {
   TenantDashboardGetDataModel(
@@ -16,14 +16,14 @@ class TenantDashboardGetDataModel {
       this.unreadNotifications,
       this.contractRenewalAction});
 
-  String status;
-  Dashboard dashboard;
-  String statusCode;
-  String message;
-  int unreadNotifications;
-  int contractRenewalAction;
+  String? status;
+  Dashboard? dashboard;
+  String? statusCode;
+  String? message;
+  int? unreadNotifications;
+  int? contractRenewalAction;
 
-  factory TenantDashboardGetDataModel.fromJson(Map<String, dynamic> json) =>
+  factory TenantDashboardGetDataModel.fromJson(Map<String?, dynamic> json) =>
       TenantDashboardGetDataModel(
           status: json["status"],
           dashboard: Dashboard.fromJson(json["dashboard"]),
@@ -47,8 +47,8 @@ class Dashboard {
   });
 
   dynamic tenantId;
-  String tenantName;
-  String tenantNameAr;
+  String? tenantName;
+  String? tenantNameAr;
   dynamic paymentBalance;
   dynamic contractExpiringIn30Days;
   dynamic checkDueIn30Days;
@@ -56,7 +56,7 @@ class Dashboard {
   dynamic rentOutstanding;
   dynamic activeContracts;
 
-  factory Dashboard.fromJson(Map<String, dynamic> json) => Dashboard(
+  factory Dashboard.fromJson(Map<String?, dynamic> json) => Dashboard(
         tenantId: json["tenantId"],
         tenantName: json["tenantName"],
         tenantNameAr: json["tenantNameAR"],

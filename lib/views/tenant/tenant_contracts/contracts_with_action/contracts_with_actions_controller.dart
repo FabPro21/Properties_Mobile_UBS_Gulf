@@ -44,7 +44,7 @@ class ContractsWithActionsController extends GetxController {
           'Contract ID From List ::::$index::: ${contractsList[index].contractid}');
 
       var resp = await TenantRepository.getContractOnlinePayable(
-          contractsList[index].contractid);
+          contractsList[index].contractid??0);
       print(resp);
       print(AppMetaLabels().noDatafound);
       if (resp is OutstandingPaymentsModel) {
@@ -110,14 +110,14 @@ class ContractsWithActionsController extends GetxController {
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
     }
-    contract.downloading.value = true;
+    contract.downloading!.value = true;
     var result =
-        await TenantRepository.downloadOfferLetter(contract.contractid);
+        await TenantRepository.downloadOfferLetter(contract.contractid??0);
 
-    contract.downloading.value = false;
+    contract.downloading!.value = false;
     if (result is Uint8List) {
       if (await getStoragePermission()) {
-        String path = await createPdf(result, contract.contractno);
+        String path = await createPdf(result, contract.contractno??'');
         try {
           Get.back();
           OpenFile.open(path);

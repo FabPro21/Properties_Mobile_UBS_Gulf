@@ -9,7 +9,7 @@ class PublicCancelBookingRequestService {
   static Future<dynamic> cancelBookingRequest(int caseNo) async {
     var url = AppConfig().cancelPublicBookingreq;
     var data = {"CaseNo":caseNo.toString()};
-    var resp = await BaseClientClass.post(url, data,
+    var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       PublicCancelBookingRequestModel getModel =

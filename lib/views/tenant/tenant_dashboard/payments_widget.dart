@@ -13,8 +13,8 @@ import 'package:intl/intl.dart' as intl;
 import '../tenant_payments/payment_details/tenent_payment_details.dart';
 
 class PaymentsWidget extends StatefulWidget {
-  final Function(int) managePayments;
-  const PaymentsWidget({Key key, this.managePayments}) : super(key: key);
+  final Function(int)? managePayments;
+  const PaymentsWidget({Key? key, this.managePayments}) : super(key: key);
 
   @override
   State<PaymentsWidget> createState() => _PaymentsWidgetState();
@@ -94,7 +94,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 onPressed: () {
-                  widget.managePayments(3);
+                  widget.managePayments!(3);
                 },
                 child: Text(
                   AppMetaLabels().viewAllPayments,
@@ -113,12 +113,12 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
     return InkWell(
       onTap: () {
         SessionController().setTransactionId(
-          paymentsController.payments.value.payments[index].transactionId
+          paymentsController.payments.value.payments![index].transactionId
               .toString(),
         );
         Get.to(
           () => TenantPaymentDetails(
-              payment: paymentsController.payments.value.payments[index]),
+              payment: paymentsController.payments.value.payments![index]),
         );
       },
       child: Padding(
@@ -133,9 +133,9 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                 Text(
                   SessionController().getLanguage() == 1
                       ? paymentsController
-                          .payments.value.payments[index].paymentFor
+                          .payments.value.payments![index].paymentFor??""
                       : paymentsController
-                          .payments.value.payments[index].paymentForAr,
+                          .payments.value.payments![index].paymentForAr??"",
 
                   // AppMetaLabels().newRequestSmall,
                   style: AppTextStyle.semiBoldGrey11,
@@ -144,8 +144,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                 Padding(
                   padding: EdgeInsets.only(top: 0.5.h),
                   child: Text(
-                    "${paymentsController.payments.value.payments[index].receiptNo}" ??
-                        "",
+                    "${paymentsController.payments.value.payments![index].receiptNo}" ,
                     style: AppTextStyle.normalGrey11,
                   ),
                 ),
@@ -156,7 +155,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
               child: Row(
                 children: [
                   Text(
-                    "${AppMetaLabels().aed} ${amountFormatter.format(paymentsController.payments.value.payments[index].amount)}",
+                    "${AppMetaLabels().aed} ${amountFormatter.format(paymentsController.payments.value.payments![index].amount)}",
                     // AppMetaLabels().newRequestSmall,
                     style: AppTextStyle.semiBoldBlack12,
                   ),
@@ -165,7 +164,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                     padding: EdgeInsets.only(top: 0.5.h),
                     child: Text(
                       paymentsController
-                              .payments.value.payments[index].paymentDate ??
+                              .payments.value.payments![index].paymentDate ??
                           "",
                       style: AppTextStyle.normalGrey11,
                     ),
@@ -185,8 +184,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                   Padding(
                     padding: EdgeInsets.only(top: 0.5.h),
                     child: Text(
-                      "${paymentsController.payments.value.payments[index].contractNo}" ??
-                          "",
+                      "${paymentsController.payments.value.payments![index].contractNo}",
                       style: AppTextStyle.normalGrey11,
                     ),
                   ),

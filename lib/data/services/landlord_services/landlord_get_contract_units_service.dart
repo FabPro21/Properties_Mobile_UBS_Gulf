@@ -11,7 +11,7 @@ class LandlordGetContractUnitsServices {
   static Future<dynamic> getContractUnits(int contractId) async {
     var data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().getLandlordContractUnits, data);
+        await BaseClientClass.post(AppConfig().getLandlordContractUnits??"", data);
     try {
       if (response is Response) {
         return landlordContractUnitsModelFromJson(response.body);

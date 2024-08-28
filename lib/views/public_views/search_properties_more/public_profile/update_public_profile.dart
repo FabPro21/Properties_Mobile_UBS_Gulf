@@ -14,8 +14,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class UpdatePublicProfile extends StatefulWidget {
-  final VerifyUserOtpModel model;
-  const UpdatePublicProfile({Key key, this.model}) : super(key: key);
+  final VerifyUserOtpModel? model;
+  const UpdatePublicProfile({Key? key, this.model}) : super(key: key);
 
   @override
   _UpdatePublicProfileState createState() => _UpdatePublicProfileState();
@@ -125,7 +125,7 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                         return AppMetaLabels()
                                             .pleaseEnterValidName;
                                       } else
-                                        return null;
+                                        return '';
                                     }
                                   },
                                   label: AppMetaLabels().fullNameWithStaric,
@@ -144,7 +144,7 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                       else if (!emailValidation(value)) {
                                         return AppMetaLabels().invalidEmail;
                                       } else
-                                        return null;
+                                        return '';
                                     }
                                   },
                                 ),
@@ -168,14 +168,14 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                   ),
                                                   onPressed: () {
                                                     print('Retry');
-                                                    if (!formKey.currentState
+                                                    if (!formKey.currentState!
                                                         .validate()) {
                                                       return;
                                                     }
                                                     _controller.updatePublicProfile(
                                                         nameTextEditingController
                                                             .text,
-                                                        widget.model.user.userId
+                                                        widget.model!.user!.userId
                                                             .toString(),
                                                         emailTextEditingController
                                                             .text);
@@ -195,7 +195,7 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                             0, 61, 166, 1),
                                                   ),
                                                   onPressed: () async {
-                                                    if (!formKey.currentState
+                                                    if (!formKey.currentState!
                                                         .validate()) {
                                                       return;
                                                     }
@@ -206,12 +206,12 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                     print(
                                                         'Name:${nameTextEditingController.text}');
                                                     print(
-                                                        'UserID:${widget.model.user.userId}');
+                                                        'UserID:${widget.model!.user!.userId}');
                                                     var result = await _controller
                                                         .updatePublicProfile(
                                                             nameTextEditingController
                                                                 .text,
-                                                            widget.model.user
+                                                            widget.model!.user!
                                                                 .userId
                                                                 .toString(),
                                                             emailTextEditingController

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-PublicServiceMainInfoModel publicServiceMainInfoModelFromJson(String str) =>
-    PublicServiceMainInfoModel.fromJson(json.decode(str));
+PublicServiceMainInfoModel publicServiceMainInfoModelFromJson(String? str) =>
+    PublicServiceMainInfoModel.fromJson(json.decode(str!));
 
-String publicServiceMainInfoModelToJson(PublicServiceMainInfoModel data) =>
+String? publicServiceMainInfoModelToJson(PublicServiceMainInfoModel data) =>
     json.encode(data.toJson());
 
 class PublicServiceMainInfoModel {
@@ -18,12 +18,12 @@ class PublicServiceMainInfoModel {
     this.message,
   });
 
-  String status;
-  Detail detail;
-  CaseStatus caseStatus;
-  String message;
+  String? status;
+  Detail? detail;
+  CaseStatus? caseStatus;
+  String? message;
 
-  factory PublicServiceMainInfoModel.fromJson(Map<String, dynamic> json) =>
+  factory PublicServiceMainInfoModel.fromJson(Map<String?, dynamic> json) =>
       PublicServiceMainInfoModel(
         status: json["status"],
         detail: Detail.fromJson(json["detail"]),
@@ -31,10 +31,10 @@ class PublicServiceMainInfoModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "detail": detail.toJson(),
-        "caseStatus": caseStatus.toJson(),
+        "detail": detail!.toJson(),
+        "caseStatus": caseStatus!.toJson(),
         "message": message,
       };
 }
@@ -48,13 +48,13 @@ class CaseStatus {
     this.canTakeSurvey,
   });
 
-  bool canCancel;
-  bool canReopen;
-  bool canAddFeedback;
-  bool requestClosed;
-  bool canTakeSurvey;
+  bool? canCancel;
+  bool? canReopen;
+  bool? canAddFeedback;
+  bool? requestClosed;
+  bool? canTakeSurvey;
 
-  factory CaseStatus.fromJson(Map<String, dynamic> json) => CaseStatus(
+  factory CaseStatus.fromJson(Map<String?, dynamic> json) => CaseStatus(
         canCancel: json["canCancel"],
         canReopen: json["canReopen"],
         canAddFeedback: json["canAddFeedback"],
@@ -62,7 +62,7 @@ class CaseStatus {
         canTakeSurvey: json["canTakeSurvey"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "canCancel": canCancel,
         "canReopen": canReopen,
         "canAddFeedback": canAddFeedback,
@@ -101,35 +101,35 @@ class Detail {
       this.categoryAr,
       this.subCategoryAR});
 
-  int caseNo;
-  String caseType;
+  int? caseNo;
+  String? caseType;
   dynamic caseTypeAr;
-  String propertyName;
-  String propertyNameAr;
-  String date;
-  String time;
-  String contactTiming;
-  String category;
-  String subCategory;
-  String unitRefNo;
-  String otherContactPersonName;
-  String otherContactPersonNameAR;
-  String otherContactPersonMobile;
-  String initialAssesment;
+  String? propertyName;
+  String? propertyNameAr;
+  String? date;
+  String? time;
+  String? contactTiming;
+  String? category;
+  String? subCategory;
+  String? unitRefNo;
+  String? otherContactPersonName;
+  String? otherContactPersonNameAR;
+  String? otherContactPersonMobile;
+  String? initialAssesment;
   dynamic initialAssesmentAr;
   dynamic caseServiceLevel;
   dynamic caseServiceLevelAr;
-  String description;
-  String descriptionAR;
+  String? description;
+  String? descriptionAR;
   dynamic statusAR;
-  String status;
-  String language;
-  int units;
-  String categoryAR;
-  String categoryAr;
-  String subCategoryAR;
+  String? status;
+  String? language;
+  int? units;
+  String? categoryAR;
+  String? categoryAr;
+  String? subCategoryAR;
 
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+  factory Detail.fromJson(Map<String?, dynamic> json) => Detail(
       caseNo: json["caseNo"],
       caseType: json["caseType"],
       caseTypeAr: json["caseTypeAR"],
@@ -158,7 +158,7 @@ class Detail {
       categoryAr: json["categoryAr"],
       subCategoryAR: json["subCategoryAR"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
         "caseType": caseType,
         "caseTypeAR": caseTypeAr,

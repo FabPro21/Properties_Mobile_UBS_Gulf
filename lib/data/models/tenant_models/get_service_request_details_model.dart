@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 GetServiceRequestDetailsModel getServiceRequestDetailsModelFromJson(
-        String str) =>
-    GetServiceRequestDetailsModel.fromJson(json.decode(str));
+        String? str) =>
+    GetServiceRequestDetailsModel.fromJson(json.decode(str!));
 
-String getServiceRequestDetailsModelToJson(
+String? getServiceRequestDetailsModelToJson(
         GetServiceRequestDetailsModel data) =>
     json.encode(data.toJson());
 
@@ -21,14 +21,14 @@ class GetServiceRequestDetailsModel {
       this.contractInfo,
       this.stageInfo});
 
-  String status;
-  Detail detail;
-  StatusInfo statusInfo;
-  String message;
-  ContractInfo contractInfo;
-  StageInfo stageInfo;
+  String? status;
+  Detail? detail;
+  StatusInfo? statusInfo;
+  String? message;
+  ContractInfo? contractInfo;
+  StageInfo? stageInfo;
 
-  factory GetServiceRequestDetailsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetServiceRequestDetailsModel.fromJson(Map<String?, dynamic> json) =>
       GetServiceRequestDetailsModel(
           status: json["status"],
           detail: Detail.fromJson(json["detail"]),
@@ -37,9 +37,9 @@ class GetServiceRequestDetailsModel {
           contractInfo: ContractInfo.fromJson(json["contractInfo"]),
           stageInfo: StageInfo.fromJson(json["stageInfo"]));
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "detail": detail.toJson(),
+        "detail": detail!.toJson(),
         "message": message,
       };
 }
@@ -76,35 +76,35 @@ class Detail {
       this.requestType});
 
   dynamic caseNo;
-  String caseType;
+  String? caseType;
   dynamic propertyName;
   dynamic propertyNameAr;
-  String date;
-  String time;
-  String contactTiming;
-  String initialAssesment;
+  String? date;
+  String? time;
+  String? contactTiming;
+  String? initialAssesment;
   dynamic caseServiceLevel;
   dynamic description;
   dynamic descriptionAr;
-  String status;
-  String statusAR;
-  String language;
+  String? status;
+  String? statusAR;
+  String? language;
   dynamic units;
-  String category;
-  String subCategory;
-  String unitRefNo;
-  String contactName;
-  String contactPhone;
-  int caseFeedback;
-  int caseCategouryId;
-  int caseSubCatagouryId;
-  String vacatingDate;
-  String vacatingReason;
-  String categoryAR;
-  String subCategoryAR;
-  String requestType;
+  String? category;
+  String? subCategory;
+  String? unitRefNo;
+  String? contactName;
+  String? contactPhone;
+  int? caseFeedback;
+  int? caseCategouryId;
+  int? caseSubCatagouryId;
+  String? vacatingDate;
+  String? vacatingReason;
+  String? categoryAR;
+  String? subCategoryAR;
+  String? requestType;
 
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+  factory Detail.fromJson(Map<String?, dynamic> json) => Detail(
       caseNo: json["caseNo"],
       caseType: json["caseType"],
       propertyName: json["propertyName"],
@@ -134,7 +134,7 @@ class Detail {
       subCategoryAR: json["subCategoryAR"],
       requestType: json['requestType']);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
         "caseType": caseType,
         "propertyName": propertyName,
@@ -163,16 +163,16 @@ class StatusInfo {
       this.showPhotos,
       this.canChat});
 
-  bool canCancel;
-  bool canReopen;
-  bool canAddFeedback;
-  bool requestClosed;
-  bool canTakeSurvey;
-  bool canUploadDocs;
-  bool showPhotos;
-  bool canChat;
+  bool? canCancel;
+  bool? canReopen;
+  bool? canAddFeedback;
+  bool? requestClosed;
+  bool? canTakeSurvey;
+  bool? canUploadDocs;
+  bool? showPhotos;
+  bool? canChat;
 
-  factory StatusInfo.fromJson(Map<String, dynamic> json) => StatusInfo(
+  factory StatusInfo.fromJson(Map<String?, dynamic> json) => StatusInfo(
       canCancel: json["canCancel"],
       canReopen: json["canReopen"],
       canAddFeedback: json["canAddFeedback"],
@@ -182,7 +182,7 @@ class StatusInfo {
       showPhotos: json["canUploadPhotos"],
       canChat: json["canChat"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "canCancel": canCancel,
         "canReopen": canReopen,
         "canAddFeedback": canAddFeedback,
@@ -199,19 +199,19 @@ class ContractInfo {
     this.propertyNameAr,
   });
 
-  String contractno;
-  int contractId;
-  String propertyName;
-  String propertyNameAr;
+  String? contractno;
+  int? contractId;
+  String? propertyName;
+  String? propertyNameAr;
 
-  factory ContractInfo.fromJson(Map<String, dynamic> json) => ContractInfo(
+  factory ContractInfo.fromJson(Map<String?, dynamic> json) => ContractInfo(
         contractno: json["contractno"],
         contractId: json["contractID"],
         propertyName: json["propertyName"],
         propertyNameAr: json["propertyNameAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractno": contractno,
         "contractID": contractId,
         "propertyName": propertyName,
@@ -225,15 +225,15 @@ class StageInfo {
     this.stageId,
   });
 
-  int dueActionid;
-  int stageId;
+  int? dueActionid;
+  int? stageId;
 
-  factory StageInfo.fromJson(Map<String, dynamic> json) => StageInfo(
+  factory StageInfo.fromJson(Map<String?, dynamic> json) => StageInfo(
         dueActionid: json["dueActionid"],
         stageId: json["stageId"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "dueActionid": dueActionid,
         "stageId": stageId,
       };

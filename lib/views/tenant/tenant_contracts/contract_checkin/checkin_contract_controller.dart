@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class CheckinContractController extends GetxController {
   RxBool checkingIn = false.obs;
-  int caseNo;
+  int? caseNo;
 
   @override
   void onInit() {

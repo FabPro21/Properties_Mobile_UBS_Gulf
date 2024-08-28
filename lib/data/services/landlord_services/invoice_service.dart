@@ -8,7 +8,7 @@ class LandlordInvoiceServices {
     var data = {"search": '', "pageNo": '1', "pageSize": '20'};
     var url = AppConfig().landlordInvoces;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var allInvoices =
           landlordDashboardAllInvoicesModelFromJson(response.body);
@@ -21,7 +21,7 @@ class LandlordInvoiceServices {
     var data = {"search": searchtext, "pageNo": pageNoP, "pageSize": '20'};
     var url = AppConfig().landlordInvoces;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     print('Condition ::::: ${(response is http.Response)}');
     if (response is http.Response) {
       var allInvoices =

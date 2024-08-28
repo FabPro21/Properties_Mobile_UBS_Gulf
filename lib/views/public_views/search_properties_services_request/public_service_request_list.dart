@@ -16,7 +16,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'public_service_request_controller.dart';
 
 class PublicServiceRequestList extends StatefulWidget {
-  const PublicServiceRequestList({Key key}) : super(key: key);
+  const PublicServiceRequestList({Key? key}) : super(key: key);
 
   @override
   _PublicServiceRequestState createState() => _PublicServiceRequestState();
@@ -183,20 +183,20 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                                   .serviceReq[
                                                                       index]
                                                                   .requestNo ??
-                                                              "",
+                                                              0,
                                                       unitId: 123,
                                                       canCommunicate:
                                                           !getServicesController
                                                                   .serviceReq[
                                                                       index]
-                                                                  .status
+                                                                  .status!
                                                                   .toLowerCase()
                                                                   .contains(
                                                                       'closed') &&
                                                               !getServicesController
                                                                   .serviceReq[
                                                                       index]
-                                                                  .status
+                                                                  .status!
                                                                   .toLowerCase()
                                                                   .contains(
                                                                       'cancelled'),
@@ -232,11 +232,9 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                         Spacer(),
                                                         Text(
                                                           getServicesController
-                                                                  .serviceReq[
-                                                                      index]
-                                                                  .requestNo
-                                                                  .toString() ??
-                                                              "",
+                                                              .serviceReq[index]
+                                                              .requestNo
+                                                              .toString(),
                                                           //  "req no",
                                                           style: AppTextStyle
                                                               .semiBoldGrey10,
@@ -364,20 +362,20 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                                 .serviceReq[
                                                                     index]
                                                                 .requestNo ??
-                                                            "",
+                                                            0,
                                                     unitId: 123,
                                                     canCommunicate:
                                                         !getServicesController
                                                                 .serviceReq[
                                                                     index]
-                                                                .status
+                                                                .status!
                                                                 .toLowerCase()
                                                                 .contains(
                                                                     'closed') &&
                                                             !getServicesController
                                                                 .serviceReq[
                                                                     index]
-                                                                .status
+                                                                .status!
                                                                 .toLowerCase()
                                                                 .contains(
                                                                     'cancelled'),

@@ -98,17 +98,17 @@ class SelectRoloesController extends GetxController {
     var response = await CommonRepository.getUserRoles();
     if (response is GetUserRoleModel) {
       loadingData.value = false;
-      SessionController().setUserRoles(response.data);
+      SessionController().setUserRoles(response.data!);
       if (redirect == true) {
-        if (response.data.length == 1 &&
-            response.data[0].roleId == 4 &&
+        if (response.data!.length == 1 &&
+            response.data![0].roleId == 4 &&
             redirect) {
           validatePublicRole();
         } else {
-          userRoles = response.data;
+          userRoles = response.data!;
         }
       } else {
-        userRoles = response.data;
+        userRoles = response.data!;
       }
     } else {
       loadingData.value = false;
@@ -148,7 +148,7 @@ class SelectRoloesController extends GetxController {
   Future<void> setUserName(String name, nameAr) async {
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userName,
-      name ?? "",
+      name,
     );
     SessionController().setUserName(name);
     GlobalPreferencesEncrypted.setString(
@@ -179,15 +179,15 @@ class SelectRoloesController extends GetxController {
 
   Future updateLang() async {
     var data = {"LangId": SessionController().getLanguage()};
-    await BaseClientClass.postwithheader(AppConfig().updateLang, data);
+    await BaseClientClass.postwithheader(AppConfig().updateLang!, data);
   }
 
   Future<void> _getDeviceTokken() async {
     FirebaseMessaging.instance.requestPermission();
     await FirebaseMessaging.instance.getToken().then(
-      (String token) {
+      (String? token) {
         assert(token != null);
-        devToken = token;
+        devToken = token??"";
       },
     );
   }
@@ -217,7 +217,7 @@ class SelectRoloesController extends GetxController {
     try {
       loadingData.value = true;
       var url = AppConfig().proceedToLogin;
-      var result = await BaseClientClass.postwithheader(url, data,
+      var result = await BaseClientClass.postwithheader(url??"", data,
           token: SessionController().getLoginToken());
       if (result is http.Response) {
         var resp = refreshTokenModelFromJson(result.body);
@@ -231,7 +231,7 @@ class SelectRoloesController extends GetxController {
               'User Role ::::: user type ${(userRoles[i].roleId.toString() == userid)}');
           if (userRoles[i].roleId.toString() == userid) {
             print('User Role ::::: user type ${userRoles[i].userType}');
-            userType = userRoles[i].userType;
+            userType = userRoles[i].userType??"";
           }
         }
         print('User Type From code $userType');
@@ -270,15 +270,15 @@ class SelectRoloesController extends GetxController {
     try {
       var url = AppConfig().getNewToken;
       var result = await BaseClientClass.postwithheaderwithouttoken(
-        url,
+        url??"",
         data,
       );
       if (result is http.Response) {
         var resp = getNewTokenModelFromJson(result.body);
         SessionController().setToken(resp.token);
         SessionController().setLoginToken(resp.token);
-        SessionController().setUserName(resp.user.name);
-        SessionController().setUserNameAr(resp.user.fullNameAr);
+        SessionController().setUserName(resp.user!.name);
+        SessionController().setUserNameAr(resp.user!.fullNameAr);
         update();
         loadingData.value = false;
       } else {

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-SurveyQuestionAnswers surveyQuestionAnswersFromJson(String str) =>
-    SurveyQuestionAnswers.fromJson(json.decode(str));
+SurveyQuestionAnswers surveyQuestionAnswersFromJson(String? str) =>
+    SurveyQuestionAnswers.fromJson(json.decode(str!));
 
-String surveyQuestionAnswersToJson(SurveyQuestionAnswers data) =>
+String? surveyQuestionAnswersToJson(SurveyQuestionAnswers data) =>
     json.encode(data.toJson());
 
 class SurveyQuestionAnswers {
@@ -15,16 +15,16 @@ class SurveyQuestionAnswers {
     this.faqOptions,
   });
 
-  List<FaqOption> faqOptions;
+  List<FaqOption>? faqOptions;
 
-  factory SurveyQuestionAnswers.fromJson(Map<String, dynamic> json) =>
+  factory SurveyQuestionAnswers.fromJson(Map<String?, dynamic> json) =>
       SurveyQuestionAnswers(
         faqOptions: List<FaqOption>.from(
             json["faqOptions"].map((x) => FaqOption.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "faqOptions": List<dynamic>.from(faqOptions.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "faqOptions": List<dynamic>.from(faqOptions!.map((x) => x.toJson())),
       };
 }
 
@@ -37,13 +37,13 @@ class FaqOption {
     this.descriptionRequired,
   });
 
-  int optionId;
-  int questionId;
-  String optionTitle;
-  String optionTitleAr;
-  bool descriptionRequired;
+  int? optionId;
+  int? questionId;
+  String? optionTitle;
+  String? optionTitleAr;
+  bool? descriptionRequired;
 
-  factory FaqOption.fromJson(Map<String, dynamic> json) => FaqOption(
+  factory FaqOption.fromJson(Map<String?, dynamic> json) => FaqOption(
         optionId: json["optionId"],
         questionId: json["questionId"],
         optionTitle: json["optionTitle"],
@@ -51,7 +51,7 @@ class FaqOption {
         descriptionRequired: json["descriptionRequired"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "optionId": optionId,
         "questionId": questionId,
         "optionTitle": optionTitle,

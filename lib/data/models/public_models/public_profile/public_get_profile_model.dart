@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicGetProfileModel publicGetProfileModelFromJson(String str) => PublicGetProfileModel.fromJson(json.decode(str));
+PublicGetProfileModel publicGetProfileModelFromJson(String? str) => PublicGetProfileModel.fromJson(json.decode(str!));
 
-String publicGetProfileModelToJson(PublicGetProfileModel data) => json.encode(data.toJson());
+String? publicGetProfileModelToJson(PublicGetProfileModel data) => json.encode(data.toJson());
 
 class PublicGetProfileModel {
     PublicGetProfileModel({
@@ -15,19 +15,19 @@ class PublicGetProfileModel {
         this.message,
     });
 
-    String status;
-    ProfileDetail profileDetail;
-    String message;
+    String? status;
+    ProfileDetail? profileDetail;
+    String? message;
 
-    factory PublicGetProfileModel.fromJson(Map<String, dynamic> json) => PublicGetProfileModel(
+    factory PublicGetProfileModel.fromJson(Map<String?, dynamic> json) => PublicGetProfileModel(
         status: json["status"],
         profileDetail: ProfileDetail.fromJson(json["profileDetail"]),
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
-        "profileDetail": profileDetail.toJson(),
+        "profileDetail": profileDetail!.toJson(),
         "message": message,
     };
 }
@@ -41,13 +41,13 @@ class ProfileDetail {
         this.userId,
     });
 
-    String email;
-    String mobile;
-    String fullName;
+    String? email;
+    String? mobile;
+    String? fullName;
     dynamic fullNameAr;
-    int userId;
+    int? userId;
 
-    factory ProfileDetail.fromJson(Map<String, dynamic> json) => ProfileDetail(
+    factory ProfileDetail.fromJson(Map<String?, dynamic> json) => ProfileDetail(
         email: json["email"],
         mobile: json["mobile"],
         fullName: json["fullName"],
@@ -55,7 +55,7 @@ class ProfileDetail {
         userId: json["userId"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "email": email,
         "mobile": mobile,
         "fullName": fullName,

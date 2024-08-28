@@ -16,7 +16,7 @@ import 'public_unread_notification.dart';
 import 'dart:ui' as ui;
 
 class PublicNotification extends StatefulWidget {
-  const PublicNotification({Key key}) : super(key: key);
+  const PublicNotification({Key? key}) : super(key: key);
 
   @override
   _PublicNotificationState createState() => _PublicNotificationState();
@@ -92,7 +92,7 @@ class _PublicNotificationState extends State<PublicNotification> {
                             ],
                             radiusStyle: true,
                             onToggle: (index) {
-                              _controller.currentIndex.value = index;
+                              _controller.currentIndex.value = index!;
                               if (index == 0) {
                                 _getData();
                               } else {

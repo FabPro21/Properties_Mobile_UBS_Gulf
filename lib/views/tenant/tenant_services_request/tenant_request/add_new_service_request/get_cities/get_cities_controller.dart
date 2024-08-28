@@ -29,7 +29,7 @@ class GetCitiesController extends GetxController {
     loadingData.value = false;
     if (result is GetCitiesModel) {
       getCities.value = result;
-      length = getCities.value.cities.length;
+      length = getCities.value.cities!.length;
       update();
     } else {
       error.value = result;

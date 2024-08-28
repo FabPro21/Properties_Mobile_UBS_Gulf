@@ -11,7 +11,7 @@ class RenewContractService {
       int contractId, String startDate, String endDate, int dueActionid) async {
     var url = AppConfig().renewContract;
 
-    var response = await BaseClientClass.post(url, {
+    var response = await BaseClientClass.post(url ?? "", {
       'contractId': contractId,
       'duration': '12 Month',
       'startDate': startDate,

@@ -59,7 +59,7 @@ class TenantUnitInfoDetailsController extends GetxController {
         errorLoadingAdditional.value = AppMetaLabels().noDatafound;
       } else {
         additionalUnitDetails.value = result;
-        length = additionalUnitDetails.value.additionalInfo.length;
+        length = additionalUnitDetails.value.additionalInfo!.length;
       }
     } else {
       errorLoadingAdditional.value = AppMetaLabels().noDatafound;
@@ -68,7 +68,7 @@ class TenantUnitInfoDetailsController extends GetxController {
 
   Stream<Uint8List> getImage() async* {
     var resp = await TenantRepository.getUnitImage(
-        unitDetails.value.contractUnit.unitId);
+        unitDetails.value.contractUnit!.unitId);
     if (resp is Uint8List) {
       yield resp;
     } else {

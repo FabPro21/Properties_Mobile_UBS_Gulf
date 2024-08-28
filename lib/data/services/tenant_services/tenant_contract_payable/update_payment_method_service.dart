@@ -14,7 +14,7 @@ class UpdatePaymentMethodService {
     print(url);
     var data = {
       'PaymentModeId':
-          encriptdatasingle(record.defaultpaymentmethodtype.value.toString())
+          encriptdatasingle(record.defaultpaymentmethodtype!.value.toString())
               .toString(),
       'PaymentSettingId':
           encriptdatasingle(record.paymentSettingId.toString()).toString(),
@@ -26,7 +26,7 @@ class UpdatePaymentMethodService {
           : encriptdatasingle(record.aramexAddress.toString()).toString(),
     };
     var dataWithoutEncypt = {
-      'PaymentModeId': record.defaultpaymentmethodtype.value.toString(),
+      'PaymentModeId': record.defaultpaymentmethodtype!.value.toString(),
       'PaymentSettingId': record.paymentSettingId.toString(),
       'ChequeNo': record.chequeNo == ''
           ? record.chequeNo.toString()
@@ -37,7 +37,7 @@ class UpdatePaymentMethodService {
     };
     print('********** Data without encrypt ***********');
     print('**********${record.filePath}');
-    print('Payment Medthod ID ${record.defaultpaymentmethodtype.value}');
+    print('Payment Medthod ID ${record.defaultpaymentmethodtype!.value}');
     print(dataWithoutEncypt);
     print('********** Data after encrypt encrypt ***********');
     print(data);
@@ -45,7 +45,7 @@ class UpdatePaymentMethodService {
     var response;
 
     response =
-        await BaseClientClass.uploadFile(url, data, 'File', record.filePath);
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', record.filePath??"");
     if (response is StreamedResponse) {
       print(response);
       print(response.statusCode);
@@ -66,7 +66,7 @@ class UpdatePaymentMethodServiceNew {
     print(url);
     var data = {
       'PaymentModeId':
-          encriptdatasingle(record.defaultpaymentmethodtype.value.toString())
+          encriptdatasingle(record.defaultpaymentmethodtype!.value.toString())
               .toString(),
       'PaymentSettingId':
           encriptdatasingle(record.paymentSettingId.toString()).toString(),
@@ -78,7 +78,7 @@ class UpdatePaymentMethodServiceNew {
           : encriptdatasingle(record.aramexAddress.toString()).toString(),
     };
     var dataWithoutEncypt = {
-      'PaymentModeId': record.defaultpaymentmethodtype.value.toString(),
+      'PaymentModeId': record.defaultpaymentmethodtype!.value.toString(),
       'PaymentSettingId': record.paymentSettingId.toString(),
       'ChequeNo': record.chequeNo == ''
           ? record.chequeNo.toString()
@@ -89,7 +89,7 @@ class UpdatePaymentMethodServiceNew {
     };
     print('********** Data without encrypt ***********');
     print('**********${record.filePath}');
-    print('Payment Medthod ID ${record.defaultpaymentmethodtype.value}');
+    print('Payment Medthod ID ${record.defaultpaymentmethodtype!.value}');
     print(dataWithoutEncypt);
     print('********** Data after encrypt encrypt ***********');
     print(data);
@@ -97,7 +97,7 @@ class UpdatePaymentMethodServiceNew {
     var response;
 
     response =
-        await BaseClientClass.uploadFile(url, data, 'File', record.filePath);
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', record.filePath??"");
     if (response is StreamedResponse) {
       print(response);
       print(response.statusCode);

@@ -19,10 +19,10 @@ import '../../../utils/text_validator.dart';
 import 'dart:ui' as ui;
 
 class PublicServiceUpdates extends StatefulWidget {
-  final int reqNo;
-  final bool canCommunicate;
+  final int? reqNo;
+  final bool? canCommunicate;
   const PublicServiceUpdates(
-      {Key key, @required this.reqNo, @required this.canCommunicate})
+      {Key? key, @required this.reqNo, @required this.canCommunicate})
       : super(key: key);
 
   @override
@@ -86,7 +86,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   hintStyle: AppTextStyle.normalGrey11,
                                 ),
                                 validator: (value) {
-                                  if (value.isEmpty) {
+                                  if (value!.isEmpty) {
                                     return AppMetaLabels().requiredField;
                                   } else if (!textValidator
                                       .hasMatch(value.replaceAll('\n', ' '))) {
@@ -180,7 +180,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     InkWell(
                                       onTap: () async {
                                         _focusNode.unfocus();
-                                        if (formKey.currentState.validate()) if (await _controller
+                                        if (formKey.currentState!.validate()) if (await _controller
                                             .addTicketReply(
                                                 widget.reqNo.toString(),
                                                 _messageTextController.text)) {
@@ -247,7 +247,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                       );
                     }),
                   ),
-                if (!_controller.typing.value && widget.canCommunicate)
+                if (!_controller.typing.value && widget.canCommunicate!)
                   Container(
                       height: 8.0.h,
                       width: double.maxFinite,
@@ -283,7 +283,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                         style: AppTextStyle.normalGrey12,
                                         readOnly: true,
                                         onTap: () {
-                                          if (widget.canCommunicate) {
+                                          if (widget.canCommunicate!) {
                                             _controller.typing.value = true;
                                             _focusNode.requestFocus();
                                           } else {
@@ -379,13 +379,13 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
-                      itemCount: _controller.ticketReplies.ticketReply.length,
+                      itemCount: _controller.ticketReplies!.ticketReply!.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
-                          alignment: (_controller.ticketReplies
-                                      .ticketReply[index].userId2 ==
+                          alignment: (_controller.ticketReplies!
+                                      .ticketReply![index].userId2 ==
                                   null
                               ? Alignment.topLeft
                               : Alignment.topRight),
@@ -393,8 +393,8 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                             constraints: BoxConstraints(maxWidth: 80.w),
                             child: Container(
                               margin: EdgeInsets.only(top: 2.5.h),
-                              decoration: _controller.ticketReplies
-                                          .ticketReply[index].userId2 ==
+                              decoration: _controller.ticketReplies!
+                                          .ticketReply![index].userId2 ==
                                       null
                                   ? BoxDecoration(
                                       borderRadius: BorderRadius.only(
@@ -413,25 +413,28 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     ),
                               padding: EdgeInsets.all(12),
                               child: Column(
-                                crossAxisAlignment: _controller.ticketReplies
-                                            .ticketReply[index].userId2 ==
+                                crossAxisAlignment: _controller.ticketReplies!
+                                            .ticketReply![index].userId2 ==
                                         null
                                     ? CrossAxisAlignment.end
                                     : CrossAxisAlignment.start,
                                 children: [
-                                  if (_controller.ticketReplies
-                                              .ticketReply[index].fileName !=
+                                  if (_controller.ticketReplies!
+                                              .ticketReply![index].fileName !=
                                           null &&
-                                      _controller.ticketReplies
-                                              .ticketReply[index].fileName !=
+                                      _controller.ticketReplies!
+                                              .ticketReply![index].fileName !=
                                           "")
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            _controller.ticketReplies
-                                                .ticketReply[index].fileName,
+                                            _controller
+                                                    .ticketReplies!
+                                                    .ticketReply![index]
+                                                    .fileName ??
+                                                "",
                                             style: AppTextStyle.semiBoldBlue10,
                                           ),
                                         ),
@@ -440,9 +443,9 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           width: 50,
                                           child: Obx(() {
                                             return _controller
-                                                    .ticketReplies
-                                                    .ticketReply[index]
-                                                    .downloadingFile
+                                                    .ticketReplies!
+                                                    .ticketReply![index]
+                                                    .downloadingFile!
                                                     .value
                                                 ? LoadingIndicatorBlue(
                                                     strokeWidth: 2,
@@ -486,21 +489,17 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   // ),
                                   // Communication
                                   Html(
-                                    customTextAlign: (_) =>
-                                        SessionController().getLanguage() == 1
-                                            ? TextAlign.left
-                                            : TextAlign.right,
-                                    data: _controller
-                                        .ticketReplies.ticketReply[index].reply,
-                                    defaultTextStyle: AppTextStyle.normalGrey12
-                                        .copyWith(fontWeight: FontWeight.w600),
+                                    style: {},
+                                    data: _controller.ticketReplies!
+                                        .ticketReply![index].reply,
                                   ),
                                   SizedBox(
                                     height: 2.h,
                                   ),
                                   Text(
-                                    _controller.ticketReplies.ticketReply[index]
-                                        .dateTime,
+                                    _controller.ticketReplies!
+                                            .ticketReply![index].dateTime ??
+                                        "",
                                     style: AppTextStyle.normalGrey8,
                                   ),
                                 ],

@@ -44,14 +44,14 @@ class TenantDashboardGetDataController extends GetxController {
 
   RxBool showRenewalButton = false.obs;
 
-  //------------------ dashboard contracts
+  //------------------ dashboard! contracts
   Rx<GetContractsModel> getContracts = GetContractsModel().obs;
   var loadingContractsData = false.obs;
   RxInt contractsLength = 0.obs;
   RxString contractsError = "".obs;
   int listLength = 0;
 
-  //------------------ dashboard payments
+  //------------------ dashboard! payments
   var payments = ContractPaymentModel().obs;
 
   var loadingPaymentsData = false.obs;
@@ -106,16 +106,16 @@ class TenantDashboardGetDataController extends GetxController {
       } else {
         dashboardData.value = result;
         contractExpiringIn30Days.value =
-            dashboardData.value.dashboard.contractExpiringIn30Days.toString();
-        rentalVal.value = dashboardData.value.dashboard.rentalVal.toDouble();
+            dashboardData.value.dashboard!.contractExpiringIn30Days.toString();
+        rentalVal.value = dashboardData.value.dashboard!.rentalVal.toDouble();
         rentOutstanding.value =
-            dashboardData.value.dashboard.rentOutstanding.toDouble();
+            dashboardData.value.dashboard!.rentOutstanding.toDouble();
 
         //////////////////
         /// payment balance Currency
         //////////////////
 
-        double pb = dashboardData.value.dashboard.paymentBalance.toDouble();
+        double pb = dashboardData.value.dashboard!.paymentBalance.toDouble();
         final pymentFormatter = NumberFormat('#,##0.00', 'AR');
         paymentCurrency.value = pymentFormatter.format(pb);
 
@@ -126,19 +126,19 @@ class TenantDashboardGetDataController extends GetxController {
         //////////////////
         /// to be paid Currency
         //////////////////
-        double t = dashboardData.value.dashboard.rentalVal.toDouble();
+        double t = dashboardData.value.dashboard!.rentalVal.toDouble();
         final tobePaidFormatter = NumberFormat('#,##0.00', 'AR');
         toBePaidCurrency.value = tobePaidFormatter.format(t);
 
         //////////////////
         /// balance Currency
         //////////////////
-        double b = dashboardData.value.dashboard.rentOutstanding.toDouble();
+        double b = dashboardData.value.dashboard!.rentOutstanding.toDouble();
         final balanceFormatter = NumberFormat('#,##0.00', 'AR');
         balanceCurrency.value = balanceFormatter.format(b);
         // no of notification on badge
-        lengthNotiification.value = result.unreadNotifications;
-        if (result.contractRenewalAction > 0) {
+        lengthNotiification.value = result.unreadNotifications??0;
+        if (result.contractRenewalAction! > 0) {
           showRenewalButton.value = true;
         } else {
           showRenewalButton.value = false;
@@ -169,8 +169,8 @@ class TenantDashboardGetDataController extends GetxController {
         contractsError.value = AppMetaLabels().noDatafound;
         loadingContractsData.value = false;
       } else {
-        contractsLength.value = getContracts.value.contracts.length;
-        listLength = getContracts.value.contracts.length;
+        contractsLength.value = getContracts.value.contracts!.length;
+        listLength = getContracts.value.contracts!.length;
         if (listLength > 3) listLength = 3;
         loadingContractsData.value = false;
       }
@@ -204,8 +204,8 @@ class TenantDashboardGetDataController extends GetxController {
         contractsError.value = AppMetaLabels().noDatafound;
         loadingContractsData.value = false;
       } else {
-        contractsLength.value = getContracts.value.contracts.length;
-        listLength = getContracts.value.contracts.length;
+        contractsLength.value = getContracts.value.contracts!.length;
+        listLength = getContracts.value.contracts!.length;
         if (listLength > 3) listLength = 3;
         loadingContractsData.value = false;
       }
@@ -236,8 +236,8 @@ class TenantDashboardGetDataController extends GetxController {
       if (payments.value.status == AppMetaLabels().notFound) {
         errorPayments.value = AppMetaLabels().noDatafound;
       } else {
-        paymentsLength = payments.value.payments.length;
-        paymentsLength2 = payments.value.payments.length;
+        paymentsLength = payments.value.payments!.length;
+        paymentsLength2 = payments.value.payments!.length;
         if (paymentsLength2 > 3) paymentsLength2 = 3;
       }
     } else {
@@ -289,7 +289,7 @@ class TenantDashboardGetDataController extends GetxController {
         errorSheet.value = AppMetaLabels().noDatafound;
       } else {
         bottomSheetData.value = resp;
-        toBePaidIn30DaysLength = resp.data.length;
+        toBePaidIn30DaysLength = resp.data!.length;
       }
     } else {
       errorSheet.value = resp;
@@ -297,7 +297,7 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   //////////////////////////////contracts expiring in 30 days////
-  ContractExpire30Days contractsExpiring;
+  ContractExpire30Days? contractsExpiring;
   RxBool loadingContractsExpiring = false.obs;
   String errorLoadingExpiringContracts = '';
 

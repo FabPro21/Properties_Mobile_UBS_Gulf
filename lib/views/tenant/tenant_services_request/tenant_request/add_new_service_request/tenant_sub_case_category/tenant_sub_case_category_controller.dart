@@ -29,7 +29,7 @@ class CaseSubCategoryController extends GetxController {
     loadingData.value = false;
     if (result is CaseSubCategoryModel) {
       caseSubCategory.value = result;
-      length = caseSubCategory.value.caseSubCategories.length;
+      length = caseSubCategory.value.caseSubCategories!.length;
       update();
     } else {
       error.value = result;

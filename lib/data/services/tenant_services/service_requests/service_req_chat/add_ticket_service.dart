@@ -19,7 +19,7 @@ class AddTicketService {
     var response;
     print('File Path:');
     print(filePath);
-    response = await BaseClientClass.uploadFile(url, data, "File", filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, "File", filePath);
     print(response);
 
     if (response is StreamedResponse) {

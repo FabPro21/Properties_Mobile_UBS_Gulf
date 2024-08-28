@@ -9,7 +9,7 @@ class PublicServiceMainInfoService {
   static Future<dynamic> getServiceMainInfo(int caseno) async {
     var url = AppConfig().publicServiceMianinfo;
     var data = {"CaseNo":caseno.toString()};
-    var response = await BaseClientClass.post(url , data,
+    var response = await BaseClientClass.post(url??"" , data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       PublicServiceMainInfoModel getModel =

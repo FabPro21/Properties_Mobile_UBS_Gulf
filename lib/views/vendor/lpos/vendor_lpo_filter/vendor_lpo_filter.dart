@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorLpoFilter extends StatefulWidget {
-  final bool clear;
-  const VendorLpoFilter({Key key, this.clear}) : super(key: key);
+  final bool? clear;
+  const VendorLpoFilter({Key? key, this.clear}) : super(key: key);
 
   @override
   _VendorLpoFilterState createState() => _VendorLpoFilterState();
@@ -24,7 +24,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
 
   @override
   void initState() {
-    if (widget.clear) {
+    if (widget.clear!) {
       _controller.resetValues();
       propertyController.text = _controller.propertyName;
     }
@@ -234,7 +234,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                       // ),
                                     ),
                                   );
-                                  if (!_controller.setFromDate(dT)) {
+                                  if (!_controller.setFromDate(dT!)) {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -333,7 +333,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                       // ),
                                     ),
                                   );
-                                  if (!_controller.setToDate(dT)) {
+                                  if (!_controller.setToDate(dT!)) {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -485,14 +485,14 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  final Function? clear;
+  const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        clear();
+        clear!();
       },
       child: Container(
         decoration: BoxDecoration(

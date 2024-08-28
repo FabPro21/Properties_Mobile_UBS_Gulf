@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/chart_data.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -19,11 +19,11 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'dart:ui' as ui;
 
 class LandlordDashboard extends StatefulWidget {
-  final BuildContext parentContext;
-  final Function(int) manageProperties;
-  final Function(int) manageContracts;
+  final BuildContext? parentContext;
+  final Function(int)? manageProperties;
+  final Function(int)? manageContracts;
   const LandlordDashboard(
-      {Key key,
+      {Key? key,
       this.manageProperties,
       this.manageContracts,
       this.parentContext})
@@ -95,7 +95,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                 landLordPropertiesController.getDashboardData();
                               },
                               child: Text(
-                                landLordPropertiesController.name.value ?? '',
+                                landLordPropertiesController.name.value,
                                 style: AppTextStyle.semiBoldWhite14,
                               ),
                             ),
@@ -108,7 +108,9 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                 await Get.to(() => LandlordNotifications());
                                 landLordPropertiesController.getProperties();
                               },
-                              child: Badge(
+                              child: badge.Badge(
+                                position: badge.BadgePosition.topEnd(
+                                    top: -1.0.h, end: 0.0.h),
                                 showBadge: landLordPropertiesController
                                                 .dashboardData
                                                 .value
@@ -121,11 +123,17 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                             '0'
                                     ? false
                                     : true,
-                                padding: EdgeInsets.all(0.8.h),
-                                position: BadgePosition.topEnd(
-                                    top: -1.0.h, end: 0.0.h),
-                                animationDuration: Duration(milliseconds: 300),
-                                animationType: BadgeAnimationType.slide,
+                                badgeStyle: badge.BadgeStyle(
+                                  padding: EdgeInsets.all(0.8.h),
+                                ),
+                                badgeAnimation: badge.BadgeAnimation.rotation(
+                                  animationDuration: Duration(seconds: 300),
+                                  colorChangeAnimationDuration:
+                                      Duration(seconds: 1),
+                                  loopAnimation: false,
+                                  curve: Curves.fastOutSlowIn,
+                                  colorChangeAnimationCurve: Curves.easeInCubic,
+                                ),
                                 badgeContent: Text(
                                   '${landLordPropertiesController.lengthNotiification.value}',
                                   style: TextStyle(
@@ -230,14 +238,14 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                   ? landLordPropertiesController
                                                           .dashboardData
                                                           .value
-                                                          .dashboard
+                                                          .dashboard!
                                                           .first
                                                           .landlordName ??
                                                       ""
                                                   : landLordPropertiesController
                                                           .dashboardData
                                                           .value
-                                                          .dashboard
+                                                          .dashboard!
                                                           .first
                                                           .landlordNameAR ??
                                                       "_",
@@ -314,8 +322,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                                         .value ==
                                                                     ''
                                                                 ? ''
-                                                                : "${landLordPropertiesController.openCases.value.toString() ?? ""} " ??
-                                                                    "",
+                                                                : "${landLordPropertiesController.openCases.value.toString()} ",
                                                             style: TextStyle(
                                                               color:
                                                                   Colors.black,
@@ -351,8 +358,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                                           .value ==
                                                                       ''
                                                                   ? ''
-                                                                  : "${landLordPropertiesController.closeCases.value.toString() ?? ""} " ??
-                                                                      "",
+                                                                  : "${landLordPropertiesController.closeCases.value.toString()}",
                                                               style: TextStyle(
                                                                 color: Colors
                                                                     .black,
@@ -397,27 +403,30 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                               SizedBox(
                                                 width: 28.0.w,
                                                 height: 12.0.h,
-                                                child: SfCircularChart(series: <
-                                                    CircularSeries>[
-                                                  DoughnutSeries<ChartData,
-                                                      String>(
-                                                    innerRadius: '85%',
-                                                    radius: "100%",
-                                                    explode: true,
-                                                    dataSource:
-                                                        landLordPropertiesController
-                                                            .chartData,
-                                                    pointColorMapper:
-                                                        (ChartData data, _) =>
-                                                            data.color,
-                                                    xValueMapper:
-                                                        (ChartData data, _) =>
-                                                            data.x,
-                                                    yValueMapper:
-                                                        (ChartData data, _) =>
-                                                            data.y,
-                                                  ),
-                                                ]),
+                                                child: SfCircularChart(
+                                                    series: <CircularSeries>[
+                                                      DoughnutSeries<ChartData,
+                                                          String>(
+                                                        innerRadius: '85%',
+                                                        radius: "100%",
+                                                        explode: true,
+                                                        dataSource:
+                                                            landLordPropertiesController
+                                                                .chartData,
+                                                        pointColorMapper:
+                                                            (ChartData data,
+                                                                    _) =>
+                                                                data.color,
+                                                        xValueMapper:
+                                                            (ChartData data,
+                                                                    _) =>
+                                                                data.x,
+                                                        yValueMapper:
+                                                            (ChartData data,
+                                                                    _) =>
+                                                                data.y,
+                                                      ),
+                                                    ]),
                                               ),
                                               SizedBox(
                                                 width: 59.0.w,
@@ -461,8 +470,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                             ),
                                                             Spacer(),
                                                             Text(
-                                                                " ${landLordPropertiesController.activeContract.value.toInt()}" ??
-                                                                    "",
+                                                                " ${landLordPropertiesController.activeContract.value.toInt()}",
                                                                 maxLines: 1,
                                                                 overflow:
                                                                     TextOverflow
@@ -514,8 +522,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                             const Spacer(),
                                                             FittedBox(
                                                               child: Text(
-                                                                " ${landLordPropertiesController.occupiedUnits.value.toInt()}" ??
-                                                                    "",
+                                                                " ${landLordPropertiesController.occupiedUnits.value.toInt()}",
                                                                 style: AppTextStyle
                                                                     .semiBoldBlack10,
                                                               ),
@@ -603,7 +610,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                       .shrinkWrap,
                                             ),
                                             onPressed: () {
-                                              widget.manageProperties(2);
+                                              widget.manageProperties!(2);
                                               setState(() {});
                                             },
                                             child: Text(
@@ -622,7 +629,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                         child: Column(
                           children: [
                             PropertiesWidget(
-                              manageProperties: widget.manageProperties,
+                              manageProperties: widget.manageProperties!,
                             ),
                           ],
                         ),

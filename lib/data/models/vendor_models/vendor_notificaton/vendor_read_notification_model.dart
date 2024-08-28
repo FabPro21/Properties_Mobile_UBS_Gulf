@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-VendorNotificationReadModel vendorNotificationReadModelFromJson(String str) => VendorNotificationReadModel.fromJson(json.decode(str));
+VendorNotificationReadModel vendorNotificationReadModelFromJson(String? str) => VendorNotificationReadModel.fromJson(json.decode(str!));
 
-String vendorNotificationReadModelToJson(VendorNotificationReadModel data) => json.encode(data.toJson());
+String? vendorNotificationReadModelToJson(VendorNotificationReadModel data) => json.encode(data.toJson());
 
 class VendorNotificationReadModel {
     VendorNotificationReadModel({
@@ -15,17 +15,17 @@ class VendorNotificationReadModel {
         this.message,
     });
 
-    String status;
-    String statusCode;
-    String message;
+    String? status;
+    String? statusCode;
+    String? message;
 
-    factory VendorNotificationReadModel.fromJson(Map<String, dynamic> json) => VendorNotificationReadModel(
+    factory VendorNotificationReadModel.fromJson(Map<String?, dynamic> json) => VendorNotificationReadModel(
         status: json["status"],
         statusCode: json["statusCode"],
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "message": message,

@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-BuildingStatusSummaryModel getBuildingStatusSummaryModelFromJson(String str) =>
-    BuildingStatusSummaryModel.fromJson(json.decode(str));
+BuildingStatusSummaryModel getBuildingStatusSummaryModelFromJson(String? str) =>
+    BuildingStatusSummaryModel.fromJson(json.decode(str!));
 
 class BuildingStatusSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   BuildingStatusSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  BuildingStatusSummaryModel.fromJson(Map<String, dynamic> json) {
+  BuildingStatusSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,20 +28,20 @@ class BuildingStatusSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String unitType;
-  String unitTypeAR;
-  String unitCategory;
-  String unitCategoryAR;
-  String contractStatus;
-  String contractStatusAR;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? unitType;
+  String? unitTypeAR;
+  String? unitCategory;
+  String? unitCategoryAR;
+  String? contractStatus;
+  String? contractStatusAR;
   dynamic rent;
   dynamic recived;
   dynamic balance;
@@ -64,7 +64,7 @@ class ServiceRequests {
       this.recived,
       this.balance});
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final rentFormat = NumberFormat('#,##0.00', 'AR');
     final recivedFormat = NumberFormat('#,##0.00', 'AR');
     final balanceFormat = NumberFormat('#,##0.00', 'AR');

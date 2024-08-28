@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 import 'package:fap_properties/data/helpers/base_client.dart';
@@ -23,12 +25,12 @@ import '../main_info/main_info_controller.dart';
 class SvcReqReportController extends GetxController {
   //
   final mainInfoController = Get.find<SvcReqMainInfoController>();
-  int caseNo;
-  bool status;
+  int? caseNo;
+  bool? status;
   /////photos
   RxBool gettingPhotos = false.obs;
   String errorGettingPhotos = '';
-  List<PhotoFile> photos = [null];
+  List<PhotoFile> photos = [PhotoFile()];
   final ImagePicker _picker = ImagePicker();
   ////report
   Rx<DocFile> report = DocFile().obs;
@@ -50,19 +52,19 @@ class SvcReqReportController extends GetxController {
   onInit() {
     super.onInit();
     canClose.value =
-        mainInfoController.vendorRequestDetails.value.statusInfo.canClose;
+        mainInfoController.vendorRequestDetails.value.statusInfo!.canClose!;
   }
 
   Future<void> getPhotos() async {
     photos.clear();
     errorGettingPhotos = '';
     gettingPhotos.value = true;
-    var resp = await VendorRepository.getReqPhotos(caseNo, 3);
+    var resp = await VendorRepository.getReqPhotos(caseNo!, 3);
     if (resp is List<PhotoFile>) {
       photos = resp;
-      if (canClose.value) photos.add(null);
+      if (canClose.value) photos.add(PhotoFile());
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
-      photos.add(null);
+      photos.add(PhotoFile());
     } else
       errorGettingPhotos = resp;
     gettingPhotos.value = false;
@@ -71,10 +73,10 @@ class SvcReqReportController extends GetxController {
   pickPhoto(ImageSource source) async {
     try {
       print(source);
-      XFile file = await _picker.pickImage(source: source);
+      XFile? file = await _picker.pickImage(source: source);
 
       // checking file ext Cheque
-      if (!CheckFileExtenstion().checkImageExtFunc(file.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -126,7 +128,7 @@ class SvcReqReportController extends GetxController {
           photos[photos.length - 1] =
               PhotoFile(file: photo, path: path, type: file.mimeType);
           uploadPhoto(photos.length - 1);
-          photos.add(null);
+          photos.add(PhotoFile());
         }
         gettingPhotos.value = false;
       }
@@ -140,7 +142,7 @@ class SvcReqReportController extends GetxController {
     photos[index].uploading.value = true;
     try {
       var resp = await VendorRepository.uploadFile(
-          caseNo, photos[index].path, 'Images', '', 0);
+          caseNo??0, photos[index].path??"", 'Images', '', 0);
       photos[index].uploading.value = false;
       photos[index].id = resp['photoId'];
     } catch (e) {
@@ -169,12 +171,12 @@ class SvcReqReportController extends GetxController {
 
   // 112233 Close Service Request
   // Future<bool> closeSvcReq(Uint8List signature) async {
-  Future<bool> closeSvcReq(Uint8List signature, String fabCorrectiveAction,
+  Future<bool> closeSvcReq(Uint8List? signature, String fabCorrectiveAction,
       remedy, description) async {
     errorClosingReq = false;
     closingReq.value = true;
     bool closed = false;
-    if (await saveVendorSignature(signature)) {
+    if (await saveVendorSignature(signature!)) {
       // var resp = await VendorRepository.closeSvcReq(caseNo);
       var resp = await VendorRepository.closeSvcReq(
           caseNo, fabCorrectiveAction, remedy, description);
@@ -205,10 +207,10 @@ class SvcReqReportController extends GetxController {
   pickReport() async {
     try {
       print('Insideeee::::');
-      FilePickerResult result = await FilePicker.platform
+      FilePickerResult? result = await FilePicker.platform
           .pickFiles(allowedExtensions: ['pdf'], type: FileType.custom);
 
-      if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+      if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -217,7 +219,7 @@ class SvcReqReportController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path);
+        File file = File(result.files.single.path??"");
         Uint8List bytesFile = await file.readAsBytes();
 
         // checking file size Cheque
@@ -252,7 +254,7 @@ class SvcReqReportController extends GetxController {
     try {
       // 112233 upload file Repo
       var resp = await VendorRepository.uploadFile(
-          caseNo, report.value.path, 'Document', '', 0);
+          caseNo!, report.value.path??"", 'Document', '', 0);
 
       loadingReport.value = true;
       var id = resp['photoId'];
@@ -287,11 +289,11 @@ class SvcReqReportController extends GetxController {
         getSRReportModel.value = result;
         if (getSRReportModel.value.status == "Data found successfully") {
           listTitle = AppMetaLabels().fABCorrectiveActionList[
-              getSRReportModel.value.data.fgpCorrectionId];
+              getSRReportModel.value.data!.fgpCorrectionId!];
           textEditingControlerFET1.text =
-              getSRReportModel.value.data.proposedRemedy ?? "";
+              getSRReportModel.value.data!.proposedRemedy ?? "";
           textEditingControlerFET2.text =
-              getSRReportModel.value.data.description ?? "";
+              getSRReportModel.value.data!.description ?? "";
         } else {
           textEditingControlerFET1.text = '';
           textEditingControlerFET2.text = '';
@@ -316,7 +318,7 @@ class SvcReqReportController extends GetxController {
     if (resp is List<DocFile>) {
       if (resp.isNotEmpty) {
         report.value = resp[0];
-        report.value.size = getFileSize(report.value.file);
+        report.value.size = getFileSize(report.value.file!);
       }
     } else
       errorLoadingReport = resp;
@@ -365,18 +367,18 @@ class SvcReqReportController extends GetxController {
     final file =
         File("${path.path}/${this.report.value.name}${this.report.value.type}");
         // File("${path.path}/${this.report.value.name}${this.report.value.type}");
-    await file.writeAsBytes(report.value.file);
+    await file.writeAsBytes(report.value.file!);
     return file.path;
   }
 
   RxBool savingTenantSign = false.obs;
   RxBool tenantSignatureSaved = false.obs;
-  Future<bool> saveTenantSignature(Uint8List signature) async {
+  Future<bool> saveTenantSignature(Uint8List? signature) async {
     tenantSignatureSaved.value = false;
     savingTenantSign.value = true;
     bool saved = false;
     if (await getStoragePermission()) {
-      String path = await createFile(signature, 'signature.png');
+      String path = await createFile(signature!, 'signature.png');
       if (path != null) {
         var resp = await VendorRepository.uploadTenantSing(
           caseNo.toString(),

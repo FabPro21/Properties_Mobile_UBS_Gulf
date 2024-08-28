@@ -18,7 +18,7 @@ class TenantProfileController extends GetxController {
   RxString errorUpdate = "".obs;
 
   RxBool loadingCanEdit = true.obs;
-  int caseNo;
+  int? caseNo;
 
   @override
   void onInit() {
@@ -59,12 +59,12 @@ class TenantProfileController extends GetxController {
   void saveUserNameLocally(TenantProfileModel tenantProfile) async {
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userName,
-      tenantProfile.profile.name ?? "",
+      tenantProfile.profile!.name ?? "",
     );
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userNameAr,
-      tenantProfile.profile.nameAr ?? "",
+      tenantProfile.profile!.nameAr ?? "",
     );
   }
 
@@ -102,12 +102,12 @@ class TenantProfileController extends GetxController {
       if (result is TenantUpdateProfileModel) {
         if (result.status == "Ok") {
           updateProfiledata.value = result;
-          caseNo = result.addServiceRequest.caseNo;
+          caseNo = result.addServiceRequest!.caseNo;
           loadingCanEdit.value = true;
           loadingCanEdit.value = false;
           return true;
         } else {
-          Get.snackbar(AppMetaLabels().error, result.message);
+          Get.snackbar(AppMetaLabels().error, result.message??"");
           return false;
         }
       } else {

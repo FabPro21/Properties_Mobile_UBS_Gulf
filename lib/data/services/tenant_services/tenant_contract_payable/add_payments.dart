@@ -7,7 +7,7 @@ class AddPaymentsService {
   static Future<dynamic> addPayment(final data, String filePath) async {
     var url = AppConfig().addContractPayment;
     var response;
-    response = await BaseClientClass.uploadFile(url, data, "File", filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, "File", filePath);
 
     if (response is StreamedResponse) {
       if (response.statusCode == 200) {

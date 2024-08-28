@@ -7,7 +7,7 @@ class VendorFaqsCategoriesSerice {
   static Future<dynamic> getVendorFaqsCatg() async {
     var url = AppConfig().getVendorFaqsCatg;
 
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       VendorFaqsCategoriesModel getModel =

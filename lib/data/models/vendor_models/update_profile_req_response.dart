@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-UpdateProfileRequestResponse updateProfileRequestResponseFromJson(String str) =>
-    UpdateProfileRequestResponse.fromJson(json.decode(str));
+UpdateProfileRequestResponse updateProfileRequestResponseFromJson(String? str) =>
+    UpdateProfileRequestResponse.fromJson(json.decode(str!));
 
-String updateProfileRequestResponseToJson(UpdateProfileRequestResponse data) =>
+String? updateProfileRequestResponseToJson(UpdateProfileRequestResponse data) =>
     json.encode(data.toJson());
 
 class UpdateProfileRequestResponse {
@@ -18,12 +18,12 @@ class UpdateProfileRequestResponse {
     this.document,
   });
 
-  String status;
-  int caseNo;
-  String message;
-  List<Document> document;
+  String? status;
+  int? caseNo;
+  String? message;
+  List<Document>? document;
 
-  factory UpdateProfileRequestResponse.fromJson(Map<String, dynamic> json) =>
+  factory UpdateProfileRequestResponse.fromJson(Map<String?, dynamic> json) =>
       UpdateProfileRequestResponse(
         status: json["status"],
         caseNo: json["caseNo"],
@@ -32,11 +32,11 @@ class UpdateProfileRequestResponse {
             json["document"].map((x) => Document.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "caseNo": caseNo,
         "message": message,
-        "document": List<dynamic>.from(document.map((x) => x.toJson())),
+        "document": List<dynamic>.from(document!.map((x) => x.toJson())),
       };
 }
 
@@ -46,15 +46,15 @@ class Document {
     this.documentTypeId,
   });
 
-  String name;
-  int documentTypeId;
+  String? name;
+  int? documentTypeId;
 
-  factory Document.fromJson(Map<String, dynamic> json) => Document(
+  factory Document.fromJson(Map<String?, dynamic> json) => Document(
         name: json["name"],
         documentTypeId: json["documentTypeId"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "name": name,
         "documentTypeId": documentTypeId,
       };

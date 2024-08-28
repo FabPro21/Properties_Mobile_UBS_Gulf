@@ -17,9 +17,9 @@ import 'main_info/main_info.dart';
 import 'main_info/main_info_controller.dart';
 
 class VendorRequestDetails extends StatefulWidget {
-  final int caseNo;
-  final bool status;
-  const VendorRequestDetails({Key key, this.caseNo, this.status}) : super(key: key);
+  final int? caseNo;
+  final bool? status;
+  const VendorRequestDetails({Key? key, this.caseNo, this.status}) : super(key: key);
 
   @override
   _VendorRequestDetailsState createState() => _VendorRequestDetailsState();

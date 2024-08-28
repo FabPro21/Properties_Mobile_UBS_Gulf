@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetContactTimingModel getContactTimingModelFromJson(String str) =>
-    GetContactTimingModel.fromJson(json.decode(str));
+GetContactTimingModel getContactTimingModelFromJson(String? str) =>
+    GetContactTimingModel.fromJson(json.decode(str!));
 
-String getContactTimingModelToJson(GetContactTimingModel data) =>
+String? getContactTimingModelToJson(GetContactTimingModel data) =>
     json.encode(data.toJson());
 
 class GetContactTimingModel {
@@ -17,11 +17,11 @@ class GetContactTimingModel {
     this.message,
   });
 
-  String status;
-  List<ContactTiming> contactTiming;
-  String message;
+  String? status;
+  List<ContactTiming>? contactTiming;
+  String? message;
 
-  factory GetContactTimingModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContactTimingModel.fromJson(Map<String?, dynamic> json) =>
       GetContactTimingModel(
         status: json["status"],
         contactTiming: List<ContactTiming>.from(
@@ -29,10 +29,10 @@ class GetContactTimingModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "contactTiming":
-            List<dynamic>.from(contactTiming.map((x) => x.toJson())),
+            List<dynamic>.from(contactTiming!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -44,14 +44,14 @@ class ContactTiming {
   });
 
   dynamic id;
-  String name;
+  String? name;
 
-  factory ContactTiming.fromJson(Map<String, dynamic> json) => ContactTiming(
+  factory ContactTiming.fromJson(Map<String?, dynamic> json) => ContactTiming(
         id: json["id"],
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "id": id,
         "name": name,
       };

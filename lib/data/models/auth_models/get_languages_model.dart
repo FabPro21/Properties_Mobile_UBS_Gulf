@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetLanguagesModel getLanguagesModelFromJson(String str) =>
-    GetLanguagesModel.fromJson(json.decode(str));
+GetLanguagesModel getLanguagesModelFromJson(String? str) =>
+    GetLanguagesModel.fromJson(json.decode(str!));
 
-String getLanguagesModelToJson(GetLanguagesModel data) =>
+String? getLanguagesModelToJson(GetLanguagesModel data) =>
     json.encode(data.toJson());
 
 class GetLanguagesModel {
@@ -18,12 +18,12 @@ class GetLanguagesModel {
     this.language,
   });
 
-  String message;
-  String status;
-  String statusCode;
-  List<Language> language;
+  String? message;
+  String? status;
+  String? statusCode;
+  List<Language>? language;
 
-  factory GetLanguagesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLanguagesModel.fromJson(Map<String?, dynamic> json) =>
       GetLanguagesModel(
         message: json["message"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetLanguagesModel {
             json["language"].map((x) => Language.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "message": message,
         "status": status,
         "statusCode": statusCode,
-        "language": List<dynamic>.from(language.map((x) => x.toJson())),
+        "language": List<dynamic>.from(language!.map((x) => x.toJson())),
       };
 }
 
@@ -46,15 +46,15 @@ class Language {
     this.title,
   });
 
-  int langId;
-  String title;
+  int? langId;
+  String? title;
 
-  factory Language.fromJson(Map<String, dynamic> json) => Language(
+  factory Language.fromJson(Map<String?, dynamic> json) => Language(
         langId: json["langId"],
         title: json["title"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "langId": langId,
         "title": title,
       };

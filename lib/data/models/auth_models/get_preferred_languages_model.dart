@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetPreferredLanguagesModel getPreferredLanguagesModelFromJson(String str) =>
-    GetPreferredLanguagesModel.fromJson(json.decode(str));
+GetPreferredLanguagesModel getPreferredLanguagesModelFromJson(String? str) =>
+    GetPreferredLanguagesModel.fromJson(json.decode(str!));
 
-String getPreferredLanguagesModelToJson(GetPreferredLanguagesModel data) =>
+String? getPreferredLanguagesModelToJson(GetPreferredLanguagesModel data) =>
     json.encode(data.toJson());
 
 class GetPreferredLanguagesModel {
@@ -17,11 +17,11 @@ class GetPreferredLanguagesModel {
     this.message,
   });
 
-  String status;
-  List<PreferredLanguage> preferredLanguages;
-  String message;
+  String? status;
+  List<PreferredLanguage>? preferredLanguages;
+  String? message;
 
-  factory GetPreferredLanguagesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetPreferredLanguagesModel.fromJson(Map<String?, dynamic> json) =>
       GetPreferredLanguagesModel(
         status: json["status"],
         preferredLanguages: List<PreferredLanguage>.from(
@@ -30,10 +30,10 @@ class GetPreferredLanguagesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "preferredLanguages":
-            List<dynamic>.from(preferredLanguages.map((x) => x.toJson())),
+            List<dynamic>.from(preferredLanguages!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -45,15 +45,15 @@ class PreferredLanguage {
   });
 
   dynamic id;
-  String name;
+  String? name;
 
-  factory PreferredLanguage.fromJson(Map<String, dynamic> json) =>
+  factory PreferredLanguage.fromJson(Map<String?, dynamic> json) =>
       PreferredLanguage(
         id: json["id"],
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "id": id,
         "name": name,
       };

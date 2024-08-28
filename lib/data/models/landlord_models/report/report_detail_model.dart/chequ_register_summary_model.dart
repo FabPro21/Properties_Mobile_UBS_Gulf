@@ -3,25 +3,25 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 
 ChequeRegisterReportSummaryModel getChequeRegisterReportModelFromJson(
-        String str) =>
-    ChequeRegisterReportSummaryModel.fromJson(json.decode(str));
+        String? str) =>
+    ChequeRegisterReportSummaryModel.fromJson(json.decode(str!));
 
 class ChequeRegisterReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   ChequeRegisterReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  ChequeRegisterReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  ChequeRegisterReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -29,17 +29,17 @@ class ChequeRegisterReportSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String chequeStatus;
-  String chequeStatusAR;
-  String chequeAmount;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? chequeStatus;
+  String? chequeStatusAR;
+  String? chequeAmount;
   ServiceRequests(
       {this.landlordName,
       this.landlordNameAR,
@@ -53,7 +53,7 @@ class ServiceRequests {
       this.chequeStatusAR,
       this.chequeAmount});
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final chequeAmountFormat = NumberFormat('#,##0.00', 'AR');
     double chequeAmount1 = json['chequeAmount'].roundToDouble();
 

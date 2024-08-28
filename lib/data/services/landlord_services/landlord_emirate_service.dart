@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class GetLandlordEmirateService {
   static Future<dynamic> getEmirate() async {
     var url = AppConfig().getLandlordEmirate;
-    var response = await BaseClientClass.post(url, '');
+    var response = await BaseClientClass.post(url ?? "", '');
     if (response is http.Response) {
       try {
         log(response.body);

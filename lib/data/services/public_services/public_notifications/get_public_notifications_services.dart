@@ -16,7 +16,7 @@ class PublicGetNotificationsServices {
       dataa = {"status": status, "pageNo": "1", "pageSize": "500"};
     }
 
-    var response = await BaseClientClass.post(url, dataa,
+    var response = await BaseClientClass.post(url ?? "", dataa,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       var data = publicGetNotificationModelFromJson(response.body);
@@ -35,7 +35,7 @@ class PublicGetNotificationsServices {
       dataa = {"status": status, "pageNo": pageNo.toString(), "pageSize": "20"};
     }
 
-    var response = await BaseClientClass.post(url, dataa,
+    var response = await BaseClientClass.post(url ?? "", dataa,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       var data = publicGetNotificationModelFromJson(response.body);

@@ -7,7 +7,7 @@ class CanDownloadContractService {
   static Future<dynamic> getData(int contractId) async {
     Map data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().canDownloadContract, data);
+        await BaseClientClass.post(AppConfig().canDownloadContract??"", data);
     if (response is http.Response) {
       return canDownloadContractFromJson(response.body);
     }

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -20,7 +22,7 @@ class BaseClientClass {
   static const int TIME_OUT_DURATION = 60;
   static String dumnyUrl = '';
   //////
-  static Future<dynamic> post(String url, data, {String token}) async {
+  static Future<dynamic> post(String url, data, {String? token}) async {
     if (token == null) token = SessionController().getToken();
     var data1 = await encriptdata(data);
     data = {"requestBody": data1};
@@ -59,7 +61,6 @@ class BaseClientClass {
           ? 'No internet connection'
           : 'لا يوجد اتصال بالإنترنت';
     } on TimeoutException {
-      print(response);
       getx.Get.snackbar(
         AppMetaLabels().error,
         AppMetaLabels().connectionTimedOut,
@@ -74,7 +75,7 @@ class BaseClientClass {
 
 ////////
   static Future<dynamic> postwithheader(String url, data,
-      {String token}) async {
+      {String? token}) async {
     if (token == null) token = SessionController().getToken();
     print('Url :::: => $url');
     // print('Data :::: => $data');
@@ -121,7 +122,7 @@ class BaseClientClass {
       return '${AppMetaLabels().connectionTimedOut}';
     } catch (e) {
       print('Response ::Catch e.toString():: ${e.toString()}');
-      print('Response ::Catch:: $e : $response');
+      print('Response ::Catch:: $e');
       if (foundation.kDebugMode) print(e);
       return AppMetaLabels().anyError;
     }
@@ -185,7 +186,7 @@ class BaseClientClass {
 ///////
   static Future<dynamic> uploadFile(
       String url, Map<String, String> fields, String fileField, String filePath,
-      {String token}) async {
+      {String? token}) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
       await Get.offAll(NoInternetScreen());
@@ -193,7 +194,7 @@ class BaseClientClass {
       return;
     }
     print('Url :::: => $url');
-    String bearerToken = token ?? SessionController().getToken();
+    String bearerToken = token ?? SessionController().getToken()??'';
     // print(bearerToken);
     try {
       http.MultipartRequest request =

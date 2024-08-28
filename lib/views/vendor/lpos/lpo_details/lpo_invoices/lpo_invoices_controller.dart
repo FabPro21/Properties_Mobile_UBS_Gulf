@@ -33,7 +33,7 @@ class LpoInvoicesController extends GetxController {
         loadingData.value = false;
       } else {
         getLpoInvoices.value = result;
-        length = getLpoInvoices.value.invoice.length;
+        length = getLpoInvoices.value.invoice!.length;
         update();
         loadingData.value = false;
       }

@@ -13,8 +13,8 @@ import 'package:sizer/sizer.dart';
 import 'landlord_property_unit_Info_details.dart';
 
 class LandlordPropertyUnitInfo extends StatefulWidget {
-  final String propertID;
-  const LandlordPropertyUnitInfo({Key key, this.propertID}) : super(key: key);
+  final String? propertID;
+  const LandlordPropertyUnitInfo({Key? key, this.propertID}) : super(key: key);
 
   @override
   _LandlordPropertyUnitInfoState createState() =>
@@ -29,7 +29,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
 
   @override
   void initState() {
-    controller.getPropertiesUnitInfo(widget.propertID);
+    controller.getPropertiesUnitInfo(widget.propertID!);
     super.initState();
   }
 
@@ -61,16 +61,16 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                   : ListView.builder(
                       shrinkWrap: true,
                       padding: EdgeInsets.symmetric(vertical: 2.h),
-                      itemCount: controller.propertyUnitInfo.cities.length,
+                      itemCount: controller.propertyUnitInfo!.cities!.length,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
                             print(controller
-                                .propertyUnitInfo.cities[index].unitID);
+                                .propertyUnitInfo!.cities![index].unitID);
                             Get.to(
                               () => LandlordPropertyUnitInfoDetails(
                                 unitID: controller
-                                    .propertyUnitInfo.cities[index].unitID
+                                    .propertyUnitInfo!.cities![index].unitID
                                     .toString(),
                               ),
                             );
@@ -193,13 +193,13 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                               .getLanguage() ==
                                                           1
                                                       ? controller
-                                                              .propertyUnitInfo
-                                                              .cities[index]
+                                                              .propertyUnitInfo!
+                                                              .cities![index]
                                                               .propertyName ??
                                                           ''
                                                       : controller
-                                                              .propertyUnitInfo
-                                                              .cities[index]
+                                                              .propertyUnitInfo!
+                                                              .cities![index]
                                                               .propertyNameAR ??
                                                           '',
                                                   style: AppTextStyle
@@ -226,8 +226,8 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                         : Alignment.centerLeft,
                                                     child: Text(
                                                       controller
-                                                              .propertyUnitInfo
-                                                              .cities[index]
+                                                              .propertyUnitInfo!
+                                                              .cities![index]
                                                               .unitRefNo ??
                                                           '',
                                                       style: AppTextStyle
@@ -258,13 +258,13 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                                   .getLanguage() ==
                                                               1
                                                           ? controller
-                                                                  .propertyUnitInfo
-                                                                  .cities[index]
+                                                                  .propertyUnitInfo!
+                                                                  .cities![index]
                                                                   .unitType ??
                                                               ''
                                                           : controller
-                                                                  .propertyUnitInfo
-                                                                  .cities[index]
+                                                                  .propertyUnitInfo!
+                                                                  .cities![index]
                                                                   .unitTypeAR ??
                                                               '-',
                                                       style: AppTextStyle
@@ -291,7 +291,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                         ? Alignment.centerRight
                                                         : Alignment.centerLeft,
                                                     child: Text(
-                                                      "${AppMetaLabels().aed} ${controller.propertyUnitInfo.cities[index].currentRent ?? 0.0}",
+                                                      "${AppMetaLabels().aed} ${controller.propertyUnitInfo!.cities![index].currentRent ?? 0.0}",
                                                       style: AppTextStyle
                                                           .normalGrey11,
                                                     ),

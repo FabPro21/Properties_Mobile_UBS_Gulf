@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-AMCReportSummaryModel getAMCReportSUmmaryModelFromJson(String str) =>
-    AMCReportSummaryModel.fromJson(json.decode(str));
+AMCReportSummaryModel getAMCReportSUmmaryModelFromJson(String? str) =>
+    AMCReportSummaryModel.fromJson(json.decode(str!));
 
 class AMCReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   AMCReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  AMCReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  AMCReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,14 +28,14 @@ class AMCReportSummaryModel {
 }
 
 class ServiceRequests {
-  String ownerName;
-  String ownerNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String contractCategory;
-  String contractCategoryAR;
-  String contractor;
-  String contractorAR;
+  String? ownerName;
+  String? ownerNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? contractCategory;
+  String? contractCategoryAR;
+  String? contractor;
+  String? contractorAR;
   dynamic contractTotalAmount;
   dynamic contractValueUnPaid;
   dynamic contractAnnualAmount;
@@ -56,7 +56,7 @@ class ServiceRequests {
       this.paidAmount,
       this.balance});
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final contractTotalAmountFormat = NumberFormat('#,##0.00', 'AR');
     final contractValueUnPaidFormat = NumberFormat('#,##0.00', 'AR');
     final contractAnnualAmountFormat = NumberFormat('#,##0.00', 'AR');

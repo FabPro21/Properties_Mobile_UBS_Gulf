@@ -11,7 +11,7 @@ class PublicBookingRequestAgentServices {
 
     var data;
 
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {

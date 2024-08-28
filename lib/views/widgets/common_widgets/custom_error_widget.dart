@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +8,9 @@ import 'package:sizer/sizer.dart';
 class CustomErrorWidget extends StatelessWidget {
   final String errorText;
   final String errorImage;
-  final Function onRetry;
+  final VoidCallback? onRetry;
   const CustomErrorWidget(
-      {Key key,
+      {Key? key,
       this.errorText = '',
       this.errorImage = AppImagesPath.noDataFound,
       this.onRetry})

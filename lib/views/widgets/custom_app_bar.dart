@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomAppBar extends StatefulWidget {
-  final String title;
-  final String searchHint;
-  final TextEditingController searchTextController;
-  final Function(String) onSearchTextChanged;
-  final Function onRefreshPressed;
+  final String? title;
+  final String? searchHint;
+  final TextEditingController? searchTextController;
+  final Function(String)? onSearchTextChanged;
+  final VoidCallback? onRefreshPressed;
   const CustomAppBar({
-    Key key,
+    Key? key,
     @required this.title,
     this.searchHint,
     this.onSearchTextChanged,
@@ -38,15 +38,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(3.w, 8.h, 3.w, 4.h),
-                child: Text(widget.title, style: AppTextStyle.semiBoldWhite12),
+                child: Text(widget.title??"", style: AppTextStyle.semiBoldWhite12),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4.w),
                 child: SearchField(
-                  hint: widget.searchHint,
-                  searchController: widget.searchTextController,
-                  onChanged: widget.onSearchTextChanged,
-                  onPressed: widget.onRefreshPressed,
+                  hint: widget.searchHint??"",
+                  searchController: widget.searchTextController!,
+                  onChanged: widget.onSearchTextChanged!,
+                  onPressed: widget.onRefreshPressed!,
                 ),
               )
             ],

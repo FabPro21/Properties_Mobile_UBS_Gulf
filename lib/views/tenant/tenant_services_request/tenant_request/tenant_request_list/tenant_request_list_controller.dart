@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/tenant_models/get_tenant_service_requests_model.dart';
 import 'package:fap_properties/data/repository/tenant_repository.dart';
@@ -17,8 +19,8 @@ class GetTenantServiceRequestsController extends GetxController {
   RxString onSearch = "".obs;
   RxString errorFM = "".obs;
 
-  DateTime fromDate;
-  DateTime toDate;
+  DateTime? fromDate;
+  DateTime? toDate;
 
   void getData() {
     getDataPM('');
@@ -109,24 +111,24 @@ class GetTenantServiceRequestsController extends GetxController {
       serviceRequestsFM.clear();
       for (int i = 0; i < allSvcReqFM.length; i++) {
         if ((allSvcReqFM[i].requestNo.toString().contains(q) ||
-                allSvcReqFM[i].category.toLowerCase().contains(q) ||
-                allSvcReqFM[i].categoryAR.toLowerCase().contains(q) ||
-                allSvcReqFM[i].subCategory.toLowerCase().contains(q) ||
-                allSvcReqFM[i].subCategoryAR.toLowerCase().contains(q) ||
-                allSvcReqFM[i].propertyName.toLowerCase().contains(q) ||
-                allSvcReqFM[i].propertyNameAr.toLowerCase().contains(q) ||
-                allSvcReqFM[i].status.toLowerCase().contains(q) ||
+                allSvcReqFM[i].category!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].categoryAR!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].subCategory!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].subCategoryAR!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].propertyName!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].propertyNameAr!.toLowerCase().contains(q) ||
+                allSvcReqFM[i].status!.toLowerCase().contains(q) ||
                 allSvcReqFM[i]
-                    .statusAR
+                    .statusAR!
                     .toLowerCase()
                     .contains(q)) || // replace || instead of &&
             // allSvcReqFM[i].statusAR.toLowerCase().contains(q)) &&
             DateFormat('dd-MM-yyyy')
-                    .parse(allSvcReqFM[i].date)
-                    .isAfter(fromDate) &&
+                    .parse(allSvcReqFM[i].date??"")
+                    .isAfter(fromDate!) &&
                 DateFormat('dd-MM-yyyy')
-                    .parse(allSvcReqFM[i].date)
-                    .isBefore(toDate)) {
+                    .parse(allSvcReqFM[i].date??"")
+                    .isBefore(toDate!)) {
           print('Inside If of the FM func');
           serviceRequestsFM.add(allSvcReqFM[i]);
           update();
@@ -173,7 +175,7 @@ class GetTenantServiceRequestsController extends GetxController {
       print(result);
       loadingDataPM.value = false;
       if (result is GetTenantServiceRequestsModel) {
-        allSvcReqPM = result.serviceRequests;
+        allSvcReqPM = result.serviceRequests!;
         serviceRequestsPM = allSvcReqPM.toList();
         if (serviceRequestsPM.isEmpty) errorPM.value = AppMetaLabels().notFound;
       } else {
@@ -208,7 +210,7 @@ class GetTenantServiceRequestsController extends GetxController {
       print(result);
       loadingDataFM.value = false;
       if (result is GetTenantServiceRequestsModel) {
-        allSvcReqFM = result.serviceRequests;
+        allSvcReqFM = result.serviceRequests!;
         serviceRequestsFM = allSvcReqFM.toList();
         if (serviceRequestsFM.isEmpty) errorFM.value = AppMetaLabels().notFound;
       } else {
@@ -267,20 +269,20 @@ class GetTenantServiceRequestsController extends GetxController {
       serviceRequestsPM.clear();
       for (int i = 0; i < allSvcReqPM.length; i++) {
         if ((allSvcReqPM[i].requestNo.toString().contains(q) ||
-                allSvcReqPM[i].category.toLowerCase().contains(q) ||
-                allSvcReqPM[i].categoryAR.toLowerCase().contains(q) ||
-                allSvcReqPM[i].subCategory.toLowerCase().contains(q) ||
-                allSvcReqPM[i].subCategoryAR.toLowerCase().contains(q) ||
-                allSvcReqPM[i].propertyName.toLowerCase().contains(q) ||
-                allSvcReqPM[i].propertyNameAr.toLowerCase().contains(q) ||
-                allSvcReqPM[i].status.toLowerCase().contains(q) ||
-                allSvcReqPM[i].statusAR.toLowerCase().contains(q)) ||
+                allSvcReqPM[i].category!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].categoryAR!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].subCategory!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].subCategoryAR!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].propertyName!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].propertyNameAr!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].status!.toLowerCase().contains(q) ||
+                allSvcReqPM[i].statusAR!.toLowerCase().contains(q)) ||
             DateFormat('dd-MM-yyyy')
-                    .parse(allSvcReqPM[i].date)
-                    .isAfter(fromDate) &&
+                    .parse(allSvcReqPM[i].date??"")
+                    .isAfter(fromDate!) &&
                 DateFormat('dd-MM-yyyy')
-                    .parse(allSvcReqPM[i].date)
-                    .isBefore(toDate)) {
+                    .parse(allSvcReqPM[i].date??"")
+                    .isBefore(toDate!)) {
           // if ((allSvcReqPM[i].requestNo.toString().contains(q) ||
           //         allSvcReqPM[i].category.toLowerCase().contains(q) ||
           //         allSvcReqPM[i].categoryAR.toLowerCase().contains(q) ||

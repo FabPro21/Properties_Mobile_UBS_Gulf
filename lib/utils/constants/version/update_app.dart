@@ -14,10 +14,10 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class AppUpdate extends StatefulWidget {
-  final String appVersion;
-  final String availableVersion;
+  final String? appVersion;
+  final String? availableVersion;
   const AppUpdate(
-      {Key key, @required this.appVersion, @required this.availableVersion})
+      {Key? key, @required this.appVersion, @required this.availableVersion})
       : super(key: key);
 
   @override

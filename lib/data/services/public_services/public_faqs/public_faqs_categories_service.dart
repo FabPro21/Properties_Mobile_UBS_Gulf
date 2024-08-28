@@ -9,7 +9,7 @@ class PublicFaqsCategoriesSerice {
   static Future<dynamic> getPublicFaqsCatg() async {
     var url = AppConfig().getPublicFaqsCatg;
 
-    var response = await BaseClientClass.post(url, {},
+    var response = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {

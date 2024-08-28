@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:fap_properties/data/models/tenant_models/service_request/get_ticket_replies_model.dart';
@@ -17,11 +19,12 @@ import '../../../../../utils/styles/colors.dart';
 import '../tenant_request_details_controller.dart';
 
 class TenantServiceUpdatesController extends GetxController {
-  TenantServiceUpdatesController({this.reqNo});
-  String reqNo;
+ late final String? reqNo;
+  TenantServiceUpdatesController( this.reqNo);
+
   RxBool gettingReplies = false.obs;
   String errorGettingReplies = '';
-  GetTicketRepliesModel ticketReplies;
+  GetTicketRepliesModel? ticketReplies;
 
   RxBool typing = false.obs;
   RxBool addingReply = false.obs;
@@ -47,7 +50,7 @@ class TenantServiceUpdatesController extends GetxController {
   void getTicketReplies() async {
     chatUpdate = true;
     gettingReplies.value = true;
-    var resp = await TenantRepository.getTicketReplies(reqNo);
+    var resp = await TenantRepository.getTicketReplies(reqNo!);
     if (resp is GetTicketRepliesModel) {
       ticketReplies = resp;
       updateChat();
@@ -58,7 +61,7 @@ class TenantServiceUpdatesController extends GetxController {
   }
 
   Future updateChat() async {
-    var resp = await TenantRepository.getTicketReplies(reqNo);
+    var resp = await TenantRepository.getTicketReplies(reqNo!);
     if (resp is GetTicketRepliesModel) {
       ticketReplies = resp;
     }
@@ -71,13 +74,13 @@ class TenantServiceUpdatesController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await TenantRepository.addTicketReply(
-        reqNo, message, fileToUpload.value.path);
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies.value = true;
       final format = DateFormat('dd-MM-yyyy HH:mm a');
       String dateTime = format.format(DateTime.now());
-      ticketReplies.ticketReply.add(TicketReply(
+      ticketReplies!.ticketReply!.add(TicketReply(
           reply: message,
           dateTime: dateTime,
           userId: 123,
@@ -98,13 +101,13 @@ class TenantServiceUpdatesController extends GetxController {
 
   // void downloadFilebase64(int index) async {
   //   isLoadingDownload.value = true;
-  //   if (ticketReplies.ticketReply[index].path != null) {
-  //     OpenFile.open(ticketReplies.ticketReply[index].path);
+  //   if (ticketReplies!.ticketReply[index].path != null) {
+  //     OpenFile.open(ticketReplies!.ticketReply[index].path);
   //     isLoadingDownload.value = false;
   //   } else {
-  //     ticketReplies.ticketReply[index].downloadingFile.value = true;
+  //     ticketReplies!.ticketReply[index].downloadingFile.value = true;
   //     var result = await TenantRepository.downloadTicketFile(
-  //         ticketReplies.ticketReply[index].ticketReplyId);
+  //         ticketReplies!.ticketReply[index].ticketReplyId);
   //     print('::::::__>>>>Download<<<<___:::::::');
 
   //     await saveFileInsideTheDevice(result);
@@ -116,23 +119,23 @@ class TenantServiceUpdatesController extends GetxController {
   // old one which is working fine
   void downloadFile(int index) async {
     isLoadingDownload.value = true;
-    if (ticketReplies.ticketReply[index].path != null) {
-      OpenFile.open(ticketReplies.ticketReply[index].path);
+    if (ticketReplies!.ticketReply![index].path != null) {
+      OpenFile.open(ticketReplies!.ticketReply![index].path);
       isLoadingDownload.value = false;
     } else {
-      ticketReplies.ticketReply[index].downloadingFile.value = true;
+      ticketReplies!.ticketReply![index].downloadingFile!.value = true;
       var result = await TenantRepository.downloadTicketFile(
-          ticketReplies.ticketReply[index].ticketReplyId);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? -1);
       print('::::::__>>>>Download<<<<___:::::::');
-      // ticketReplies.ticketReply[index].downloadingFile.value = false;
+      // ticketReplies!.ticketReply[index].downloadingFile.value = false;
       if (result is Uint8List) {
         if (await getStoragePermission()) {
           String path = await createFile(
-              result, ticketReplies.ticketReply[index].fileName);
+              result, ticketReplies!.ticketReply![index].fileName ?? "");
           print('Path :::: $path');
           try {
-            OpenResult result = await OpenFile.open(path);
-            ticketReplies.ticketReply[index].downloadingFile.value = false;
+            final result = await OpenFile.open(path);
+            ticketReplies!.ticketReply![index].downloadingFile!.value = false;
             isLoadingDownload.value = false;
             if (result.message != 'done') {
               Get.snackbar(
@@ -142,7 +145,7 @@ class TenantServiceUpdatesController extends GetxController {
               );
             }
           } catch (e) {
-            ticketReplies.ticketReply[index].downloadingFile.value = false;
+            ticketReplies!.ticketReply![index].downloadingFile!.value = false;
             isLoadingDownload.value = false;
             print(e);
             Get.snackbar(
@@ -152,10 +155,10 @@ class TenantServiceUpdatesController extends GetxController {
             );
           }
         }
-        ticketReplies.ticketReply[index].downloadingFile.value = false;
+        ticketReplies!.ticketReply![index].downloadingFile!.value = false;
         isLoadingDownload.value = false;
       } else {
-        ticketReplies.ticketReply[index].downloadingFile.value = false;
+        ticketReplies!.ticketReply![index].downloadingFile!.value = false;
         isLoadingDownload.value = false;
         Get.snackbar(
           AppMetaLabels().error,
@@ -168,8 +171,8 @@ class TenantServiceUpdatesController extends GetxController {
   }
 
   pickFile() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles();
-    print('Extension of file :::  ${result.files[0].extension}');
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    print('Extension of file :::  ${result!.files[0].extension}');
 
     // 112233 checking file extension
     if (!CheckFileExtenstion().checkFileExtFunc(result)) {
@@ -181,7 +184,7 @@ class TenantServiceUpdatesController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path);
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // 112233 checking file size file

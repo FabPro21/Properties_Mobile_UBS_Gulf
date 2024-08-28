@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomAppBar2 extends StatelessWidget {
-  final String title;
-  final Function onBackPressed;
+  final String? title;
+  final Function? onBackPressed;
   const CustomAppBar2({
-    Key key,
+    Key? key,
     @required this.title,
     this.onBackPressed,
   }) : super(key: key);
@@ -51,14 +51,14 @@ class CustomAppBar2 extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (onBackPressed != null)
-                        onBackPressed();
+                        onBackPressed!();
                       else
                         Get.back();
                     },
                   ),
                   Expanded(
                     child: Text(
-                      title,
+                      title!,
                       style: AppTextStyle.semiBoldWhite14,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
@@ -78,10 +78,10 @@ class CustomAppBar2 extends StatelessWidget {
 }
 
 class CustomAppBar2ForVendorTechniance extends StatelessWidget {
-  final String title;
-  final Function onBackPressed;
+  final String? title;
+  final Function? onBackPressed;
   const CustomAppBar2ForVendorTechniance({
-    Key key,
+    Key? key,
     @required this.title,
     this.onBackPressed,
   }) : super(key: key);
@@ -125,12 +125,12 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
                           ),
                           onPressed: () {
                             if (onBackPressed != null)
-                              onBackPressed();
+                              onBackPressed!();
                             else
                               Get.back();
                           },
                         ),
-                  Text(title, style: AppTextStyle.semiBoldWhite14),
+                  Text(title!, style: AppTextStyle.semiBoldWhite14),
                   SizedBox(
                     width: 5.h,
                   )

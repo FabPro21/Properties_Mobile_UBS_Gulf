@@ -13,7 +13,7 @@ import '../../../../data/helpers/session_controller.dart';
 import '../../../../utils/constants/assets_path.dart';
 
 class PublicOffers extends StatefulWidget {
-  const PublicOffers({Key key}) : super(key: key);
+  const PublicOffers({Key? key}) : super(key: key);
 
   @override
   _PublicOffersState createState() => _PublicOffersState();
@@ -78,7 +78,7 @@ class _PublicOffersState extends State<PublicOffers> {
                                       onTap: () {
                                         Get.to(() => PublicOfferDetails(
                                             offerId: _controller.offers.value
-                                                .record[index].offerid
+                                                .record![index].offerid
                                                 .toString()));
                                       },
                                       child: Row(children: [
@@ -86,13 +86,11 @@ class _PublicOffersState extends State<PublicOffers> {
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? _controller.offers.value
-                                                        .record[index].title
-                                                        .trim() ??
-                                                    ""
+                                                    .record![index].title!
+                                                    .trim()
                                                 : _controller.offers.value
-                                                        .record[index].titleAr
-                                                        .trim() ??
-                                                    "",
+                                                    .record![index].titleAr!
+                                                    .trim(),
                                             style:
                                                 AppTextStyle.semiBoldBlack13),
                                         Spacer(),

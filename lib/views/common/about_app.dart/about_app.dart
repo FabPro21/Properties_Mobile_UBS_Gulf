@@ -8,7 +8,7 @@ import 'dart:ui' as ui;
 import '../../widgets/custom_app_bar2.dart';
 
 class AboutApp extends StatelessWidget {
-  AboutApp({Key key}) : super(key: key);
+  AboutApp({Key? key}) : super(key: key);
 
   final controller = Get.put(AboutAppController());
 

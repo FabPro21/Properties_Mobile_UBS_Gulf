@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -22,7 +24,7 @@ import 'package:flutter/material.dart';
 class VendorInvoiceDocsController extends GetxController {
   VendorInvoiceDocsController({this.caseNo});
   final controller = Get.find<VendorInvoiceDetailsController>();
-  String caseNo;
+  String? caseNo;
   // isDocUploaded for restrict the user to select the other document pla upload karny sy
   RxList isDocUploaded = [].obs;
   RxBool loadingDocs = false.obs;
@@ -90,7 +92,7 @@ class VendorInvoiceDocsController extends GetxController {
   pickDoc(int index, BuildContext context) async {
     try {
       docs[index].loading.value = true;
-      FilePickerResult result =
+      FilePickerResult? result =
           await FilePicker.platform.pickFiles(allowedExtensions: [
         'pdf',
         'jpeg',
@@ -100,7 +102,7 @@ class VendorInvoiceDocsController extends GetxController {
 
       docs[index].loading.value = false;
 
-      if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+      if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -110,14 +112,14 @@ class VendorInvoiceDocsController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path);
+        File file = File(result.files.single.path??"");
         var byteFile = await file.readAsBytes();
 
         Uint8List editedImage;
         // if doc's extension will .pdf then will not compress or crop
         // if doc's extension will jpg,png or jpeg then will edit and crop
-        if (p.extension(result.files.single.path) == 'pdf' ||
-            p.extension(result.files.single.path) == '.pdf') {
+        if (p.extension(result.files.single.path??"") == 'pdf' ||
+            p.extension(result.files.single.path??"") == '.pdf') {
         } else {
           // crop the image
           editedImage = await Get.to(() => ImageCropper(
@@ -146,7 +148,7 @@ class VendorInvoiceDocsController extends GetxController {
             ? docs[index].name ?? ""
             : docs[index].nameAr ?? "";
         File fileNew = await File(
-                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path)}')
+                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path??"")}')
             .create();
 
         // controller.docs[index].path
@@ -174,11 +176,11 @@ class VendorInvoiceDocsController extends GetxController {
       docs[index].loading.value = true;
       // old one
       final ImagePicker _picker = ImagePicker();
-      XFile result = await _picker.pickImage(source: ImageSource.camera);
+      XFile? result = await _picker.pickImage(source: ImageSource.camera);
 
       docs[index].loading.value = false;
 
-      if (!CheckFileExtenstion().checkImageExtFunc(result.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -258,10 +260,10 @@ class VendorInvoiceDocsController extends GetxController {
       isEnableScreen.value = false;
       var resp = await VendorRepository.uploadFileInvoiceSR(
           caseNo,
-          docs[index].path,
-          docs[index].name,
+          docs[index].path??"",
+          docs[index].name??"",
           '',
-          docs[index].documentTypeId,
+          docs[index].documentTypeId??0,
           reqID);
       var id = resp['photoId'];
       docs[index].id = id;
@@ -292,7 +294,7 @@ class VendorInvoiceDocsController extends GetxController {
       docs[index].errorLoading = false;
       isEnableScreen.value = false;
       var resp = await VendorRepository.updateFile(
-          docs[index].id, docs[index].path, '');
+          docs[index].id??0, docs[index].path??"", '');
       if (resp == 200) {
         docs[index].isRejected = false;
         enableSubmitButton();
@@ -340,10 +342,10 @@ class VendorInvoiceDocsController extends GetxController {
     docs[index].loading.value = true;
     isEnableScreen.value = false;
 
-    var resp = await VendorRepository.downloadDoc(caseNo, 3, docs[index].id);
+    var resp = await VendorRepository.downloadDoc(caseNo, 3, docs[index].id??0);
     docs[index].loading.value = false;
     if (resp is Uint8List) {
-      if (!docs[index].isRejected) docs[index].file = resp;
+      if (!docs[index].isRejected!) docs[index].file = resp;
       showFile(docs[index]);
     } else {
       SnakBarWidget.getSnackBarSuccess(
@@ -377,7 +379,7 @@ class VendorInvoiceDocsController extends GetxController {
   Future<String> saveFile(DocFile reqFile) async {
     final path = await getTemporaryDirectory();
     final file = File("${path.path}/${reqFile.name}${reqFile.type}");
-    await file.writeAsBytes(reqFile.file);
+    await file.writeAsBytes(reqFile.file!);
     return file.path;
   }
 }

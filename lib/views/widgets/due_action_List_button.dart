@@ -9,27 +9,27 @@ import '../../utils/styles/colors.dart';
 import '../../utils/styles/text_styles.dart';
 
 class DueActionListButton extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final bool loading;
-  final String srNo;
+  final Function? onPressed;
+  final String? text;
+  final bool? loading;
+  final String? srNo;
   const DueActionListButton(
-      {Key key, this.onPressed, this.text, this.loading = false, this.srNo})
+      {Key? key, this.onPressed, this.text, this.loading = false, this.srNo})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: loading
+      onTap: loading!
           ? null
           : () {
-              onPressed();
+              onPressed!();
             },
       child: Row(
         children: <Widget>[
           StepNoWidget(
-            label: srNo,
-            tooltip: text,
+            label: srNo!,
+            tooltip: text!,
             color: AppColors.blueColor2,
             textColor: AppColors.blueColor,
           ),
@@ -53,7 +53,7 @@ class DueActionListButton extends StatelessWidget {
                   alignment: Alignment.center,
                   child: RotatedBox(
                     quarterTurns: 3,
-                    child: loading
+                    child: loading!
                         ? AnimatedTextKit(
                             isRepeatingAnimation: true,
                             repeatForever: true,

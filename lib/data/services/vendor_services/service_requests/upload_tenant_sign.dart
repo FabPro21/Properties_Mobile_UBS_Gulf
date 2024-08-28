@@ -14,7 +14,7 @@ class UploadTenantSign {
       'CaseNo': encriptdatasingle(reqNo).toString(),
     };
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());

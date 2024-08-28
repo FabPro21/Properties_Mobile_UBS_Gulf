@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-CaseSubCategoryModel caseSubCategoryModelFromJson(String str) =>
-    CaseSubCategoryModel.fromJson(json.decode(str));
+CaseSubCategoryModel caseSubCategoryModelFromJson(String? str) =>
+    CaseSubCategoryModel.fromJson(json.decode(str!));
 
-String caseSubCategoryModelToJson(CaseSubCategoryModel data) =>
+String? caseSubCategoryModelToJson(CaseSubCategoryModel data) =>
     json.encode(data.toJson());
 
 class CaseSubCategoryModel {
@@ -17,11 +17,11 @@ class CaseSubCategoryModel {
     this.message,
   });
 
-  String status;
-  List<CaseSubCategory> caseSubCategories;
-  String message;
+  String? status;
+  List<CaseSubCategory>? caseSubCategories;
+  String? message;
 
-  factory CaseSubCategoryModel.fromJson(Map<String, dynamic> json) =>
+  factory CaseSubCategoryModel.fromJson(Map<String?, dynamic> json) =>
       CaseSubCategoryModel(
         status: json["status"],
         caseSubCategories: List<CaseSubCategory>.from(
@@ -29,10 +29,10 @@ class CaseSubCategoryModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "caseSubCategories":
-            List<dynamic>.from(caseSubCategories.map((x) => x.toJson())),
+            List<dynamic>.from(caseSubCategories!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -45,17 +45,17 @@ class CaseSubCategory {
   });
 
   dynamic id;
-  String name;
-  String nameAR;
+  String? name;
+  String? nameAR;
 
-  factory CaseSubCategory.fromJson(Map<String, dynamic> json) =>
+  factory CaseSubCategory.fromJson(Map<String?, dynamic> json) =>
       CaseSubCategory(
         id: json["id"],
         name: json["name"],
         nameAR: json["nameAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "id": id,
         "name": name,
         "nameAR": nameAR,

@@ -8,7 +8,7 @@ class VendorDashboardAllInvoicesServices {
     var data = {"search": '', "pageNo": '1', "pageSize": '20'};
     var url = AppConfig().vendorDashboardAllInvoces;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var allInvoices = vendorDashboardAllInvoicesModelFromJson(response.body);
       return allInvoices;
@@ -20,7 +20,7 @@ class VendorDashboardAllInvoicesServices {
     var data = {"search": searchtext, "pageNo": pageNoP, "pageSize": '20'};
     var url = AppConfig().vendorDashboardAllInvoces;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var allInvoices = vendorDashboardAllInvoicesModelFromJson(response.body);
       return allInvoices;

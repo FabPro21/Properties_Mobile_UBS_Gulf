@@ -7,7 +7,7 @@ class TenantFaqsSerice {
   static Future<dynamic> getFaqsCatg() async {
     var url = AppConfig().getTenantFaqsCatg;
 
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       TenantFaqsModel getModel = tenantFaqsModelFromJson(response.body);

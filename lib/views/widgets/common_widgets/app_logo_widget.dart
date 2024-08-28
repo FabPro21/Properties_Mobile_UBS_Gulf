@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class AppLogo extends StatelessWidget {
-  const AppLogo({Key key}) : super(key: key);
+  const AppLogo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

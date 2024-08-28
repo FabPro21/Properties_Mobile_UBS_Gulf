@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorLpoStatusFilter extends StatefulWidget {
-  const VendorLpoStatusFilter({Key key}) : super(key: key);
+  const VendorLpoStatusFilter({Key? key}) : super(key: key);
 
   @override
   _VendorLpoStatusFilterState createState() => _VendorLpoStatusFilterState();
@@ -92,7 +92,7 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                                         onTap: () {
                                           Get.back(
                                               result: _controller.lpoStatusModel
-                                                  .value.lpoStatus[index]);
+                                                  .value.lpoStatus![index]);
                                         },
                                         child: Column(
                                           crossAxisAlignment:
@@ -103,15 +103,17 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                                                         .getLanguage() ==
                                                     1
                                                 ? _controller
-                                                    .lpoStatusModel
-                                                    .value
-                                                    .lpoStatus[index]
-                                                    .lpoStatusName
+                                                        .lpoStatusModel
+                                                        .value
+                                                        .lpoStatus![index]
+                                                        .lpoStatusName ??
+                                                    ""
                                                 : _controller
-                                                    .lpoStatusModel
-                                                    .value
-                                                    .lpoStatus[index]
-                                                    .lpoStatusNameAr),
+                                                        .lpoStatusModel
+                                                        .value
+                                                        .lpoStatus![index]
+                                                        .lpoStatusNameAr ??
+                                                    ""),
                                             SizedBox(height: 2.0.h),
                                             SizedBox(height: 1.0.h),
                                           ],

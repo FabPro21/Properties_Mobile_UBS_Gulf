@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:async';
 import 'dart:io' as io;
 import 'package:apple_maps_flutter/apple_maps_flutter.dart';
@@ -23,9 +25,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 
 class GetPropertyDetails extends StatefulWidget {
-  final int unitId;
-  final int index;
-  GetPropertyDetails({Key key, this.unitId, this.index}) : super(key: key);
+  final int? unitId;
+  final int? index;
+  GetPropertyDetails({Key? key, this.unitId, this.index}) : super(key: key);
 
   @override
   State<GetPropertyDetails> createState() => _GetPropertyDetailsState();
@@ -42,50 +44,51 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
   void onMapCreated(Gm.GoogleMapController controller) {
     // mapController = _mapsController;
 
-    // print("lat log is ===> ${gPDController.data.value.property.latitude} ====${gPDController.data.value.property.longitude}");
+    // print("lat log is ===> ${gPDController.data.value.property!.latitude} ====${gPDController.data.value.property!.longitude}");
     final marker = Gm.Marker(
-      markerId: Gm.MarkerId(gPDController.data.value.property.propertyName),
+      markerId:
+          Gm.MarkerId(gPDController.data.value.property!.propertyName ?? ""),
       position: Gm.LatLng(
-          gPDController.data.value.property.latitude == null
+          gPDController.data.value.property!.latitude == null
               ? 0.0
-              : double.parse(gPDController.data.value.property.latitude ?? ""),
-          gPDController.data.value.property.longitude == null
+              : double.parse(gPDController.data.value.property!.latitude ?? ""),
+          gPDController.data.value.property!.longitude == null
               ? 0.0
               : double.parse(
-                  gPDController.data.value.property.longitude ?? "")),
+                  gPDController.data.value.property!.longitude ?? "")),
       // icon: BitmapDescriptor.,
       infoWindow: Gm.InfoWindow(
-        title: gPDController.data.value.property.propertyName,
+        title: gPDController.data.value.property!.propertyName,
         anchor: Offset(0.5, 0.5),
         //snippet: 'address',
       ),
     );
     setState(() {
-      markers[Gm.MarkerId(gPDController.data.value.property.propertyName)] =
-          marker;
+      markers[Gm.MarkerId(
+          gPDController.data.value.property!.propertyName ?? "")] = marker;
     });
   }
 
   Set<Annotation> _createAnnotation() {
-    var lat = gPDController.data.value.property.latitude == null
+    var lat = gPDController.data.value.property!.latitude == null
         ? 0.0
-        : double.parse(gPDController.data.value.property.latitude);
-    var lng = gPDController.data.value.property.longitude == null
+        : double.parse(gPDController.data.value.property!.latitude!);
+    var lng = gPDController.data.value.property!.longitude == null
         ? 0.0
-        : double.parse(gPDController.data.value.property.longitude);
+        : double.parse(gPDController.data.value.property!.longitude!);
     return <Annotation>[
       Annotation(
-          annotationId:
-              AnnotationId("${gPDController.data.value.property.propertyName}"),
+          annotationId: AnnotationId(
+              "${gPDController.data.value.property!.propertyName}"),
           position: LatLng(lat, lng),
           icon: BitmapDescriptor.markerAnnotation,
           infoWindow: InfoWindow(
             snippet: SessionController().getLanguage() == 1
-                ? gPDController.data.value.property.address ?? ""
-                : gPDController.data.value.property.addressAr ?? "",
+                ? gPDController.data.value.property!.address ?? ""
+                : gPDController.data.value.property!.addressAr ?? "",
             title: SessionController().getLanguage() == 1
-                ? gPDController.data.value.property.propertyName ?? ""
-                : gPDController.data.value.property.propertyNameAr ?? "",
+                ? gPDController.data.value.property!.propertyName ?? ""
+                : gPDController.data.value.property!.propertyNameAr ?? "",
           )),
     ].toSet();
   }
@@ -95,9 +98,9 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
     return Obx(() {
       final paidFormatter = intl.NumberFormat('#,##0.00', 'AR');
       String price = '';
-      if (gPDController.data.value.property != null)
+      if (gPDController.data.value.property! != null)
         price =
-            "${AppMetaLabels().aed} ${paidFormatter.format(gPDController.data.value.property.amount ?? 0.0)}";
+            "${AppMetaLabels().aed} ${paidFormatter.format(gPDController.data.value.property!.amount ?? 0.0)}";
       return Directionality(
         textDirection: SessionController().getLanguage() == 1
             ? TextDirection.ltr
@@ -227,8 +230,9 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               width: 100.0.w,
                                               color: Colors.grey[300],
                                               child: StreamBuilder<Uint8List>(
-                                                stream: sPRController
-                                                    .getUnitImage(widget.index),
+                                                stream:
+                                                    sPRController.getUnitImage(
+                                                        widget.index!),
                                                 builder: (
                                                   BuildContext context,
                                                   AsyncSnapshot<Uint8List>
@@ -280,7 +284,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                   }
                                                   if (snapshot.hasData) {
                                                     return Image.memory(
-                                                        snapshot.data,
+                                                        snapshot.data!,
                                                         fit: BoxFit.cover);
                                                   } else {
                                                     return Center(
@@ -310,13 +314,13 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                       ? gPDController
                                                               .data
                                                               .value
-                                                              .property
+                                                              .property!
                                                               .propertyName ??
                                                           ""
                                                       : gPDController
                                                               .data
                                                               .value
-                                                              .property
+                                                              .property!
                                                               .propertyNameAr ??
                                                           "",
                                                   overflow:
@@ -338,7 +342,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                   Spacer(),
                                                   Text(
                                                     gPDController.data.value
-                                                        .property.unitRefNo,
+                                                        .property!.unitRefNo!,
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
@@ -394,13 +398,13 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                             ? gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitCategoryName ??
                                                                 ""
                                                             : gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitCategoryNameAr ??
                                                                 "",
                                                       ),
@@ -413,13 +417,13 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                             ? gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitType ??
                                                                 ""
                                                             : gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitTypeAR ??
                                                                 "",
                                                       ),
@@ -432,13 +436,13 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                             ? gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitView ??
                                                                 ""
                                                             : gPDController
                                                                     .data
                                                                     .value
-                                                                    .property
+                                                                    .property!
                                                                     .unitViewAR ??
                                                                 "",
                                                       ),
@@ -464,7 +468,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               //           gPDController
                                               //               .data
                                               //               .value
-                                              //               .property
+                                              //               .property!
                                               //               .landlordName[0],
                                               //           style: AppTextStyle
                                               //               .semiBoldWhite14,
@@ -483,7 +487,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               //             gPDController
                                               //                     .data
                                               //                     .value
-                                              //                     .property
+                                              //                     .property!
                                               //                     .landlordName ??
                                               //                 "",
                                               //             style: AppTextStyle
@@ -503,7 +507,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               if (gPDController
                                                       .data
                                                       .value
-                                                      .property
+                                                      .property!
                                                       .unitCategoryName ==
                                                   'Residential')
                                                 Container(
@@ -532,12 +536,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .bedRooms,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .bedRooms
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .bedRooms
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .start),
@@ -547,12 +550,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .kitchens,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .noofKitchens
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .noofKitchens
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .center),
@@ -562,12 +564,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .maidRooms,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .maidRooms
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .maidRooms
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .end),
@@ -584,12 +585,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .livingRooms,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .noofLivingRooms
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .noofLivingRooms
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .start),
@@ -599,12 +599,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .balconies,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .noofBalconies
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .noofBalconies
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .center),
@@ -614,12 +613,11 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                                   AppMetaLabels()
                                                                       .washrooms,
                                                                   gPDController
-                                                                          .data
-                                                                          .value
-                                                                          .property
-                                                                          .noofWashrooms
-                                                                          .toString() ??
-                                                                      "",
+                                                                      .data
+                                                                      .value
+                                                                      .property!
+                                                                      .noofWashrooms
+                                                                      .toString(),
                                                                   alignment:
                                                                       CrossAxisAlignment
                                                                           .end),
@@ -695,17 +693,15 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                         ? gPDController
                                                                 .data
                                                                 .value
-                                                                .property
+                                                                .property!
                                                                 .address
-                                                                .toString() ??
-                                                            ""
+                                                                .toString() 
                                                         : gPDController
                                                                 .data
                                                                 .value
-                                                                .property
+                                                                .property!
                                                                 .addressAr
-                                                                .toString() ??
-                                                            "",
+                                                                .toString(),
                                                     style: AppTextStyle
                                                         .normalBlack10,
                                                     overflow:
@@ -790,7 +786,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                         property: gPDController
                                                             .data
                                                             .value
-                                                            .property,
+                                                            .property!,
                                                         index: widget.index,
                                                       ));
                                                 },

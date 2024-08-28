@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 GetVendorServiceRequestDetailsModel getVendorServiceRequestDetailsModelFromJson(
-        String str) =>
-    GetVendorServiceRequestDetailsModel.fromJson(json.decode(str));
+        String? str) =>
+    GetVendorServiceRequestDetailsModel.fromJson(json.decode(str!));
 
-String getVendorServiceRequestDetailsModelToJson(
+String? getVendorServiceRequestDetailsModelToJson(
         GetVendorServiceRequestDetailsModel data) =>
     json.encode(data.toJson());
 
@@ -21,14 +21,14 @@ class GetVendorServiceRequestDetailsModel {
     this.message,
   });
 
-  String status;
-  String statusAR;
-  Detail detail;
-  StatusInfo statusInfo;
-  String message;
+  String? status;
+  String? statusAR;
+  Detail? detail;
+  StatusInfo? statusInfo;
+  String? message;
 
   factory GetVendorServiceRequestDetailsModel.fromJson(
-          Map<String, dynamic> json) =>
+          Map<String?, dynamic> json) =>
       GetVendorServiceRequestDetailsModel(
         status: json["status"],
         statusAR: json["statusAR"],
@@ -37,10 +37,10 @@ class GetVendorServiceRequestDetailsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusAR": statusAR,
-        "detail": detail.toJson(),
+        "detail": detail!.toJson(),
         "message": message,
       };
 }
@@ -73,35 +73,35 @@ class Detail {
       this.contractorAcknowledged,
       this.contractorRejected});
 
-  int caseNo;
-  String caseType;
-  String propertyName;
-  String propertyNameAr;
-  String date;
-  String time;
-  String contactTiming;
-  String contactName;
-  String contactPhone;
-  String otherContactName;
-  String otherContactPhone;
-  String initialAssesment;
-  String caseServiceLevel;
-  String description;
-  String status;
-  String statusAR;
-  String language;
-  int units;
-  String category;
-  String categoryAR;
-  String subCategory;
-  String subcategoryAR;
-  String unitRefNo;
-  bool contractorAcknowledged;
-  bool contractorRejected;
+  int? caseNo;
+  String? caseType;
+  String? propertyName;
+  String? propertyNameAr;
+  String? date;
+  String? time;
+  String? contactTiming;
+  String? contactName;
+  String? contactPhone;
+  String? otherContactName;
+  String? otherContactPhone;
+  String? initialAssesment;
+  String? caseServiceLevel;
+  String? description;
+  String? status;
+  String? statusAR;
+  String? language;
+  int? units;
+  String? category;
+  String? categoryAR;
+  String? subCategory;
+  String? subcategoryAR;
+  String? unitRefNo;
+  bool? contractorAcknowledged;
+  bool? contractorRejected;
 
-  factory Detail.fromJson(Map<String, dynamic> json) {
-    String otherContactName = json["contactPersonName"];
-    String otherContactPhone = json["contactPersonMobile"];
+  factory Detail.fromJson(Map<String?, dynamic> json) {
+    String? otherContactName = json["contactPersonName"];
+    String? otherContactPhone = json["contactPersonMobile"];
     if (otherContactName == '') otherContactName = null;
     if (otherContactPhone == '') otherContactPhone = null;
     return Detail(
@@ -132,7 +132,7 @@ class Detail {
         contractorRejected: json["contractorRejected"]);
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
         "caseType": caseType,
         "propertyName": propertyName,
@@ -155,15 +155,15 @@ class StatusInfo {
     this.canClose,
   });
 
-  bool requestClosed;
-  bool canClose;
+  bool? requestClosed;
+  bool? canClose;
 
-  factory StatusInfo.fromJson(Map<String, dynamic> json) => StatusInfo(
+  factory StatusInfo.fromJson(Map<String?, dynamic> json) => StatusInfo(
         requestClosed: json["requestClosed"],
         canClose: json["canClose"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "requestClosed": requestClosed,
         "canClose": canClose,
       };

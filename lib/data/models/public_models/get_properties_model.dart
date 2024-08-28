@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetPropertiesModel getPropertiesModelFromJson(String str) =>
-    GetPropertiesModel.fromJson(json.decode(str));
+GetPropertiesModel getPropertiesModelFromJson(String? str) =>
+    GetPropertiesModel.fromJson(json.decode(str!));
 
-String getPropertiesModelToJson(GetPropertiesModel data) =>
+String? getPropertiesModelToJson(GetPropertiesModel data) =>
     json.encode(data.toJson());
 
 class GetPropertiesModel {
@@ -18,12 +18,12 @@ class GetPropertiesModel {
     this.property,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<Property> property;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Property>? property;
 
-  factory GetPropertiesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetPropertiesModel.fromJson(Map<String?, dynamic> json) =>
       GetPropertiesModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetPropertiesModel {
             json["property"].map((x) => Property.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "property": List<dynamic>.from(property.map((x) => x.toJson())),
+        "property": List<dynamic>.from(property!.map((x) => x.toJson())),
       };
 }
 
@@ -69,13 +69,13 @@ class Property {
   dynamic bath;
   dynamic areaSize;
   dynamic premiumAmount;
-  int unitID;
-  String unitRefNo;
-  double rentPerAnnumMin;
-  String unitCategory;
-  String uom;
+  int? unitID;
+  String? unitRefNo;
+  double? rentPerAnnumMin;
+  String? unitCategory;
+  String? uom;
 
-  factory Property.fromJson(Map<String, dynamic> json) => Property(
+  factory Property.fromJson(Map<String?, dynamic> json) => Property(
       propertyId: json["propertyID"],
       propertyImage: json["propertyImage"],
       propertyName: json["propertyName"],
@@ -93,7 +93,7 @@ class Property {
       uom: json["uom"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyID": propertyId,
         "propertyImage": propertyImage,
         "propertyName": propertyName,

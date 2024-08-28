@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/landlord_models/landlord_invoice_model.dart';
 import 'package:fap_properties/data/repository/landlord_repository.dart';
@@ -38,8 +40,8 @@ class LandlordInvoicesController extends GetxController {
           loadingData.value = false;
         } else {
           allInvoicesData.value = result;
-          allInvoice = result.invoice.toList();
-          length = allInvoicesData.value.invoice.length;
+          allInvoice = result.invoice!.toList();
+          length = allInvoicesData.value.invoice!.length;
           update();
           loadingData.value = false;
         }
@@ -72,8 +74,8 @@ class LandlordInvoicesController extends GetxController {
         errorLoadMore.value = AppMetaLabels().noDatafound;
         loadingDataLoadMore.value = false;
       } else {
-        for (int i = 0; i < allInvoicesData.value.invoice.length; i++) {
-          allInvoice.add(allInvoicesData.value.invoice[i]);
+        for (int i = 0; i < allInvoicesData.value.invoice!.length; i++) {
+          allInvoice.add(allInvoicesData.value.invoice![i]);
         }
         length = allInvoice.length;
         update();
@@ -94,12 +96,12 @@ class LandlordInvoicesController extends GetxController {
       qry.toLowerCase();
       loadingData.value = true;
       allInvoice.clear();
-      for (int i = 0; i < allInvoicesData.value.invoice.length; i++) {
-        if (allInvoicesData.value.invoice[i].invoiceNumber.contains(qry) ||
-            allInvoicesData.value.invoice[i].statusName
+      for (int i = 0; i < allInvoicesData.value.invoice!.length; i++) {
+        if (allInvoicesData.value.invoice![i].invoiceNumber!.contains(qry) ||
+            allInvoicesData.value.invoice![i].statusName!
                 .toLowerCase()
                 .contains(qry)) {
-          allInvoice.add(allInvoicesData.value.invoice[i]);
+          allInvoice.add(allInvoicesData.value.invoice![i]);
         }
       }
       if (allInvoice.length == 0)

@@ -3,10 +3,10 @@ import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
+import 'package:fap_properties/views/vendor/lpos/lpo_details/lpo_details.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
-import 'package:fap_properties/views/vendor/lpos/lpo_details/lpo_details.dart';
 import 'package:fap_properties/views/vendor/vendor_dashboard/widgets/lop_widget_controller.dart';
 import 'package:fap_properties/views/widgets/common_widgets/status_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +16,8 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class LposWidget extends StatelessWidget {
-  final Function(int) manageLpos;
-  LposWidget({Key key, this.manageLpos}) : super(key: key);
+  final Function(int)? manageLpos;
+  LposWidget({Key? key, this.manageLpos}) : super(key: key);
   final getAllLpoWidgetController = Get.put(GetAllLpoWidgetController());
 
   String gAmount = "";
@@ -84,7 +84,7 @@ class LposWidget extends StatelessWidget {
                               double ga = getAllLpoWidgetController
                                   .getAllLposModel
                                   .value
-                                  .lpos[index]
+                                  .lpos![index]
                                   .grossAmount;
                               final gaFormatter =
                                   NumberFormat('#,##0.00', 'AR');
@@ -93,14 +93,14 @@ class LposWidget extends StatelessWidget {
                               double da = getAllLpoWidgetController
                                   .getAllLposModel
                                   .value
-                                  .lpos[index]
+                                  .lpos![index]
                                   .discountAmount;
                               final daFormatter =
                                   NumberFormat('#,##0.00', 'AR');
                               dAmount = daFormatter.format(da);
 
                               double na = getAllLpoWidgetController
-                                  .getAllLposModel.value.lpos[index].netAmount;
+                                  .getAllLposModel.value.lpos![index].netAmount;
                               final naFormatter =
                                   NumberFormat('#,##0.00', 'AR');
                               nAmount = naFormatter.format(na);
@@ -108,18 +108,18 @@ class LposWidget extends StatelessWidget {
                                 onTap: () {
                                   SessionController().setLpoId(
                                     getAllLpoWidgetController
-                                        .getAllLposModel.value.lpos[index].lpoId
+                                        .getAllLposModel.value.lpos![index].lpoId
                                         .toString(),
                                   );
                                   SessionController().setLpoRefNo(
                                     getAllLpoWidgetController.getAllLposModel
-                                        .value.lpos[index].lpoReference
+                                        .value.lpos![index].lpoReference
                                         .toString(),
                                   );
                                   Get.to(
                                     () => LpoDetails(
                                       lpo: getAllLpoWidgetController
-                                          .getAllLposModel.value.lpos[index],
+                                          .getAllLposModel.value.lpos![index],
                                     ),
                                   );
                                 },
@@ -139,8 +139,8 @@ class LposWidget extends StatelessWidget {
                                               getAllLpoWidgetController
                                                   .getAllLposModel
                                                   .value
-                                                  .lpos[index]
-                                                  .lpoReference,
+                                                  .lpos![index]
+                                                  .lpoReference??"",
                                             ),
                                           ),
                                           Padding(
@@ -154,7 +154,7 @@ class LposWidget extends StatelessWidget {
                                               getAllLpoWidgetController
                                                       .getAllLposModel
                                                       .value
-                                                      .lpos[index]
+                                                      .lpos![index]
                                                       .docReference ??
                                                   '',
                                             ),
@@ -173,13 +173,13 @@ class LposWidget extends StatelessWidget {
                                                   ? getAllLpoWidgetController
                                                           .getAllLposModel
                                                           .value
-                                                          .lpos[index]
+                                                          .lpos![index]
                                                           .lpoType ??
                                                       ""
                                                   : getAllLpoWidgetController
                                                           .getAllLposModel
                                                           .value
-                                                          .lpos[index]
+                                                          .lpos![index]
                                                           .lpoTypeAr ??
                                                       "",
                                             ),
@@ -195,8 +195,8 @@ class LposWidget extends StatelessWidget {
                                               getAllLpoWidgetController
                                                   .getAllLposModel
                                                   .value
-                                                  .lpos[index]
-                                                  .lpoDate,
+                                                  .lpos![index]
+                                                  .lpoDate??"",
                                             ),
                                           ),
                                           Padding(
@@ -244,19 +244,19 @@ class LposWidget extends StatelessWidget {
                                                       ? getAllLpoWidgetController
                                                           .getAllLposModel
                                                           .value
-                                                          .lpos[index]
+                                                          .lpos![index]
                                                           .lpoStatus
                                                       : getAllLpoWidgetController
                                                           .getAllLposModel
                                                           .value
-                                                          .lpos[index]
+                                                          .lpos![index]
                                                           .lpoStatusAr,
                                                   valueToCompare:
                                                       // 'Under Approval'
                                                       getAllLpoWidgetController
                                                           .getAllLposModel
                                                           .value
-                                                          .lpos[index]
+                                                          .lpos![index]
                                                           .lpoStatus,
                                                 ),
                                               ],
@@ -277,7 +277,7 @@ class LposWidget extends StatelessWidget {
                                                 ),
                                                 Spacer(),
                                                 Text(
-                                                  "${AppMetaLabels().aed} ${nAmount ?? 0.0}",
+                                                  "${AppMetaLabels().aed} ${nAmount}",
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
@@ -318,7 +318,7 @@ class LposWidget extends StatelessWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
                     onPressed: () {
-                      manageLpos(2);
+                      manageLpos!(2);
                     },
                     child: Text(
                       AppMetaLabels().viewAllLpos,

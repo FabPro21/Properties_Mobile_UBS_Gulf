@@ -36,7 +36,7 @@ class VendorPropertiesController extends GetxController {
           loadingData.value = false;
         } else {
           vendorProperty.value = result;
-          length = vendorProperty.value.contractProperties.length;
+          length = vendorProperty.value.contractProperties!.length;
           update();
           loadingData.value = false;
         }
@@ -53,7 +53,7 @@ class VendorPropertiesController extends GetxController {
   Stream<Uint8List> getImage(int index) async* {
     try {
       var resp = await VendorRepository.getPropertyImage(
-          vendorProperty.value.contractProperties[index].propertyId);
+          vendorProperty.value.contractProperties![index].propertyId);
       if (resp is Uint8List) {
         yield resp;
       } else {

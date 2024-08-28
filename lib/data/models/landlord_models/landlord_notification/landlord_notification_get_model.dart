@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetLandLordNotificationsModel getLandLordNotificationsModelFromJson(String str) =>
-    GetLandLordNotificationsModel.fromJson(json.decode(str));
+GetLandLordNotificationsModel getLandLordNotificationsModelFromJson(String? str) =>
+    GetLandLordNotificationsModel.fromJson(json.decode(str!));
 
-String getLandLordNotificationsModelToJson(GetLandLordNotificationsModel data) =>
+String? getLandLordNotificationsModelToJson(GetLandLordNotificationsModel data) =>
     json.encode(data.toJson());
 
 class GetLandLordNotificationsModel {
@@ -18,12 +18,12 @@ class GetLandLordNotificationsModel {
     this.message,
   });
 
-  String statusCode;
-  String status;
-  List<Notification> notifications;
-  String message;
+  String? statusCode;
+  String? status;
+  List<Notification>? notifications;
+  String? message;
 
-  factory GetLandLordNotificationsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLandLordNotificationsModel.fromJson(Map<String?, dynamic> json) =>
       GetLandLordNotificationsModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetLandLordNotificationsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "notifications":
-            List<dynamic>.from(notifications.map((x) => x.toJson())),
+            List<dynamic>.from(notifications!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -62,26 +62,26 @@ class Notification {
       this.titleAR,
       this.descriptionAR});
 
-  int notificationId;
-  String createdOn;
-  String currentStatus;
-  int notificationTypeId;
-  bool isRead;
-  String readOn;
-  bool sent;
-  String sentOn;
-  String batch;
-  int userId;
-  String userName;
-  String mobile;
-  String title;
-  String description;
-  String notificationType;
-  int totalRecords;
-  String titleAR;
-  String descriptionAR;
+  int? notificationId;
+  String? createdOn;
+  String? currentStatus;
+  int? notificationTypeId;
+  bool? isRead;
+  String? readOn;
+  bool? sent;
+  String? sentOn;
+  String? batch;
+  int? userId;
+  String? userName;
+  String? mobile;
+  String? title;
+  String? description;
+  String? notificationType;
+  int? totalRecords;
+  String? titleAR;
+  String? descriptionAR;
 
-  factory Notification.fromJson(Map<String, dynamic> json) => Notification(
+  factory Notification.fromJson(Map<String?, dynamic> json) => Notification(
       notificationId: json["notificationId"],
       createdOn: json["createdOn"],
       currentStatus: json["currentStatus"],
@@ -101,7 +101,7 @@ class Notification {
       titleAR: json["titleAR"],
       descriptionAR: json["descriptionAR"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "notificationId": notificationId,
         "createdOn": createdOn,
         "currentStatus": currentStatus,

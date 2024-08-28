@@ -7,7 +7,7 @@ class GetSurveyQuestionAnswers {
   static Future<dynamic> getData(int qId) async {
     var url =AppConfig().getSurveyQuestionAnswers;
 
-    var response = await BaseClientClass.post(url, {"QuestionId":qId.toString()});
+    var response = await BaseClientClass.post(url ?? "", {"QuestionId":qId.toString()});
     if (response is http.Response) {
       return surveyQuestionAnswersFromJson(response.body);
     }

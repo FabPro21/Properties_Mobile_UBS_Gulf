@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class SrNoWidget extends StatelessWidget {
   final dynamic text;
-  final Color background;
-  final double size;
-  final Color textColor;
+  final Color? background;
+  final double? size;
+  final Color? textColor;
   const SrNoWidget(
-      {Key key,
+      {Key? key,
       this.text = '',
       this.background = AppColors.chartlightBlueColor,
       this.size,

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_type_check
+
 import 'dart:developer';
 
 import 'package:fap_properties/data/models/landlord_models/landlord_contracts_model.dart';
@@ -22,7 +24,7 @@ class LandlordGetContractsServices {
     //   "pageNo": pageNo.toString()
     // };
     var response =
-        await BaseClientClass.post(AppConfig().getLandlordContracts, data);
+        await BaseClientClass.post(AppConfig().getLandlordContracts??"", data);
     // await BaseClientClass.post(AppConfig().getLandlordContracts, {});
     try {
       if (response is Response) {
@@ -49,7 +51,7 @@ class LandlordGetContractsServices {
       "propertyStausId": filterData.contractStatusId.toString(),
     };
     print(data);
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       try {
         if (response is Response) {

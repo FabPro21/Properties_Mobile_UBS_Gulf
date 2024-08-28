@@ -14,7 +14,7 @@ class PaymentsServices {
     };
     // var data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       final paymentsModel = contractPaymentModelFromJson(response.body);
       return paymentsModel;
@@ -31,7 +31,7 @@ class PaymentsServices {
     var data = {"Page": pageNo, "PageSize": 20.toString(), "SearchParam": ''};
     // var data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       final paymentsModel = contractPaymentModelFromJson(response.body);
       return paymentsModel;
@@ -47,7 +47,7 @@ class PaymentsServices {
       "PageSize": 20.toString(),
       "SearchParam": searchText
     };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       final paymentsModel = contractPaymentModelFromJson(response.body);
       return paymentsModel;

@@ -4,7 +4,7 @@ import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contra
 import 'package:get/get.dart';
 
 class LandlordContractsWidgetController extends GetxController {
-  LandlordContractsModel contractsModel;
+  LandlordContractsModel? contractsModel;
   RxBool loadingContracts = false.obs;
   String errorLoadingContracts = '';
   int length = 0;
@@ -23,8 +23,8 @@ class LandlordContractsWidgetController extends GetxController {
         await LandlordRepository.getContracts(controller.pageNo, '');
     if (response is LandlordContractsModel) {
       contractsModel = response;
-      if (contractsModel.data.length <= 3)
-        length = contractsModel.data.length;
+      if (contractsModel!.data!.length <= 3)
+        length = contractsModel!.data!.length;
       else
         length = 3;
     } else

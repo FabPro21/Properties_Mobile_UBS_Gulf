@@ -11,7 +11,7 @@ class GetLpoServices {
     var lpoId = SessionController().getLpoId();
     Map data = {"LpoId": lpoId};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         GetLpoServicesModel lpoServicesModel =

@@ -17,10 +17,10 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui' as ui;
 
 class VendorInvoiceDocumentsDetails extends StatefulWidget {
-  final String caseNo;
-  final String caller;
+  final String? caseNo;
+  final String? caller;
   VendorInvoiceDocumentsDetails({
-    Key key,
+    Key? key,
     this.caseNo,
     this.caller,
   }) : super(key: key) {
@@ -135,7 +135,7 @@ class _VendorInvoiceDocumentsDetailsState
                                                                           controller
                                                                               .docs[
                                                                                   index]
-                                                                              .isRejected
+                                                                              .isRejected!
                                                                       ? uploadFile(
                                                                           context,
                                                                           index)
@@ -315,7 +315,7 @@ class _VendorInvoiceDocumentsDetailsState
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (controller.docs[index].isRejected)
+                  if (controller.docs[index].isRejected!)
                     RichText(
                       text: TextSpan(
                           text: '${AppMetaLabels().your} ',
@@ -386,7 +386,7 @@ class _VendorInvoiceDocumentsDetailsState
                           )
                         : IconButton(
                             onPressed: () async {
-                              bool isTrue;
+                              bool? isTrue;
                               print(controller.isDocUploaded);
                               for (int i = 0;
                                   i < controller.isDocUploaded.length;
@@ -479,7 +479,7 @@ class _VendorInvoiceDocumentsDetailsState
                                                   // });
 
                                                   if (controller
-                                                      .docs[index].isRejected)
+                                                      .docs[index].isRejected!)
                                                     controller.updateDoc(index);
 
                                                   print(

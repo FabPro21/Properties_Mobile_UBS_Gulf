@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordReportEmirate extends StatefulWidget {
-  const LandlordReportEmirate({Key key}) : super(key: key);
+  const LandlordReportEmirate({Key? key}) : super(key: key);
 
   @override
   _LandlordReportEmirateState createState() => _LandlordReportEmirateState();
@@ -101,7 +101,7 @@ class _LandlordReportEmirateState extends State<LandlordReportEmirate> {
                                               _filterContractsStatusController
                                                   .propertyEmirateModel 
                                                   .value
-                                                  .propertyEmirate[index]);
+                                                  .propertyEmirate![index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -113,13 +113,13 @@ class _LandlordReportEmirateState extends State<LandlordReportEmirate> {
                                               ? _filterContractsStatusController
                                                       .propertyEmirateModel 
                                                       .value
-                                                      .propertyEmirate[index]
+                                                      .propertyEmirate![index]
                                                       .emirateName ??
                                                   ""
                                               : _filterContractsStatusController
                                                       .propertyEmirateModel 
                                                       .value
-                                                      .propertyEmirate[index]
+                                                      .propertyEmirate![index]
                                                       .emirateNameAR ??
                                                   "",
                                         ),

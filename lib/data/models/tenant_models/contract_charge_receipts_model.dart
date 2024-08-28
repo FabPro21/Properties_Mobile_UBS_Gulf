@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-ContractChargeReceiptsModel contractChargeReceiptsModelFromJson(String str) =>
-    ContractChargeReceiptsModel.fromJson(json.decode(str));
+ContractChargeReceiptsModel contractChargeReceiptsModelFromJson(String? str) =>
+    ContractChargeReceiptsModel.fromJson(json.decode(str!));
 
-String contractChargeReceiptsModelToJson(ContractChargeReceiptsModel data) =>
+String? contractChargeReceiptsModelToJson(ContractChargeReceiptsModel data) =>
     json.encode(data.toJson());
 
 class ContractChargeReceiptsModel {
@@ -18,12 +18,12 @@ class ContractChargeReceiptsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<Receipt> receipts;
-  String message;
+  String? status;
+  String? statusCode;
+  List<Receipt>? receipts;
+  String? message;
 
-  factory ContractChargeReceiptsModel.fromJson(Map<String, dynamic> json) =>
+  factory ContractChargeReceiptsModel.fromJson(Map<String?, dynamic> json) =>
       ContractChargeReceiptsModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,10 +32,10 @@ class ContractChargeReceiptsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "receipts": List<dynamic>.from(receipts.map((x) => x.toJson())),
+        "receipts": List<dynamic>.from(receipts!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -49,18 +49,18 @@ class Receipt {
   });
 
   dynamic paymentAmount;
-  String receiptNo;
-  String transactionDate;
-  String paymentType;
+  String? receiptNo;
+  String? transactionDate;
+  String? paymentType;
 
-  factory Receipt.fromJson(Map<String, dynamic> json) => Receipt(
+  factory Receipt.fromJson(Map<String?, dynamic> json) => Receipt(
         paymentAmount: json["paymentAmount"],
         receiptNo: json["receiptNo"],
         transactionDate: json["transactionDate"],
         paymentType: json["paymentType"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paymentAmount": paymentAmount,
         "receiptNo": receiptNo,
         "transactionDate": transactionDate,

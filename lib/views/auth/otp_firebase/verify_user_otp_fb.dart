@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/app_const.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -17,9 +19,9 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class VerifyUserOtpScreenFB extends StatefulWidget {
-  final String otpCodeForVerifyOTP;
-  final bool isForgotMpin;
-  VerifyUserOtpScreenFB({Key key, this.otpCodeForVerifyOTP, this.isForgotMpin})
+  final String? otpCodeForVerifyOTP;
+  final bool? isForgotMpin;
+  VerifyUserOtpScreenFB({Key? key, this.otpCodeForVerifyOTP, this.isForgotMpin})
       : super(key: key);
 
   @override
@@ -32,7 +34,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
 
   String getPhone() {
     var p = SessionController().getPhone();
-    var l = p.length;
+    var l = p!.length;
     var first = p.substring(0, 5);
     var last = p.substring(l - 3, l);
     return first + "****" + last;
@@ -41,7 +43,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
   @override
   void initState() {
     // Adding New Functionality
-    FirebaseAuth.instance.authStateChanges().listen((User user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       print(' user state ============::::::::::::::::: IF === >  $user');
       if (user != null) {
         // Navigate the user away from the login screens   
@@ -155,7 +157,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                       width: 85.0.w,
                                       child: PinCodeFieldFB(
                                         controller: authController,
-                                        isForgotMpin: widget.isForgotMpin,
+                                        isForgotMpin: widget.isForgotMpin??false,
                                       ),
                                     ),
                             ),

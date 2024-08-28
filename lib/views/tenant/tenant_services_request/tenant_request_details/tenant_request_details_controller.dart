@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_type_check, unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 
@@ -43,7 +45,7 @@ class TenantRequestDetailsController extends GetxController {
     try {
       // 112233 Uploaded Document
       var resp = await VendorRepository.uploadFile(
-          caseNo, report.value.path, 'Document', '', 0);
+          caseNo, report.value.path??"", 'Document', '', 0);
 
       loadingReport.value = true;
       var id = resp['photoId'];
@@ -68,7 +70,7 @@ class TenantRequestDetailsController extends GetxController {
       print('Respons :::getFiles:: $resp');
       if (resp.isNotEmpty) {
         report.value = resp[0];
-        report.value.size = getFileSize(report.value.file);
+        report.value.size = getFileSize(report.value.file!);
       }
     } else
       errorLoadingReport = resp;
@@ -76,10 +78,10 @@ class TenantRequestDetailsController extends GetxController {
   }
 
   pickReport() async {
-    FilePickerResult result = await FilePicker.platform
+    FilePickerResult? result = await FilePicker.platform
         .pickFiles(allowedExtensions: ['pdf'], type: FileType.custom);
     if (result != null) {
-      File file = File(result.files.single.path);
+      File file = File(result.files.single.path??"");
       Uint8List bytesFile = await file.readAsBytes();
       String path = file.path;
       String size = getFileSize(bytesFile);
@@ -110,7 +112,7 @@ class TenantRequestDetailsController extends GetxController {
     final path = await getTemporaryDirectory();
     final file =
         File("${path.path}/${this.report.value.name}${this.report.value.type}");
-    await file.writeAsBytes(report.value.file);
+    await file.writeAsBytes(report.value.file!);
     return file.path;
   }
   // end for show document-> ABOVE TRACK
@@ -165,28 +167,28 @@ class TenantRequestDetailsController extends GetxController {
     var result = await TenantRepository.getServiceRequestDetails();
     if (result is GetServiceRequestDetailsModel) {
       tenantRequestDetails.value = result;
-      caseNo = tenantRequestDetails.value.detail.caseNo;
+      caseNo = tenantRequestDetails.value.detail!.caseNo;
 
       ///
       print('====> Case No ::::::: $caseNo =====>');
       print(
-          '====> canUploadDocs ::::::: ${tenantRequestDetails.value.statusInfo.canUploadDocs} =====>');
+          '====> canUploadDocs ::::::: ${tenantRequestDetails.value.statusInfo!.canUploadDocs} =====>');
       print(
-          '====> result.statusInfo.canTakeSurvey ::::::: ${result.statusInfo.canTakeSurvey} =====>');
+          '====> result.statusInfo.canTakeSurvey ::::::: ${result.statusInfo!.canTakeSurvey} =====>');
       print('====> isRenwed Cace ::::::: $isContractRenewed=====>');
 
-      if (result.detail.requestType == 'FM') getPhotos();
-      if (result.detail.caseFeedback != 0) getFeedback();
+      if (result.detail!.requestType == 'FM') getPhotos();
+      if (result.detail!.caseFeedback != 0) getFeedback();
       update();
-      if (result.statusInfo.canTakeSurvey) {
+      if (result.statusInfo!.canTakeSurvey!) {
         TakeSurveyController surveyController = Get.put(TakeSurveyController(
-            caseNo: result.detail.caseNo,
-            catId: result.detail.caseCategouryId));
+            caseNo: result.detail!.caseNo,
+            catId: result.detail!.caseCategouryId));
         showSurveyButton = await surveyController.getSurveyQuestions();
         print('====> showSurveyButton ::::::: $showSurveyButton =====>');
       }
-      if (result.detail.status.toLowerCase().contains('closed') ||
-          result.detail.status.toLowerCase().contains('cancelled')) {
+      if (result.detail!.status!.toLowerCase().contains('closed') ||
+          result.detail!.status!.toLowerCase().contains('cancelled')) {
         canCommunicate = false;
       }
     } else {
@@ -201,14 +203,14 @@ class TenantRequestDetailsController extends GetxController {
     errorGettingPhotos = '';
     gettingPhotos.value = true;
     var resp = await TenantRepository.getReqThumbnails(
-        tenantRequestDetails.value.detail.caseNo, 1);
+        tenantRequestDetails.value.detail!.caseNo, 1);
     print('Photo ::::::getReqThumbnails::::::: $resp');
     if (resp is List<PhotoFile>) {
       photos = resp;
-      if (tenantRequestDetails.value.statusInfo.canCancel) photos.add(null);
+      if (tenantRequestDetails.value.statusInfo!.canCancel!) photos.add(PhotoFile());
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
-      if (tenantRequestDetails.value.statusInfo.canCancel)
-        photos.add(null);
+      if (tenantRequestDetails.value.statusInfo!.canCancel!)
+        photos.add(PhotoFile());
       else
         errorGettingPhotos = AppMetaLabels().noPhotos;
     } else
@@ -220,7 +222,7 @@ class TenantRequestDetailsController extends GetxController {
     try {
       cancellingRequest.value = true;
       var resp = await TenantRepository.cancelServiceRequest(
-          tenantRequestDetails.value.detail.caseNo);
+          tenantRequestDetails.value.detail!.caseNo);
       cancellingRequest.value = false;
       if (resp is String) {
         if (resp == 'ok') {
@@ -277,9 +279,9 @@ class TenantRequestDetailsController extends GetxController {
   // }
 
   pickPhoto(ImageSource source) async {
-    XFile file = await _picker.pickImage(source: source);
+    XFile? file = await _picker.pickImage(source: source);
     // checking file extension
-    if (!CheckFileExtenstion().checkImageExtFunc(file.path)) {
+    if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
           duration: Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
@@ -335,7 +337,7 @@ class TenantRequestDetailsController extends GetxController {
             PhotoFile(file: photo, path: path, type: file.mimeType);
         print(photos);
         uploadPhoto(photos.length - 1);
-        photos.add(null);
+        photos.add(PhotoFile());
       }
       gettingPhotos.value = false;
     }
@@ -358,8 +360,8 @@ class TenantRequestDetailsController extends GetxController {
     photos[index].uploading.value = true;
     try {
       var resp = await TenantRepository.uploadFile(
-          tenantRequestDetails.value.detail.caseNo.toString(),
-          photos[index].path,
+          tenantRequestDetails.value.detail!.caseNo.toString(),
+          photos[index].path??"",
           'Images',
           '',
           '0');
@@ -391,7 +393,7 @@ class TenantRequestDetailsController extends GetxController {
     photos[index].errorDownloading = false;
     photos[index].downloading.value = true;
     var resp = await TenantRepository.downloadDoc(
-        tenantRequestDetails.value.detail.caseNo, 1, photos[index].id);
+        tenantRequestDetails.value.detail!.caseNo, 1, photos[index].id??-1);
     photos[index].downloading.value = false;
     if (resp is Uint8List) {
       photos[index].file = resp;
@@ -425,14 +427,14 @@ class TenantRequestDetailsController extends GetxController {
   Future<String> saveFile(PhotoFile reqFile) async {
     final path = await getTemporaryDirectory();
     final file = File("${path.path}/${reqFile.id}${reqFile.type}");
-    await file.writeAsBytes(reqFile.file);
+    await file.writeAsBytes(reqFile.file!);
     return file.path;
   }
 
   Future<bool> addFeedback(String desc) async {
     addingFeedback.value = true;
     var resp = await TenantRepository.saveTenantSRFeedback(
-        tenantRequestDetails.value.detail.caseNo.toString(), desc, rating);
+        tenantRequestDetails.value.detail!.caseNo.toString(), desc, rating);
     addingFeedback.value = false;
     if (resp is TenantSaveFeedbackModel && resp.status == 'Ok') {
       // Get.snackbar(
@@ -446,9 +448,9 @@ class TenantRequestDetailsController extends GetxController {
           feedback: Feedback(
               description: desc,
               rating: rating,
-              caseNo: tenantRequestDetails.value.detail.caseNo));
+              caseNo: tenantRequestDetails.value.detail!.caseNo));
       loadingData.value = true;
-      tenantRequestDetails.value.statusInfo.canAddFeedback = false;
+      tenantRequestDetails.value.statusInfo!.canAddFeedback = false;
       loadingData.value = false;
 
       return true;
@@ -466,7 +468,7 @@ class TenantRequestDetailsController extends GetxController {
     errorGettingFeedback = '';
     gettingFeedback.value = true;
     var resp = await TenantRepository.getTenantSRFeedback(
-        tenantRequestDetails.value.detail.caseNo);
+        tenantRequestDetails.value.detail!.caseNo);
     gettingFeedback.value = false;
     if (resp is TenantGetSrFeedback) {
       feedback.value = resp;

@@ -16,7 +16,7 @@ import 'lpo_details/lpo_details.dart';
 import 'lpos_screen_controller.dart';
 
 class LposScreen extends StatefulWidget {
-  const LposScreen({Key key}) : super(key: key);
+  const LposScreen({Key? key}) : super(key: key);
 
   @override
   _LposScreenState createState() => _LposScreenState();
@@ -161,7 +161,8 @@ class _LposScreenState extends State<LposScreen> {
                               ? LoadingIndicatorBlue()
                               : getAllLpoController.error.value != ''
                                   ? CustomErrorWidget(
-                                      errorText: AppMetaLabels().noLPOFound + '', 
+                                      errorText:
+                                          AppMetaLabels().noLPOFound + '',
                                       errorImage: AppImagesPath.nolpos,
                                     )
                                   : Column(
@@ -290,7 +291,7 @@ class _LposScreenState extends State<LposScreen> {
                                                           await getAllLpoController
                                                               .getFilteredDataPaginationLoadMore(
                                                             getAllLpoController
-                                                                .filterDataVar,
+                                                                .filterDataVar!,
                                                             getAllLpoController
                                                                 .pageNoFilter,
                                                           );
@@ -462,7 +463,8 @@ class _LposScreenState extends State<LposScreen> {
         );
         SessionController().setLpoRefNo(
           getAllLpoController.lpos[index].lpoReference.toString(),
-        ); Get.to(
+        );
+        Get.to(
           () => LpoDetails(
             lpo: getAllLpoController.lpos[index],
           ),
@@ -497,8 +499,7 @@ class _LposScreenState extends State<LposScreen> {
                                 Spacer(),
                                 Text(
                                   getAllLpoController.lpos[index].lpoReference
-                                          .toString() ??
-                                      "",
+                                      .toString(),
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
                               ],

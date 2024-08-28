@@ -12,7 +12,7 @@ class PaymentDownloadReceiptServiceLandlord {
     Map data = {
       "transactionid": SessionController().getTransactionId().toString()
     };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

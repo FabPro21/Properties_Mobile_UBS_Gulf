@@ -26,7 +26,7 @@ class VendorDashboardController extends GetxController {
   RxString company = "".obs;
   RxString companyAr = "".obs;
 
-  List<ChartData> chartData;
+  List<ChartData>? chartData;
 
   @override
   void onInit() {
@@ -60,9 +60,9 @@ class VendorDashboardController extends GetxController {
         loadingData.value = false;
       } else {
         getDataModel.value = result;
-        company.value = getDataModel.value.dashboard.company ?? "";
-        companyAr.value = getDataModel.value.dashboard.companyAr ?? "";
-        dynamic am = getDataModel.value.dashboard.totalContractValues;
+        company.value = getDataModel.value.dashboard!.company ?? "";
+        companyAr.value = getDataModel.value.dashboard!.companyAr ?? "";
+        dynamic am = getDataModel.value.dashboard!.totalContractValues;
         final paidFormatter = NumberFormat('#,##0.00', 'AR');
         totalContractValues.value = paidFormatter.format(am);
         setData();
@@ -74,7 +74,7 @@ class VendorDashboardController extends GetxController {
   }
 
   void setData() {
-    var name = getDataModel.value.dashboard.name.split(' ');
+    var name = getDataModel.value.dashboard!.name!.split(' ');
     if (name.isNotEmpty) {
       for (int i = 0; i < name.length; i++) {
         shortName.value = shortName + name[i];
@@ -82,9 +82,9 @@ class VendorDashboardController extends GetxController {
         // shortName.value = shortName + name[i].split('')[0].toUpperCase();
       }
     }
-    double totALLPO = getDataModel.value.dashboard.totalLpo.toDouble();
+    double totALLPO = getDataModel.value.dashboard!.totalLpo!.toDouble();
     
-    double lPOInProgress = getDataModel.value.dashboard.lpoInProcess.toDouble();
+    double lPOInProgress = getDataModel.value.dashboard!.lpoInProcess!.toDouble();
 
     chartData = [
       ChartData(AppMetaLabels().totalLpos, totALLPO,

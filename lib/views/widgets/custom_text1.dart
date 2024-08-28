@@ -3,36 +3,36 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomText1 extends StatelessWidget {
-  final String text;
+  final String? text;
   const CustomText1({
-    Key key,
+    Key? key,
     @required this.text,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text!,
       style: AppTextStyle.semiBoldBlack11,
     );
   }
 }
 
 class CustomeTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final String label;
-  final String Function(String) validator;
-  final int maxLines;
+  final TextEditingController? controller;
+  final String? label;
+  final String Function(String)? validator;
+  final int? maxLines;
 
   const CustomeTextField(
-      {Key key, this.controller, this.label, this.validator, this.maxLines = 1})
+      {Key? key, this.controller, this.label, this.validator, this.maxLines = 1})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        return validator(value);
+        return validator!(value??"");
       },
       controller: controller,
       maxLines: maxLines,

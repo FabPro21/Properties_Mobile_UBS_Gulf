@@ -11,7 +11,7 @@ import 'dart:io' as io;
 import 'carousel_search_map.dart';
 
 class SearchPropertiesMaps extends StatefulWidget {
-  const SearchPropertiesMaps({Key key}) : super(key: key);
+  const SearchPropertiesMaps({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesMapsState createState() => _SearchPropertiesMapsState();

@@ -33,7 +33,7 @@ class LpoTermsController extends GetxController {
         loadingData.value = false;
       } else {
         getLpoTermsResp.value = result;
-        length = getLpoTermsResp.value.lpoTerms.length;
+        length = getLpoTermsResp.value.lpoTerms!.length;
         update();
         loadingData.value = false;
       }

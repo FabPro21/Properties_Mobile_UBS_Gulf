@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-LandLordReadNotificationsModel landlordReadNotificationsModelFromJson(String str) =>
-    LandLordReadNotificationsModel.fromJson(json.decode(str));
+LandLordReadNotificationsModel landlordReadNotificationsModelFromJson(String? str) =>
+    LandLordReadNotificationsModel.fromJson(json.decode(str!));
 
-String landlordReadNotificationsModelToJson(LandLordReadNotificationsModel data) =>
+String? landlordReadNotificationsModelToJson(LandLordReadNotificationsModel data) =>
     json.encode(data.toJson());
  
 class LandLordReadNotificationsModel {
@@ -17,18 +17,18 @@ class LandLordReadNotificationsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  String message;
+  String? status;
+  String? statusCode;
+  String? message;
 
-  factory LandLordReadNotificationsModel.fromJson(Map<String, dynamic> json) =>
+  factory LandLordReadNotificationsModel.fromJson(Map<String?, dynamic> json) =>
       LandLordReadNotificationsModel(
         status: json["status"],
         statusCode: json["statusCode"],
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "message": message,

@@ -6,7 +6,7 @@ class RemoveSvcReqPhoto {
   static Future<dynamic> removePhoto(var photoId) async {
     Map data = {"PhotoId": photoId};
     var resp =
-        await BaseClientClass.post(AppConfig().vendorRemoveSvcReqPhoto, data);
+        await BaseClientClass.post(AppConfig().vendorRemoveSvcReqPhoto??"", data);
     if (resp is http.Response) {
       return resp.statusCode;
     }

@@ -16,7 +16,7 @@ class GetContractFinancialTermsServices {
       "pageSize":100.toString(),
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       GetContractFinancialTermsModel getAllLpoModel =
           getContractFinancialTermsModelFromJson(response.body);

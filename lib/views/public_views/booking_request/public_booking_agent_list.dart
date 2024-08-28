@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicBookingAgentList extends StatefulWidget {
-  const PublicBookingAgentList({Key key}) : super(key: key);
+  const PublicBookingAgentList({Key? key}) : super(key: key);
 
   @override
   _PublicBookingAgentListState createState() => _PublicBookingAgentListState();
@@ -145,7 +145,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                           } else if ((agentController
                                                           .selectAgent
                                                           .value
-                                                          .agentList[index]
+                                                          .agentList![index]
                                                           .agentName ??
                                                       "")
                                                   .toLowerCase()
@@ -154,7 +154,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                               (agentController
                                                               .selectAgent
                                                               .value
-                                                              .agentList[index]
+                                                              .agentList![index]
                                                               .agentName ??
                                                           "")
                                                       .toLowerCase()
@@ -167,7 +167,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                           } else if ((agentController
                                                           .selectAgent
                                                           .value
-                                                          .agentList[index]
+                                                          .agentList![index]
                                                           .agentName ??
                                                       "")
                                                   .toLowerCase()
@@ -176,7 +176,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                               (agentController
                                                               .selectAgent
                                                               .value
-                                                              .agentList[index]
+                                                              .agentList![index]
                                                               .agentName ??
                                                           "")
                                                       .toLowerCase()
@@ -209,12 +209,11 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
       onTap: () async {
         Get.back(result: [
           SessionController().getLanguage() == 1
-              ? agentController.selectAgent.value.agentList[index].agentName ??
+              ? agentController.selectAgent.value.agentList![index].agentName ??
                   ""
-              : agentController.selectAgent.value.agentList[index].nameAr ?? "",
-          agentController.selectAgent.value.agentList[index].agentId
-                  .toString() ??
-              ""
+              : agentController.selectAgent.value.agentList![index].nameAr ?? "",
+          agentController.selectAgent.value.agentList![index].agentId
+                  .toString() 
         ]);
       },
       child: Column(
@@ -225,9 +224,9 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
             child: Text(
               SessionController().getLanguage() == 1
                   ? agentController
-                          .selectAgent.value.agentList[index].agentName ??
+                          .selectAgent.value.agentList![index].agentName ??
                       ""
-                  : agentController.selectAgent.value.agentList[index].nameAr ??
+                  : agentController.selectAgent.value.agentList![index].nameAr ??
                       "",
               style: AppTextStyle.normalGrey10,
             ),

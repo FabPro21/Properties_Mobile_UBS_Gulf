@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_contracts_status_model.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_property_types_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -14,8 +16,8 @@ import 'filter_contract_status/filter_contracts_status.dart';
 import 'filter_property/filter_property.dart';
 
 class TenantContracrsFilter extends StatefulWidget {
-  final bool clear;
-  const TenantContracrsFilter({Key key, this.clear}) : super(key: key);
+  final bool? clear;
+  const TenantContracrsFilter({Key? key, this.clear}) : super(key: key);
 
   @override
   _TenantContracrsFilterState createState() => _TenantContracrsFilterState();
@@ -28,7 +30,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
   @override
   void initState() {
     propertyController.text = tCFilterController.propertyName;
-    if (widget.clear) {
+    if (widget.clear!) {
       tCFilterController.resetValues();
     }
     propertyController.text = "";
@@ -219,12 +221,12 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                                 ? tCFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractType +
+                                                        .contractType??"" +
                                                     ' / Expired'
                                                 : tCFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractTypeAr +
+                                                        .contractTypeAr??"" +
                                                     ' / منتهي الصلاحية'
                                             : SessionController()
                                                         .getLanguage() ==
@@ -320,7 +322,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                     // ),
                                   ),
                                 );
-                                if (!tCFilterController.setFromDate(dT)) {
+                                if (!tCFilterController.setFromDate(dT!)) {
                                   tCFilterController.filterError.value =
                                       AppMetaLabels().validDateRange;
                                 } else {
@@ -423,7 +425,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                     // ),
                                   ),
                                 );
-                                if (!tCFilterController.setToDate(dT)) {
+                                if (!tCFilterController.setToDate(dT!)) {
                                   tCFilterController.filterError.value =
                                       AppMetaLabels().validDateRange;
                                 } else {
@@ -581,14 +583,14 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  final Function?clear;
+  const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        clear();
+        clear!();
       },
       child: Container(
         decoration: BoxDecoration(

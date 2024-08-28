@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -13,8 +15,8 @@ import '../../../../data/helpers/session_controller.dart';
 import 'public_offers_controller.dart';
 
 class PublicOfferDetails extends StatefulWidget {
-  final String offerId;
-  const PublicOfferDetails({Key key, this.offerId}) : super(key: key);
+  final String? offerId;
+  const PublicOfferDetails({Key? key, this.offerId}) : super(key: key);
 
   @override
   _PublicOfferDetailsState createState() => _PublicOfferDetailsState();
@@ -26,7 +28,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.getOffersDetails(widget.offerId);
+      _controller.getOffersDetails(widget.offerId!);
     });
 
     super.initState();
@@ -74,12 +76,12 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                           .getLanguage() ==
                                                       1
                                                   ? _controller.offersDetails
-                                                          .value.record.title ??
+                                                          .value.record!.title ??
                                                       ""
                                                   : _controller
                                                           .offersDetails
                                                           .value
-                                                          .record
+                                                          .record!
                                                           .titleAr ??
                                                       "",
                                               style:
@@ -108,22 +110,22 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                     ? _controller
                                                             .offersDetails
                                                             .value
-                                                            .record
+                                                            .record!
                                                             .description ??
                                                         ""
                                                     : _controller
                                                             .offersDetails
                                                             .value
-                                                            .record
+                                                            .record!
                                                             .desriptionAr ??
                                                         "_",
                                           ),
                                           //  Text(
                                           //   SessionController().getLanguage() == 1
-                                          //       ? _controller.offersDetails.value.record
+                                          //       ? _controller.offersDetails.value.record!
                                           //               .description ??
                                           //           ""
-                                          //       : _controller.offersDetails.value.record
+                                          //       : _controller.offersDetails.value.record!
                                           //               .desriptionAr ??
                                           //           "_",
                                           //   style: AppTextStyle.normalBlack12,
@@ -152,7 +154,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                             _controller
                                                         .offersDetails
                                                         .value
-                                                        .offerProperties
+                                                        .offerProperties!
                                                         .length ==
                                                     0
                                                 ? AppErrorWidget(
@@ -167,7 +169,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                         itemCount: _controller
                                                             .offersDetails
                                                             .value
-                                                            .offerProperties
+                                                            .offerProperties!
                                                             .length,
                                                         itemBuilder:
                                                             (context, index) {
@@ -195,9 +197,8 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                                     child: Text(
                                                                       SessionController().getLanguage() ==
                                                                               1
-                                                                          ? _controller.offersDetails.value.offerProperties[index].propertyName.trim() ??
-                                                                              ""
-                                                                          : _controller.offersDetails.value.offerProperties[index].propertyNameAr ??
+                                                                          ? _controller.offersDetails.value.offerProperties![index].propertyName!.trim() 
+                                                                          : _controller.offersDetails.value.offerProperties![index].propertyNameAr ??
                                                                               "",
                                                                       style: AppTextStyle
                                                                           .normalBlack12,

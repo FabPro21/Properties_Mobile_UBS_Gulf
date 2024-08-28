@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -21,17 +21,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 import 'dart:ui' as ui;
 import 'tenant_service_request_tab/take_survey/take_survey.dart';
 
 class TenantRequestDetails extends StatefulWidget {
-  final String caller;
+  final String? caller;
   // here adding for the VACATING AND FROM CONTACT DETAIL
-  final String caseNo;
+  final String? caseNo;
   TenantRequestDetails({
-    Key key,
+    Key? key,
     this.caller,
     this.caseNo,
   }) : super(key: key) {
@@ -49,7 +49,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
 
   @override
   void initState() {
-    tenantRDController.caseNo = int.parse(widget.caseNo);
+    tenantRDController.caseNo = int.parse(widget.caseNo!);
     print('**************** In main ${widget.caller}');
     checkIsRenewed();
     print(tenantRDController.caseNo);
@@ -81,10 +81,10 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
 
   Future<void> autoScroll() async {
     if (tenantRDController
-                .tenantRequestDetails.value.statusInfo.canTakeSurvey &&
+                .tenantRequestDetails.value.statusInfo!.canTakeSurvey! &&
             tenantRDController.showSurveyButton ||
         tenantRDController
-            .tenantRequestDetails.value.statusInfo.canAddFeedback) {
+            .tenantRequestDetails.value.statusInfo!.canAddFeedback!) {
       await Future.delayed(const Duration(milliseconds: 200));
       controller.jumpTo(controller.position.maxScrollExtent);
       setState(() {});
@@ -158,13 +158,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               ? tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .category ??
                                                   ""
                                               : tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .categoryAR ??
                                                   "",
                                           style: AppTextStyle.normalGrey10,
@@ -177,13 +177,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               ? tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .subCategory ??
                                                   ""
                                               : tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .subCategoryAR ??
                                                   " ",
                                           style: AppTextStyle.normalGrey10,
@@ -196,13 +196,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               ? tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .propertyName ??
                                                   ""
                                               : tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
+                                                      .detail!
                                                       .propertyNameAr ??
                                                   "",
                                           style: AppTextStyle.normalGrey10,
@@ -214,7 +214,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           tenantRDController
                                                   .tenantRequestDetails
                                                   .value
-                                                  .detail
+                                                  .detail!
                                                   .unitRefNo ??
                                               "",
                                           style: AppTextStyle.semiBoldGrey10,
@@ -226,14 +226,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           children: [
                                             Text(
                                               tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail
-                                                      .date
-                                                      .trimLeft()
-                                                      .trimRight()
-                                                      .replaceAll(' ', '-') ??
-                                                  "",
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .date!
+                                                  .trimLeft()
+                                                  .trimRight()
+                                                  .replaceAll(' ', '-'),
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                             Padding(
@@ -243,7 +242,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                 tenantRDController
                                                         .tenantRequestDetails
                                                         .value
-                                                        .detail
+                                                        .detail!
                                                         .time ??
                                                     "",
                                                 style:
@@ -261,20 +260,20 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                       ? tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .status ??
                                                           ""
                                                       : tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .statusAR ??
                                                           "",
                                                   valueToCompare:
                                                       tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .status ??
                                                           "",
                                                 )),
@@ -283,7 +282,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                         if (tenantRDController
                                                 .tenantRequestDetails
                                                 .value
-                                                .contractInfo
+                                                .contractInfo!
                                                 .contractno !=
                                             null)
                                           Column(
@@ -312,14 +311,14 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                           tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .contractInfo
+                                                              .contractInfo!
                                                               .contractId);
                                                   SessionController()
                                                       .setContractNo(
                                                           tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .contractInfo
+                                                              .contractInfo!
                                                               .contractno);
                                                   Get.to(() =>
                                                       ContractsDetailsTabs(
@@ -339,13 +338,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                             ? tenantRDController
                                                                     .tenantRequestDetails
                                                                     .value
-                                                                    .contractInfo
+                                                                    .contractInfo!
                                                                     .propertyName ??
                                                                 ''
                                                             : tenantRDController
                                                                     .tenantRequestDetails
                                                                     .value
-                                                                    .contractInfo
+                                                                    .contractInfo!
                                                                     .propertyNameAr ??
                                                                 '',
                                                         style: AppTextStyle
@@ -356,7 +355,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                     ),
                                                     Spacer(),
                                                     Text(
-                                                      "${tenantRDController.tenantRequestDetails.value.contractInfo.contractno}",
+                                                      "${tenantRDController.tenantRequestDetails.value.contractInfo!.contractno}",
                                                       style: AppTextStyle
                                                           .semiBoldBlack9,
                                                       overflow:
@@ -413,7 +412,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                 tenantRDController
                                                         .tenantRequestDetails
                                                         .value
-                                                        .detail
+                                                        .detail!
                                                         .contactName ??
                                                     '-',
                                                 style:
@@ -439,7 +438,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   tenantRDController
                                                           .tenantRequestDetails
                                                           .value
-                                                          .detail
+                                                          .detail!
                                                           .contactPhone ??
                                                       '-',
                                                   style:
@@ -451,7 +450,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           if (tenantRDController
                                                   .tenantRequestDetails
                                                   .value
-                                                  .detail
+                                                  .detail!
                                                   .requestType ==
                                               'FM')
                                             Padding(
@@ -472,7 +471,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                       tenantRDController
                                                               .tenantRequestDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .contactTiming ??
                                                           '-',
                                                       style: AppTextStyle
@@ -615,7 +614,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           tenantRDController
                                                   .tenantRequestDetails
                                                   .value
-                                                  .detail
+                                                  .detail!
                                                   .description ??
                                               '',
                                           // ' {canTakeSurvey:=> ' +
@@ -634,7 +633,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                         if (tenantRDController
                                                 .tenantRequestDetails
                                                 .value
-                                                .detail
+                                                .detail!
                                                 .vacatingReason !=
                                             null)
                                           Padding(
@@ -645,15 +644,16 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
-                                                      .vacatingReason,
+                                                      .detail!
+                                                      .vacatingReason
+                                                      .toString(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                           ),
                                         if (tenantRDController
                                                 .tenantRequestDetails
                                                 .value
-                                                .detail
+                                                .detail!
                                                 .vacatingDate !=
                                             null)
                                           Padding(
@@ -664,8 +664,9 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   tenantRDController
                                                       .tenantRequestDetails
                                                       .value
-                                                      .detail
-                                                      .vacatingDate,
+                                                      .detail!
+                                                      .vacatingDate
+                                                      .toString(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                           ),
@@ -674,7 +675,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                   ),
                                 ),
                                 if (tenantRDController.tenantRequestDetails
-                                        .value.detail.requestType ==
+                                        .value.detail!.requestType ==
                                     'FM')
                                   Container(
                                     width: 100.0.w,
@@ -774,8 +775,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                       ),
                                     ),
                                   ),
-                               
-                               
+
                                 Obx(() {
                                   return tenantRDController
                                           .gettingFeedback.value
@@ -813,7 +813,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   tenantRDController
                                                           .feedback
                                                           .value
-                                                          .feedback
+                                                          .feedback!
                                                           .rating !=
                                                       0.0
                                               ? Container(
@@ -862,10 +862,10 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                             rating: tenantRDController
                                                                     .feedback
                                                                     .value
-                                                                    .feedback
+                                                                    .feedback!
                                                                     .rating ??
                                                                 0,
-                                                            isReadOnly: true,
+                                                            // isReadOnly: true,
                                                             size: 4.0.h,
                                                             filledIconData:
                                                                 Icons.star,
@@ -887,7 +887,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                           tenantRDController
                                                                   .feedback
                                                                   .value
-                                                                  .feedback
+                                                                  .feedback!
                                                                   .description ??
                                                               '',
                                                           style: AppTextStyle
@@ -898,9 +898,9 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               : SizedBox();
                                 }),
                                 if (tenantRDController.tenantRequestDetails
-                                        .value.statusInfo.canCancel &&
+                                        .value.statusInfo!.canCancel! &&
                                     tenantRDController.tenantRequestDetails
-                                            .value.stageInfo.stageId <
+                                            .value.stageInfo!.stageId! <
                                         4)
                                   Padding(
                                       padding: EdgeInsets.only(top: 2.h),
@@ -998,12 +998,12 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 //                 reqNo: tenantRDController
                                 //                     .tenantRequestDetails
                                 //                     .value
-                                //                     .detail
+                                //                     .detail!
                                 //                     .caseNo,
                                 //                 catId: tenantRDController
                                 //                     .tenantRequestDetails
                                 //                     .value
-                                //                     .detail
+                                //                     .detail!
                                 //                     .caseCategouryId,
                                 //               ));
                                 //         },
@@ -1036,7 +1036,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 // then we will check only canAddFeedback
                                 if (widget.caller != 'contractRenewed')
                                   if (tenantRDController.tenantRequestDetails
-                                      .value.statusInfo.canAddFeedback)
+                                      .value.statusInfo!.canAddFeedback!)
                                     Container(
                                       height: 6.5.h,
                                       width: 90.0.w,
@@ -1088,12 +1088,12 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 //                 reqNo: tenantRDController
                                 //                     .tenantRequestDetails
                                 //                     .value
-                                //                     .detail
+                                //                     .detail!
                                 //                     .caseNo,
                                 //                 catId: tenantRDController
                                 //                     .tenantRequestDetails
                                 //                     .value
-                                //                     .detail
+                                //                     .detail!
                                 //                     .caseCategouryId,
                                 //               ));
                                 //         },
@@ -1165,7 +1165,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 //   ),
 
                                 if (tenantRDController.tenantRequestDetails
-                                        .value.statusInfo.canTakeSurvey &&
+                                        .value.statusInfo!.canTakeSurvey! &&
                                     tenantRDController.showSurveyButton)
                                   Container(
                                     height: 6.5.h,
@@ -1177,12 +1177,12 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               reqNo: tenantRDController
                                                   .tenantRequestDetails
                                                   .value
-                                                  .detail
+                                                  .detail!
                                                   .caseNo,
                                               catId: tenantRDController
                                                   .tenantRequestDetails
                                                   .value
-                                                  .detail
+                                                  .detail!
                                                   .caseCategouryId,
                                             ));
                                       },
@@ -1270,8 +1270,8 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
   AwesomeDialog showCancelSvcReqDialog(BuildContext context) {
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       body: Center(
         child: Column(
           children: [
@@ -1435,7 +1435,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           //     },
                           //   )
                           : Image.memory(
-                              tenantRDController.photos[index].file,
+                              tenantRDController.photos[index].file!,
                               width: 22.0.w,
                               height: 10.0.h,
                               fit: BoxFit.cover,
@@ -1466,7 +1466,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                         )
                                       : null)
                           : tenantRDController.tenantRequestDetails.value
-                                  .statusInfo.canCancel
+                                  .statusInfo!.canCancel!
                               ? InkWell(
                                   onTap: () {
                                     _showDeletePhotoOptions(context, index);
@@ -1556,7 +1556,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                 : TextDirection.rtl,
             child: SafeArea(
               child: Container(
-                color: Colors.white, 
+                color: Colors.white,
                 padding: EdgeInsets.all(12),
                 child: Wrap(
                   children: <Widget>[
@@ -1747,7 +1747,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         color: AppColors.blueColor,
                         borderColor: AppColors.blueColor,
                         rating: 0,
-                        isReadOnly: false,
+                        // isReadOnly: false,
                         size: 10.0.w,
                         filledIconData: Icons.star,
                         halfFilledIconData: Icons.star_half,
@@ -1755,7 +1755,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         starCount: 5,
                         allowHalfRating: true,
                         spacing: 2.0.w,
-                        onRated: (value) {
+                        onRatingChanged: (value) {
                           print('Value ::::***::::::: $value');
                           tenantRDController.rating = value;
                         },
@@ -1810,7 +1810,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                             ),
                             validator: (value) {
                               var feedBack = value;
-                              feedBack = feedBack.replaceAll('\n', ' ');
+                              feedBack = feedBack!.replaceAll('\n', ' ');
                               print('FeedBack :::: $feedBack');
                               if (feedBack.isEmpty) {
                                 return AppMetaLabels().requiredField;
@@ -1855,7 +1855,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                         SnakBarWidget.getSnackBarErrorBlue(
                                             AppMetaLabels().alert,
                                             AppMetaLabels().selectRating);
-                                      } else if (formKey.currentState
+                                      } else if (formKey.currentState!
                                           .validate()) {
                                         if (await tenantRDController
                                             .addFeedback(
@@ -1904,13 +1904,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                       .photos[index].errorDownloading
                                   ? AppErrorWidget(
                                       errorText: tenantRDController
-                                          .photos[index].errorText,
+                                          .photos[index].errorText??"",
                                       onRetry: () {
                                         tenantRDController.downloadDoc(index);
                                       },
                                     )
                                   : Image.memory(
-                                      tenantRDController.photos[index].file));
+                                      tenantRDController.photos[index].file!));
                     }),
                   ),
                   Container(

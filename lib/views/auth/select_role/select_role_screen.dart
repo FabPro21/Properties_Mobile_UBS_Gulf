@@ -1,5 +1,7 @@
 // import 'dart:io';
 
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io' as ui;
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -17,13 +19,13 @@ import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_wh
 import 'package:flutter/services.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:keyboard_actions/external/platform_check/platform_check.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SelectRoleScreen extends StatefulWidget {
-  final bool redirect;
-  SelectRoleScreen({Key key, this.redirect = true}) : super(key: key);
+  final bool? redirect;
+  SelectRoleScreen({Key? key, this.redirect = true}) : super(key: key);
 
   @override
   _SelectRoleScreenState createState() => _SelectRoleScreenState();
@@ -34,7 +36,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
 
   @override
   void initState() {
-    selectRoloesController.redirect = widget.redirect;
+    selectRoloesController.redirect = widget.redirect ?? false;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       // int userID = SessionController().getUserID();
       // print('User ID ::::: $userID');
@@ -49,7 +51,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
     super.initState();
   }
 
-  AppUpdateInfo updateInfo;
+  AppUpdateInfo? updateInfo;
   Future<bool> checkForUpdateAndroid() async {
     await InAppUpdate.checkForUpdate().then((info) {
       print('Info : $info');
@@ -121,7 +123,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async =>
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+          await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Directionality(
@@ -413,7 +415,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 2.0.h),
                         child: Text(
-                          AppMetaLabels().login ,
+                          AppMetaLabels().login,
                           style: AppTextStyle.semiBoldWhite12,
                         ),
                       ),
@@ -493,49 +495,93 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                                     SessionController()
                                                                 .getLanguage() ==
                                                             1
-                                                        ? selectRoloesController
-                                                                .userRoles[
-                                                                    index]
-                                                                .role
-                                                                .contains(
-                                                                    'Public')
-                                                            // ? 'Guest'
-                                                            ? AppMetaLabels()
-                                                                .public
-                                                            : selectRoloesController
-                                                                .userRoles[
-                                                                    index]
-                                                                .role
-                                                        : selectRoloesController
-                                                                .userRoles[
-                                                                    index]
-                                                                .role
-                                                                .contains(
-                                                                    'Tenant')
-                                                            ? 'مستاجر'
-                                                            : selectRoloesController
+                                                        ? (selectRoloesController
                                                                     .userRoles[
                                                                         index]
                                                                     .role
-                                                                    .contains(
-                                                                        'Vendor')
-                                                                ? 'مقاول'
-                                                                : selectRoloesController
-                                                                        .userRoles[
-                                                                            index]
+                                                                    ?.contains(
+                                                                        'Public') ??
+                                                                false
+                                                            ? AppMetaLabels()
+                                                                .public
+                                                            : selectRoloesController
+                                                                    .userRoles[
+                                                                        index]
+                                                                    .role ??
+                                                                '')
+                                                        : (selectRoloesController
+                                                                    .userRoles[
+                                                                        index]
+                                                                    .role
+                                                                    ?.contains(
+                                                                        'Tenant') ??
+                                                                false
+                                                            ? 'مستاجر'
+                                                            : selectRoloesController
+                                                                        .userRoles[index]
                                                                         .role
-                                                                        .contains(
-                                                                            'Public')
+                                                                        ?.contains('Vendor') ??
+                                                                    false
+                                                                ? 'مقاول'
+                                                                : selectRoloesController.userRoles[index].role?.contains('Public') ?? false
                                                                     ? 'زائر'
-                                                                    : selectRoloesController
-                                                                            .userRoles[index]
-                                                                            .role
-                                                                            .contains('Landlord')
+                                                                    : selectRoloesController.userRoles[index].role?.contains('Landlord') ?? false
                                                                         ? 'مالك'
-                                                                        : '',
+                                                                        : ''),
                                                     style: AppTextStyle
                                                         .normalWhite12,
                                                   ),
+
+                                                  // Text(
+                                                  //   SessionController()
+                                                  //               .getLanguage() ==
+                                                  //           1
+                                                  //       ? selectRoloesController
+                                                  //               .userRoles[
+                                                  //                   index]
+                                                  //               .role!
+                                                  //               .contains(
+                                                  //                   'Public')
+                                                  //           // ? 'Guest'
+                                                  //           ? AppMetaLabels()
+                                                  //               .public
+                                                  //           : selectRoloesController
+                                                  //               .userRoles[
+                                                  //                   index]
+                                                  //               .role
+                                                  //       : selectRoloesController
+                                                  //               .userRoles[
+                                                  //                   index]
+                                                  //               .role!
+                                                  //               .contains(
+                                                  //                   'Tenant')
+                                                  //           ? 'مستاجر'
+                                                  //           : selectRoloesController
+                                                  //                   .userRoles[
+                                                  //                       index]
+                                                  //                   .role!
+                                                  //                   .contains(
+                                                  //                       'Vendor')
+                                                  //               ? 'مقاول'
+                                                  //               : selectRoloesController
+                                                  //                       .userRoles[
+                                                  //                           index]
+                                                  //                       .role!
+                                                  //                       .contains(
+                                                  //                           'Public')
+                                                  //                   ? 'زائر'
+                                                  //                   : selectRoloesController
+                                                  //                           .userRoles[
+                                                  //                               index]
+                                                  //                           .role!
+                                                  //                           .contains(
+                                                  //                               'Landlord')
+                                                  //                       ? 'مالك'
+                                                  //                       :'',
+                                                  //   style: AppTextStyle
+                                                  //       .normalWhite12,
+                                                  // ),
+
                                                   trailing: Padding(
                                                     padding: EdgeInsets.only(
                                                         right: 1.0.h),

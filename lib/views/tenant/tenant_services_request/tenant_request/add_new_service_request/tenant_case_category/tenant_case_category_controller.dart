@@ -30,7 +30,7 @@ class GetCaseCategoryController extends GetxController {
     loadingData.value = false;
     if (result is CaseCategoryModel) {
       caseCategory.value = result;
-      length = caseCategory.value.caseCategories.length;
+      length = caseCategory.value.caseCategories!.length;
       if (length == 0) error.value = AppMetaLabels().notFound;
       update();
     } else {

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetUnitTypeModel getUnitTypeModelFromJson(String str) =>
-    GetUnitTypeModel.fromJson(json.decode(str));
+GetUnitTypeModel getUnitTypeModelFromJson(String? str) =>
+    GetUnitTypeModel.fromJson(json.decode(str!));
 
-String getUnitTypeModelToJson(GetUnitTypeModel data) =>
+String? getUnitTypeModelToJson(GetUnitTypeModel data) =>
     json.encode(data.toJson());
 
 class GetUnitTypeModel {
@@ -18,12 +18,12 @@ class GetUnitTypeModel {
     this.unitTypes,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  UnitTypes unitTypes;
+  String? statusCode;
+  String? status;
+  String? message;
+  UnitTypes? unitTypes;
 
-  factory GetUnitTypeModel.fromJson(Map<String, dynamic> json) =>
+  factory GetUnitTypeModel.fromJson(Map<String?, dynamic> json) =>
       GetUnitTypeModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -31,11 +31,11 @@ class GetUnitTypeModel {
         unitTypes: UnitTypes.fromJson(json["unitTypes"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "unitTypes": unitTypes.toJson(),
+        "unitTypes": unitTypes!.toJson(),
       };
 }
 
@@ -45,17 +45,17 @@ class UnitTypes {
     this.showArea,
   });
 
-  List<UnitType> unitTypes;
-  bool showArea;
+  List<UnitType>? unitTypes;
+  bool? showArea;
 
-  factory UnitTypes.fromJson(Map<String, dynamic> json) => UnitTypes(
+  factory UnitTypes.fromJson(Map<String?, dynamic> json) => UnitTypes(
         unitTypes: List<UnitType>.from(
             json["unitTypes"].map((x) => UnitType.fromJson(x))),
         showArea: json["showArea"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "unitTypes": List<dynamic>.from(unitTypes.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "unitTypes": List<dynamic>.from(unitTypes!.map((x) => x.toJson())),
         "showArea": showArea,
       };
 }
@@ -66,15 +66,15 @@ class UnitType {
     this.unitTypeNameAR,
   });
 
-  String unitTypeName;
-  String unitTypeNameAR;
+  String? unitTypeName;
+  String? unitTypeNameAR;
 
-  factory UnitType.fromJson(Map<String, dynamic> json) => UnitType(
+  factory UnitType.fromJson(Map<String?, dynamic> json) => UnitType(
         unitTypeName: json["unitTypeName"],
         unitTypeNameAR: json["unitTypeNameAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "unitTypeName": unitTypeName,
         "unitTypeNameAR": unitTypeNameAR,
       };
@@ -91,10 +91,10 @@ class UnitType {
 
 // import 'dart:convert';
 
-// GetUnitTypeModel getUnitTypeModelFromJson(String str) =>
+// GetUnitTypeModel getUnitTypeModelFromJson(String? str) =>
 //     GetUnitTypeModel.fromJson(json.decode(str));
 
-// String getUnitTypeModelToJson(GetUnitTypeModel data) =>
+// String? getUnitTypeModelToJson(GetUnitTypeModel data) =>
 //     json.encode(data.toJson());
 
 // class GetUnitTypeModel {
@@ -105,12 +105,12 @@ class UnitType {
 //     this.unitTypes,
 //   });
 
-//   String statusCode;
-//   String status;
-//   String message;
+//   String? statusCode;
+//   String? status;
+//   String? message;
 //   List<UnitType> unitTypes;
 
-//   factory GetUnitTypeModel.fromJson(Map<String, dynamic> json) =>
+//   factory GetUnitTypeModel.fromJson(Map<String?, dynamic> json) =>
 //       GetUnitTypeModel(
 //         statusCode: json["statusCode"],
 //         status: json["status"],
@@ -119,7 +119,7 @@ class UnitType {
 //             json["unitType"].map((x) => UnitType.fromJson(x))),
 //       );
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "statusCode": statusCode,
 //         "status": status,
 //         "message": message,
@@ -135,16 +135,16 @@ class UnitType {
 //   });
 
 //   int unitTypeID;
-//   String unitType;
-//   String unitTypeAR;
+//   String? unitType;
+//   String? unitTypeAR;
 
-//   factory UnitType.fromJson(Map<String, dynamic> json) => UnitType(
+//   factory UnitType.fromJson(Map<String?, dynamic> json) => UnitType(
 //         unitTypeID: json["unitTypeID"],
 //         unitType: json["unitType"],
 //         unitTypeAR: json["unitTypeAR"],
 //       );
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "propertyCategoryID": unitTypeID,
 //         "unitType": unitType,
 //         "propertyCategoryAR": unitTypeAR,

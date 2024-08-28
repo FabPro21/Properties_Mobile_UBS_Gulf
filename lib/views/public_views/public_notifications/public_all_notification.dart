@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -14,7 +15,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicAllNotifications extends StatefulWidget {
-  const PublicAllNotifications({Key key}) : super(key: key);
+  const PublicAllNotifications({Key? key}) : super(key: key);
 
   @override
   _PublicAllNotificationsState createState() => _PublicAllNotificationsState();
@@ -60,18 +61,18 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                 return InkWell(
                                   onTap: () async {
                                     SessionController().setNotificationId(
-                                        _controller
-                                            .notifications[index].notificationId
+                                        _controller.notifications![index]
+                                            .notificationId
                                             .toString());
                                     if (_controller
-                                            .notifications[index].isRead !=
+                                            .notifications![index].isRead !=
                                         true) {
                                       _controller.loadingData.value = true;
                                       var res =
                                           await _controller.readNotifications();
                                       if (res) {
-                                        _controller
-                                            .notifications[index].isRead = true;
+                                        _controller.notifications![index]
+                                            .isRead = true;
                                       }
                                       _controller.loadingData.value = false;
                                     }
@@ -95,12 +96,12 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                                   contentPadding:
                                                       EdgeInsets.zero,
                                                   value: _controller
-                                                      .isChecked[index],
+                                                      .isChecked![index],
                                                   onChanged: (val) {
                                                     setState(
                                                       () {
-                                                        _controller.isChecked[
-                                                            index] = val;
+                                                        _controller.isChecked![
+                                                            index] = val!;
                                                       },
                                                     );
                                                   },
@@ -186,89 +187,54 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
-          ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(
-                _controller.notifications[index].notificationId.toString());
-
-            if (_controller.notifications[index].isRead != true) {
-              _controller.loadingData.value = true;
-              var res = await _controller.readNotifications();
-              if (res) {
-                _controller.notifications[index].isRead = true;
-              }
-              _controller.loadingData.value = false;
-            }
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () async {
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            // color: Colors.blue,
+            onPressed: (context) async {
               SessionController().setNotificationId(
-                  _controller.notifications[index].notificationId.toString());
+                  _controller.notifications![index].notificationId.toString());
+
+              if (_controller.notifications![index].isRead != true) {
+                _controller.loadingData.value = true;
+                var res = await _controller.readNotifications();
+                if (res) {
+                  _controller.notifications![index].isRead = true;
+                }
+                _controller.loadingData.value = false;
+              }
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) async {
+              SessionController().setNotificationId(
+                  _controller.notifications![index].notificationId.toString());
 
               await _controller.archiveNotifications();
-              setState(() {
-                _controller.allLength = _controller.allLength - 1;
-                _controller.notifications.removeAt(index);
-              });
-            }),
-      ],
+              // Update state to reflect changes
+              _controller.allLength = _controller.allLength - 1;
+              _controller.notifications!.removeAt(index);
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: Container(
         width: _controller.editTap.value == true ? 80.0.w : 90.0.w,
         child: ListTile(
@@ -277,7 +243,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
             children: [
               Row(
                 children: [
-                  _controller.notifications[index].isRead == true
+                  _controller.notifications![index].isRead == true
                       ? Container()
                       : Container(
                           height: 1.0.h,
@@ -290,17 +256,13 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                   Padding(
                     padding: EdgeInsets.only(left: 1.0.h),
                     child: Container(
-                      // color: Colors.green,
                       width:
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
                         SessionController().getLanguage() == 1
-                            ? _controller.notifications[index].title
-                                    .toString() ??
-                                ""
-                            : _controller.notifications[index].titleAR
-                                    .toString() ??
-                                "",
+                            ? _controller.notifications![index].title.toString()
+                            : _controller.notifications![index].titleAR
+                                .toString(),
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.semiBoldBlack11,
                       ),
@@ -310,27 +272,30 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                   Icon(Icons.more_horiz),
                 ],
               ),
-              // public notification description
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 1.6.w),
                 child: Html(
-                  customTextAlign: (_) => SessionController().getLanguage() == 1
-                      ? TextAlign.left
-                      : TextAlign.right,
                   data: SessionController().getLanguage() == 1
-                      ? _controller.notifications[index].description
-                              .toString() ??
-                          ""
-                      : _controller.notifications[index].descriptionAR
+                      ? _controller.notifications![index].description.toString()
+                      : _controller.notifications![index].descriptionAR
                           .toString(),
-                  defaultTextStyle: AppTextStyle.normalBlack10,
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
                 child: Container(
                   child: Text(
-                    _controller.notifications[index].createdOn ?? "",
+                    _controller.notifications![index].createdOn ?? "",
                     style: AppTextStyle.normalBlack10,
                   ),
                 ),
@@ -343,7 +308,169 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
           ),
         ),
       ),
-      actionPane: SlidableDrawerActionPane(),
     );
+    // Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(
+    //             _controller.notifications![index].notificationId.toString());
+
+    //         if (_controller.notifications![index].isRead != true) {
+    //           _controller.loadingData.value = true;
+    //           var res = await _controller.readNotifications();
+    //           if (res) {
+    //             _controller.notifications![index].isRead = true;
+    //           }
+    //           _controller.loadingData.value = false;
+    //         }
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () async {
+    //           SessionController().setNotificationId(
+    //               _controller.notifications![index].notificationId.toString());
+
+    //           await _controller.archiveNotifications();
+    //           setState(() {
+    //             _controller.allLength = _controller.allLength - 1;
+    //             _controller.notifications!.removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: Container(
+    //     width: _controller.editTap.value == true ? 80.0.w : 90.0.w,
+    //     child: ListTile(
+    //       title: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.start,
+    //         children: [
+    //           Row(
+    //             children: [
+    //               _controller.notifications![index].isRead == true
+    //                   ? Container()
+    //                   : Container(
+    //                       height: 1.0.h,
+    //                       width: 2.0.w,
+    //                       decoration: BoxDecoration(
+    //                         color: Colors.red,
+    //                         shape: BoxShape.circle,
+    //                       ),
+    //                     ),
+    //               Padding(
+    //                 padding: EdgeInsets.only(left: 1.0.h),
+    //                 child: Container(
+    //                   // color: Colors.green,
+    //                   width:
+    //                       _controller.editTap.value == true ? 30.0.w : 60.0.w,
+    //                   child: Text(
+    //                     SessionController().getLanguage() == 1
+    //                         ? _controller.notifications![index].title
+    //                                 .toString()
+    //                         : _controller.notifications![index].titleAR
+    //                                 .toString(),
+    //                     overflow: TextOverflow.ellipsis,
+    //                     style: AppTextStyle.semiBoldBlack11,
+    //                   ),
+    //                 ),
+    //               ),
+    //               Spacer(),
+    //               Icon(Icons.more_horiz),
+    //             ],
+    //           ),
+    //           // public notification description
+    //           Padding(
+    //             padding: EdgeInsets.symmetric(horizontal: 1.6.w),
+    //             child: Html(
+    //               data: SessionController().getLanguage() == 1
+    //                   ? _controller.notifications![index].description
+    //                           .toString()
+    //                   : _controller.notifications![index].descriptionAR
+    //                       .toString(),
+    //               style: {
+    //                 'html': Style(
+    //                   textAlign: SessionController().getLanguage() == 1
+    //                       ? TextAlign.left
+    //                       : TextAlign.right,
+    //                   color: Colors.black,
+    //                   fontFamily: AppFonts.graphikRegular,
+    //                   fontSize: FontSize(10.0),
+    //                 ),
+    //               },
+    //             ),
+    //           ),
+    //           Padding(
+    //             padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
+    //             child: Container(
+    //               child: Text(
+    //                 _controller.notifications![index].createdOn ?? "",
+    //                 style: AppTextStyle.normalBlack10,
+    //               ),
+    //             ),
+    //           ),
+    //           SizedBox(
+    //             height: 2.0.h,
+    //           ),
+    //           index == _controller.allLength - 1 ? Container() : AppDivider(),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 }

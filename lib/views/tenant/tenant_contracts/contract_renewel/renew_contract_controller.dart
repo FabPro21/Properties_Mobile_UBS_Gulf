@@ -5,12 +5,12 @@ import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_ta
 import 'package:get/get.dart';
 
 class RenewContractController extends GetxController {
-  ContractRenewalInfo renewalInfo;
+  ContractRenewalInfo? renewalInfo;
   RxBool loadingRenewalInfo = false.obs;
   String errorLoadingInfo = '';
 
   RxBool submitting = false.obs;
-  int caseNo;
+  int? caseNo;
 
   @override
   void onInit() {
@@ -33,8 +33,8 @@ class RenewContractController extends GetxController {
     submitting.value = true;
     var resp = await TenantRepository.renewContract(
         contractId,
-        renewalInfo.record.addNewDate,
-        renewalInfo.record.endNewDate,
+        renewalInfo!.record!.addNewDate??'',
+        renewalInfo!.record!.endNewDate??"",
         dueActionid);
     submitting.value = false;
     if (resp is int) {

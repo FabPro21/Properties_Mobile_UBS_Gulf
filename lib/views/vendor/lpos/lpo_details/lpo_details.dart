@@ -13,10 +13,10 @@ import 'lpo_invoices/lpo_invoices.dart';
 import 'lpo_proretries/lpo_properties_screen.dart';
 
 class LpoDetails extends StatefulWidget {
-  final Lpo lpo;
+  final Lpo? lpo;
 
   LpoDetails({
-    Key key,
+    Key? key,
     this.lpo,
   }) : super(key: key);
 
@@ -52,7 +52,7 @@ class _LpoDetailsState extends State<LpoDetails> {
                     ),
                     const Spacer(),
                     Text(
-                      '${widget.lpo.lpoReference}',
+                      '${widget.lpo!.lpoReference}',
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                   ],

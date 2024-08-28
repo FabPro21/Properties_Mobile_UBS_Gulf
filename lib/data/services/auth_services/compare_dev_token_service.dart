@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 import '../../helpers/session_controller.dart';
 
 class CompareDevTokenService {
-  static Future<dynamic> getData(String devToken,String num) async {
+  static Future<dynamic> getData(String? devToken,String? num) async {
     var response = await BaseClientClass.postwithheader(
-        AppConfig().compareDeviceToken, {"DeviceToken":devToken,"mobile":num},
+        AppConfig().compareDeviceToken??"", {"DeviceToken":devToken,"mobile":num},
         token: SessionController().getLoginToken());
     if (response is http.Response) {
       try {

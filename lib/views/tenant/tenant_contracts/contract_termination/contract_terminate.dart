@@ -17,12 +17,12 @@ import '../../../widgets/clear_button.dart';
 import 'dart:ui' as ui;
 
 class ContractTerminate extends StatefulWidget {
-  final String contractNo;
-  final int contractId;
-  final String caller;
-  final int dueActionid;
+  final String? contractNo;
+  final int? contractId;
+  final String? caller;
+  final int? dueActionid;
   const ContractTerminate(
-      {Key key,
+      {Key? key,
       this.contractNo,
       this.contractId,
       this.caller,
@@ -37,7 +37,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
   final controller = Get.put(TerminateContractController());
   final formKey = GlobalKey<FormState>();
   final descTextController = TextEditingController();
-  bool isDialogOpen;
+  bool? isDialogOpen;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
           : ui.TextDirection.rtl,
       child: WillPopScope(
         onWillPop: () async {
-          if (isDialogOpen) Get.back();
+          if (isDialogOpen!) Get.back();
           return true;
         },
         child: Scaffold(
@@ -86,7 +86,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                           style: AppTextStyle.semiBoldBlack12,
                         ),
                         Text(
-                          widget.contractNo,
+                          widget.contractNo??'0',
                           style: AppTextStyle.semiBoldBlack12,
                         )
                       ],
@@ -154,7 +154,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                 physics:
                                                     NeverScrollableScrollPhysics(),
                                                 itemCount: controller
-                                                    .reasons.record.length,
+                                                    .reasons!.record!.length,
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
@@ -163,15 +163,15 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                       controller.selectedReason
                                                           .value = index;
                                                       if (controller
-                                                              .reasons
-                                                              .record[index]
+                                                              .reasons!
+                                                              .record![index]
                                                               .vacatingId ==
                                                           3) {
                                                         controller
                                                             .addDesc.value = 1;
                                                       } else if (controller
-                                                              .reasons
-                                                              .record[index]
+                                                              .reasons!
+                                                              .record![index]
                                                               .vacatingId ==
                                                           7) {
                                                         controller
@@ -187,13 +187,13 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                             groupValue: controller
                                                                 .selectedReason
                                                                 .value,
-                                                            onChanged: (value) {
+                                                            onChanged: (int? value) {
                                                               controller
                                                                   .selectedReason
-                                                                  .value = value;
+                                                                  .value = value!;
                                                               if (controller
-                                                                      .reasons
-                                                                      .record[
+                                                                      .reasons!
+                                                                      .record![
                                                                           index]
                                                                       .vacatingId ==
                                                                   3) {
@@ -201,8 +201,8 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     .addDesc
                                                                     .value = 1;
                                                               } else if (controller
-                                                                      .reasons
-                                                                      .record[
+                                                                      .reasons!
+                                                                      .record![
                                                                           index]
                                                                       .vacatingId ==
                                                                   7) {
@@ -222,13 +222,13 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                       .getLanguage() ==
                                                                   1
                                                               ? controller
-                                                                  .reasons
-                                                                  .record[index]
-                                                                  .title
+                                                                  .reasons!
+                                                                  .record![index]
+                                                                  .title??""
                                                               : controller
-                                                                  .reasons
-                                                                  .record[index]
-                                                                  .titleAr,
+                                                                  .reasons!
+                                                                  .record![index]
+                                                                  .titleAr??"",
                                                           style: AppTextStyle
                                                               .normalBlack11,
                                                         )
@@ -521,7 +521,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                             .value !=
                                                                         0) {
                                                                       if (formKey
-                                                                          .currentState
+                                                                          .currentState!
                                                                           .validate()) {
                                                                         String
                                                                             desc =
@@ -531,25 +531,25 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                           desc =
                                                                               AppMetaLabels().otherUnitInfo + desc;
                                                                         resp = await controller.terminateContract(
-                                                                            widget.contractId,
+                                                                            widget.contractId??0,
                                                                             desc,
-                                                                            widget.caller,
-                                                                            widget.dueActionid);
+                                                                            widget.caller??'',
+                                                                            widget.dueActionid??0);
                                                                       }
                                                                     } else
                                                                       resp = await controller.terminateContract(
                                                                           widget
-                                                                              .contractId,
+                                                                              .contractId??0,
                                                                           '',
                                                                           widget
-                                                                              .caller,
+                                                                              .caller??'',
                                                                           widget
-                                                                              .dueActionid);
+                                                                              .dueActionid??0);
                                                                     if (resp ==
                                                                         'ok') {
                                                                       if (controller
-                                                                              .reasons
-                                                                              .record[controller.selectedReason.value]
+                                                                              .reasons!
+                                                                              .record![controller.selectedReason.value]
                                                                               .vacatingId ==
                                                                           3) {
                                                                         controller
@@ -653,7 +653,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                         Get.back();
                         Get.off(() => TenantServiceRequestTabs(
                               requestNo: controller.caseNo.toString(),
-                              caller: widget.caller,
+                              caller: widget.caller??"",
                               title: AppMetaLabels().vacateReq,
                             ));
                       },

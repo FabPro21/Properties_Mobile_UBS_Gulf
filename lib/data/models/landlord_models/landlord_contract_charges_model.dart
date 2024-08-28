@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-LandlordContractChargesModel landlordContractChargesModelFromJson(String str) =>
-    LandlordContractChargesModel.fromJson(json.decode(str));
+LandlordContractChargesModel landlordContractChargesModelFromJson(String? str) =>
+    LandlordContractChargesModel.fromJson(json.decode(str!));
 
-String landlordContractChargesModelToJson(LandlordContractChargesModel data) =>
+String? landlordContractChargesModelToJson(LandlordContractChargesModel data) =>
     json.encode(data.toJson());
 
 class LandlordContractChargesModel {
@@ -21,15 +21,15 @@ class LandlordContractChargesModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<ContractCharge> contractCharges;
-  int totalCharges;
-  int paidCharges;
-  int outstandingCharges;
-  String message;
+  String? status;
+  String? statusCode;
+  List<ContractCharge>? contractCharges;
+  int? totalCharges;
+  int? paidCharges;
+  int? outstandingCharges;
+  String? message;
 
-  factory LandlordContractChargesModel.fromJson(Map<String, dynamic> json) =>
+  factory LandlordContractChargesModel.fromJson(Map<String?, dynamic> json) =>
       LandlordContractChargesModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -41,11 +41,11 @@ class LandlordContractChargesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "contractCharges":
-            List<dynamic>.from(contractCharges.map((x) => x.toJson())),
+            List<dynamic>.from(contractCharges!.map((x) => x.toJson())),
         "totalCharges": totalCharges,
         "paidCharges": paidCharges,
         "outstandingCharges": outstandingCharges,
@@ -68,19 +68,19 @@ class ContractCharge {
     this.chargesTypeAr,
   });
 
-  int chargeNo;
-  int chargesTypeId;
-  String chargeName;
-  int tenancyCodeNumber;
-  int amount;
-  int contractId;
-  int vatAmount;
-  int totalAmount;
-  String createdOn;
-  String chargesType;
+  int? chargeNo;
+  int? chargesTypeId;
+  String? chargeName;
+  int? tenancyCodeNumber;
+  int? amount;
+  int? contractId;
+  int? vatAmount;
+  int? totalAmount;
+  String? createdOn;
+  String? chargesType;
   dynamic chargesTypeAr;
 
-  factory ContractCharge.fromJson(Map<String, dynamic> json) => ContractCharge(
+  factory ContractCharge.fromJson(Map<String?, dynamic> json) => ContractCharge(
         chargeNo: json["chargeNo"],
         chargesTypeId: json["chargesTypeID"],
         chargeName: json["chargeName"],
@@ -94,7 +94,7 @@ class ContractCharge {
         chargesTypeAr: json["chargesTypeAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "chargeNo": chargeNo,
         "chargesTypeID": chargesTypeId,
         "chargeName": chargeName,

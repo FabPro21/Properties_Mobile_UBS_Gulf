@@ -20,7 +20,7 @@ import '../country_picker/country_picker.dart';
 
 // ValidateUserScreenFB = >ValidateUserScreenFirebase
 class ValidateUserScreenFB extends StatefulWidget {
-  ValidateUserScreenFB({Key key}) : super(key: key);
+  ValidateUserScreenFB({Key? key}) : super(key: key);
 
   @override
   State<ValidateUserScreenFB> createState() => _ValidateUserScreenFBState();
@@ -239,15 +239,14 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                     authController.textFieldTap.value = false;
                                     print(PhoneNoFieldFB.phoneController.text ==
                                         '');
-                                    print(PhoneNoFieldFB.phoneController.text ==
-                                        null);
+
                                     print(PhoneNoFieldFB.phoneController.text
                                         .contains(' '));
                                     // checking weather user entered mobile no or not
                                     if (PhoneNoFieldFB.phoneController.text ==
                                             '' ||
-                                        PhoneNoFieldFB.phoneController.text ==
-                                            null ||
+                                        PhoneNoFieldFB
+                                            .phoneController.text.isEmpty ||
                                         PhoneNoFieldFB.phoneController.text
                                             .contains(' ')) {
                                       SnakBarWidget.getSnackBarErrorBlue(
@@ -268,8 +267,10 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           colorText: AppColors.whiteColor);
                                     } else {
                                       final String phone = SessionController()
-                                              .getDialingCode() +
-                                          PhoneNoFieldFB.phoneController.text;
+                                              .getDialingCode() ??
+                                          "" +
+                                              PhoneNoFieldFB
+                                                  .phoneController.text;
                                       SessionController().setPhone(phone);
                                       var phoneNbrValidation =
                                           authController.validateMobile(phone);

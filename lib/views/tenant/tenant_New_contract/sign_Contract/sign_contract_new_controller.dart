@@ -46,7 +46,8 @@ class AuthenticateNewContractController extends GetxController {
     savingSignature.value = true;
     if (await getStoragePermission()) {
       String path = await createFile(signature, 'signature.png');
-      if (path != null) {
+      if (path.isNotEmpty) {
+      // if (path != null) { #1
         var resp = await TenantRepository.uploadFile(
             caseId.toString(), path, 'Signature', '', '0');
         // var resp = await TenantRepository.uploadFileNew(

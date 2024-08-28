@@ -7,7 +7,7 @@ class GetSurveyQuestions {
   static Future<dynamic> getData(int caseNo) async {
     var url = AppConfig().getSurveyQuestions;
 
-    var response = await BaseClientClass.post(url, {"CaseNo":caseNo.toString()});
+    var response = await BaseClientClass.post(url ?? "", {"CaseNo":caseNo.toString()});
     // log(response.body);
     if (response is http.Response) {
       return surveyQuestionsFromJson(response.body);

@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicGetTicketReplyModel publicGetTicketReplyModelFromJson(String str) => PublicGetTicketReplyModel.fromJson(json.decode(str));
+PublicGetTicketReplyModel publicGetTicketReplyModelFromJson(String? str) => PublicGetTicketReplyModel.fromJson(json.decode(str!));
 
-String publicGetTicketReplyModelToJson(PublicGetTicketReplyModel data) => json.encode(data.toJson());
+String? publicGetTicketReplyModelToJson(PublicGetTicketReplyModel data) => json.encode(data.toJson());
 
 class PublicGetTicketReplyModel {
     PublicGetTicketReplyModel({
@@ -15,19 +15,19 @@ class PublicGetTicketReplyModel {
         this.message,
     });
 
-    String status;
-    List<TicketReply> ticketReply;
-    String message;
+    String? status;
+    List<TicketReply>? ticketReply;
+    String? message;
 
-    factory PublicGetTicketReplyModel.fromJson(Map<String, dynamic> json) => PublicGetTicketReplyModel(
+    factory PublicGetTicketReplyModel.fromJson(Map<String?, dynamic> json) => PublicGetTicketReplyModel(
         status: json["status"],
         ticketReply: List<TicketReply>.from(json["ticketReply"].map((x) => TicketReply.fromJson(x))),
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
-        "ticketReply": List<dynamic>.from(ticketReply.map((x) => x.toJson())),
+        "ticketReply": List<dynamic>.from(ticketReply!.map((x) => x.toJson())),
         "message": message,
     };
 }
@@ -40,19 +40,19 @@ class TicketReply {
         this.userid,
     });
 
-    String reply; 
-    String dateTime;
-    int publicUserId;
-    int userid;
+    String? reply; 
+    String? dateTime;
+    int? publicUserId;
+    int? userid;
 
-    factory TicketReply.fromJson(Map<String, dynamic> json) => TicketReply(
+    factory TicketReply.fromJson(Map<String?, dynamic> json) => TicketReply(
         reply: json["reply"],
         dateTime: json["dateTime"],
         publicUserId: json["publicUserId"],
         userid: json["userid"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "reply": reply,
         "dateTime": dateTime,
         "publicUserId": publicUserId,

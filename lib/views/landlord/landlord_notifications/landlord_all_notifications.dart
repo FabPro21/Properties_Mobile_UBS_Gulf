@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notification_details.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notifications_controller.dart';
@@ -14,8 +15,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordAllNotifications extends StatefulWidget {
-  final int index;
-  const LandLordAllNotifications({Key key, this.index}) : super(key: key);
+  final int? index;
+  const LandLordAllNotifications({Key? key, this.index}) : super(key: key);
 
   @override
   _LandLordAllNotificationsState createState() =>
@@ -45,7 +46,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                         child: Row(
                           children: [
                             Checkbox(
-                              onChanged: (bool value) {
+                              onChanged: (bool? value) {
                                 getLandLController.allCheckbox.toggleMarkAll();
                               },
                               value:
@@ -96,11 +97,14 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                             getLandLController
                                                 .getNotifications
                                                 .value
-                                                .notifications[index]
+                                                .notifications![index]
                                                 .notificationId
                                                 .toString());
-                                        if (!getLandLController.getNotifications
-                                            .value.notifications[index].isRead)
+                                        if (!getLandLController
+                                            .getNotifications
+                                            .value
+                                            .notifications![index]
+                                            .isRead!)
                                           await getLandLController
                                               .readNotifications(index, 'all');
                                         Get.to(() =>
@@ -119,7 +123,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                                   () {
                                                     getLandLController
                                                         .allCheckbox
-                                                        .markItem(index, val);
+                                                        .markItem(index, val!);
                                                   },
                                                 );
                                               },
@@ -220,87 +224,138 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            // color: Colors.blue,
+            onPressed: (context) async {
+              SessionController().setNotificationId(
+                getLandLController
+                    .getNotifications.value.notifications![index].notificationId
+                    .toString(),
+              );
+              await getLandLController.readNotifications(index, 'all');
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
           ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(getLandLController
-                .getNotifications.value.notifications[index].notificationId
-                .toString());
-            await getLandLController.readNotifications(index, 'all');
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () async {
-              SessionController().setNotificationId(getLandLController
-                  .getNotifications.value.notifications[index].notificationId
-                  .toString());
-
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) async {
+              SessionController().setNotificationId(
+                getLandLController
+                    .getNotifications.value.notifications![index].notificationId
+                    .toString(),
+              );
               await getLandLController.archiveNotifications();
               setState(() {
                 getLandLController.allLength = getLandLController.allLength - 1;
-                getLandLController.getNotifications.value.notifications
+                getLandLController.getNotifications.value.notifications!
                     .removeAt(index);
               });
-            }),
-      ],
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: notification(index),
-      actionPane: SlidableDrawerActionPane(),
     );
+
+    //  Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(getLandLController
+    //             .getNotifications.value.notifications![index].notificationId
+    //             .toString());
+    //         await getLandLController.readNotifications(index, 'all');
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () async {
+    //           SessionController().setNotificationId(getLandLController
+    //               .getNotifications.value.notifications![index].notificationId
+    //               .toString());
+
+    //           await getLandLController.archiveNotifications();
+    //           setState(() {
+    //             getLandLController.allLength = getLandLController.allLength - 1;
+    //             getLandLController.getNotifications.value.notifications!
+    //                 .removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: notification(index),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 
   Widget notification(int index) {
@@ -317,7 +372,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                 Row(
                   children: [
                     if (!getLandLController
-                        .getNotifications.value.notifications[index].isRead)
+                        .getNotifications.value.notifications![index].isRead!)
                       Container(
                         height: 1.0.h,
                         width: 2.0.w,
@@ -335,10 +390,10 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                       child: Text(
                         SessionController().getLanguage() == 1
                             ? getLandLController.getNotifications.value
-                                    .notifications[index].title ??
+                                    .notifications![index].title ??
                                 ""
                             : getLandLController.getNotifications.value
-                                    .notifications[index].titleAR ??
+                                    .notifications![index].titleAR ??
                                 "",
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.semiBoldBlack11,
@@ -349,25 +404,30 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 1.6.w),
                   child: Html(
-                    customTextAlign: (_) =>
-                        SessionController().getLanguage() == 1
-                            ? TextAlign.left
-                            : TextAlign.right,
                     data: SessionController().getLanguage() == 1
                         ? getLandLController.getNotifications.value
-                                .notifications[index].description ??
+                                .notifications![index].description ??
                             ""
                         : getLandLController.getNotifications.value
-                                .notifications[index].descriptionAR ??
+                                .notifications![index].descriptionAR ??
                             "",
-                    defaultTextStyle: AppTextStyle.normalBlack10,
+                    style: {
+                      'html': Style(
+                        textAlign: SessionController().getLanguage() == 1
+                            ? TextAlign.left
+                            : TextAlign.right,
+                        color: Colors.black,
+                        fontFamily: AppFonts.graphikRegular,
+                        fontSize: FontSize(10.0),
+                      ),
+                    },
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 2.w),
                   child: Text(
                     getLandLController.getNotifications.value
-                            .notifications[index].createdOn ??
+                            .notifications![index].createdOn ??
                         "",
                     style: AppTextStyle.normalBlack10,
                   ),

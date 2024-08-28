@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetPropertyDetailModel getPropertyDetailModelFromJson(String str) =>
-    GetPropertyDetailModel.fromJson(json.decode(str));
+GetPropertyDetailModel getPropertyDetailModelFromJson(String? str) =>
+    GetPropertyDetailModel.fromJson(json.decode(str!));
 
-String getPropertyDetailModelToJson(GetPropertyDetailModel data) =>
+String? getPropertyDetailModelToJson(GetPropertyDetailModel data) =>
     json.encode(data.toJson());
 
 class GetPropertyDetailModel {
@@ -18,12 +18,12 @@ class GetPropertyDetailModel {
     this.property,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  Property property;
+  String? statusCode;
+  String? status;
+  String? message;
+  Property? property;
 
-  factory GetPropertyDetailModel.fromJson(Map<String, dynamic> json) =>
+  factory GetPropertyDetailModel.fromJson(Map<String?, dynamic> json) =>
       GetPropertyDetailModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -31,11 +31,11 @@ class GetPropertyDetailModel {
         property: Property.fromJson(json["property"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "property": property.toJson(),
+        "property": property!.toJson(),
       };
 }
 
@@ -67,33 +67,33 @@ class Property {
       this.unitRefNo,
       this.propertyID});
 
-  String propertyImage;
-  String unitView;
-  String unitViewAR;
-  String longitude;
-  String latitude;
-  String propertyName;
-  String propertyNameAr;
-  String address;
-  String addressAr;
+  String? propertyImage;
+  String? unitView;
+  String? unitViewAR;
+  String? longitude;
+  String? latitude;
+  String? propertyName;
+  String? propertyNameAr;
+  String? address;
+  String? addressAr;
   dynamic bedRooms;
   dynamic noofWashrooms;
-  String areaSize;
-  String landlordName;
-  String unitType;
-  String unitTypeAR;
-  String unitCategoryName;
-  String unitCategoryNameAr;
+  String? areaSize;
+  String? landlordName;
+  String? unitType;
+  String? unitTypeAR;
+  String? unitCategoryName;
+  String? unitCategoryNameAr;
   dynamic noofKitchens;
   dynamic maidRooms;
   dynamic noofLivingRooms;
   dynamic noofBalconies;
   dynamic amount;
-  int unitID;
-  String unitRefNo;
-  int propertyID;
+  int? unitID;
+  String? unitRefNo;
+  int? propertyID;
 
-  factory Property.fromJson(Map<String, dynamic> json) => Property(
+  factory Property.fromJson(Map<String?, dynamic> json) => Property(
       propertyImage: json["propertyImage"],
       unitView: json["unitView"],
       unitViewAR: json["unitViewAR"],
@@ -120,7 +120,7 @@ class Property {
       unitRefNo: json["unitRefNo"],
       propertyID: json["propertyID"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyImage": propertyImage,
         "unitView": unitView,
         "unitViewAR": unitViewAR,

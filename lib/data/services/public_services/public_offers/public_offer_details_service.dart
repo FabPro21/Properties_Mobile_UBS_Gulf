@@ -9,7 +9,7 @@ class PublicOffersDetailsService {
   static Future<dynamic> getOffersDetails(String offerId) async {
     var url = AppConfig().getPublicOffersDetails;
 var data = {"OfferId":offerId};
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {

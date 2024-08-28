@@ -28,13 +28,13 @@ class VerifyUserOtpControllerFB extends GetxController {
   RxBool hasError = false.obs;
   RxBool loadingData = false.obs;
   RxBool pinFieldTap = false.obs;
-  Color changeColor;
-  String userMpin;
-  String phoneNo;
-  String statusCode;
-  String deviceName;
-  String deviceToken;
-  String deviceType;
+  Color? changeColor;
+  String? userMpin;
+  String? phoneNo;
+  String? statusCode;
+  String? deviceName;
+  String? deviceToken;
+  String? deviceType;
   RxString error = "".obs;
   RxBool resending = false.obs;
   RxInt resendCounter = 0.obs;
@@ -79,7 +79,7 @@ class VerifyUserOtpControllerFB extends GetxController {
       /// SessionController ///
       ////////////////////////////
 
-      SessionController().setUser(model.value.user);
+      SessionController().setUser(model.value.user!);
       SessionController().setLoginToken(model.value.token);
       SessionController().setToken(model.value.token);
       /////////////////////////////////////
@@ -91,7 +91,7 @@ class VerifyUserOtpControllerFB extends GetxController {
       //////////////////////////////
       bool _updatedDeviceInfo = await updateDeviceInfo();
       if (_updatedDeviceInfo) {
-        if (model.value.user.mpinSet && !SessionController().getResetMpin())
+        if (model.value.user!.mpinSet! && !SessionController().getResetMpin())
           Get.offAll(() => SelectRoleScreen());
         else
           Get.offAll(() => SetupMpinScreen());
@@ -120,21 +120,21 @@ class VerifyUserOtpControllerFB extends GetxController {
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userName,
-      model.value.user.name ?? "",
+      model.value.user!.name ?? "",
     );
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userNameAr,
-      model.value.user.fullNameAr ?? "",
+      model.value.user!.fullNameAr ?? "",
     );
 
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.userID,
-      model.value.user.userId.toString(),
+      model.value.user!.userId.toString(),
     );
 
     print(
-        'User ID from Data svaed Locally ::: ${model.value.user.userId.toString()}');
+        'User ID from Data svaed Locally ::: ${model.value.user!.userId.toString()}');
 
     GlobalPreferences.setbool(
       GlobalPreferencesLabels.isLoginBool,
@@ -172,12 +172,12 @@ class VerifyUserOtpControllerFB extends GetxController {
   Future<void> _getDeviceTokken() async {
     FirebaseMessaging.instance.requestPermission();
     await FirebaseMessaging.instance.getToken().then(
-      (String token) {
+      (String? token) {
         assert(token != null);
         deviceToken = token;
         SessionController().setDeviceTokken(deviceToken);
         GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken);
+            GlobalPreferencesLabels.deviceToken, deviceToken??"");
       },
     );
   }

@@ -49,7 +49,7 @@ class GetLanguageController extends GetxController {
         model.value = result;
         selectedLang.value =
             await GlobalPreferences.getInt(GlobalPreferencesLabels.langId) ??
-                model.value.language.first.langId;
+                model.value.language!.first.langId;
         update();
       } else {
         error.value = result;

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/filter_data.dart';
 import 'package:fap_properties/data/models/tenant_models/get_contracts_model.dart';
@@ -9,7 +11,7 @@ import 'package:get/get.dart';
 
 class GetContractsController extends GetxController {
   Rx<GetContractsModel> getContracts = GetContractsModel().obs;
-  FilterData filterData;
+  FilterData? filterData;
   RxBool scrolling = false.obs;
 
   var loadingData = true.obs;
@@ -27,21 +29,21 @@ class GetContractsController extends GetxController {
   }
 
   searchDataWithoutAPi(String qry) {
-    if (getContracts.value.contracts != null) {
+    if (getContracts.value.contracts! != null) {
       qry.toLowerCase();
       loadingData.value = true;
       List<Contract> _searchedCont = [];
-      for (int i = 0; i < getContracts.value.contracts.length; i++) {
-        if (getContracts.value.contracts[i].contractno.contains(qry) ||
-            getContracts.value.contracts[i].contractStatus
+      for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+        if (getContracts.value.contracts![i].contractno!.contains(qry) ||
+            getContracts.value.contracts![i].contractStatus!
                 .toLowerCase()
                 .contains(qry) ||
-            getContracts.value.contracts[i].contractStatusAr.contains(qry) ||
-            getContracts.value.contracts[i].propertyName
+            getContracts.value.contracts![i].contractStatusAr!.contains(qry) ||
+            getContracts.value.contracts![i].propertyName!
                 .toLowerCase()
                 .contains(qry) ||
-            getContracts.value.contracts[i].propertyNameAr.contains(qry)) {
-          _searchedCont.add(getContracts.value.contracts[i]);
+            getContracts.value.contracts![i].propertyNameAr!.contains(qry)) {
+          _searchedCont.add(getContracts.value.contracts![i]);
         }
       }
       contracts = _searchedCont;
@@ -70,8 +72,8 @@ class GetContractsController extends GetxController {
         if (getContracts.value.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
         } else {
-          contracts = result.contracts;
-          length = getContracts.value.contracts.length;
+          contracts = result.contracts!;
+          length = getContracts.value.contracts!.length;
         }
       } else {
         error.value = AppMetaLabels().noDatafound;
@@ -101,8 +103,8 @@ class GetContractsController extends GetxController {
         if (getContracts.value.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
         } else {
-          contracts = result.contracts;
-          length = getContracts.value.contracts.length;
+          contracts = result.contracts!;
+          length = getContracts.value.contracts!.length;
         }
       } else {
         error.value = AppMetaLabels().noDatafound;
@@ -132,9 +134,9 @@ class GetContractsController extends GetxController {
           errorLoadMore.value = AppMetaLabels().noDatafound;
           loadingDataMoreData.value = false;
         } else {
-          if (result.contracts.isNotEmpty) {
-            for (int i = 0; i < getContracts.value.contracts.length; i++) {
-              contracts.add(result.contracts[i]);
+          if (result.contracts!.isNotEmpty) {
+            for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+              contracts.add(result.contracts![i]);
             }
             length = contracts.length;
           }
@@ -166,16 +168,16 @@ class GetContractsController extends GetxController {
     }
     error.value = '';
     loadingData.value = true;
-    var result = await TenantRepository.getContractsWithFilter(filterData);
+    var result = await TenantRepository.getContractsWithFilter(filterData!);
     loadingData.value = false;
     if (result is GetContractsModel) {
       getContracts.value = result;
-      contracts = result.contracts;
+      contracts = result.contracts!;
       if (getContracts.value.status == AppMetaLabels().notFound ||
           getContracts.value.status == 'NotFound') {
         error.value = AppMetaLabels().noDatafound;
       } else {
-        length = getContracts.value.contracts.length;
+        length = getContracts.value.contracts!.length;
       }
     } else {
       error.value = AppMetaLabels().noDatafound;
@@ -193,16 +195,16 @@ class GetContractsController extends GetxController {
     error.value = '';
     loadingData.value = true;
     var result = await TenantRepository.getContractsWithFilterPagination(
-        filterData, pageNo, searchText);
+        filterData!, pageNo, searchText);
     loadingData.value = false;
     if (result is GetContractsModel) {
       getContracts.value = result;
-      contracts = result.contracts;
+      contracts = result.contracts!;
       if (getContracts.value.status == AppMetaLabels().notFound ||
           getContracts.value.status == 'NotFound') {
         error.value = AppMetaLabels().noDatafound;
       } else {
-        length = getContracts.value.contracts.length;
+        length = getContracts.value.contracts!.length;
       }
     } else {
       error.value = AppMetaLabels().noDatafound;
@@ -218,7 +220,7 @@ class GetContractsController extends GetxController {
     errorLoadMoreFilter.value = '';
     loadingDataMoreData.value = true;
     var result = await TenantRepository.getContractsWithFilterPagination(
-        filterData, pageNo, searchText);
+        filterData!, pageNo, searchText);
     loadingDataMoreData.value = false;
     if (result is GetContractsModel) {
       getContracts.value = result;
@@ -226,8 +228,8 @@ class GetContractsController extends GetxController {
           getContracts.value.status == 'NotFound') {
         errorLoadMoreFilter.value = AppMetaLabels().noDatafound;
       } else {
-        for (int i = 0; i < getContracts.value.contracts.length; i++) {
-          contracts.add(getContracts.value.contracts[i]);
+        for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+          contracts.add(getContracts.value.contracts![i]);
         }
         length = contracts.length;
       }
@@ -254,8 +256,8 @@ class GetContractsController extends GetxController {
         if (getContracts.value.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
         } else {
-          contracts = result.contracts;
-          length = getContracts.value.contracts.length;
+          contracts = result.contracts!;
+          length = getContracts.value.contracts!.length;
           update();
         }
       } else {
@@ -278,16 +280,16 @@ class GetContractsController extends GetxController {
     try {
       loadingData.value = true;
       var result = await TenantRepository.getContractsWithFilterPagination(
-          filterData, pageNo, searchText);
+          filterData!, pageNo, searchText);
       loadingData.value = false;
       if (result is GetContractsModel) {
         getContracts.value = result;
-        contracts = result.contracts;
+        contracts = result.contracts!;
         if (getContracts.value.status == AppMetaLabels().notFound ||
             getContracts.value.status == 'NotFound') {
           errorLoadMoreFilter.value = AppMetaLabels().noDatafound;
         } else {
-          length = getContracts.value.contracts.length;
+          length = getContracts.value.contracts!.length;
         }
       } else {
         errorLoadMoreFilter.value = AppMetaLabels().noDatafound;

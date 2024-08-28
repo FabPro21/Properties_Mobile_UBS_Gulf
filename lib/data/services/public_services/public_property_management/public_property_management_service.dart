@@ -9,7 +9,7 @@ class PublicPropertyManagementService {
   static Future<dynamic> getPropertyManagement() async {
     var url = AppConfig().publicPropertyManagement;
 
-    var resp = await BaseClientClass.post(url, {},
+    var resp = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       var data = publicGetPropertyManagementModelFromJson(resp.body);

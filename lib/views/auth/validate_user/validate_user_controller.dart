@@ -4,7 +4,7 @@ import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/auth_models/validate_user_model.dart';
 import 'package:fap_properties/data/repository/auth_repository.dart';
-import 'package:fap_properties/utils/constants/app_config.dart';
+// import 'package:fap_properties/utils/constants/app_config.dart';
 import 'package:fap_properties/utils/constants/global_preferences.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/views/auth/validate_user/phone_no_field.dart';
@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 import 'package:get/get.dart';
 import 'package:http_proxy/http_proxy.dart';
-import 'package:ssl_pinning_plugin/ssl_pinning_plugin.dart';
+// import 'package:ssl_pinning_plugin/ssl_pinning_plugin.dart';
 import '../../common/safe_device_check.dart';
 
 class ValidateUserController extends GetxController {
@@ -23,7 +23,7 @@ class ValidateUserController extends GetxController {
   RxBool loadingData = false.obs;
   RxBool textFieldTap = false.obs;
   RxBool validNo = false.obs;
-  String otpCode;
+  String? otpCode;
   RxInt resendCounter = 0.obs;
   RxString error = "".obs;
   RxBool checkRooted = false.obs;
@@ -52,7 +52,7 @@ class ValidateUserController extends GetxController {
       validNo.value = false;
 
       // making a complete mobile no after geting the Dailing Code
-      final String phone = SessionController().getDialingCode() +
+      final String phone = SessionController().getDialingCode()??"" +
           PhoneNoField.phoneController.text;
 
       // after completion of mobile no save in prefernece and Session controller
@@ -90,26 +90,26 @@ class ValidateUserController extends GetxController {
     }
   }
 
-  Future<bool> checkSSL() async {
-    try {
-      checkMsg.value = await SslPinningPlugin.check(
-        serverURL: AppConfig().baseUrl,
-        httpMethod: HttpMethod.Head,
-        sha: SHA.SHA1,
-        allowedSHAFingerprints: [
-          // "84 c0 e2 bc b9 ae 9f de 00 27 b6 22 ee b1 cf 92 50 c6 82 0e", old certificate
-          "53 C0 3F CE D7 18 86 B2 29 11 48 98 BD 90 6A AF 73 83 2D 08"
-          // "9F A6 EF 8C 93 86 50 C9 4D 95 96 ED 2E 84 BF 21 F7 1E C3 AC"
-        ],
-        timeout: 60,
-      );
-      return true;
-    } catch (e) {
-      isUpdating.value = false;
-      loadingData.value = false;
-      return false;
-    }
-  }
+  // Future<bool> checkSSL() async {
+  //   try {
+  //     checkMsg.value = await SslPinningPlugin.check(
+  //       serverURL: AppConfig().baseUrl??"",
+  //       httpMethod: HttpMethod.Head,
+  //       sha: SHA.SHA1,
+  //       allowedSHAFingerprints: [
+  //         // "84 c0 e2 bc b9 ae 9f de 00 27 b6 22 ee b1 cf 92 50 c6 82 0e", old certificate
+  //         "53 C0 3F CE D7 18 86 B2 29 11 48 98 BD 90 6A AF 73 83 2D 08"
+  //         // "9F A6 EF 8C 93 86 50 C9 4D 95 96 ED 2E 84 BF 21 F7 1E C3 AC"
+  //       ],
+  //       timeout: 60,
+  //     );
+  //     return true;
+  //   } catch (e) {
+  //     isUpdating.value = false;
+  //     loadingData.value = false;
+  //     return false;
+  //   }
+  // }
 
   Future<void> onCodeSent() async {
     isUpdating.value = true;
@@ -124,10 +124,10 @@ class ValidateUserController extends GetxController {
       loadingData.value = false;
       if (result is ValidateUserModel) {
         model.value = result;
-        FocusScope.of(Get.context).unfocus();
+        FocusScope.of(Get.context!).unfocus();
         PhoneNoField.phoneController.clear();
         Get.to(() => VerifyUserOtpScreen(
-              otpCodeForVerifyOTP: model.value.otpCode,
+              otpCodeForVerifyOTP: model.value.otpCode??"",
             ));
         SessionController().setOtpCode(result.otpCode);
       } else {

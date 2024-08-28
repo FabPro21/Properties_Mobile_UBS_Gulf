@@ -15,7 +15,7 @@ import 'dart:ui' as ui;
 // ignore: must_be_immutable
 class LoginMpinScreen extends StatefulWidget {
   const LoginMpinScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
   @override
   State<LoginMpinScreen> createState() => _LoginMpinScreenState();

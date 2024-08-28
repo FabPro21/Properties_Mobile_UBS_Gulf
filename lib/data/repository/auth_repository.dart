@@ -17,17 +17,17 @@ class CommonRepository {
   static Future<dynamic> validateUser() => ValidateUserServices.getData();
   static Future<dynamic> validateUserFB() => ValidateUserServices.getDataFB();
   static Future<dynamic> verifyOtp(
-          String otpCode, String otpCodeForVerifyOTP) =>
+          String? otpCode, String? otpCodeForVerifyOTP) =>
       VerifyUserOtpServices.getData(otpCode, otpCodeForVerifyOTP);
   static Future<dynamic> verifyOtpFB(
-          String otpCode, String otpCodeForVerifyOTP, bool status) =>
+          String? otpCode, String? otpCodeForVerifyOTP, bool status) =>
       VerifyUserOtpServices.getDataFB(otpCode, otpCodeForVerifyOTP, status);
   static Future<dynamic> updateDeviceInfo(
-          String deviceName, String deviceTokken, String deviceType) =>
+          String? deviceName, String? deviceTokken, String? deviceType) =>
       UpdateDeviceInfoService.getData(deviceName, deviceTokken, deviceType);
-  static Future<dynamic> addMpin(String mpin) => AddMpinServices.getData(mpin);
+  static Future<dynamic> addMpin(String? mpin) => AddMpinServices.getData(mpin);
   static Future<dynamic> getUserRoles() => GetUserRolesService.getData();
-  static Future<dynamic> validateRoleByMpin(String mpin) =>
+  static Future<dynamic> validateRoleByMpin(String? mpin) =>
       ValidateRoleByMpinService.getData(mpin);
   static Future<dynamic> validateRoleByFp() =>
       ValidateRoleByFPService.getData();
@@ -36,6 +36,6 @@ class CommonRepository {
   static Future<dynamic> getLanguage() => GetLanguageServices.getData();
   static Future<dynamic> updateLanguage(langId) =>
       UpdateUserLanguageServices.getData(langId);
-  static Future<dynamic> compareDevToken(String devToken, String num) =>
+  static Future<dynamic> compareDevToken(String? devToken, String? num) =>
       CompareDevTokenService.getData(devToken, num);
 }

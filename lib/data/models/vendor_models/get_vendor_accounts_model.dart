@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetVendorAccountsModel getVendorAccountsModelFromJson(String str) =>
-    GetVendorAccountsModel.fromJson(json.decode(str));
+GetVendorAccountsModel getVendorAccountsModelFromJson(String? str) =>
+    GetVendorAccountsModel.fromJson(json.decode(str!));
 
-String getVendorAccountsModelToJson(GetVendorAccountsModel data) =>
+String? getVendorAccountsModelToJson(GetVendorAccountsModel data) =>
     json.encode(data.toJson());
 
 class GetVendorAccountsModel {
@@ -18,12 +18,12 @@ class GetVendorAccountsModel {
     this.accounts,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<Account> accounts;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Account>? accounts;
 
-  factory GetVendorAccountsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetVendorAccountsModel.fromJson(Map<String?, dynamic> json) =>
       GetVendorAccountsModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetVendorAccountsModel {
             json["accounts"].map((x) => Account.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "accounts": List<dynamic>.from(accounts.map((x) => x.toJson())),
+        "accounts": List<dynamic>.from(accounts!.map((x) => x.toJson())),
       };
 }
 
@@ -53,15 +53,15 @@ class Account {
   });
 
   dynamic vendorId;
-  String bankName;
-  String bankNameAr;
-  String accountTitle;
-  String accountTitleAR;
-  String accountNumber;
-  String iban;
-  String swiftCode;
+  String? bankName;
+  String? bankNameAr;
+  String? accountTitle;
+  String? accountTitleAR;
+  String? accountNumber;
+  String? iban;
+  String? swiftCode;
 
-  factory Account.fromJson(Map<String, dynamic> json) => Account(
+  factory Account.fromJson(Map<String?, dynamic> json) => Account(
         vendorId: json["vendorId"],
         bankName: json["bankName"],
         bankNameAr: json["bankNameAR"],
@@ -72,7 +72,7 @@ class Account {
         swiftCode: json["swiftCode"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "vendorId": vendorId,
         "bankName": bankName,
         "bankNameAR": bankNameAr,

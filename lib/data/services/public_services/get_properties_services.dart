@@ -22,13 +22,13 @@ class GetPropertiesServices {
 
     var data = {
       if (propName != "") "PropertyName": propName,
-      if (areaType != "") "AreaType": areaType ?? '""',
+      if (areaType != "") "AreaType": areaType ,
       if (SessionController().getPropCatId() != "")
         "PropertyCategoryID": SessionController().getPropCatId(),
       if (SessionController().getCityId() != "")
         "EmirateId": SessionController().getCityId(),
-      if (minRentAmount != "") "MinAmount": minRentAmount ?? '""',
-      if (maxRentAmount != "") "MaxAmount": maxRentAmount ?? '""',
+      if (minRentAmount != "") "MinAmount": minRentAmount ,
+      if (maxRentAmount != "") "MaxAmount": maxRentAmount ,
       if (SessionController().getUnitTypeName() != "")
         "UnitType": SessionController().getUnitTypeName(),
       if (minAreaSize != "") "MinArea": minAreaSize,
@@ -38,7 +38,7 @@ class GetPropertiesServices {
       "pageNo": pagenum,
       "pageSize": 15,
     };
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {
@@ -62,13 +62,13 @@ class GetPropertiesServices {
 
     var data = {
       if (propName != "") "PropertyName": propName,
-      if (areaType != "") "AreaType": areaType ?? '""',
+      if (areaType != "") "AreaType": areaType ,
       if (SessionController().getPropCatId() != "")
         "PropertyCategoryID": SessionController().getPropCatId(),
       if (SessionController().getCityId() != "")
         "EmirateId": SessionController().getCityId(),
-      if (minRentAmount != "") "MinAmount": minRentAmount ?? '""',
-      if (maxRentAmount != "") "MaxAmount": maxRentAmount ?? '""',
+      if (minRentAmount != "") "MinAmount": minRentAmount,
+      if (maxRentAmount != "") "MaxAmount": maxRentAmount,
       if (SessionController().getUnitTypeName() != "")
         "UnitType": SessionController().getUnitTypeName(),
       if (minAreaSize != "") "MinArea": minAreaSize,
@@ -78,7 +78,7 @@ class GetPropertiesServices {
       "pageNo": pageNo,
       "pageSize": 6,
     };
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {

@@ -11,8 +11,8 @@ import 'package:apple_maps_flutter/apple_maps_flutter.dart' as Am;
 
 class LandlordPropertiesTabDetailController extends GetxController {
   LandLordUnitDetailModel propertyUnitDetailModel = LandLordUnitDetailModel();
-  LandlordPropertyUnitsModel propertyUnitInfo;
-  LandlordPropertiesDetailsModel propertyDetailInfo;
+  LandlordPropertyUnitsModel? propertyUnitInfo;
+  LandlordPropertiesDetailsModel? propertyDetailInfo;
   RxBool loadingProperties = false.obs;
   String errorLoadingProperties = '';
   RxBool loadingPropertiesInfo = false.obs;
@@ -33,7 +33,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print('Response ::: $response');
     if (response is LandlordPropertyUnitsModel) {
       if (response.status == 'Ok') {
-        if (response.cities.length >= 1) {
+        if (response.cities!.length >= 1) {
           propertyUnitInfo = response;
         } else {
           errorLoadingPropertiesInfo = AppMetaLabels().noDatafound;
@@ -47,8 +47,8 @@ class LandlordPropertiesTabDetailController extends GetxController {
 
   RxBool loadingPropertiesUnitDetail = false.obs;
   RxString errorLoadingPropertiesUnitDetail = ''.obs;
-  Gm.CameraPosition kGooglePlex;
-  Am.CameraPosition kApplePlex;
+  Gm.CameraPosition? kGooglePlex;
+  Am.CameraPosition? kApplePlex;
   getPropertyUnitDetail(String propertyID) async {
     loadingPropertiesUnitDetail.value = true;
     errorLoadingPropertiesUnitDetail.value = '';
@@ -57,30 +57,30 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print('******');
     if (response is LandLordUnitDetailModel) {
       if (response.status == 'Ok') {
-        if (response.propertyUnitDetails.length >= 1) {
+        if (response.propertyUnitDetails!.length >= 1) {
           propertyUnitDetailModel = response;
           print(
-              'latitude  :::: ${propertyUnitDetailModel.propertyUnitDetails.first.latitude}');
+              'latitude  :::: ${propertyUnitDetailModel.propertyUnitDetails!.first.latitude}');
           print(
-              'longitude  :::: ${propertyUnitDetailModel.propertyUnitDetails.first.longitude}');
-          if (propertyUnitDetailModel.propertyUnitDetails.first.latitude !=
+              'longitude  :::: ${propertyUnitDetailModel.propertyUnitDetails!.first.longitude}');
+          if (propertyUnitDetailModel.propertyUnitDetails!.first.latitude !=
                   "" &&
-              propertyUnitDetailModel.propertyUnitDetails.first.longitude !=
+              propertyUnitDetailModel.propertyUnitDetails!.first.longitude !=
                   "") {
             kGooglePlex = Gm.CameraPosition(
               target: Gm.LatLng(
                   double.parse(propertyUnitDetailModel
-                      .propertyUnitDetails.first.latitude),
+                      .propertyUnitDetails!.first.latitude!),
                   double.parse(propertyUnitDetailModel
-                      .propertyUnitDetails.first.longitude)),
+                      .propertyUnitDetails!.first.longitude!)),
               zoom: 5.0,
             );
             kApplePlex = Am.CameraPosition(
               target: Am.LatLng(
                   double.parse(propertyUnitDetailModel
-                      .propertyUnitDetails.first.latitude),
+                      .propertyUnitDetails!.first.latitude!),
                   double.parse(propertyUnitDetailModel
-                      .propertyUnitDetails.first.longitude)),
+                      .propertyUnitDetails!.first.longitude!)),
               zoom: 5.0,
             );
           } else {
@@ -115,7 +115,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print(response);
     if (response is LandlordPropertiesDetailsModel) {
       if (response.status == 'Ok') {
-        if (response.propertyDetails.length >= 1) {
+        if (response.propertyDetails!.length >= 1) {
           propertyDetailInfo = response;
         } else {
           errorLoadingPropertiesDetail = AppMetaLabels().noDatafound;
@@ -129,7 +129,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
 
   Stream<Uint8List> getImage(int index) async* {
     var resp = await LandlordRepository.getImages(
-        propertyUnitInfo.cities[index].unitID);
+        propertyUnitInfo!.cities![index].unitID);
     if (resp is Uint8List) {
       yield resp;
     } else {}

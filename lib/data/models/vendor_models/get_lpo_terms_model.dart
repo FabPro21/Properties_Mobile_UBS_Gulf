@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetLpoTermsModel getLpoTermsModelFromJson(String str) =>
-    GetLpoTermsModel.fromJson(json.decode(str));
+GetLpoTermsModel getLpoTermsModelFromJson(String? str) =>
+    GetLpoTermsModel.fromJson(json.decode(str!));
 
-String getLpoTermsModelToJson(GetLpoTermsModel data) =>
+String? getLpoTermsModelToJson(GetLpoTermsModel data) =>
     json.encode(data.toJson());
 
 class GetLpoTermsModel {
@@ -18,12 +18,12 @@ class GetLpoTermsModel {
     this.lpoTerms,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<LpoTerm> lpoTerms;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<LpoTerm>? lpoTerms;
 
-  factory GetLpoTermsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoTermsModel.fromJson(Map<String?, dynamic> json) =>
       GetLpoTermsModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +32,11 @@ class GetLpoTermsModel {
             json["lpoTerms"].map((x) => LpoTerm.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "lpoTerms": List<dynamic>.from(lpoTerms.map((x) => x.toJson())),
+        "lpoTerms": List<dynamic>.from(lpoTerms!.map((x) => x.toJson())),
       };
 }
 
@@ -57,17 +57,17 @@ class LpoTerm {
 
   dynamic lpoPaymentId;
   dynamic lpoId;
-  String termName;
-  String termNameAr;
+  String? termName;
+  String? termNameAr;
   dynamic amount;
-  String propertyName;
-  String propertyNameAr;
-  String lpoReference;
-  String lpoDate;
-  String paidBy;
-  String recievedBy;
+  String? propertyName;
+  String? propertyNameAr;
+  String? lpoReference;
+  String? lpoDate;
+  String? paidBy;
+  String? recievedBy;
 
-  factory LpoTerm.fromJson(Map<String, dynamic> json) => LpoTerm(
+  factory LpoTerm.fromJson(Map<String?, dynamic> json) => LpoTerm(
         lpoPaymentId: json["lpoPaymentID"],
         lpoId: json["lpoID"],
         termName: json["termName"],
@@ -81,7 +81,7 @@ class LpoTerm {
         recievedBy: json["recievedBy"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "lpoPaymentID": lpoPaymentId,
         "lpoID": lpoId,
         "termName": termName,

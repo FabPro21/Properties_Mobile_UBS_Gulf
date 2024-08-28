@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/vendor_models/get_vendor_contracts_status_model.dart';
 import 'package:fap_properties/data/models/vendor_models/vendor_get_contracts_model.dart';
@@ -15,7 +17,7 @@ class VendorContractsController extends GetxController {
   int length = 0;
   RxBool isFilter = false.obs;
 
-  VendorContractFilterData filterData;
+  VendorContractFilterData? filterData;
   List<Contract> contracts = [Contract()].obs;
 
   @override
@@ -41,7 +43,7 @@ class VendorContractsController extends GetxController {
           loadingData.value = false;
         } else {
           getContracts.value = result;
-          contracts = result.contracts;
+          contracts = result.contracts!;
           update();
           loadingData.value = false;
         }
@@ -77,7 +79,7 @@ class VendorContractsController extends GetxController {
           loadingData.value = false;
         } else {
           getContracts.value = result;
-          contracts = result.contracts;
+          contracts = result.contracts!;
           update();
           loadingData.value = false;
         }
@@ -111,8 +113,8 @@ class VendorContractsController extends GetxController {
           loadingDataLoadMore.value = false;
         } else {
           getContracts.value = result;
-          for (int i = 0; i < getContracts.value.contracts.length; i++) {
-            contracts.add(getContracts.value.contracts[i]);
+          for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+            contracts.add(getContracts.value.contracts![i]);
           }
           update();
           loadingDataLoadMore.value = false;
@@ -132,13 +134,13 @@ class VendorContractsController extends GetxController {
       qry.toLowerCase();
       loadingData.value = true;
       List<Contract> _searchedCont = [];
-      for (int i = 0; i < getContracts.value.contracts.length; i++) {
-        if (getContracts.value.contracts[i].contractNo.contains(qry) ||
-            getContracts.value.contracts[i].contractStatus
+      for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+        if (getContracts.value.contracts![i].contractNo!.contains(qry) ||
+            getContracts.value.contracts![i].contractStatus!
                 .toLowerCase()
                 .contains(qry) ||
-            getContracts.value.contracts[i].contractStatusAr.contains(qry)) {
-          _searchedCont.add(getContracts.value.contracts[i]);
+            getContracts.value.contracts![i].contractStatusAr!.contains(qry)) {
+          _searchedCont.add(getContracts.value.contracts![i]);
         }
       }
       contracts = _searchedCont;
@@ -154,7 +156,7 @@ class VendorContractsController extends GetxController {
   void applyFilter() async {
     filterData =
         await Get.to(() => VendorContractsFilter(clear: !isFilter.value));
-    if (filterData != null) {
+    if (filterData! != null) {
       getFilteredData();
     }
   }
@@ -168,7 +170,7 @@ class VendorContractsController extends GetxController {
     try {
       error.value = '';
       loadingData.value = true;
-      var result = await VendorRepository.getContractsWithFilter(filterData);
+      var result = await VendorRepository.getContractsWithFilter(filterData!);
       if (result is VendorContractsModel) {
         getContracts.value = result;
         if (getContracts.value.status == AppMetaLabels().notFound) {
@@ -176,8 +178,8 @@ class VendorContractsController extends GetxController {
           loadingData.value = false;
         } else {
           getContracts.value = result;
-          length = getContracts.value.contracts.length;
-          contracts = result.contracts;
+          length = getContracts.value.contracts!.length;
+          contracts = result.contracts!;
           update();
           loadingData.value = false;
         }
@@ -211,7 +213,7 @@ class VendorContractsController extends GetxController {
       error.value = '';
       loadingData.value = true;
       var result = await VendorRepository.getContractsWithFilterPagination(
-          filterData, pageNoP);
+          filterData!, pageNoP);
       if (result is VendorContractsModel) {
         getContracts.value = result;
         if (getContracts.value.status == AppMetaLabels().notFound) {
@@ -219,8 +221,8 @@ class VendorContractsController extends GetxController {
           loadingData.value = false;
         } else {
           getContracts.value = result;
-          length = getContracts.value.contracts.length;
-          contracts = result.contracts;
+          length = getContracts.value.contracts!.length;
+          contracts = result.contracts!;
           update();
           loadingData.value = false;
         }
@@ -246,7 +248,7 @@ class VendorContractsController extends GetxController {
       errorLoadMoreFilter.value = '';
       loadingDataLoadMore.value = true;
       var result = await VendorRepository.getContractsWithFilterPagination(
-          filterData, pageNoP);
+          filterData!, pageNoP);
       if (result is VendorContractsModel) {
         getContracts.value = result;
         if (getContracts.value.status == AppMetaLabels().notFound) {
@@ -254,8 +256,8 @@ class VendorContractsController extends GetxController {
           loadingDataLoadMore.value = false;
         } else {
           getContracts.value = result;
-          for (int i = 0; i < getContracts.value.contracts.length; i++) {
-            contracts.add(getContracts.value.contracts[i]);
+          for (int i = 0; i < getContracts.value.contracts!.length; i++) {
+            contracts.add(getContracts.value.contracts![i]);
           }
           length = contracts.length;
           update();

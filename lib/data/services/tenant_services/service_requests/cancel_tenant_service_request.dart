@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class CancelTenantServiceRequest {
   static Future<String> cancelServiceRequest(var caseNo) async {
     var resp = await BaseClientClass.post(
-        AppConfig().cancelServiceRequest, {"CaseNo":caseNo.toString()});
+        AppConfig().cancelServiceRequest??"", {"CaseNo":caseNo.toString()});
     if (resp is http.Response) {
       try {
         var jsonResp = jsonDecode(resp.body);

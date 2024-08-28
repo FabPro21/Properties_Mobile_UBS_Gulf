@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-RefreshTokenModel refreshTokenModelFromJson(String str) => RefreshTokenModel.fromJson(json.decode(str));
+RefreshTokenModel refreshTokenModelFromJson(String? str) => RefreshTokenModel.fromJson(json.decode(str!));
 
-String refreshTokenModelToJson(RefreshTokenModel data) => json.encode(data.toJson());
+String? refreshTokenModelToJson(RefreshTokenModel data) => json.encode(data.toJson());
 
 class RefreshTokenModel {
     RefreshTokenModel({
@@ -18,14 +18,14 @@ class RefreshTokenModel {
         this.message,
     });
 
-    String statustCode;
-    String status;
-    int userId;
-    String userRole;
-    String token;
-    String message;
+    String? statustCode;
+    String? status;
+    int? userId;
+    String? userRole;
+    String? token;
+    String? message;
 
-    factory RefreshTokenModel.fromJson(Map<String, dynamic> json) => RefreshTokenModel(
+    factory RefreshTokenModel.fromJson(Map<String?, dynamic> json) => RefreshTokenModel(
         statustCode: json["statustCode"],
         status: json["status"],
         userId: json["userId"],
@@ -34,7 +34,7 @@ class RefreshTokenModel {
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "statustCode": statustCode,
         "status": status,
         "userId": userId,

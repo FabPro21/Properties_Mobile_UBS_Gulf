@@ -21,9 +21,9 @@ import '../../../../utils/styles/colors.dart';
 import '../tenant_contracts_tabs.dart/tenant_contracts_details.dart/tenant_contracts_detail_controller.dart';
 
 class MakePayment extends StatefulWidget {
-  final RegisterPaymentResponse data;
-  final String contractNo;
-  const MakePayment({Key key, this.data, this.contractNo}) : super(key: key);
+  final RegisterPaymentResponse? data;
+  final String? contractNo;
+  const MakePayment({Key? key, this.data, this.contractNo}) : super(key: key);
 
   @override
   State<MakePayment> createState() => _MakePaymentState();
@@ -36,12 +36,12 @@ class _MakePaymentState extends State<MakePayment> {
       Get.put(OutstandingPaymentsController());
   final onlinePaymentsController = Get.put(OnlinePaymentsController());
   bool showBack = false;
-  int noOfPaymentsLeft;
+  int? noOfPaymentsLeft;
 
   @override
   void initState() {
-    print('Url ::::: ${widget.data.url}');
-    print('Transaction ::::: ${widget.data.transactionId}');
+    print('Url ::::: ${widget.data!.url}');
+    print('Transaction ::::: ${widget.data!.transactionId}');
     super.initState();
   }
 
@@ -102,8 +102,8 @@ class _MakePaymentState extends State<MakePayment> {
                 width: double.maxFinite,
                 height: double.maxFinite,
                 initialContent:
-                    """<body><form action=${widget.data.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
-                initialSourceType: SourceType.html,
+                    """<body><form action=${widget.data!.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data!.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
+                initialSourceType: SourceType.HTML ,
                 onPageFinished: (url) {
                   if (url.contains('Finalize')) {
                     setState(() {
@@ -227,11 +227,11 @@ class _MakePaymentState extends State<MakePayment> {
                     width: 65.0.w,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          elevation: MaterialStateProperty.all<double>(0.0.h),
-                          backgroundColor: MaterialStateProperty.all<Color>(
+                          elevation: WidgetStateProperty.all<double>(0.0.h),
+                          backgroundColor: WidgetStateProperty.all<Color>(
                               AppColors.whiteColor),
                           shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(2.0.w),
                                 side: BorderSide(

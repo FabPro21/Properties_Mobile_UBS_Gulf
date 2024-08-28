@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class GetUnitImageService {
   static Future<dynamic> getData(int unitId) async {
-    final String url = AppConfig().getUnitImage;
+    final String url = AppConfig().getUnitImage??"";
     Map data = {"UnitId": unitId.toString()};
     var response = await BaseClientClass.post(url, data);
     if (response is http.Response) {

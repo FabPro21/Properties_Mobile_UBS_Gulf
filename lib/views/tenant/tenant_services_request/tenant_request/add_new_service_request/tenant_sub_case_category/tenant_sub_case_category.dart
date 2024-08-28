@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantSubCaseCategory extends StatefulWidget {
-  TenantSubCaseCategory({Key key}) : super(key: key);
+  TenantSubCaseCategory({Key? key}) : super(key: key);
 
   @override
   State<TenantSubCaseCategory> createState() => _TenantSubCaseCategoryState();
@@ -103,16 +103,17 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
                                 size: 2.0.h,
                                 color: Colors.grey,
                               ),
-                              contentPadding: EdgeInsets.only(left: 5.0.w,right: 5.0.w),
+                              contentPadding:
+                                  EdgeInsets.only(left: 5.0.w, right: 5.0.w),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(0.5.h),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 0.1.h),
+                                borderSide: BorderSide(
+                                    color: Colors.blue, width: 0.1.h),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(0.5.h),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 0.1.h),
+                                borderSide: BorderSide(
+                                    color: Colors.blue, width: 0.1.h),
                               ),
                               hintText: AppMetaLabels().search,
                               hintStyle: AppTextStyle.normalBlack10
@@ -123,7 +124,8 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
                         Padding(
                           padding: EdgeInsets.all(2.0.h),
                           child: Obx(() {
-                            return caseSubCategoryController.loadingData.value ==
+                            return caseSubCategoryController
+                                        .loadingData.value ==
                                     true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
@@ -131,8 +133,8 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
                                   )
                                 : caseSubCategoryController.error.value != ''
                                     ? AppErrorWidget(
-                                        errorText:
-                                            caseSubCategoryController.error.value,
+                                        errorText: caseSubCategoryController
+                                            .error.value,
                                       )
                                     : ListView.builder(
                                         shrinkWrap: true,
@@ -146,7 +148,7 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
                                           } else if ((caseSubCategoryController
                                                           .caseSubCategory
                                                           .value
-                                                          .caseSubCategories[
+                                                          .caseSubCategories![
                                                               index]
                                                           .name ??
                                                       "")
@@ -156,7 +158,7 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
                                               (caseSubCategoryController
                                                           .caseSubCategory
                                                           .value
-                                                          .caseSubCategories[
+                                                          .caseSubCategories![
                                                               index]
                                                           .name ??
                                                       "")
@@ -187,22 +189,20 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
       onTap: () {
         SessionController().setCaseCategoryId(
           caseSubCategoryController
-                  .caseSubCategory.value.caseSubCategories[index].id
-                  .toString() ??
-              "",
+              .caseSubCategory.value.caseSubCategories![index].id
+              .toString(),
         );
         Get.back(result: [
-       SessionController().getLanguage()==1?   caseSubCategoryController
-                  .caseSubCategory.value.caseSubCategories[index].name
-                  .toString() ??
-              "":caseSubCategoryController
-                  .caseSubCategory.value.caseSubCategories[index].nameAR
-                  .toString() ??
-              "",
+          SessionController().getLanguage() == 1
+              ? caseSubCategoryController
+                  .caseSubCategory.value.caseSubCategories![index].name
+                  .toString()
+              : caseSubCategoryController
+                  .caseSubCategory.value.caseSubCategories![index].nameAR
+                  .toString(),
           caseSubCategoryController
-                  .caseSubCategory.value.caseSubCategories[index].id
-                  .toString() ??
-              "",
+              .caseSubCategory.value.caseSubCategories![index].id
+              .toString(),
         ]);
       },
       child: Column(
@@ -211,11 +211,13 @@ class _TenantSubCaseCategoryState extends State<TenantSubCaseCategory> {
           Padding(
             padding: EdgeInsets.all(2.0.h),
             child: Text(
-            SessionController().getLanguage() == 1?  caseSubCategoryController
-                      .caseSubCategory.value.caseSubCategories[index].name ??
-                  "":caseSubCategoryController
-                      .caseSubCategory.value.caseSubCategories[index].nameAR ??
-                  "",
+              SessionController().getLanguage() == 1
+                  ? caseSubCategoryController.caseSubCategory.value
+                          .caseSubCategories![index].name ??
+                      ""
+                  : caseSubCategoryController.caseSubCategory.value
+                          .caseSubCategories![index].nameAR ??
+                      "",
               style: AppTextStyle.normalGrey10,
             ),
           ),

@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 VendorGetContractDetailsModel vendorGetContractDetailsModelFromJson(
-        String str) =>
-    VendorGetContractDetailsModel.fromJson(json.decode(str));
+        String? str) =>
+    VendorGetContractDetailsModel.fromJson(json.decode(str!));
 
-String vendorGetContractDetailsModelToJson(
+String? vendorGetContractDetailsModelToJson(
         VendorGetContractDetailsModel data) =>
     json.encode(data.toJson());
 
@@ -20,12 +20,12 @@ class VendorGetContractDetailsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  ContractDetail contractDetail;
-  String message;
+  String? status;
+  String? statusCode;
+  ContractDetail? contractDetail;
+  String? message;
 
-  factory VendorGetContractDetailsModel.fromJson(Map<String, dynamic> json) =>
+  factory VendorGetContractDetailsModel.fromJson(Map<String?, dynamic> json) =>
       VendorGetContractDetailsModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -33,10 +33,10 @@ class VendorGetContractDetailsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "contractDetail": contractDetail.toJson(),
+        "contractDetail": contractDetail!.toJson(),
         "message": message,
       };
 }
@@ -59,22 +59,22 @@ class ContractDetail {
     this.paymentTermType,
   });
 
-  int contractId;
-  String contractNo;
-  String contractDate;
-  String startDate;
-  String endDate;
+  int? contractId;
+  String? contractNo;
+  String? contractDate;
+  String? startDate;
+  String? endDate;
   dynamic amount;
-  int contractorId;
-  String contractStatus;
-  String contractStatusAr;
-  String contractLength;
-  int noofStaffswithAccount;
-  int noofStaffswithoutAccount;
-  int paymentInstallments;
-  String paymentTermType;
+  int? contractorId;
+  String? contractStatus;
+  String? contractStatusAr;
+  String? contractLength;
+  int? noofStaffswithAccount;
+  int? noofStaffswithoutAccount;
+  int? paymentInstallments;
+  String? paymentTermType;
 
-  factory ContractDetail.fromJson(Map<String, dynamic> json) => ContractDetail(
+  factory ContractDetail.fromJson(Map<String?, dynamic> json) => ContractDetail(
         contractId: json["contractID"],
         contractNo: json["contractNo"],
         contractDate: json["contractDate"],
@@ -91,7 +91,7 @@ class ContractDetail {
         paymentTermType: json["paymentTermType"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractID": contractId,
         "contractNo": contractNo,
         "contractDate": contractDate,

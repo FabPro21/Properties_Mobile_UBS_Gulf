@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 PublicGetPropertyManagementModel publicGetPropertyManagementModelFromJson(
-        String str) =>
-    PublicGetPropertyManagementModel.fromJson(json.decode(str));
+        String? str) =>
+    PublicGetPropertyManagementModel.fromJson(json.decode(str!));
 
-String publicGetPropertyManagementModelToJson(
+String? publicGetPropertyManagementModelToJson(
         PublicGetPropertyManagementModel data) =>
     json.encode(data.toJson());
 
@@ -19,12 +19,12 @@ class PublicGetPropertyManagementModel {
     this.message,
   });
 
-  String status;
-  List<Record> record;
-  String message;
+  String? status;
+  List<Record>? record;
+  String? message;
 
   factory PublicGetPropertyManagementModel.fromJson(
-          Map<String, dynamic> json) =>
+          Map<String?, dynamic> json) =>
       PublicGetPropertyManagementModel(
         status: json["status"],
         record:
@@ -32,9 +32,9 @@ class PublicGetPropertyManagementModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "record": List<dynamic>.from(record.map((x) => x.toJson())),
+        "record": List<dynamic>.from(record!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -47,20 +47,20 @@ class Record {
       this.titileAr,
       this.descriptionAR});
 
-  int propertyManagementId;
-  String title;
-  String description;
-  String titileAr;
-  String descriptionAR;
+  int? propertyManagementId;
+  String? title;
+  String? description;
+  String? titileAr;
+  String? descriptionAR;
 
-  factory Record.fromJson(Map<String, dynamic> json) => Record(
+  factory Record.fromJson(Map<String?, dynamic> json) => Record(
       propertyManagementId: json["propertyManagementId"],
       title: json["title"],
       description: json["description"],
       titileAr: json["titileAr"],
       descriptionAR: json["descriptionAR"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyManagementId": propertyManagementId,
         "title": title,
         "description": description,

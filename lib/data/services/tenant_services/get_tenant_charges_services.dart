@@ -9,7 +9,7 @@ class GetContractsChargesServices {
     var url = AppConfig().getContractCharges;
     var contractId = SessionController().getContractID();
     Map data = {"ContractId": contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       GetContractChargesModel getContractsModel =
           getContractChargesModelFromJson(response.body);

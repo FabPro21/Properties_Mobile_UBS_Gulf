@@ -17,7 +17,7 @@ class TenantUpdateProfileService {
       "address": address
     };
 
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
     if (resp is http.Response) {
       return tenantUpdateProfileModelFromJson(resp.body);
     }

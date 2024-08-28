@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'vendor_contracts_detail_controller.dart';
 
 class VendorInfo extends StatefulWidget {
-  const VendorInfo({Key key}) : super(key: key);
+  const VendorInfo({Key? key}) : super(key: key);
 
   @override
   _VendorInfoState createState() => _VendorInfoState();
@@ -91,10 +91,9 @@ class _VendorInfoState extends State<VendorInfo> {
                                                   getCDController
                                                           .getContractsDetails
                                                           .value
-                                                          .contractDetail
+                                                          .contractDetail!
                                                           .contractDate
-                                                          .toString() ??
-                                                      "",
+                                                          .toString(),
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
@@ -114,10 +113,9 @@ class _VendorInfoState extends State<VendorInfo> {
                                                   getCDController
                                                           .getContractsDetails
                                                           .value
-                                                          .contractDetail
+                                                          .contractDetail!
                                                           .startDate
-                                                          .toString() ??
-                                                      "",
+                                                          .toString() ,
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
@@ -137,10 +135,9 @@ class _VendorInfoState extends State<VendorInfo> {
                                                   getCDController
                                                           .getContractsDetails
                                                           .value
-                                                          .contractDetail
+                                                          .contractDetail!
                                                           .endDate
-                                                          .toString() ??
-                                                      "",
+                                                          .toString() ,
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
@@ -154,7 +151,7 @@ class _VendorInfoState extends State<VendorInfo> {
                                           child: AppDivider(),
                                         ),
                                         rowList(AppMetaLabels().contractLength,
-                                            "${getCDController.daysPassed} / ${getCDController.getContractsDetails.value.contractDetail.contractLength.toString() ?? ""}"),
+                                            "${getCDController.daysPassed} / ${getCDController.getContractsDetails.value.contractDetail!.contractLength.toString() }"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
@@ -171,20 +168,18 @@ class _VendorInfoState extends State<VendorInfo> {
                                           getCDController
                                                   .getContractsDetails
                                                   .value
-                                                  .contractDetail
+                                                  .contractDetail!
                                                   .noofStaffswithAccount
-                                                  .toString() ??
-                                              "",
+                                                  .toString(),
                                         ),
                                         rowList(
                                           AppMetaLabels().noofStaffwithoutAcc,
                                           getCDController
                                                   .getContractsDetails
                                                   .value
-                                                  .contractDetail
+                                                  .contractDetail!
                                                   .noofStaffswithoutAccount
-                                                  .toString() ??
-                                              "",
+                                                  .toString() ,
                                         ),
                                         rowList(
                                           AppMetaLabels()
@@ -192,25 +187,23 @@ class _VendorInfoState extends State<VendorInfo> {
                                           getCDController
                                                   .getContractsDetails
                                                   .value
-                                                  .contractDetail
+                                                  .contractDetail!
                                                   .paymentInstallments
-                                                  .toString() ??
-                                              "",
+                                                  .toString() ,
                                         ),
                                         rowList(
                                           AppMetaLabels().paymentType,
                                           getCDController
                                                   .getContractsDetails
                                                   .value
-                                                  .contractDetail
+                                                  .contractDetail!
                                                   .paymentTermType
-                                                  .toString() ??
-                                              "",
+                                                  .toString(),
                                         ),
                                         rowList(
                                           AppMetaLabels().amount,
                                           "${AppMetaLabels().aed}" +
-                                              " ${getCDController.amountCurrency.toString() ?? ""}",
+                                              " ${getCDController.amountCurrency.toString() }",
                                         ),
                                       ],
                                     ),

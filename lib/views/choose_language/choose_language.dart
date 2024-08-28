@@ -14,9 +14,9 @@ import 'update_user_language_controller.dart';
 
 // ignore: must_be_immutable
 class ChooseLanguage extends StatefulWidget {
-  final bool cont;
-  final bool loggedIn;
-  ChooseLanguage({Key key, this.cont = false, this.loggedIn}) : super(key: key);
+  final bool? cont;
+  final bool? loggedIn;
+  ChooseLanguage({Key? key, this.cont = false, this.loggedIn}) : super(key: key);
 
   @override
   State<ChooseLanguage> createState() => _ChooseLanguageState();
@@ -49,11 +49,11 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                     Padding(
                       padding: EdgeInsets.only(top: 2.0.h),
                       child: Row(
-                        mainAxisAlignment: widget.cont
+                        mainAxisAlignment: widget.cont!
                             ? MainAxisAlignment.center
                             : MainAxisAlignment.spaceBetween,
                         children: [
-                          if (!widget.cont)
+                          if (!widget.cont!)
                             SizedBox(
                               width: 12.w,
                             ),
@@ -73,7 +73,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                               ),
                             ],
                           ),
-                          if (!widget.cont)
+                          if (!widget.cont!)
                             IconButton(
                               padding: EdgeInsets.all(1.w),
                               iconSize: 7.w,
@@ -105,7 +105,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                     // shrinkWrap: true,
                                     padding: EdgeInsets.zero,
                                     itemCount: gLController
-                                        .model.value.language.length,
+                                        .model.value.language!.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Column(
@@ -117,9 +117,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                               onTap: () {
                                                 gLController.changeLanguage(
                                                     gLController.model.value
-                                                        .language[index].langId,
-                                                    widget.loggedIn,
-                                                    widget.cont);
+                                                        .language![index].langId!,
+                                                    widget.loggedIn!,
+                                                    widget.cont!);
                                                 setState(() {});
                                               },
                                               child: Container(
@@ -130,16 +130,16 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                       (gLController
                                                                   .model
                                                                   .value
-                                                                  .language[
+                                                                  .language![
                                                                       index]
-                                                                  .title ==
+                                                                  .title! ==
                                                               "Arabic")
                                                           ? "العربية"
                                                           : gLController
                                                               .model
                                                               .value
-                                                              .language[index]
-                                                              .title,
+                                                              .language![index]
+                                                              .title??"",
                                                       style: AppTextStyle
                                                           .normalWhite15,
                                                     ),
@@ -153,7 +153,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                               gLController
                                                                   .model
                                                                   .value
-                                                                  .language[
+                                                                  .language![
                                                                       index]
                                                                   .langId
                                                           // index
@@ -172,7 +172,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                           ),
                                           index ==
                                                   gLController.model.value
-                                                          .language.length -
+                                                          .language!.length -
                                                       1
                                               ? SizedBox()
                                               : AppDivider(),
@@ -186,7 +186,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                 ),
               );
             }),
-            if (widget.cont)
+            if (widget.cont!)
               Padding(
                 padding: EdgeInsets.only(bottom: 4.0.h),
                 child: Align(

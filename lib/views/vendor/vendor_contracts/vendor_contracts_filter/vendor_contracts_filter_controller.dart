@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/models/vendor_models/get_vendor_contracts_status_model.dart';
 import 'package:fap_properties/data/models/vendor_models/vendor_status_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';

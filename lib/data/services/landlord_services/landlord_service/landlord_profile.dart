@@ -10,7 +10,7 @@ class LandLordProfileServices {
   static Future<dynamic> landLordProfile() async {
     try {
       var url = AppConfig().getLandLordProfile;
-      var response = await BaseClientClass.post(url, {});
+      var response = await BaseClientClass.post(url ?? "", {});
       if (response is http.Response) {
         print('testing :::++++++====>');
 
@@ -29,7 +29,7 @@ class LandLordProfileServices {
 
   static Future<dynamic> canEditProfile() async {
     var resp =
-        await BaseClientClass.post(AppConfig().canEditLandLordProfile, {});
+        await BaseClientClass.post(AppConfig().canEditLandLordProfile??"", {});
     if (resp is http.Response) {
       try {
         var jsonResp = jsonDecode(resp.body);
@@ -56,7 +56,7 @@ class LandLordProfileServices {
     print('Data ::: $data');
     print('URL ::: $url');
 
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
     if (resp is http.Response) {
       return landlordProfileModelFromJson(resp.body);
     }

@@ -10,7 +10,7 @@ import '../../../../../utils/constants/meta_labels.dart';
 class PublicDownloadTenantTicketFiles {
   static Future<dynamic> getData(int id) async {
     var url = AppConfig().publicDownloadTicketFile;
-    var response = await BaseClientClass.post(url, {"TicketReplyId":id.toString()},
+    var response = await BaseClientClass.post(url ?? "", {"TicketReplyId":id.toString()},
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       try {

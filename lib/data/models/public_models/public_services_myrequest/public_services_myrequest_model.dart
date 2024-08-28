@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-PublicServiceMyRequestModel publicServiceMyRequestModelFromJson(String str) =>
-    PublicServiceMyRequestModel.fromJson(json.decode(str));
+PublicServiceMyRequestModel publicServiceMyRequestModelFromJson(String? str) =>
+    PublicServiceMyRequestModel.fromJson(json.decode(str!));
 
-String publicServiceMyRequestModelToJson(PublicServiceMyRequestModel data) =>
+String? publicServiceMyRequestModelToJson(PublicServiceMyRequestModel data) =>
     json.encode(data.toJson());
 
 class PublicServiceMyRequestModel {
@@ -17,11 +17,11 @@ class PublicServiceMyRequestModel {
     this.message,
   });
 
-  String status;
-  List<ServiceRequest> serviceRequests;
-  String message;
+  String? status;
+  List<ServiceRequest>? serviceRequests;
+  String? message;
 
-  factory PublicServiceMyRequestModel.fromJson(Map<String, dynamic> json) =>
+  factory PublicServiceMyRequestModel.fromJson(Map<String?, dynamic> json) =>
       PublicServiceMyRequestModel(
         status: json["status"],
         serviceRequests: List<ServiceRequest>.from(
@@ -29,10 +29,10 @@ class PublicServiceMyRequestModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "serviceRequests":
-            List<dynamic>.from(serviceRequests.map((x) => x.toJson())),
+            List<dynamic>.from(serviceRequests!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -54,23 +54,23 @@ class ServiceRequest {
     this.units,
   });
 
-  int requestNo;
-  String category;
-  String subCategory;
+  int? requestNo;
+  String? category;
+  String? subCategory;
   dynamic subCategoryAR;
   dynamic categoryAR;
-  String detail;
-  String date;
-  String propertyName;
+  String? detail;
+  String? date;
+  String? propertyName;
   dynamic unitRefNo;
-  String propertyNameAr;
-  String status;
-  String statusAr;
-  int units;
+  String? propertyNameAr;
+  String? status;
+  String? statusAr;
+  int? units;
 
-  factory ServiceRequest.fromJson(Map<String, dynamic> json) {
-    String status = json["status"] ?? '';
-    status.trim();
+  factory ServiceRequest.fromJson(Map<String?, dynamic> json) {
+    String? status = json["status"] ?? '';
+    status!.trim();
     return ServiceRequest(
       requestNo: json["requestNo"],
       category: json["category"],
@@ -88,7 +88,7 @@ class ServiceRequest {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "requestNo": requestNo,
         "category": category,
         "subCategory": subCategory,

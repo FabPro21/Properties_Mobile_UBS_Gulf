@@ -20,7 +20,7 @@ import 'public_profile/public_profile.dart';
 import 'public_settings/public_settings.dart';
 
 class SearchPropertiesMore extends StatefulWidget {
-  const SearchPropertiesMore({Key key}) : super(key: key);
+  const SearchPropertiesMore({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesMoreState createState() => _SearchPropertiesMoreState();
@@ -48,7 +48,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async =>
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+          await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Directionality(
@@ -164,7 +164,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             child: Padding(
                               padding: EdgeInsets.all(3.0.h),
                               child: Text(
-                                name ?? "",
+                                name,
                                 style: AppTextStyle.semiBoldWhite16
                                     .copyWith(fontSize: 24.sp),
                               ),

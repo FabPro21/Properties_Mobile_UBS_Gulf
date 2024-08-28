@@ -5,8 +5,8 @@
 import 'dart:convert';
 
 LandlordDashboardGetDataModel landlordDashboardGetDataModelFromJson(
-        String str) =>
-    LandlordDashboardGetDataModel.fromJson(json.decode(str));
+        String? str) =>
+    LandlordDashboardGetDataModel.fromJson(json.decode(str!));
 
 class LandlordDashboardGetDataModel {
   LandlordDashboardGetDataModel({
@@ -17,17 +17,17 @@ class LandlordDashboardGetDataModel {
     this.unreadNotifications,
   });
 
-  String status;
-  List<Data> dashboard;
-  String message;
-  String unreadNotifications;
+  String? status;
+  List<Data>? dashboard;
+  String? message;
+  String? unreadNotifications;
 
-  LandlordDashboardGetDataModel.fromJson(Map<String, dynamic> json) {
+  LandlordDashboardGetDataModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     if (json['data'] != null) {
       dashboard = <Data>[];
       json['data'].forEach((v) {
-        dashboard.add(new Data.fromJson(v));
+        dashboard!.add(new Data.fromJson(v));
       });
     }
     message = json['message'];
@@ -36,14 +36,14 @@ class LandlordDashboardGetDataModel {
 }
 
 class Data {
-  int occupiedUnits;
-  int vacantUnits;
-  int totalUnits;
-  int activeContracts;
-  int openCases;
-  int closeCases;
-  String landlordName;
-  String landlordNameAR;
+  int? occupiedUnits;
+  int? vacantUnits;
+  int? totalUnits;
+  int? activeContracts;
+  int? openCases;
+  int? closeCases;
+  String? landlordName;
+  String? landlordNameAR;
 
   Data({
     this.occupiedUnits,
@@ -56,7 +56,7 @@ class Data {
     this.landlordNameAR,
   });
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String?, dynamic> json) {
     occupiedUnits = json['occupiedUnits'];
     vacantUnits = json['vacantUnits'];
     totalUnits = json['totalUnits'];

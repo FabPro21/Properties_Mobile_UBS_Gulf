@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class TenantDateRange extends StatefulWidget {
-  TenantDateRange({Key key}) : super(key: key);
+  TenantDateRange({Key? key}) : super(key: key);
 
   @override
   State<TenantDateRange> createState() => _TenantDateRangeState();

@@ -18,7 +18,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class ChargesScreen extends StatefulWidget {
-  const ChargesScreen({Key key}) : super(key: key);
+  const ChargesScreen({Key? key}) : super(key: key);
 
   @override
   _ChargesScreenState createState() => _ChargesScreenState();
@@ -93,15 +93,13 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                 AppColors.chartlightBlueColorCharges,
                                 AppMetaLabels().paidCharges,
                                 getCCController.paidChargesCurrency
-                                        .toString() ??
-                                    "",
+                                        .toString() ,
                               ),
                               columnList(
                                   AppColors.amber.withOpacity(0.5),
                                   AppMetaLabels().outstandingWithRassom,
                                   getCCController.outstandingChargesCurrency
-                                          .toString() ??
-                                      ""),
+                                          .toString() ),
                               // columnList(
                               //     AppColors.chartlightBlueColor,
                               //     AppMetaLabels().paidCharges,
@@ -139,7 +137,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                       double am = double.parse(getCCController
                                           .getCharges
                                           .value
-                                          .contractCharges[index]
+                                          .contractCharges![index]
                                           .amount
                                           .toString());
 
@@ -149,7 +147,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                       double va = double.parse(getCCController
                                           .getCharges
                                           .value
-                                          .contractCharges[index]
+                                          .contractCharges![index]
                                           .vatAmount
                                           .toString());
                                       final vaFormatter =
@@ -158,7 +156,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                       double ta = double.parse(getCCController
                                           .getCharges
                                           .value
-                                          .contractCharges[index]
+                                          .contractCharges![index]
                                           .totalAmount
                                           .toString());
                                       final tFormatter =
@@ -182,7 +180,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                     children: [
                                                       rowList(
                                                           AppMetaLabels().date,
-                                                          "${getCCController.getCharges.value.contractCharges[index].createdOn ?? ""}"),
+                                                          "${getCCController.getCharges.value.contractCharges![index].createdOn ?? ""}"),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
@@ -195,14 +193,14 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                             ? getCCController
                                                                     .getCharges
                                                                     .value
-                                                                    .contractCharges[
+                                                                    .contractCharges![
                                                                         index]
                                                                     .chargesType ??
                                                                 ""
                                                             : getCCController
                                                                     .getCharges
                                                                     .value
-                                                                    .contractCharges[
+                                                                    .contractCharges![
                                                                         index]
                                                                     .chargesTypeAr ??
                                                                 '',
@@ -213,16 +211,14 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                       rowList(
                                                           AppMetaLabels()
                                                               .amount,
-                                                          "${AppMetaLabels().aed} ${amount.toString() ?? ""}" ??
-                                                              ""),
+                                                          "${AppMetaLabels().aed} ${amount.toString() }" ),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
                                                       rowList(
                                                           AppMetaLabels()
                                                               .vatAmount,
-                                                          "${AppMetaLabels().aed} ${vAmount.toString() ?? ""}" ??
-                                                              ""),
+                                                          "${AppMetaLabels().aed} ${vAmount.toString() }"),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
@@ -236,8 +232,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                           ),
                                                           Spacer(),
                                                           Text(
-                                                            "${AppMetaLabels().aed} ${tAmount.toString() ?? ""}" ??
-                                                                "",
+                                                            "${AppMetaLabels().aed} ${tAmount.toString()}" ,
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10,
                                                           ),
@@ -256,9 +251,9 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                                 chargesTypeId: getCCController
                                                                     .getCharges
                                                                     .value
-                                                                    .contractCharges[
+                                                                    .contractCharges![
                                                                         index]
-                                                                    .chargesTypeId));
+                                                                    .chargesTypeId??0));
                                                           },
                                                           child: Text(
                                                               AppMetaLabels()

@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class InvoicesScreenLandlord extends StatefulWidget {
-  InvoicesScreenLandlord({Key key}) : super(key: key);
+  InvoicesScreenLandlord({Key? key}) : super(key: key);
 
   @override
   State<InvoicesScreenLandlord> createState() => _InvoicesScreenLandlordState();
@@ -225,12 +225,16 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                         : Alignment
                                                                             .topRight,
                                                                     child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? _controller.allInvoice[index].company.toString() ??
-                                                                              ""
-                                                                          : _controller.allInvoice[index].companyAR.toString() ??
-                                                                              "",
+                                                                      SessionController().getLanguage() == 1
+                                                                          ? _controller
+                                                                              .allInvoice[
+                                                                                  index]
+                                                                              .company
+                                                                              .toString()
+                                                                          : _controller
+                                                                              .allInvoice[index]
+                                                                              .companyAR
+                                                                              .toString(),
                                                                       maxLines:
                                                                           2,
                                                                       style: AppTextStyle
@@ -249,10 +253,15 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                         .propertyNameLand,
                                                                     SessionController().getLanguage() ==
                                                                             1
-                                                                        ? _controller.allInvoice[index].propertyName.toString() ??
-                                                                            ""
-                                                                        : _controller.allInvoice[index].propertyNameAR.toString() ??
-                                                                            "",
+                                                                        ? _controller
+                                                                            .allInvoice[
+                                                                                index]
+                                                                            .propertyName
+                                                                            .toString()
+                                                                        : _controller
+                                                                            .allInvoice[index]
+                                                                            .propertyNameAR
+                                                                            .toString(),
                                                                   ),
                                                                   SizedBox(
                                                                     height:
@@ -262,10 +271,10 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                     AppMetaLabels()
                                                                         .inoviceNo,
                                                                     _controller
-                                                                            .allInvoice[index]
-                                                                            .invoiceNumber
-                                                                            .toString() ??
-                                                                        "",
+                                                                        .allInvoice[
+                                                                            index]
+                                                                        .invoiceNumber
+                                                                        .toString(),
                                                                   ),
                                                                   SizedBox(
                                                                     height:
@@ -275,10 +284,10 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                       AppMetaLabels()
                                                                           .invoiceDate,
                                                                       _controller
-                                                                              .allInvoice[index]
-                                                                              .invoiceDate
-                                                                              .toString() ??
-                                                                          ""),
+                                                                          .allInvoice[
+                                                                              index]
+                                                                          .invoiceDate
+                                                                          .toString()),
                                                                   SizedBox(
                                                                     height:
                                                                         1.0.h,
@@ -308,9 +317,9 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                                 ""
                                                                             : _controller.allInvoice[index].statusNameAR ??
                                                                                 "",
-                                                                        valueToCompare: _controller
-                                                                            .allInvoice[index]
-                                                                            .statusName,
+                                                                        valueToCompare:
+                                                                            _controller.allInvoice[index].statusName ??
+                                                                                "",
                                                                       ),
                                                                     ],
                                                                   ),

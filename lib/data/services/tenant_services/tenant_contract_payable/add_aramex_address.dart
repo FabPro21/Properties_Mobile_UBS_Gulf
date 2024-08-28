@@ -15,7 +15,7 @@ class AddAramexAddress {
       'Address': address,
       'SelfDelivery': deliveryOption.toString()
     };
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       try {
@@ -40,7 +40,7 @@ class AddAramexAddressNew {
       'Address': address,
       'SelfDelivery': deliveryOption.toString()
     };
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       try {

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -19,8 +21,8 @@ import 'package:path/path.dart' as p;
 
 class UploadDocsController extends GetxController {
   UploadDocsController({this.caseNo, this.docCode});
-  int caseNo;
-  int docCode;
+  int? caseNo;
+  int? docCode;
 
   List<DocFile> docs = [];
   RxBool loadingDocs = false.obs;
@@ -43,7 +45,7 @@ class UploadDocsController extends GetxController {
     loadingDocs.value = true;
     var resp = await VendorRepository.updateProfileRequest();
     if (resp is VendorUpdateProfileRequest) {
-      caseNo = resp.addServiceRequest.caseNo;
+      caseNo = resp.addServiceRequest!.caseNo!;
       await getFiles();
     } else {
       errorLoadingDocs = resp;
@@ -55,7 +57,7 @@ class UploadDocsController extends GetxController {
     docs.clear();
     errorLoadingDocs = '';
     loadingDocs.value = true;
-    var resp = await VendorRepository.getDocsByType(caseNo, 3, docCode);
+    var resp = await VendorRepository.getDocsByType(caseNo!, 3, docCode!);
     if (resp is List<DocFile>) {
       if (resp.length == 0) {
         errorLoadingDocs = AppMetaLabels().noDatafound;
@@ -89,7 +91,7 @@ class UploadDocsController extends GetxController {
   // vendor Doc
   pickDoc(int index) async {
     docs[index].update.value = true;
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowedExtensions: [
       'pdf',
       'jpeg',
@@ -97,7 +99,7 @@ class UploadDocsController extends GetxController {
       'png',
     ], type: FileType.custom);
 
-    if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+    if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       SnakBarWidget.getSnackBarErrorBlueWith5Sec(
         AppMetaLabels().error,
         AppMetaLabels().fileExtensionError,
@@ -107,7 +109,7 @@ class UploadDocsController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path);
+      File file = File(result.files.single.path!);
       var byteFile = await file.readAsBytes();
       String fileSize = await getFileSize(file.path);
       Uint8List editedImage;
@@ -144,7 +146,7 @@ class UploadDocsController extends GetxController {
           ? docs[index].name ?? ""
           : docs[index].nameAr ?? "";
       File fileNew = await File(
-              '${tempDir.path}/$fileName${p.extension(result.files.single.path)}')
+              '${tempDir.path}/$fileName${p.extension(result.files.single.path!)}')
           .create();
       fileNew.writeAsBytesSync(imageInUnit8List);
       print('New File Path : ${fileNew.path}');
@@ -177,8 +179,8 @@ class UploadDocsController extends GetxController {
       print('*******************=======>');
       print(docs[index].expiry);
       print('<========*******************');
-      var resp = await VendorRepository.uploadFile(caseNo, docs[index].path,
-          docs[index].name, docs[index].expiry, docs[index].documentTypeId);
+      var resp = await VendorRepository.uploadFile(caseNo!, docs[index].path??"",
+          docs[index].name??"", docs[index].expiry??"", docs[index].documentTypeId!);
 
       var id = resp['photoId'];
       docs[index].id = id;
@@ -200,7 +202,7 @@ class UploadDocsController extends GetxController {
       docs[index].loading.value = true;
       docs[index].errorLoading = false;
       var resp = await VendorRepository.updateFile(
-          docs[index].id, docs[index].path, docs[index].expiry);
+          docs[index].id??0, docs[index].path??"", docs[index].expiry??"");
       if (resp == 200) {
         docs[index].isRejected = false;
 
@@ -241,7 +243,7 @@ class UploadDocsController extends GetxController {
 
   Future<void> downloadDoc(int index) async {
     docs[index].loading.value = true;
-    var resp = await VendorRepository.downloadDoc(caseNo, 3, docs[index].id);
+    var resp = await VendorRepository.downloadDoc(caseNo!, 3, docs[index].id??0);
     docs[index].loading.value = false;
     if (resp is Uint8List) {
       docs[index].file = resp;
@@ -278,7 +280,7 @@ class UploadDocsController extends GetxController {
   Future<String> saveFile(DocFile reqFile) async {
     final path = await getTemporaryDirectory();
     final file = File("${path.path}/${reqFile.name}${reqFile.type}");
-    await file.writeAsBytes(reqFile.file);
+    await file.writeAsBytes(reqFile.file!);
     return file.path;
   }
 }

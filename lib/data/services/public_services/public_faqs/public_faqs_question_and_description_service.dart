@@ -9,7 +9,7 @@ class PublicFaqsQuestionsAndDescriptionSerice {
   static Future<dynamic> getPublicFaqsQuestion(int categoryId) async {
     var url = AppConfig().getPublicFaqsQuestionAndDescription;
 var data = {"CategoryId":categoryId};
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       PublicFaqsQuestionAndDescriptionModel getModel =

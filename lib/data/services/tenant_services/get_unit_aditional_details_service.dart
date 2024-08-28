@@ -9,7 +9,7 @@ class GetUnitAditionalDetailsService {
     Map data = {"UnitId": SessionController().getContractUnitID().toString()};
     print('Data :::: getUnitAditionalDetailsModelFromJson::: $data');
     var response =
-        await BaseClientClass.post(AppConfig().getUnitAditionalDetails, data);
+        await BaseClientClass.post(AppConfig().getUnitAditionalDetails??"", data);
     if (response is http.Response) {
       GetUnitAditionalDetailsModel getContractsModel =
           getUnitAditionalDetailsModelFromJson(response.body);

@@ -2,12 +2,14 @@
 //
 //     final publicGetNotificationModel = publicGetNotificationModelFromJson(jsonString);
 
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 
-PublicGetNotificationModel publicGetNotificationModelFromJson(String str) =>
-    PublicGetNotificationModel.fromJson(json.decode(str));
+PublicGetNotificationModel publicGetNotificationModelFromJson(String? str) =>
+    PublicGetNotificationModel.fromJson(json.decode(str!));
 
-String publicGetNotificationModelToJson(PublicGetNotificationModel data) =>
+String? publicGetNotificationModelToJson(PublicGetNotificationModel data) =>
     json.encode(data.toJson());
 
 class PublicGetNotificationModel {
@@ -18,12 +20,12 @@ class PublicGetNotificationModel {
     this.message,
   });
 
-  String statusCode;
-  String status;
-  List<Notification> notifications;
-  String message;
+  String? statusCode;
+  String? status;
+  List<Notification>? notifications;
+  String? message;
 
-  factory PublicGetNotificationModel.fromJson(Map<String, dynamic> json) =>
+  factory PublicGetNotificationModel.fromJson(Map<String?, dynamic> json) =>
       PublicGetNotificationModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,11 +34,11 @@ class PublicGetNotificationModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "notifications":
-            List<dynamic>.from(notifications.map((x) => x.toJson())),
+            List<dynamic>.from(notifications!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -62,29 +64,29 @@ class Notification {
       this.titleAR,
       this.descriptionAR});
 
-  int notificationId;
-  String createdOn;
-  CurrentStatus currentStatus;
-  int notificationTypeId;
-  bool isRead;
+  int? notificationId;
+  String? createdOn;
+  CurrentStatus? currentStatus;
+  int? notificationTypeId;
+  bool? isRead;
   dynamic readOn;
-  bool sent;
+  bool? sent;
   dynamic sentOn;
-  String batch;
-  int userId;
-  UserName userName;
-  String mobile;
-  String title;
-  String description;
-  NotificationType notificationType;
-  int totalRecords;
-  String titleAR;
-  String descriptionAR;
+  String? batch;
+  int? userId;
+  UserName? userName;
+  String? mobile;
+  String? title;
+  String? description;
+  NotificationType? notificationType;
+  int? totalRecords;
+  String? titleAR;
+  String? descriptionAR;
 
-  factory Notification.fromJson(Map<String, dynamic> json) => Notification(
+  factory Notification.fromJson(Map<String?, dynamic> json) => Notification(
       notificationId: json["notificationId"],
       createdOn: json["createdOn"],
-      currentStatus: currentStatusValues.map[json["currentStatus"]],
+      currentStatus: currentStatusValues.map![json["currentStatus"]],
       notificationTypeId: json["notificationTypeId"],
       isRead: json["isRead"],
       readOn: json["readOn"],
@@ -92,16 +94,16 @@ class Notification {
       sentOn: json["sentOn"],
       batch: json["batch"],
       userId: json["userId"],
-      userName: userNameValues.map[json["userName"]],
+      userName: userNameValues.map![json["userName"]]!,
       mobile: json["mobile"],
       title: json["title"],
       description: json["description"],
-      notificationType: notificationTypeValues.map[json["notificationType"]],
+      notificationType: notificationTypeValues.map![json["notificationType"]]!,
       totalRecords: json["totalRecords"],
       titleAR: json["titleAR"],
       descriptionAR: json["descriptionAR"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "notificationId": notificationId,
         "createdOn": createdOn,
         "currentStatus": currentStatusValues.reverse[currentStatus],
@@ -135,15 +137,15 @@ final userNameValues =
     EnumValues({" Hassan Ali Sync": UserName.HASSAN_ALI_SYNC});
 
 class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
+  Map<String?, T>? map;
+  Map<T, String?>? reverseMap;
 
   EnumValues(this.map);
 
-  Map<T, String> get reverse {
+  Map<T, String?> get reverse {
     if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
+      reverseMap = map!.map((k, v) => new MapEntry(v, k));
     }
-    return reverseMap;
+    return reverseMap!;
   }
 }

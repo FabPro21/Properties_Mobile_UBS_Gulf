@@ -16,7 +16,7 @@ import '../../../widgets/common_widgets/status_widget.dart';
 import '../vendor_request_details/vendor_request_details.dart';
 
 class VendorRequestList extends StatefulWidget {
-  const VendorRequestList({Key key}) : super(key: key);
+  const VendorRequestList({Key? key}) : super(key: key);
 
   @override
   _VendorRequestListState createState() => _VendorRequestListState();
@@ -193,7 +193,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                         status: getVSRController
                                                                     .svcReqs[
                                                                         index]
-                                                                    .status
+                                                                    .status!
                                                                     .toLowerCase() ==
                                                                 "closed"
                                                             ? true
@@ -309,9 +309,9 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                       .semiBoldGrey10,
                                                                 ),
                                                                 Spacer(),
-                                                                getVSRController.svcReqs[index].status.trim() ==
+                                                                getVSRController.svcReqs[index].status!.trim() ==
                                                                             'Received' &&
-                                                                        getVSRController.svcReqs[index].category.trim() ==
+                                                                        getVSRController.svcReqs[index].category!.trim() ==
                                                                             'Supplier Invoice'
                                                                     ? StatusWidgetVendor(
                                                                         text: AppMetaLabels()
@@ -637,7 +637,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                           status: getVSRController
                                                                       .svcReqs[
                                                                           index]
-                                                                      .status
+                                                                      .status!
                                                                       .toLowerCase() ==
                                                                   "closed"
                                                               ? true
@@ -744,9 +744,9 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                         .semiBoldGrey10,
                                                                   ),
                                                                   Spacer(),
-                                                                  getVSRController.svcReqs[index].status.trim() ==
+                                                                  getVSRController.svcReqs[index].status!.trim() ==
                                                                               'Received' &&
-                                                                          getVSRController.svcReqs[index].category.trim() ==
+                                                                          getVSRController.svcReqs[index].category!.trim() ==
                                                                               'Supplier Invoice'
                                                                       ? StatusWidgetVendor(
                                                                           text:

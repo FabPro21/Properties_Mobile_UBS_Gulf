@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 
 import 'package:apple_maps_flutter/apple_maps_flutter.dart';
@@ -15,8 +17,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as Gm;
 import 'package:sizer/sizer.dart';
 
 class LandlordPropertyUnitInfoDetails extends StatefulWidget {
-  final String unitID;
-  const LandlordPropertyUnitInfoDetails({Key key, this.unitID})
+  final String? unitID;
+  const LandlordPropertyUnitInfoDetails({Key? key, this.unitID})
       : super(key: key);
 
   @override
@@ -42,24 +44,23 @@ class _LandlordPropertyUnitInfoDetailsState
 
   initFuncCall() async {
     print('Widget unit ID :: ${widget.unitID}');
-    await controller.getPropertyUnitDetail(widget.unitID);
+    await controller.getPropertyUnitDetail(widget.unitID!);
     setState(() {});
   }
 
   Set<Annotation> _createAnnotation() {
     var lat;
     var lng;
-    if (controller.propertyUnitDetailModel.propertyUnitDetails.first.latitude !=
+    if (controller
+                .propertyUnitDetailModel.propertyUnitDetails!.first.latitude !=
             "" &&
         controller
-                .propertyUnitDetailModel.propertyUnitDetails.first.longitude !=
+                .propertyUnitDetailModel.propertyUnitDetails!.first.longitude !=
             "") {
       lat = double.parse(controller
-              .propertyUnitDetailModel.propertyUnitDetails.first.latitude) ??
-          0.0;
+          .propertyUnitDetailModel.propertyUnitDetails!.first.latitude!);
       lng = double.parse(controller
-              .propertyUnitDetailModel.propertyUnitDetails.first.longitude) ??
-          0.0;
+          .propertyUnitDetailModel.propertyUnitDetails!.first.longitude!);
     } else {
       lat = 0.0;
       lng = 0.0;
@@ -71,17 +72,17 @@ class _LandlordPropertyUnitInfoDetailsState
           icon: BitmapDescriptor.markerAnnotation,
           infoWindow: InfoWindow(
             snippet: SessionController().getLanguage() == 1
-                ? controller.propertyUnitDetailModel.propertyUnitDetails.first
+                ? controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .address ??
                     ""
-                : controller.propertyUnitDetailModel.propertyUnitDetails.first
+                : controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .addressAR ??
                     "",
             title: SessionController().getLanguage() == 1
-                ? controller.propertyUnitDetailModel.propertyUnitDetails.first
+                ? controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .propertyName ??
                     ""
-                : controller.propertyUnitDetailModel.propertyUnitDetails.first
+                : controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .propertyNameAR ??
                     "",
           )),
@@ -90,14 +91,14 @@ class _LandlordPropertyUnitInfoDetailsState
 
   @override
   Widget build(BuildContext context) {
-    if (controller.propertyUnitDetailModel.propertyUnitDetails != null) {
+    if (controller.propertyUnitDetailModel.propertyUnitDetails! != null) {
       if (controller.loadingPropertiesUnitDetail.value == false) {
-        if (controller.propertyUnitDetailModel.propertyUnitDetails.first
+        if (controller.propertyUnitDetailModel.propertyUnitDetails!.first
                 .unitCategoryName ==
             'Residential') {
           mapHeight = 30;
         }
-        if (controller.propertyUnitDetailModel.propertyUnitDetails.first
+        if (controller.propertyUnitDetailModel.propertyUnitDetails!.first
                 .unitCategoryName ==
             'Commercial') {
           mapHeight = 40;
@@ -105,16 +106,16 @@ class _LandlordPropertyUnitInfoDetailsState
 
         var lat;
         var lng;
-        if (controller.propertyUnitDetailModel.propertyUnitDetails.first
+        if (controller.propertyUnitDetailModel.propertyUnitDetails!.first
                     .latitude !=
                 "" &&
-            controller.propertyUnitDetailModel.propertyUnitDetails.first
+            controller.propertyUnitDetailModel.propertyUnitDetails!.first
                     .longitude !=
                 "") {
           lat = double.parse(controller
-              .propertyUnitDetailModel.propertyUnitDetails.first.latitude);
+              .propertyUnitDetailModel.propertyUnitDetails!.first.latitude!);
           lng = double.parse(controller
-              .propertyUnitDetailModel.propertyUnitDetails.first.longitude);
+              .propertyUnitDetailModel.propertyUnitDetails!.first.longitude!);
         } else {
           lat = 0.0;
           lng = 0.0;
@@ -126,17 +127,17 @@ class _LandlordPropertyUnitInfoDetailsState
           // icon: BitmapDescriptor.,
           infoWindow: Gm.InfoWindow(
             title: SessionController().getLanguage() == 1
-                ? controller.propertyUnitDetailModel.propertyUnitDetails.first
+                ? controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .address ??
                     ""
-                : controller.propertyUnitDetailModel.propertyUnitDetails.first
+                : controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .addressAR ??
                     "",
             snippet: SessionController().getLanguage() == 1
-                ? controller.propertyUnitDetailModel.propertyUnitDetails.first
+                ? controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .propertyName ??
                     ""
-                : controller.propertyUnitDetailModel.propertyUnitDetails.first
+                : controller.propertyUnitDetailModel.propertyUnitDetails!.first
                         .propertyNameAR ??
                     "",
           ),
@@ -200,7 +201,7 @@ class _LandlordPropertyUnitInfoDetailsState
                             ),
                           )
                         : controller.propertyUnitDetailModel
-                                    .propertyUnitDetails ==
+                                    .propertyUnitDetails! ==
                                 null
                             ? SizedBox()
                             : Column(
@@ -276,8 +277,8 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                         child:
                                                                             Text(
                                                                           SessionController().getLanguage() == 1
-                                                                              ? controller.propertyUnitDetailModel.propertyUnitDetails.first.propertyName ?? ''
-                                                                              : controller.propertyUnitDetailModel.propertyUnitDetails.first.propertyNameAR ?? '',
+                                                                              ? controller.propertyUnitDetailModel.propertyUnitDetails!.first.propertyName ?? ''
+                                                                              : controller.propertyUnitDetailModel.propertyUnitDetails!.first.propertyNameAR ?? '',
                                                                           overflow:
                                                                               TextOverflow.ellipsis,
                                                                           style:
@@ -315,7 +316,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 child: Center(
                                                                                   child: columnList(
                                                                                     AppMetaLabels().unitCatgLand,
-                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails.first.unitCategoryName ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails.first.unitCategoryNameAR ?? '',
+                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitCategoryName ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitCategoryNameAR ?? '',
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -324,7 +325,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 child: Center(
                                                                                   child: columnList(
                                                                                     AppMetaLabels().unitTypeLand,
-                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails.first.unitType ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails.first.unitTypeAR ?? '',
+                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitType ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitTypeAR ?? '',
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -333,7 +334,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 child: Center(
                                                                                   child: columnList(
                                                                                     AppMetaLabels().unitView,
-                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails.first.unitView ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails.first.unitViewAR ?? '',
+                                                                                    SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitView ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitViewAR ?? '',
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -347,7 +348,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                       ),
                                                                       if (controller
                                                                               .propertyUnitDetailModel
-                                                                              .propertyUnitDetails
+                                                                              .propertyUnitDetails!
                                                                               .first
                                                                               .unitCategoryName ==
                                                                           'Residential')
@@ -367,13 +368,13 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 Row(
                                                                                   children: [
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().bedRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.bedRooms.toString(), alignment: CrossAxisAlignment.start),
+                                                                                      child: containerList(AppMetaLabels().bedRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.bedRooms.toString(), alignment: CrossAxisAlignment.start),
                                                                                     ),
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().kitchenLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.noofKitchens.toString(), alignment: CrossAxisAlignment.center),
+                                                                                      child: containerList(AppMetaLabels().kitchenLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.noofKitchens.toString(), alignment: CrossAxisAlignment.center),
                                                                                     ),
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().maidRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.maidRooms.toString(), alignment: CrossAxisAlignment.end),
+                                                                                      child: containerList(AppMetaLabels().maidRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.maidRooms.toString(), alignment: CrossAxisAlignment.end),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -383,13 +384,13 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 Row(
                                                                                   children: [
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().livingRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.noofLivingRooms.toString(), alignment: CrossAxisAlignment.start),
+                                                                                      child: containerList(AppMetaLabels().livingRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.noofLivingRooms.toString(), alignment: CrossAxisAlignment.start),
                                                                                     ),
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().balconiesLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.noofBalconies.toString(), alignment: CrossAxisAlignment.center),
+                                                                                      child: containerList(AppMetaLabels().balconiesLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.noofBalconies.toString(), alignment: CrossAxisAlignment.center),
                                                                                     ),
                                                                                     Expanded(
-                                                                                      child: containerList(AppMetaLabels().washRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails.first.noofWashrooms.toString(), alignment: CrossAxisAlignment.end),
+                                                                                      child: containerList(AppMetaLabels().washRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails!.first.noofWashrooms.toString(), alignment: CrossAxisAlignment.end),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -398,12 +399,12 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                           ),
                                                                         ),
                                                                       SizedBox(
-                                                                          height: controller.propertyUnitDetailModel.propertyUnitDetails.first.unitCategoryName != 'Residential'
+                                                                          height: controller.propertyUnitDetailModel.propertyUnitDetails!.first.unitCategoryName != 'Residential'
                                                                               ? 2.h
                                                                               : 0),
                                                                       if (controller
                                                                               .propertyUnitDetailModel
-                                                                              .propertyUnitDetails
+                                                                              .propertyUnitDetails!
                                                                               .first
                                                                               .unitCategoryName ==
                                                                           'Commercial')
@@ -416,7 +417,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                     width: 18.w,
                                                                                     child: columnList(
                                                                                         AppMetaLabels().areaSize,
-                                                                                        "${controller.propertyUnitDetailModel.propertyUnitDetails.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails.first.measurementType.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
+                                                                                        "${controller.propertyUnitDetailModel.propertyUnitDetails!.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType!.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -475,13 +476,13 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                   1
                                                               ? controller
                                                                       .propertyUnitDetailModel
-                                                                      .propertyUnitDetails
+                                                                      .propertyUnitDetails!
                                                                       .first
                                                                       .address ??
                                                                   ""
                                                               : controller
                                                                       .propertyUnitDetailModel
-                                                                      .propertyUnitDetails
+                                                                      .propertyUnitDetails!
                                                                       .first
                                                                       .addressAR ??
                                                                   "",
@@ -510,11 +511,11 @@ class _LandlordPropertyUnitInfoDetailsState
                                                           child: Gm.GoogleMap(
                                                             initialCameraPosition:
                                                                 controller
-                                                                    .kGooglePlex,
+                                                                    .kGooglePlex!,
                                                             myLocationButtonEnabled:
                                                                 false,
                                                             onMapCreated: (Gm
-                                                                    .GoogleMapController
+                                                                .GoogleMapController
                                                                 controller) {},
                                                             markers: markers
                                                                 .values
@@ -534,7 +535,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                           child: AppleMap(
                                                             initialCameraPosition:
                                                                 controller
-                                                                    .kApplePlex,
+                                                                    .kApplePlex!,
                                                             myLocationButtonEnabled:
                                                                 false,
                                                             onMapCreated:

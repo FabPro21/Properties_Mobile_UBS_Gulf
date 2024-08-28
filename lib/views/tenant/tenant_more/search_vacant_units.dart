@@ -16,7 +16,7 @@ import '../../widgets/clear_button.dart';
 import '../../widgets/custom_app_bar2.dart';
 
 class SearchVacantUnits extends StatefulWidget {
-  const SearchVacantUnits({Key key}) : super(key: key);
+  const SearchVacantUnits({Key? key}) : super(key: key);
 
   @override
   State<SearchVacantUnits> createState() => _SearchVacantUnitsState();
@@ -137,8 +137,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              sPSConrtoller.cityName.value ??
-                                                  "",
+                                              sPSConrtoller.cityName.value,
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                             Spacer(),
@@ -195,8 +194,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                           children: [
                                             Text(
                                               sPSConrtoller
-                                                      .categoryName.value ??
-                                                  "",
+                                                      .categoryName.value,
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
@@ -254,8 +252,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              sPSConrtoller.unitType.value ??
-                                                  "",
+                                              sPSConrtoller.unitType.value ,
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),

@@ -7,7 +7,7 @@ class GetContractChequesServicesLandLord {
   static Future<dynamic> getData(String transId) async {
     var url = AppConfig().getLandlordContractCheques;
     Map data = {"TransactionID": transId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetContractChequesModelLandlord getContractsModel =

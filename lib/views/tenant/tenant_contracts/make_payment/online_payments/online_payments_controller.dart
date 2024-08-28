@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_type_check, unnecessary_null_comparison
+
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
@@ -64,20 +66,20 @@ class OnlinePaymentsController extends GetxController {
         // this for loop is for setting these isBothRadioButtonShow,isCardPayemntShow,isBankTransferShow
         cardPaymentListLength.clear();
         bankTransferListLength.clear();
-        for (int i = 0; i < contractPayableData.record.length; i++) {
-          if (contractPayableData.record[i].defaultpaymentmethodtype.value ==
+        for (int i = 0; i < contractPayableData.record!.length; i++) {
+          if (contractPayableData.record![i].defaultpaymentmethodtype!.value ==
               1) {
             cardPaymentListLength
-                .add(contractPayableData.record[i].defaultpaymentmethodtype);
+                .add(contractPayableData.record![i].defaultpaymentmethodtype!);
           }
-          if (contractPayableData.record[i].defaultpaymentmethodtype.value ==
+          if (contractPayableData.record![i].defaultpaymentmethodtype!.value ==
               3) {
             bankTransferListLength
-                .add(contractPayableData.record[i].defaultpaymentmethodtype);
+                .add(contractPayableData.record![i].defaultpaymentmethodtype!);
           }
-          if (contractPayableData.record[i].defaultpaymentmethodtype.value ==
+          if (contractPayableData.record![i].defaultpaymentmethodtype!.value ==
                   1 ||
-              contractPayableData.record[i].defaultpaymentmethodtype.value ==
+              contractPayableData.record![i].defaultpaymentmethodtype!.value ==
                   3) {
             isRadioButtonShow.value = true;
           } else {
@@ -117,8 +119,8 @@ class OnlinePaymentsController extends GetxController {
       loadingPayable.value = false;
     }
     int noOfPayments = 0;
-    if (contractPayableData.record != null)
-      noOfPayments = contractPayableData.record.length;
+    if (contractPayableData.record! != null)
+      noOfPayments = contractPayableData.record!.length;
     return noOfPayments;
   }
 
@@ -127,24 +129,24 @@ class OnlinePaymentsController extends GetxController {
     additionalSum = 0;
     vatRentSum = 0;
     vatChargesSum = 0;
-    for (int i = 0; i < contractPayableData.record.length; i++) {
-      if (contractPayableData.record[i].type.toLowerCase() ==
+    for (int i = 0; i < contractPayableData.record!.length; i++) {
+      if (contractPayableData.record![i].type!.toLowerCase() ==
           'contract payable')
-        rentalSum = rentalSum + (contractPayableData.record[i].amount ?? 0);
-      else if (contractPayableData.record[i].type.toLowerCase() ==
+        rentalSum = rentalSum + (contractPayableData.record![i].amount??0.0);
+      else if (contractPayableData.record![i].type!.toLowerCase() ==
           'additional charges') {
         additionalSum =
-            additionalSum + (contractPayableData.record[i].amount ?? 0);
-        contractPayableData.record[i].isChecked.value = true;
-      } else if (contractPayableData.record[i].type.toLowerCase() ==
+            additionalSum + (contractPayableData.record![i].amount??0.0);
+        contractPayableData.record![i].isChecked.value = true;
+      } else if (contractPayableData.record![i].type!.toLowerCase() ==
           'vat on rent'.toLowerCase()) {
-        vatRentSum = vatRentSum + (contractPayableData.record[i].amount ?? 0);
-        contractPayableData.record[i].isChecked.value = true;
-      } else if (contractPayableData.record[i].type.toLowerCase() ==
+        vatRentSum = vatRentSum + (contractPayableData.record![i].amount??0.0);
+        contractPayableData.record![i].isChecked.value = true;
+      } else if (contractPayableData.record![i].type!.toLowerCase() ==
           'vat on charges'.toLowerCase()) {
         vatChargesSum =
-            vatChargesSum + (contractPayableData.record[i].amount ?? 0);
-        contractPayableData.record[i].isChecked.value = true;
+            vatChargesSum + (contractPayableData.record![i].amount??0.0);
+        contractPayableData.record![i].isChecked.value = true;
       }
     }
     sumSelectedPayments();
@@ -154,12 +156,12 @@ class OnlinePaymentsController extends GetxController {
   void sumSelectedPayments() {
     double sum = 0;
     double sum1 = 0;
-    for (int i = 0; i < contractPayableData.record.length; i++) {
-      if (contractPayableData.record[i].isChecked.value) {
-        if (contractPayableData.record[i].defaultpaymentmethodtype.value == 1) {
-          sum = sum + (contractPayableData.record[i].amount ?? 0);
+    for (int i = 0; i < contractPayableData.record!.length; i++) {
+      if (contractPayableData.record![i].isChecked.value) {
+        if (contractPayableData.record![i].defaultpaymentmethodtype!.value == 1) {
+          sum = sum + (contractPayableData.record![i].amount??0.0);
         } else {
-          sum1 = sum1 + (contractPayableData.record[i].amount ?? 0);
+          sum1 = sum1 + (contractPayableData.record![i].amount??0.0);
         }
       }
     }
@@ -175,9 +177,9 @@ class OnlinePaymentsController extends GetxController {
   }
   // void sumSelectedPayments() {
   //   double sum = 0;
-  //   for (int i = 0; i < contractPayableData.record.length; i++) {
-  //     if (contractPayableData.record[i].isChecked.value) {
-  //       sum = sum + (contractPayableData.record[i].amount ?? 0);
+  //   for (int i = 0; i < contractPayableData.record!.length; i++) {
+  //     if (contractPayableData.record![i].isChecked.value) {
+  //       sum = sum + (contractPayableData.record![i].amount);
   //     }
   //   }
   //   final amountFormat = NumberFormat('#,##0.00', 'AR');
@@ -188,8 +190,8 @@ class OnlinePaymentsController extends GetxController {
   // }
 
   void removeZeroBalance() {
-    contractPayableData.record.forEach((element) {
-      if (element.amount == 0) contractPayableData.record.remove(element);
+    contractPayableData.record!.forEach((element) {
+      if (element.amount == 0) contractPayableData.record!.remove(element);
     });
   }
 
@@ -197,35 +199,35 @@ class OnlinePaymentsController extends GetxController {
     print('isPayemntValue ;;;;;;;;;;:::::::+++++> ${isPayemntValue.value}');
     List<DetailList> detailList = [];
     List<DetailList> detailList1 = [];
-    for (int i = 0; i < contractPayableData.record.length; i++) {
-      if (contractPayableData.record[i].defaultpaymentmethodtype.value == 1) {
-        if (contractPayableData.record[i].isChecked.value) {
+    for (int i = 0; i < contractPayableData.record!.length; i++) {
+      if (contractPayableData.record![i].defaultpaymentmethodtype!.value == 1) {
+        if (contractPayableData.record![i].isChecked.value) {
           detailList.add(DetailList(
-              title: contractPayableData.record[i].title,
-              description: contractPayableData.record[i].type,
-              amount: contractPayableData.record[i].amount,
-              paymentId: contractPayableData.record[i].contractPaymentId ?? 0,
-              chargeId: contractPayableData.record[i].contractchargeId ?? 0,
-              vatOnChargeId: contractPayableData.record[i].vatOnChargeId ?? 0,
+              title: contractPayableData.record![i].title,
+              description: contractPayableData.record![i].type!,
+              amount: contractPayableData.record![i].amount,
+              paymentId: contractPayableData.record![i].contractPaymentId,
+              chargeId: contractPayableData.record![i].contractchargeId,
+              vatOnChargeId: contractPayableData.record![i].vatOnChargeId,
               vatOnRentContractId:
-                  contractPayableData.record[i].vatOnRentContractId ?? 0,
+                  contractPayableData.record![i].vatOnRentContractId,
               paymentSettingId:
-                  contractPayableData.record[i].paymentSettingId));
+                  contractPayableData.record![i].paymentSettingId));
         }
-      } else if (contractPayableData.record[i].defaultpaymentmethodtype.value ==
+      } else if (contractPayableData.record![i].defaultpaymentmethodtype!.value ==
           3) {
-        if (contractPayableData.record[i].isChecked.value) {
+        if (contractPayableData.record![i].isChecked.value) {
           detailList1.add(DetailList(
-              title: contractPayableData.record[i].title,
-              description: contractPayableData.record[i].type,
-              amount: contractPayableData.record[i].amount,
-              paymentId: contractPayableData.record[i].contractPaymentId ?? 0,
-              chargeId: contractPayableData.record[i].contractchargeId ?? 0,
-              vatOnChargeId: contractPayableData.record[i].vatOnChargeId ?? 0,
+              title: contractPayableData.record![i].title,
+              description: contractPayableData.record![i].type!,
+              amount: contractPayableData.record![i].amount,
+              paymentId: contractPayableData.record![i].contractPaymentId,
+              chargeId: contractPayableData.record![i].contractchargeId,
+              vatOnChargeId: contractPayableData.record![i].vatOnChargeId,
               vatOnRentContractId:
-                  contractPayableData.record[i].vatOnRentContractId ?? 0,
+                  contractPayableData.record![i].vatOnRentContractId,
               paymentSettingId:
-                  contractPayableData.record[i].paymentSettingId));
+                  contractPayableData.record![i].paymentSettingId));
         }
       } else {}
     }
@@ -251,7 +253,7 @@ class OnlinePaymentsController extends GetxController {
     // }
     registeringPayment.value = true;
     print('>>>>>>>>>>>><<<<<<<<<<<<<<<<<<');
-    int userId = SessionController().getUserID();
+    int userId = SessionController().getUserID()??0;
     print(userId);
     var resp = await TenantRepository.registerPayment(
         TenantRegisterPaymentModel(
@@ -274,7 +276,7 @@ class OnlinePaymentsController extends GetxController {
     }
     if (resp is RegisterPaymentResponse) {
       print('>>>>>>>>>>>><<<<<<<<<<<<<<<<<<');
-      print(SessionController().getUserId() ?? 0);
+      print(SessionController().getUserId());
       if (resp.url == null || resp.transactionId == null) {
         // Get.snackbar(
         //     AppMetaLabels().error, AppMetaLabels().errorProcessingPayment,
@@ -294,22 +296,22 @@ class OnlinePaymentsController extends GetxController {
   }
   // void registerPayment(String contractNo) async {
   //   List<DetailList> detailList = [];
-  //   for (int i = 0; i < contractPayableData.record.length; i++) {
-  //     if (contractPayableData.record[i].isChecked.value) {
+  //   for (int i = 0; i < contractPayableData.record!.length; i++) {
+  //     if (contractPayableData.record![i].isChecked.value) {
   //       detailList.add(DetailList(
-  //           title: contractPayableData.record[i].title,
-  //           description: contractPayableData.record[i].type,
-  //           amount: contractPayableData.record[i].amount,
-  //           paymentId: contractPayableData.record[i].contractPaymentId ?? 0,
-  //           chargeId: contractPayableData.record[i].contractchargeId ?? 0,
-  //           vatOnChargeId: contractPayableData.record[i].vatOnChargeId ?? 0,
+  //           title: contractPayableData.record![i].title,
+  //           description: contractPayableData.record![i].type!,
+  //           amount: contractPayableData.record![i].amount,
+  //           paymentId: contractPayableData.record![i].contractPaymentId,
+  //           chargeId: contractPayableData.record![i].contractchargeId,
+  //           vatOnChargeId: contractPayableData.record![i].vatOnChargeId,
   //           vatOnRentContractId:
-  //               contractPayableData.record[i].vatOnRentContractId ?? 0,
-  //           paymentSettingId: contractPayableData.record[i].paymentSettingId));
+  //               contractPayableData.record![i].vatOnRentContractId,
+  //           paymentSettingId: contractPayableData.record![i].paymentSettingId));
   //     }
   //   }
   //   print('Detail List ;;;;;;;;;;:::::::+++++>');
-  //   for (int i = 0; i < contractPayableData.record.length; i++) {
+  //   for (int i = 0; i < contractPayableData.record!.length; i++) {
   //     print(detailList[i].amount);
   //   }
   //   print(detailList);
@@ -334,7 +336,7 @@ class OnlinePaymentsController extends GetxController {
   //           detailList: detailList));
   //   if (resp is RegisterPaymentResponse) {
   //     print('>>>>>>>>>>>><<<<<<<<<<<<<<<<<<');
-  //     print(SessionController().getUserId() ?? 0);
+  //     print(SessionController().getUserId());
   //     if (resp.url == null || resp.transactionId == null) {
   //       Get.snackbar(
   //           AppMetaLabels().error, AppMetaLabels().errorProcessingPayment,

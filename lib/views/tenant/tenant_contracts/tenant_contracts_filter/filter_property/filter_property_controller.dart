@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_property_types_model.dart';
 import 'package:fap_properties/data/repository/tenant_repository.dart';
@@ -27,7 +29,7 @@ class FilterPropertyController extends GetxController {
 
       if (resp is GetPropertyTypesModel) {
         propertyTypesModel.value = resp;
-        proppertyTypesLength = resp.propertyTypes.length;
+        proppertyTypesLength = resp.propertyTypes!.length;
       } else {
         error.value = resp;
       }

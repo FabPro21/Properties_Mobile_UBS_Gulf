@@ -16,7 +16,7 @@ class PublicUpdateProfileService2 {
 
     var data = {"Name": name, "Email": email, "UserId": 0};
 
-    var resp = await BaseClientClass.post(url, data,
+    var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       try {

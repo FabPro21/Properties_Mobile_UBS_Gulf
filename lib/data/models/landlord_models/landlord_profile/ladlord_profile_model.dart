@@ -4,54 +4,54 @@
 
 import 'dart:convert';
 
-LandLordProfileModel landlordProfileModelFromJson(String str) =>
-    LandLordProfileModel.fromJson(json.decode(str));
+LandLordProfileModel landlordProfileModelFromJson(String? str) =>
+    LandLordProfileModel.fromJson(json.decode(str!));
 
-String landlordProfileModelToJson(LandLordProfileModel data) =>
+String? landlordProfileModelToJson(LandLordProfileModel data) =>
     json.encode(data.toJson());
 
 class LandLordProfileModel {
-  int statusCode;
-  String message;
-  List<Data> data;
+  int? statusCode;
+  String? message;
+  List<Data>? data;
 
   LandLordProfileModel({this.statusCode, this.message, this.data});
 
-  LandLordProfileModel.fromJson(Map<String, dynamic> json) {
+  LandLordProfileModel.fromJson(Map<String?, dynamic> json) {
     statusCode = json['statusCode'];
     message = json['message'];
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['statusCode'] = this.statusCode;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Data {
-  String mobile;
-  String landlordName;
-  String landlordNameAR;
-  String landlordID;
-  String email;
-  String nationality;
-  String fax;
-  String phone;
-  String address;
-  String addressAR;
-  String termsAndConditions;
-  String photoUrl;
+  String? mobile;
+  String? landlordName;
+  String? landlordNameAR;
+  String? landlordID;
+  String? email;
+  String? nationality;
+  String? fax;
+  String? phone;
+  String? address;
+  String? addressAR;
+  String? termsAndConditions;
+  String? photoUrl;
 
   Data(
       {this.mobile,
@@ -67,7 +67,7 @@ class Data {
       this.termsAndConditions,
       this.photoUrl});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String?, dynamic> json) {
     mobile = json['mobile'];
     landlordName = json['landlordName'];
     landlordNameAR = json['landlordNameAR'];
@@ -82,8 +82,8 @@ class Data {
     photoUrl = json['photoUrl'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['mobile'] = this.mobile;
     data['landlordName'] = this.landlordName;
     data['landlordNameAR'] = this.landlordNameAR;

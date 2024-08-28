@@ -8,7 +8,7 @@ class TenantRegisterPaymentService {
   static Future<dynamic> registerPayment(
       TenantRegisterPaymentModel data) async {
     var url = AppConfig().registerPayment;
-    var resp = await BaseClientClass.post(url, data.toJson());
+    var resp = await BaseClientClass.post(url ?? "", data.toJson());
     print('Resposne Repo ::::::::: $resp');
     if (resp is http.Response) {
       var model = registerPaymentResponseFromJson(resp.body);
@@ -21,7 +21,7 @@ class TenantRegisterPaymentServiceNew {
   static Future<dynamic> registerPaymentNew(
       TenantRegisterPaymentModel data) async {
     var url = AppConfig().registerPaymentNew;
-    var resp = await BaseClientClass.post(url, data.toJson());
+    var resp = await BaseClientClass.post(url ?? "", data.toJson());
     
     if (resp is http.Response) {
       var model = registerPaymentResponseFromJson(resp.body);

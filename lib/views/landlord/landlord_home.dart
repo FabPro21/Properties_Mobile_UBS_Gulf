@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -12,14 +14,14 @@ import 'landlord_more/landlord_more.dart';
 import 'landlord_properties/landlord_properties.dart';
 
 class LandlordHome extends StatefulWidget {
-  const LandlordHome({Key key}) : super(key: key);
+  const LandlordHome({Key? key}) : super(key: key);
 
   @override
   _LandlordHomeState createState() => _LandlordHomeState();
 }
 
 class _LandlordHomeState extends State<LandlordHome> {
-  List<Widget> _buildScreens;
+  List<Widget>? _buildScreens;
   int _selectedIndex = 0;
 
   @override
@@ -62,7 +64,7 @@ class _LandlordHomeState extends State<LandlordHome> {
               child: Column(
                 children: [
                   Expanded(
-                    child: _buildScreens[_selectedIndex],
+                    child: _buildScreens![_selectedIndex],
                   ),
                   CustomNavBar(
                     items: [

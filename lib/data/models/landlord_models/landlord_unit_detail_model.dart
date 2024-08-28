@@ -1,28 +1,28 @@
 class LandLordUnitDetailModel {
-  String status;
-  List<PropertyUnitDetails> propertyUnitDetails;
-  String message;
+  String? status;
+  List<PropertyUnitDetails>? propertyUnitDetails;
+  String? message;
 
   LandLordUnitDetailModel(
       {this.status, this.propertyUnitDetails, this.message});
 
-  LandLordUnitDetailModel.fromJson(Map<String, dynamic> json) {
+  LandLordUnitDetailModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     if (json['propertyUnitDetails'] != null) {
       propertyUnitDetails = <PropertyUnitDetails>[];
       json['propertyUnitDetails'].forEach((v) {
-        propertyUnitDetails.add(new PropertyUnitDetails.fromJson(v));
+        propertyUnitDetails!.add(new PropertyUnitDetails.fromJson(v));
       });
     }
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['status'] = this.status;
     if (this.propertyUnitDetails != null) {
       data['propertyUnitDetails'] =
-          this.propertyUnitDetails.map((v) => v.toJson()).toList();
+          this.propertyUnitDetails!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -30,33 +30,33 @@ class LandLordUnitDetailModel {
 }
 
 class PropertyUnitDetails {
-  String propertyImage;
+  String? propertyImage;
   dynamic unitView;
   dynamic unitViewAR;
-  String longitude;
-  String latitude;
-  String propertyName;
-  String propertyNameAR;
-  String address;
-  String addressAR;
-  int bedRooms;
-  int noofWashrooms;
-  String areaSize;
-  String measurementType;
+  String? longitude;
+  String? latitude;
+  String? propertyName;
+  String? propertyNameAR;
+  String? address;
+  String? addressAR;
+  int? bedRooms;
+  int? noofWashrooms;
+  String? areaSize;
+  String? measurementType;
   dynamic landlordName;
-  String unitType;
-  String unitTypeAR;
-  String unitCategoryName;
-  String unitCategoryNameAR;
-  String unitRefNo;
-  String unitName;
-  int noofKitchens;
-  int maidRooms;
-  int noofLivingRooms;
-  int noofBalconies;
-  int propertyID;
-  int unitID;
-  int measurementTypeAR;
+  String? unitType;
+  String? unitTypeAR;
+  String? unitCategoryName;
+  String? unitCategoryNameAR;
+  String? unitRefNo;
+  String? unitName;
+  int? noofKitchens;
+  int? maidRooms;
+  int? noofLivingRooms;
+  int? noofBalconies;
+  int? propertyID;
+  int? unitID;
+  int? measurementTypeAR;
 
   PropertyUnitDetails(
       {this.propertyImage,
@@ -87,7 +87,7 @@ class PropertyUnitDetails {
       this.unitID,
       this.measurementTypeAR});
 
-  PropertyUnitDetails.fromJson(Map<String, dynamic> json) {
+  PropertyUnitDetails.fromJson(Map<String?, dynamic> json) {
     propertyImage = json['propertyImage'];
     unitView = json['unitView'];
     unitViewAR = json['unitViewAR'];
@@ -117,8 +117,8 @@ class PropertyUnitDetails {
     measurementTypeAR = json['measurementTypeAR'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['propertyImage'] = this.propertyImage;
     data['unitView'] = this.unitView;
     data['unitViewAR'] = this.unitViewAR;

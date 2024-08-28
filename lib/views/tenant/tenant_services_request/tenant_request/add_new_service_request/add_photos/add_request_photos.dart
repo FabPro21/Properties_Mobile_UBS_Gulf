@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:typed_data';
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -17,8 +19,8 @@ import 'add_request_photos_controller.dart';
 import 'dart:ui' as ui;
 
 class AddRequestPhotos extends StatefulWidget {
-  final String caseNo;
-  AddRequestPhotos({Key key, this.caseNo}) : super(key: key);
+  final String? caseNo;
+  AddRequestPhotos({Key? key, this.caseNo}) : super(key: key);
 
   @override
   State<AddRequestPhotos> createState() => _AddRequestPhotosState();
@@ -162,7 +164,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                     );
                     Get.off(() => TenantServiceRequestTabs(
                           caller: 'newReq',
-                          requestNo: widget.caseNo,
+                          requestNo: widget.caseNo??"",
                         ));
                   },
                   child: Text(
@@ -230,10 +232,10 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                   children: [
                     InkWell(
                       onTap: () {
-                        showBigImage(context, controller.photos[index].file);
+                        showBigImage(context, controller.photos[index].file!);
                       },
                       child: Image.memory(
-                        controller.photos[index].file,
+                        controller.photos[index].file!,
                         width: 20.0.w,
                         height: 9.0.h,
                         fit: BoxFit.cover,

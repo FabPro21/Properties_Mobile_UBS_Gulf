@@ -11,7 +11,7 @@ class ReEnterPinCodeFieldMpin extends StatelessWidget {
   // static StreamController<ErrorAnimationType> errorController;
   final formKey = GlobalKey<FormState>();
 
-  ReEnterPinCodeFieldMpin({Key key}) : super(key: key);
+  ReEnterPinCodeFieldMpin({Key? key}) : super(key: key);
   final SetupMpinController setupMpinController =
       Get.find<SetupMpinController>();
 
@@ -29,7 +29,7 @@ class ReEnterPinCodeFieldMpin extends StatelessWidget {
         animationType: AnimationType.fade,
         // autoFocus: true,
         validator: (v) {
-          if (v.length < 6 ||
+          if (v!.length < 6 ||
               !setupMpinController.mpinMatch.value ||
               !setupMpinController.difficulty.value) {
             return '';

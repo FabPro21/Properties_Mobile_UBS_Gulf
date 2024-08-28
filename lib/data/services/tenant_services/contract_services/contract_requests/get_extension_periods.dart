@@ -9,7 +9,7 @@ class GetExtensionPeriodsService {
   static Future<dynamic> getData(int contractId) async {
     var url = AppConfig().getExtensionPeriods;
 var data = {"ContractId":contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         return getExtensionPeriodModelFromJson(response.body);

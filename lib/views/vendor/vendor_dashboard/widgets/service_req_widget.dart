@@ -14,8 +14,8 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class ServiceReqWidget extends StatelessWidget {
-  final Function(int) manageServiceReqs;
-  ServiceReqWidget({Key key, this.manageServiceReqs}) : super(key: key);
+  final Function(int)? manageServiceReqs;
+  ServiceReqWidget({Key? key, this.manageServiceReqs}) : super(key: key);
   final getSRoWidgetController = Get.put(GetVendorServiceRequestsController());
 
   String gAmount = "";
@@ -90,9 +90,9 @@ class ServiceReqWidget extends StatelessWidget {
                                   Get.to(
                                     () => VendorRequestDetails(
                                       caseNo: getSRoWidgetController
-                                          .svcReqs[index].requestNo,
+                                          .svcReqs[index].requestNo??0,
                                       status: getSRoWidgetController
-                                                  .svcReqs[index].status
+                                                  .svcReqs[index].status!
                                                   .toLowerCase() ==
                                               "closed"
                                           ? true
@@ -190,7 +190,7 @@ class ServiceReqWidget extends StatelessWidget {
                                             child: rowList(
                                               AppMetaLabels().date,
                                               getSRoWidgetController
-                                                  .svcReqs[index].date,
+                                                  .svcReqs[index].date??"",
                                             ),
                                           ),
                                           Padding(
@@ -262,7 +262,7 @@ class ServiceReqWidget extends StatelessWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
                     onPressed: () {
-                      manageServiceReqs(1);
+                      manageServiceReqs!(1);
                     },
                     child: Text(
                       AppMetaLabels().viewAllServiceReq,

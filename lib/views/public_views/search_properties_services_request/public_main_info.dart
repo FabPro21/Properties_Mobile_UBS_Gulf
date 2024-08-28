@@ -17,16 +17,16 @@ import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 import 'public_get_feedback_controller.dart';
 import 'public_services_maininfo_controller.dart';
 
 class PublicMainInfo extends StatefulWidget {
-  final int caseno;
-  final int unitId;
+  final int? caseno;
+  final int? unitId;
   const PublicMainInfo({
-    Key key,
+    Key? key,
     this.caseno,
     this.unitId,
   }) : super(key: key);
@@ -46,7 +46,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
       Get.put(PublicGetFeedbackController());
   @override
   void initState() {
-    _mainInfoController.getServiceMaininfo(widget.caseno);
+    _mainInfoController.getServiceMaininfo(widget.caseno!);
     _getFeedbackController.getFeedback(widget.caseno);
     super.initState();
   }
@@ -111,7 +111,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       _mainInfoController
                                                           .publicMaininfoDetails
                                                           .value
-                                                          .detail
+                                                          .detail!
                                                           .caseNo
                                                           .toString(),
                                                       style: AppTextStyle
@@ -129,13 +129,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       ? _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .category ??
                                                           ""
                                                       : _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .categoryAr ??
                                                           "",
                                                   style:
@@ -151,13 +151,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       ? _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .subCategory ??
                                                           ""
                                                       : _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .subCategoryAR ??
                                                           "",
                                                   style:
@@ -173,13 +173,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       ? _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .propertyName ??
                                                           ""
                                                       : _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .propertyNameAr ??
                                                           "",
                                                   style:
@@ -192,7 +192,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                   _mainInfoController
                                                           .publicMaininfoDetails
                                                           .value
-                                                          .detail
+                                                          .detail!
                                                           .unitRefNo ??
                                                       "",
                                                   style: AppTextStyle
@@ -207,7 +207,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .date ??
                                                           "",
                                                       style: AppTextStyle
@@ -220,7 +220,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .time ??
                                                           "",
                                                       style: AppTextStyle
@@ -234,20 +234,20 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           ? _mainInfoController
                                                                   .publicMaininfoDetails
                                                                   .value
-                                                                  .detail
+                                                                  .detail!
                                                                   .status ??
                                                               ""
                                                           : _mainInfoController
                                                                   .publicMaininfoDetails
                                                                   .value
-                                                                  .detail
+                                                                  .detail!
                                                                   .statusAR ??
                                                               "",
                                                       valueToCompare:
                                                           _mainInfoController
                                                               .publicMaininfoDetails
                                                               .value
-                                                              .detail
+                                                              .detail!
                                                               .status,
                                                     )
                                                   ],
@@ -302,7 +302,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                             _mainInfoController
                                                                     .publicMaininfoDetails
                                                                     .value
-                                                                    .detail
+                                                                    .detail!
                                                                     .otherContactPersonName ??
                                                                 '',
                                                             style: AppTextStyle
@@ -329,7 +329,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                               _mainInfoController
                                                                       .publicMaininfoDetails
                                                                       .value
-                                                                      .detail
+                                                                      .detail!
                                                                       .otherContactPersonMobile ??
                                                                   '-',
                                                               style: AppTextStyle
@@ -375,7 +375,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                   _mainInfoController
                                                           .publicMaininfoDetails
                                                           .value
-                                                          .detail
+                                                          .detail!
                                                           .description ??
                                                       "-",
                                                   style:
@@ -397,13 +397,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                 _getFeedbackController
                                                         .getPublicfeedback
                                                         .value
-                                                        .feedback
+                                                        .feedback!
                                                         .rating !=
                                                     0.0 &&
                                                 _getFeedbackController
                                                         .getPublicfeedback
                                                         .value
-                                                        .feedback
+                                                        .feedback!
                                                         .rating !=
                                                     null
                                             ? Container(
@@ -453,10 +453,10 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           rating: _getFeedbackController
                                                                   .getPublicfeedback
                                                                   .value
-                                                                  .feedback
+                                                                  .feedback!
                                                                   .rating ??
                                                               0,
-                                                          isReadOnly: true,
+                                                          // isReadOnly: true,
                                                           size: 5.5.h,
                                                           filledIconData:
                                                               Icons.star,
@@ -467,18 +467,51 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           starCount: 5,
                                                           allowHalfRating: true,
                                                           spacing: 2.0.w,
-                                                          onRated: (value) {
+                                                          onRatingChanged: (value) {
                                                             _getFeedbackController
                                                                 .getPublicfeedback
                                                                 .value
-                                                                .feedback
+                                                                .feedback!
                                                                 .rating = value;
                                                             print(
                                                                 "rating value -> $value");
-
                                                             // print("rating value dd -> ${value.truncate()}");
                                                           },
                                                         ),
+                                                        // child: SmoothStarRating(
+                                                        //   color: AppColors
+                                                        //       .blueColor,
+                                                        //   borderColor: AppColors
+                                                        //       .blueColor,
+                                                        //   rating: _getFeedbackController
+                                                        //           .getPublicfeedback
+                                                        //           .value
+                                                        //           .feedback!
+                                                        //           .rating ??
+                                                        //       0,
+                                                        //   isReadOnly: true,
+                                                        //   size: 5.5.h,
+                                                        //   filledIconData:
+                                                        //       Icons.star,
+                                                        //   halfFilledIconData:
+                                                        //       Icons.star_half,
+                                                        //   defaultIconData:
+                                                        //       Icons.star_border,
+                                                        //   starCount: 5,
+                                                        //   allowHalfRating: true,
+                                                        //   spacing: 2.0.w,
+                                                        //   onRated: (value) {
+                                                        //     _getFeedbackController
+                                                        //         .getPublicfeedback
+                                                        //         .value
+                                                        //         .feedback!
+                                                        //         .rating = value;
+                                                        //     print(
+                                                        //         "rating value -> $value");
+
+                                                        //     // print("rating value dd -> ${value.truncate()}");
+                                                        //   },
+                                                        // ),
                                                       ),
                                                       Padding(
                                                         padding:
@@ -489,7 +522,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           _getFeedbackController
                                                                   .getPublicfeedback
                                                                   .value
-                                                                  .feedback
+                                                                  .feedback!
                                                                   .description ??
                                                               "-",
                                                           style: AppTextStyle
@@ -504,7 +537,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                         _mainInfoController
                                                     .publicMaininfoDetails
                                                     .value
-                                                    .caseStatus
+                                                    .caseStatus!
                                                     .canCancel ==
                                                 true
                                             ? Padding(
@@ -550,10 +583,10 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                       context,
                                                                   animType:
                                                                       AnimType
-                                                                          .SCALE,
+                                                                          .scale,
                                                                   dialogType:
                                                                       DialogType
-                                                                          .NO_HEADER,
+                                                                          .noHeader,
                                                                   body: Center(
                                                                     child:
                                                                         Column(
@@ -615,7 +648,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                             ),
                                                                             onPressed:
                                                                                 () {
-                                                                              _mainInfoController.cancelRequest(widget.caseno);
+                                                                              _mainInfoController.cancelRequest(widget.caseno!);
                                                                               Navigator.pop(context);
                                                                             },
                                                                             child:
@@ -681,13 +714,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                         if (_mainInfoController
                                                     .publicMaininfoDetails
                                                     .value
-                                                    .caseStatus
+                                                    .caseStatus!
                                                     .canAddFeedback ==
                                                 true &&
                                             _getFeedbackController
                                                     .getPublicfeedback
                                                     .value
-                                                    .feedback
+                                                    .feedback!
                                                     .rating ==
                                                 0.0)
                                           Container(
@@ -819,7 +852,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                   color: AppColors.blueColor,
                   borderColor: AppColors.blueColor,
                   rating: 0,
-                  isReadOnly: false,
+                  // isReadOnly: false,
                   size: 6.0.h,
                   filledIconData: Icons.star,
                   halfFilledIconData: Icons.star_half,
@@ -827,7 +860,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                   starCount: 5,
                   allowHalfRating: true,
                   spacing: 2.0.w,
-                  onRated: (value) {
+                  onRatingChanged: (value) {
                     _feedbackController.rating.value = value;
                     print("rating value -> $value");
                     // print("rating value dd -> ${value.truncate()}");
@@ -860,7 +893,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                     controller: remarkEditingController,
                     validator: (value) {
                       var feedBack = value;
-                      feedBack = feedBack.replaceAll('\n', ' ');
+                      feedBack = feedBack!.replaceAll('\n', ' ');
                       print('FeedBack :::: $feedBack');
                       if (feedBack.isEmpty) {
                         return AppMetaLabels().requiredField;
@@ -916,7 +949,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                     Get.snackbar(
                                       AppMetaLabels().added,
                                       _feedbackController
-                                          .savePublicfeedback.value.message,
+                                          .savePublicfeedback.value.message??"",
                                       backgroundColor: Colors.white,
                                     );
                                     Navigator.pop(context);

@@ -6,14 +6,14 @@ import 'package:http/http.dart' as http;
 
 class UpdateDeviceInfoService {
   static Future<dynamic> getData(
-      String deviceName, String deviceTokken, String deviceType) async {
+      String? deviceName, String? deviceTokken, String? deviceType) async {
     var data = {
       "deviceName": deviceName,
       "deviceToken": deviceTokken,
       "type": deviceType,
       "userId": SessionController().getUserId(),
     };
-    final String url = AppConfig().updateDeviceInfo;
+    final String url = AppConfig().updateDeviceInfo??"";
     var response = await BaseClientClass.postwithheader(url, data,
         token: SessionController().getLoginToken());
 

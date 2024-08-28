@@ -13,8 +13,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordFaqsDetails extends StatefulWidget {
-  final int categoryId;
-  LandLordFaqsDetails({Key key, this.categoryId}) : super(key: key);
+  final int? categoryId;
+  LandLordFaqsDetails({Key? key, this.categoryId}) : super(key: key);
 
   @override
   _LandLordFaqsDetailsState createState() => _LandLordFaqsDetailsState();
@@ -25,7 +25,7 @@ class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
   bool isShowDivider = true;
   @override
   void initState() {
-    _controller.getfaqsQuestionData(widget.categoryId);
+    _controller.getfaqsQuestionData(widget.categoryId!);
     super.initState();
   }
 
@@ -67,10 +67,10 @@ class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
                                       title: Text(
                                         SessionController().getLanguage() == 1
                                             ? _controller.faqsQuestions.value
-                                                    .data[index].title ??
+                                                    .data![index].title ??
                                                 ""
                                             : _controller.faqsQuestions.value
-                                                    .data[index].titleAR ??
+                                                    .data![index].titleAR ??
                                                 "",
                                         style: AppTextStyle.semiBoldBlack13,
                                         textAlign: TextAlign.justify,
@@ -94,13 +94,13 @@ class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
                                                   ? _controller
                                                           .faqsQuestions
                                                           .value
-                                                          .data[index]
+                                                          .data![index]
                                                           .description ??
                                                       ''
                                                   : _controller
                                                           .faqsQuestions
                                                           .value
-                                                          .data[index]
+                                                          .data![index]
                                                           .descriptionAR ??
                                                       '',
                                               style: AppTextStyle.normalBlack12,

@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'vendor_filter_contracts_status_controller.dart';
 
 class VendorContractsStatusFilter extends StatefulWidget {
-  const VendorContractsStatusFilter({Key key}) : super(key: key);
+  const VendorContractsStatusFilter({Key? key}) : super(key: key);
 
   @override
   _VendorContractsStatusFilterState createState() =>
@@ -102,7 +102,7 @@ class _VendorContractsStatusFilterState
                                               _filterContractsStatusController
                                                   .contractsStatusModel
                                                   .value
-                                                  .contractStatus[index]);
+                                                  .contractStatus![index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -114,13 +114,13 @@ class _VendorContractsStatusFilterState
                                               ? _filterContractsStatusController
                                                       .contractsStatusModel
                                                       .value
-                                                      .contractStatus[index]
+                                                      .contractStatus![index]
                                                       .statusName ??
                                                   ''
                                               : _filterContractsStatusController
                                                       .contractsStatusModel
                                                       .value
-                                                      .contractStatus[index]
+                                                      .contractStatus![index]
                                                       .statusNameAr ??
                                                   '',
                                         ),
