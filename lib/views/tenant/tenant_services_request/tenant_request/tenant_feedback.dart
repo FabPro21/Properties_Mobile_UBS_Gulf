@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class TenantFeedback extends StatelessWidget {
-  const TenantFeedback({Key key}) : super(key: key);
+  const TenantFeedback({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

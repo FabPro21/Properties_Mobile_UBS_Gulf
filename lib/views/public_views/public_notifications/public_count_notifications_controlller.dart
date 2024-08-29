@@ -13,7 +13,7 @@ class PublicCountNotificationsController extends GetxController {
     var resp = await PublicRepositoryDrop2.countNotifications();
 
     if (resp is PublicCountNotificationModel) {
-      if (resp.status == "Ok") countN.value = resp.notifications;
+      if (resp.status == "Ok") countN.value = resp.notifications!;
       print('Count :::::: =>   $countN');
       loading.value = false;
     } else {

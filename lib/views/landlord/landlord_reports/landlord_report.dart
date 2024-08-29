@@ -16,7 +16,7 @@ import 'landlord_report_details/landlord_report_details.dart';
 import 'dart:ui' as ui;
 
 class LandLordReports extends StatefulWidget {
-  const LandLordReports({Key key}) : super(key: key);
+  const LandLordReports({Key? key}) : super(key: key);
 
   @override
   _LandLordReportsState createState() => _LandLordReportsState();

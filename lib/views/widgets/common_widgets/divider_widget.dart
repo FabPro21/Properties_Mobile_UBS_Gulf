@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class AppDivider extends StatelessWidget {
-  const AppDivider({Key key}) : super(key: key);
+  const AppDivider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

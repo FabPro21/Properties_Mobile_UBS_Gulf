@@ -16,7 +16,7 @@ class GetContractswithFilterService {
       "ContractDateTo": filterData.toDate,
     };
     print(data);
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       try {
         GetContractsModel contractsWithFilter =
@@ -43,7 +43,7 @@ class GetContractswithFilterService {
       "Search": searchtext
     };
     print(data);
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       try {
         GetContractsModel contractsWithFilter =

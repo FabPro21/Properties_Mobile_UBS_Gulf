@@ -5,12 +5,12 @@ import 'package:fap_properties/utils/constants/app_config.dart';
 import 'package:http/http.dart' as http;
 
 class AddMpinServices {
-  static Future<dynamic> getData(String mpin) async {
+  static Future<dynamic> getData(String? mpin) async {
     var data = {
       "mpin": mpin,
     };
     var url = AppConfig().saveMpin;
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url!, data,
         token: SessionController().getLoginToken());
     if (response is http.Response) {
       AddMpinModel addMpinModel = addMpinModelFromJson(response.body);

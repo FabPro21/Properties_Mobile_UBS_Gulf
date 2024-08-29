@@ -9,7 +9,7 @@ class PublicGetFeedbackServices {
   static Future<dynamic> getfeedback(int casedNo) async {
     var url = AppConfig().getPublicFeedback;
     var data = {"caseNo":casedNo.toString()};
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       PublicBookingReqGetFeedbackModel feedbackModel =

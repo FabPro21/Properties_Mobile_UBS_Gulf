@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-AddPaymentModel addPaymentModelFromJson(String str) =>
-    AddPaymentModel.fromJson(json.decode(str));
+AddPaymentModel addPaymentModelFromJson(String? str) =>
+    AddPaymentModel.fromJson(json.decode(str!));
 
-String addPaymentModelToJson(AddPaymentModel data) =>
+String? addPaymentModelToJson(AddPaymentModel data) =>
     json.encode(data.toJson());
 
 class AddPaymentModel {
@@ -15,16 +15,16 @@ class AddPaymentModel {
     this.detailList,
   });
 
-  List<DetailList> detailList = [];
+  List<DetailList>? detailList = [];
 
-  factory AddPaymentModel.fromJson(Map<String, dynamic> json) =>
+  factory AddPaymentModel.fromJson(Map<String?, dynamic> json) =>
       AddPaymentModel(
         detailList: List<DetailList>.from(
             json["DetailList"].map((x) => DetailList.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "DetailList": List<dynamic>.from(detailList.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "DetailList": List<dynamic>.from(detailList!.map((x) => x.toJson())),
       };
 }
 
@@ -44,20 +44,20 @@ class DetailList {
     this.amount,
   });
 
-  int paymentId;
-  int vatOnRentContractId;
-  int vatOnChargeId;
-  int contractId;
-  int paymentMethodId;
-  int contractchargeId;
-  String title;
-  String aramexAddress;
-  String selfDelivery;
-  String description;
-  String type;
-  double amount;
+  int? paymentId;
+  int? vatOnRentContractId;
+  int? vatOnChargeId;
+  int? contractId;
+  int? paymentMethodId;
+  int? contractchargeId;
+  String? title;
+  String? aramexAddress;
+  String? selfDelivery;
+  String? description;
+  String? type;
+  double? amount;
 
-  factory DetailList.fromJson(Map<String, dynamic> json) => DetailList(
+  factory DetailList.fromJson(Map<String?, dynamic> json) => DetailList(
         paymentId: json["PaymentID"],
         vatOnRentContractId: json["VatOnRentContractId"],
         vatOnChargeId: json["VATOnChargeID"],
@@ -72,7 +72,7 @@ class DetailList {
         amount: json["Amount"].toDouble(),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "PaymentID": paymentId,
         "VatOnRentContractId": vatOnRentContractId,
         "VATOnChargeID": vatOnChargeId,

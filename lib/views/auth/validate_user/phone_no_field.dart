@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 import 'validate_user_controller.dart';
 
 class PhoneNoField extends StatelessWidget {
-  PhoneNoField({Key key}) : super(key: key);
+  PhoneNoField({Key? key}) : super(key: key);
   static final TextEditingController phoneController = TextEditingController();
   final tooltipKey = GlobalKey<State<Tooltip>>();
   final vUController = Get.put(ValidateUserController());
@@ -78,7 +78,7 @@ class PhoneNoField extends StatelessWidget {
 }
 
 class PhoneNoFieldFB extends StatelessWidget {
-  PhoneNoFieldFB({Key key}) : super(key: key);
+  PhoneNoFieldFB({Key? key}) : super(key: key);
   static final TextEditingController phoneController = TextEditingController();
   final tooltipKey = GlobalKey<State<Tooltip>>();
   final vUController = Get.put(FirebaseAuthController());

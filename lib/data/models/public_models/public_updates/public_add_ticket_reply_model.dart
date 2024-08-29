@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicAddTicketReplyModel publicAddTicketReplyModelFromJson(String str) => PublicAddTicketReplyModel.fromJson(json.decode(str));
+PublicAddTicketReplyModel publicAddTicketReplyModelFromJson(String? str) => PublicAddTicketReplyModel.fromJson(json.decode(str!));
 
-String publicAddTicketReplyModelToJson(PublicAddTicketReplyModel data) => json.encode(data.toJson());
+String? publicAddTicketReplyModelToJson(PublicAddTicketReplyModel data) => json.encode(data.toJson());
 
 class PublicAddTicketReplyModel {
     PublicAddTicketReplyModel({
@@ -14,15 +14,15 @@ class PublicAddTicketReplyModel {
         this.message,
     });
 
-    String status;
-    String message;
+    String? status;
+    String? message;
 
-    factory PublicAddTicketReplyModel.fromJson(Map<String, dynamic> json) => PublicAddTicketReplyModel(
+    factory PublicAddTicketReplyModel.fromJson(Map<String?, dynamic> json) => PublicAddTicketReplyModel(
         status: json["status"],
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
         "message": message,
     };

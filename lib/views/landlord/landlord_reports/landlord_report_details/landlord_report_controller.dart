@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -63,7 +65,7 @@ class LandLordReportPropController extends GetxController {
   var fromDateText = "".obs;
   var asnoDateText = "".obs;
   var toDateText = "".obs;
-  ReportFilterData filterData;
+  ReportFilterData? filterData;
 
   RxBool isLoading = false.obs;
   RxString isFileDownloadError = ''.obs;
@@ -91,9 +93,9 @@ class LandLordReportPropController extends GetxController {
     super.onInit();
   }
 
-  DateTime fromDateDT;
-  DateTime toDateDT;
-  DateTime asNoDateDT;
+  DateTime? fromDateDT;
+  DateTime? toDateDT;
+  DateTime? asNoDateDT;
 
   bool setAsnoDate(DateTime date) {
     if (date != null) {
@@ -163,14 +165,14 @@ class LandLordReportPropController extends GetxController {
     isLoading.value = false;
     if (response is DownloadReportModel) {
       isFileDownloadError.value = '';
-      return response.filePath.result;
+      return response.filePath!.result!;
     } else {
       isFileDownloadError.value = response;
       return ' ';
     }
   }
 
-  LandlordDownloadReportModel downloadedFileModel;
+  LandlordDownloadReportModel? downloadedFileModel;
   Future<bool> downLoadReportFilebase64(String fileName, Map data) async {
     isLoading.value = true;
     isFileDownloadError.value = '';
@@ -182,7 +184,7 @@ class LandLordReportPropController extends GetxController {
       // if (response is Uint8List) {
       if (await getTemporaryDirectory() != null) {
         var base64 = response.base64;
-        if (base64.isNotEmpty ||
+        if (base64!.isNotEmpty ||
             base64 != '' ||
             base64 != null && response.message != 'No Records Found') {
           try {
@@ -202,11 +204,11 @@ class LandLordReportPropController extends GetxController {
               'Nov',
               'Dec'
             ];
-            var fileName = response.name +
+            var fileName = response.name! +
                 ' ' +
                 '${dt.day} ${months[dt.month - 1]} ${dt.hour}-${dt.minute}-${dt.second}' +
                 '.' +
-                response.extension;
+                response.extension!;
             // var fileName = response.name + '.' + response.extension;
             var res = await saveFileInsideTheDevice(base64Decoded, fileName);
 
@@ -216,7 +218,7 @@ class LandLordReportPropController extends GetxController {
             print(e.toString());
             Get.snackbar(
               AppMetaLabels().error,
-              e.message.toString(),
+              e.toString(),
               backgroundColor: AppColors.white54,
             );
             return false;
@@ -279,7 +281,7 @@ class LandLordReportPropController extends GetxController {
       print('Exception :::: Inside the ::::: save func ${e.toString()}');
       Get.snackbar(
         AppMetaLabels().error,
-        e.message.toString(),
+        e.toString(),
         backgroundColor: AppColors.white54,
       );
       return false;
@@ -322,7 +324,7 @@ class LandLordReportPropController extends GetxController {
       if (result is AMCReportSummaryModel) {
         amcRepportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${amcRepportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${amcRepportModel.value.serviceRequests!.length}');
         if (amcRepportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -335,7 +337,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is BuildingStatusSummaryModel) {
         buildingStatusReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${buildingStatusReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${buildingStatusReportModel.value.serviceRequests!.length}');
         if (buildingStatusReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -348,7 +350,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is ChequeRegisterReportSummaryModel) {
         chequeRegisterReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${chequeRegisterReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${chequeRegisterReportModel.value.serviceRequests!.length}');
         if (chequeRegisterReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -361,7 +363,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is ContractSummaryModel) {
         contractReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${contractReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${contractReportModel.value.serviceRequests!.length}');
         if (contractReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -374,7 +376,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is LegalCaseReportSummaryModel) {
         legalCaseReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${legalCaseReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${legalCaseReportModel.value.serviceRequests!.length}');
         if (legalCaseReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -387,7 +389,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is OccupancyVacancyRegisterSummaryModel) {
         occupanyReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${occupanyReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${occupanyReportModel.value.serviceRequests!.length}');
         if (occupanyReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -400,7 +402,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is ReceipRegisterReportSummaryModel) {
         receiptRegisterModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${receiptRegisterModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${receiptRegisterModel.value.serviceRequests!.length}');
         if (receiptRegisterModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -413,7 +415,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is UnitStatusReportSummaryModel) {
         unitStatusReportModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${unitStatusReportModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${unitStatusReportModel.value.serviceRequests!.length}');
         if (unitStatusReportModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -426,7 +428,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is VATReportSummaryModel) {
         vatReportSummaryModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${vatReportSummaryModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${vatReportSummaryModel.value.serviceRequests!.length}');
         if (vatReportSummaryModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;
@@ -439,7 +441,7 @@ class LandLordReportPropController extends GetxController {
       else if (result is LpoReportSummaryModel) {
         lpoReportSummaryModel.value = result;
         print(
-            'Result Controller:::$reportName::: ${lpoReportSummaryModel.value.serviceRequests.length}');
+            'Result Controller:::$reportName::: ${lpoReportSummaryModel.value.serviceRequests!.length}');
         if (lpoReportSummaryModel.value.totalRecord == 0) {
           errorSummaryReport.value = AppMetaLabels().noDatafound;
           isLoadingSummary.value = false;

@@ -16,7 +16,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class VendorFinancialTerms extends StatefulWidget {
-  const VendorFinancialTerms({Key key}) : super(key: key);
+  const VendorFinancialTerms({Key? key}) : super(key: key);
 
   @override
   _VendorFinancialTermsState createState() => _VendorFinancialTermsState();
@@ -95,7 +95,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                                 width: 22.w,
                                                 child: FittedBox(
                                                   child: Text(
-                                                    "${AppMetaLabels().aed} ${getContractFinancialTermsController.totalAmountSumFormat.value.toString() ?? ""}",
+                                                    "${AppMetaLabels().aed} ${getContractFinancialTermsController.totalAmountSumFormat.value.toString() }",
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
@@ -131,16 +131,14 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                       ' ' + AppMetaLabels().paid,
                                       getContractFinancialTermsController
                                               .totalPaidFormat.value
-                                              .toString() ??
-                                          ""),
+                                              .toString()),
                                   columnList(
                                       // AppColors.chartDarkBlueColor,
                                       AppColors.amber.withOpacity(0.2),
                                       ' ' + AppMetaLabels().balance,
                                       getContractFinancialTermsController
                                               .balanceFormat.value
-                                              .toString() ??
-                                          ""),
+                                              .toString()),
                                 ],
                               ),
                               SizedBox(
@@ -175,7 +173,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                           getContractFinancialTermsController
                                               .getFinalcialTerms
                                               .value
-                                              .contractFinancialTerms[index]
+                                              .contractFinancialTerms![index]
                                               .amount;
                                       final paidFormatter =
                                           NumberFormat('#,##0.00', 'AR');
@@ -213,11 +211,10 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                                           getContractFinancialTermsController
                                                                   .getFinalcialTerms
                                                                   .value
-                                                                  .contractFinancialTerms[
+                                                                  .contractFinancialTerms![
                                                                       index]
                                                                   .paymentDate
-                                                                  .toString() ??
-                                                              ""),
+                                                                  .toString() ),
                                                     ],
                                                   ),
                                                 ),

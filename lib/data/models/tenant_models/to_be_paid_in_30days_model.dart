@@ -6,10 +6,10 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-ToBePaidIn30DaysModel toBePaidIn30DaysModelFromJson(String str) =>
-    ToBePaidIn30DaysModel.fromJson(json.decode(str));
+ToBePaidIn30DaysModel toBePaidIn30DaysModelFromJson(String? str) =>
+    ToBePaidIn30DaysModel.fromJson(json.decode(str!));
 
-String toBePaidIn30DaysModelToJson(ToBePaidIn30DaysModel data) =>
+String? toBePaidIn30DaysModelToJson(ToBePaidIn30DaysModel data) =>
     json.encode(data.toJson());
 
 class ToBePaidIn30DaysModel {
@@ -21,13 +21,13 @@ class ToBePaidIn30DaysModel {
     this.totalAmount,
   });
 
-  List<Datum> data;
-  String statusCode;
-  String message;
-  String status;
+  List<Datum>? data;
+  String? statusCode;
+  String? message;
+  String? status;
   dynamic totalAmount;
 
-  factory ToBePaidIn30DaysModel.fromJson(Map<String, dynamic> json) {
+  factory ToBePaidIn30DaysModel.fromJson(Map<String?, dynamic> json) {
     var amount;
     try {
       var am = json["totalAmount"];
@@ -45,8 +45,8 @@ class ToBePaidIn30DaysModel {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
         "statusCode": statusCode,
         "message": message,
         "status": status,
@@ -63,13 +63,13 @@ class Datum {
     this.transactionNo,
   });
 
-  String contractId;
+  String? contractId;
   dynamic amount;
-  String transactionDate;
-  String transactionType;
-  String transactionNo;
+  String? transactionDate;
+  String? transactionType;
+  String? transactionNo;
 
-  factory Datum.fromJson(Map<String, dynamic> json) {
+  factory Datum.fromJson(Map<String?, dynamic> json) {
     var amount;
     try {
       var am = json["amount"];
@@ -87,7 +87,7 @@ class Datum {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractID": contractId,
         "amount": amount,
         "transactionDate": transactionDate,

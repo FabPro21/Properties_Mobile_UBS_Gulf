@@ -32,13 +32,13 @@ class PaymentDownloadReceiptController extends GetxController {
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
     }
-    payment.downloadingReceipt.value = true;
+    payment.downloadingReceipt!.value = true;
     SessionController().setTransactionId(payment.transactionId.toString());
     var result = await TenantRepository.paymentsDownloadReceipt();
     print('Condition ::::====>>>>>:::::::=> ${(result is Uint8List)}');
     if (result is Uint8List) {
       if (await getStoragePermission()) {
-        String path = await createPdf(result, payment.receiptNo);
+        String path = await createPdf(result, payment.receiptNo??"");
         print('path ::::====>>>>>:::::::=> $path');
         try {
           print('path ::TRY::====>>>>>:::::::=> $path');
@@ -61,7 +61,7 @@ class PaymentDownloadReceiptController extends GetxController {
         backgroundColor: AppColors.white54,
       );
     }
-    payment.downloadingReceipt.value = false;
+    payment.downloadingReceipt!.value = false;
   }
 
   Future<bool> getStoragePermission() async {

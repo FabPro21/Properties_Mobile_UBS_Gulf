@@ -12,7 +12,7 @@ class TenantReadNotificationsServices {
       "notificationId": SessionController().getNotificationId().toString(),
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       TenantReadNotificationsModel readNotificationsModel =

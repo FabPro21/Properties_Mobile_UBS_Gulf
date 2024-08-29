@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCaseType extends StatefulWidget {
-  TenantCaseType({Key key}) : super(key: key);
+  TenantCaseType({Key? key}) : super(key: key);
 
   @override
   State<TenantCaseType> createState() => _TenantCaseTypeState();
@@ -142,7 +142,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                                         } else if ((getCaseTypesController
                                                         .getCaseTypes
                                                         .value
-                                                        .serviceRequests[index]
+                                                        .serviceRequests![index]
                                                         .name ??
                                                     "")
                                                 .toLowerCase()
@@ -151,7 +151,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                                             (getCaseTypesController
                                                         .getCaseTypes
                                                         .value
-                                                        .serviceRequests[index]
+                                                        .serviceRequests![index]
                                                         .name ??
                                                     "")
                                                 .toLowerCase()
@@ -179,17 +179,14 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
     return InkWell(
       onTap: () {
         SessionController().setCaseTypeId(
-          getCaseTypesController.getCaseTypes.value.serviceRequests[index].id
-                  .toString() ??
-              "",
+          getCaseTypesController.getCaseTypes.value.serviceRequests![index].id
+                  .toString(),
         );
         Get.back(result: [
-          getCaseTypesController.getCaseTypes.value.serviceRequests[index].name
-                  .toString() ??
-              "",
-          getCaseTypesController.getCaseTypes.value.serviceRequests[index].id
-                  .toString() ??
-              "",
+          getCaseTypesController.getCaseTypes.value.serviceRequests![index].name
+                  .toString() ,
+          getCaseTypesController.getCaseTypes.value.serviceRequests![index].id
+                  .toString() ,
         ]);
       },
       child: Column(
@@ -199,7 +196,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
             padding: EdgeInsets.all(2.0.h),
             child: Text(
               getCaseTypesController
-                      .getCaseTypes.value.serviceRequests[index].name ??
+                      .getCaseTypes.value.serviceRequests![index].name ??
                   "",
               style: AppTextStyle.normalGrey10,
             ),

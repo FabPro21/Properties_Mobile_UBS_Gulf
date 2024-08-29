@@ -10,7 +10,7 @@ class InAppUpdateClass extends StatefulWidget {
 }
 
 class _InAppUpdateClassState extends State<InAppUpdateClass> {
-  AppUpdateInfo _updateInfo;
+  AppUpdateInfo? _updateInfo;
 
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
@@ -29,7 +29,7 @@ class _InAppUpdateClassState extends State<InAppUpdateClass> {
 
   void showSnack(String text) {
     if (_scaffoldKey.currentContext != null) {
-      ScaffoldMessenger.of(_scaffoldKey.currentContext)
+      ScaffoldMessenger.of(_scaffoldKey.currentContext!)
           .showSnackBar(SnackBar(content: Text(text)));
     }
   }

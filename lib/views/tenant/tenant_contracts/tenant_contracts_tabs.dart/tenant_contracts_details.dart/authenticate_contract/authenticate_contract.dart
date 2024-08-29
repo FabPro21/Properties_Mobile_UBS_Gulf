@@ -18,15 +18,15 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class AuthenticateContract extends StatefulWidget {
-  final String contractNo;
-  final int contractId;
-  final String filePath;
-  final int dueActionId;
-  final int stageId;
-  final String caller;
-  final int caseId;
+  final String? contractNo;
+  final int? contractId;
+  final String? filePath;
+  final int? dueActionId;
+  final int? stageId;
+  final String? caller;
+  final int? caseId;
   const AuthenticateContract(
-      {Key key,
+      {Key? key,
       this.filePath,
       this.contractNo,
       this.contractId,
@@ -171,9 +171,9 @@ class _AuthenticateContractState extends State<AuthenticateContract> {
                                       Checkbox(
                                         activeColor: AppColors.blueColor,
                                         value: this.acceptTerms,
-                                        onChanged: (bool value) {
+                                        onChanged: (bool? value) {
                                           setState(() {
-                                            this.acceptTerms = value;
+                                            this.acceptTerms = value!;
                                           });
                                         },
                                       ), //Check
@@ -183,8 +183,8 @@ class _AuthenticateContractState extends State<AuthenticateContract> {
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                          controller.getTerms(widget.contractId,
-                                              widget.contractNo);
+                                          controller.getTerms(widget.contractId??0,
+                                              widget.contractNo??"");
                                         },
                                         child: Obx(() {
                                           return controller.loadingTerms.value
@@ -256,11 +256,11 @@ class _AuthenticateContractState extends State<AuthenticateContract> {
                                                             saved = await controller
                                                                 .updateDocStage(
                                                                     widget
-                                                                        .dueActionId,
+                                                                        .dueActionId??0,
                                                                     widget
-                                                                        .stageId,
+                                                                        .stageId??0,
                                                                     widget
-                                                                        .caller,
+                                                                        .caller??"",
                                                                     'authenticate_Contract');
                                                           } else {
                                                             var signature =
@@ -268,15 +268,15 @@ class _AuthenticateContractState extends State<AuthenticateContract> {
                                                                     .toPngBytes();
                                                             saved = await controller
                                                                 .saveSignature(
-                                                                    signature,
+                                                                    signature!,
                                                                     widget
-                                                                        .dueActionId,
+                                                                        .dueActionId??0,
                                                                     widget
-                                                                        .stageId,
+                                                                        .stageId??-1,
                                                                     widget
-                                                                        .caller,
+                                                                        .caller??"",
                                                                     widget
-                                                                        .caseId);
+                                                                        .caseId??0);
                                                           }
                                                           if (saved) {
                                                             showSuccessDialog();
@@ -296,16 +296,16 @@ class _AuthenticateContractState extends State<AuthenticateContract> {
                                                 ),
                                                 style: ButtonStyle(
                                                     elevation:
-                                                        MaterialStateProperty
+                                                        WidgetStateProperty
                                                             .all<double>(0.0),
                                                     backgroundColor: !acceptTerms
-                                                        ? MaterialStateProperty
+                                                        ? WidgetStateProperty
                                                             .all<Color>(Colors
                                                                 .grey.shade400)
-                                                        : MaterialStateProperty
+                                                        : WidgetStateProperty
                                                             .all<Color>(AppColors
                                                                 .blueColor),
-                                                    shape: MaterialStateProperty
+                                                    shape: WidgetStateProperty
                                                         .all<
                                                             RoundedRectangleBorder>(
                                                       RoundedRectangleBorder(

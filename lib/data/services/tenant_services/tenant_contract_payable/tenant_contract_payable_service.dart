@@ -11,7 +11,7 @@ class TenantContractPayableService {
     var data = {"ContractId": SessionController().getContractID().toString()};
     print(
         'ContractId :::::: getContractPayable from GetContractsDetailsController $data');
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       // log(resp.body);

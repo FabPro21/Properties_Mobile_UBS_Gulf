@@ -28,7 +28,7 @@ class VendorFilterContractsStatusController extends GetxController {
 
     if (resp is GetContractStatusModelVendor) {
       contractsStatusModel.value = resp;
-      contractsStatusLength = resp.contractStatus.length;
+      contractsStatusLength = resp.contractStatus!.length;
     } else {
       error.value = resp;
     }

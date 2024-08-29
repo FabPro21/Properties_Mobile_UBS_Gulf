@@ -30,7 +30,7 @@ class GetPropertyCategoryController extends GetxController {
     loadingData.value = false;
     if (result is GetPropertyCategoryModel) {
       getPropertyCategory.value = result;
-      length = getPropertyCategory.value.propertyCategory.length;
+      length = getPropertyCategory.value.propertyCategory!.length;
       update();
     } else {
       error.value = result;

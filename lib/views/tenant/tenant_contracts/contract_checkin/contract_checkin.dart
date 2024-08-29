@@ -10,13 +10,13 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ContractCheckin extends StatefulWidget {
-  final String contractNo;
-  final int contractId;
-  final String caller;
-  final int dueActionId;
-  final int caseId;
+  final String? contractNo;
+  final int? contractId;
+  final String? caller;
+  final int? dueActionId;
+  final int? caseId;
   const ContractCheckin(
-      {Key key,
+      {Key? key,
       this.contractNo,
       this.contractId,
       this.caller,
@@ -30,7 +30,7 @@ class ContractCheckin extends StatefulWidget {
 
 class _ContractCheckinState extends State<ContractCheckin> {
   final controller = Get.put(CheckinContractController());
-  bool isDialogOpen;
+  bool? isDialogOpen;
   @override
   void initState() {
     isDialogOpen = false;
@@ -41,7 +41,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (isDialogOpen) Get.back();
+        if (isDialogOpen!) Get.back();
         return true;
       },
       child: Scaffold(
@@ -73,7 +73,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                     Text(
-                      widget.contractNo,
+                      widget.contractNo!,
                       style: AppTextStyle.semiBoldBlack12,
                     )
                   ],
@@ -145,7 +145,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
                                     onPressed: () async {
                                       var resp;
                                       resp = await controller.checkinContract(
-                                          widget.contractId, widget.caller);
+                                          widget.contractId!, widget.caller!);
 
                                       if (resp == 'ok')
                                         showDialog(

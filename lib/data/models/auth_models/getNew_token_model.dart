@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-GetNewTokenModel getNewTokenModelFromJson(String str) => GetNewTokenModel.fromJson(json.decode(str));
+GetNewTokenModel getNewTokenModelFromJson(String? str) => GetNewTokenModel.fromJson(json.decode(str!));
 
-String getNewTokenModelToJson(GetNewTokenModel data) => json.encode(data.toJson());
+String? getNewTokenModelToJson(GetNewTokenModel data) => json.encode(data.toJson());
 
 class GetNewTokenModel {
     GetNewTokenModel({
@@ -17,13 +17,13 @@ class GetNewTokenModel {
         this.statusCode,
     });
 
-    String token;
-    User user;
-    String message;
-    String status;
-    String statusCode;
+    String? token;
+    User? user;
+    String? message;
+    String? status;
+    String? statusCode;
 
-    factory GetNewTokenModel.fromJson(Map<String, dynamic> json) => GetNewTokenModel(
+    factory GetNewTokenModel.fromJson(Map<String?, dynamic> json) => GetNewTokenModel(
         token: json["token"],
         user: User.fromJson(json["user"]),
         message: json["message"],
@@ -31,9 +31,9 @@ class GetNewTokenModel {
         statusCode: json["statusCode"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "token": token,
-        "user": user.toJson(),
+        "user": user!.toJson(),
         "message": message,
         "status": status,
         "statusCode": statusCode,
@@ -53,17 +53,17 @@ class User {
         this.roles,
     });
 
-    int userId;
-    String name;
+    int? userId;
+    String? name;
     dynamic fullNameAr;
-    bool mpinSet;
-    String mobile;
-    String email;
+    bool? mpinSet;
+    String? mobile;
+    String? email;
     dynamic language;
     dynamic languageSet;
     dynamic roles;
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+    factory User.fromJson(Map<String?, dynamic> json) => User(
         userId: json["userId"],
         name: json["name"],
         fullNameAr: json["fullNameAr"],
@@ -75,7 +75,7 @@ class User {
         roles: json["roles"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "userId": userId,
         "name": name,
         "fullNameAr": fullNameAr,

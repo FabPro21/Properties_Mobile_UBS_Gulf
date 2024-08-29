@@ -11,7 +11,7 @@ class DownloadLandLordNotificationsFiles {
     var url = AppConfig().landLorddownloadNotificationFile;
     print(url);
     Map data = {"FileId": id.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

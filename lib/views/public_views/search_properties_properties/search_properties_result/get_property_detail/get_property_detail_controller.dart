@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:typed_data';
 
 import 'package:fap_properties/data/helpers/base_client.dart';
@@ -40,16 +42,16 @@ class GetPropertyDetailController extends GetxController {
     loadingData.value = false;
     if (result is GetPropertyDetailModel) {
       data.value = result;
-      if (data.value.property.latitude != null &&
-          data.value.property.longitude != null) {
+      if (data.value.property!.latitude != null &&
+          data.value.property!.longitude != null) {
         cameraPosition = Gm.CameraPosition(
-          target: Gm.LatLng(double.parse(data.value.property.latitude),
-              double.parse(data.value.property.longitude)),
+          target: Gm.LatLng(double.parse(data.value.property!.latitude!),
+              double.parse(data.value.property!.longitude!)),
           zoom: 8.0,
         );
         kApplePlex = Am.CameraPosition(
-          target: Am.LatLng(double.parse(data.value.property.latitude),
-              double.parse(data.value.property.longitude)),
+          target: Am.LatLng(double.parse(data.value.property!.latitude!),
+              double.parse(data.value.property!.longitude!)),
           zoom: 8.0,
         );
       }
@@ -61,7 +63,7 @@ class GetPropertyDetailController extends GetxController {
   }
 
   Stream<Uint8List> getImage() async* {
-    var resp = await TenantRepository.getUnitImage(data.value.property.unitID);
+    var resp = await TenantRepository.getUnitImage(data.value.property!.unitID??0);
     if (resp is Uint8List) {
       yield resp;
     } else {

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/filter_data.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_contracts_status_model.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_property_types_model.dart';

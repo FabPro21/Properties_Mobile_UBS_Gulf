@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class SearchField extends StatefulWidget {
-  final TextEditingController searchController;
-  final Function(String) onChanged;
-  final Function onPressed;
-  final String hint;
+  final TextEditingController? searchController;
+  final Function(String)? onChanged;
+  final VoidCallback? onPressed;
+  final String? hint;
   const SearchField({
-    Key key,
+    Key? key,
     this.searchController,
     this.onChanged,
     this.onPressed,

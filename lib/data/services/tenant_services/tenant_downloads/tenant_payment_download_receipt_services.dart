@@ -13,7 +13,7 @@ class PaymentDownloadReceiptService {
     Map data = {
       "transactionid": SessionController().getTransactionId().toString()
     };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     log(response.body.toString());
     if (response is http.Response) {
       try {

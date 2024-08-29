@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -14,7 +15,7 @@ import 'public_notification_controller.dart';
 import 'dart:ui' as ui;
 
 class PublicNotificationDetails extends StatefulWidget {
-  const PublicNotificationDetails({Key key}) : super(key: key);
+  const PublicNotificationDetails({Key? key}) : super(key: key);
 
   @override
   _PublicNotificationDetailsState createState() =>
@@ -108,13 +109,13 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                                             ? _controller
                                                     .notificationsDetaildata
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .title ??
                                                 ""
                                             : _controller
                                                     .notificationsDetaildata
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .titleAR ??
                                                 "",
                                         style: AppTextStyle.semiBoldBlack13,
@@ -127,8 +128,11 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                                           right: 2.0.h,
                                           top: 1.0.h),
                                       child: Text(
-                                        _controller.notificationsDetaildata
-                                                .value.notification.createdOn ??
+                                        _controller
+                                                .notificationsDetaildata
+                                                .value
+                                                .notification!
+                                                .createdOn ??
                                             "",
                                         style: AppTextStyle.normalBlack10,
                                       ),
@@ -137,29 +141,33 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 3.w),
                                       child: Html(
-                                        customTextAlign: (_) =>
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? TextAlign.left
-                                                : TextAlign.right,
                                         data:
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? _controller
-                                                        .notificationsDetaildata
-                                                        .value
-                                                        .notification
-                                                        .description
-                                                        .toString() ??
-                                                    ""
+                                                    .notificationsDetaildata
+                                                    .value
+                                                    .notification!
+                                                    .description
+                                                    .toString()
                                                 : _controller
                                                     .notificationsDetaildata
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .descriptionAR
                                                     .toString(),
-                                        defaultTextStyle:
-                                            AppTextStyle.normalBlack10,
+                                        style: {
+                                          'html': Style(
+                                            textAlign: SessionController()
+                                                        .getLanguage() ==
+                                                    1
+                                                ? TextAlign.left
+                                                : TextAlign.right,
+                                            color: Colors.black,
+                                            fontFamily: AppFonts.graphikRegular,
+                                            fontSize: FontSize(10.0),
+                                          ),
+                                        },
                                       ),
                                     ),
                                   ],

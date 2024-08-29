@@ -24,7 +24,7 @@ import '../country_picker/country_picker.dart';
 
 // ValidateUserScreenFB = >ValidateUserScreenFirebase
 class ValidateUserScreenFB extends StatefulWidget {
-  ValidateUserScreenFB({Key key}) : super(key: key);
+  ValidateUserScreenFB({Key? key}) : super(key: key);
 
   @override
   State<ValidateUserScreenFB> createState() => _ValidateUserScreenFBState();
@@ -241,17 +241,17 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                   onPress: () async {
                                     FocusScope.of(context).unfocus();
                                     authController.textFieldTap.value = false;
+                                    print(PhoneNoFieldFB.phoneController.text);
                                     print(PhoneNoFieldFB.phoneController.text ==
                                         '');
-                                    print(PhoneNoFieldFB.phoneController.text ==
-                                        null);
+
                                     print(PhoneNoFieldFB.phoneController.text
                                         .contains(' '));
                                     // checking weather user entered mobile no or not
                                     if (PhoneNoFieldFB.phoneController.text ==
                                             '' ||
-                                        PhoneNoFieldFB.phoneController.text ==
-                                            null ||
+                                        PhoneNoFieldFB
+                                            .phoneController.text.isEmpty ||
                                         PhoneNoFieldFB.phoneController.text
                                             .contains(' ')) {
                                       SnakBarWidget.getSnackBarErrorBlue(
@@ -271,9 +271,18 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           backgroundColor: AppColors.redColor,
                                           colorText: AppColors.whiteColor);
                                     } else {
-                                      final String phone = SessionController()
-                                              .getDialingCode() +
+                                      var dailingCode =
+                                          SessionController().getDialingCode();
+                                      var number =
                                           PhoneNoFieldFB.phoneController.text;
+                                      final String phone =
+                                          '$dailingCode$number';
+                                      // final String phone = SessionController()
+                                      //         .getDialingCode() ??
+                                      //     "" +
+                                      //         PhoneNoFieldFB
+                                      //             .phoneController.text;
+                                      print('Phone  ::: $phone');
                                       SessionController().setPhone(phone);
                                       var phoneNbrValidation =
                                           authController.validateMobile(phone);
@@ -324,7 +333,8 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           return FlutterSwitch(
                                             inactiveColor: Color.fromRGBO(
                                                 188, 190, 192, 1),
-                                            activeColor: Colors.blue[600],
+                                            activeColor:
+                                                Colors.blue[600] ?? Colors.blue,
                                             // toggleColor: Color.fromRGBO(76, 78, 84, 1),
                                             activeToggleColor: Colors.white,
                                             inactiveToggleColor:
@@ -361,7 +371,8 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           return FlutterSwitch(
                                             inactiveColor: Color.fromRGBO(
                                                 188, 190, 192, 1),
-                                            activeColor: Colors.blue[600],
+                                            activeColor:
+                                                Colors.blue[600] ?? Colors.blue,
                                             // toggleColor: Color.fromRGBO(76, 78, 84, 1),
                                             activeToggleColor: Colors.white,
                                             inactiveToggleColor:

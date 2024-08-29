@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class InfoItem3 extends StatelessWidget {
-  final String label;
-  final String text;
+  final String? label;
+  final String? text;
   const InfoItem3({
-    Key key, this.label, this.text,
+    Key? key, this.label, this.text,
   }) : super(key: key);
 
   @override

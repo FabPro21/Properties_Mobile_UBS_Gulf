@@ -26,6 +26,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+
 def keystoreProperties = new Properties()
    def keystorePropertiesFile = rootProject.file('key.properties')
    if (keystorePropertiesFile.exists()) {
@@ -33,21 +34,35 @@ def keystoreProperties = new Properties()
    }
 
 android {
-    compileSdkVersion 33
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
+    namespace = "com.fab.fabpropertiesEnterprise"
+    compileSdkVersion 34
+    ndkVersion = "25.1.8937393"
+    
+   
     lintOptions {
         disable 'InvalidPackage'
         disable "Instantiatable"
         checkReleaseBuilds false
+        
         abortOnError false
+    }
+    
+    // compileSdkVersion 33
+    //  compileOptions {
+    //     sourceCompatibility JavaVersion.VERSION_1_8
+    //     targetCompatibility JavaVersion.VERSION_1_8
+    // }
+    // kotlinOptions {
+    //     jvmTarget = '1.8'
+    // }
+
+     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
+        targetCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17' // Align this with Java
     }
 
     sourceSets {
@@ -58,7 +73,8 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.fab.fabpropertiesEnterprise"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
+        // targetSdkVersion 33
         // targetSdkVersion 31
         // targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -87,7 +103,8 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.android.support:multidex:1.0.3'

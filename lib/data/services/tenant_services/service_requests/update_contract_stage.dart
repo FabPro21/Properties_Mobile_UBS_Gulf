@@ -12,7 +12,7 @@ class UpdateContractStage {
       "StageId": stageId.toString()
     };
     var response =
-        await BaseClientClass.post(AppConfig().updateContractStage, data);
+        await BaseClientClass.post(AppConfig().updateContractStage??"", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);
@@ -36,7 +36,7 @@ class UpdateContractStage {
       "StageId": stageId.toString()
     };
     var response =
-        await BaseClientClass.post(AppConfig().updateContractStage, data);
+        await BaseClientClass.post(AppConfig().updateContractStage??"", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);
@@ -56,7 +56,7 @@ class UpdateContractStage {
       "StageId": stageId.toString()
     };
     var response =
-        await BaseClientClass.post(AppConfig().updateContractStage, data);
+        await BaseClientClass.post(AppConfig().updateContractStage??"", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

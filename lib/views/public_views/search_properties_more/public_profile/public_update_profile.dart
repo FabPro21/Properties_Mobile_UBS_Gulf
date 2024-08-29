@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicUpdateProfile extends StatefulWidget {
-  final ProfileDetail profile;
-  const PublicUpdateProfile({Key key, this.profile}) : super(key: key);
+  final ProfileDetail? profile;
+  const PublicUpdateProfile({Key? key, this.profile}) : super(key: key);
 
   @override
   _PublicUpdateProfileState createState() => _PublicUpdateProfileState();
@@ -28,10 +28,10 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
   @override
   void initState() {
     _nameController.text = SessionController().getLanguage() == 1
-        ? widget.profile.fullName
-        : widget.profile.fullNameAr ?? '_';
-    _emailController.text = widget.profile.email;
-    _phoneController.text = widget.profile.mobile;
+        ? widget.profile!.fullName??""
+        : widget.profile!.fullNameAr ?? '_';
+    _emailController.text = widget.profile!.email??"";
+    _phoneController.text = widget.profile!.mobile??'';
 
     super.initState();
   }
@@ -94,8 +94,8 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                               top: 2.0.h, left: 5.0.h, right: 5.0.h),
                           child: Text(
                             SessionController().getLanguage() == 1
-                                ? widget.profile.fullName
-                                : widget.profile.fullNameAr ?? '_',
+                                ? widget.profile!.fullName??""
+                                : widget.profile!.fullNameAr ?? '_',
                             style: AppTextStyle.semiBoldWhite15,
                             textAlign: TextAlign.center,
                           ),
@@ -264,11 +264,11 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                             child: ElevatedButton(
                               onPressed: () async {
                                 if (_nameController.text !=
-                                        widget.profile.fullName ||
+                                        widget.profile!.fullName ||
                                     _emailController.text !=
-                                        widget.profile.email ||
+                                        widget.profile!.email ||
                                     _phoneController.text !=
-                                        widget.profile.mobile) {
+                                        widget.profile!.mobile) {
                                   if (await _controller.updateProfile(
                                     _nameController.text,
                                     _phoneController.text,
@@ -299,11 +299,11 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                               ),
                               style: ButtonStyle(
                                   elevation:
-                                      MaterialStateProperty.all<double>(0.0),
+                                      WidgetStateProperty.all<double>(0.0),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           AppColors.whiteColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
@@ -354,7 +354,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                 height: 6.0.h,
               ),
               Text(
-                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${_controller.updateProfileData.value.addServiceRequest.caseNo}',
+                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${_controller.updateProfileData.value.addServiceRequest!.caseNo}',
                 style: AppTextStyle.semiBoldBlack12,
                 textAlign: TextAlign.center,
               ),

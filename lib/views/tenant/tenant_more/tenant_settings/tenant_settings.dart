@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/global_preferences.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
@@ -13,7 +15,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantSettings extends StatefulWidget {
-  const TenantSettings({Key key}) : super(key: key);
+  const TenantSettings({Key? key}) : super(key: key);
 
   @override
   _TenantSettingsState createState() => _TenantSettingsState();
@@ -96,7 +98,7 @@ class _TenantSettingsState extends State<TenantSettings> {
                             ],
                             radiusStyle: true,
                             onToggle: (option) {
-                              setFingerPrintOption(option);
+                              setFingerPrintOption(option!);
                             },
                           ),
                         )

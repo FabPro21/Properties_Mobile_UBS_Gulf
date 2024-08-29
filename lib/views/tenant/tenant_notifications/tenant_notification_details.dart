@@ -1,5 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -12,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class TenantNotificationDetails extends StatefulWidget {
-  const TenantNotificationDetails({Key key}) : super(key: key);
+  const TenantNotificationDetails({Key? key}) : super(key: key);
 
   @override
   State<TenantNotificationDetails> createState() =>
@@ -113,19 +116,17 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                           .getLanguage() ==
                                                       1
                                                   ? getTNController
-                                                          .notificationsDetailModel
-                                                          .value
-                                                          .notification
-                                                          .title
-                                                          .toString() ??
-                                                      ""
+                                                      .notificationsDetailModel
+                                                      .value
+                                                      .notification!
+                                                      .title
+                                                      .toString()
                                                   : getTNController
-                                                          .notificationsDetailModel
-                                                          .value
-                                                          .notification
-                                                          .titleAR
-                                                          .toString() ??
-                                                      "",
+                                                      .notificationsDetailModel
+                                                      .value
+                                                      .notification!
+                                                      .titleAR
+                                                      .toString(),
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 2,
                                               style:
@@ -142,10 +143,9 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                               getTNController
                                                       .notificationsDetailModel
                                                       .value
-                                                      .notification
+                                                      .notification!
                                                       .createdOn
-                                                      .toString() ??
-                                                  "",
+                                                      .toString() ,
                                               style: AppTextStyle.normalBlack10,
                                             ),
                                           ),
@@ -156,39 +156,43 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                 top: 1.0.h,
                                                 bottom: 1.0.h),
                                             child: Html(
-                                              customTextAlign: (_) =>
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? TextAlign.left
-                                                      : TextAlign.right,
                                               data: SessionController()
                                                           .getLanguage() ==
                                                       1
                                                   ? getTNController
-                                                          .notificationsDetailModel
-                                                          .value
-                                                          .notification
-                                                          .description
-                                                          .toString() ??
-                                                      ""
+                                                      .notificationsDetailModel
+                                                      .value
+                                                      .notification!
+                                                      .description
+                                                      .toString()
                                                   : getTNController
-                                                          .notificationsDetailModel
-                                                          .value
-                                                          .notification
-                                                          .descriptionAR
-                                                          .toString() ??
-                                                      "",
-                                              defaultTextStyle:
-                                                  AppTextStyle.normalBlack10,
+                                                      .notificationsDetailModel
+                                                      .value
+                                                      .notification!
+                                                      .descriptionAR
+                                                      .toString(),
+                                              style: {
+                                                'html': Style(
+                                                  textAlign: SessionController()
+                                                              .getLanguage() ==
+                                                          1
+                                                      ? TextAlign.left
+                                                      : TextAlign.right,
+                                                  color: Colors.black,
+                                                  fontFamily:
+                                                      AppFonts.graphikRegular,
+                                                  fontSize: FontSize(10.0),
+                                                ),
+                                              },
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
                                     if (!getTNController.loadingFiles.value &&
-                                        getTNController.files != null &&
-                                        getTNController.files.record.isNotEmpty)
+                                        getTNController.files! != null &&
+                                        getTNController
+                                            .files!.record!.isNotEmpty)
                                       Container(
                                         margin: EdgeInsets.only(top: 3.h),
                                         padding: EdgeInsets.all(2.h),
@@ -222,7 +226,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                 physics:
                                                     NeverScrollableScrollPhysics(),
                                                 itemCount: getTNController
-                                                    .files.record.length,
+                                                    .files!.record!.length,
                                                 itemBuilder: (context, index) {
                                                   return Column(
                                                     children: [
@@ -233,8 +237,8 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                         children: [
                                                           Text(
                                                             getTNController
-                                                                    .files
-                                                                    .record[
+                                                                    .files!
+                                                                    .record![
                                                                         index]
                                                                     .fileName ??
                                                                 '',
@@ -246,10 +250,10 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                             width: 50,
                                                             child: Obx(() {
                                                               return getTNController
-                                                                      .files
-                                                                      .record[
+                                                                      .files!
+                                                                      .record![
                                                                           index]
-                                                                      .downloading
+                                                                      .downloading!
                                                                       .value
                                                                   ? LoadingIndicatorBlue(
                                                                       strokeWidth:
@@ -279,8 +283,8 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                       ),
                                                       if (index <
                                                           getTNController
-                                                                  .files
-                                                                  .record
+                                                                  .files!
+                                                                  .record!
                                                                   .length -
                                                               1)
                                                         AppDivider()

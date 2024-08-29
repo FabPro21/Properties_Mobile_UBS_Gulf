@@ -9,7 +9,7 @@ import "package:http/http.dart" as http;
 class LandLordFaqsSerice {
   static Future<dynamic> getFaqs() async {
     var url = AppConfig().getLandlordFaqsCatg;
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
     if (response is http.Response) {
       log(response.body);
       LandLordFaqsModel getModel = landLordFaqsModelFromJson(response.body);
@@ -22,7 +22,7 @@ class LandLordFaqsSerice {
     var url = AppConfig().getLandlordFaqs;
     Map data = {"CategoryId": categoryId.toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       LandLordFaqsQuestionsModel getModel =
           landLordFaqsQuestionsModelFromJson(response.body);

@@ -19,14 +19,14 @@ import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseAuthController extends GetxController {
-  static String verificationId;
+  static String? verificationId;
   bool otpManuallyVerified = false;
   RxBool isCodeSent = false.obs;
   RxBool verifying = false.obs;
   RxBool validOTP = true.obs;
   RxBool resending = false.obs;
-  // bool isUserSignedIn = false;
-  int resendToken;
+  bool isUserSignedIn = false;
+  int? resendToken;
   var error = "".obs;
   RxBool isError = false.obs;
   RxBool isPhoneValid = false.obs;
@@ -43,19 +43,19 @@ class FirebaseAuthController extends GetxController {
 
   @override
   void onInit() {
-    // FirebaseAuth.instance.userChanges().listen((User user) {
-    //   if (user == null) {
-    //     if (kDebugMode) {
-    //       print('User is currently signed out!');
-    //     }
-    //     isUserSignedIn = false;
-    //   } else {
-    //     if (kDebugMode) {
-    //       print('User is signed in!');
-    //     }
-    //     isUserSignedIn = true;
-    //   }
-    // });
+    FirebaseAuth.instance.userChanges().listen((User? user) {
+      if (user == null) {
+        if (kDebugMode) {
+          print('User is currently signed out!');
+        }
+        isUserSignedIn = false;
+      } else {
+        if (kDebugMode) {
+          print('User is signed in!');
+        }
+        isUserSignedIn = true;
+      }
+    });
     validOTP.value = true;
     otpAttemptsCounter.value = 0;
     super.onInit();
@@ -86,7 +86,7 @@ class FirebaseAuthController extends GetxController {
     } else {
       isPhoneValid.value = true;
       error.value = '';
-      return null;
+      return '';
     }
   }
 
@@ -184,7 +184,7 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
@@ -192,7 +192,7 @@ class FirebaseAuthController extends GetxController {
         otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
-        controller.verifyOtpBtn(code, verificationId, true);
+        controller.verifyOtpBtn(code, verificationId ?? "", true);
         // next logic
       } on FirebaseAuthException catch (e) {
         verifying.value = false;
@@ -213,28 +213,28 @@ class FirebaseAuthController extends GetxController {
           print(e.message);
         }
         print('Error Msg from the Firebase ::: ${e.message}');
-        if (e.message.contains("The sms code has expired.")) {
+        if (e.message!.contains("The sms code has expired.")) {
           error.value = AppMetaLabels().otpExpired;
-        } else if (e.message.contains(
+        } else if (e.message!.contains(
             "The multifactor verification code used to create the auth credential is invalid.Re-collect the verification code and be sure to use the verification code provided by the user")) {
           error.value = AppMetaLabels().incorrectCode;
-        } else if (e.message.contains(
+        } else if (e.message!.contains(
             "The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code SMS and be sure to use the verification code provided by the user")) {
           error.value = AppMetaLabels().incorrectCode;
-        } else if (e.message.contains(
+        } else if (e.message!.contains(
             "The sms verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure use the verification code provided by the user")) {
           error.value = AppMetaLabels().incorrectCode;
-        } else if (e.message
+        } else if (e.message!
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message;
+          error.value = e.message ?? "";
         }
-        controller.verifyOtpBtn(code, verificationId, false);
+        controller.verifyOtpBtn(code, verificationId ?? "", false);
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
-          print('Exception ::::: ${e.message}');
+          print('Exception ::::: ${e}');
         }
       }
     }
@@ -247,7 +247,7 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
@@ -275,24 +275,24 @@ class FirebaseAuthController extends GetxController {
           print(e.message);
         }
         print('Error Msg from the Firebase ::: ${e.message}');
-        if (e.message.contains("The sms code has expired.")) {
+        if (e.message!.contains("The sms code has expired.")) {
           error.value = AppMetaLabels().otpExpired;
-        } else if (e.message.contains(
+        } else if (e.message!.contains(
             "The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code SMS and be sure to use the verification code provided by the user")) {
           error.value = AppMetaLabels().incorrectCode;
-        } else if (e.message.contains(
+        } else if (e.message!.contains(
             "The sms verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure use the verification code provided by the user")) {
           error.value = AppMetaLabels().incorrectCode;
-        } else if (e.message
+        } else if (e.message!
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message;
+          error.value = e.message ?? "";
         }
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
-          print('Exception ::::: ${e.message}');
+          print('Exception ::::: ${e}');
         }
       }
     }
@@ -326,7 +326,7 @@ class FirebaseAuthController extends GetxController {
       print(exception);
       print(exception.message);
     }
-    if (exception.message.contains(
+    if (exception.message!.contains(
         'The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format. E.164 phone numbers are written in the format [+][country code][subscriber number including area code].')) {
       error.value = AppMetaLabels().invalidPhoneNumber;
       errorValidateUser.value = AppMetaLabels().invalidPhoneNumber;
@@ -339,8 +339,8 @@ class FirebaseAuthController extends GetxController {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
     } else {
-      error.value = exception.message;
-      errorValidateUser.value = exception.message;
+      error.value = exception.message ?? "";
+      errorValidateUser.value = exception.message ?? "";
     }
     verifying.value = false;
     resending.value = false;
@@ -349,7 +349,7 @@ class FirebaseAuthController extends GetxController {
     }
   }
 
-  void _onCodeSent(String vId, int resendToken) {
+  void _onCodeSent(String? vId, int? resendToken) {
     loadingData.value = false;
     verifying.value = false;
     resending.value = false;
@@ -364,7 +364,7 @@ class FirebaseAuthController extends GetxController {
     PhoneNoFieldFB.phoneController.clear();
 
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode,
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: false,
         ));
 
@@ -372,7 +372,7 @@ class FirebaseAuthController extends GetxController {
         AppMetaLabels().alert, AppMetaLabels().codeSent);
   }
 
-  void _onCodeSentForgotMpin(String vId, int resendToken) {
+  void _onCodeSentForgotMpin(String? vId, int? resendToken) {
     if (kDebugMode) {
       print('Code Sending');
     }
@@ -389,14 +389,14 @@ class FirebaseAuthController extends GetxController {
     resendProgressBarLoading.value = false;
     PhoneNoFieldFB.phoneController.clear();
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode,
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: true,
         ));
     SnakBarWidget.getSnackBarErrorBlue(
         AppMetaLabels().alert, AppMetaLabels().codeSent);
   }
 
-  void _onCodeResent(String vId, int resendToken) {
+  void _onCodeResent(String? vId, int? resendToken) {
     verifying.value = false;
     resending.value = false;
     verificationId = vId;
@@ -463,7 +463,7 @@ class FirebaseAuthController extends GetxController {
         model.value = result;
 
         await verifyPhone(
-          SessionController().getPhone(),
+          SessionController().getPhone() ?? "",
         );
         loadingData.value = false;
       } else {
@@ -480,7 +480,7 @@ class FirebaseAuthController extends GetxController {
   forgotMPin() async {
     isLoadingForForgotButton.value = true;
     await verifyPhoneForgotMpin(
-      SessionController().getPhone(),
+      SessionController().getPhone() ?? "",
     );
   }
 }

@@ -13,7 +13,7 @@ class UpdateSvcReqFile {
       'ExpireDate': encriptdatasingle(exp).toString(),
     };
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     print('Response ::::updateFile:::::: ${response.statusCode}');
     final respStr = await response.stream.bytesToString();
     print('Response ::::updateFile::respStr:::: $respStr');

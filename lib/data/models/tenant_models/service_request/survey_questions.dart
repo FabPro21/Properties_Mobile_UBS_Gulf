@@ -7,10 +7,10 @@ import 'dart:convert';
 import 'package:fap_properties/data/models/tenant_models/service_request/survey_question_answers.dart';
 import 'package:get/state_manager.dart';
 
-SurveyQuestions surveyQuestionsFromJson(String str) =>
-    SurveyQuestions.fromJson(json.decode(str));
+SurveyQuestions surveyQuestionsFromJson(String? str) =>
+    SurveyQuestions.fromJson(json.decode(str!));
 
-String surveyQuestionsToJson(SurveyQuestions data) =>
+String? surveyQuestionsToJson(SurveyQuestions data) =>
     json.encode(data.toJson());
 
 class SurveyQuestions {
@@ -18,16 +18,16 @@ class SurveyQuestions {
     this.faqQuestion,
   });
 
-  List<FaqQuestion> faqQuestion;
+  List<FaqQuestion>? faqQuestion;
 
-  factory SurveyQuestions.fromJson(Map<String, dynamic> json) =>
+  factory SurveyQuestions.fromJson(Map<String?, dynamic> json) =>
       SurveyQuestions(
         faqQuestion: List<FaqQuestion>.from(
             json["faqQuestion"].map((x) => FaqQuestion.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "faqQuestion": List<dynamic>.from(faqQuestion.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "faqQuestion": List<dynamic>.from(faqQuestion!.map((x) => x.toJson())),
       };
 }
 
@@ -41,18 +41,18 @@ class FaqQuestion {
     this.descriptionAr,
   });
 
-  int questionId;
-  int answerId;
-  String title;
-  String titleAr;
-  String description;
-  String descriptionAr;
-  SurveyQuestionAnswers answers;
+  int? questionId;
+  int? answerId;
+  String? title;
+  String? titleAr;
+  String? description;
+  String? descriptionAr;
+  SurveyQuestionAnswers? answers;
   RxBool loadingAnswers = false.obs;
-  String errorLoadingAnswers = '';
+  String? errorLoadingAnswers = '';
   RxInt selectedAnswer = (-1).obs;
 
-  factory FaqQuestion.fromJson(Map<String, dynamic> json) => FaqQuestion(
+  factory FaqQuestion.fromJson(Map<String?, dynamic> json) => FaqQuestion(
         questionId: json["questionId"],
         answerId: json["answerId"],
         title: json["title"],
@@ -61,7 +61,7 @@ class FaqQuestion {
         descriptionAr: json["descriptionAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "questionId": questionId,
         "answerId": answerId,
         "title": title,

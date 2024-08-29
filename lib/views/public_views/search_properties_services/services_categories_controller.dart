@@ -34,7 +34,7 @@ class PublicGetServicesController extends GetxController {
       loadingData.value = false;
       if (result is PublicGetServiceCategoriesModel) {
         getServicesCatg.value = result;
-        length = getServicesCatg.value.serviceCategories.length;
+        length = getServicesCatg.value.serviceCategories!.length;
         loadingData.value = false;
       } else {
         error.value = result;
@@ -59,7 +59,7 @@ class PublicGetServicesController extends GetxController {
       loadingDetails.value = false;
       if (result is PublicGetServiceDetailsModel) {
         getServiceDetails.value = result;
-        lengthDetails = getServiceDetails.value.services.length;
+        lengthDetails = getServiceDetails.value.services!.length;
 
         loadingDetails.value = false;
       } else {

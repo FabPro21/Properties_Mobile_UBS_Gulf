@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class ToBePaidIn30DaysService {
   static Future<dynamic> getData() async {
     var url = AppConfig().toBePaidIn30Days;
-    var response = await BaseClientClass.post(url, '');
+    var response = await BaseClientClass.post(url ?? "", '');
     if (response is http.Response) {
       try {
         return toBePaidIn30DaysModelFromJson(response.body);

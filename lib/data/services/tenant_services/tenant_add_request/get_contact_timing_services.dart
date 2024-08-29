@@ -9,7 +9,7 @@ class GetContactTimingServices {
 
     var data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetContactTimingModel getModel =

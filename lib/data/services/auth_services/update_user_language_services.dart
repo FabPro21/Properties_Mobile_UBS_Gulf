@@ -14,7 +14,7 @@ class UpdateUserLanguageServices {
       "LangId": langId.toString(),
     };
 
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getLoginToken());
 
     if (response is http.Response) {

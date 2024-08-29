@@ -11,7 +11,7 @@ class PinCodeFieldMpin extends StatelessWidget {
   // static StreamController<ErrorAnimationType> errorController;
   final formKey = GlobalKey<FormState>();
 
-  PinCodeFieldMpin({Key key}) : super(key: key);
+  PinCodeFieldMpin({Key? key}) : super(key: key);
   final SetupMpinController setupMpinController =
       Get.find<SetupMpinController>();
 
@@ -29,7 +29,7 @@ class PinCodeFieldMpin extends StatelessWidget {
         animationType: AnimationType.fade,
         autoFocus: true,
         validator: (v) {
-          if (v.length < 6 || !setupMpinController.mpinMatch.value) {
+          if (v!.length < 6 || !setupMpinController.mpinMatch.value) {
             return '';
           } else {
             return null;

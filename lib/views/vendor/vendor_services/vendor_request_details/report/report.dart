@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
 import 'dart:typed_data';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -23,9 +23,9 @@ import '../../../../widgets/signature_pad.dart';
 import '../../vendor_request_list/vendor_request_list_controller.dart';
 
 class SvcReqReport extends StatefulWidget {
-  final int caseNo;
-  final bool status;
-  SvcReqReport({Key key, this.caseNo, this.status}) : super(key: key);
+  final int? caseNo;
+  final bool? status;
+  SvcReqReport({Key? key, this.caseNo, this.status}) : super(key: key);
 
   @override
   State<SvcReqReport> createState() => _SvcReqReportState();
@@ -599,36 +599,35 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               erroFABCorrectiveList = AppMetaLabels()
                                   .pleaseSelectFABCorrectiveAction;
                             });
-                            return AppMetaLabels()
-                                .pleaseSelectFABCorrectiveAction;
+                            
                           }
                           if (controller
                               .textEditingControlerFET1.text.isEmpty) {
                             setState(() {
                               erroFreEntryText1 = AppMetaLabels().requiredField;
                             });
-                            return AppMetaLabels().requiredField;
+                        
                           } else if (!textValidator.hasMatch(controller
                               .textEditingControlerFET1.text
                               .replaceAll('\n', ' '))) {
                             setState(() {
                               erroFreEntryText1 = AppMetaLabels().invalidText;
                             });
-                            return AppMetaLabels().invalidText;
+                            // return AppMetaLabels().invalidText;
                           }
                           if (controller
                               .textEditingControlerFET2.text.isEmpty) {
                             setState(() {
                               erroFreEntryText2 = AppMetaLabels().requiredField;
                             });
-                            return AppMetaLabels().requiredField;
+                            // return AppMetaLabels().requiredField;
                           } else if (!textValidator.hasMatch(controller
                               .textEditingControlerFET2.text
                               .replaceAll('\n', ' '))) {
                             setState(() {
                               erroFreEntryText2 = AppMetaLabels().invalidText;
                             });
-                            return AppMetaLabels().invalidText;
+                            // return AppMetaLabels().invalidText;
                           }
                           // SR Stands for Service Request
                           print('***********************');
@@ -813,10 +812,10 @@ class _SvcReqReportState extends State<SvcReqReport> {
                           InkWell(
                             onTap: () {
                               showBigImage(
-                                  context, controller.photos[index].file);
+                                  context, controller.photos[index].file!);
                             },
                             child: Image.memory(
-                              controller.photos[index].file,
+                              controller.photos[index].file!,
                               width: 20.0.w,
                               height: 9.0.h,
                               fit: BoxFit.cover,
@@ -918,8 +917,8 @@ class _SvcReqReportState extends State<SvcReqReport> {
   AwesomeDialog showCloseSvcReqDialog(BuildContext context) {
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       body: Center(
         child: Column(
           children: [
@@ -1046,8 +1045,8 @@ class _SvcReqReportState extends State<SvcReqReport> {
   AwesomeDialog showTenantSignDialog(BuildContext context) {
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       body: Center(
         child: Column(
           children: [

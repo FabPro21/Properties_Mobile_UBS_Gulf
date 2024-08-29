@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicSaveBookingRequestModel publicSaveBookingRequestModelFromJson(String str) => PublicSaveBookingRequestModel.fromJson(json.decode(str));
+PublicSaveBookingRequestModel publicSaveBookingRequestModelFromJson(String? str) => PublicSaveBookingRequestModel.fromJson(json.decode(str!));
 
-String publicSaveBookingRequestModelToJson(PublicSaveBookingRequestModel data) => json.encode(data.toJson());
+String? publicSaveBookingRequestModelToJson(PublicSaveBookingRequestModel data) => json.encode(data.toJson());
 
 class PublicSaveBookingRequestModel {
     PublicSaveBookingRequestModel({
@@ -15,19 +15,19 @@ class PublicSaveBookingRequestModel {
         this.message,
     });
 
-    String status;
-    AddServiceRequest addServiceRequest;
-    String message;
+    String? status;
+    AddServiceRequest? addServiceRequest;
+    String? message;
 
-    factory PublicSaveBookingRequestModel.fromJson(Map<String, dynamic> json) => PublicSaveBookingRequestModel(
+    factory PublicSaveBookingRequestModel.fromJson(Map<String?, dynamic> json) => PublicSaveBookingRequestModel(
         status: json["status"],
         addServiceRequest: AddServiceRequest.fromJson(json["addServiceRequest"]),
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
-        "addServiceRequest": addServiceRequest.toJson(),
+        "addServiceRequest": addServiceRequest!.toJson(),
         "message": message,
     };
 }
@@ -37,13 +37,13 @@ class AddServiceRequest {
         this.caseNo,
     });
 
-    int caseNo;
+    int? caseNo;
 
-    factory AddServiceRequest.fromJson(Map<String, dynamic> json) => AddServiceRequest(
+    factory AddServiceRequest.fromJson(Map<String?, dynamic> json) => AddServiceRequest(
         caseNo: json["caseNo"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
     };
 }

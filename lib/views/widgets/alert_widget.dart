@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 class AlertWidget extends StatelessWidget {
   final String t1;
   final String t2;
-  AlertWidget(this.t1, this.t2, {Key key}) : super(key: key);
+  AlertWidget(this.t1, this.t2, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

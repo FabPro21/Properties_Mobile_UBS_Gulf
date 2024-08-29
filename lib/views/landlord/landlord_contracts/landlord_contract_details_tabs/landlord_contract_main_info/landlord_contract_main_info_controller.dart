@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class LandlordContractMainInfoController extends GetxController {
-  LandlordContractDetailsModel contractDetails;
+  LandlordContractDetailsModel? contractDetails;
   RxBool loadingContractDetails = false.obs;
   String errorLoadingContractDetails = '';
 
@@ -39,24 +39,24 @@ class LandlordContractMainInfoController extends GetxController {
     obxError.value = '1';
     if (response is LandlordContractDetailsModel) {
       contractDetails = response;
-      double am = contractDetails.contract.rentforstay ?? 0;
+      double am = contractDetails!.contract!.rentforstay ?? 0;
       final paidFormatter = NumberFormat('#,##0.00', 'AR');
       amount.value = paidFormatter.format(am);
 
       DateTime startDate =
-          DateFormat('dd-MM-yyyy').parse(response.contract.contractStartDate);
+          DateFormat('dd-MM-yyyy').parse(response.contract!.contractStartDate!);
       DateTime endDate =
-          DateFormat('dd-MM-yyyy').parse(response.contract.contractEndDate);
+          DateFormat('dd-MM-yyyy').parse(response.contract!.contractEndDate!);
       DateTime now = DateTime.now();
       if (now.compareTo(startDate) <= 0) {
         daysPassed = 0;
         comPtg = 0;
       } else if (now.compareTo(endDate) >= 0) {
-        daysPassed = response.contract.noOfDays;
+        daysPassed = response.contract!.noOfDays??0;
         comPtg = 1;
       } else {
         daysPassed = now.difference(startDate).inDays + 1;
-        comPtg = daysPassed / response.contract.noOfDays;
+        comPtg = daysPassed / response.contract!.noOfDays!;
       }
       loadingContractDetails.value = false;
       if (now.difference(endDate).inDays >= 15) showExtend = false;
@@ -81,7 +81,7 @@ class LandlordContractMainInfoController extends GetxController {
     totalVatOnCharges.value = '0.00';
     try {
       var resp = await LandlordRepository.getContractPayable(
-          SessionController().getContractID());
+          SessionController().getContractID()??0);
 
       if (resp is LandLordContractPayableModel) {
         print('Response Status ::::: ${resp.status}');
@@ -106,21 +106,21 @@ class LandlordContractMainInfoController extends GetxController {
   }
 
   void removeZeroBalance() {
-    contractPayables.contractPayable.forEach((element) {
+    contractPayables.contractPayable!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.additionalCharges.forEach((element) {
+    contractPayables.additionalCharges!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.vatCharges.forEach((element) {
+    contractPayables.vatCharges!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.vatOnRent.forEach((element) {
+    contractPayables.vatOnRent!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
   }
 
@@ -129,17 +129,17 @@ class LandlordContractMainInfoController extends GetxController {
     double additionalSum = 0;
     double vatRentSum = 0;
     double vatChargesSum = 0;
-    contractPayables.contractPayable.forEach((element) {
-      rentalSum = rentalSum + element.balance;
+    contractPayables.contractPayable!.forEach((element) {
+      rentalSum = rentalSum + element.balance!;
     });
-    contractPayables.additionalCharges.forEach((element) {
-      additionalSum = additionalSum + element.balance;
+    contractPayables.additionalCharges!.forEach((element) {
+      additionalSum = additionalSum + element.balance!;
     });
-    contractPayables.vatCharges.forEach((element) {
-      vatChargesSum = vatChargesSum + element.balance;
+    contractPayables.vatCharges!.forEach((element) {
+      vatChargesSum = vatChargesSum + element.balance!;
     });
-    contractPayables.vatOnRent.forEach((element) {
-      vatRentSum = vatRentSum + element.balance;
+    contractPayables.vatOnRent!.forEach((element) {
+      vatRentSum = vatRentSum + element.balance!;
     });
     final amountFormat = NumberFormat('#,##0.00', 'AR');
     this.totalRentalPayment.value = amountFormat.format(rentalSum);

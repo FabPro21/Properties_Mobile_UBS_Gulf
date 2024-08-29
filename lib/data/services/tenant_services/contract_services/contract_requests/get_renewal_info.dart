@@ -9,7 +9,7 @@ class GetRenewalInfoService {
   static Future<dynamic> getData(int contractId) async {
     var url = AppConfig().getContractRenewalInfo;
 var data = {"ContractId":contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         return contractRenewalInfoFromJson(response.body);

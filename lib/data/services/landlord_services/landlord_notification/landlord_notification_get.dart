@@ -19,7 +19,7 @@ class GetLandLordtNotificationsServices {
 
     var completeUrl = url;
     print(completeUrl);
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       GetLandLordNotificationsModel data =
           getLandLordNotificationsModelFromJson(response.body);
@@ -38,7 +38,7 @@ class GetLandLordtNotificationsServices {
       data = {"status": status, "pageNo": pageNoP, "pageSize": '20'};
     }
     var completeUrl = url;
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       GetLandLordNotificationsModel data =
           getLandLordNotificationsModelFromJson(response.body);

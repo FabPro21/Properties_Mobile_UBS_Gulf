@@ -16,7 +16,7 @@ import 'tenant_payments_controller.dart';
 
 class TenantPaymentsScreen extends StatefulWidget {
   const TenantPaymentsScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -250,8 +250,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                       rowList(
                           AppMetaLabels().contractNo,
                           paymentsController.payments[index].contractNo
-                                  .toString() ??
-                              ""),
+                                  .toString() ),
                     ],
                   ),
                 ),

@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'landlord_contract_details_tabs/landlord_contract-details_tabs.dart';
 
 class LandLordContracts extends StatefulWidget {
-  const LandLordContracts({Key key}) : super(key: key);
+  const LandLordContracts({Key? key}) : super(key: key);
 
   @override
   _LandLordContractsState createState() => _LandLordContractsState();
@@ -439,8 +439,8 @@ class _LandLordContractsState extends State<LandLordContracts> {
         Get.to(() => LandlordContractDetailsTabs(
               contractId:
                   int.parse(controller.contracts[index].contractID.toString()),
-              contractNo: controller.contracts[index].contractno,
-              prevContractNo: controller.contracts[index].contractno,
+              contractNo: controller.contracts[index].contractno??'',
+              prevContractNo: controller.contracts[index].contractno??'',
             ));
       },
       child: Padding(

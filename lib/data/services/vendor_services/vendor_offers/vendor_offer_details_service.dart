@@ -8,7 +8,7 @@ class VendorOffersDetailsService {
     var url = AppConfig().getVendorOffersDetails;
     Map data = {"OfferId": offerId.toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       var getModel = vendorOffersDetailsModelFromJson(response.body);

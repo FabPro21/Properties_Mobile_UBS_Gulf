@@ -11,7 +11,7 @@ class PinCodeFieldLoginMpin extends StatelessWidget {
   // static StreamController<ErrorAnimationType> errorController;
   final formKey = GlobalKey<FormState>();
 
-  PinCodeFieldLoginMpin({Key key}) : super(key: key);
+  PinCodeFieldLoginMpin({Key? key}) : super(key: key);
   final LoginMpinController loginMpinController =
       Get.find<LoginMpinController>();
 
@@ -32,7 +32,7 @@ class PinCodeFieldLoginMpin extends StatelessWidget {
               animationType: AnimationType.fade,
               // autoFocus: true,
               validator: (v) {
-                if (v.length < 6) {
+                if (v!.length < 6) {
                   return null;
                 } else {
                   return null;

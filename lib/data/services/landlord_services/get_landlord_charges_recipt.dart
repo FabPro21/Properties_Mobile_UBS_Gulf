@@ -13,7 +13,7 @@ class LandlordCChargeReceiptsService {
       'ContractId': SessionController().getContractID().toString(),
       'ChargesTypeID': chargesTypeId.toString()
     };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         return contractChargeReceiptsModelFromJson(response.body);

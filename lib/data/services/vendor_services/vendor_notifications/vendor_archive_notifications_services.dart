@@ -11,7 +11,7 @@ class VendorArchiveNotificationsServices {
       "notificationId": SessionController().getNotificationId(),
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       var data = vendorNotificationArchivedModelFromJson(response.body);

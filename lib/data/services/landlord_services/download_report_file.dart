@@ -47,7 +47,7 @@ class LandlordDownloadReportServices {
     }
     print('URL :::::::: $url');
     print('Data :::::::: $data');
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     try {
       if (response is Response) {
         log(response.body);
@@ -93,7 +93,7 @@ class LandlordDownloadReportServices {
     print('URL :::::1122::: $url');
     print('Data :::::1122::: $data');
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is Response) {
       try {
         var result =
@@ -112,7 +112,7 @@ class LandlordDownloadReportServices {
   static Future<dynamic> getDropDownType(String type) async {
     var url = AppConfig().getDropDownType;
     Map data = {"dropdownTypeID": type};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is Response) {
       try {
         var resp = GetDropDownModel.fromJson(jsonDecode(response.body));
@@ -132,7 +132,7 @@ class LandlordDownloadReportServices {
     print('Url ::::::::: $url');
     print('Data ::::::::: $data');
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is Response) {
       log(response.body);
       try {
@@ -176,87 +176,87 @@ class LandlordDownloadReportServices {
     print('URL :::::112233::: $url');
     print('Data :::::112233::: $data');
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is Response) {
       try {
         // 1
         if (reportName == 'AMC Report') {
           var result = getAMCReportSUmmaryModelFromJson(response.body);
           print(
-              'Result  Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result  Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 2
         else if (reportName == 'Building Status Report') {
           var result = getBuildingStatusSummaryModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 3
         else if (reportName == 'Cheque Register Report') {
           var result = getChequeRegisterReportModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 4
         else if (reportName == 'Tenancy Contracts Report') {
           var result = getContractSUmmaryModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 5
         else if (reportName == 'Legal Case Report') {
           var result = getLeglCaseReportModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 6
         else if (reportName == 'Occupancy Vacancy Register Report') {
           var result = getOcupanyReportSUmmaryModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 7
         else if (reportName == 'Receipt Register Report') {
           var result = getReceiptRegisterReportModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 8
         else if (reportName == 'Unit Status Report') {
           var result = getUnitStatusReportModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 9
         else if (reportName == 'VAT Report') {
           var result = getVATReportSummaryModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
         // 10
         else if (reportName == 'LPO Report') {
           var result = getLpoReportSummaryModelFromJson(response.body);
           print(
-              'Result Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         } else {
           var result = getAMCReportSUmmaryModelFromJson(response.body);
           print(
-              'Result  Repo:::$reportName::: ${result.serviceRequests.length}');
+              'Result  Repo:::$reportName::: ${result.serviceRequests!.length}');
           return result;
         }
       } catch (e) {
         print('Resp after convert Error * 1 $e');
-        print('Resp after convert Error ${e.message}');
+        print('Resp after convert Error ${e.toString()}');
         return AppMetaLabels().someThingWentWrong;
       }
     }
@@ -268,7 +268,7 @@ class LandlordDownloadReportServices {
     var url = AppConfig().generateLPOReportSummary;
     print('Url ::::::::: $url');
     print('Data ::::::::: $data');
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is Response) {
       try {
         var resp = AMCReportSummaryModel.fromJson(jsonDecode(response.body));

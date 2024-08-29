@@ -10,9 +10,9 @@ class TenantDashboardGetDataServices {
   static Future<dynamic> getData() async {
     var url = AppConfig().tenantDashboardGetData;
 
-    Map data;
+    Map? data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         TenantDashboardGetDataModel data =

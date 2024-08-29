@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 class GetOnlinePaymentsService {
   static Future<dynamic> getPayments() async {
     var response =
-        await BaseClientClass.post(AppConfig().getOnlinePayments, {});
+        await BaseClientClass.post(AppConfig().getOnlinePayments??"", {});
     if (response is Response) {
       try {
         return onlinePaymentsModelFromJson(response.body);

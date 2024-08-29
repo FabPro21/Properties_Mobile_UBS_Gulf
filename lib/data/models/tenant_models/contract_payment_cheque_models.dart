@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetContractChequesModel getContractChequesModelFromJson(String str) =>
-    GetContractChequesModel.fromJson(json.decode(str));
+GetContractChequesModel getContractChequesModelFromJson(String? str) =>
+    GetContractChequesModel.fromJson(json.decode(str!));
 
-String getContractChequesModelToJson(GetContractChequesModel data) =>
+String? getContractChequesModelToJson(GetContractChequesModel data) =>
     json.encode(data.toJson());
 
 class GetContractChequesModel {
@@ -18,12 +18,12 @@ class GetContractChequesModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<TransactionCheque> transactionCheque;
-  String message;
+  String? status;
+  String? statusCode;
+  List<TransactionCheque>? transactionCheque;
+  String? message;
 
-  factory GetContractChequesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContractChequesModel.fromJson(Map<String?, dynamic> json) =>
       GetContractChequesModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -33,11 +33,11 @@ class GetContractChequesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "transactionCheque":
-            List<dynamic>.from(transactionCheque.map((x) => x.toJson())),
+            List<dynamic>.from(transactionCheque!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -54,15 +54,15 @@ class TransactionCheque {
       this.chequeStatusAR});
 
   dynamic transactionId;
-  String chequeNo;
-  String chequeDate;
-  String bankName;
+  String? chequeNo;
+  String? chequeDate;
+  String? bankName;
   dynamic chequeAmount;
-  String chequeStatus;
-  String bankNameAr;
-  String chequeStatusAR;
+  String? chequeStatus;
+  String? bankNameAr;
+  String? chequeStatusAR;
 
-  factory TransactionCheque.fromJson(Map<String, dynamic> json) =>
+  factory TransactionCheque.fromJson(Map<String?, dynamic> json) =>
       TransactionCheque(
           transactionId: json["transactionID"],
           chequeNo: json["chequeNo"],
@@ -73,7 +73,7 @@ class TransactionCheque {
           bankNameAr: json["bankNameAR"],
           chequeStatusAR: json["chequeStatusAR"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "transactionID": transactionId,
         "chequeNo": chequeNo,
         "chequeDate": chequeDate,

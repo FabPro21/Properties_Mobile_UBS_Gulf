@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'landlord_faqs_details.dart';
 
 class LandLordFaqs extends StatefulWidget {
-  const LandLordFaqs({Key key}) : super(key: key);
+  const LandLordFaqs({Key? key}) : super(key: key);
 
   @override
   _LandLordFaqsState createState() => _LandLordFaqsState();
@@ -74,7 +74,7 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                         _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .data[index]
+                                                                .data![index]
                                                                 .categoryId ??
                                                             ''),
                                                   ));
@@ -97,13 +97,13 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                           ? _controller
                                                                   .faqsCategories
                                                                   .value
-                                                                  .data[index]
+                                                                  .data![index]
                                                                   .title ??
                                                               ""
                                                           : _controller
                                                                   .faqsCategories
                                                                   .value
-                                                                  .data[index]
+                                                                  .data![index]
                                                                   .titleAR ??
                                                               "",
                                                       style: AppTextStyle

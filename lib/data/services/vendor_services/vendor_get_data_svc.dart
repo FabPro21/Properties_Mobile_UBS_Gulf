@@ -8,7 +8,7 @@ class VendorGetDataSvc {
     var completeUrl = AppConfig().getststs;
     var data;
 
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
 
     if (response is Response) {
     

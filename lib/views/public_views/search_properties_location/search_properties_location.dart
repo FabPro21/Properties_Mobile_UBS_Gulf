@@ -17,7 +17,7 @@ import 'dart:io' as io;
 import 'search_properties_location_controller.dart';
 
 class SearchPropertiesLocation extends StatefulWidget {
-  const SearchPropertiesLocation({Key key}) : super(key: key);
+  const SearchPropertiesLocation({Key? key}) : super(key: key);
 
   @override
   SearchPropertiesLocationState createState() =>
@@ -41,13 +41,13 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
   //   var lat;
   //   var lng;
 
-  //   for (int i = 0; i < _locationController.data.value.locationVm.length; i++) {
-  //     if (_locationController.data.value.locationVm[i].lat != 0.0 ||
-  //         _locationController.data.value.locationVm[i].lat != null ||
-  //         _locationController.data.value.locationVm[i].lng != 0.0 ||
-  //         _locationController.data.value.locationVm[i].lng != null) {
-  //       lat = _locationController.data.value.locationVm[i].lat ?? 0.0;
-  //       lng = _locationController.data.value.locationVm[i].lng ?? 0.0;
+  //   for (int i = 0; i < _locationController.data.value.locationVm!.length; i++) {
+  //     if (_locationController.data.value.locationVm![i].lat != 0.0 ||
+  //         _locationController.data.value.locationVm![i].lat != null ||
+  //         _locationController.data.value.locationVm![i].lng != 0.0 ||
+  //         _locationController.data.value.locationVm![i].lng != null) {
+  //       lat = _locationController.data.value.locationVm![i].lat ?? 0.0;
+  //       lng = _locationController.data.value.locationVm![i].lng ?? 0.0;
   //     } else {
   //       lat = 0.0;
   //       lng = 0.0;
@@ -58,23 +58,23 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
   //         icon: BitmapDescriptor.markerAnnotation,
   //         infoWindow: InfoWindow(
   //           snippet: SessionController().getLanguage() == 1
-  //               ? _locationController.data.value.locationVm[i].address ?? ""
-  //               : _locationController.data.value.locationVm[i].address ?? "",
+  //               ? _locationController.data.value.locationVm![i].address ?? ""
+  //               : _locationController.data.value.locationVm![i].address ?? "",
   //           title: SessionController().getLanguage() == 1
-  //               ? _locationController.data.value.locationVm[i].title ?? ""
-  //               : _locationController.data.value.locationVm[i].titleAr ?? "",
+  //               ? _locationController.data.value.locationVm![i].title ?? ""
+  //               : _locationController.data.value.locationVm![i].titleAr ?? "",
   //         )));
   //   }
   //   print('length ::::: : ${anotationList.length}');
   //   anotationListMain = anotationList.toSet();
   //   return anotationListMain;
 
-  //   // if (_locationController.data.value.locationVm[0].lat != 0.0 ||
-  //   //     _locationController.data.value.locationVm[0].lat != null ||
-  //   //     _locationController.data.value.locationVm[0].lng != 0.0 ||
-  //   //     _locationController.data.value.locationVm[0].lng != null) {
-  //   //   lat = _locationController.data.value.locationVm[0].lat ?? 0.0;
-  //   //   lng = _locationController.data.value.locationVm[0].lng ?? 0.0;
+  //   // if (_locationController.data.value.locationVm![0].lat != 0.0 ||
+  //   //     _locationController.data.value.locationVm![0].lat != null ||
+  //   //     _locationController.data.value.locationVm![0].lng != 0.0 ||
+  //   //     _locationController.data.value.locationVm![0].lng != null) {
+  //   //   lat = _locationController.data.value.locationVm![0].lat ?? 0.0;
+  //   //   lng = _locationController.data.value.locationVm![0].lng ?? 0.0;
   //   // } else {
   //   //   lat = 0.0;
   //   //   lng = 0.0;
@@ -86,11 +86,11 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
   //   //       icon: BitmapDescriptor.markerAnnotation,
   //   //       infoWindow: InfoWindow(
   //   //         snippet: SessionController().getLanguage() == 1
-  //   //             ? _locationController.data.value.locationVm[0].address ?? ""
-  //   //             : _locationController.data.value.locationVm[0].address ?? "",
+  //   //             ? _locationController.data.value.locationVm![0].address ?? ""
+  //   //             : _locationController.data.value.locationVm![0].address ?? "",
   //   //         title: SessionController().getLanguage() == 1
-  //   //             ? _locationController.data.value.locationVm[0].title ?? ""
-  //   //             : _locationController.data.value.locationVm[0].titleAr ?? "",
+  //   //             ? _locationController.data.value.locationVm![0].title ?? ""
+  //   //             : _locationController.data.value.locationVm![0].titleAr ?? "",
   //   //       )),
   //   // ].toSet();
   // }
@@ -148,7 +148,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                   borderRadius: BorderRadius.circular(2.0.h),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey[200],
+                                      color: Colors.grey[200] ?? Colors.grey,
                                       blurRadius: 0.4.h,
                                       spreadRadius: 0.8.h,
                                       offset: Offset(0.1.h, 0.1.h),
@@ -167,10 +167,11 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                             child: Gm.GoogleMap(
                                               initialCameraPosition:
                                                   _locationController
-                                                      .data
-                                                      .value
-                                                      .locationVm[index]
-                                                      .cameraPosition,
+                                                          .data
+                                                          .value
+                                                          .locationVm![index]
+                                                          .cameraPosition!,
+                                                      
                                               myLocationButtonEnabled: false,
                                               zoomControlsEnabled: false,
                                               onMapCreated:
@@ -191,29 +192,28 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                             width: 100.0.w,
                                             height: 25.0.h,
                                             child: AppleMap(
-                                                initialCameraPosition:
-                                                    _locationController
-                                                        .data
-                                                        .value
-                                                        .locationVm[index]
-                                                        .cameraPositionAm,
-                                                myLocationButtonEnabled: false,
-                                                zoomGesturesEnabled: true,
-                                                onMapCreated:
-                                                    (AppleMapController
-                                                        controller) {},
-                                                gestureRecognizers: {
-                                                  Factory<
-                                                      OneSequenceGestureRecognizer>(
-                                                    () =>
-                                                        EagerGestureRecognizer(),
-                                                  ),
-                                                },
-                                                // annotations:
-                                                //     anotationList.toSet()
-                                                // annotations:
-                                                //     _createAnnotation()
+                                              initialCameraPosition:
+                                                  _locationController
+                                                      .data
+                                                      .value
+                                                      .locationVm![index]
+                                                      .cameraPositionAm!,
+                                              myLocationButtonEnabled: false,
+                                              zoomGesturesEnabled: true,
+                                              onMapCreated: (AppleMapController
+                                                  controller) {},
+                                              gestureRecognizers: {
+                                                Factory<
+                                                    OneSequenceGestureRecognizer>(
+                                                  () =>
+                                                      EagerGestureRecognizer(),
                                                 ),
+                                              },
+                                              // annotations:
+                                              //     anotationList.toSet()
+                                              // annotations:
+                                              //     _createAnnotation()
+                                            ),
                                           ),
                                     Padding(
                                       padding: EdgeInsets.all(2.0.h),
@@ -229,13 +229,13 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                                 ? _locationController
                                                         .data
                                                         .value
-                                                        .locationVm[index]
+                                                        .locationVm![index]
                                                         .title ??
                                                     ""
                                                 : _locationController
                                                         .data
                                                         .value
-                                                        .locationVm[index]
+                                                        .locationVm![index]
                                                         .titleAr ??
                                                     "",
                                             style: AppTextStyle.semiBoldBlack12,
@@ -248,7 +248,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                               _locationController
                                                       .data
                                                       .value
-                                                      .locationVm[index]
+                                                      .locationVm![index]
                                                       .cellNumber ??
                                                   ""),
                                           SizedBox(
@@ -259,7 +259,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                               _locationController
                                                       .data
                                                       .value
-                                                      .locationVm[index]
+                                                      .locationVm![index]
                                                       .officeTiming ??
                                                   ""),
                                           SizedBox(
@@ -275,13 +275,13 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                                 ? _locationController
                                                         .data
                                                         .value
-                                                        .locationVm[index]
+                                                        .locationVm![index]
                                                         .description ??
                                                     ""
                                                 : _locationController
                                                         .data
                                                         .value
-                                                        .locationVm[index]
+                                                        .locationVm![index]
                                                         .descriptionAr ??
                                                     "",
                                             style: AppTextStyle.normalGrey10,

@@ -33,11 +33,11 @@ class GetUnitTypeController extends GetxController {
     if (result is GetUnitTypeModel) {
       getUnitType.value = result;
       error.value = "";
-      length = getUnitType.value.unitTypes.unitTypes.length;
+      length = getUnitType.value.unitTypes!.unitTypes!.length;
 
-      showArea = getUnitType.value.unitTypes.showArea;
+      showArea = getUnitType.value.unitTypes!.showArea;
       // 112233 show area
-      SessionController().showArea.value = getUnitType.value.unitTypes.showArea;
+      SessionController().showArea.value = getUnitType.value.unitTypes!.showArea!;
       update();
     } else {
       error.value = result;

@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ResponseInText extends StatefulWidget {
-  final String respose;
-  ResponseInText({Key key, this.respose}) : super(key: key);
+  final String? respose;
+  ResponseInText({Key? key, this.respose}) : super(key: key);
 
   @override
   State<ResponseInText> createState() => _ResponseInTextState();
@@ -19,7 +19,7 @@ class ResponseInText extends StatefulWidget {
 class _ResponseInTextState extends State<ResponseInText> {
   @override
   Widget build(BuildContext context) {
-    log(widget.respose);
+    log(widget.respose!);
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white54,

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetLpoStatusModel getLpoStatusModelFromJson(String str) =>
-    GetLpoStatusModel.fromJson(json.decode(str));
+GetLpoStatusModel getLpoStatusModelFromJson(String? str) =>
+    GetLpoStatusModel.fromJson(json.decode(str!));
 
-String getLpoStatusModelToJson(GetLpoStatusModel data) =>
+String? getLpoStatusModelToJson(GetLpoStatusModel data) =>
     json.encode(data.toJson());
 
 class GetLpoStatusModel {
@@ -18,12 +18,12 @@ class GetLpoStatusModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<LpoStatus> lpoStatus;
-  String message;
+  String? status;
+  String? statusCode;
+  List<LpoStatus>? lpoStatus;
+  String? message;
 
-  factory GetLpoStatusModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoStatusModel.fromJson(Map<String?, dynamic> json) =>
       GetLpoStatusModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,10 +32,10 @@ class GetLpoStatusModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "lpoStatus": List<dynamic>.from(lpoStatus.map((x) => x.toJson())),
+        "lpoStatus": List<dynamic>.from(lpoStatus!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -48,16 +48,16 @@ class LpoStatus {
   });
 
   dynamic lpoStatusId;
-  String lpoStatusName;
-  String lpoStatusNameAr;
+  String? lpoStatusName;
+  String? lpoStatusNameAr;
 
-  factory LpoStatus.fromJson(Map<String, dynamic> json) => LpoStatus(
+  factory LpoStatus.fromJson(Map<String?, dynamic> json) => LpoStatus(
         lpoStatusId: json["lpoStatusID"],
         lpoStatusName: json["lpoStatusName"],
         lpoStatusNameAr: json["lpoStatusNameAr"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "lpoStatusID": lpoStatusId,
         "lpoStatusName": lpoStatusName,
         "lpoStatusNameAr": lpoStatusNameAr,

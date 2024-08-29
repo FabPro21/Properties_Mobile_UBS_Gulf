@@ -12,8 +12,8 @@ import 'package:sizer/sizer.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class TenantUpdatesProfile extends StatefulWidget {
-  final Profile profile;
-  const TenantUpdatesProfile({Key key, this.profile}) : super(key: key);
+  final Profile? profile;
+  const TenantUpdatesProfile({Key? key, this.profile}) : super(key: key);
 
   @override
   _TenantUpdatesProfileState createState() => _TenantUpdatesProfileState();
@@ -29,13 +29,13 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
   @override
   void initState() {
     _nameController.text = SessionController().getLanguage() == 1
-        ? widget.profile.name
-        : widget.profile.nameAr;
-    _emailController.text = widget.profile.email;
-    _phoneController.text = widget.profile.mobile;
+        ? widget.profile!.name??""
+        : widget.profile!.nameAr??"";
+    _emailController.text = widget.profile!.email??"";
+    _phoneController.text = widget.profile!.mobile??"";
     _addressController.text = SessionController().getLanguage() == 1
-        ? widget.profile.address
-        : widget.profile.addressAr;
+        ? widget.profile!.address??""
+        : widget.profile!.addressAr??"";
     super.initState();
   }
 
@@ -96,8 +96,8 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                               top: 2.0.h, left: 5.0.h, right: 5.0.h),
                           child: Text(
                             SessionController().getLanguage() == 1
-                                ? widget.profile.name
-                                : widget.profile.nameAr,
+                                ? widget.profile!.name??""
+                                : widget.profile!.nameAr??"",
                             style: AppTextStyle.semiBoldWhite15,
                             textAlign: TextAlign.center,
                           ),
@@ -303,13 +303,13 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                             child: ElevatedButton(
                               onPressed: () async {
                                 if (_nameController.text !=
-                                        widget.profile.name ||
+                                        widget.profile!.name ||
                                     _emailController.text !=
-                                        widget.profile.email ||
+                                        widget.profile!.email ||
                                     _phoneController.text !=
-                                        widget.profile.mobile ||
+                                        widget.profile!.mobile ||
                                     _addressController.text !=
-                                        widget.profile.address) {
+                                        widget.profile!.address) {
                                   if (await tenantProfileController
                                       .updateProfile(
                                           _nameController.text,
@@ -350,11 +350,11 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                               ),
                               style: ButtonStyle(
                                   elevation:
-                                      MaterialStateProperty.all<double>(0.0),
+                                      WidgetStateProperty.all<double>(0.0),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           AppColors.whiteColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
@@ -405,7 +405,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                 height: 6.0.h,
               ),
               Text(
-                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${tenantProfileController.updateProfiledata.value.addServiceRequest.caseNo}',
+                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${tenantProfileController.updateProfiledata.value.addServiceRequest!.caseNo}',
                 style: AppTextStyle.semiBoldBlack12,
                 textAlign: TextAlign.center,
               ),

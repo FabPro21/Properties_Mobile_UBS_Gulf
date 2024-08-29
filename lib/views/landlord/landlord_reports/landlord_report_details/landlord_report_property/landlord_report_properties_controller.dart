@@ -20,8 +20,8 @@ class LandLordReportPropertiesController extends GetxController {
     super.onInit();
   }
 
-  LandlordPropertiesModel propsModel;
-  List<ServiceRequests> listOfProperties;
+  LandlordPropertiesModel? propsModel;
+  List<ServiceRequests>? listOfProperties;
   void getProperties() async {
     loading.value = true;
     error.value = '';
@@ -29,11 +29,11 @@ class LandLordReportPropertiesController extends GetxController {
     print(response);
     if (response is LandlordPropertiesModel) {
       propsModel = response;
-      if (propsModel.serviceRequests.length < 1) {
+      if (propsModel!.serviceRequests!.length < 1) {
         error.value = AppMetaLabels().noDatafound;
       } else {
-        listOfProperties = propsModel.serviceRequests.toSet().toList();
-        proppertyTypesLength = listOfProperties.length;
+        listOfProperties = propsModel!.serviceRequests!.toSet().toList();
+        proppertyTypesLength = listOfProperties!.length;
       }
     } else
       error.value = response;
@@ -57,7 +57,7 @@ class LandLordReportPropertiesController extends GetxController {
       var result = await LandlordRepository.getDropDownType(type);
       if (result is dropDownModel.GetDropDownModel) {
         // getDropDownModel.value = result;
-        getDropDownModelList.value = result.serviceRequests;
+        getDropDownModelList.value = result.serviceRequests!;
         print('DropDownReponse::::::::: ${getDropDownModelList[0]}');
         // if (getDropDownModel.value.status == AppMetaLabels().notFound) {
         //   errorDropdownType.value = AppMetaLabels().noDatafound;

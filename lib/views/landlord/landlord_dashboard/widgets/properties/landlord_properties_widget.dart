@@ -13,8 +13,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PropertiesWidget extends StatefulWidget {
-  final Function(int) manageProperties;
-  const PropertiesWidget({Key key, this.manageProperties}) : super(key: key);
+  final Function(int)? manageProperties;
+  const PropertiesWidget({Key? key, this.manageProperties}) : super(key: key);
 
   @override
   _PropertiesWidgetState createState() => _PropertiesWidgetState();
@@ -57,7 +57,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
               padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.5.w),
               child: Text(
                 AppMetaLabels().propertiessLand +
-                    "  (${controller.propsModel?.serviceRequests?.length})",
+                    "  (${controller.propsModel!.serviceRequests!.length})",
                 style: AppTextStyle.semiBoldBlack13,
               ),
             ),
@@ -80,24 +80,24 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                             itemCount: controller.length,
                             itemBuilder: (context, index) {
                               final property =
-                                  controller.propsModel.serviceRequests[index];
+                                  controller.propsModel!.serviceRequests![index];
                               return InkWell(
                                 onTap: () {
                                   Get.to(() => LandlordPropertDetailsTabs(
-                                        propertyId: controller.propsModel
-                                            .serviceRequests[index].propertyID
+                                        propertyId: controller.propsModel!
+                                            .serviceRequests![index].propertyID
                                             .toString(),
                                         propertyNo:
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? controller
-                                                    .propsModel
-                                                    .serviceRequests[index]
+                                                    .propsModel!
+                                                    .serviceRequests![index]
                                                     .emirateName
                                                     .toString()
                                                 : controller
-                                                    .propsModel
-                                                    .serviceRequests[index]
+                                                    .propsModel!
+                                                    .serviceRequests![index]
                                                     .emirateNameAR
                                                     .toString(),
                                       ));
@@ -279,9 +279,8 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                                         .propertyCategory ??
                                                                     ""
                                                                 : property
-                                                                        .propertyCategoryAR
-                                                                        .trim() ??
-                                                                    "",
+                                                                    .propertyCategoryAR!
+                                                                    .trim(),
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                             maxLines: 1,
@@ -342,7 +341,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: () {
-                          widget.manageProperties(1);
+                          widget.manageProperties!(1);
                           setState(() {});
                         },
                         child: Text(

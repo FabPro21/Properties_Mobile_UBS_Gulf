@@ -7,10 +7,10 @@ import 'package:sizer/sizer.dart';
 class AppErrorWidget extends StatelessWidget {
   final String errorText;
   final String errorImage;
-  final Function onRetry;
-  final String color;
+  final Function? onRetry;
+  final String? color;
   const AppErrorWidget(
-      {Key key,
+      {Key? key,
       this.errorText = '',
       this.errorImage = AppImagesPath.noDataFound,
       this.onRetry,
@@ -29,7 +29,7 @@ class AppErrorWidget extends StatelessWidget {
             height: 3.0.h,
           ),
           Text(
-            errorText ?? '',
+            errorText,
             style: AppTextStyle.semiBoldGrey10,
           ),
           SizedBox(
@@ -42,7 +42,7 @@ class AppErrorWidget extends StatelessWidget {
                 color: color == '' ? null : AppColors.greyColor,
               ),
               onPressed: () {
-                onRetry();
+                onRetry!();
               },
             )
         ],

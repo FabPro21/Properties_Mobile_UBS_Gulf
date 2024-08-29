@@ -15,7 +15,7 @@ import 'vendor_contracts_controller.dart';
 import 'vendor_contracts_tabs.dart/vendor_contracts_details.dart/vendor_contract_details.dart';
 
 class VendorContractsScreen extends StatefulWidget {
-  VendorContractsScreen({Key key}) : super(key: key);
+  VendorContractsScreen({Key? key}) : super(key: key);
 
   @override
   State<VendorContractsScreen> createState() => _VendorContractsScreenState();
@@ -503,12 +503,12 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   child: Text(
                                     SessionController().getLanguage() == 1
                                         ? getContractsController.getContracts
-                                            .value.contracts[index].propertyName
+                                            .value.contracts![index].propertyName??""
                                         : getContractsController
                                             .getContracts
                                             .value
-                                            .contracts[index]
-                                            .propertyNameAR,
+                                            .contracts![index]
+                                            .propertyNameAR??"",
                                     style: AppTextStyle.semiBoldBlack12,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -518,8 +518,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                 Text(
                                   getContractsController
                                           .contracts[index].contractNo
-                                          .toString() ??
-                                      "",
+                                          .toString() ,
                                   style: AppTextStyle.semiBoldBlack12,
                                   overflow: TextOverflow.ellipsis,
                                 ),

@@ -6,7 +6,7 @@
 // import 'package:sizer/sizer.dart';
 
 // class SearchPropertiesFilter extends StatefulWidget {
-//   const SearchPropertiesFilter({Key key}) : super(key: key);
+//   const SearchPropertiesFilter({Key? key}) : super(key: key);
 
 //   @override
 //   _SearchPropertiesFilterState createState() => _SearchPropertiesFilterState();

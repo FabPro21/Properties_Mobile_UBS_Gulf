@@ -10,7 +10,7 @@ class PublicServicesCategoriesDetailsService {
     var url = AppConfig().getPublicServicesCategoriesDetails;
     var data = {"CategoryId":categoryId};
 
-    var resp = await BaseClientClass.post(url, data,
+    var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
 
     if (resp is http.Response) {

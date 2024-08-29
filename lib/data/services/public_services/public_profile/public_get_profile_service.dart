@@ -10,7 +10,7 @@ class PublicGetProfileService {
   static Future<dynamic> getProfile() async {
     var url = AppConfig().publicGetProfile;
 
-    var resp = await BaseClientClass.post(url, {},
+    var resp = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       try {

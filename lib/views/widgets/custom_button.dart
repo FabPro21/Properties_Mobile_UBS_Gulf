@@ -6,21 +6,21 @@ import '../../utils/styles/colors.dart';
 import '../../utils/styles/text_styles.dart';
 
 class CustomButton extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final bool loading;
-  const CustomButton({Key key, this.onPressed, this.text, this.loading = false})
+  final Function? onPressed;
+  final String? text;
+  final bool? loading;
+  const CustomButton({Key? key, this.onPressed, this.text, this.loading = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: loading
+      onPressed: loading!
           ? null
           : () {
-              onPressed();
+              onPressed!();
             },
-      child: loading
+      child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,
@@ -52,12 +52,12 @@ class CustomButton extends StatelessWidget {
 }
 
 class CustomButtonWithoutBackgroud extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final Color borderColor;
-  final bool loading;
+  final Function? onPressed;
+  final String? text;
+  final Color? borderColor;
+  final bool? loading;
   const CustomButtonWithoutBackgroud(
-      {Key key,
+      {Key? key,
       this.onPressed,
       this.text,
       this.loading = false,
@@ -67,12 +67,12 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: loading
+      onPressed: loading!
           ? null
           : () {
-              onPressed();
+              onPressed!();
             },
-      child: loading
+      child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,
@@ -101,7 +101,7 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(3.0.sp),
               side: BorderSide(
-                color: borderColor,
+                color: borderColor!,
                 width: 1.0,
               )),
           backgroundColor: AppColors.whiteColor,
@@ -112,22 +112,22 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
 }
 
 class CustomButtonRed extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final bool loading;
+  final Function? onPressed;
+  final String? text;
+  final bool? loading;
   const CustomButtonRed(
-      {Key key, this.onPressed, this.text, this.loading = false})
+      {Key? key, this.onPressed, this.text, this.loading = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: loading
+      onPressed: loading!
           ? null
           : () {
-              onPressed();
+              onPressed!();
             },
-      child: loading
+      child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,

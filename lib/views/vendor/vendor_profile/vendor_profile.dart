@@ -17,7 +17,7 @@ import 'vendor_profile_controller.dart';
 
 // ignore: must_be_immutable
 class VendorProfile extends StatefulWidget {
-  VendorProfile({Key key}) : super(key: key);
+  VendorProfile({Key? key}) : super(key: key);
 
   @override
   State<VendorProfile> createState() => _VendorProfileState();
@@ -66,10 +66,10 @@ class _VendorProfileState extends State<VendorProfile> {
                                                               .getLanguage() ==
                                                           1
                                                       ? vendorProfileContrller.vendorProfile
-                                                .value.profile.companyName ??
+                                                .value.profile!.companyName ??
                                             ""
                                                       :  vendorProfileContrller.vendorProfile
-                                                .value.profile.companyNameAR ??
+                                                .value.profile!.companyNameAR ??
                                             "",
 
                                        
@@ -80,7 +80,7 @@ class _VendorProfileState extends State<VendorProfile> {
                                     const Spacer(),
                                     Text(
                                       vendorProfileContrller.vendorProfile.value
-                                              .profile.phone ??
+                                              .profile!.phone ??
                                           "",
                                       style: AppTextStyle.semiBoldBlack12,
                                     ),

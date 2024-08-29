@@ -19,17 +19,17 @@ import 'get_property_detail/get_property_detail.dart';
 import 'search_properties_result_controller.dart';
 
 class SearchPropertiesResult extends StatefulWidget {
-  final String propName;
-  final String minRent;
-  final String maxRent;
-  final String minArea;
-  final String maxArea;
+  final String? propName;
+  final String? minRent;
+  final String? maxRent;
+  final String? minArea;
+  final String? maxArea;
 
-  final String minRoom;
-  final String maxRoom;
-  final String areaType;
+  final String? minRoom;
+  final String? maxRoom;
+  final String? areaType;
   const SearchPropertiesResult(
-      {Key key,
+      {Key? key,
       this.propName,
       this.minRent,
       this.maxRent,
@@ -47,12 +47,12 @@ class SearchPropertiesResult extends StatefulWidget {
 class _SearchPropertiesResultState extends State<SearchPropertiesResult>
     with SingleTickerProviderStateMixin {
   final sPRController = Get.put(SearchPropertiesResultController());
-  AnimationController _controller;
-  Stream<Uint8List> stream;
+  AnimationController? _controller;
+  Stream<Uint8List>? stream;
 
   _getData() async {
     await sPRController.getDataPagination(
-        widget.propName,
+        widget.propName ?? "",
         widget.minRent,
         widget.maxRent,
         widget.areaType,
@@ -76,14 +76,6 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
   @override
   void initState() {
     print('Inside Init :::::::');
-    print(widget.propName);
-    print(widget.minRent);
-    print(widget.maxRent);
-    print(widget.areaType);
-    print(widget.minArea);
-    print(widget.maxArea);
-    print(widget.minRoom);
-    print(widget.maxRoom);
     _getData();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 500),
@@ -94,7 +86,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
@@ -144,14 +136,14 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           tooltip: 'Sort by rent',
                           onPressed: () {
                             if (sPRController.sortedBy == 'asc')
-                              _controller.forward();
+                              _controller!.forward();
                             else
-                              _controller.reverse();
+                              _controller!.reverse();
                             sPRController.sortList();
                           },
                           icon: RotationTransition(
                             turns: Tween(begin: 0.0, end: 0.5)
-                                .animate(_controller),
+                                .animate(_controller!),
                             child: Icon(Icons.sort),
                           ),
                         );
@@ -172,7 +164,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                         borderRadius: BorderRadius.circular(1.0.h),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[200],
+                            color: Colors.grey[200] ?? Colors.grey,
                             blurRadius: 0.4.h,
                             spreadRadius: 0.1.h,
                             offset: Offset(0.1.h, 0.1.h),
@@ -185,8 +177,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                 )
               : sPRController.error.value != ''
                   ? Align(
-                    alignment: Alignment.center,
-                    child: Container(
+                      alignment: Alignment.center,
+                      child: Container(
                         height: 33.0.h,
                         width: 94.0.w,
                         padding: EdgeInsets.symmetric(
@@ -198,7 +190,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           borderRadius: BorderRadius.circular(1.0.h),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey[200],
+                              color: Colors.grey[200] ?? Colors.grey,
                               blurRadius: 1.0.h,
                               spreadRadius: 0.6.h,
                               offset: Offset(0.0.h, 0.7.h),
@@ -210,7 +202,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           errorImage: AppImagesPath.noServicesFound,
                         ),
                       ),
-                  )
+                    )
                   : Stack(
                       children: [
                         SingleChildScrollView(
@@ -224,7 +216,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                 borderRadius: BorderRadius.circular(2.0.h),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey[200],
+                                    color: Colors.grey[200] ?? Colors.grey,
                                     blurRadius: 0.5.h,
                                     spreadRadius: 0.8.h,
                                     offset: Offset(0.1.h, 0.1.h),
@@ -241,7 +233,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                     itemBuilder: (context, index) {
                                       final paidFormatter =
                                           intl.NumberFormat('#,##0.00', 'AR');
-                                      String rent =
+                                      String? rent =
                                           "${AppMetaLabels().aed} ${paidFormatter.format(sPRController.properties[index].rentPerAnnumMin ?? 0.0)}";
                                       return Padding(
                                         padding: EdgeInsets.only(
@@ -337,7 +329,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                           if (snapshot
                                                               .hasData) {
                                                             return Image.memory(
-                                                                snapshot.data,
+                                                                snapshot.data!,
                                                                 fit: BoxFit
                                                                     .cover);
                                                           } else {
@@ -568,8 +560,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                     .toString();
                                                             await sPRController
                                                                 .getDataPaginationLoadMore(
-                                                                    widget
-                                                                        .propName,
+                                                                    widget.propName ??
+                                                                        "",
                                                                     widget
                                                                         .minRent,
                                                                     widget
@@ -724,14 +716,14 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
     });
   }
 
-  Column columnList(String t1, String t2,
+  Column columnList(String? t1, String? t2,
       {CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: crossAxisAlignment,
       children: [
         Text(
-          t1,
+          t1!,
           style: AppTextStyle.normalGrey10,
           overflow: TextOverflow.ellipsis,
         ),
@@ -739,7 +731,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
           height: 0.5.h,
         ),
         Text(
-          t2,
+          t2!,
           style: AppTextStyle.semiBoldBlack8,
           overflow: TextOverflow.ellipsis,
         ),
@@ -767,15 +759,15 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
 // import 'search_properties_result_controller.dart';
 
 // class SearchPropertiesResult extends StatefulWidget {
-//   final String propName;
-//   final String minRent;
-//   final String maxRent;
-//   final String minArea;
-//   final String maxArea;
+//   final String? propName;
+//   final String? minRent;
+//   final String? maxRent;
+//   final String? minArea;
+//   final String? maxArea;
 
-//   final String minRoom;
-//   final String maxRoom;
-//   final String areaType;
+//   final String? minRoom;
+//   final String? maxRoom;
+//   final String? areaType;
 //   const SearchPropertiesResult(
 //       {Key key,
 //       this.propName,
@@ -970,7 +962,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
 //                                     itemBuilder: (context, index) {
 //                                       final paidFormatter =
 //                                           intl.NumberFormat('#,##0.00', 'AR');
-//                                       String rent =
+//                                       String? rent =
 //                                           "${AppMetaLabels().aed} ${paidFormatter.format(sPRController.properties[index].rentPerAnnumMin ?? 0.0)}";
 //                                       return Padding(
 //                                         padding: EdgeInsets.only(
@@ -1445,7 +1437,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
 //     });
 //   }
 
-//   Column columnList(String t1, String t2,
+//   Column columnList(String? t1, String? t2,
 //       {CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start}) {
 //     return Column(
 //       mainAxisAlignment: MainAxisAlignment.start,

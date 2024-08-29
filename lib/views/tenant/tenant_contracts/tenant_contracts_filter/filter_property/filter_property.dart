@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class ContracrsPropertyFilter extends StatefulWidget {
-  const ContracrsPropertyFilter({Key key}) : super(key: key);
+  const ContracrsPropertyFilter({Key? key}) : super(key: key);
 
   @override
   _ContracrsPropertyFilterState createState() =>
@@ -99,7 +99,7 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                                           result: _filterPropertyController
                                               .propertyTypesModel
                                               .value
-                                              .propertyTypes[index]);
+                                              .propertyTypes![index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -111,14 +111,14 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                                               ? _filterPropertyController
                                                       .propertyTypesModel
                                                       .value
-                                                      .propertyTypes[index]
+                                                      .propertyTypes![index]
                                                       .propertyType ??
                                                   ""
                                               : _filterPropertyController
                                                   .propertyTypesModel
                                                   .value
-                                                  .propertyTypes[index]
-                                                  .propertyTypeAr,
+                                                  .propertyTypes![index]
+                                                  .propertyTypeAr??"",
                                         ),
                                         SizedBox(height: 2.0.h),
                                         index ==

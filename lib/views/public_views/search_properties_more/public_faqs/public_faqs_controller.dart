@@ -30,7 +30,7 @@ class PublicFaqsController extends GetxController {
       var result = await PublicFaqsCategoriesSerice.getPublicFaqsCatg();
       if (result is PublicFaqsCategoriesModel) {
         faqsCategories.value = result;
-        length = faqsCategories.value.faqCategories.length;
+        length = faqsCategories.value.faqCategories!.length;
         loadingFaqsCatg.value = false;
       } else {
         errorFaqsCatg.value = AppMetaLabels().noDatafound;
@@ -52,7 +52,7 @@ class PublicFaqsController extends GetxController {
               categoryId);
       if (result is PublicFaqsQuestionAndDescriptionModel) {
         faqsQuestions.value = result;
-        questionLength = faqsQuestions.value.faq.length;
+        questionLength = faqsQuestions.value.faq!.length;
         loadingQuestions.value = false;
       } else {
         errorQuestions.value = AppMetaLabels().noDatafound;

@@ -31,7 +31,7 @@ class TenantPaymentDetailsController extends GetxController {
         loadingData.value = false;
       } else {
         getcheque.value = result;
-        length = getcheque.value.transactionCheque.length;
+        length = getcheque.value.transactionCheque!.length;
         update();
         loadingData.value = false;
       }

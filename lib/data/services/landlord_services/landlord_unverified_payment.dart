@@ -11,7 +11,7 @@ class UnverfiedContractPaymentServicesLandlord {
     var url = AppConfig().getLandlordUnVeridiedPayments;
     var contractId = SessionController().getContractID();
     Map data = {"ContractId": contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         return unverifiedLLDContractPaymentsFromJson(response.body);

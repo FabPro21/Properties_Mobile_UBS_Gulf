@@ -17,7 +17,7 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class UnitInfo extends StatefulWidget {
-  const UnitInfo({Key key}) : super(key: key);
+  const UnitInfo({Key? key}) : super(key: key);
 
   @override
   _UnitInfoState createState() => _UnitInfoState();
@@ -48,9 +48,9 @@ class _UnitInfoState extends State<UnitInfo> {
                       itemBuilder: (context, index) {
                         String propName = SessionController().getLanguage() == 1
                             ? unitInfoController.unitInfo.value
-                                .contractUnits[index].propertyName
+                                .contractUnits![index].propertyName??""
                             : unitInfoController.unitInfo.value
-                                .contractUnits[index].propertyNameAr;
+                                .contractUnits![index].propertyNameAr??"";
                         if (propName.contains(" ")) {
                           List<String> mystring = propName.split(" ");
                           String a = mystring[0] + mystring[1];
@@ -61,7 +61,7 @@ class _UnitInfoState extends State<UnitInfo> {
                           propertyName = mystring[0];
                         }
                         double am = unitInfoController
-                            .unitInfo.value.contractUnits[index].amount;
+                            .unitInfo.value.contractUnits![index].amount;
                         final paidFormatter = NumberFormat('#,##0.00', 'AR');
                         amount = paidFormatter.format(am);
                         // unitInfoController.getImage(index);
@@ -69,10 +69,10 @@ class _UnitInfoState extends State<UnitInfo> {
                           onTap: () {
                             SessionController().setContractUnitID(
                                 unitInfoController.unitInfo.value
-                                    .contractUnits[index].unitId);
+                                    .contractUnits![index].unitId);
                             Get.to(() => UnitInfoDetails(
                                   unitRefNo: unitInfoController.unitInfo.value
-                                      .contractUnits[index].unitRefNo,
+                                      .contractUnits![index].unitRefNo,
                                 ));
                           },
                           child: Padding(
@@ -152,7 +152,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                               }
                                               if (snapshot.hasData) {
                                                 return Image.memory(
-                                                  snapshot.data,
+                                                  snapshot.data!,
                                                   fit: BoxFit.cover,
                                                 );
                                               } else {
@@ -199,13 +199,13 @@ class _UnitInfoState extends State<UnitInfo> {
                                                       ? unitInfoController
                                                           .unitInfo
                                                           .value
-                                                          .contractUnits[index]
-                                                          .propertyName
+                                                          .contractUnits![index]
+                                                          .propertyName??""
                                                       : unitInfoController
                                                           .unitInfo
                                                           .value
-                                                          .contractUnits[index]
-                                                          .propertyNameAr,
+                                                          .contractUnits![index]
+                                                          .propertyNameAr??"",
                                                   style: AppTextStyle
                                                       .semiBoldGrey12,
                                                   overflow:
@@ -222,8 +222,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                                   ),
                                                   Spacer(),
                                                   Text(
-                                                    "${unitInfoController.unitInfo.value.contractUnits[index].unitRefNo}" ??
-                                                        "",
+                                                    "${unitInfoController.unitInfo.value.contractUnits![index].unitRefNo}",
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
@@ -245,14 +244,14 @@ class _UnitInfoState extends State<UnitInfo> {
                                                         ? unitInfoController
                                                                 .unitInfo
                                                                 .value
-                                                                .contractUnits[
+                                                                .contractUnits![
                                                                     index]
                                                                 .unitType ??
                                                             ""
                                                         : unitInfoController
                                                                 .unitInfo
                                                                 .value
-                                                                .contractUnits[
+                                                                .contractUnits![
                                                                     index]
                                                                 .unitTypeAr ??
                                                             "",
@@ -271,7 +270,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                                   ),
                                                   Spacer(),
                                                   Text(
-                                                    "${AppMetaLabels().aed} ${amount ?? 0.0}",
+                                                    "${AppMetaLabels().aed} ${amount }",
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),

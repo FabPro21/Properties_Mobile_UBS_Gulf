@@ -13,7 +13,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'dart:ui' as ui;
 
 class VendorNotification extends StatefulWidget {
-  VendorNotification({Key key}) : super(key: key);
+  VendorNotification({Key? key}) : super(key: key);
 
   @override
   State<VendorNotification> createState() => _VendorNotificationState();
@@ -94,7 +94,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                               ],
                               radiusStyle: true,
                               onToggle: (index) async {
-                                _controller.currentIndex.value = index;
+                                _controller.currentIndex.value = index!;
                                 if (index == 0) {
                                   await _getData();
                                   setState(() {});

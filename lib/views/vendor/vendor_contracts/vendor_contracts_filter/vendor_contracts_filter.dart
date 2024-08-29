@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorContractsFilter extends StatefulWidget {
-  final bool clear;
-  const VendorContractsFilter({Key key, this.clear}) : super(key: key);
+  final bool? clear;
+  const VendorContractsFilter({Key? key, this.clear}) : super(key: key);
 
   @override
   _VendorContractsFilterState createState() => _VendorContractsFilterState();
@@ -24,7 +24,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
 
   @override
   void initState() {
-    if (widget.clear) {
+    if (widget.clear!) {
       vCFilterController.resetValues();
       propertyController.text = vCFilterController.propertyName;
     }
@@ -243,7 +243,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                         // ),
                                       ),
                                     );
-                                    if (!vCFilterController.setFromDate(dT)) {
+                                    if (!vCFilterController.setFromDate(dT!)) {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
@@ -346,7 +346,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                         // ),
                                       ),
                                     );
-                                    if (!vCFilterController.setToDate(dT)) {
+                                    if (!vCFilterController.setToDate(dT!)) {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
@@ -499,14 +499,14 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  final Function? clear;
+  const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        clear();
+        clear!();
       },
       child: Container(
         decoration: BoxDecoration(

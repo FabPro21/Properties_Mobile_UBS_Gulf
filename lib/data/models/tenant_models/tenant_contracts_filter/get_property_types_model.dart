@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetPropertyTypesModel getPropertyTypesModelFromJson(String str) =>
-    GetPropertyTypesModel.fromJson(json.decode(str));
+GetPropertyTypesModel getPropertyTypesModelFromJson(String? str) =>
+    GetPropertyTypesModel.fromJson(json.decode(str!));
 
-String getPropertyTypesModelToJson(GetPropertyTypesModel data) =>
+String? getPropertyTypesModelToJson(GetPropertyTypesModel data) =>
     json.encode(data.toJson());
 
 class GetPropertyTypesModel {
@@ -18,12 +18,12 @@ class GetPropertyTypesModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<PropertyType> propertyTypes;
-  String message;
+  String? status;
+  String? statusCode;
+  List<PropertyType>? propertyTypes;
+  String? message;
 
-  factory GetPropertyTypesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetPropertyTypesModel.fromJson(Map<String?, dynamic> json) =>
       GetPropertyTypesModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,11 +32,11 @@ class GetPropertyTypesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "propertyTypes":
-            List<dynamic>.from(propertyTypes.map((x) => x.toJson())),
+            List<dynamic>.from(propertyTypes!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -48,17 +48,17 @@ class PropertyType {
     this.propertyTypeAr,
   });
 
-  String propertyType;
-  int propertyTypeId;
-  String propertyTypeAr;
+  String? propertyType;
+  int? propertyTypeId;
+  String? propertyTypeAr;
 
-  factory PropertyType.fromJson(Map<String, dynamic> json) => PropertyType(
+  factory PropertyType.fromJson(Map<String?, dynamic> json) => PropertyType(
         propertyType: json["propertyType"],
         propertyTypeId: json["propertyTypeID"],
         propertyTypeAr: json["propertyTypeAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyType": propertyType,
         "propertyTypeID": propertyTypeId,
         "propertyTypeAR": propertyTypeAr,

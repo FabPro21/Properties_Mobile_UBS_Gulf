@@ -25,7 +25,7 @@ class SaveServiceRequestServices {
     //   "OtherContactPersonMobile": contactMobile,
     //   "contactTimeId": contactTimeId == null ? '0' : contactTimeId.toString()
     // };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       SaveServiceRequestModel getModel =

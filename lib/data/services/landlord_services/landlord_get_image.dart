@@ -10,7 +10,7 @@ class LandLordGetImagesServices {
     var url = AppConfig().getLandlordUitImages;
     var data = {"UnitId": unitId.toString()};
     var response = await BaseClientClass.post(
-      url,
+      url ?? "",
       data,
     );
     if (response is http.Response) {

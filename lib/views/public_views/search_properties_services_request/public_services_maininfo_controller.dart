@@ -46,7 +46,7 @@ class PublicServiceMaininfoController extends GetxController {
     cancellingRequest.value = false;
     if (resp is PublicCancelBookingRequestModel) {
       if (resp.status == 'Ok') {
-        getServiceMaininfo(publicMaininfoDetails.value.detail.caseNo);
+        getServiceMaininfo(publicMaininfoDetails.value.detail!.caseNo!);
         _controller.getSericeRequest();
       } else
         Get.snackbar(

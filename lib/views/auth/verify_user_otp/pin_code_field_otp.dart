@@ -10,8 +10,8 @@ import 'package:get/get.dart';
 class PinCodeField extends StatelessWidget {
   final TextEditingController smsController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  final String otpCodeForVerifyOTP;
-  PinCodeField({Key key, this.otpCodeForVerifyOTP}) : super(key: key);
+  final String? otpCodeForVerifyOTP;
+  PinCodeField({Key? key, this.otpCodeForVerifyOTP}) : super(key: key);
   final VerifyUserOtpController vUOController =
       Get.find<VerifyUserOtpController>();
 
@@ -35,7 +35,7 @@ class PinCodeField extends StatelessWidget {
               autoFocus: false,
 
               validator: (v) {
-                if (v.length < 6) {
+                if (v!.length < 6) {
                   return null;
                 } else {
                   return null;
@@ -70,7 +70,7 @@ class PinCodeField extends StatelessWidget {
                 FocusScope.of(context).unfocus();
                 vUOController.validOTP.value = true;
                 await vUOController.verifyOtpBtn(
-                    smsController.text, otpCodeForVerifyOTP);
+                    smsController.text, otpCodeForVerifyOTP??"");
               },
               onChanged: (value) {
                 // vUOController.currentText.value = value;
@@ -86,11 +86,11 @@ class PinCodeField extends StatelessWidget {
 
 // ignore: must_be_immutable
 class PinCodeFieldFB extends StatefulWidget {
-  final String otpCodeForVerifyOTP;
-  final bool isForgotMpin;
-  FirebaseAuthController controller;
+  final String? otpCodeForVerifyOTP;
+  final bool? isForgotMpin;
+  FirebaseAuthController? controller;
   PinCodeFieldFB(
-      {Key key, this.otpCodeForVerifyOTP, this.controller, this.isForgotMpin})
+      {Key? key, this.otpCodeForVerifyOTP, this.controller, this.isForgotMpin})
       : super(key: key);
 
   @override
@@ -120,7 +120,7 @@ class _PinCodeFieldFBState extends State<PinCodeFieldFB> {
               animationType: AnimationType.fade,
               autoFocus: false,
               validator: (v) {
-                if (v.length < 6) {
+                if (v!.length < 6) {
                   return null;
                 } else {
                   return null;
@@ -132,9 +132,9 @@ class _PinCodeFieldFBState extends State<PinCodeFieldFB> {
                 errorBorderColor: Colors.red,
                 selectedFillColor: Colors.transparent,
                 activeColor: Colors.white,
-                inactiveColor: widget.controller.error.value != ''
+                inactiveColor: widget.controller!.error.value != ''
                     ? Colors.red
-                    : widget.controller.validOTP.value == false
+                    : widget.controller!.validOTP.value == false
                         ? Colors.grey
                         : Colors.white54,
                 shape: PinCodeFieldShape.box,
@@ -156,16 +156,16 @@ class _PinCodeFieldFBState extends State<PinCodeFieldFB> {
               onCompleted: (v) async {
                 FocusScope.of(context).unfocus();
                 setState(() {
-                  widget.controller.validOTP.value = true;
-                  widget.controller.error.value = '';
+                  widget.controller!.validOTP.value = true;
+                  widget.controller!.error.value = '';
                 });
 
                 if (widget.isForgotMpin == true) {
-                  widget.controller.signInWithPhoneNumberForgotMpin(v);
-                  widget.controller.otpManuallyVerified = true;
+                  widget.controller!.signInWithPhoneNumberForgotMpin(v);
+                  widget.controller!.otpManuallyVerified = true;
                 } else {
-                  widget.controller.signInWithPhoneNumber(v);
-                  widget.controller.otpManuallyVerified = true;
+                  widget.controller!.signInWithPhoneNumber(v);
+                  widget.controller!.otpManuallyVerified = true;
                 }
                 // before forgot mpin
                 // widget.controller.signInWithPhoneNumber(v);

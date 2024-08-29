@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -12,8 +14,8 @@ import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 
 class RenewalTutorialVideo extends StatefulWidget {
-  final String path;
-  const RenewalTutorialVideo({Key key, this.path}) : super(key: key);
+  final String? path;
+  const RenewalTutorialVideo({Key? key, this.path}) : super(key: key);
 
   @override
   State<RenewalTutorialVideo> createState() => _RenewalTutorialVideoState();
@@ -61,7 +63,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
       loading.value = true;
       controller = VideoPlayerController.network(path.trim())
         ..initialize().then((_) {
-          controller.play();
+          controller!.play();
           setState(() {});
         });
       loading.value = false;
@@ -72,16 +74,16 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
   }
 
   loadAssetVideoPlayer() {
-    String path = SessionController().videoPathFromAsset;
+    String path = SessionController().videoPathFromAsset??"";
     print('Load From asset : $path');
     // String path = 'assets/video/FAB_8.mp4';
     controller = VideoPlayerController.asset(path);
-    controller.addListener(() {
+    controller!.addListener(() {
       setState(() {
         loading.value = false;
       });
     });
-    controller.initialize().then((value) {
+    controller!.initialize().then((value) {
       setState(() {
         loading.value = false;
       });
@@ -90,12 +92,12 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
 
   loadVideoFromURl() async {
     try {
-      String path = SessionController().videoURl;
+      String path = SessionController().videoURl??"";
       print('Load From URL : $path');
       loading.value = true;
       controller = VideoPlayerController.network(path.trim())
         ..initialize().then((_) {
-          controller.play();
+          controller!.play();
           setState(() {});
         });
       loading.value = false;
@@ -105,8 +107,8 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
     }
   }
 
-  // video player controller
-  VideoPlayerController controller;
+  // video player controller!
+  VideoPlayerController? controller;
   RxBool loading = true.obs;
 
   initState() {
@@ -121,7 +123,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
   }
 
   void dispose() {
-    controller.dispose();
+    controller!.dispose();
     super.dispose();
   }
 
@@ -129,13 +131,13 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (controller.value.isPlaying == true) {
+        if (controller!.value.isPlaying == true) {
           setState(() {
-            controller.pause();
+            controller!.pause();
           });
         }
         Get.back();
-        return;
+        return false;
       },
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -144,9 +146,9 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
             centerTitle: true,
             leading: InkWell(
               onTap: () {
-                if (controller.value.isPlaying == true) {
+                if (controller!.value.isPlaying == true) {
                   setState(() {
-                    controller.pause();
+                    controller!.pause();
                   });
                 }
                 Get.back();
@@ -169,22 +171,22 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                   children: [
                     InkWell(
                       onTap: () {
-                        controller.value.isPlaying
-                            ? controller.pause()
-                            : controller.play();
+                        controller!.value.isPlaying
+                            ? controller!.pause()
+                            : controller!.play();
                         setState(() {});
                       },
                       child: AspectRatio(
-                          aspectRatio: controller.value.aspectRatio,
-                          child: VideoPlayer(controller)),
+                          aspectRatio: controller!.value.aspectRatio,
+                          child: VideoPlayer(controller!)),
                     ),
                     // DURATION of VIDEO
                     // Container(
                     //   child: Text("Total Duration: " +
-                    //       controller.value.duration.toString()),
+                    //       controller!.value.duration.toString()),
                     // ),
                     Container(
-                        child: VideoProgressIndicator(controller,
+                        child: VideoProgressIndicator(controller!,
                             allowScrubbing: true,
                             colors: VideoProgressColors(
                               backgroundColor: Colors.white24,
@@ -207,13 +209,13 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                             heroTag: "btn1",
                             onPressed: () {
                               setState(() {
-                                controller.value.isPlaying
-                                    ? controller.pause()
-                                    : controller.play();
+                                controller!.value.isPlaying
+                                    ? controller!.pause()
+                                    : controller!.play();
                               });
                             },
                             child: Icon(
-                              controller.value.isPlaying
+                              controller!.value.isPlaying
                                   ? Icons.pause
                                   : Icons.play_arrow,
                             ),
@@ -230,7 +232,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                             heroTag: "btn2",
                             onPressed: () {
                               setState(() {
-                                controller.seekTo(Duration(seconds: 0));
+                                controller!.seekTo(Duration(seconds: 0));
                                 setState(() {});
                               });
                             },

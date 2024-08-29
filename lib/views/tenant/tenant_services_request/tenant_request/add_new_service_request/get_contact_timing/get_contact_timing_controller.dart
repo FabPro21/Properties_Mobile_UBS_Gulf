@@ -29,7 +29,7 @@ class GetContactTimingController extends GetxController {
     loadingData.value = false;
     if (result is GetContactTimingModel) {
       getContactTiming.value = result;
-      length = getContactTiming.value.contactTiming.length;
+      length = getContactTiming.value.contactTiming!.length;
       update();
     } else {
       error.value = result;

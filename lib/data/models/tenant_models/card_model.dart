@@ -1,19 +1,19 @@
 import 'dart:typed_data';
 
 class CardScanModel {
-  String name;
-  String idNumber;
-  String nationality;
-  // String issuingDate;
-  // String dob;
-  // String expiry;
-  DateTime issuingDate;
-  DateTime dob;
-  DateTime expiry;
-  String gender;
-  String cardNumber;
-  Uint8List frontImage;
-  Uint8List backImage;
+  String? name;
+  String? idNumber;
+  String? nationality;
+  // String? issuingDate;
+  // String? dob;
+  // String? expiry;
+  DateTime? issuingDate;
+  DateTime? dob;
+  DateTime? expiry;
+  String? gender;
+  String? cardNumber;
+  Uint8List? frontImage;
+  Uint8List? backImage;
 
 
   CardScanModel({

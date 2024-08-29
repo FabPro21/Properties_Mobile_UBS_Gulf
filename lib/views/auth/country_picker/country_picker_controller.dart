@@ -19,7 +19,7 @@ class CountryPickerController extends GetxController {
   @override
   void onInit() {
     if (countryPicker.value.countries == null ||
-        countryPicker.value.countries.isEmpty) getData();
+        countryPicker.value.countries!.isEmpty) getData();
     super.onInit();
   }
 
@@ -31,26 +31,26 @@ class CountryPickerController extends GetxController {
     try {
       error.value = '';
       loadingData.value = true;
-      countryPicker.value = null;
+      countryPicker.value = CountryPickerModel();
       var result = await CommonRepository.countryPicker();
       loadingData.value = false;
       if (result is CountryPickerModel) {
         countryPicker.value = result;
         // adding this
-        countryPicker.value.countries.add(Country(
+        countryPicker.value.countries!.add(Country(
           countryId: 1,
           countryName: 'pk',
           countryCode: '+92',
           dialingCode: '+92',
           flag: '',
         ));
-        length = countryPicker.value.countries.length;
+        length = countryPicker.value.countries!.length;
         Country selectedCountry =
-            countryPicker.value.countries.firstWhere((country) {
-          return country.dialingCode == selectedDialingCode.value ?? "+971";
+            countryPicker.value.countries!.firstWhere((country) {
+          return country.dialingCode == selectedDialingCode.value;
         });
         selectedIndex.value =
-            countryPicker.value.countries.indexOf(selectedCountry);
+            countryPicker.value.countries!.indexOf(selectedCountry);
         update();
       } else {
         error.value = result;
@@ -63,12 +63,12 @@ class CountryPickerController extends GetxController {
   void selectCountry(int index) {
     selectedIndex.value = index;
     selectedDialingCode.value =
-        countryPicker.value.countries[index].dialingCode;
+        countryPicker.value.countries![index].dialingCode!;
     SessionController().setDialingCode(
-      countryPicker.value.countries[index].dialingCode.toString() ?? "",
+      countryPicker.value.countries![index].dialingCode.toString(),
     );
     SessionController().setSelectedFlag(
-      countryPicker.value.countries[index].flag.toString() ?? "",
+      countryPicker.value.countries![index].flag.toString(),
     );
     selectedIndex.value = index;
   }

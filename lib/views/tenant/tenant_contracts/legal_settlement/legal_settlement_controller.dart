@@ -5,7 +5,7 @@ import '../tenant_contracts_tabs.dart/tenant_contracts_details.dart/tenant_contr
 
 class LegalSettlementController extends GetxController {
   RxBool submitting = false.obs;
-  int caseNo;
+  int? caseNo;
 
   final contractController = Get.find<GetContractsDetailsController>();
 

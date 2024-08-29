@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-GetTenantPropertiesModel getTenantPropertiesModelFromJson(String str) =>
-    GetTenantPropertiesModel.fromJson(json.decode(str));
+GetTenantPropertiesModel getTenantPropertiesModelFromJson(String? str) =>
+    GetTenantPropertiesModel.fromJson(json.decode(str!));
 
 class GetTenantPropertiesModel {
   GetTenantPropertiesModel({
@@ -14,11 +14,11 @@ class GetTenantPropertiesModel {
     this.message,
   });
 
-  String status;
-  List<Property> properties;
-  String message;
+  String? status;
+  List<Property>? properties;
+  String? message;
 
-  factory GetTenantPropertiesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetTenantPropertiesModel.fromJson(Map<String?, dynamic> json) =>
       GetTenantPropertiesModel(
         status: json["status"],
         properties: List<Property>.from(
@@ -32,12 +32,12 @@ class Property {
       {this.contractUnitID, this.unitName, this.unitNameAr, this.propertyName,this.propertyNameAR});
 
   dynamic contractUnitID;
-  String unitName;
-  String unitNameAr;
-  String propertyName;
-  String propertyNameAR;
+  String? unitName;
+  String? unitNameAr;
+  String? propertyName;
+  String? propertyNameAR;
 
-  factory Property.fromJson(Map<String, dynamic> json) => Property(
+  factory Property.fromJson(Map<String?, dynamic> json) => Property(
       contractUnitID: json["contractUnitID"],
       unitName: json["unitName"],
       unitNameAr: json["unitNameAR"],

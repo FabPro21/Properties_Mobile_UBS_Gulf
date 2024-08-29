@@ -7,7 +7,7 @@ class GetTenantNotificationsFiles {
   static Future<dynamic> getData(int id) async {
     var url = AppConfig().getNotificationFiles;
     Map data = {"NotificationId": id.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       return notificationFilesFromJson(response.body);
     }

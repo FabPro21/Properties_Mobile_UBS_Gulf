@@ -24,7 +24,7 @@ class PublicServiceRequestController extends GetxController {
     loadingData.value = false;
     if (result is PublicServiceMyRequestModel) {
       publicServiceRequest.value = result;
-      serviceReq = result.serviceRequests.toList();
+      serviceReq = result.serviceRequests!.toList();
     } else {
       error.value = result;
     }
@@ -35,21 +35,21 @@ class PublicServiceRequestController extends GetxController {
     loadingData.value = true;
     serviceReq.clear();
     for (int i = 0;
-        i < publicServiceRequest.value.serviceRequests.length;
+        i < publicServiceRequest.value.serviceRequests!.length;
         i++) {
-      if (publicServiceRequest.value.serviceRequests[i].requestNo
+      if (publicServiceRequest.value.serviceRequests![i].requestNo
               .toString()
               .contains(qry) ||
-          publicServiceRequest.value.serviceRequests[i].category
+          publicServiceRequest.value.serviceRequests![i].category!
               .toLowerCase()
               .contains(qry) ||
-          publicServiceRequest.value.serviceRequests[i].subCategory
+          publicServiceRequest.value.serviceRequests![i].subCategory!
               .toLowerCase()
               .contains(qry) ||
-          publicServiceRequest.value.serviceRequests[i].propertyName
+          publicServiceRequest.value.serviceRequests![i].propertyName!
               .toLowerCase()
               .contains(qry)) {
-        serviceReq.add(publicServiceRequest.value.serviceRequests[i]);
+        serviceReq.add(publicServiceRequest.value.serviceRequests![i]);
       }
     }
     if (serviceReq.length == 0)

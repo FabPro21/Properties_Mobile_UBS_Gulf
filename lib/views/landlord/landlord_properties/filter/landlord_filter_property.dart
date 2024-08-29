@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/landlord_models/filter_property_category_model.dart';
 import 'package:fap_properties/data/models/landlord_models/filter_property_emirate_model.dart';
@@ -14,8 +16,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordFilterProperties extends StatefulWidget {
-  final bool clear;
-  const LandLordFilterProperties({Key key, this.clear}) : super(key: key);
+  final bool? clear;
+  const LandLordFilterProperties({Key? key, this.clear}) : super(key: key);
 
   @override
   _LandLordFilterPropertiesState createState() =>
@@ -30,7 +32,7 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
   @override
   void initState() {
     propertyController.text = lDFilterController.propertyName;
-    if (widget.clear) {
+    if (widget.clear!) {
       lDFilterController.resetValues();
     }
     propertyController.text = "";
@@ -400,14 +402,14 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  final Function? clear;
+  const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        clear();
+        clear!();
       },
       child: Container(
         decoration: BoxDecoration(

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class RemoveSvcReqPhoto {
   static Future<dynamic> removePhoto(var photoId) async {
     var resp = await BaseClientClass.post(
-        AppConfig().removeSvcReqPhoto, {"PhotoId":photoId.toString()});
+        AppConfig().removeSvcReqPhoto??"", {"PhotoId":photoId.toString()});
     if (resp is http.Response) {
       return resp.statusCode;
     }

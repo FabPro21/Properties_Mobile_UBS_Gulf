@@ -9,7 +9,7 @@ class PublicServicesCategoriesService {
   static Future<dynamic> getServiceCategories() async {
     var url = AppConfig().getPublicServiceCategories;
 
-    var resp = await BaseClientClass.post(url, {},
+    var resp = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
 
     if (resp is http.Response) {

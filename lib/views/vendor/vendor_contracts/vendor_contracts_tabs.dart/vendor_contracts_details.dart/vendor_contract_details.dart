@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'vendor_contract_info.dart';
 
 class VendorContractsDetailsTabs extends StatelessWidget {
-  VendorContractsDetailsTabs({Key key}) : super(key: key);
+  VendorContractsDetailsTabs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class VendorContractsDetailsTabs extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                     SessionController().getContractNo(),
+                     SessionController().getContractNo()??'',
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                   ],

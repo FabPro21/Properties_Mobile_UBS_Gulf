@@ -17,7 +17,7 @@ class VendorGetContractsWithFilterServices {
       "pageSize": 100.toString()
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       VendorContractsModel vendorContractsModel =
@@ -38,7 +38,7 @@ class VendorGetContractsWithFilterServices {
       "pageSize": 20.toString()
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       VendorContractsModel vendorContractsModel =

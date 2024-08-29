@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantOffers extends StatefulWidget {
-  const TenantOffers({Key key}) : super(key: key);
+  const TenantOffers({Key? key}) : super(key: key);
 
   @override
   _TenantOffersState createState() => _TenantOffersState();
@@ -78,7 +78,7 @@ class _TenantOffersState extends State<TenantOffers> {
                                                   offerId: _controller
                                                       .offers
                                                       .value
-                                                      .record[index]
+                                                      .record![index]
                                                       .offerid
                                                       .toString()));
                                             },
@@ -90,13 +90,13 @@ class _TenantOffersState extends State<TenantOffers> {
                                                       ? _controller
                                                               .offers
                                                               .value
-                                                              .record[index]
+                                                              .record![index]
                                                               .title ??
                                                           ""
                                                       : _controller
                                                               .offers
                                                               .value
-                                                              .record[index]
+                                                              .record![index]
                                                               .titleAr  ??
                                                           "",
                                                   style: AppTextStyle

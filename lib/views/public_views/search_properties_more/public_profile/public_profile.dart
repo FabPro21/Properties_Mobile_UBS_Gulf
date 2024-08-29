@@ -13,7 +13,7 @@
 // import 'package:sizer/sizer.dart';
 
 // class PublicProfile extends StatefulWidget {
-//   const PublicProfile({Key key}) : super(key: key);
+//   const PublicProfile({Key? key}) : super(key: key);
 
 //   @override
 //   _PublicProfileState createState() => _PublicProfileState();
@@ -252,7 +252,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicProfile extends StatefulWidget {
-  const PublicProfile({Key key}) : super(key: key);
+  const PublicProfile({Key? key}) : super(key: key);
 
   @override
   _PublicProfileState createState() => _PublicProfileState();
@@ -365,7 +365,7 @@ class _PublicProfileState extends State<PublicProfile> {
                                 child: Padding(
                                   padding: EdgeInsets.all(3.0.h),
                                   child: Text(
-                                    name ?? "",
+                                    name ,
                                     style: AppTextStyle.semiBoldWhite16
                                         .copyWith(fontSize: 24.sp),
                                   ),

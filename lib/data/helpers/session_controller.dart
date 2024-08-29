@@ -9,55 +9,55 @@ class SessionController {
   // 1 Fab Properties
   // 2 MENA Real Estate
   // Must Add iosAppID *******
-  int isFabApp = 1;
+  int? isFabApp = 1;
 
-  User _user;
-  String vendorUserType = "";
-  String _loginToken = "";
-  String _token = "";
-  String _publicToken = "";
-  String _deviceToken = "";
-  String _phone = "";
-  String _dialingCode = "+971";
-  String _selectedFlag;
-  int _statusCode;
-  String _otpCode;
-  String _goToDashboard;
-  String _contractNo;
-  String _lpoId;
-  String _transactionId;
-  String _caseTypeId = "";
-  String _caseCategoryId = "";
-  String _notificationId;
-  int _contractID;
-  int _contractUnitId;
-  String _contractStatus = "Please Select...";
-  String _caseNo;
-  String _agentId;
-  String _lpoRefNo;
-  String _url = "";
-  String _tenantId = "";
-  String _userNameAr = "";
-  int _selectedRoleId = 0;
+  late User _user;
+  String? vendorUserType = "";
+  String? _loginToken = "";
+  String? _token = "";
+  String? _publicToken = "";
+  String? _deviceToken = "";
+  String? _phone = "";
+  String? _dialingCode = "+971";
+  String? _selectedFlag;
+  int? _statusCode;
+  String? _otpCode;
+  String? _goToDashboard;
+  String? _contractNo;
+  String? _lpoId;
+  String? _transactionId;
+  String? _caseTypeId = "";
+  String? _caseCategoryId = "";
+  String? _notificationId;
+  int? _contractID;
+  int? _contractUnitId;
+  String? _contractStatus = "Please Select...";
+  String? _caseNo;
+  String? _agentId;
+  String? _lpoRefNo;
+  String? _url = "";
+  String? _tenantId = "";
+  String? _userNameAr = "";
+  int? _selectedRoleId = 0;
   bool _resetMpin = false;
-  int _selectedLang = 1;
-  String _propId = "";
-  String _propCatId = "";
-  String _unitTypeName = "";
-  String _propCatName = "";
-  String _cityId = "";
-  Map<String, dynamic> _notificationData;
+  int? _selectedLang = 1;
+  String? _propId = "";
+  String? _propCatId = "";
+  String? _unitTypeName = "";
+  String? _propCatName = "";
+  String? _cityId = "";
+  Map<String?, dynamic>? _notificationData;
   bool enableSSL = true;
   bool fingerprint = false;
-  int userID = -1;
+  int? userID = -1;
   bool enableFireBaseOTP = false;
 
-  String idNumber;
-  String storeAppVerison;
+  String? idNumber;
+  String? storeAppVerison;
 
-  String videoPath;
-  String videoPathFromAsset;
-  String videoURl;
+  String? videoPath;
+  String? videoPathFromAsset;
+  String? videoURl;
 
   factory SessionController() {
     return _instance;
@@ -66,11 +66,11 @@ class SessionController {
   SessionController._internel() {
     _user = User();
   }
-  void setLanguage(int id) {
+  void setLanguage(int? id) {
     _selectedLang = id;
   }
 
-  int getLanguage() {
+  int? getLanguage() {
     return _selectedLang;
   }
 
@@ -84,11 +84,11 @@ class SessionController {
     return _resetMpin;
   }
 
-  void setSelectedRoleId(int roleId) {
+  void setSelectedRoleId(int? roleId) {
     _selectedRoleId = roleId;
   }
 
-  int getSelectedRoleId() {
+  int? getSelectedRoleId() {
     return _selectedRoleId;
   }
 
@@ -96,41 +96,41 @@ class SessionController {
     _user = user;
   }
 
-  void setUserName(String name) {
+  void setUserName(String? name) {
     _user.name = name;
   }
 
-  void setUserNameAr(String name) {
+  void setUserNameAr(String? name) {
     _userNameAr = name;
     _user.fullNameAr = name;
   }
 
-  String getUserNameAr() {
+  String? getUserNameAr() {
     return _userNameAr;
   }
 
-  void setUserID(String id) {
-    userID = int.parse(id);
+  void setUserID(String? id) {
+    userID = int.parse(id!);
     _user.userId = int.parse(id);
   }
 
-  int getUserID() {
+  int? getUserID() {
     return userID;
   }
 
-  void setToken(String token) {
+  void setToken(String? token) {
     _token = token;
   }
 
-  String getToken() {
+  String? getToken() {
     return _token;
   }
 
-  void setLoginToken(String token) {
+  void setLoginToken(String? token) {
     _loginToken = token;
   }
 
-  String getLoginToken() {
+  String? getLoginToken() {
     return _loginToken;
   }
 
@@ -142,27 +142,27 @@ class SessionController {
     return fingerprint;
   }
 
-  void setPublicToken(String token) {
+  void setPublicToken(String? token) {
     _publicToken = token;
   }
 
-  String getPublicToken() {
+  String? getPublicToken() {
     return _publicToken;
   }
 
-  void setStatusCode(int statusCode) {
+  void setStatusCode(int? statusCode) {
     _statusCode = statusCode;
   }
 
-  int getStatusCode() {
+  int? getStatusCode() {
     return _statusCode;
   }
 
-  void setDeviceTokken(String deviceToken) {
+  void setDeviceTokken(String? deviceToken) {
     _deviceToken = deviceToken;
   }
 
-  String getDeviceTokken() {
+  String? getDeviceTokken() {
     return _deviceToken;
   }
 
@@ -170,11 +170,11 @@ class SessionController {
     return _user;
   }
 
-  int getUserId() {
+  int? getUserId() {
     return _user.userId;
   }
 
-  String getUserName() {
+  String? getUserName() {
     // if (_selectedLang == 1)
     //   return _user.name;
     // else
@@ -182,11 +182,11 @@ class SessionController {
     return _user.name;
   }
 
-  String getUserMobile() {
+  String? getUserMobile() {
     return _user.mobile;
   }
 
-  String getUserEmail() {
+  String? getUserEmail() {
     return _user.email;
   }
 
@@ -198,234 +198,234 @@ class SessionController {
     return _user.roles;
   }
 
-  int getUserRoleLength() {
+  int? getUserRoleLength() {
     return _user.roles.length;
   }
 
-  void setOtpCode(String otpCode) {
+  void setOtpCode(String? otpCode) {
     _otpCode = otpCode;
   }
 
-  String getOtpCode() {
+  String? getOtpCode() {
     return _otpCode;
   }
 
-  void setGoToDashboard(String goToDashboard) {
+  void setGoToDashboard(String? goToDashboard) {
     _goToDashboard = goToDashboard;
   }
 
-  String getGoToDashboard() {
+  String? getGoToDashboard() {
     return _goToDashboard;
   }
 
-  void setPhone(String phone) {
+  void setPhone(String? phone) {
     _phone = phone;
   }
 
-  String getPhone() {
+  String? getPhone() {
     return _phone;
   }
 
-  void setDialingCode(String dialingCode) {
+  void setDialingCode(String? dialingCode) {
     _dialingCode = dialingCode;
   }
 
-  String getDialingCode() {
+  String? getDialingCode() {
     return _dialingCode;
   }
 
-  void setSelectedFlag(String selectedFlag) {
+  void setSelectedFlag(String? selectedFlag) {
     _selectedFlag = selectedFlag;
   }
 
-  String getSelectedFlag() {
+  String? getSelectedFlag() {
     return _selectedFlag;
   }
 
-  void setContractNo(String contractNo) {
+  void setContractNo(String? contractNo) {
     _contractNo = contractNo;
   }
 
-  String getContractNo() {
+  String? getContractNo() {
     return _contractNo;
   }
 
-  void setLpoId(String lpoId) {
+  void setLpoId(String? lpoId) {
     _lpoId = lpoId;
   }
 
-  String getLpoId() {
+  String? getLpoId() {
     return _lpoId;
   }
 
-  void setTransactionId(String transactionId) {
+  void setTransactionId(String? transactionId) {
     _transactionId = transactionId;
   }
 
-  String getTransactionId() {
+  String? getTransactionId() {
     return _transactionId;
   }
 
-  void setNotificationId(String notificationId) {
+  void setNotificationId(String? notificationId) {
     _notificationId = notificationId;
   }
 
-  String getNotificationId() {
+  String? getNotificationId() {
     return _notificationId;
   }
 
-  void setContractID(int contractID) {
+  void setContractID(int? contractID) {
     _contractID = contractID;
   }
 
-  int getContractID() {
+  int? getContractID() {
     return _contractID;
   }
 
-  void setContractUnitID(int unitId) {
+  void setContractUnitID(int? unitId) {
     _contractUnitId = unitId;
   }
 
-  int getContractUnitID() {
+  int? getContractUnitID() {
     return _contractUnitId;
   }
 
-  void setContractStatus(String contractStatus) {
+  void setContractStatus(String? contractStatus) {
     _contractStatus = contractStatus;
   }
 
-  String getContractStatus() {
+  String? getContractStatus() {
     return _contractStatus;
   }
 
-  void setCaseTypeId(String caseTypeId) {
+  void setCaseTypeId(String? caseTypeId) {
     _caseTypeId = caseTypeId;
   }
 
-  String getCaseTypeId() {
+  String? getCaseTypeId() {
     return _caseTypeId;
   }
 
-  void setCaseCategoryId(String caseCategoryId) {
+  void setCaseCategoryId(String? caseCategoryId) {
     _caseCategoryId = caseCategoryId;
   }
 
-  String getCaseCategoryId() {
+  String? getCaseCategoryId() {
     return _caseCategoryId;
   }
 
-  String getPropId() {
+  String? getPropId() {
     return _propId;
   }
 
-  void setPropId(String propId) {
+  void setPropId(String? propId) {
     _propId = propId;
   }
 
-  String getPropCatId() {
+  String? getPropCatId() {
     return _propCatId;
   }
 
-  void setPropCatId(String propCatId) {
+  void setPropCatId(String? propCatId) {
     _propCatId = propCatId;
   }
 ///////////
 
-  String getPropCatName() {
+  String? getPropCatName() {
     return _propCatName;
   }
 
-  void setPropCatName(String propCatName) {
+  void setPropCatName(String? propCatName) {
     _propCatName = propCatName;
   }
 
   ///
-  String getUnitTypeName() {
+  String? getUnitTypeName() {
     return _unitTypeName;
   }
 
-  void setUnitTypeName(String unitTypeName) {
+  void setUnitTypeName(String? unitTypeName) {
     _unitTypeName = unitTypeName;
   }
 
-  String getCityId() {
+  String? getCityId() {
     return _cityId;
   }
 
-  void setCityId(String cityId) {
+  void setCityId(String? cityId) {
     _cityId = cityId;
   }
 
-  // void setPropertyType(String propertyType) {
+  // void setPropertyType(String? propertyType) {
   //   _propertyType = propertyType;
   // }
 
-  // String getPropertyType() {
+  // String? getPropertyType() {
   //   return _propertyType;
   // }
 
-  void setCaseNo(String caseNo) {
+  void setCaseNo(String? caseNo) {
     _caseNo = caseNo;
   }
 
-  String getCaseNo() {
+  String? getCaseNo() {
     return _caseNo;
   }
 
-  void setAgentId(String agentId) {
+  void setAgentId(String? agentId) {
     _agentId = agentId;
   }
 
-  String getAgentId() {
+  String? getAgentId() {
     return _agentId;
   }
 
-  // void setNameAr(String nameAr) {
+  // void setNameAr(String? nameAr) {
   //   _nameAr = nameAr;
   // }
 
-  // String getNameAr() {
+  // String? getNameAr() {
   //   return _nameAr;
   // }
 
-  // void setFullNameAr(String fullNameAr) {
+  // void setFullNameAr(String? fullNameAr) {
   //   _fullNameAr = fullNameAr;
   // }
 
-  // String getFullNameAr() {
+  // String? getFullNameAr() {
   //   return _fullNameAr;
   // }
 
-  void setLpoRefNo(String lpoRefNo) {
+  void setLpoRefNo(String? lpoRefNo) {
     _lpoRefNo = lpoRefNo;
   }
 
-  String getLpoRefNo() {
+  String? getLpoRefNo() {
     return _lpoRefNo;
   }
 
-  void setUrl(String url) {
+  void setUrl(String? url) {
     _url = url;
   }
 
-  String getUrl() {
+  String? getUrl() {
     return _url;
   }
 
-  void setTenantId(String tenantId) {
+  void setTenantId(String? tenantId) {
     _tenantId = tenantId;
   }
 
-  String getTenantId() {
+  String? getTenantId() {
     return _tenantId;
   }
 
-  void setNotificationData(Map<String, dynamic> data) {
+  void setNotificationData(Map<String?, dynamic> data) {
     _notificationData = data;
   }
 
-  Map<String, dynamic> getNotificationData() {
-    return _notificationData;
+  Map<String?, dynamic> getNotificationData() {
+    return _notificationData!;
   }
 
   void resetSession() {

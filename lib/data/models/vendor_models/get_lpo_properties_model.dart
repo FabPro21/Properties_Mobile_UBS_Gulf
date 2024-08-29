@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-GetLpoPropertiesModel getLpoPropertiesModelFromJson(String str) =>
-    GetLpoPropertiesModel.fromJson(json.decode(str));
+GetLpoPropertiesModel getLpoPropertiesModelFromJson(String? str) =>
+    GetLpoPropertiesModel.fromJson(json.decode(str!));
 
 class GetLpoPropertiesModel {
   GetLpoPropertiesModel({
@@ -15,12 +15,12 @@ class GetLpoPropertiesModel {
     this.lpoProperties,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<LpoProperty> lpoProperties;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<LpoProperty>? lpoProperties;
 
-  factory GetLpoPropertiesModel.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoPropertiesModel.fromJson(Map<String?, dynamic> json) =>
       GetLpoPropertiesModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -46,15 +46,15 @@ class LpoProperty {
   dynamic lpoPropertyId;
   dynamic lpoId;
   dynamic amount;
-  String unitRefNo;
-  String propertyName;
-  String propertyNameAr;
-  String propertyAddress;
-  String propertyAddressAr;
-  String propertyImage;
-  int propertyID;
+  String? unitRefNo;
+  String? propertyName;
+  String? propertyNameAr;
+  String? propertyAddress;
+  String? propertyAddressAr;
+  String? propertyImage;
+  int? propertyID;
 
-  factory LpoProperty.fromJson(Map<String, dynamic> json) => LpoProperty(
+  factory LpoProperty.fromJson(Map<String?, dynamic> json) => LpoProperty(
       lpoPropertyId: json["lpoPropertyID"],
       lpoId: json["lpoID"],
       amount: json["amount"],

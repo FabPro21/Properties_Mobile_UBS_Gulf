@@ -17,9 +17,9 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/gestures.dart';
 
 class ContractsFLowTabs extends StatefulWidget {
-  final String prevContractNo;
+  final String? prevContractNo;
   ContractsFLowTabs({
-    Key key,
+    Key? key,
     this.prevContractNo,
   }) : super(key: key);
 

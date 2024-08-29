@@ -11,7 +11,7 @@ class LegalSettlementReqService {
     var url = AppConfig().legalSettlementReq;
 
     var response = await BaseClientClass.post(
-        url, {'contractId': contractId, 'description': desc});
+        url ?? "", {'contractId': contractId, 'description': desc});
     if (response is http.Response) {
       try {
         Map<String, dynamic> _jsonResp = json.decode(response.body);

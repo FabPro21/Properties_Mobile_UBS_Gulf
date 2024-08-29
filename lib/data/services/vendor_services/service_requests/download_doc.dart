@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 
 class VendorDownloadDoc {
   static Future<dynamic> downloadDoc(int caseNo, int roleId, int docId) async {
-    final String url = AppConfig().vendorDownloadDoc;
+    final String url = AppConfig().vendorDownloadDoc??"";
     Map data = {
       "CaseNo": caseNo.toString(),
       "RoleId": roleId.toString(),

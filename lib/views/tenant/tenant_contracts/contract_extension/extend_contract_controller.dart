@@ -8,13 +8,13 @@ import '../../../../utils/styles/colors.dart';
 import '../contracts_with_action/contracts_with_actions_controller.dart';
 
 class ExtendContractController extends GetxController {
-  GetExtensionPeriodModel extensionPeriods;
+  GetExtensionPeriodModel? extensionPeriods;
   RxBool loadingPeriods = false.obs;
   String errorLoadingPeriods = '';
   RxInt selectedPeriod = 0.obs;
 
   RxBool submitting = false.obs;
-  int caseNo;
+  int? caseNo;
 
   @override
   void onInit() {
@@ -37,11 +37,11 @@ class ExtendContractController extends GetxController {
     submitting.value = true;
     var resp = await TenantRepository.extendContract(
         contractId,
-        extensionPeriods.extensionPeriod[selectedPeriod.value].duration,
-        extensionPeriods
-            .extensionPeriod[selectedPeriod.value].extensionDetail.addNewDate,
-        extensionPeriods
-            .extensionPeriod[selectedPeriod.value].extensionDetail.endNewDate,
+        extensionPeriods!.extensionPeriod![selectedPeriod.value].duration??"",
+        extensionPeriods!
+            .extensionPeriod![selectedPeriod.value].extensionDetail!.addNewDate??"",
+        extensionPeriods!
+            .extensionPeriod![selectedPeriod.value].extensionDetail!.endNewDate??"",
         dueActionid);
     submitting.value = false;
     if (resp is int) {

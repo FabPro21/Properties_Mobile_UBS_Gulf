@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-VerifyUserOtpModel verifyUserOtpModelFromJson(String str) =>
-    VerifyUserOtpModel.fromJson(json.decode(str));
+VerifyUserOtpModel verifyUserOtpModelFromJson(String? str) =>
+    VerifyUserOtpModel.fromJson(json.decode(str!));
 
-String verifyUserOtpModelToJson(VerifyUserOtpModel data) =>
+String? verifyUserOtpModelToJson(VerifyUserOtpModel data) =>
     json.encode(data.toJson());
 
 class VerifyUserOtpModel {
@@ -17,15 +17,15 @@ class VerifyUserOtpModel {
     this.isNewUser,
   });
 
-  String result;
-  String statusCode;
-  String message;
-  User user;
-  String token;
-  String sessionId;
-  bool isNewUser;
+  String? result;
+  String? statusCode;
+  String? message;
+  User? user;
+  String? token;
+  String? sessionId;
+  bool? isNewUser;
 
-  factory VerifyUserOtpModel.fromJson(Map<String, dynamic> json) =>
+  factory VerifyUserOtpModel.fromJson(Map<String?, dynamic> json) =>
       VerifyUserOtpModel(
         result: json["result"],
         statusCode: json["statusCode"],
@@ -36,18 +36,18 @@ class VerifyUserOtpModel {
         isNewUser: json["isNewUser"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "result": result,
         "statusCode": statusCode,
         "message": message,
-        "user": user.toJson(),
+        "user": user!.toJson(),
         "token": token,
         "sessionId": sessionId,
       };
 }
 
-User userModelFromJson(String str) =>
-    User.fromJson(json.decode(str));
+User userModelFromJson(String? str) =>
+    User.fromJson(json.decode(str!));
 
 class User {
   User({
@@ -62,17 +62,17 @@ class User {
     this.roles,
   });
 
-  int userId;
-  dynamic name = '';
-  String fullNameAr = '';
-  bool mpinSet;
+  int? userId;
+  dynamic name;
+  String? fullNameAr;
+  bool? mpinSet;
   dynamic mobile;
   dynamic email;
-  String language;
-  bool languageSet;
+  String? language;
+  bool? languageSet;
   dynamic roles;
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory User.fromJson(Map<String?, dynamic> json) => User(
         userId: json["userId"],
         name: json["name"],
         fullNameAr: json['fullNameAr'] ?? 'اسم عربي',
@@ -84,7 +84,7 @@ class User {
         roles: json["roles"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "userId": userId,
         "name": name,
         "mpinSet": mpinSet,

@@ -11,7 +11,7 @@ class GetContractsServices {
 
     var data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       try {
@@ -31,7 +31,7 @@ class GetContractsServices {
 
     var data = {"pageNo": pageNo, "pageSize": '20', "Search": searchText};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       // log(response.body);

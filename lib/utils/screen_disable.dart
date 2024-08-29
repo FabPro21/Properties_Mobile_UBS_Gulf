@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class ScreenDisableWidget extends StatelessWidget {
   const ScreenDisableWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 
 class TenantDownloadDoc {
   static Future<dynamic> downloadDoc(int caseNo, int roleId, int docId) async {
-    final String url = AppConfig().tenantDownloadDoc;
+    final String url = AppConfig().tenantDownloadDoc??"";
     var data = {
       "CaseNo": caseNo.toString(),
       "RoleId": roleId.toString(),
@@ -37,7 +37,7 @@ class TenantDownloadDoc {
 
   static Future<dynamic> downloadDocIsRejected(
       int caseNo, int roleId, int docId) async {
-    final String url = AppConfig().tenantDownloadDoc;
+    final String url = AppConfig().tenantDownloadDoc??"";
     var data = {
       "CaseNo": caseNo.toString(),
       "RoleId": roleId.toString(),

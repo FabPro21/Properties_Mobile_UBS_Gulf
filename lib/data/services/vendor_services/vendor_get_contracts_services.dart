@@ -11,7 +11,7 @@ class VendorGetContractsServices {
 
     var data = {"pageNo": pageNo, "pageSize": '20', "search": searchtext};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       log(response.body.toString());
       VendorContractsModel vendorContractsModel =
@@ -26,7 +26,7 @@ class VendorGetContractsServices {
 
     var data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       VendorContractsModel vendorContractsModel =
           vendorContractsModelFromJson(response.body);

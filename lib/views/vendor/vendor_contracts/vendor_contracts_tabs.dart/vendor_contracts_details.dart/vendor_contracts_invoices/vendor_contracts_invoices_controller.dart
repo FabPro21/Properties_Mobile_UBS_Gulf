@@ -34,7 +34,7 @@ class ContractInvoicesController extends GetxController {
         loadingData.value = false;
       } else {
         contractInvoices.value = result;
-        length = contractInvoices.value.invoice.length;
+        length = contractInvoices.value.invoice!.length;
         update();
         loadingData.value = false;
       }

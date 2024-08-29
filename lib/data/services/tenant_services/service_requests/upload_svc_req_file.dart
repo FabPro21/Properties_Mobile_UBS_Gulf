@@ -31,7 +31,7 @@ class UploadSvcReqFile {
     log(filePath.toString());
 
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       print('Response :::::respStr:: '); 
       // print(await response.stream.bytesToString());
@@ -58,7 +58,7 @@ class UploadSvcReqFile {
         // return
       } else {
         log("else 1 uploadFile  ");
-        log(response.reasonPhrase);
+        log(response.reasonPhrase!);
         return response.statusCode;
       }
     } else {
@@ -142,7 +142,7 @@ class UploadSvcReqFile {
     };
     log(dataWithoutEncrp.toString());
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       log(response.statusCode.toString());
       // final respStr = await response.stream.bytesToString();
@@ -151,7 +151,7 @@ class UploadSvcReqFile {
         return json.decode(await response.stream.bytesToString());
       } else {
         log("else 1");
-        log(response.reasonPhrase);
+        log(response.reasonPhrase!);
         return response.statusCode;
       }
     } else {
@@ -182,7 +182,7 @@ class UploadSvcReqFileNew {
     log(filePath.toString());
 
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       // print(await response.stream.bytesToString());
       // 112233 HTML NEW
@@ -208,7 +208,7 @@ class UploadSvcReqFileNew {
         // return
       } else {
         log("else 1 uploadFile  ");
-        log(response.reasonPhrase);
+        log(response.reasonPhrase!);
         return response.statusCode;
       }
     } else {
@@ -292,7 +292,7 @@ class UploadSvcReqFileNew {
     };
     log(dataWithoutEncrp.toString());
     var response;
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       log(response.statusCode.toString());
       // final respStr = await response.stream.bytesToString();
@@ -301,7 +301,7 @@ class UploadSvcReqFileNew {
         return json.decode(await response.stream.bytesToString());
       } else {
         log("else 1");
-        log(response.reasonPhrase);
+        log(response.reasonPhrase!);
         return response.statusCode;
       }
     } else {

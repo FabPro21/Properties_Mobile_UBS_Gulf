@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-ContractInvoicesModel contractInvoicesModelFromJson(String str) =>
-    ContractInvoicesModel.fromJson(json.decode(str));
+ContractInvoicesModel contractInvoicesModelFromJson(String? str) =>
+    ContractInvoicesModel.fromJson(json.decode(str!));
 
-String contractInvoicesModelToJson(ContractInvoicesModel data) =>
+String? contractInvoicesModelToJson(ContractInvoicesModel data) =>
     json.encode(data.toJson());
 
 class ContractInvoicesModel {
@@ -18,12 +18,12 @@ class ContractInvoicesModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<Invoice> invoice;
-  String message;
+  String? status;
+  String? statusCode;
+  List<Invoice>? invoice;
+  String? message;
 
-  factory ContractInvoicesModel.fromJson(Map<String, dynamic> json) =>
+  factory ContractInvoicesModel.fromJson(Map<String?, dynamic> json) =>
       ContractInvoicesModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,10 +32,10 @@ class ContractInvoicesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "invoice": List<dynamic>.from(invoice.map((x) => x.toJson())),
+        "invoice": List<dynamic>.from(invoice!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -51,15 +51,15 @@ class Invoice {
     this.statusName,
   });
 
-  String contractNo;
-  String supplierRefNo;
-  String requestDate;
-  String invoiceNumber;
-  String invoiceDate;
+  String? contractNo;
+  String? supplierRefNo;
+  String? requestDate;
+  String? invoiceNumber;
+  String? invoiceDate;
   dynamic invoiceAmount;
-  String statusName;
+  String? statusName;
 
-  factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
+  factory Invoice.fromJson(Map<String?, dynamic> json) => Invoice(
         contractNo: json["contractNO"],
         supplierRefNo: json["supplierRefNo"],
         requestDate: json["requestDate"],
@@ -69,7 +69,7 @@ class Invoice {
         statusName: json["statusName"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractNO": contractNo,
         "supplierRefNo": supplierRefNo,
         "requestDate": requestDate,

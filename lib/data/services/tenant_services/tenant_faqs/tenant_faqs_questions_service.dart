@@ -8,7 +8,7 @@ class TenantFaqsQuestionsSerice {
     var url = AppConfig().getTenanatFaqsQuestions;
     Map data = {"CategoryId": categoryId.toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       TenantFaqsQuestionsModel getModel =
           tenantFaqsQuestionsModelFromJson(response.body);

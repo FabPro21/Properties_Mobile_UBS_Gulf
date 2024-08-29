@@ -4,39 +4,39 @@
 
 import 'dart:convert';
 
-LandlordContractsModel landlordContractsModelFromJson(String str) =>
-    LandlordContractsModel.fromJson(json.decode(str));
+LandlordContractsModel landlordContractsModelFromJson(String? str) =>
+    LandlordContractsModel.fromJson(json.decode(str!));
 
-String landlordContractsModelToJson(LandlordContractsModel data) =>
+String? landlordContractsModelToJson(LandlordContractsModel data) =>
     json.encode(data.toJson());
 
 class LandlordContractsModel {
-  String status;
-  int totalRecord;
-  List<Data> data;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<Data>? data;
+  String? message;
 
   LandlordContractsModel(
       {this.status, this.totalRecord, this.data, this.message});
 
-  LandlordContractsModel.fromJson(Map<String, dynamic> json) {
+  LandlordContractsModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['status'] = this.status;
     data['totalRecord'] = this.totalRecord;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -44,24 +44,24 @@ class LandlordContractsModel {
 }
 
 class Data {
-  int contractID;
-  String contractno;
+  int? contractID;
+  String? contractno;
   dynamic contractDate;
-  String contractStartDate;
-  String contractEndDate;
+  String? contractStartDate;
+  String? contractEndDate;
   dynamic rentforstay;
-  int noOfDays;
+  int? noOfDays;
   dynamic gracePeriod;
   dynamic graceStartDate;
   dynamic graceEndDate;
-  int noOfContractYears;
+  int? noOfContractYears;
   dynamic installments;
   dynamic retention;
   dynamic otherCharges;
   dynamic vatCharges;
   dynamic vatAmount;
-  String propertyName;
-  String propertyNameAR;
+  String? propertyName;
+  String? propertyNameAR;
   dynamic propertyImage;
   dynamic unitType;
   dynamic unitTypeAR;
@@ -69,9 +69,9 @@ class Data {
   dynamic unitRefNo;
   dynamic total;
   dynamic paid;
-  String contractStatus;
+  String? contractStatus;
   dynamic contractStatusAR;
-  int totalRecord;
+  int? totalRecord;
 
   Data(
       {this.contractID,
@@ -103,7 +103,7 @@ class Data {
       this.contractStatusAR,
       this.totalRecord});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String?, dynamic> json) {
     contractID = json['contractID'];
     contractno = json['contractno'];
     contractDate = json['contractDate'];
@@ -134,8 +134,8 @@ class Data {
     totalRecord = json['totalRecord'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['contractID'] = this.contractID;
     data['contractno'] = this.contractno;
     data['contractDate'] = this.contractDate;

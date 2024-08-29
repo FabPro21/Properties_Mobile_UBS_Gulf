@@ -10,7 +10,7 @@ class VendorGetContractDetailsServices {
     var contractID = SessionController().getContractID().toString();
     Map data = {"ContractId": contractID};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       VendorGetContractDetailsModel getContractDetailsModel =
           vendorGetContractDetailsModelFromJson(response.body);

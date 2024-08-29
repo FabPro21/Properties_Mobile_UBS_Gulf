@@ -41,8 +41,8 @@ class TenantPaymentsController extends GetxController {
           loadingData.value = false;
         } else {
           List<Payment> _searchedPayments = [];
-          for (int i = 0; i < getPayments.value.payments.length; i++) {
-            _searchedPayments.add(getPayments.value.payments[i]);
+          for (int i = 0; i < getPayments.value.payments!.length; i++) {
+            _searchedPayments.add(getPayments.value.payments![i]);
           }
           payments = _searchedPayments;
           if (payments.length == 0)
@@ -81,7 +81,7 @@ class TenantPaymentsController extends GetxController {
           loadingData.value = false;
         } else {
           getPayments.value = result;
-          payments = result.payments;
+          payments = result.payments!;
           update();
           loadingData.value = false;
         }
@@ -114,8 +114,8 @@ class TenantPaymentsController extends GetxController {
           errorNoMoreData.value = AppMetaLabels().noDatafound;
           loadingDataMore.value = false;
         } else {
-          for (int i = 0; i < getPayments.value.payments.length; i++) {
-            payments.add(getPayments.value.payments[i]);
+          for (int i = 0; i < getPayments.value.payments!.length; i++) {
+            payments.add(getPayments.value.payments![i]);
           }
           // getPayments.value = result;
           update();
@@ -134,13 +134,14 @@ class TenantPaymentsController extends GetxController {
 
   List<Payment> payments = [Payment()].obs;
   searchData(String qry) {
-    if (getPayments.value.payments != null) {
+    if (getPayments.value.payments!.isNotEmpty) {
+    // if (getPayments.value.payments != null) {
       loadingData.value = true;
       List<Payment> _searchedPayments = [];
-      for (int i = 0; i < getPayments.value.payments.length; i++) {
-        if (getPayments.value.payments[i].receiptNo.contains(qry) ||
-            getPayments.value.payments[i].contractNo.contains(qry)) {
-          _searchedPayments.add(getPayments.value.payments[i]);
+      for (int i = 0; i < getPayments.value.payments!.length; i++) {
+        if (getPayments.value.payments![i].receiptNo!.contains(qry) ||
+            getPayments.value.payments![i].contractNo!.contains(qry)) {
+          _searchedPayments.add(getPayments.value.payments![i]);
         }
       }
       payments = _searchedPayments;

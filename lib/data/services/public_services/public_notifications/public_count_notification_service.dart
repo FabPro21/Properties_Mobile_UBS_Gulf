@@ -9,7 +9,7 @@ class PublicCountNotificationsServices {
   static Future<dynamic> getNotificationsCount() async {
     var url = AppConfig().publicCountNotifications;
 
-    var response = await BaseClientClass.post(url, {},
+    var response = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       var data = publicCountNotificationModelFromJson(response.body);

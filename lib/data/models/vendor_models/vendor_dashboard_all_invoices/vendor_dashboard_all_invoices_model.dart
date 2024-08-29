@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-VendorDashboardAllInvoicesModel vendorDashboardAllInvoicesModelFromJson(String str) => VendorDashboardAllInvoicesModel.fromJson(json.decode(str));
+VendorDashboardAllInvoicesModel vendorDashboardAllInvoicesModelFromJson(String? str) => VendorDashboardAllInvoicesModel.fromJson(json.decode(str!));
 
-String vendorDashboardAllInvoicesModelToJson(VendorDashboardAllInvoicesModel data) => json.encode(data.toJson());
+String? vendorDashboardAllInvoicesModelToJson(VendorDashboardAllInvoicesModel data) => json.encode(data.toJson());
 
 class VendorDashboardAllInvoicesModel {
     VendorDashboardAllInvoicesModel({
@@ -17,13 +17,13 @@ class VendorDashboardAllInvoicesModel {
         this.message,
     });
 
-    String status;
-    String statusNameAR;
-    String statusCode;
-    List<Invoice> invoice;
-    String message;
+    String? status;
+    String? statusNameAR;
+    String? statusCode;
+    List<Invoice>? invoice;
+    String? message;
 
-    factory VendorDashboardAllInvoicesModel.fromJson(Map<String, dynamic> json) => VendorDashboardAllInvoicesModel(
+    factory VendorDashboardAllInvoicesModel.fromJson(Map<String?, dynamic> json) => VendorDashboardAllInvoicesModel(
         status: json["status"],
         statusNameAR: json["statusNameAR"],
         statusCode: json["statusCode"],
@@ -31,11 +31,11 @@ class VendorDashboardAllInvoicesModel {
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
         "statusNameAR": statusNameAR,
         "statusCode": statusCode,
-        "invoice": List<dynamic>.from(invoice.map((x) => x.toJson())),
+        "invoice": List<dynamic>.from(invoice!.map((x) => x.toJson())),
         "message": message,
     };
 }
@@ -55,13 +55,13 @@ class Invoice {
     dynamic contractNo;
     dynamic supplierRefNo;
     dynamic requestDate;
-    String invoiceNumber;
-    String invoiceDate;
-    double invoiceAmount;
-    String statusName;
-    String statusNameAR;
+    String? invoiceNumber;
+    String? invoiceDate;
+    double? invoiceAmount;
+    String? statusName;
+    String? statusNameAR;
 
-    factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
+    factory Invoice.fromJson(Map<String?, dynamic> json) => Invoice(
         contractNo: json["contractNO"],
         supplierRefNo: json["supplierRefNo"],
         requestDate: json["requestDate"],
@@ -72,7 +72,7 @@ class Invoice {
         statusNameAR: json["statusNameAR"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "contractNO": contractNo,
         "supplierRefNo": supplierRefNo,
         "requestDate": requestDate,
@@ -101,15 +101,15 @@ final statusNameValues = EnumValues({
 });
 
 class EnumValues<T> {
-    Map<String, T> map;
-    Map<T, String> reverseMap;
+    Map<String?, T>? map;
+    Map<T, String?>? reverseMap;
 
     EnumValues(this.map);
 
-    Map<T, String> get reverse {
+    Map<T, String?> get reverse {
         if (reverseMap == null) {
-            reverseMap = map.map((k, v) => new MapEntry(v, k));
+            reverseMap = map!.map((k, v) => new MapEntry(v, k));
         }
-        return reverseMap;
+        return reverseMap!;
     }
 }

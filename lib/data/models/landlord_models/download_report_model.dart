@@ -1,20 +1,22 @@
+// ignore_for_file: unnecessary_null_comparison
+
 class DownloadReportModel {
-  FilePath filePath;
-  String message;
+  FilePath? filePath;
+  String? message;
 
   DownloadReportModel({this.filePath, this.message});
 
-  DownloadReportModel.fromJson(Map<String, dynamic> json) {
+  DownloadReportModel.fromJson(Map<String?, dynamic> json) {
     filePath = json['filePath'] != null
         ? new FilePath.fromJson(json['filePath'])
         : null;
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     if (this.filePath != null) {
-      data['filePath'] = this.filePath.toJson();
+      data['filePath'] = this.filePath!.toJson();
     }
     data['message'] = this.message;
     return data;
@@ -22,16 +24,16 @@ class DownloadReportModel {
 }
 
 class FilePath {
-  String result;
-  int id;
+  String? result;
+  int? id;
   dynamic exception;
-  int status;
-  bool isCanceled;
-  bool isCompleted;
-  bool isCompletedSuccessfully;
-  int creationOptions;
+  int? status;
+  bool? isCanceled;
+  bool? isCompleted;
+  bool? isCompletedSuccessfully;
+  int? creationOptions;
   dynamic asyncState;
-  bool isFaulted;
+  bool? isFaulted;
 
   FilePath(
       {this.result,
@@ -45,7 +47,7 @@ class FilePath {
       this.asyncState,
       this.isFaulted});
 
-  FilePath.fromJson(Map<String, dynamic> json) {
+  FilePath.fromJson(Map<String?, dynamic> json) {
     result = json['result'];
     id = json['id'];
     exception = json['exception'];
@@ -58,8 +60,8 @@ class FilePath {
     isFaulted = json['isFaulted'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['result'] = this.result;
     data['id'] = this.id;
     data['exception'] = this.exception;

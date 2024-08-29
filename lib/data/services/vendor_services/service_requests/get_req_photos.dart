@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 
 class VendorGetReqPhotos {
   static Future<dynamic> getPhotos(int caseNo, int roleId) async {
-    final String url = AppConfig().vendorGetServiceRequestImages;
+    final String url = AppConfig().vendorGetServiceRequestImages??"";
     Map data = {
       "CaseNo": caseNo.toString(),
       "RoleId": roleId.toString(),

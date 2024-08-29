@@ -10,12 +10,12 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class FileView extends StatelessWidget {
-  final DocFile file;
-  final Function onPressed;
-  final Function onDelete;
-  final bool canDelete;
+  final DocFile? file;
+  final Function? onPressed;
+  final Function? onDelete;
+  final bool? canDelete;
   const FileView(
-      {Key key,
+      {Key? key,
       this.file,
       this.onPressed,
       this.onDelete,
@@ -25,11 +25,11 @@ class FileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String details = '';
-    if (file.size != null) details += '${file.size}';
-    if (file.size != null && file.expiry != null) details += ', ';
-    if (file.expiry != null)
+    if (file!.size != null) details += '${file!.size}';
+    if (file!.size != null && file!.expiry != null) details += ', ';
+    if (file!.expiry != null)
       details +=
-          '${SessionController().getLanguage() == 1 ? 'Expiry Date:' : 'تاريخ الانتهاء: '}  ${file.expiry}';
+          '${SessionController().getLanguage() == 1 ? 'Expiry Date:' : 'تاريخ الانتهاء: '}  ${file!.expiry}';
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 1.h),
       child: Row(
@@ -49,10 +49,10 @@ class FileView extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    if (!file.loading.value) onPressed();
+                    if (!file!.loading.value) onPressed!();
                   },
                   child: Obx(() {
-                    return file.loading.value
+                    return file!.loading.value
                         ? AnimatedTextKit(
                             isRepeatingAnimation: true,
                             repeatForever: true,
@@ -60,8 +60,8 @@ class FileView extends StatelessWidget {
                             animatedTexts: [
                               ColorizeAnimatedText(
                                   SessionController().getLanguage() == 1
-                                      ? file.name ?? ''
-                                      : file.nameAr ?? "",
+                                      ? file!.name ?? ''
+                                      : file!.nameAr ?? "",
                                   textStyle: AppTextStyle.semiBoldBlue11,
                                   colors: [
                                     AppColors.blueColor,
@@ -73,8 +73,8 @@ class FileView extends StatelessWidget {
                           )
                         : Text(
                             SessionController().getLanguage() == 1
-                                ? file.name ?? ''
-                                : file.nameAr ?? '',
+                                ? file!.name ?? ''
+                                : file!.nameAr ?? '',
                             style: AppTextStyle.semiBoldBlue11,
                           );
                   }),
@@ -90,15 +90,15 @@ class FileView extends StatelessWidget {
             ),
           ),
           Spacer(),
-          if (canDelete)
+          if (canDelete!)
             Obx(() {
-              return file.removing.value
+              return file!.removing.value
                   ? SizedBox(
                       height: 24, width: 24, child: LoadingIndicatorBlue())
-                  : file.errorRemoving
+                  : file!.errorRemoving
                       ? InkWell(
                           onTap: () {
-                            onDelete();
+                            onDelete!();
                           },
                           child: Icon(
                             Icons.refresh,
@@ -106,7 +106,7 @@ class FileView extends StatelessWidget {
                           ))
                       : InkWell(
                           onTap: () {
-                            onDelete();
+                            onDelete!();
                           },
                           child: Image.asset(
                             AppImagesPath.deleteimg,

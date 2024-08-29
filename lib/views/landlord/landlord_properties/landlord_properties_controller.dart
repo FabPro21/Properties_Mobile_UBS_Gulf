@@ -9,7 +9,7 @@ import 'package:fap_properties/views/landlord/landlord_properties/filter/landlor
 import 'package:get/get.dart';
 
 class LandlordPropertiesController extends GetxController {
-  LandlordPropertiesModel propsModel;
+  LandlordPropertiesModel? propsModel;
   RxBool loadingProperties = false.obs;
   RxString errorLoadingProperties = ''.obs;
   // String errorLoadingProperties.value = '';
@@ -27,7 +27,7 @@ class LandlordPropertiesController extends GetxController {
     final response = await LandlordRepository.getProperties();
     if (response is LandlordPropertiesModel) {
       propsModel = response;
-      props = propsModel.serviceRequests.toList();
+      props = propsModel!.serviceRequests!.toList();
     } else
       errorLoadingProperties.value = response;
     loadingProperties.value = false;
@@ -51,7 +51,7 @@ class LandlordPropertiesController extends GetxController {
           loadingProperties.value = false;
         } else {
           propsModel = result;
-          props = propsModel.serviceRequests.toList();
+          props = propsModel!.serviceRequests!.toList();
           update();
           loadingProperties.value = false;
         }
@@ -81,13 +81,13 @@ class LandlordPropertiesController extends GetxController {
       if (response is LandlordPropertiesModel) {
         print('Inside :::::: 11');
         propsModel = response;
-        if (propsModel.totalRecord == 0) {
+        if (propsModel!.totalRecord == 0) {
           print('Inside :::::: 22');
           errorLoadMore.value = AppMetaLabels().noDatafound;
           loadingDataLoadMore.value = false;
         } else {
-          for (int i = 0; i < propsModel.serviceRequests.length; i++) {
-            props.add(propsModel.serviceRequests[i]);
+          for (int i = 0; i < propsModel!.serviceRequests!.length; i++) {
+            props.add(propsModel!.serviceRequests![i]);
           }
           update();
           loadingDataLoadMore.value = false;
@@ -107,13 +107,13 @@ class LandlordPropertiesController extends GetxController {
   searchData(String qry) {
     loadingProperties.value = true;
     List<ServiceRequests> _searchedProps = [];
-    for (int i = 0; i < propsModel.serviceRequests.length; i++) {
-      if (propsModel.serviceRequests[i].propertyName
+    for (int i = 0; i < propsModel!.serviceRequests!.length; i++) {
+      if (propsModel!.serviceRequests![i].propertyName!
               .contains(qry.toLowerCase()) ||
-          propsModel.serviceRequests[i].propertyType
+          propsModel!.serviceRequests![i].propertyType!
               .toLowerCase()
               .contains(qry.toLowerCase())) {
-        _searchedProps.add(propsModel.serviceRequests[i]);
+        _searchedProps.add(propsModel!.serviceRequests![i]);
       }
     }
     props = _searchedProps.toList();
@@ -127,14 +127,14 @@ class LandlordPropertiesController extends GetxController {
 
   Stream<Uint8List> getImage(int index) async* {
     var resp = await LandlordRepository.getImages(
-        propsModel.serviceRequests[index].buildingRefNo);
+        propsModel!.serviceRequests![index].buildingRefNo);
     if (resp is Uint8List) {
       yield resp;
     } else {}
   }
 
   RxBool isFilter = false.obs;
-  PFilterData filterData;
+  PFilterData? filterData;
   applyFilter() async {
     filterData =
         await Get.to(() => LandLordFilterProperties(clear: !isFilter.value));
@@ -154,12 +154,12 @@ class LandlordPropertiesController extends GetxController {
     errorLoadingProperties.value = '';
     loadingProperties.value = true;
     var response =
-        await LandlordRepository.getPropertyWithFilter(filterData, pageNo);
+        await LandlordRepository.getPropertyWithFilter(filterData!, pageNo);
     print('Result  ;;;;  $response');
     loadingProperties.value = false;
     if (response is LandlordPropertiesModel) {
       if (response.status != 'NotFound') {
-        props = response.serviceRequests.toList();
+        props = response.serviceRequests!.toList();
       } else {
         errorLoadingProperties.value = AppMetaLabels().notFound;
       }
@@ -188,7 +188,7 @@ class LandlordPropertiesController extends GetxController {
       errorLoadingProperties.value = '';
       loadingProperties.value = true;
       var response =
-          await LandlordRepository.getPropertyWithFilter(filterData, pageNoP);
+          await LandlordRepository.getPropertyWithFilter(filterData!, pageNoP);
       loadingProperties.value = false;
 
       if (response is LandlordPropertiesModel) {
@@ -199,7 +199,7 @@ class LandlordPropertiesController extends GetxController {
           errorLoadingProperties.value = AppMetaLabels().noDatafound;
           loadingProperties.value = false;
         } else {
-          props = propsModel.serviceRequests.toList();
+          props = propsModel!.serviceRequests!.toList();
           update();
           loadingProperties.value = false;
         }
@@ -224,17 +224,17 @@ class LandlordPropertiesController extends GetxController {
       errorLoadMoreFilter.value = '';
       loadingDataLoadMore.value = true;
       var response =
-          await LandlordRepository.getPropertyWithFilter(filterData, pageNoP);
+          await LandlordRepository.getPropertyWithFilter(filterData!, pageNoP);
       loadingDataLoadMore.value = false;
 
       if (response is LandlordPropertiesModel) {
         propsModel = response;
-        if (propsModel.status == AppMetaLabels().notFound) {
+        if (propsModel!.status == AppMetaLabels().notFound) {
           errorLoadMoreFilter.value = AppMetaLabels().noDatafound;
           loadingDataLoadMore.value = false;
         } else {
-          for (int i = 0; i < propsModel.serviceRequests.length; i++) {
-            props.add(propsModel.serviceRequests[i]);
+          for (int i = 0; i < propsModel!.serviceRequests!.length; i++) {
+            props.add(propsModel!.serviceRequests![i]);
           }
           update();
           loadingDataLoadMore.value = false;

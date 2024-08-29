@@ -9,7 +9,7 @@ class VendorGetContactPersonsSvc {
   static Future<dynamic> getData() async {
     var completeUrl = AppConfig().getContactPersons;
     var data;
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is Response) {
       try {
         return vendorGetContactPersonsModelFromJson(response.body);

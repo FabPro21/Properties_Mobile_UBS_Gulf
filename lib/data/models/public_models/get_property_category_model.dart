@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetPropertyCategoryModel getPropertyCategoryModelFromJson(String str) =>
-    GetPropertyCategoryModel.fromJson(json.decode(str));
+GetPropertyCategoryModel getPropertyCategoryModelFromJson(String? str) =>
+    GetPropertyCategoryModel.fromJson(json.decode(str!));
 
-String getPropertyCategoryModelToJson(GetPropertyCategoryModel data) =>
+String? getPropertyCategoryModelToJson(GetPropertyCategoryModel data) =>
     json.encode(data.toJson());
 
 class GetPropertyCategoryModel {
@@ -18,12 +18,12 @@ class GetPropertyCategoryModel {
     this.propertyCategory,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<PropertyCategory> propertyCategory;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<PropertyCategory>? propertyCategory;
 
-  factory GetPropertyCategoryModel.fromJson(Map<String, dynamic> json) =>
+  factory GetPropertyCategoryModel.fromJson(Map<String?, dynamic> json) =>
       GetPropertyCategoryModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,12 +32,12 @@ class GetPropertyCategoryModel {
             json["propertyCategory"].map((x) => PropertyCategory.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
         "propertyCategory":
-            List<dynamic>.from(propertyCategory.map((x) => x.toJson())),
+            List<dynamic>.from(propertyCategory!.map((x) => x.toJson())),
       };
 }
 
@@ -48,18 +48,18 @@ class PropertyCategory {
     this.propertyCategoryAr,
   });
 
-  int propertyCategoryId;
-  String propertyCategory;
-  String propertyCategoryAr;
+  int? propertyCategoryId;
+  String? propertyCategory;
+  String? propertyCategoryAr;
 
-  factory PropertyCategory.fromJson(Map<String, dynamic> json) =>
+  factory PropertyCategory.fromJson(Map<String?, dynamic> json) =>
       PropertyCategory(
         propertyCategoryId: json["propertyCategoryID"],
         propertyCategory: json["propertyCategory"],
         propertyCategoryAr: json["propertyCategoryAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "propertyCategoryID": propertyCategoryId,
         "propertyCategory": propertyCategory,
         "propertyCategoryAR": propertyCategoryAr,

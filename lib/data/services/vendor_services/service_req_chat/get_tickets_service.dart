@@ -9,7 +9,7 @@ class VendorGetTicketsService {
 
     Map data = {"CaseId": reqNo.toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       GetTicketRepliesModel ticketReplies =
           getTicketRepliesModelFromJson(response.body);

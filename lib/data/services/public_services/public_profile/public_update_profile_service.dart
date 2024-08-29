@@ -24,7 +24,7 @@ class PublicUpdateProfileService {
       "address": ""
     };
 
-    var resp = await BaseClientClass.post(url, data,
+    var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       try {
@@ -47,7 +47,7 @@ class PublicUpdateProfileService {
     print('Data :::: $data');
     print('Token :::: ${SessionController().getLoginToken()}');
 
-    var resp = await BaseClientClass.post(url, data,
+    var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getLoginToken());
     if (resp is http.Response) {
       try {

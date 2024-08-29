@@ -4,40 +4,40 @@
 
 import 'dart:convert';
 
-LandlordPropertiesModel landlordPropertiesModelFromJson(String str) =>
-    LandlordPropertiesModel.fromJson(json.decode(str));
+LandlordPropertiesModel landlordPropertiesModelFromJson(String? str) =>
+    LandlordPropertiesModel.fromJson(json.decode(str!));
 
-String landlordPropertiesModelToJson(LandlordPropertiesModel data) =>
+String? landlordPropertiesModelToJson(LandlordPropertiesModel data) =>
     json.encode(data.toJson());
 
 class LandlordPropertiesModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   LandlordPropertiesModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  LandlordPropertiesModel.fromJson(Map<String, dynamic> json) {
+  LandlordPropertiesModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['status'] = this.status;
     data['totalRecord'] = this.totalRecord;
     if (this.serviceRequests != null) {
       data['serviceRequests'] =
-          this.serviceRequests.map((v) => v.toJson()).toList();
+          this.serviceRequests!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -45,27 +45,27 @@ class LandlordPropertiesModel {
 }
 
 class ServiceRequests {
-  int propertyID;
+  int? propertyID;
   dynamic buildingRefNo;
-  String buildingNumber;
-  String propertyName;
-  String propertyNameAR;
-  String plotNumber;
-  String roadName;
-  String roadNameAR;
-  String sector;
-  String sectorAR;
-  String propertyType;
-  String propertyTypeAR;
-  String propertyCategory;
-  String propertyCategoryAR;
+  String? buildingNumber;
+  String? propertyName;
+  String? propertyNameAR;
+  String? plotNumber;
+  String? roadName;
+  String? roadNameAR;
+  String? sector;
+  String? sectorAR;
+  String? propertyType;
+  String? propertyTypeAR;
+  String? propertyCategory;
+  String? propertyCategoryAR;
  dynamic emirateName;
  dynamic emirateNameAR;
  dynamic noofResidentialFlat;
  dynamic noofCommercialFlat;
  dynamic noofStores;
  dynamic noofParkinglot;
-  int totalRecord;
+  int? totalRecord;
 
   ServiceRequests(
       {this.propertyID,
@@ -90,7 +90,7 @@ class ServiceRequests {
       this.noofParkinglot,
       this.totalRecord});
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     propertyID = json['propertyID'];
     buildingRefNo = json['buildingRefNo'];
     buildingNumber = json['buildingNumber'];
@@ -114,8 +114,8 @@ class ServiceRequests {
     totalRecord = json['totalRecord'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['propertyID'] = this.propertyID;
     data['buildingRefNo'] = this.buildingRefNo;
     data['buildingNumber'] = this.buildingNumber;

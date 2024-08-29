@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCaseCategory extends StatefulWidget {
-  TenantCaseCategory({Key key}) : super(key: key);
+  TenantCaseCategory({Key? key}) : super(key: key);
 
   @override
   State<TenantCaseCategory> createState() => _TenantCaseCategoryState();
@@ -108,16 +108,17 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                 size: 2.0.h,
                                 color: Colors.grey,
                               ),
-                              contentPadding: EdgeInsets.only(left: 5.0.w,right: 5.0.w),
+                              contentPadding:
+                                  EdgeInsets.only(left: 5.0.w, right: 5.0.w),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(0.5.h),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 0.1.h),
+                                borderSide: BorderSide(
+                                    color: Colors.blue, width: 0.1.h),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(0.5.h),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 0.1.h),
+                                borderSide: BorderSide(
+                                    color: Colors.blue, width: 0.1.h),
                               ),
                               hintText: AppMetaLabels().searchCategory,
                               hintStyle: AppTextStyle.normalBlack10
@@ -141,7 +142,8 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                       )
                                     : ListView.builder(
                                         shrinkWrap: true,
-                                        itemCount: caseCategoryController.length,
+                                        itemCount:
+                                            caseCategoryController.length,
                                         physics: NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
@@ -150,7 +152,8 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                           } else if ((caseCategoryController
                                                           .caseCategory
                                                           .value
-                                                          .caseCategories[index]
+                                                          .caseCategories![
+                                                              index]
                                                           .name ??
                                                       "")
                                                   .toLowerCase()
@@ -159,7 +162,8 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                               (caseCategoryController
                                                           .caseCategory
                                                           .value
-                                                          .caseCategories[index]
+                                                          .caseCategories![
+                                                              index]
                                                           .name ??
                                                       "")
                                                   .toLowerCase()
@@ -188,21 +192,20 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
     return InkWell(
       onTap: () {
         SessionController().setCaseCategoryId(
-          caseCategoryController.caseCategory.value.caseCategories[index].id
-                  .toString() ??
-              "",
+          caseCategoryController.caseCategory.value.caseCategories![index].id
+              .toString(),
         );
         Get.back(result: [
-         SessionController().getLanguage() == 1
-                        ?  caseCategoryController
-                      .caseCategory.value.caseCategories[index].name ??
+          SessionController().getLanguage() == 1
+              ? caseCategoryController
+                      .caseCategory.value.caseCategories![index].name ??
                   ""
-                        :  caseCategoryController
-                      .caseCategory.value.caseCategories[index].nameAR ??
+              : caseCategoryController
+                      .caseCategory.value.caseCategories![index].nameAR ??
                   "",
-          caseCategoryController.caseCategory.value.caseCategories[index].id
+          caseCategoryController.caseCategory.value.caseCategories![index].id
               .toString(),
-          caseCategoryController.caseCategory.value.caseCategories[index].type
+          caseCategoryController.caseCategory.value.caseCategories![index].type
         ]);
       },
       child: Column(
@@ -212,13 +215,12 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
             padding: EdgeInsets.all(2.0.h),
             child: Text(
               SessionController().getLanguage() == 1
-                        ?  caseCategoryController
-                      .caseCategory.value.caseCategories[index].name ??
-                  ""
-                        :  caseCategoryController
-                      .caseCategory.value.caseCategories[index].nameAR ??
-                  "",
-             
+                  ? caseCategoryController
+                          .caseCategory.value.caseCategories![index].name ??
+                      ""
+                  : caseCategoryController
+                          .caseCategory.value.caseCategories![index].nameAR ??
+                      "",
               style: AppTextStyle.normalGrey10,
             ),
           ),

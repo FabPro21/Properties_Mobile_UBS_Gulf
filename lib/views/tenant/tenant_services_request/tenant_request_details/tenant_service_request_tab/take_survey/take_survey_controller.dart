@@ -6,12 +6,17 @@ import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:get/get.dart';
 
 class TakeSurveyController extends GetxController {
-  TakeSurveyController({this.catId, this.caseNo});
-  final int catId;
-  final int caseNo;
-  SurveyQuestions questions;
+  final int? catId;
+  final int? caseNo;
+
+    TakeSurveyController({
+    this.catId,
+    this.caseNo,
+  });
+
+  SurveyQuestions? questions;
   RxBool loadingQuestions = true.obs;
-  String errorLoadingQuestions;
+  String? errorLoadingQuestions;
   RxInt currentQuestion = 0.obs;
   RxBool savingAnswer = false.obs;
   RxDouble progress = 0.0.obs;
@@ -25,17 +30,17 @@ class TakeSurveyController extends GetxController {
   Future<bool> getSurveyQuestions() async {
     loadingQuestions.value = true;
     errorLoadingQuestions = '';
-    var resp = await TenantRepository.getSurveyQuestions(caseNo);
+    var resp = await TenantRepository.getSurveyQuestions(caseNo!);
     loadingQuestions.value = false;
     if (resp is SurveyQuestions) {
-      if (resp.faqQuestion.isNotEmpty) {
+      if (resp.faqQuestion!.isNotEmpty) {
         questions = resp;
         print('::::::::::::::::::::::::::::::::::::::::::');
-        for (int i = 0; i < resp.faqQuestion.length; i++) {
-          print(resp.faqQuestion[i].title);
+        for (int i = 0; i < resp.faqQuestion!.length; i++) {
+          print(resp.faqQuestion![i].title);
         }
-        getSurveyQuestionAnswers(questions.faqQuestion[0].questionId);
-        progress.value = 1 / questions.faqQuestion.length;
+        getSurveyQuestionAnswers(questions!.faqQuestion![0].questionId ?? 0);
+        progress.value = 1 / questions!.faqQuestion!.length;
         return true;
       } else {
         errorLoadingQuestions = AppMetaLabels().noSurveyFound;
@@ -46,51 +51,55 @@ class TakeSurveyController extends GetxController {
   }
 
   void getSurveyQuestionAnswers(int qId) async {
-    questions.faqQuestion[currentQuestion.value.toInt()].loadingAnswers.value =
+    questions!.faqQuestion![currentQuestion.value.toInt()].loadingAnswers.value =
         true;
-    questions.faqQuestion[currentQuestion.value.toInt()].errorLoadingAnswers =
+    questions!.faqQuestion![currentQuestion.value.toInt()].errorLoadingAnswers =
         '';
     var resp = await TenantRepository.getSurveyQuestionAnswers(qId);
     if (resp is SurveyQuestionAnswers) {
-      if (resp.faqOptions.isEmpty) {
-        questions.faqQuestion[currentQuestion.value.toInt()]
+      if (resp.faqOptions!.isEmpty) {
+        questions!.faqQuestion![currentQuestion.value.toInt()]
             .errorLoadingAnswers = AppMetaLabels().noOptionsfound;
       } else
-        questions.faqQuestion[currentQuestion.value.toInt()].answers = resp;
+        questions!.faqQuestion![currentQuestion.value.toInt()].answers = resp;
     }
-    questions.faqQuestion[currentQuestion.value.toInt()].loadingAnswers.value =
+    questions!.faqQuestion![currentQuestion.value.toInt()].loadingAnswers.value =
         false;
   }
 
   Future<bool> nextQuestion() async {
     if (await saveAnswer()) {
-      if (currentQuestion.value < questions.faqQuestion.length - 1) {
+      if (currentQuestion.value < questions!.faqQuestion!.length - 1) {
         currentQuestion.value = currentQuestion.value + 1;
         progress.value =
-            (currentQuestion.value + 1) / questions.faqQuestion.length;
-        if (questions.faqQuestion[currentQuestion.value.toInt()].answers ==
+            (currentQuestion.value + 1) / questions!.faqQuestion!.length;
+        if (questions!.faqQuestion![currentQuestion.value.toInt()].answers ==
             null)
-          getSurveyQuestionAnswers(
-              questions.faqQuestion[currentQuestion.value.toInt()].questionId);
+          getSurveyQuestionAnswers(questions!
+                  .faqQuestion![currentQuestion.value.toInt()].questionId ??
+              0);
         return true;
       } else
         return false;
     }
-    return null;
+    return false;
   }
 
   Future<bool> saveAnswer() async {
     savingAnswer.value = true;
     var resp = await TenantRepository.saveSurveyAnswer(
-        questions
-            .faqQuestion[currentQuestion.value.toInt()]
-            .answers
-            .faqOptions[questions.faqQuestion[currentQuestion.value.toInt()]
-                .selectedAnswer.value]
-            .optionId,
-        questions.faqQuestion[currentQuestion.value.toInt()].answerId,
+        questions!
+                .faqQuestion![currentQuestion.value.toInt()]
+                .answers!
+                .faqOptions![questions!
+                    .faqQuestion![currentQuestion.value.toInt()]
+                    .selectedAnswer
+                    .value]
+                .optionId ??
+            0,
+        questions!.faqQuestion![currentQuestion.value.toInt()].answerId ?? 0,
         'desc',
-        currentQuestion.value == questions.faqQuestion.length - 1 ? 1 : 0);
+        currentQuestion.value == questions!.faqQuestion!.length - 1 ? 1 : 0);
     savingAnswer.value = false;
     if (resp == 'ok') {
       return true;

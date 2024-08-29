@@ -4,21 +4,21 @@
 
 import 'dart:convert';
 
-VacatingReasons vacatingReasonsFromJson(String str) =>
-    VacatingReasons.fromJson(json.decode(str));
+VacatingReasons vacatingReasonsFromJson(String? str) =>
+    VacatingReasons.fromJson(json.decode(str!));
 
-String vacatingReasonsToJson(VacatingReasons data) =>
+String? vacatingReasonsToJson(VacatingReasons data) =>
     json.encode(data.toJson());
 
 class VacatingReasons {
   VacatingReasons({this.status, this.record, this.message, this.note});
 
-  String status;
-  List<Record> record;
-  String message;
-  String note;
+  String? status;
+  List<Record>? record;
+  String? message;
+  String? note;
 
-  factory VacatingReasons.fromJson(Map<String, dynamic> json) =>
+  factory VacatingReasons.fromJson(Map<String?, dynamic> json) =>
       VacatingReasons(
           status: json["status"],
           record:
@@ -26,9 +26,9 @@ class VacatingReasons {
           message: json["message"],
           note: json["note"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "record": List<dynamic>.from(record.map((x) => x.toJson())),
+        "record": List<dynamic>.from(record!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -42,13 +42,13 @@ class Record {
     this.descriptionAr,
   });
 
-  int vacatingId;
-  String title;
-  String titleAr;
-  String description;
-  String descriptionAr;
+  int? vacatingId;
+  String? title;
+  String? titleAr;
+  String? description;
+  String? descriptionAr;
 
-  factory Record.fromJson(Map<String, dynamic> json) => Record(
+  factory Record.fromJson(Map<String?, dynamic> json) => Record(
         vacatingId: json["vacatingId"],
         title: json["title"],
         titleAr: json["titleAr"],
@@ -56,7 +56,7 @@ class Record {
         descriptionAr: json["descriptionAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "vacatingId": vacatingId,
         "title": title,
         "titleAr": titleAr,

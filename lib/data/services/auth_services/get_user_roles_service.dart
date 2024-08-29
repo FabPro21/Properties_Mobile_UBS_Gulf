@@ -10,7 +10,7 @@ import '../../helpers/session_controller.dart';
 
 class GetUserRolesService {
   static Future<dynamic> getData() async {
-    final String url = AppConfig().getUserRoles;
+    final String url = AppConfig().getUserRoles??"";
     var response = await BaseClientClass.postwithheader(url, {},
         token: SessionController().getToken());
     if (response is http.Response) {

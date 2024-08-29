@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 class GetRenewalActions {
   static Future<dynamic> getData() async {
     var response =
-        await BaseClientClass.post(AppConfig().contractRenewalActions, {});
+        await BaseClientClass.post(AppConfig().contractRenewalActions??"", {});
     if (response is http.Response) {
       log(response.body);
       try {
@@ -32,7 +32,7 @@ class GetRenewalActions {
 class GetNewActions {
   static Future<dynamic> getData() async {
     var response =
-        await BaseClientClass.post(AppConfig().contractNewActions, {});
+        await BaseClientClass.post(AppConfig().contractNewActions??"", {});
     if (response is http.Response) {
       log(response.body);
       try {

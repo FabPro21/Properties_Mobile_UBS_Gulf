@@ -1,9 +1,10 @@
-// ignore_for_file: implementation_imports
+// ignore_for_file: implementation_imports, unnecessary_null_comparison
 
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/tenant/contract_flows/contract_flow.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_filter/filter_property/filter_property_controller.dart';
@@ -21,12 +22,12 @@ import 'package:fap_properties/views/tenant/tenant_notifications/tenant_notifica
 import 'package:fap_properties/views/tenant/tenant_profile/tenant_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../data/models/chart_data.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/due_action_List_button.dart';
@@ -42,11 +43,11 @@ import '../tenant_services_request/tenant_request_details/tenant_service_request
 import 'dart:ui' as ui;
 
 class TenantDashboard extends StatefulWidget {
-  final BuildContext parentContext;
-  final Function(int) managePayments;
-  final Function(int) manageContracts;
+  final BuildContext? parentContext;
+  final Function(int)? managePayments;
+  final Function(int)? manageContracts;
   const TenantDashboard(
-      {Key key, this.managePayments, this.manageContracts, this.parentContext})
+      {Key? key, this.managePayments, this.manageContracts, this.parentContext})
       : super(key: key);
 
   @override
@@ -58,8 +59,8 @@ class _TenantDashboardState extends State<TenantDashboard>
   final TenantDashboardGetDataController tDGDController = Get.find();
   final GetTenantNotificationsController getTNController = Get.find();
   final contractDownloadController = Get.put(ContractDownloadController());
-  AnimationController animateController;
-  Animation<double> animate;
+  AnimationController? animateController;
+  Animation<double>? animate;
   String status = "Unread";
   List<ChartData> chartData = [];
 
@@ -95,10 +96,10 @@ class _TenantDashboardState extends State<TenantDashboard>
       duration: Duration(seconds: 5),
     );
     this.animate = Tween(begin: 0.8, end: 1.0).animate(CurvedAnimation(
-      parent: animateController,
+      parent: animateController!,
       curve: Curves.easeIn,
     ));
-    animateController.repeat(reverse: true);
+    animateController!.repeat(reverse: true);
     // tDGDController.getDashboardData();
     getDBData();
     Get.put(TenantContracrsFilterController());
@@ -112,7 +113,7 @@ class _TenantDashboardState extends State<TenantDashboard>
 
   @override
   void dispose() {
-    animateController.dispose();
+    animateController!.dispose();
     super.dispose();
   }
 
@@ -131,7 +132,8 @@ class _TenantDashboardState extends State<TenantDashboard>
               if (!tDGDController.notificationsDialogShown) {
                 if (tDGDController.notificationdata.value.notifications !=
                         null &&
-                    tDGDController.notificationdata.value.notifications.length >
+                    tDGDController
+                            .notificationdata.value.notifications!.length >
                         0) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showNotificationPopup();
@@ -171,7 +173,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                               await Get.to(() => TenantNotifications());
                               tDGDController.getDashboardData();
                             },
-                            child: Badge(
+                            child: badge.Badge(
                               showBadge: tDGDController.dashboardData.value
                                               .unreadNotifications ==
                                           null ||
@@ -180,11 +182,19 @@ class _TenantDashboardState extends State<TenantDashboard>
                                           0
                                   ? false
                                   : true,
-                              padding: EdgeInsets.all(0.8.h),
-                              position:
-                                  BadgePosition.topEnd(top: -1.0.h, end: 0.0.h),
-                              animationDuration: Duration(milliseconds: 300),
-                              animationType: BadgeAnimationType.slide,
+                              badgeStyle: badge.BadgeStyle(
+                                padding: EdgeInsets.all(0.8.h),
+                              ),
+                              position: badge.BadgePosition.topEnd(
+                                  top: -1.0.h, end: 0.0.h),
+                              badgeAnimation: badge.BadgeAnimation.rotation(
+                                animationDuration: Duration(seconds: 300),
+                                colorChangeAnimationDuration:
+                                    Duration(seconds: 1),
+                                loopAnimation: false,
+                                curve: Curves.fastOutSlowIn,
+                                colorChangeAnimationCurve: Curves.easeInCubic,
+                              ),
                               badgeContent: Text(
                                 '${tDGDController.lengthNotiification.value}',
                                 style: TextStyle(
@@ -306,8 +316,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                               children: [
                                                 Text(
                                                     AppMetaLabels().aed +
-                                                            " ${tDGDController.paymentCurrency}" ??
-                                                        "",
+                                                        " ${tDGDController.paymentCurrency}",
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: AppTextStyle
@@ -324,8 +333,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                       child: Row(
                                                         children: [
                                                           Text(
-                                                            "${tDGDController.dashboardData.value.dashboard?.contractExpiringIn30Days.toString() ?? ""} " ??
-                                                                "",
+                                                            "${tDGDController.dashboardData.value.dashboard?.contractExpiringIn30Days.toString() ?? ""} ",
                                                             style: TextStyle(
                                                               color:
                                                                   Colors.black,
@@ -355,8 +363,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                         child: Row(
                                                           children: [
                                                             Text(
-                                                              "${tDGDController.dashboardData.value.dashboard?.checkDueIn30Days} " ??
-                                                                  "",
+                                                              "${tDGDController.dashboardData.value.dashboard?.checkDueIn30Days} ",
                                                               style: TextStyle(
                                                                 color: Colors
                                                                     .black,
@@ -467,11 +474,12 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                           Spacer(),
                                                           Text(
                                                               tDGDController
-                                                                  .dashboardData
-                                                                  .value
-                                                                  .dashboard
-                                                                  ?.activeContracts
-                                                                  .toString(),
+                                                                      .dashboardData
+                                                                      .value
+                                                                      .dashboard
+                                                                      ?.activeContracts
+                                                                      .toString() ??
+                                                                  "",
                                                               maxLines: 1,
                                                               overflow:
                                                                   TextOverflow
@@ -524,9 +532,8 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                           FittedBox(
                                                             child: Text(
                                                               AppMetaLabels()
-                                                                          .aed +
-                                                                      " ${tDGDController.toBePaidCurrency}" ??
-                                                                  "",
+                                                                      .aed +
+                                                                  " ${tDGDController.toBePaidCurrency}",
                                                               maxLines: 1,
                                                               overflow:
                                                                   TextOverflow
@@ -1081,7 +1088,9 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         )
                                       : ListView.builder(
                                           itemCount: tDGDController
-                                              .contractsExpiring.record.length,
+                                              .contractsExpiring!
+                                              .record!
+                                              .length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             return InkWell(
@@ -1090,14 +1099,14 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                 SessionController()
                                                     .setContractID(
                                                         tDGDController
-                                                            .contractsExpiring
-                                                            .record[index]
+                                                            .contractsExpiring!
+                                                            .record![index]
                                                             .contractId);
                                                 SessionController()
                                                     .setContractNo(
                                                         tDGDController
-                                                            .contractsExpiring
-                                                            .record[index]
+                                                            .contractsExpiring!
+                                                            .record![index]
                                                             .contractNo);
 
                                                 print(
@@ -1139,9 +1148,9 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                     child: Text(
                                                                       SessionController().getLanguage() ==
                                                                               1
-                                                                          ? tDGDController.contractsExpiring.record[index].propertyName ??
+                                                                          ? tDGDController.contractsExpiring!.record![index].propertyName ??
                                                                               ""
-                                                                          : tDGDController.contractsExpiring.record[index].propertyNameAr ??
+                                                                          : tDGDController.contractsExpiring!.record![index].propertyNameAr ??
                                                                               "-",
                                                                       style: AppTextStyle
                                                                           .semiBoldBlack12,
@@ -1152,7 +1161,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                   ),
                                                                   Spacer(),
                                                                   Text(
-                                                                    '${tDGDController.contractsExpiring.record[index].contractNo}',
+                                                                    '${tDGDController.contractsExpiring!.record![index].contractNo}',
                                                                     style: AppTextStyle
                                                                         .semiBoldBlack12,
                                                                     overflow:
@@ -1171,10 +1180,10 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                 children: [
                                                                   Text(
                                                                     tDGDController
-                                                                        .contractsExpiring
-                                                                        .record[
-                                                                            index]
-                                                                        .fromdate,
+                                                                            .contractsExpiring!
+                                                                            .record![index]
+                                                                            .fromdate ??
+                                                                        "",
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                   ),
@@ -1192,10 +1201,10 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                   ),
                                                                   Text(
                                                                     tDGDController
-                                                                        .contractsExpiring
-                                                                        .record[
-                                                                            index]
-                                                                        .todate,
+                                                                            .contractsExpiring!
+                                                                            .record![index]
+                                                                            .todate ??
+                                                                        "",
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                   ),
@@ -1204,15 +1213,15 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                     text: SessionController().getLanguage() ==
                                                                             1
                                                                         ? tDGDController
-                                                                            .contractsExpiring
-                                                                            .record[
+                                                                            .contractsExpiring!
+                                                                            .record![
                                                                                 index]
                                                                             .status
-                                                                        : tDGDController.contractsExpiring.record[index].statusAr ??
+                                                                        : tDGDController.contractsExpiring!.record![index].statusAr ??
                                                                             "-",
                                                                     valueToCompare: tDGDController
-                                                                            .contractsExpiring
-                                                                            .record[index]
+                                                                            .contractsExpiring!
+                                                                            .record![index]
                                                                             .statusAr ??
                                                                         "-",
                                                                   )
@@ -1226,8 +1235,8 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                   ),
                                                   if (index <
                                                       tDGDController
-                                                              .contractsExpiring
-                                                              .record
+                                                              .contractsExpiring!
+                                                              .record!
                                                               .length -
                                                           1)
                                                     Padding(
@@ -1249,7 +1258,7 @@ class _TenantDashboardState extends State<TenantDashboard>
             ),
           );
         },
-        context: widget.parentContext);
+        context: widget.parentContext!);
   }
 
   void _showDuePaymentsSheet() {
@@ -1260,7 +1269,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       enableDrag: false,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      context: widget.parentContext,
+      context: widget.parentContext!,
       builder: (BuildContext context) {
         return WillPopScope(
           onWillPop: () async => false,
@@ -1338,19 +1347,19 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         children: [
                                           bottomSheetListItem(
                                               AppMetaLabels().contractNo,
-                                              '${tDGDController.bottomSheetData.value.data[index].contractId}'),
+                                              '${tDGDController.bottomSheetData.value.data![index].contractId}'),
                                           SizedBox(
                                             height: 0.5.h,
                                           ),
                                           bottomSheetListItem(
                                               AppMetaLabels().chequeNo,
-                                              '${tDGDController.bottomSheetData.value.data[index].transactionNo}'),
+                                              '${tDGDController.bottomSheetData.value.data![index].transactionNo}'),
                                           SizedBox(
                                             height: 0.5.h,
                                           ),
                                           bottomSheetListItem(
                                               AppMetaLabels().chequeDate,
-                                              '${tDGDController.bottomSheetData.value.data[index].transactionDate}'),
+                                              '${tDGDController.bottomSheetData.value.data![index].transactionDate}'),
                                           SizedBox(
                                             height: 0.5.h,
                                           ),
@@ -1363,7 +1372,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                               ),
                                               Spacer(),
                                               Text(
-                                                  '${AppMetaLabels().aed} ${tDGDController.bottomSheetData.value.data[index].amount}',
+                                                  '${AppMetaLabels().aed} ${tDGDController.bottomSheetData.value.data![index].amount}',
                                                   style: AppTextStyle
                                                       .semiBoldGrey12)
                                             ],
@@ -1404,9 +1413,9 @@ class _TenantDashboardState extends State<TenantDashboard>
     // 123*
     tDGDController.notificationsDialogShown = true;
     if (tDGDController.notificationdata.value.notifications != null &&
-        tDGDController.notificationdata.value.notifications.isNotEmpty) {
+        tDGDController.notificationdata.value.notifications!.isNotEmpty) {
       SessionController().setNotificationId(tDGDController
-          .notificationdata.value.notifications[0].notificationId
+          .notificationdata.value.notifications![0].notificationId
           .toString());
       getTNController.readNotifications(0, '');
       showDialog(
@@ -1427,7 +1436,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                       child: Obx(() {
                         return Swiper(
                             itemCount: tDGDController
-                                .notificationdata.value.notifications.length,
+                                .notificationdata.value.notifications!.length,
                             layout: SwiperLayout.DEFAULT,
                             viewportFraction: 0.99,
                             scale: 0.9,
@@ -1446,7 +1455,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                             onIndexChanged: (index) {
                               SessionController().setNotificationId(
                                   tDGDController.notificationdata.value
-                                      .notifications[index].notificationId
+                                      .notifications![index].notificationId
                                       .toString());
                               getTNController.readNotifications(index, '');
                             },
@@ -1532,14 +1541,14 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                     ? tDGDController
                                                             .notificationdata
                                                             .value
-                                                            .notifications[
+                                                            .notifications![
                                                                 index]
                                                             .title ??
                                                         ""
                                                     : tDGDController
                                                             .notificationdata
                                                             .value
-                                                            .notifications[
+                                                            .notifications![
                                                                 index]
                                                             .titleAr ??
                                                         // .titleAR ??
@@ -1565,29 +1574,39 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                       right: 4.5.w,
                                                       top: 0.0.h),
                                                   child: Html(
-                                                    customTextAlign: (_) =>
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? TextAlign.left
-                                                            : TextAlign.right,
+                                                    style: {
+                                                      'html': Style(
+                                                        textAlign:
+                                                            SessionController()
+                                                                        .getLanguage() ==
+                                                                    1
+                                                                ? TextAlign.left
+                                                                : TextAlign
+                                                                    .right,
+                                                        color: Colors.black,
+                                                        fontFamily: AppFonts
+                                                            .graphikRegular,
+                                                        fontSize:
+                                                            FontSize(10.0),
+                                                      ),
+                                                    },
                                                     data: SessionController()
                                                                 .getLanguage() ==
                                                             1
                                                         ? tDGDController
                                                                 .notificationdata
                                                                 .value
-                                                                .notifications[
+                                                                .notifications![
                                                                     index]
                                                                 .description ??
                                                             ""
                                                         : tDGDController
                                                                 .notificationdata
                                                                 .value
-                                                                .notifications[
+                                                                .notifications![
                                                                     index]
                                                                 .descriptionAr ??
-                                                            "hello",
+                                                            "-",
                                                   ),
                                                 ),
                                               ),
@@ -1605,11 +1624,11 @@ class _TenantDashboardState extends State<TenantDashboard>
 
   Widget showActions(int index) {
     int stageId =
-        tDGDController.notificationdata.value.notifications[index].stageId;
+        tDGDController.notificationdata.value.notifications![index].stageId!;
     switch (stageId) {
       case 1:
         return expiringContractActions(index);
-        break;
+
       default:
         return renewalActions(index);
     }
@@ -1617,7 +1636,8 @@ class _TenantDashboardState extends State<TenantDashboard>
 
   Widget expiringContractActions(int index) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      if (tDGDController.notificationdata.value.notifications[index].showExtend)
+      if (tDGDController
+          .notificationdata.value.notifications![index].showExtend!)
         Expanded(
           child: Padding(
               padding: EdgeInsets.all(0.5.h),
@@ -1626,11 +1646,11 @@ class _TenantDashboardState extends State<TenantDashboard>
                 onPressed: () {
                   Get.off(() => ContractExtend(
                         contractNo: tDGDController.notificationdata.value
-                            .notifications[index].contractno,
+                            .notifications![index].contractno,
                         contractId: tDGDController.notificationdata.value
-                            .notifications[index].recordId,
+                            .notifications![index].recordId,
                         dueActionId: tDGDController.notificationdata.value
-                            .notifications[index].dueActionid,
+                            .notifications![index].dueActionid,
                       ));
                 },
               )),
@@ -1651,9 +1671,9 @@ class _TenantDashboardState extends State<TenantDashboard>
               onPressed: () {
                 Get.to(() => ContractRenewel(
                       contractNo: tDGDController.notificationdata.value
-                          .notifications[index].contractno,
-                      contractId: tDGDController
-                          .notificationdata.value.notifications[index].recordId,
+                          .notifications![index].contractno,
+                      contractId: tDGDController.notificationdata.value
+                          .notifications![index].recordId,
                     ));
               },
               child: Text(AppMetaLabels().renew,
@@ -1668,9 +1688,9 @@ class _TenantDashboardState extends State<TenantDashboard>
               onPressed: () {
                 Get.to(() => ContractTerminate(
                       contractNo: tDGDController.notificationdata.value
-                          .notifications[index].contractno,
-                      contractId: tDGDController
-                          .notificationdata.value.notifications[index].recordId,
+                          .notifications![index].contractno,
+                      contractId: tDGDController.notificationdata.value
+                          .notifications![index].recordId,
                     ));
               },
             )),
@@ -1679,16 +1699,16 @@ class _TenantDashboardState extends State<TenantDashboard>
   }
 
   Widget renewalActions(int index) {
-    if (tDGDController.notificationdata.value.notifications[index].stageId ==
+    if (tDGDController.notificationdata.value.notifications![index].stageId ==
             null ||
-        tDGDController.notificationdata.value.notifications[index].stageId <
+        tDGDController.notificationdata.value.notifications![index].stageId! <
             2 ||
-        tDGDController.notificationdata.value.notifications[index].stageId > 9)
-      return SizedBox();
+        tDGDController.notificationdata.value.notifications![index].stageId! >
+            9) return SizedBox();
     final ItemScrollController itemScrollController = ItemScrollController();
     int dueActionIndex = 0;
     switch (
-        tDGDController.notificationdata.value.notifications[index].stageId) {
+        tDGDController.notificationdata.value.notifications![index].stageId) {
       case 2:
         dueActionIndex = 0;
         break;
@@ -1719,7 +1739,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   2
               ? DueActionListButton(
                   text: AppMetaLabels().uploadDocs,
@@ -1727,12 +1747,12 @@ class _TenantDashboardState extends State<TenantDashboard>
                   onPressed: () {
                     SessionController().setCaseNo(
                       tDGDController
-                          .notificationdata.value.notifications[index].caseId
+                          .notificationdata.value.notifications![index].caseId
                           .toString(),
                     );
                     Get.to(() => TenantServiceRequestTabs(
                           requestNo: tDGDController.notificationdata.value
-                              .notifications[index].caseId
+                              .notifications![index].caseId
                               .toString(),
                           caller: 'contracts_with_actions',
                           title: AppMetaLabels().renewalReq,
@@ -1743,7 +1763,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   3
               ? DueActionListButton(
                   text: AppMetaLabels().docsSubmitted,
@@ -1751,12 +1771,12 @@ class _TenantDashboardState extends State<TenantDashboard>
                   onPressed: () {
                     SessionController().setCaseNo(
                       tDGDController
-                          .notificationdata.value.notifications[index].caseId
+                          .notificationdata.value.notifications![index].caseId
                           .toString(),
                     );
                     Get.to(() => TenantServiceRequestTabs(
                           requestNo: tDGDController.notificationdata.value
-                              .notifications[index].caseId
+                              .notifications![index].caseId
                               .toString(),
                           caller: 'contracts_with_actions',
                           title: AppMetaLabels().renewalReq,
@@ -1768,7 +1788,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   4
               ? DueActionListButton(
                   text: AppMetaLabels().docsApproved,
@@ -1776,12 +1796,12 @@ class _TenantDashboardState extends State<TenantDashboard>
                   onPressed: () {
                     SessionController().setCaseNo(
                       tDGDController
-                          .notificationdata.value.notifications[index].caseId
+                          .notificationdata.value.notifications![index].caseId
                           .toString(),
                     );
                     Get.to(() => TenantServiceRequestTabs(
                           requestNo: tDGDController.notificationdata.value
-                              .notifications[index].caseId
+                              .notifications![index].caseId
                               .toString(),
                           caller: 'contracts_with_actions',
                           title: AppMetaLabels().renewalReq,
@@ -1793,31 +1813,31 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   5
               ? DueActionListButton(
                   text: AppMetaLabels().makePayment,
                   srNo: '4',
                   onPressed: () {
                     SessionController().setContractID(tDGDController
-                        .notificationdata.value.notifications[index].recordId);
+                        .notificationdata.value.notifications![index].recordId);
                     SessionController().setContractNo(tDGDController
                         .notificationdata
                         .value
-                        .notifications[index]
+                        .notifications![index]
                         .contractno);
                     Get.to(() => OutstandingPayments(
                           contractNo: tDGDController.notificationdata.value
-                              .notifications[index].contractno,
+                              .notifications![index].contractno,
                           contractId: tDGDController.notificationdata.value
-                              .notifications[index].recordId,
+                              .notifications![index].recordId,
                         ));
                   })
               : StepNoWidget(label: '4', tooltip: AppMetaLabels().makePayment)),
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   6
               ? Obx(() {
                   return DueActionListButton(
@@ -1828,32 +1848,33 @@ class _TenantDashboardState extends State<TenantDashboard>
                         SessionController().setContractID(tDGDController
                             .notificationdata
                             .value
-                            .notifications[index]
+                            .notifications![index]
                             .recordId);
                         SessionController().setContractNo(tDGDController
                             .notificationdata
                             .value
-                            .notifications[index]
+                            .notifications![index]
                             .contractno);
                         String path =
                             await contractDownloadController.downloadContract(
                                 tDGDController.notificationdata.value
-                                    .notifications[index].contractno,
+                                        .notifications![index].contractno ??
+                                    '',
                                 false);
                         if (path != null)
                           Get.to(() => AuthenticateContract(
                               contractNo: tDGDController.notificationdata.value
-                                  .notifications[index].contractno,
+                                  .notifications![index].contractno,
                               contractId: tDGDController.notificationdata.value
-                                  .notifications[index].recordId,
+                                  .notifications![index].recordId,
                               filePath: path,
                               dueActionId: tDGDController.notificationdata.value
-                                  .notifications[index].dueActionid,
+                                  .notifications![index].dueActionid,
                               stageId: tDGDController.notificationdata.value
-                                  .notifications[index].stageId,
+                                  .notifications![index].stageId,
                               caller: 'contracts_with_actions',
                               caseId: tDGDController.notificationdata.value
-                                  .notifications[index].caseId));
+                                  .notifications![index].caseId));
                       });
                 })
               : StepNoWidget(
@@ -1861,7 +1882,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   7
               ? DueActionListButton(
                   text: AppMetaLabels().contractSigned,
@@ -1872,7 +1893,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   8
               ? DueActionListButton(
                   text: AppMetaLabels().approveMunicipal,
@@ -1881,9 +1902,9 @@ class _TenantDashboardState extends State<TenantDashboard>
                     Get.to(() => MunicipalApproval(
                           caller: 'contracts_with_actions',
                           dueActionId: tDGDController.notificationdata.value
-                              .notifications[index].dueActionid,
+                              .notifications![index].dueActionid,
                           contractId: tDGDController.notificationdata.value
-                              .notifications[index].recordId,
+                              .notifications![index].recordId,
                         ));
                   })
               : StepNoWidget(
@@ -1891,14 +1912,14 @@ class _TenantDashboardState extends State<TenantDashboard>
       Padding(
           padding: EdgeInsets.all(0.5.h),
           child: tDGDController
-                      .notificationdata.value.notifications[index].stageId ==
+                      .notificationdata.value.notifications![index].stageId ==
                   9
               ? DueActionListButton(
                   text: AppMetaLabels().downloadContract,
                   srNo: '8',
                   onPressed: () {
                     SessionController().setContractID(tDGDController
-                        .notificationdata.value.notifications[index].recordId);
+                        .notificationdata.value.notifications![index].recordId);
                     Get.to(() => ContractsDetailsTabs());
                   })
               : StepNoWidget(

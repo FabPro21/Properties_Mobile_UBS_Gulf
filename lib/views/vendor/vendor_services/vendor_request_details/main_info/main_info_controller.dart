@@ -42,8 +42,8 @@ class SvcReqMainInfoController extends GetxController {
     loadingData.value = false;
     if (result is GetVendorServiceRequestDetailsModel) {
       vendorRequestDetails.value = result;
-      if (result.detail.status.toLowerCase().contains('closed') ||
-          result.detail.status.toLowerCase().contains('cancelled'))
+      if (result.detail!.status!.toLowerCase().contains('closed') ||
+          result.detail!.status!.toLowerCase().contains('cancelled'))
         canCommunicate = false;
       getPhotos();
     } else {
@@ -56,7 +56,7 @@ class SvcReqMainInfoController extends GetxController {
     errorGettingPhotos = '';
     gettingPhotos.value = true;
     var resp = await VendorRepository.getReqPhotos(
-        vendorRequestDetails.value.detail.caseNo, 1);
+        vendorRequestDetails.value.detail!.caseNo!, 1);
     if (resp is List<PhotoFile>) {
       if (resp.length == 0) errorGettingPhotos = AppMetaLabels().noPhotos;
       photos = resp;
@@ -68,7 +68,7 @@ class SvcReqMainInfoController extends GetxController {
   void acknowledgeCase() async {
     updatingStatus.value = true;
     final response = await VendorRepository.acknowledgeCase(
-        vendorRequestDetails.value.detail.caseNo);
+        vendorRequestDetails.value.detail!.caseNo!);
     updatingStatus.value = false;
     if (response == 200) {
       SnakBarWidget.getSnackBarErrorBlue(
@@ -87,7 +87,7 @@ class SvcReqMainInfoController extends GetxController {
   void rejectCase() async {
     updatingStatus.value = true;
     final response = await VendorRepository.rejectCase(
-        vendorRequestDetails.value.detail.caseNo);
+        vendorRequestDetails.value.detail!.caseNo!);
     updatingStatus.value = false;
     if (response == 200) {
       SnakBarWidget.getSnackBarErrorBlue(

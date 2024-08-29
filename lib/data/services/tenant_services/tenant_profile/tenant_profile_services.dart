@@ -7,7 +7,7 @@ class TenantProfileServices {
   static Future<dynamic> getData() async {
     var url = AppConfig().getTenantProfile;
     
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       TenantProfileModel data = tenantProfileModelFromJson(response.body);

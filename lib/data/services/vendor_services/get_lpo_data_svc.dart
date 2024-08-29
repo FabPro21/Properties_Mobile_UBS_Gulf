@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 
 class GetLpoDataSvc {
   static Future<dynamic> getData() async {
-    var response = await BaseClientClass.post(AppConfig().getlpos, {});
+    var response = await BaseClientClass.post(AppConfig().getlpos??"", {});
     if (response is Response) {
       try {
         return GetLpoDataResponse.fromRawJson(response.body);

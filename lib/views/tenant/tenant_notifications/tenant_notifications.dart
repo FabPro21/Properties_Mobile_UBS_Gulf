@@ -14,7 +14,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class TenantNotifications extends StatefulWidget {
-  TenantNotifications({Key key}) : super(key: key);
+  TenantNotifications({Key? key}) : super(key: key);
 
   @override
   State<TenantNotifications> createState() => _TenantNotificationsState();
@@ -93,7 +93,7 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                             ],
                             radiusStyle: true,
                             onToggle: (index) async {
-                              getTNController.currentIndex.value = index;
+                              getTNController.currentIndex.value = index!;
                               if (index == 0) {
                                 await getTNController.getData(
                                     getTNController.pagaNoPAll.toString());

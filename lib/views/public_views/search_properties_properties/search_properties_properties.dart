@@ -1,5 +1,6 @@
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
@@ -12,7 +13,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'search_properties_management_controller.dart';
 
 class SearchPropertiesProperties extends StatefulWidget {
-  const SearchPropertiesProperties({Key key}) : super(key: key);
+  const SearchPropertiesProperties({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesPropertiesState createState() =>
@@ -67,7 +68,7 @@ class _SearchPropertiesPropertiesState
                           borderRadius: BorderRadius.circular(2.0.h),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey[200],
+                              color: Colors.grey[200] ?? Colors.grey,
                               blurRadius: 0.5.h,
                               spreadRadius: 0.8.h,
                               offset: Offset(0.1.h, 0.1.h),
@@ -84,30 +85,49 @@ class _SearchPropertiesPropertiesState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    SessionController().getLanguage() == 1
-                                        ? _controller.getdata.value
-                                                .record[index].title ??
-                                            ""
-                                        : _controller.getdata.value
-                                                .record[index].titileAr ??
-                                            "",
+                                    _controller.getdata.value.record == null
+                                        ? ''
+                                        : SessionController().getLanguage() == 1
+                                            ? _controller.getdata.value
+                                                    .record![index].title ??
+                                                ""
+                                            : _controller.getdata.value
+                                                    .record?[index].titileAr ??
+                                                "",
                                     style: AppTextStyle.semiBoldBlack13,
                                   ),
                                   SizedBox(
                                     height: 1.0.h,
                                   ),
                                   Html(
-                                    customTextAlign: (_) =>
-                                        SessionController().getLanguage() == 1
-                                            ? TextAlign.left
-                                            : TextAlign.right,
-                                    data: SessionController().getLanguage() == 1
-                                        ? _controller.getdata.value
-                                                .record[index].description ??
-                                            ""
-                                        : _controller.getdata.value
-                                                .record[index].descriptionAR ??
-                                            "",
+                                    style: {
+                                      'html': Style(
+                                        textAlign:
+                                            SessionController().getLanguage() ==
+                                                    1
+                                                ? TextAlign.left
+                                                : TextAlign.right,
+                                        color: Colors.black,
+                                        fontFamily: AppFonts.graphikRegular,
+                                        fontSize: FontSize(10.0),
+                                      ),
+                                    },
+                                    data: _controller.getdata.value.record ==
+                                            null
+                                        ? ''
+                                        : SessionController().getLanguage() == 1
+                                            ? _controller
+                                                    .getdata
+                                                    .value
+                                                    .record![index]
+                                                    .description ??
+                                                ""
+                                            : _controller
+                                                    .getdata
+                                                    .value
+                                                    .record![index]
+                                                    .descriptionAR ??
+                                                "",
                                   ),
                                 ],
                               ),

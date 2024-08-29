@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicOffersModel publicOffersModelFromJson(String str) => PublicOffersModel.fromJson(json.decode(str));
+PublicOffersModel publicOffersModelFromJson(String? str) => PublicOffersModel.fromJson(json.decode(str!));
 
-String publicOffersModelToJson(PublicOffersModel data) => json.encode(data.toJson());
+String? publicOffersModelToJson(PublicOffersModel data) => json.encode(data.toJson());
 
 class PublicOffersModel {
     PublicOffersModel({
@@ -14,17 +14,17 @@ class PublicOffersModel {
         this.record,
     });
 
-    String statsus;
-    List<Record> record;
+    String? statsus;
+    List<Record>? record;
 
-    factory PublicOffersModel.fromJson(Map<String, dynamic> json) => PublicOffersModel(
+    factory PublicOffersModel.fromJson(Map<String?, dynamic> json) => PublicOffersModel(
         statsus: json["statsus"],
         record: List<Record>.from(json["record"].map((x) => Record.fromJson(x))),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "statsus": statsus,
-        "record": List<dynamic>.from(record.map((x) => x.toJson())),
+        "record": List<dynamic>.from(record!.map((x) => x.toJson())),
     };
 }
 
@@ -37,13 +37,13 @@ class Record {
         this.validateTo,
     });
 
-    int offerid;
-    String title;
-    String titleAr;
-    String validateFrom;
-    String validateTo;
+    int? offerid;
+    String? title;
+    String? titleAr;
+    String? validateFrom;
+    String? validateTo;
 
-    factory Record.fromJson(Map<String, dynamic> json) => Record(
+    factory Record.fromJson(Map<String?, dynamic> json) => Record(
         offerid: json["offerid"],
         title: json["title"],
         titleAr: json["titleAr"],
@@ -51,7 +51,7 @@ class Record {
         validateTo: json["validateTo"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "offerid": offerid,
         "title": title,
         "titleAr": titleAr,

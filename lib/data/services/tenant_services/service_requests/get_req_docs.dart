@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 
 class TenantGetReqDocs {
   static Future<dynamic> getDocs(String caseNo, int roleId) async {
-    final String url = AppConfig().getReqDocsPDF;
+    final String url = AppConfig().getReqDocsPDF??"";
      var data = {"CaseNo":caseNo.toString(),"RoleId":roleId.toString(),};
      print('Data for case No ::::::: $data');
     var response = await BaseClientClass.post(url, data);

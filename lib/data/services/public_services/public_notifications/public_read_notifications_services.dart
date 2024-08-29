@@ -10,7 +10,7 @@ class PublicReadNotificationsServices {
     var data = {
       "notificationId": SessionController().getNotificationId(),
     };
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       var data = publicReadNotificationModelFromJson(response.body);

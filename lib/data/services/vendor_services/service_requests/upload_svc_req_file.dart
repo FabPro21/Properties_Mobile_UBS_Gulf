@@ -37,7 +37,7 @@ class VendorUploadSvcReqFile {
 
     var response;
  print('************************* $filePath');
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       print('*************************');
       print(response.statusCode);
@@ -80,7 +80,7 @@ class VendorUploadSvcReqFile {
 
     var response;
 
-    response = await BaseClientClass.uploadFile(url, data, 'File', filePath);
+    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       // var res = await response.stream.bytesToString();
       // print('************************* $res');

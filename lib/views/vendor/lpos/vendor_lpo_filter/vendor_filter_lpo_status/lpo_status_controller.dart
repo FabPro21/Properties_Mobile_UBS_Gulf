@@ -27,7 +27,7 @@ class LpoStatusController extends GetxController {
 
     if (resp is GetLpoStatusModel) {
       lpoStatusModel.value = resp;
-      lpoStatusLength = resp.lpoStatus.length;
+      lpoStatusLength = resp.lpoStatus!.length;
     } else {
       error.value = resp;
     }

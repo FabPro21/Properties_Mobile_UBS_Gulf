@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-MunicipalInstructions municipalInstructionsFromJson(String str) =>
-    MunicipalInstructions.fromJson(json.decode(str));
+MunicipalInstructions municipalInstructionsFromJson(String? str) =>
+    MunicipalInstructions.fromJson(json.decode(str!));
 
-String municipalInstructionsToJson(MunicipalInstructions data) =>
+String? municipalInstructionsToJson(MunicipalInstructions data) =>
     json.encode(data.toJson());
 
 class MunicipalInstructions {
@@ -18,12 +18,12 @@ class MunicipalInstructions {
     this.message,
   });
 
-  String record;
-  String status;
-  String statusCode;
-  String message;
+  String? record;
+  String? status;
+  String? statusCode;
+  String? message;
 
-  factory MunicipalInstructions.fromJson(Map<String, dynamic> json) =>
+  factory MunicipalInstructions.fromJson(Map<String?, dynamic> json) =>
       MunicipalInstructions(
         record: json["record"],
         status: json["status"],
@@ -31,7 +31,7 @@ class MunicipalInstructions {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "record": record,
         "status": status,
         "statusCode": statusCode,

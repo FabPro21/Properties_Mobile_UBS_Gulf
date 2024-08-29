@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 class GetLandLordContractsStatusService {
   static Future<dynamic> getContractStatus() async {
     var url = AppConfig().getLandlordContractStatus;
-    Map data;
-    var response = await BaseClientClass.post(url, data);
+    Map? data;
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         log(response.body);

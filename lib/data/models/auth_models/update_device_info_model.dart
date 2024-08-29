@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-UpdateDeviceInfoModel updateDeviceInfoModelFromJson(String str) =>
-    UpdateDeviceInfoModel.fromJson(json.decode(str));
+UpdateDeviceInfoModel updateDeviceInfoModelFromJson(String? str) =>
+    UpdateDeviceInfoModel.fromJson(json.decode(str!));
 
-String updateDeviceInfoModelToJson(UpdateDeviceInfoModel data) =>
+String? updateDeviceInfoModelToJson(UpdateDeviceInfoModel data) =>
     json.encode(data.toJson());
 
 class UpdateDeviceInfoModel {
@@ -18,12 +18,12 @@ class UpdateDeviceInfoModel {
     this.message,
   });
 
-  String statustCode;
-  String status;
-  Data data;
-  String message;
+  String? statustCode;
+  String? status;
+  Data? data;
+  String? message;
 
-  factory UpdateDeviceInfoModel.fromJson(Map<String, dynamic> json) =>
+  factory UpdateDeviceInfoModel.fromJson(Map<String?, dynamic> json) =>
       UpdateDeviceInfoModel(
         statustCode: json["statustCode"],
         status: json["status"],
@@ -31,10 +31,10 @@ class UpdateDeviceInfoModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statustCode": statustCode,
         "status": status,
-        "data": data.toJson(),
+        "data": data!.toJson(),
         "message": message,
       };
 }
@@ -48,13 +48,13 @@ class Data {
     this.userId,
   });
 
-  String deviceName;
-  String deviceToken;
-  String type;
-  String createdOn;
-  int userId;
+  String? deviceName;
+  String? deviceToken;
+  String? type;
+  String? createdOn;
+  int? userId;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Data.fromJson(Map<String?, dynamic> json) => Data(
         deviceName: json["deviceName"],
         deviceToken: json["deviceToken"],
         type: json["type"],
@@ -62,7 +62,7 @@ class Data {
         userId: json["userId"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "deviceName": deviceName,
         "deviceToken": deviceToken,
         "type": type,

@@ -56,37 +56,37 @@ class GetContractsDetailsController extends GetxController {
         loadingContract.value = false;
       } else {
         getContractsDetails.value = result;
-        double am = getContractsDetails.value.contract.rentforstay ?? 0;
+        double am = getContractsDetails.value.contract!.rentforstay ?? 0;
         final paidFormatter = NumberFormat('#,##0.00', 'AR');
         amount.value = paidFormatter.format(am);
         DateTime startDate =
-            DateFormat('dd-MM-yyyy').parse(result.contract.contractStartDate);
+            DateFormat('dd-MM-yyyy').parse(result.contract!.contractStartDate??"");
         DateTime endDate =
-            DateFormat('dd-MM-yyyy').parse(result.contract.contractEndDate);
+            DateFormat('dd-MM-yyyy').parse(result.contract!.contractEndDate??"");
         DateTime now = DateTime.now();
         if (now.compareTo(startDate) <= 0) {
           daysPassed = 0;
           comPtg = 0;
         } else if (now.compareTo(endDate) >= 0) {
-          daysPassed = result.contract.noOfDays;
+          daysPassed = result.contract!.noOfDays;
           comPtg = 1;
         } else {
           daysPassed = now.difference(startDate).inDays + 1;
-          comPtg = daysPassed / result.contract.noOfDays;
+          comPtg = daysPassed / result.contract!.noOfDays;
         }
         if (now.difference(endDate).inDays >= 15) showExtend = false;
         loadingContract.value = false;
         getContractPayables();
-        print('Stage ID when this :::::::::: ${result.caseStageInfo.stageId}');
-        //canCheckin(result.contract.contractId);
+        print('Stage ID when this :::::::::: ${result.caseStageInfo!.stageId}');
+        //canCheckin(result.contract!.contractId);
         // for testing FEEDBACK Start
-        // canDownloadSignedContract(result.contract.contractId);
+        // canDownloadSignedContract(result.contract!.contractId);
         // for testing FEEDBACK End
         // ************************
         // for real FEEDBACK Start
-        if (result.caseStageInfo.stageId != null &&
-            result.caseStageInfo.stageId > 7)
-          canDownloadSignedContract(result.contract.contractId);
+        if (result.caseStageInfo!.stageId != null &&
+            result.caseStageInfo!.stageId! > 7)
+          canDownloadSignedContract(result.contract!.contractId);
         // for testing FEEDBACK End
       }
     } else {
@@ -134,21 +134,21 @@ class GetContractsDetailsController extends GetxController {
   }
 
   void removeZeroBalance() {
-    contractPayables.contractPayable.forEach((element) {
+    contractPayables.contractPayable!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.additionalCharges.forEach((element) {
+    contractPayables.additionalCharges!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.vatCharges.forEach((element) {
+    contractPayables.vatCharges!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
-    contractPayables.vatOnRent.forEach((element) {
+    contractPayables.vatOnRent!.forEach((element) {
       if (element.balance == 0)
-        contractPayables.contractPayable.remove(element);
+        contractPayables.contractPayable!.remove(element);
     });
   }
 
@@ -157,17 +157,17 @@ class GetContractsDetailsController extends GetxController {
     double additionalSum = 0;
     double vatRentSum = 0;
     double vatChargesSum = 0;
-    contractPayables.contractPayable.forEach((element) {
-      rentalSum = rentalSum + element.balance;
+    contractPayables.contractPayable!.forEach((element) {
+      rentalSum = rentalSum + element.balance!;
     });
-    contractPayables.additionalCharges.forEach((element) {
-      additionalSum = additionalSum + element.balance;
+    contractPayables.additionalCharges!.forEach((element) {
+      additionalSum = additionalSum + element.balance!;
     });
-    contractPayables.vatCharges.forEach((element) {
-      vatChargesSum = vatChargesSum + element.balance;
+    contractPayables.vatCharges!.forEach((element) {
+      vatChargesSum = vatChargesSum + element.balance!;
     });
-    contractPayables.vatOnRent.forEach((element) {
-      vatRentSum = vatRentSum + element.balance;
+    contractPayables.vatOnRent!.forEach((element) {
+      vatRentSum = vatRentSum + element.balance!;
     });
     final amountFormat = NumberFormat('#,##0.00', 'AR');
     this.totalRentalPayment.value = amountFormat.format(rentalSum);
@@ -180,7 +180,7 @@ class GetContractsDetailsController extends GetxController {
 
   RxBool loadingCanCheckin = false.obs;
   String errorLoadingCanCheckin = '';
-  CanCheckinModel canCheckinModel;
+  CanCheckinModel? canCheckinModel;
   void canCheckin(int contractId) async {
     loadingCanCheckin.value = true;
     final resp = await TenantRepository.canCheckingContract(contractId);
@@ -205,9 +205,9 @@ class GetContractsDetailsController extends GetxController {
       // for testing FEEDBACK Start
       // canDownload.value = true;
       // canDownloadContract.canDownload = '1';
-      // getContractsDetails.value.caseStageInfo.stageId = 9;
+      // getContractsDetails.value.caseStageInfo!.stageId = 9;
       // for testing FEEDBACK END
-      // commentting this because when contract stage is 9 means in download stage
+      // commentting this because when contract! stage is 9 means in download stage
       // then will show to the user that
       // "Your Contract iszz"
       // if (canDownloadContract.canDownload == '1') {
@@ -229,12 +229,12 @@ class GetContractsDetailsController extends GetxController {
       final contractDownloadController = Get.put(ContractDownloadController());
       downloadingContract.value = true;
       if (await contractDownloadController.downloadSignedContract(
-        getContractsDetails.value.contract.contractno,
-        getContractsDetails.value.contract.contractId,
+        getContractsDetails.value.contract!.contractno??'',
+        getContractsDetails.value.contract!.contractId,
       )) {
-        if (getContractsDetails.value.caseStageInfo.stageId == 9)
+        if (getContractsDetails.value.caseStageInfo!.stageId == 9)
           updateContractStage(
-              getContractsDetails.value.caseStageInfo.dueActionid, 11);
+              getContractsDetails.value.caseStageInfo!.dueActionid??0, 11);
       }
       downloadingContract.value = false;
     } else {

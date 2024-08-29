@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'package:fap_properties/data/models/tenant_models/service_request/photo_file.dart';
 import 'package:fap_properties/data/repository/tenant_repository.dart';
@@ -15,16 +17,16 @@ import 'package:path_provider/path_provider.dart';
 import '../../../../../../utils/image_compress.dart';
 
 class AddRequestPhotosController extends GetxController {
-  String caseNo;
+  String? caseNo;
   RxBool addingPhoto = false.obs;
-  List<PhotoFile> photos = [null];
+  List<PhotoFile> photos = [];
   final imagePicker.ImagePicker _picker = imagePicker.ImagePicker();
 
   pickPhoto(ImageSource source) async {
-    XFile file = await _picker.pickImage(source: source);
+    XFile? file = await _picker.pickImage(source: source);
 
     // checking file extension
-    if (!CheckFileExtenstion().checkImageExtFunc(file.path)) {
+    if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
             duration: Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
@@ -70,7 +72,7 @@ class AddRequestPhotosController extends GetxController {
         photos[photos.length - 1] =
             PhotoFile(file: photo, path: path, type: file.mimeType);
         uploadPhoto(photos.length - 1);
-        photos.add(null);
+        photos.add(PhotoFile());
       }
       addingPhoto.value = false;
     }
@@ -82,7 +84,7 @@ class AddRequestPhotosController extends GetxController {
     photos[index].uploading.value = true;
     try {
       var resp = await TenantRepository.uploadFile(
-          caseNo, photos[index].path, 'Images', '', '0');
+          caseNo??'', photos[index].path??"", 'Images', '', '0');
       photos[index].id = resp['photoId'];
     } catch (e) {
       if (kDebugMode) {

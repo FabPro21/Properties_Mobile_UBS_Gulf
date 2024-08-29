@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'get_cities_controller.dart';
 
 class GetCities extends StatefulWidget {
-  GetCities({Key key}) : super(key: key);
+  GetCities({Key? key}) : super(key: key);
 
   @override
   State<GetCities> createState() => _GetCitiesState();
@@ -140,7 +140,7 @@ class _GetCitiesState extends State<GetCities> {
                                         } else if ((getCitiesController
                                                         .getCities
                                                         .value
-                                                        .cities[index]
+                                                        .cities![index]
                                                         .cityName ??
                                                     "")
                                                 .toLowerCase()
@@ -149,7 +149,7 @@ class _GetCitiesState extends State<GetCities> {
                                             (getCitiesController
                                                         .getCities
                                                         .value
-                                                        .cities[index]
+                                                        .cities![index]
                                                         .cityName ??
                                                     "")
                                                 .toLowerCase()
@@ -177,9 +177,8 @@ class _GetCitiesState extends State<GetCities> {
     return InkWell(
       onTap: () {
         Get.back(result: [
-          getCitiesController.getCities.value.cities[index].cityName ?? "",
-          getCitiesController.getCities.value.cities[index].cityId.toString() ??
-              ""
+          getCitiesController.getCities.value.cities![index].cityName ?? "",
+          getCitiesController.getCities.value.cities![index].cityId.toString() 
         ]);
       },
       child: Column(
@@ -188,7 +187,7 @@ class _GetCitiesState extends State<GetCities> {
           Padding(
             padding: EdgeInsets.all(2.0.h),
             child: Text(
-              getCitiesController.getCities.value.cities[index].cityName ?? "",
+              getCitiesController.getCities.value.cities![index].cityName ?? "",
               style: AppTextStyle.normalGrey10,
             ),
           ),

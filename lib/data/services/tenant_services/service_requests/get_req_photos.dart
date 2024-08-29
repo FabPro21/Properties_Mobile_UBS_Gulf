@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 class GetReqThumbnails {
   static Future<dynamic> getThumbnails(int caseNo, int roleId) async {
     final String url =
-        AppConfig().getServiceRequestThumbnailList;
+        AppConfig().getServiceRequestThumbnailList??"";
         var data = {"CaseNo":caseNo.toString(),"RoleId":roleId.toString()};
     var response = await BaseClientClass.post(url, data);
     if (response is http.Response) {

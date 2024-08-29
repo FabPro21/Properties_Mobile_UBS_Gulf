@@ -11,7 +11,7 @@ import '../../../../../../data/helpers/session_controller.dart';
 import 'get_tenant_properties_controller.dart';
 
 class GetTenantProperties extends StatefulWidget {
-  GetTenantProperties({Key key}) : super(key: key);
+  GetTenantProperties({Key? key}) : super(key: key);
 
   @override
   State<GetTenantProperties> createState() => _GetTenantPropertiesState();
@@ -145,7 +145,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
                                           } else if ((getTPController
                                                       .getTenantProperties
                                                       .value
-                                                      .properties[index]
+                                                      .properties![index]
                                                       .unitName ??
                                                   "")
                                               .toLowerCase()
@@ -175,16 +175,15 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
         Get.back(result: [
 
         SessionController().getLanguage() == 1
-                        ?  getTPController.getTenantProperties.value.properties[index]
+                        ?  getTPController.getTenantProperties.value.properties![index]
                       .propertyName ??
                   ""
-                        :  getTPController.getTenantProperties.value.properties[index]
+                        :  getTPController.getTenantProperties.value.properties![index]
                       .propertyNameAR ??
                   "",
           getTPController
-                  .getTenantProperties.value.properties[index].contractUnitID
-                  .toString() ??
-              "",
+                  .getTenantProperties.value.properties![index].contractUnitID
+                  .toString() ,
         ]);
       },
       child: Column(
@@ -194,10 +193,10 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
             padding: EdgeInsets.fromLTRB(4.0.w, 2.h, 4.0.w, 1.0.h),
             child: Text(
               SessionController().getLanguage() == 1
-                        ?  getTPController.getTenantProperties.value.properties[index]
+                        ?  getTPController.getTenantProperties.value.properties![index]
                       .propertyName ??
                   ""
-                        :  getTPController.getTenantProperties.value.properties[index]
+                        :  getTPController.getTenantProperties.value.properties![index]
                       .propertyNameAR ??
                   "",
             
@@ -208,9 +207,9 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
             padding: EdgeInsets.fromLTRB(4.0.w, 0, 4.0.w, 2.0.h),
             child: Text(
               SessionController().getLanguage() == 1?  getTPController
-                      .getTenantProperties.value.properties[index].unitName ??
+                      .getTenantProperties.value.properties![index].unitName ??
                   "":getTPController
-                      .getTenantProperties.value.properties[index].unitNameAr ??
+                      .getTenantProperties.value.properties![index].unitNameAr ??
                   "",
               style: AppTextStyle.semiBoldGrey10,
             ),

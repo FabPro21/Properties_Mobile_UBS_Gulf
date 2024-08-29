@@ -7,7 +7,7 @@ import '../../helpers/session_controller.dart';
 
 class CountryPickerServices {
   static Future<dynamic> getData() async {
-    final String url = AppConfig().getcountries;
+    final String url = AppConfig().getcountries??"";
     Map data = {
       //'SecretKey':dotenv.env['secretKey'],
     };

@@ -64,7 +64,7 @@ class ContractDownloadController extends GetxController {
       }
     }
 
-    return null;
+    return '';
   }
 
   Future<String> downloadContractNew(String contractNo, bool save) async {
@@ -114,7 +114,7 @@ class ContractDownloadController extends GetxController {
       }
     }
 
-    return null;
+    return '';
   }
 
   Future<bool> downloadSignedContract(String contractNo, int contractId) async {

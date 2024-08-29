@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-LpoInvoicesModel lpoInvoicesModelFromJson(String str) =>
-    LpoInvoicesModel.fromJson(json.decode(str));
+LpoInvoicesModel lpoInvoicesModelFromJson(String? str) =>
+    LpoInvoicesModel.fromJson(json.decode(str!));
 
-String lpoInvoicesModelToJson(LpoInvoicesModel data) =>
+String? lpoInvoicesModelToJson(LpoInvoicesModel data) =>
     json.encode(data.toJson());
 
 class LpoInvoicesModel {
@@ -18,12 +18,12 @@ class LpoInvoicesModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<Invoice> invoice;
-  String message;
+  String? status;
+  String? statusCode;
+  List<Invoice>? invoice;
+  String? message;
 
-  factory LpoInvoicesModel.fromJson(Map<String, dynamic> json) =>
+  factory LpoInvoicesModel.fromJson(Map<String?, dynamic> json) =>
       LpoInvoicesModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,10 +32,10 @@ class LpoInvoicesModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "invoice": List<dynamic>.from(invoice.map((x) => x.toJson())),
+        "invoice": List<dynamic>.from(invoice!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -52,16 +52,16 @@ class Invoice {
     this.statusName,
   });
 
-  String lpono;
-  String supplierRefNo;
-  String requestDate;
-  String invoiceNumber;
-  String invoiceDate;
+  String? lpono;
+  String? supplierRefNo;
+  String? requestDate;
+  String? invoiceNumber;
+  String? invoiceDate;
   dynamic invoiceAmount;
-  String statusName;
-  String statusNameAr;
+  String? statusName;
+  String? statusNameAr;
 
-  factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
+  factory Invoice.fromJson(Map<String?, dynamic> json) => Invoice(
         lpono: json["lpono"],
         supplierRefNo: json["supplierRefNo"],
         requestDate: json["requestDate"],
@@ -72,7 +72,7 @@ class Invoice {
         statusNameAr: json["statusNameAr"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "lpono": lpono,
         "supplierRefNo": supplierRefNo,
         "requestDate": requestDate,

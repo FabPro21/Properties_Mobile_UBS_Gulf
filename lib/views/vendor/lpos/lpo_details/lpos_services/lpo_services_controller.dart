@@ -37,10 +37,10 @@ class GetLpoServicesController extends GetxController {
         loadingData.value = false;
       } else {
         lpoServices.value = result;
-        length = lpoServices.value.lpoServices.length;
+        length = lpoServices.value.lpoServices!.length;
 
         totalAmountSum.value = 0.0;
-        lpoServices.value.lpoServices.forEach((element) {
+        lpoServices.value.lpoServices!.forEach((element) {
           totalAmountSum.value = totalAmountSum.value + element.totalAmount;
         });
         var ta = totalAmountSum.value;

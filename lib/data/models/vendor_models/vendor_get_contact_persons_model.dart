@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-VendorGetContactPersonsModel vendorGetContactPersonsModelFromJson(String str) =>
-    VendorGetContactPersonsModel.fromJson(json.decode(str));
+VendorGetContactPersonsModel vendorGetContactPersonsModelFromJson(String? str) =>
+    VendorGetContactPersonsModel.fromJson(json.decode(str!));
 
-String vendorGetContactPersonsModelToJson(VendorGetContactPersonsModel data) =>
+String? vendorGetContactPersonsModelToJson(VendorGetContactPersonsModel data) =>
     json.encode(data.toJson());
 
 class VendorGetContactPersonsModel {
@@ -18,12 +18,12 @@ class VendorGetContactPersonsModel {
     this.contactPersons,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<ContactPerson> contactPersons;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<ContactPerson>? contactPersons;
 
-  factory VendorGetContactPersonsModel.fromJson(Map<String, dynamic> json) =>
+  factory VendorGetContactPersonsModel.fromJson(Map<String?, dynamic> json) =>
       VendorGetContactPersonsModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,12 +32,12 @@ class VendorGetContactPersonsModel {
             json["contactPersons"].map((x) => ContactPerson.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
         "contactPersons":
-            List<dynamic>.from(contactPersons.map((x) => x.toJson())),
+            List<dynamic>.from(contactPersons!.map((x) => x.toJson())),
       };
 }
 
@@ -57,18 +57,18 @@ class ContactPerson {
   });
 
   dynamic vendorId;
-  String name;
-  String nameAr;
-  String position;
-  String positionAR;
-  String mobile;
+  String? name;
+  String? nameAr;
+  String? position;
+  String? positionAR;
+  String? mobile;
   dynamic phone;
-  String email;
+  String? email;
   dynamic faxNumber;
-  String isAuthorizedSignatory;
-  String isAuthorizedSignatoryAR;
+  String? isAuthorizedSignatory;
+  String? isAuthorizedSignatoryAR;
 
-  factory ContactPerson.fromJson(Map<String, dynamic> json) => ContactPerson(
+  factory ContactPerson.fromJson(Map<String?, dynamic> json) => ContactPerson(
         vendorId: json["vendorId"],
         name: json["name"],
         nameAr: json["nameAR"],
@@ -82,7 +82,7 @@ class ContactPerson {
         isAuthorizedSignatoryAR: json["isAuthorizedSignatoryAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "vendorId": vendorId,
         "name": name,
         "nameAR": nameAr,

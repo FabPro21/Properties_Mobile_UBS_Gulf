@@ -11,10 +11,10 @@ import 'package:launch_review/launch_review.dart';
 import 'package:sizer/sizer.dart';
 
 class AppUpdateManually extends StatefulWidget {
-  final String appVersion;
-  final String availableVersion;
+  final String? appVersion;
+  final String? availableVersion;
   const AppUpdateManually(
-      {Key key, @required this.appVersion, @required this.availableVersion})
+      {Key? key, @required this.appVersion, @required this.availableVersion})
       : super(key: key);
 
   @override

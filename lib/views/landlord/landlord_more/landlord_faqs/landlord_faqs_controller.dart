@@ -39,7 +39,7 @@ class LandLordFaqsController extends GetxController {
       } else {
         if (result.statusCode == 200) {
           faqsCategories.value = result;
-          length = faqsCategories.value.data.length;
+          length = faqsCategories.value.data!.length;
           loadingFaqsCatg.value = false;
         } else if (result.statusCode == 200 && result.data == null) {
           errorFaqsCatg.value = AppMetaLabels().noDatafound;
@@ -69,7 +69,7 @@ class LandLordFaqsController extends GetxController {
       result = await LandlordRepository.getFaqsQuestions(categoryId);
       if (result is LandLordFaqsQuestionsModel) {
         faqsQuestions.value = result;
-        questionLength = faqsQuestions.value.data.length;
+        questionLength = faqsQuestions.value.data!.length;
         loadingQuestions.value = false;
       } else {
         errorQuestions.value = AppMetaLabels().noDatafound;

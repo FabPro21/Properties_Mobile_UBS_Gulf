@@ -14,8 +14,8 @@ class AppColors {
   static Color blueColor2 = const Color.fromRGBO(0, 98, 255, 0.2);
   static Color blueColor3 = const Color.fromRGBO(0, 98, 255, 0.5);
 
-  static Color amber = Colors.amberAccent[700];
-  static Color amber2 = Colors.amber[50];
+  static Color amber = Colors.amberAccent[700]??Colors.amberAccent;
+  static Color amber2 = Colors.amber[50]??Colors.amber;
   static Color blackColor = const Color(0xFF4C4B5E);
   static Color whiteColor = const Color(0xFFffffff);
   static Color white54 = Colors.white54;

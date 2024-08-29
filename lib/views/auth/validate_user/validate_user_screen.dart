@@ -23,7 +23,7 @@ import '../country_picker/country_picker.dart';
 import 'validate_user_controller.dart';
 
 class ValidateUserScreen extends StatefulWidget {
-  ValidateUserScreen({Key key}) : super(key: key);
+  ValidateUserScreen({Key? key}) : super(key: key);
 
   @override
   State<ValidateUserScreen> createState() => _ValidateUserScreenState();
@@ -232,8 +232,8 @@ class _ValidateUserScreenState extends State<ValidateUserScreen> {
                                     // checking weather user entered mobile no or not
                                     if (PhoneNoField.phoneController.text ==
                                             '' ||
-                                        PhoneNoField.phoneController.text ==
-                                            null ||
+                                        PhoneNoField
+                                            .phoneController.text.isEmpty ||
                                         PhoneNoField.phoneController.text
                                             .contains(' ')) {
                                       SnakBarWidget.getSnackBarErrorBlue(

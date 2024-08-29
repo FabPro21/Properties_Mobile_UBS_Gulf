@@ -9,7 +9,7 @@ class GetTenantUnitsServices {
     // passing Tenantid 0 because it is not using on the backend side 
     // sending '0' because  want to make success the if condition that is on the backened
     var data = {"Tenantid": '0'};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetTenantPropertiesModel getModel =

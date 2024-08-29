@@ -11,7 +11,7 @@ import 'dart:ui' as ui;
 import 'select_city_controller.dart';
 
 class SelectCity extends StatefulWidget {
-  SelectCity({Key key}) : super(key: key);
+  SelectCity({Key? key}) : super(key: key);
 
   @override
   State<SelectCity> createState() => _SelectCityState();
@@ -147,7 +147,7 @@ class _SelectCityState extends State<SelectCity> {
                                           } else if ((selectCityController
                                                           .selectCity
                                                           .value
-                                                          .emirate[index]
+                                                          .emirate![index]
                                                           .emirateName ??
                                                       "")
                                                   .toLowerCase()
@@ -156,7 +156,7 @@ class _SelectCityState extends State<SelectCity> {
                                               (selectCityController
                                                               .selectCity
                                                               .value
-                                                              .emirate[index]
+                                                              .emirate![index]
                                                               .emirateName ??
                                                           "")
                                                       .toLowerCase()
@@ -169,7 +169,7 @@ class _SelectCityState extends State<SelectCity> {
                                           } else if ((selectCityController
                                                           .selectCity
                                                           .value
-                                                          .emirate[index]
+                                                          .emirate![index]
                                                           .emirateNameAr ??
                                                       "")
                                                   .toLowerCase()
@@ -178,7 +178,7 @@ class _SelectCityState extends State<SelectCity> {
                                               (selectCityController
                                                               .selectCity
                                                               .value
-                                                              .emirate[index]
+                                                              .emirate![index]
                                                               .emirateNameAr ??
                                                           "")
                                                       .toLowerCase()
@@ -210,20 +210,18 @@ class _SelectCityState extends State<SelectCity> {
     return InkWell(
       onTap: () async {
         SessionController().setCityId(selectCityController
-                .selectCity.value.emirate[index].emirateId
-                .toString() ??
-            "");
+                .selectCity.value.emirate![index].emirateId
+                .toString() );
         Get.back(result: [
           SessionController().getLanguage() == 1
               ? selectCityController
-                      .selectCity.value.emirate[index].emirateName ??
+                      .selectCity.value.emirate![index].emirateName ??
                   ""
               : selectCityController
-                      .selectCity.value.emirate[index].emirateNameAr ??
+                      .selectCity.value.emirate![index].emirateNameAr ??
                   "",
-          selectCityController.selectCity.value.emirate[index].emirateId
-                  .toString() ??
-              ""
+          selectCityController.selectCity.value.emirate![index].emirateId
+                  .toString()
         ]);
       },
       child: Column(
@@ -234,10 +232,10 @@ class _SelectCityState extends State<SelectCity> {
             child: Text(
               SessionController().getLanguage() == 1
                   ? selectCityController
-                          .selectCity.value.emirate[index].emirateName ??
+                          .selectCity.value.emirate![index].emirateName ??
                       ""
                   : selectCityController
-                          .selectCity.value.emirate[index].emirateNameAr ??
+                          .selectCity.value.emirate![index].emirateNameAr ??
                       "",
               style: AppTextStyle.normalGrey10,
             ),

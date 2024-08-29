@@ -13,7 +13,7 @@ class ContractDownloadService {
     print(url);
     Map data = {"ContractId": SessionController().getContractID().toString()};
     print(data);
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     print(response);
     if (response is http.Response) {
       print(response);
@@ -38,7 +38,7 @@ class ContractDownloadServiceNew {
     print(url);
     Map data = {"ContractId": SessionController().getContractID().toString()};
     print(data);
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     print(response);
     if (response is http.Response) {
       print(response);

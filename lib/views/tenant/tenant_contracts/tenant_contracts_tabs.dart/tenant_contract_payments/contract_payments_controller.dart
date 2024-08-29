@@ -41,13 +41,13 @@ class ContractPaymentsController extends GetxController {
         } else {
           payments = result;
 
-          length = payments.payments.length;
+          length = payments.payments!.length;
 
           for (int i = 0; i < length; i++) {
             print(
-                'Cheque Api Condition : paymentType :: ${payments.payments[i].paymentType.trim().toLowerCase()}');
+                'Cheque Api Condition : paymentType :: ${payments.payments![i].paymentType!.trim().toLowerCase()}');
             print(
-                'Cheque Api Condition : TID :: ${payments.payments[i].transactionId}');
+                'Cheque Api Condition : TID :: ${payments.payments![i].transactionId}');
           }
         }
       } else {
@@ -71,7 +71,7 @@ class ContractPaymentsController extends GetxController {
       var result = await TenantRepository.getUnverifiedPayments();
 
       if (result is UnverifiedContractPayments) {
-        if (result.contractPayments.isEmpty) {
+        if (result.contractPayments!.isEmpty) {
           errorLoadingUnverified = AppMetaLabels().noDatafound;
         } else {
           unverifiedPayments = result;
@@ -86,20 +86,20 @@ class ContractPaymentsController extends GetxController {
   }
 
   getCheque(int index) async {
-    payments.payments[index].loadingCheque.value = true;
-    payments.payments[index].errorLoadingCheque = '';
+    payments.payments![index].loadingCheque!.value = true;
+    payments.payments![index].errorLoadingCheque = '';
     var result = await TenantRepository.getCheque(
-        payments.payments[index].transactionId.toString());
+        payments.payments![index].transactionId.toString());
     if (result is GetContractChequesModel) {
       if (result.status == AppMetaLabels().notFound) {
-        payments.payments[index].errorLoadingCheque =
+        payments.payments![index].errorLoadingCheque =
             AppMetaLabels().noDatafound;
       } else {
-        payments.payments[index].cheque = result;
+        payments.payments![index].cheque = result;
       }
     } else {
-      payments.payments[index].errorLoadingCheque = AppMetaLabels().noDatafound;
+      payments.payments![index].errorLoadingCheque = AppMetaLabels().noDatafound;
     }
-    payments.payments[index].loadingCheque.value = false;
+    payments.payments![index].loadingCheque!.value = false;
   }
 }

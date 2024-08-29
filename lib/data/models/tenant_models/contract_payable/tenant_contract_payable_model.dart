@@ -4,10 +4,10 @@ import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-TenantContractPayableModel tenantContractPayableModelFromJson(String str) =>
-    TenantContractPayableModel.fromJson(json.decode(str));
+TenantContractPayableModel tenantContractPayableModelFromJson(String? str) =>
+    TenantContractPayableModel.fromJson(json.decode(str!));
 
-String tenantContractPayableModelToJson(TenantContractPayableModel data) =>
+String? tenantContractPayableModelToJson(TenantContractPayableModel data) =>
     json.encode(data.toJson());
 
 class TenantContractPayableModel {
@@ -19,15 +19,15 @@ class TenantContractPayableModel {
       this.additionalCharges,
       this.vatCharges,
       this.vatOnRent});
-  String statusCode;
-  String status;
-  String message;
-  List<AdditionalCharge> contractPayable;
-  List<AdditionalCharge> additionalCharges;
-  List<AdditionalCharge> vatCharges;
-  List<AdditionalCharge> vatOnRent;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<AdditionalCharge>? contractPayable;
+  List<AdditionalCharge>? additionalCharges;
+  List<AdditionalCharge>? vatCharges;
+  List<AdditionalCharge>? vatOnRent;
 
-  factory TenantContractPayableModel.fromJson(Map<String, dynamic> json) {
+  factory TenantContractPayableModel.fromJson(Map<String?, dynamic> json) {
     return TenantContractPayableModel(
       statusCode: json["statusCode"],
       status: json["status"],
@@ -43,14 +43,14 @@ class TenantContractPayableModel {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
         "contractPayable":
-            List<dynamic>.from(contractPayable.map((x) => x.toJson())),
+            List<dynamic>.from(contractPayable!.map((x) => x.toJson())),
         "additionalCharges":
-            List<dynamic>.from(additionalCharges.map((x) => x.toJson())),
+            List<dynamic>.from(additionalCharges!.map((x) => x.toJson())),
       };
 }
 
@@ -69,27 +69,27 @@ class AdditionalCharge {
       this.balance,
       this.balanceFormatted});
 
-  int contractId;
-  String contractno;
-  double payment;
+  int? contractId;
+  String? contractno;
+  double? payment;
   dynamic paidAmount;
-  String paymentNo;
-  String type;
-  int installments;
-  int contractChargeId;
-  int paymentId;
-  double balance;
-  String balanceFormatted;
-  String paymentDate;
+  String? paymentNo;
+  String? type;
+  int? installments;
+  int? contractChargeId;
+  int? paymentId;
+  double? balance;
+  String? balanceFormatted;
+  String? paymentDate;
   RxBool isChecked = false.obs;
   RxInt paymentMethod = 1.obs;
   RxBool chequeSelected = false.obs;
-  Uint8List chequeFile;
-  String filePath;
+  Uint8List? chequeFile;
+  String? filePath;
 
-  factory AdditionalCharge.fromJson(Map<String, dynamic> json) {
+  factory AdditionalCharge.fromJson(Map<String?, dynamic> json) {
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    String balanceFormatted = amountFormat.format(json["balance"] ?? 0);
+    String? balanceFormatted = amountFormat.format(json["balance"] ?? 0);
     return AdditionalCharge(
         contractId: json["contractID"],
         contractno: json["contractno"],
@@ -105,7 +105,7 @@ class AdditionalCharge {
         paymentDate: json["paymentDate"]);
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractID": contractId,
         "contractno": contractno,
         "paidAmount": paidAmount == null ? null : paidAmount,

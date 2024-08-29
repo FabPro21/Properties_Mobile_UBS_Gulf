@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class GetLandlordCategoryService {
   static Future<dynamic> getPropertyCategory() async {
     var url = AppConfig().getLandlordCategory;
-    var response = await BaseClientClass.post(url, '');
+    var response = await BaseClientClass.post(url ?? "", '');
     if (response is http.Response) {
       try {
         log(response.body);

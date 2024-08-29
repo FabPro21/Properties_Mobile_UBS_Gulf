@@ -1,5 +1,6 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -12,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class VendorNotificationDetails extends StatefulWidget {
-  const VendorNotificationDetails({Key key}) : super(key: key);
+  const VendorNotificationDetails({Key? key}) : super(key: key);
 
   @override
   _VendorNotificationDetailsState createState() =>
@@ -107,13 +108,13 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                                             ? _controller
                                                     .notificationsDetaildata
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .title ??
                                                 ""
                                             : _controller
                                                     .notificationsDetaildata
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .titleAr ??
                                                 "",
                                         style: AppTextStyle.semiBoldBlack13,
@@ -126,8 +127,11 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                                           right: 2.0.h,
                                           top: 1.0.h),
                                       child: Text(
-                                        _controller.notificationsDetaildata
-                                                .value.notification.createdOn ??
+                                        _controller
+                                                .notificationsDetaildata
+                                                .value
+                                                .notification!
+                                                .createdOn ??
                                             "",
                                         style: AppTextStyle.normalBlack10,
                                       ),
@@ -136,28 +140,33 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 2.w),
                                       child: Html(
-                                             customTextAlign: (_) =>
-                                            SessionController().getLanguage() ==
+                                        style: {
+                                          'html': Style(
+                                            textAlign: SessionController()
+                                                        .getLanguage() ==
                                                     1
                                                 ? TextAlign.left
                                                 : TextAlign.right,
+                                            color: Colors.black,
+                                            fontFamily: AppFonts.graphikRegular,
+                                            fontSize: FontSize(10.0),
+                                          ),
+                                        },
                                         data:
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? _controller
                                                         .notificationsDetaildata
                                                         .value
-                                                        .notification
+                                                        .notification!
                                                         .description ??
                                                     ""
                                                 : _controller
                                                         .notificationsDetaildata
                                                         .value
-                                                        .notification
+                                                        .notification!
                                                         .descriptionAr ??
                                                     "",
-                                        defaultTextStyle:
-                                            AppTextStyle.normalBlack10,
                                       ),
                                     ),
                                   ],

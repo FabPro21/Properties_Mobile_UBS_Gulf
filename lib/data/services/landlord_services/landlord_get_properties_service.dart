@@ -15,7 +15,7 @@ class LandlordGetPropertiesServices {
       "pageNo": 1.toString()
     };
     var response =
-        await BaseClientClass.post(AppConfig().getLandlordProperties, data);
+        await BaseClientClass.post(AppConfig().getLandlordProperties??"", data);
     try {
       if (response is Response) {
         log(response.body);
@@ -36,7 +36,7 @@ class LandlordGetPropertiesServices {
       "pageNo": pageNoP.toString()
     };
     var response =
-        await BaseClientClass.post(AppConfig().getLandlordProperties, data);
+        await BaseClientClass.post(AppConfig().getLandlordProperties??"", data);
     try {
       if (response is Response) {
         log(response.body);

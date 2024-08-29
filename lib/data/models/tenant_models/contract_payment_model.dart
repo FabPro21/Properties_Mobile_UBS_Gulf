@@ -8,10 +8,10 @@ import 'package:get/get.dart';
 
 import 'contract_payment_cheque_models.dart';
 
-ContractPaymentModel contractPaymentModelFromJson(String str) =>
-    ContractPaymentModel.fromJson(json.decode(str));
+ContractPaymentModel contractPaymentModelFromJson(String? str) =>
+    ContractPaymentModel.fromJson(json.decode(str!));
 
-String contractPaymentModelToJson(ContractPaymentModel data) =>
+String? contractPaymentModelToJson(ContractPaymentModel data) =>
     json.encode(data.toJson());
 
 class ContractPaymentModel {
@@ -22,12 +22,12 @@ class ContractPaymentModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<Payment> payments;
-  String message;
+  String? status;
+  String? statusCode;
+  List<Payment>? payments;
+  String? message;
 
-  factory ContractPaymentModel.fromJson(Map<String, dynamic> json) =>
+  factory ContractPaymentModel.fromJson(Map<String?, dynamic> json) =>
       ContractPaymentModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -36,10 +36,10 @@ class ContractPaymentModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "payments": List<dynamic>.from(payments.map((x) => x.toJson())),
+        "payments": List<dynamic>.from(payments!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -73,34 +73,34 @@ class Payment {
 
   dynamic transactionId;
   dynamic contractId;
-  String paymentDate;
-  String propertyName;
-  String propertyNameAr;
-  String propertyNumber;
-  String receiptNo;
-  String accountNo;
-  String accountTitle;
+  String? paymentDate;
+  String? propertyName;
+  String? propertyNameAr;
+  String? propertyNumber;
+  String? receiptNo;
+  String? accountNo;
+  String? accountTitle;
   dynamic amount;
-  String paymentType;
-  String paymentTypeAr;
-  String contractDate;
-  String tenant;
-  String tenantAr;
-  String unitNo;
-  String contractNo;
-  String city;
-  String cityAr;
-  String paymentFor;
-  String paymentForAr;
-  String landLord;
-  String contractStatus;
-  String receiptDate;
-  GetContractChequesModel cheque;
-  RxBool loadingCheque = false.obs;
-  String errorLoadingCheque = '';
-  RxBool downloadingReceipt = false.obs;
+  String? paymentType;
+  String? paymentTypeAr;
+  String? contractDate;
+  String? tenant;
+  String? tenantAr;
+  String? unitNo;
+  String? contractNo;
+  String? city;
+  String? cityAr;
+  String? paymentFor;
+  String? paymentForAr;
+  String? landLord;
+  String? contractStatus;
+  String? receiptDate;
+  GetContractChequesModel? cheque;
+  RxBool? loadingCheque = false.obs;
+  String? errorLoadingCheque = '';
+  RxBool? downloadingReceipt = false.obs;
 
-  factory Payment.fromJson(Map<String, dynamic> json) => Payment(
+  factory Payment.fromJson(Map<String?, dynamic> json) => Payment(
       transactionId: json["transactionId"],
       contractId: json["contractID"],
       paymentDate: json["paymentDate"],
@@ -126,7 +126,7 @@ class Payment {
       contractStatus: json["contractStatus"] ?? '',
       receiptDate: json['receiptDate'] ?? '');
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "transactionId": transactionId,
         "contractID": contractId,
         "paymentDate": paymentDate,

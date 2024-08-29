@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ResendOtp extends StatelessWidget {
-  ResendOtp({Key key}) : super(key: key);
+  ResendOtp({Key? key}) : super(key: key);
   final VerifyUserOtpController vUOController = Get.find();
 
   @override
@@ -49,7 +49,7 @@ class ResendOtp extends StatelessWidget {
 }
 
 class ResendOtpFB extends StatefulWidget {
-  ResendOtpFB({Key key}) : super(key: key);
+  ResendOtpFB({Key? key}) : super(key: key);
 
   @override
   State<ResendOtpFB> createState() => _ResendOtpFBState();
@@ -72,7 +72,7 @@ class _ResendOtpFBState extends State<ResendOtpFB> {
                     authController.resendProgressBarLoading.value = true;
                   });
                   await authController
-                      .resendingOtp(SessionController().getPhone());
+                      .resendingOtp(SessionController().getPhone()??"");
                   print('After ::::: func call ::::');
                   setState(() {
                     authController.resendCounter++;

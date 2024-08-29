@@ -15,12 +15,12 @@ import 'dart:ui' as ui;
 import 'extend_contract_controller.dart';
 
 class ContractExtend extends StatefulWidget {
-  final String contractNo;
-  final int contractId;
-  final String caller;
-  final int dueActionId;
+  final String? contractNo;
+  final int? contractId;
+  final String? caller;
+  final int? dueActionId;
   const ContractExtend(
-      {Key key,
+      {Key? key,
       this.contractNo,
       this.contractId,
       this.caller,
@@ -34,11 +34,11 @@ class ContractExtend extends StatefulWidget {
 class _ContractExtendState extends State<ContractExtend> {
   final controller = Get.put(ExtendContractController());
 
-  bool isDialogOpen;
+  bool? isDialogOpen;
 
   @override
   void initState() {
-    controller.getExtensionPeriods(widget.contractId);
+    controller.getExtensionPeriods(widget.contractId!);
     isDialogOpen = false;
     super.initState();
   }
@@ -51,7 +51,7 @@ class _ContractExtendState extends State<ContractExtend> {
           : ui.TextDirection.rtl,
       child: WillPopScope(
         onWillPop: () async {
-          if (isDialogOpen) Get.back();
+          if (isDialogOpen!) Get.back();
           return true;
         },
         child: Scaffold(
@@ -84,7 +84,7 @@ class _ContractExtendState extends State<ContractExtend> {
                         style: AppTextStyle.semiBoldBlack12,
                       ),
                       Text(
-                        widget.contractNo,
+                        widget.contractNo!,
                         style: AppTextStyle.semiBoldBlack12,
                       )
                     ],
@@ -160,24 +160,22 @@ class _ContractExtendState extends State<ContractExtend> {
                                                               .getLanguage() ==
                                                           1
                                                       ? controller
-                                                              .extensionPeriods
-                                                              .extensionPeriod[
+                                                              .extensionPeriods!
+                                                              .extensionPeriod![
                                                                   controller
                                                                       .selectedPeriod
                                                                       .value]
                                                               .duration ??
                                                           ''
                                                       : controller
-                                                              .extensionPeriods
-                                                              .extensionPeriod[
-                                                                  controller
-                                                                      .selectedPeriod
-                                                                      .value]
-                                                              .duration
-                                                              .replaceAll(
-                                                                  'Month',
-                                                                  'شهر') ??
-                                                          "",
+                                                          .extensionPeriods!
+                                                          .extensionPeriod![
+                                                              controller
+                                                                  .selectedPeriod
+                                                                  .value]
+                                                          .duration!
+                                                          .replaceAll(
+                                                              'Month', 'شهر'),
                                                   style:
                                                       AppTextStyle.normalGrey10,
                                                 ),
@@ -206,11 +204,12 @@ class _ContractExtendState extends State<ContractExtend> {
                                           ),
                                           Text(
                                             controller
-                                                .extensionPeriods
-                                                .extensionPeriod[controller
-                                                    .selectedPeriod.value]
-                                                .extensionDetail
-                                                .addNewDate,
+                                                    .extensionPeriods!
+                                                    .extensionPeriod![controller
+                                                        .selectedPeriod.value]
+                                                    .extensionDetail!
+                                                    .addNewDate ??
+                                                "",
                                             style: AppTextStyle.normalBlack10,
                                           )
                                         ],
@@ -228,19 +227,20 @@ class _ContractExtendState extends State<ContractExtend> {
                                           ),
                                           Text(
                                             controller
-                                                .extensionPeriods
-                                                .extensionPeriod[controller
-                                                    .selectedPeriod.value]
-                                                .extensionDetail
-                                                .endNewDate,
+                                                    .extensionPeriods!
+                                                    .extensionPeriod![controller
+                                                        .selectedPeriod.value]
+                                                    .extensionDetail!
+                                                    .endNewDate ??
+                                                '',
                                             style: AppTextStyle.normalBlack10,
                                           )
                                         ],
                                       ),
                                     ),
                                     if (controller
-                                            .extensionPeriods
-                                            .extensionPeriod[
+                                            .extensionPeriods!
+                                            .extensionPeriod![
                                                 controller.selectedPeriod.value]
                                             .amount !=
                                         '0.00')
@@ -257,7 +257,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                             ),
                                             Obx(() {
                                               return Text(
-                                                '${AppMetaLabels().aed} ${controller.extensionPeriods.extensionPeriod[controller.selectedPeriod.value].amount}',
+                                                '${AppMetaLabels().aed} ${controller.extensionPeriods!.extensionPeriod![controller.selectedPeriod.value].amount}',
                                                 style: AppTextStyle
                                                     .semiBoldBlack10,
                                               );
@@ -289,9 +289,9 @@ class _ContractExtendState extends State<ContractExtend> {
                                                       .unfocus();
                                                   String resp = await controller
                                                       .extendContract(
-                                                          widget.contractId,
-                                                          widget.caller,
-                                                          widget.dueActionId);
+                                                          widget.contractId!,
+                                                          widget.caller!,
+                                                          widget.dueActionId!);
                                                   if (resp == 'ok')
                                                     showDialog(
                                                         context: context,
@@ -403,7 +403,7 @@ class _ContractExtendState extends State<ContractExtend> {
                         Get.back();
                         Get.off(() => TenantServiceRequestTabs(
                               requestNo: controller.caseNo.toString(),
-                              caller: widget.caller,
+                              caller: widget.caller!,
                               title: AppMetaLabels().extensionReq,
                             ));
                       },
@@ -443,7 +443,7 @@ class _ContractExtendState extends State<ContractExtend> {
                           padding: EdgeInsets.only(top: 2.0.h),
                           shrinkWrap: true,
                           itemCount: controller
-                              .extensionPeriods.extensionPeriod.length,
+                              .extensionPeriods!.extensionPeriod!.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               child: Column(
@@ -457,9 +457,9 @@ class _ContractExtendState extends State<ContractExtend> {
                                           scale: 0.7,
                                           child: Radio(
                                             activeColor: AppColors.blueColor,
-                                            onChanged: (value) {
+                                            onChanged: (int? value) {
                                               controller.selectedPeriod.value =
-                                                  value;
+                                                  value!;
                                             },
                                             groupValue:
                                                 controller.selectedPeriod.value,
@@ -473,21 +473,19 @@ class _ContractExtendState extends State<ContractExtend> {
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? controller
-                                                        .extensionPeriods
-                                                        .extensionPeriod[index]
+                                                        .extensionPeriods!
+                                                        .extensionPeriod![index]
                                                         .duration ??
                                                     ""
                                                 : controller
-                                                        .extensionPeriods
-                                                        .extensionPeriod[index]
-                                                        .duration
-                                                        .replaceAll(
-                                                            'Month', 'شهر') ??
-                                                    '',
+                                                    .extensionPeriods!
+                                                    .extensionPeriod![index]
+                                                    .duration!
+                                                    .replaceAll('Month', 'شهر'),
                                             style: AppTextStyle.normalBlack10),
                                         Spacer(),
                                         Text(
-                                            '${controller.extensionPeriods.extensionPeriod[index].extensionDetail.addNewDate} - ${controller.extensionPeriods.extensionPeriod[index].extensionDetail.endNewDate}',
+                                            '${controller.extensionPeriods!.extensionPeriod![index].extensionDetail!.addNewDate} - ${controller.extensionPeriods!.extensionPeriod![index].extensionDetail!.endNewDate}',
                                             style: AppTextStyle.normalBlack10),
                                         SizedBox(
                                           width: 3.0.w,

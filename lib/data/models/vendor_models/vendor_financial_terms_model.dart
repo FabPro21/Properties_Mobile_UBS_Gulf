@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 GetContractFinancialTermsModel getContractFinancialTermsModelFromJson(
-        String str) =>
-    GetContractFinancialTermsModel.fromJson(json.decode(str));
+        String? str) =>
+    GetContractFinancialTermsModel.fromJson(json.decode(str!));
 
-String getContractFinancialTermsModelToJson(
+String? getContractFinancialTermsModelToJson(
         GetContractFinancialTermsModel data) =>
     json.encode(data.toJson());
 
@@ -21,13 +21,13 @@ class GetContractFinancialTermsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<ContractFinancialTerm> contractFinancialTerms;
-  Paid paid;
-  String message;
+  String? status;
+  String? statusCode;
+  List<ContractFinancialTerm>? contractFinancialTerms;
+  Paid? paid;
+  String? message;
 
-  factory GetContractFinancialTermsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContractFinancialTermsModel.fromJson(Map<String?, dynamic> json) =>
       GetContractFinancialTermsModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -38,12 +38,12 @@ class GetContractFinancialTermsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "contractFinancialTerms":
-            List<dynamic>.from(contractFinancialTerms.map((x) => x.toJson())),
-        "paid": paid.toJson(),
+            List<dynamic>.from(contractFinancialTerms!.map((x) => x.toJson())),
+        "paid": paid!.toJson(),
         "message": message,
       };
 }
@@ -58,10 +58,10 @@ class ContractFinancialTerm {
 
   dynamic paymentTermId;
   dynamic contractId;
-  String paymentDate;
+  String? paymentDate;
   dynamic amount;
 
-  factory ContractFinancialTerm.fromJson(Map<String, dynamic> json) =>
+  factory ContractFinancialTerm.fromJson(Map<String?, dynamic> json) =>
       ContractFinancialTerm(
         paymentTermId: json["paymentTermID"],
         contractId: json["contractID"],
@@ -69,7 +69,7 @@ class ContractFinancialTerm {
         amount: json["amount"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paymentTermID": paymentTermId,
         "contractID": contractId,
         "paymentDate": paymentDate,
@@ -84,11 +84,11 @@ class Paid {
 
   dynamic paid;
 
-  factory Paid.fromJson(Map<String, dynamic> json) => Paid(
+  factory Paid.fromJson(Map<String?, dynamic> json) => Paid(
         paid: json["paid"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paid": paid,
       };
 }

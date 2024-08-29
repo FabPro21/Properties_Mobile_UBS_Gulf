@@ -49,7 +49,7 @@ class GetLanguageController extends GetxController {
         model.value = result;
         selectedLang.value =
             await GlobalPreferences.getInt(GlobalPreferencesLabels.langId) ??
-                model.value.language.first.langId;
+                model.value.language!.first.langId;
         update();
       } else {
         error.value = result;
@@ -94,6 +94,13 @@ class GetLanguageController extends GetxController {
   }
 
   Future<void> countinueBtn() async {
+    var isSelect =
+        await GlobalPreferences.getBool(GlobalPreferencesLabels.setLanguage);
+    if (!isSelect) {
+      SessionController().setLanguage(1);
+      GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, true);
+      return;
+    }
     SessionController().setLanguage(selectedLang.value);
     if (_langSelected) {
       GlobalPreferences.setbool(GlobalPreferencesLabels.setLanguage, true);

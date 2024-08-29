@@ -157,7 +157,7 @@ class PublicRepositoryDrop2 {
 
   static Future<dynamic> publicNotificationDetails() =>
       PublicNotificationsDetailServices.getNotificationDetails(
-          SessionController().getNotificationId());
+          SessionController().getNotificationId()??"");
 
   static Future<dynamic> archivedNotifications() =>
       PublicArchiveNotificationsServices.getArchivedNotifications();

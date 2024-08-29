@@ -49,13 +49,13 @@ class SetupMpinController extends GetxController {
         difficulty.value = true;
         isUpdating.value = true;
         GlobalPreferences.setbool(GlobalPreferencesLabels.fingerPrint,
-            fingerprintValue.value ?? false);
+            fingerprintValue.value);
         var response =
             await CommonRepository.addMpin(enterMpinController.value);
         if (response is AddMpinModel) {
           mpinLength.value = true;
           mpinMatch.value = true;
-          FocusScope.of(Get.context).unfocus();
+          FocusScope.of(Get.context!).unfocus();
           Get.to(() => SelectRoleScreen());
 
           isUpdating.value = false;

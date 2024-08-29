@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -15,7 +16,7 @@ import 'public_notification_controller.dart';
 import 'public_notification_details.dart';
 
 class PublicUnreadNotification extends StatefulWidget {
-  const PublicUnreadNotification({Key key}) : super(key: key);
+  const PublicUnreadNotification({Key? key}) : super(key: key);
 
   @override
   _PublicUnreadNotificationState createState() =>
@@ -78,10 +79,12 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                   return InkWell(
                                     onTap: () async {
                                       SessionController().setNotificationId(
-                                          _controller.notificationsUnRead[index]
+                                          _controller
+                                              .notificationsUnRead![index]
                                               .notificationId
                                               .toString());
-                                      if (_controller.notificationsUnRead[index]
+                                      if (_controller
+                                              .notificationsUnRead![index]
                                               .isRead !=
                                           true) {
                                         _controller.unreadNotificationsLoading
@@ -91,7 +94,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                         if (res) {
                                           setState(() {
                                             setState(() {
-                                              _controller.notificationsUnRead
+                                              _controller.notificationsUnRead!
                                                   .removeAt(index);
                                               _controller.unreadLength =
                                                   _controller.unreadLength - 1;
@@ -102,7 +105,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                       Get.to(() => PublicNotificationDetails());
                                       _controller.unreadNotificationsLoading
                                           .value = false;
-                                           _getUnreadNotifications();
+                                      _getUnreadNotifications();
                                     },
                                     child: Row(
                                       // getTNController.  editTap.value == true ? 80.0.w :
@@ -189,97 +192,60 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
-          ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(_controller
-                .notificationsUnRead[index].notificationId
-                .toString());
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            onPressed: (context) async {
+              SessionController().setNotificationId(_controller
+                  .notificationsUnRead![index].notificationId
+                  .toString());
 
-            if (_controller.notificationsUnRead[index].isRead != true) {
-              _controller.unreadNotificationsLoading.value = true;
-              var res = await _controller.readNotifications();
-              if (res) {
-                setState(() {
+              if (_controller.notificationsUnRead![index].isRead != true) {
+                _controller.unreadNotificationsLoading.value = true;
+                var res = await _controller.readNotifications();
+                if (res) {
                   setState(() {
-                    _controller.notificationsUnRead.removeAt(index);
+                    _controller.notificationsUnRead!.removeAt(index);
                     _controller.unreadLength = _controller.unreadLength - 1;
                   });
-                });
-                if (_controller.notificationsUnRead.length == 0) {
-                  _getUnreadNotifications();
-                  print(' calling');
-                } else {
-                  print('Not calling');
+                  if (_controller.notificationsUnRead!.isEmpty) {
+                    _getUnreadNotifications();
+                    print('Calling to fetch new notifications');
+                  } else {
+                    print('Not calling to fetch new notifications');
+                  }
                 }
+                _controller.unreadNotificationsLoading.value = false;
               }
-              _controller.unreadNotificationsLoading.value = false;
-            }
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () {
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) {
               setState(() {
                 _controller.unreadLength = _controller.unreadLength - 1;
-                _controller.notificationsUnRead.removeAt(index);
+                _controller.notificationsUnRead!.removeAt(index);
               });
-            }),
-      ],
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: Container(
         width: 90.0.w,
         child: ListTile(
@@ -288,7 +254,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
             children: [
               Row(
                 children: [
-                  _controller.notificationsUnRead[index].isRead == true
+                  _controller.notificationsUnRead![index].isRead == true
                       ? Container()
                       : Container(
                           height: 1.0.h,
@@ -305,12 +271,10 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
                         SessionController().getLanguage() == 1
-                            ? _controller.notificationsUnRead[index].title
-                                    .toString() ??
-                                ""
-                            : _controller.notificationsUnRead[index].titleAR
-                                    .toString() ??
-                                "",
+                            ? _controller.notificationsUnRead![index].title
+                                .toString()
+                            : _controller.notificationsUnRead![index].titleAR
+                                .toString(),
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.semiBoldBlack11,
                       ),
@@ -320,29 +284,31 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                   Icon(Icons.more_horiz),
                 ],
               ),
-              // public unread notification
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 3.0.w),
                 child: Html(
-                  customTextAlign: (_) => SessionController().getLanguage() == 1
-                      ? TextAlign.left
-                      : TextAlign.right,
                   data: SessionController().getLanguage() == 1
-                      ? _controller.notificationsUnRead[index].description
-                              .toString() ??
-                          ""
-                      : _controller.notificationsUnRead[index].descriptionAR
-                              .toString() ??
-                          "",
-                  defaultTextStyle: AppTextStyle.normalBlack10,
+                      ? _controller.notificationsUnRead![index].description
+                          .toString()
+                      : _controller.notificationsUnRead![index].descriptionAR
+                          .toString(),
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
                 child: Container(
                   child: Text(
-                    _controller.notificationsUnRead[index].createdOn ?? "",
+                    _controller.notificationsUnRead![index].createdOn ?? "",
                     style: AppTextStyle.normalBlack10,
                   ),
                 ),
@@ -357,7 +323,179 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
           ),
         ),
       ),
-      actionPane: SlidableDrawerActionPane(),
     );
+    // Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(_controller
+    //             .notificationsUnRead![index].notificationId
+    //             .toString());
+
+    //         if (_controller.notificationsUnRead![index].isRead != true) {
+    //           _controller.unreadNotificationsLoading.value = true;
+    //           var res = await _controller.readNotifications();
+    //           if (res) {
+    //             setState(() {
+    //               setState(() {
+    //                 _controller.notificationsUnRead!.removeAt(index);
+    //                 _controller.unreadLength = _controller.unreadLength - 1;
+    //               });
+    //             });
+    //             if (_controller.notificationsUnRead!.length == 0) {
+    //               _getUnreadNotifications();
+    //               print(' calling');
+    //             } else {
+    //               print('Not calling');
+    //             }
+    //           }
+    //           _controller.unreadNotificationsLoading.value = false;
+    //         }
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () {
+    //           setState(() {
+    //             _controller.unreadLength = _controller.unreadLength - 1;
+    //             _controller.notificationsUnRead!.removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: Container(
+    //     width: 90.0.w,
+    //     child: ListTile(
+    //       title: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.start,
+    //         children: [
+    //           Row(
+    //             children: [
+    //               _controller.notificationsUnRead![index].isRead == true
+    //                   ? Container()
+    //                   : Container(
+    //                       height: 1.0.h,
+    //                       width: 2.0.w,
+    //                       decoration: BoxDecoration(
+    //                         color: Colors.red,
+    //                         shape: BoxShape.circle,
+    //                       ),
+    //                     ),
+    //               Padding(
+    //                 padding: EdgeInsets.only(left: 1.0.h),
+    //                 child: Container(
+    //                   width:
+    //                       _controller.editTap.value == true ? 30.0.w : 60.0.w,
+    //                   child: Text(
+    //                     SessionController().getLanguage() == 1
+    //                         ? _controller.notificationsUnRead![index].title
+    //                             .toString()
+    //                         : _controller.notificationsUnRead![index].titleAR
+    //                             .toString(),
+    //                     overflow: TextOverflow.ellipsis,
+    //                     style: AppTextStyle.semiBoldBlack11,
+    //                   ),
+    //                 ),
+    //               ),
+    //               Spacer(),
+    //               Icon(Icons.more_horiz),
+    //             ],
+    //           ),
+    //           // public unread notification
+    //           Padding(
+    //             padding: EdgeInsets.symmetric(horizontal: 3.0.w),
+    //             child: Html(
+    //               data: SessionController().getLanguage() == 1
+    //                   ? _controller.notificationsUnRead![index].description
+    //                       .toString()
+    //                   : _controller.notificationsUnRead![index].descriptionAR
+    //                       .toString(),
+    //               style: {
+    //                 'html': Style(
+    //                   textAlign: SessionController().getLanguage() == 1
+    //                       ? TextAlign.left
+    //                       : TextAlign.right,
+    //                   color: Colors.black,
+    //                   fontFamily: AppFonts.graphikRegular,
+    //                   fontSize: FontSize(10.0),
+    //                 ),
+    //               },
+    //             ),
+    //           ),
+
+    //           Padding(
+    //             padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
+    //             child: Container(
+    //               child: Text(
+    //                 _controller.notificationsUnRead![index].createdOn ?? "",
+    //                 style: AppTextStyle.normalBlack10,
+    //               ),
+    //             ),
+    //           ),
+    //           SizedBox(
+    //             height: 2.0.h,
+    //           ),
+    //           index == _controller.unreadLength - 1
+    //               ? Container()
+    //               : AppDivider(),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 }

@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCancelRequest extends StatefulWidget {
-  const TenantCancelRequest({Key key}) : super(key: key);
+  const TenantCancelRequest({Key? key}) : super(key: key);
 
   @override
   _TenantCancelRequestState createState() => _TenantCancelRequestState();
@@ -262,8 +262,8 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                         onPressed: () {
                           AwesomeDialog(
                             context: context,
-                            animType: AnimType.SCALE,
-                            dialogType: DialogType.NO_HEADER,
+                            animType: AnimType.scale,
+                            dialogType: DialogType.noHeader,
                             body: Center(
                               child: Column(
                                 children: [

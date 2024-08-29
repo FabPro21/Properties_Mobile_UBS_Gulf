@@ -24,7 +24,7 @@ class _CountryPickerState extends State<CountryPicker> {
   @override
   void initState() {
     if (cPController.countryPicker.value.countries == null ||
-        cPController.countryPicker.value.countries.isEmpty)
+        cPController.countryPicker.value.countries!.isEmpty)
       cPController.getData();
     super.initState();
   }
@@ -172,8 +172,8 @@ class _CountryPickerState extends State<CountryPicker> {
                                       } else if ((cPController
                                                       .countryPicker
                                                       .value
-                                                      .countries[index]
-                                                      ?.countryCode ??
+                                                      .countries![index]
+                                                      .countryCode ??
                                                   "")
                                               .toLowerCase()
                                               .contains(cPController
@@ -181,7 +181,7 @@ class _CountryPickerState extends State<CountryPicker> {
                                           (cPController
                                                       .countryPicker
                                                       .value
-                                                      .countries[index]
+                                                      .countries![index]
                                                       .dialingCode ??
                                                   "")
                                               .toLowerCase()
@@ -223,10 +223,11 @@ class _CountryPickerState extends State<CountryPicker> {
                   height: 3.0.h,
                   child: Image.network(
                     'http://' +
-                        cPController.countryPicker.value.countries[index].flag,
+                        cPController
+                            .countryPicker.value.countries![index].flag!,
                     fit: BoxFit.contain,
-                    errorBuilder: (BuildContext context, Object exception,
-                        StackTrace stackTrace) {
+                    errorBuilder: (BuildContext context, Object? exception,
+                        StackTrace? stackTrace) {
                       return Icon(Icons.error);
                     },
                   ),
@@ -235,17 +236,15 @@ class _CountryPickerState extends State<CountryPicker> {
                   padding: EdgeInsets.only(left: 2.0.h),
                   child: Text(
                     cPController
-                            .countryPicker.value.countries[index].countryCode
-                            .toString() ??
-                        "",
+                        .countryPicker.value.countries![index].countryCode
+                        .toString(),
                     style: AppTextStyle.normalWhite13,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 1.0.h),
                   child: Text(
-                    "(${cPController.countryPicker.value.countries[index].dialingCode.toString()})" ??
-                        "",
+                    "(${cPController.countryPicker.value.countries![index].dialingCode.toString()})",
                     style: AppTextStyle.normalWhite13,
                   ),
                 ),

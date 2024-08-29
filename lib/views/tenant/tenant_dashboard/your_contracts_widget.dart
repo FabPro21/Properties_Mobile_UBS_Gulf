@@ -13,8 +13,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class YourContracts extends StatefulWidget {
-  final Function(int) manageContracts;
-  YourContracts({Key key, this.manageContracts}) : super(key: key);
+  final Function(int)? manageContracts;
+  YourContracts({Key? key, this.manageContracts}) : super(key: key);
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -93,15 +93,15 @@ class _YourContractsState extends State<YourContracts> {
                                 onTap: () async {
                                   SessionController().setContractID(
                                       getContractsController.getContracts.value
-                                          .contracts[index].contractId);
+                                          .contracts![index].contractId);
                                   SessionController().setContractNo(
                                       getContractsController.getContracts.value
-                                          .contracts[index].contractno);
+                                          .contracts![index].contractno);
                                   await Get.to(() => ContractsDetailsTabs(
                                         prevContractNo: getContractsController
                                             .getContracts
                                             .value
-                                            .contracts[index]
+                                            .contracts![index]
                                             .previousContactNo,
                                       ));
                                   getContractsController.getDashboardData();
@@ -135,15 +135,15 @@ class _YourContractsState extends State<YourContracts> {
                                                             ? getContractsController
                                                                 .getContracts
                                                                 .value
-                                                                .contracts[
+                                                                .contracts![
                                                                     index]
-                                                                .propertyName
+                                                                .propertyName??""
                                                             : getContractsController
                                                                 .getContracts
                                                                 .value
-                                                                .contracts[
+                                                                .contracts![
                                                                     index]
-                                                                .propertyNameAr,
+                                                                .propertyNameAr??"",
                                                         style: AppTextStyle
                                                             .semiBoldBlack12,
                                                         overflow: TextOverflow
@@ -152,7 +152,7 @@ class _YourContractsState extends State<YourContracts> {
                                                     ),
                                                     Spacer(),
                                                     Text(
-                                                      "${getContractsController.getContracts.value.contracts[index].contractno}",
+                                                      "${getContractsController.getContracts.value.contracts![index].contractno}",
                                                       style: AppTextStyle
                                                           .semiBoldBlack12,
                                                       overflow:
@@ -183,7 +183,7 @@ class _YourContractsState extends State<YourContracts> {
                                                           Alignment.centerRight,
                                                       width: 40.0.w,
                                                       child: Text(
-                                                        "${getContractsController.getContracts.value.contracts[index].unitRefNo}",
+                                                        "${getContractsController.getContracts.value.contracts![index].unitRefNo}",
                                                         style: AppTextStyle
                                                             .semiBoldBlack12,
                                                         overflow: TextOverflow
@@ -200,7 +200,7 @@ class _YourContractsState extends State<YourContracts> {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      "${getContractsController.getContracts.value.contracts[index].contractStartDate}",
+                                                      "${getContractsController.getContracts.value.contracts![index].contractStartDate}",
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
@@ -215,7 +215,7 @@ class _YourContractsState extends State<YourContracts> {
                                                               .greyColor),
                                                     ),
                                                     Text(
-                                                      "${getContractsController.getContracts.value.contracts[index].contractEndDate}",
+                                                      "${getContractsController.getContracts.value.contracts![index].contractEndDate}",
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
@@ -232,14 +232,14 @@ class _YourContractsState extends State<YourContracts> {
                                                               ? getContractsController
                                                                       .getContracts
                                                                       .value
-                                                                      .contracts[
+                                                                      .contracts![
                                                                           index]
                                                                       .contractStatus ??
                                                                   ''
                                                               : getContractsController
                                                                       .getContracts
                                                                       .value
-                                                                      .contracts[
+                                                                      .contracts![
                                                                           index]
                                                                       .contractStatusAr ??
                                                                   '',
@@ -247,7 +247,7 @@ class _YourContractsState extends State<YourContracts> {
                                                               getContractsController
                                                                   .getContracts
                                                                   .value
-                                                                  .contracts[
+                                                                  .contracts![
                                                                       index]
                                                                   .contractStatus,
                                                         ),
@@ -298,7 +298,7 @@ class _YourContractsState extends State<YourContracts> {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       onPressed: () {
-                        widget.manageContracts(1);
+                        widget.manageContracts!(1);
                       },
                       child: Text(
                         AppMetaLabels().viewAllContracts,

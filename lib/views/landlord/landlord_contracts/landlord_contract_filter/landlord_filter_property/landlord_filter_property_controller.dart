@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/landlord_models/filter_property_type_model.dart';
 import 'package:fap_properties/data/repository/landlord_repository.dart';

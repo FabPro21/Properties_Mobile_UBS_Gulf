@@ -20,7 +20,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../../data/models/tenant_models/get_tenant_service_requests_model.dart';
 
 class TenantRequestList extends StatefulWidget {
-  const TenantRequestList({Key key}) : super(key: key);
+  const TenantRequestList({Key? key}) : super(key: key);
 
   @override
   _TenantRequestListState createState() => _TenantRequestListState();
@@ -33,7 +33,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
   final TextEditingController toController = TextEditingController();
   GlobalKey _toolTipKey = GlobalKey();
   int tabIndex = 0;
-  bool filterApplied;
+  bool? filterApplied;
   @override
   void initState() {
     super.initState();
@@ -306,7 +306,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                         SizedBox(
                           width: 1.h,
                         ),
-                        if (filterApplied)
+                        if (filterApplied!)
                           SizedBox(
                             height: 4.0.h,
                             width: SessionController().getLanguage() == 1
@@ -444,7 +444,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                         // ),
                                       ),
                                     );
-                                    if (!getTSRController.setFromDate(dT)) {
+                                    if (!getTSRController.setFromDate(dT!)) {
                                       getTSRController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     } else {
@@ -514,7 +514,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       ),
                                     );
 
-                                    if (!getTSRController.setToDate(dT)) {
+                                    if (!getTSRController.setToDate(dT!)) {
                                       getTSRController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     } else {
@@ -664,7 +664,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
 }
 
 class FMServiceRequests extends StatefulWidget {
-  FMServiceRequests({Key key}) : super(key: key);
+  FMServiceRequests({Key? key}) : super(key: key);
 
   @override
   State<FMServiceRequests> createState() => _FMServiceRequestsState();
@@ -700,7 +700,7 @@ class _FMServiceRequestsState extends State<FMServiceRequests> {
 }
 
 class PMServiceRequests extends StatefulWidget {
-  PMServiceRequests({Key key}) : super(key: key);
+  PMServiceRequests({Key? key}) : super(key: key);
 
   @override
   State<PMServiceRequests> createState() => _PMServiceRequestsState();
@@ -736,9 +736,9 @@ class _PMServiceRequestsState extends State<PMServiceRequests> {
 }
 
 class ServiceRequestsList extends StatelessWidget {
-  final String type;
-  final List<ServiceRequest> serviceRequests;
-  const ServiceRequestsList({Key key, this.serviceRequests, this.type})
+  final String? type;
+  final List<ServiceRequest>? serviceRequests;
+  const ServiceRequestsList({Key? key, this.serviceRequests, this.type})
       : super(key: key);
 
   @override
@@ -746,19 +746,19 @@ class ServiceRequestsList extends StatelessWidget {
     return ListView.builder(
         padding: EdgeInsets.zero,
         shrinkWrap: true,
-        itemCount: serviceRequests.length,
+        itemCount: serviceRequests!.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(left: 2.0.h, right: 1.0.h),
             child: InkWell(
               onTap: () {
                 SessionController().setCaseNo(
-                  serviceRequests[index].requestNo.toString(),
+                  serviceRequests![index].requestNo.toString(),
                 );
                 Get.to(
                   () => TenantServiceRequestTabs(
-                    requestNo: serviceRequests[index].requestNo.toString(),
-                    title: serviceRequests[index].caseType,
+                    requestNo: serviceRequests![index].requestNo.toString(),
+                    title: serviceRequests![index].caseType??"",
                   ),
                 );
               },
@@ -775,13 +775,13 @@ class ServiceRequestsList extends StatelessWidget {
                           children: [
                             Text(
                               SessionController().getLanguage() == 1
-                                  ? serviceRequests[index].category ?? ""
-                                  : serviceRequests[index].categoryAR ?? "",
+                                  ? serviceRequests![index].category ?? ""
+                                  : serviceRequests![index].categoryAR ?? "",
                               style: AppTextStyle.semiBoldGrey10,
                             ),
                             Spacer(),
                             Text(
-                              serviceRequests[index].requestNo.toString() ?? "",
+                              serviceRequests![index].requestNo.toString(),
                               style: AppTextStyle.semiBoldGrey10,
                             ),
                           ],
@@ -791,23 +791,23 @@ class ServiceRequestsList extends StatelessWidget {
                         ),
                         Text(
                           SessionController().getLanguage() == 1
-                              ? serviceRequests[index].subCategory ?? ""
-                              : serviceRequests[index].subCategoryAR ?? "",
+                              ? serviceRequests![index].subCategory ?? ""
+                              : serviceRequests![index].subCategoryAR ?? "",
                           style: AppTextStyle.normalGrey10,
                         ),
-                        if (serviceRequests[index].propertyName != null)
+                        if (serviceRequests![index].propertyName != null)
                           Padding(
                             padding: EdgeInsets.only(top: 1.0.h),
                             child: Text(
                               SessionController().getLanguage() == 1
-                                  ? serviceRequests[index].propertyName ?? ""
-                                  : serviceRequests[index].propertyNameAr ?? "",
+                                  ? serviceRequests![index].propertyName ?? ""
+                                  : serviceRequests![index].propertyNameAr ?? "",
                               style: AppTextStyle.normalGrey10,
                             ),
                           ),
-                        if (serviceRequests[index].unitRefNo != null)
+                        if (serviceRequests![index].unitRefNo != null)
                           Text(
-                            serviceRequests[index].unitRefNo ?? '',
+                            serviceRequests![index].unitRefNo ?? '',
                             style: AppTextStyle.semiBoldGrey10,
                           ),
                         SizedBox(
@@ -816,26 +816,25 @@ class ServiceRequestsList extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              serviceRequests[index].date ?? "",
+                              serviceRequests![index].date ?? "",
                               style: AppTextStyle.semiBoldGrey10,
                             ),
                             Spacer(),
-                            serviceRequests[index].status == ''
+                            serviceRequests![index].status == ''
                                 ? SizedBox()
                                 : StatusWidget(
                                     text: SessionController().getLanguage() == 1
-                                        ? serviceRequests[index].status + '' ??
-                                            ""
-                                        : serviceRequests[index].statusAR ?? '',
+                                        ? serviceRequests![index].status??"" + ' ' 
+                                        : serviceRequests![index].statusAR ?? '',
                                     valueToCompare:
-                                        serviceRequests[index].status,
+                                        serviceRequests![index].status,
                                   )
                           ],
                         ),
                         SizedBox(
                           height: 1.0.h,
                         ),
-                        index == serviceRequests.length - 1
+                        index == serviceRequests!.length - 1
                             ? Container()
                             : AppDivider(),
                       ],
@@ -881,7 +880,7 @@ class ServiceRequestsList extends StatelessWidget {
 // import '../../../../../data/models/tenant_models/get_tenant_service_requests_model.dart';
 
 // class TenantRequestList extends StatefulWidget {
-//   const TenantRequestList({Key key}) : super(key: key);
+//   const TenantRequestList({Key? key}) : super(key: key);
 
 //   @override
 //   _TenantRequestListState createState() => _TenantRequestListState();
@@ -1449,7 +1448,7 @@ class ServiceRequestsList extends StatelessWidget {
 // }
 
 // class FMServiceRequests extends StatefulWidget {
-//   FMServiceRequests({Key key}) : super(key: key);
+//   FMServiceRequests({Key? key}) : super(key: key);
 
 //   @override
 //   State<FMServiceRequests> createState() => _FMServiceRequestsState();
@@ -1485,7 +1484,7 @@ class ServiceRequestsList extends StatelessWidget {
 // }
 
 // class PMServiceRequests extends StatefulWidget {
-//   PMServiceRequests({Key key}) : super(key: key);
+//   PMServiceRequests({Key? key}) : super(key: key);
 
 //   @override
 //   State<PMServiceRequests> createState() => _PMServiceRequestsState();

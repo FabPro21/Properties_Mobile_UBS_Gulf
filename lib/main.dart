@@ -11,8 +11,8 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sizer/sizer.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sizer/sizer.dart';
 
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                       */
@@ -23,12 +23,15 @@ import 'package:flutter/foundation.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext context) {
-    return super.createHttpClient(context)
+  HttpClient createHttpClient(SecurityContext? context) {
+    final client = super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
+
+    return client;
   }
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                     */
@@ -73,7 +76,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -146,7 +149,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // myCustomImplementation();
 
-    return Sizer(
+    return  Sizer(
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
          localizationsDelegates: [
@@ -158,15 +161,15 @@ class _MyAppState extends State<MyApp> {
             Locale('en', ''),
             Locale('ar', ''),
           ],
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             final MediaQueryData data = MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
+              textScaler: TextScaler.linear(1.0),
             );
             return MediaQuery(
               data: data.copyWith(
-                textScaleFactor: 1.0,
+                textScaler: TextScaler.linear(1.0),
               ),
-              child: child,
+              child: child!,
             );
           },
           debugShowCheckedModeBanner: false,
@@ -174,7 +177,6 @@ class _MyAppState extends State<MyApp> {
               appBarTheme: AppBarTheme(
                 backgroundColor: Colors.white,
               ),
-              backgroundColor: Colors.white,
               scaffoldBackgroundColor: Colors.grey,
               canvasColor: Colors.transparent,
               snackBarTheme:
@@ -478,7 +480,7 @@ class _MyAppState extends State<MyApp> {
 // }
 
 // class MyApp extends StatefulWidget {
-//   const MyApp({Key key}) : super(key: key);
+//   const MyApp({Key? key}) : super(key: key);
 
 //   @override
 //   State<MyApp> createState() => _MyAppState();
@@ -667,7 +669,7 @@ class _MyAppState extends State<MyApp> {
 // }
 
 // class MyApp extends StatefulWidget {
-//   const MyApp({Key key}) : super(key: key);
+//   const MyApp({Key? key}) : super(key: key);
 
 //   @override
 //   State<MyApp> createState() => _MyAppState();
@@ -857,7 +859,7 @@ class _MyAppState extends State<MyApp> {
 // // }
 
 // // class MyApp extends StatefulWidget {
-// //   const MyApp({Key key}) : super(key: key);
+// //   const MyApp({Key? key}) : super(key: key);
 
 // //   @override
 // //   State<MyApp> createState() => _MyAppState();
