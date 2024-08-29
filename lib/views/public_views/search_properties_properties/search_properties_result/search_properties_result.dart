@@ -52,7 +52,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
 
   _getData() async {
     await sPRController.getDataPagination(
-        widget.propName??"",
+        widget.propName ?? "",
         widget.minRent,
         widget.maxRent,
         widget.areaType,
@@ -76,14 +76,6 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
   @override
   void initState() {
     print('Inside Init :::::::');
-    print(widget.propName);
-    print(widget.minRent);
-    print(widget.maxRent);
-    print(widget.areaType);
-    print(widget.minArea);
-    print(widget.maxArea);
-    print(widget.minRoom);
-    print(widget.maxRoom);
     _getData();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 500),
@@ -172,7 +164,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                         borderRadius: BorderRadius.circular(1.0.h),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[200]??Colors.grey,
+                            color: Colors.grey[200] ?? Colors.grey,
                             blurRadius: 0.4.h,
                             spreadRadius: 0.1.h,
                             offset: Offset(0.1.h, 0.1.h),
@@ -185,8 +177,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                 )
               : sPRController.error.value != ''
                   ? Align(
-                    alignment: Alignment.center,
-                    child: Container(
+                      alignment: Alignment.center,
+                      child: Container(
                         height: 33.0.h,
                         width: 94.0.w,
                         padding: EdgeInsets.symmetric(
@@ -198,7 +190,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           borderRadius: BorderRadius.circular(1.0.h),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey[200]??Colors.grey,
+                              color: Colors.grey[200] ?? Colors.grey,
                               blurRadius: 1.0.h,
                               spreadRadius: 0.6.h,
                               offset: Offset(0.0.h, 0.7.h),
@@ -210,7 +202,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           errorImage: AppImagesPath.noServicesFound,
                         ),
                       ),
-                  )
+                    )
                   : Stack(
                       children: [
                         SingleChildScrollView(
@@ -224,7 +216,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                 borderRadius: BorderRadius.circular(2.0.h),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey[200]??Colors.grey,
+                                    color: Colors.grey[200] ?? Colors.grey,
                                     blurRadius: 0.5.h,
                                     spreadRadius: 0.8.h,
                                     offset: Offset(0.1.h, 0.1.h),
@@ -568,8 +560,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                     .toString();
                                                             await sPRController
                                                                 .getDataPaginationLoadMore(
-                                                                    widget
-                                                                        .propName??"",
+                                                                    widget.propName ??
+                                                                        "",
                                                                     widget
                                                                         .minRent,
                                                                     widget

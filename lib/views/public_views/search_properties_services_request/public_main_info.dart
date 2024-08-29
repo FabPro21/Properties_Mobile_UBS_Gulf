@@ -46,7 +46,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
       Get.put(PublicGetFeedbackController());
   @override
   void initState() {
-    _mainInfoController.getServiceMaininfo(widget.caseno!);
+    _mainInfoController.getServiceMaininfo(widget.caseno ?? 0);
     _getFeedbackController.getFeedback(widget.caseno);
     super.initState();
   }
@@ -109,11 +109,12 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                     Spacer(),
                                                     Text(
                                                       _mainInfoController
-                                                          .publicMaininfoDetails
-                                                          .value
-                                                          .detail!
-                                                          .caseNo
-                                                          .toString(),
+                                                              .publicMaininfoDetails
+                                                              .value
+                                                              .detail
+                                                              ?.caseNo
+                                                              .toString() ??
+                                                          '',
                                                       style: AppTextStyle
                                                           .semiBoldBlack10,
                                                     ),
@@ -391,8 +392,8 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                         SizedBox(
                                           height: 2.5.h,
                                         ),
-                                        _getFeedbackController.getPublicfeedback.value
-                                                        .feedback !=
+                                        _getFeedbackController.getPublicfeedback
+                                                        .value.feedback !=
                                                     null &&
                                                 _getFeedbackController
                                                         .getPublicfeedback
@@ -467,7 +468,8 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           starCount: 5,
                                                           allowHalfRating: true,
                                                           spacing: 2.0.w,
-                                                          onRatingChanged: (value) {
+                                                          onRatingChanged:
+                                                              (value) {
                                                             _getFeedbackController
                                                                 .getPublicfeedback
                                                                 .value
@@ -948,8 +950,9 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                   if (feedbackAdded) {
                                     Get.snackbar(
                                       AppMetaLabels().added,
-                                      _feedbackController
-                                          .savePublicfeedback.value.message??"",
+                                      _feedbackController.savePublicfeedback
+                                              .value.message ??
+                                          "",
                                       backgroundColor: Colors.white,
                                     );
                                     Navigator.pop(context);

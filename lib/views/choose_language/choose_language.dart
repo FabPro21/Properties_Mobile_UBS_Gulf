@@ -16,7 +16,8 @@ import 'update_user_language_controller.dart';
 class ChooseLanguage extends StatefulWidget {
   final bool? cont;
   final bool? loggedIn;
-  ChooseLanguage({Key? key, this.cont = false, this.loggedIn}) : super(key: key);
+  ChooseLanguage({Key? key, this.cont = false, this.loggedIn})
+      : super(key: key);
 
   @override
   State<ChooseLanguage> createState() => _ChooseLanguageState();
@@ -49,7 +50,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                     Padding(
                       padding: EdgeInsets.only(top: 2.0.h),
                       child: Row(
-                        mainAxisAlignment: widget.cont!
+                        mainAxisAlignment: widget.cont ?? false
                             ? MainAxisAlignment.center
                             : MainAxisAlignment.spaceBetween,
                         children: [
@@ -105,7 +106,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                     // shrinkWrap: true,
                                     padding: EdgeInsets.zero,
                                     itemCount: gLController
-                                        .model.value.language!.length,
+                                        .model.value.language?.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Column(
@@ -116,10 +117,14 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                             child: InkWell(
                                               onTap: () {
                                                 gLController.changeLanguage(
-                                                    gLController.model.value
-                                                        .language![index].langId!,
-                                                    widget.loggedIn!,
-                                                    widget.cont!);
+                                                    gLController
+                                                            .model
+                                                            .value
+                                                            .language?[index]
+                                                            .langId ??
+                                                        -1,
+                                                    widget.loggedIn ?? false,
+                                                    widget.cont ?? false);
                                                 setState(() {});
                                               },
                                               child: Container(
@@ -130,16 +135,18 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                       (gLController
                                                                   .model
                                                                   .value
-                                                                  .language![
+                                                                  .language?[
                                                                       index]
-                                                                  .title! ==
+                                                                  .title ==
                                                               "Arabic")
                                                           ? "العربية"
                                                           : gLController
-                                                              .model
-                                                              .value
-                                                              .language![index]
-                                                              .title??"",
+                                                                  .model
+                                                                  .value
+                                                                  .language?[
+                                                                      index]
+                                                                  .title ??
+                                                              "",
                                                       style: AppTextStyle
                                                           .normalWhite15,
                                                     ),
@@ -153,7 +160,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                               gLController
                                                                   .model
                                                                   .value
-                                                                  .language![
+                                                                  .language?[
                                                                       index]
                                                                   .langId
                                                           // index
@@ -193,7 +200,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                   alignment: Alignment.bottomCenter,
                   child: uULController.loadingData.value
                       ? LoadingIndicatorWhite()
-                      : gLController.error.value != '' 
+                      : gLController.error.value != ''
                           ? SizedBox()
                           : ButtonWidget(
                               buttonText: AppMetaLabels().cont,

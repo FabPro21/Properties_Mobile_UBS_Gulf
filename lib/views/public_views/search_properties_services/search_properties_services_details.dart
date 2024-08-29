@@ -35,7 +35,7 @@ class _SearchPropertiesServiceDetailsState
   }
 
   _getdata() async {
-    await _controller.getServiceCategoriesDetails(widget.categoryId!);
+    await _controller.getServiceCategoriesDetails(widget.categoryId ?? 0);
   }
 
   @override
@@ -76,13 +76,24 @@ class _SearchPropertiesServiceDetailsState
                               child: ExpansionTile(
                                   iconColor: AppColors.blueColor,
                                   title: Text(
-                                      SessionController().getLanguage() == 1
-                                          ? _controller.getServiceDetails.value
-                                                  .services![index].title ??
-                                              ""
-                                          : _controller.getServiceDetails.value
-                                                  .services![index].titleAr ??
-                                              "",
+                                      _controller.getServiceDetails.value
+                                                  .services ==
+                                              null
+                                          ? ''
+                                          : SessionController().getLanguage() ==
+                                                  1
+                                              ? _controller
+                                                      .getServiceDetails
+                                                      .value
+                                                      .services![index]
+                                                      .title ??
+                                                  ""
+                                              : _controller
+                                                      .getServiceDetails
+                                                      .value
+                                                      .services![index]
+                                                      .titleAr ??
+                                                  "",
                                       style: AppTextStyle.semiBoldBlack13),
                                   children: <Widget>[
                                     Align(
@@ -106,21 +117,25 @@ class _SearchPropertiesServiceDetailsState
                                               fontSize: FontSize(10.0),
                                             ),
                                           },
-                                          data: SessionController()
-                                                      .getLanguage() ==
-                                                  1
-                                              ? _controller
-                                                      .getServiceDetails
-                                                      .value
-                                                      .services![index]
-                                                      .description ??
-                                                  ""
-                                              : _controller
-                                                      .getServiceDetails
-                                                      .value
-                                                      .services![index]
-                                                      .descriptionAr ??
-                                                  "",
+                                          data: _controller.getServiceDetails
+                                                      .value.services ==
+                                                  null
+                                              ? ''
+                                              : SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _controller
+                                                          .getServiceDetails
+                                                          .value
+                                                          .services![index]
+                                                          .description ??
+                                                      ""
+                                                  : _controller
+                                                          .getServiceDetails
+                                                          .value
+                                                          .services![index]
+                                                          .descriptionAr ??
+                                                      "",
                                         ),
                                       ),
                                     )

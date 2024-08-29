@@ -174,7 +174,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return Container(
-                                                  height: 25.h,
+                                                  height: 28.h,
                                                   width: double.infinity,
                                                   margin: EdgeInsets.fromLTRB(
                                                       2.w, 0, 2.w, 1.h),

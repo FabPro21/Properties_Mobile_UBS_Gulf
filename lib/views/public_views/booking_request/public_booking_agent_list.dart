@@ -104,7 +104,8 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                 size: 2.0.h,
                                 color: Colors.grey,
                               ),
-                              contentPadding: EdgeInsets.only(left: 5.0.w,right:5.w),
+                              contentPadding:
+                                  EdgeInsets.only(left: 5.0.w, right: 5.w),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(0.5.h),
                                 borderSide: BorderSide(
@@ -145,29 +146,21 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                           } else if ((agentController
                                                           .selectAgent
                                                           .value
-                                                          .agentList![index]
+                                                          .agentList?[index]
                                                           .agentName ??
                                                       "")
                                                   .toLowerCase()
                                                   .contains(
                                                       searchControler.text) ||
-                                              (agentController
-                                                              .selectAgent
-                                                              .value
-                                                              .agentList![index]
-                                                              .agentName ??
-                                                          "")
-                                                      .toLowerCase()
-                                                      .contains(searchControler
-                                                          .text) &&
-                                                  SessionController()
-                                                          .getLanguage() ==
+                                              (agentController.selectAgent.value.agentList?[index].agentName ?? "").toLowerCase().contains(
+                                                      searchControler.text) &&
+                                                  SessionController().getLanguage() ==
                                                       1) {
                                             return selectAgent(index);
                                           } else if ((agentController
                                                           .selectAgent
                                                           .value
-                                                          .agentList![index]
+                                                          .agentList?[index]
                                                           .agentName ??
                                                       "")
                                                   .toLowerCase()
@@ -176,15 +169,12 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                               (agentController
                                                               .selectAgent
                                                               .value
-                                                              .agentList![index]
+                                                              .agentList?[index]
                                                               .agentName ??
                                                           "")
                                                       .toLowerCase()
-                                                      .contains(searchControler
-                                                          .text) &&
-                                                  SessionController()
-                                                          .getLanguage() !=
-                                                      1) {
+                                                      .contains(searchControler.text) &&
+                                                  SessionController().getLanguage() != 1) {
                                             return selectAgent(index);
                                           } else {
                                             return Container();
@@ -208,12 +198,16 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
     return InkWell(
       onTap: () async {
         Get.back(result: [
-          SessionController().getLanguage() == 1
-              ? agentController.selectAgent.value.agentList![index].agentName ??
-                  ""
-              : agentController.selectAgent.value.agentList![index].nameAr ?? "",
-          agentController.selectAgent.value.agentList![index].agentId
-                  .toString() 
+          agentController.selectAgent.value.agentList != null
+              ? SessionController().getLanguage() == 1
+                  ? agentController
+                      .selectAgent.value.agentList![index].agentName
+                      .toString()
+                  : agentController
+                          .selectAgent.value.agentList![index].nameAr ??
+                      ""
+              : "",
+          agentController.selectAgent.value.agentList?[index].agentId.toString()
         ]);
       },
       child: Column(
@@ -226,7 +220,8 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                   ? agentController
                           .selectAgent.value.agentList![index].agentName ??
                       ""
-                  : agentController.selectAgent.value.agentList![index].nameAr ??
+                  : agentController
+                          .selectAgent.value.agentList![index].nameAr ??
                       "",
               style: AppTextStyle.normalGrey10,
             ),

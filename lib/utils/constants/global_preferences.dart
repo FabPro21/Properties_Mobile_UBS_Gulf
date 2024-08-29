@@ -21,7 +21,7 @@ class GlobalPreferencesLabels {
 class GlobalPreferences {
   static getInt(key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    int value = prefs.getInt(key)!;
+    int value = prefs.getInt(key) ?? 0;
     return value;
   }
 
@@ -32,7 +32,7 @@ class GlobalPreferences {
 
   static getBool(key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool value = prefs.getBool(key)!;
+    bool value = prefs.getBool(key) ?? false;
     return value;
   }
 

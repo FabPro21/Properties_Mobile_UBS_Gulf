@@ -326,7 +326,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                       builder: (BuildContext
                                                           context) {
                                                         return Container(
-                                                          height: 25.h,
+                                                          height: 30.h,
                                                           width:
                                                               double.infinity,
                                                           margin: EdgeInsets

@@ -156,7 +156,7 @@ class Detail {
       units: json["units"],
       categoryAR: json["categoryAR"],
       categoryAr: json["categoryAr"],
-      subCategoryAR: json["subCategoryAR"]);
+      subCategoryAR: '');
 
   Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,

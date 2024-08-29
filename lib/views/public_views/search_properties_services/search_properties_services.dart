@@ -85,7 +85,7 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
                                             categoryId: _controller
                                                     .getServicesCatg
                                                     .value
-                                                    .serviceCategories![index]
+                                                    .serviceCategories?[index]
                                                     .categoryId ??
                                                 0,
                                           ));
@@ -94,22 +94,27 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
                                       Container(
                                         width: Get.width * 0.8,
                                         child: Text(
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? _controller
-                                                        .getServicesCatg
-                                                        .value
-                                                        .serviceCategories![
-                                                            index]
-                                                        .title ??
-                                                    ""
-                                                : _controller
-                                                        .getServicesCatg
-                                                        .value
-                                                        .serviceCategories![
-                                                            index]
-                                                        .titleAr ??
-                                                    "",
+                                            _controller.getServicesCatg.value
+                                                        .serviceCategories ==
+                                                    null
+                                                ? ''
+                                                : SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? _controller
+                                                            .getServicesCatg
+                                                            .value
+                                                            .serviceCategories![
+                                                                index]
+                                                            .title ??
+                                                        ""
+                                                    : _controller
+                                                            .getServicesCatg
+                                                            .value
+                                                            .serviceCategories![
+                                                                index]
+                                                            .titleAr ??
+                                                        "",
                                             //   "title",
                                             maxLines: 3,
                                             style:

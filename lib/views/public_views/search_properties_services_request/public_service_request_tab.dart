@@ -107,8 +107,8 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
                       caseno: widget.requestNo,
                     ),
                     PublicServiceUpdates(
-                      reqNo: widget.requestNo!,
-                      canCommunicate: widget.canCommunicate!,
+                      reqNo: widget.requestNo ?? 0,
+                      canCommunicate: widget.canCommunicate ?? false,
                     ),
                   ],
                 ),

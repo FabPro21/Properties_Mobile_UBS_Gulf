@@ -29,7 +29,7 @@ class _PublicFaqsQuestionsAndDescriptionState
   bool isShowDivider = true;
   @override
   void initState() {
-    _controller.getfaqsQuestionData(widget.categoryId!);
+    _controller.getfaqsQuestionData(widget.categoryId ?? -1);
     super.initState();
   }
 
@@ -68,14 +68,25 @@ class _PublicFaqsQuestionsAndDescriptionState
                                     ExpansionTile(
                                       iconColor: AppColors.blueColor,
                                       title: Text(
-                                        SessionController().getLanguage() == 1
-                                            // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
-                                            ? _controller.faqsQuestions.value
-                                                    .faq![index].title  ??
-                                                ""
-                                            : _controller.faqsQuestions.value
-                                                    .faq![index].titleAr ??
-                                                "",
+                                        _controller.faqsQuestions.value.faq ==
+                                                null
+                                            ? ''
+                                            : SessionController()
+                                                        .getLanguage() ==
+                                                    1
+                                                // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
+                                                ? _controller
+                                                        .faqsQuestions
+                                                        .value
+                                                        .faq![index]
+                                                        .title ??
+                                                    ""
+                                                : _controller
+                                                        .faqsQuestions
+                                                        .value
+                                                        .faq![index]
+                                                        .titleAr ??
+                                                    "",
                                         style: AppTextStyle.semiBoldBlack13,
                                         textAlign: TextAlign.justify,
                                       ),
@@ -92,22 +103,26 @@ class _PublicFaqsQuestionsAndDescriptionState
                                                 bottom: 2.0.h,
                                                 right: 4.0.w),
                                             child: Text(
-                                              SessionController()
-                                                          .getLanguage() ==
-                                                      1
-                                                  // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
-                                                  ? _controller
-                                                          .faqsQuestions
-                                                          .value
-                                                          .faq![index]
-                                                          .description ??
-                                                      ""
-                                                  : _controller
-                                                          .faqsQuestions
-                                                          .value
-                                                          .faq![index]
-                                                          .descriptionAr ??
-                                                      "",
+                                              _controller.faqsQuestions.value
+                                                          .faq ==
+                                                      null
+                                                  ? ''
+                                                  : SessionController()
+                                                              .getLanguage() ==
+                                                          1
+                                                      // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
+                                                      ? _controller
+                                                              .faqsQuestions
+                                                              .value
+                                                              .faq![index]
+                                                              .description ??
+                                                          ""
+                                                      : _controller
+                                                              .faqsQuestions
+                                                              .value
+                                                              .faq![index]
+                                                              .descriptionAr ??
+                                                          "",
                                               style: AppTextStyle.normalBlack12,
                                               textAlign: TextAlign.justify,
                                             ),

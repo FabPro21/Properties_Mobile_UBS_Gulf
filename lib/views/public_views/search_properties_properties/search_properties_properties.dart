@@ -85,13 +85,15 @@ class _SearchPropertiesPropertiesState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    SessionController().getLanguage() == 1
-                                        ? _controller.getdata.value
-                                                .record![index].title ??
-                                            ""
-                                        : _controller.getdata.value
-                                                .record![index].titileAr ??
-                                            "",
+                                    _controller.getdata.value.record == null
+                                        ? ''
+                                        : SessionController().getLanguage() == 1
+                                            ? _controller.getdata.value
+                                                    .record![index].title ??
+                                                ""
+                                            : _controller.getdata.value
+                                                    .record?[index].titileAr ??
+                                                "",
                                     style: AppTextStyle.semiBoldBlack13,
                                   ),
                                   SizedBox(
@@ -110,13 +112,22 @@ class _SearchPropertiesPropertiesState
                                         fontSize: FontSize(10.0),
                                       ),
                                     },
-                                    data: SessionController().getLanguage() == 1
-                                        ? _controller.getdata.value
-                                                .record![index].description ??
-                                            ""
-                                        : _controller.getdata.value
-                                                .record![index].descriptionAR ??
-                                            "",
+                                    data: _controller.getdata.value.record ==
+                                            null
+                                        ? ''
+                                        : SessionController().getLanguage() == 1
+                                            ? _controller
+                                                    .getdata
+                                                    .value
+                                                    .record![index]
+                                                    .description ??
+                                                ""
+                                            : _controller
+                                                    .getdata
+                                                    .value
+                                                    .record![index]
+                                                    .descriptionAR ??
+                                                "",
                                   ),
                                 ],
                               ),

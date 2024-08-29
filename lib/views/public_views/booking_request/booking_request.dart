@@ -22,11 +22,11 @@
 // import '../../../views/widgets/clear_button.dart';
 
 // class BookingRequest extends StatefulWidget {
-//   final Property property!;
+//   final Property property?;
 //   final int index;
 //   const BookingRequest({
 //     Key key,
-//     this.property!,
+//     this.property?,
 //     this.index,
 //   }) : super(key: key);
 
@@ -46,7 +46,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     double am = double.parse((widget.property!.amount ?? 0.0).toString());
+//     double am = double.parse((widget.property?.amount ?? 0.0).toString());
 
 //     final paidFormatter = intl.NumberFormat('#,##0.00', 'AR');
 //     String amount = paidFormatter.format(am);
@@ -140,7 +140,7 @@
 //                               mainAxisAlignment: MainAxisAlignment.start,
 //                               children: [
 //                                 Text(
-//                                   widget.property!.propertyName ?? "",
+//                                   widget.property?.propertyName ?? "",
 //                                   style: AppTextStyle.semiBoldBlack11,
 //                                   overflow: TextOverflow.ellipsis,
 //                                 ),
@@ -148,7 +148,7 @@
 //                                   height: 1.0.h,
 //                                 ),
 //                                 Text(
-//                                   "${AppMetaLabels().unit}: ${widget.property!.unitRefNo}",
+//                                   "${AppMetaLabels().unit}: ${widget.property?.unitRefNo}",
 //                                   style: AppTextStyle.semiBoldGrey10,
 //                                   overflow: TextOverflow.ellipsis,
 //                                 ),
@@ -165,7 +165,7 @@
 //                                     Container(
 //                                       width: 55.0.w,
 //                                       child: Text(
-//                                         widget.property!.address ?? "",
+//                                         widget.property?.address ?? "",
 //                                         style: AppTextStyle.normalGrey10,
 //                                         overflow: TextOverflow.ellipsis,
 //                                       ),
@@ -180,11 +180,11 @@
 //                                       MainAxisAlignment.spaceBetween,
 //                                   children: [
 //                                     columnList(AppMetaLabels().beds,
-//                                         "${widget.property!.bedRooms ?? ""}"),
+//                                         "${widget.property?.bedRooms ?? ""}"),
 //                                     columnList(AppMetaLabels().bath,
-//                                         "${widget.property!.noofWashrooms ?? ""}"),
+//                                         "${widget.property?.noofWashrooms ?? ""}"),
 //                                     columnList(AppMetaLabels().sqFt,
-//                                         "${widget.property!.areaSize ?? ""}"),
+//                                         "${widget.property?.areaSize ?? ""}"),
 //                                     columnList(
 //                                         AppMetaLabels().amount+'', amount),
 //                                   ],
@@ -236,7 +236,7 @@
 //                             // validator: (value) {
 //                             //   if (value.isEmpty)
 //                             //     return AppMetaLabels().requiredField;
-//                             //   else if (!nameValidator.hasMatch(value)) {
+//                             //   else if (?nameValidator.hasMatch(value)) {
 //                             //     return AppMetaLabels().invalidName;
 //                             //   } else
 //                             //     return null;
@@ -264,7 +264,7 @@
 //                             // validator: (value) {
 //                             //   if (value.isEmpty)
 //                             //     return AppMetaLabels().requiredField;
-//                             //   else if (!phoneValidator.hasMatch(value)) {
+//                             //   else if (?phoneValidator.hasMatch(value)) {
 //                             //     return AppMetaLabels().invalidPhone;
 //                             //   } else
 //                             //     return null;
@@ -322,7 +322,7 @@
 //                             // validator: (value) {
 //                             //   if (value.isEmpty)
 //                             //     return AppMetaLabels().requiredField;
-//                             //   else if (!textValidator.hasMatch(value)) {
+//                             //   else if (?textValidator.hasMatch(value)) {
 //                             //     return AppMetaLabels().invalidText;
 //                             //   } else
 //                             //     return null;
@@ -383,7 +383,7 @@
 //                                   FocusScope.of(context).unfocus();
 //                                   var agent = await Get.to(
 //                                       () => PublicBookingAgentList());
-//                                   if (agent != null) {
+//                                   if (agent ?= null) {
 //                                     bookingRequestController.agentId.value =
 //                                         agent[1];
 //                                     bookingRequestController.agentName.value =
@@ -448,18 +448,18 @@
 //                               ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
 //                             ),
 //                             onPressed: () async {
-//                               // if (!formKey.currentState.validate()) {
+//                               // if (?formKey.currentState.validate()) {
 //                               //   return;
 //                               // }
 //                               FocusScope.of(context).unfocus();
 //                               var resp = await bookingRequestController
 //                                   .saveBookingRequestData(
-//                                       widget.property!.propertyID,
+//                                       widget.property?.propertyID,
 //                                       remarksController.text,
-//                                       widget.property!.unitID,
+//                                       widget.property?.unitID,
 //                                       otherPersonNameController.text,
 //                                       otherPersonPnoController.text);
-//                               if (resp != null) {
+//                               if (resp ?= null) {
 //                                 bookingRequestController.agentName.value =
 //                                     AppMetaLabels().pleaseSelect;
 //                                 otherPersonPnoController.clear();
@@ -579,7 +579,7 @@ class _BookingRequestState extends State<BookingRequest> {
 
   @override
   Widget build(BuildContext context) {
-    double am = double.parse((widget.property!.amount ?? 0.0).toString());
+    double am = double.parse((widget.property?.amount ?? 0.0).toString());
 
     final paidFormatter = intl.NumberFormat('#,##0.00', 'AR');
     String amount = paidFormatter.format(am);
@@ -637,7 +637,7 @@ class _BookingRequestState extends State<BookingRequest> {
                         borderRadius: BorderRadius.circular(1.0.h),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[300] ??Colors.grey,
+                            color: Colors.grey[300] ?? Colors.grey,
                             blurRadius: 1.0.h,
                             spreadRadius: 0.6.h,
                             offset: Offset(0.1.h, 0.7.h),
@@ -652,8 +652,8 @@ class _BookingRequestState extends State<BookingRequest> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(1.0.h),
                               child: StreamBuilder<Uint8List>(
-                                stream:
-                                    sPRController.getUnitImage(widget.index!),
+                                stream: sPRController
+                                    .getUnitImage(widget.index ?? 0),
                                 builder: (
                                   BuildContext context,
                                   AsyncSnapshot<Uint8List> snapshot,
@@ -705,7 +705,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.property!.propertyName ?? "",
+                                    widget.property?.propertyName ?? "",
                                     style: AppTextStyle.semiBoldBlack11,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -713,7 +713,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                     height: 1.0.h,
                                   ),
                                   Text(
-                                    "${AppMetaLabels().unit}: ${widget.property!.unitRefNo}",
+                                    "${AppMetaLabels().unit}: ${widget.property?.unitRefNo}",
                                     style: AppTextStyle.semiBoldGrey10,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -730,7 +730,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                       Container(
                                         width: 55.0.w,
                                         child: Text(
-                                          widget.property!.address ?? "",
+                                          widget.property?.address ?? "",
                                           style: AppTextStyle.normalGrey10,
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -743,30 +743,30 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      widget.property!.bedRooms == '0' ||
-                                              widget.property!.bedRooms == 0 ||
-                                              widget.property!.bedRooms == null
+                                      widget.property?.bedRooms == '0' ||
+                                              widget.property?.bedRooms == 0 ||
+                                              widget.property?.bedRooms == null
                                           ? SizedBox()
                                           : columnList(AppMetaLabels().beds,
-                                              "${widget.property!.bedRooms ?? ""}"),
+                                              "${widget.property?.bedRooms ?? ""}"),
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      widget.property!.noofWashrooms == '0' ||
-                                              widget.property!.noofWashrooms ==
+                                      widget.property?.noofWashrooms == '0' ||
+                                              widget.property?.noofWashrooms ==
                                                   0 ||
-                                              widget.property!.noofWashrooms ==
+                                              widget.property?.noofWashrooms ==
                                                   null
                                           ? SizedBox()
                                           : columnList(AppMetaLabels().bath,
-                                              "${widget.property!.noofWashrooms ?? ""}"),
+                                              "${widget.property?.noofWashrooms ?? ""}"),
                                       SizedBox(
                                         width: 10,
                                       ),
                                       columnList(AppMetaLabels().sqFt,
-                                          "${widget.property!.areaSize ?? ""}"),
+                                          "${widget.property?.areaSize ?? ""}"),
                                       // columnList(AppMetaLabels().sqFt,
-                                      //     "${widget.property!.areaSize ?? ""}"),
+                                      //     "${widget.property?.areaSize ?? ""}"),
                                       // columnList(
                                       //     AppMetaLabels().amount + '', amount),
                                     ],
@@ -880,7 +880,7 @@ class _BookingRequestState extends State<BookingRequest> {
                         borderRadius: BorderRadius.circular(2.0.h),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[300]??Colors.grey,
+                            color: Colors.grey[300] ?? Colors.grey,
                             blurRadius: 1.0.h,
                             spreadRadius: 0.6.h,
                             offset: Offset(0.0.h, 0.7.h),
@@ -940,7 +940,7 @@ class _BookingRequestState extends State<BookingRequest> {
                             borderRadius: BorderRadius.circular(2.0.h),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey[300]??Colors.grey,
+                                color: Colors.grey[300] ?? Colors.grey,
                                 blurRadius: 1.0.h,
                                 spreadRadius: 0.6.h,
                                 offset: Offset(0.0.h, 0.7.h),
@@ -1040,15 +1040,15 @@ class _BookingRequestState extends State<BookingRequest> {
                                 backgroundColor: Color.fromRGBO(0, 61, 166, 1),
                               ),
                               onPressed: () async {
-                                if (!formKey.currentState!.validate()) {
+                                if (formKey.currentState?.validate() == false) {
                                   return;
                                 }
                                 FocusScope.of(context).unfocus();
                                 var resp = await bookingRequestController
                                     .saveBookingRequestData(
-                                        widget.property!.propertyID,
+                                        widget.property?.propertyID,
                                         remarksController.text,
-                                        widget.property!.unitID,
+                                        widget.property?.unitID,
                                         otherPersonNameController.text,
                                         otherPersonPnoController.text);
                                 if (resp != null) {
@@ -1060,7 +1060,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Get.to(
                                     () => PublicServiceRequestTab(
                                       requestNo: resp ?? 0,
-                                      unitId: 123,
+                                      unitId: 123, // not using any where
                                       backToSearch: true,
                                       canCommunicate: true,
                                     ),

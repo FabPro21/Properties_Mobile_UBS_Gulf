@@ -237,6 +237,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                   onPress: () async {
                                     FocusScope.of(context).unfocus();
                                     authController.textFieldTap.value = false;
+                                    print(PhoneNoFieldFB.phoneController.text);
                                     print(PhoneNoFieldFB.phoneController.text ==
                                         '');
 
@@ -266,11 +267,18 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                           backgroundColor: AppColors.redColor,
                                           colorText: AppColors.whiteColor);
                                     } else {
-                                      final String phone = SessionController()
-                                              .getDialingCode() ??
-                                          "" +
-                                              PhoneNoFieldFB
-                                                  .phoneController.text;
+                                      var dailingCode =
+                                          SessionController().getDialingCode();
+                                      var number =
+                                          PhoneNoFieldFB.phoneController.text;
+                                      final String phone =
+                                          '$dailingCode$number';
+                                      // final String phone = SessionController()
+                                      //         .getDialingCode() ??
+                                      //     "" +
+                                      //         PhoneNoFieldFB
+                                      //             .phoneController.text;
+                                      print('Phone  ::: $phone');
                                       SessionController().setPhone(phone);
                                       var phoneNbrValidation =
                                           authController.validateMobile(phone);

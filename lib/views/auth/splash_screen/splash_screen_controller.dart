@@ -42,20 +42,27 @@ class SplashScreenController extends GetxController {
     setLanguage =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.setLanguage) ??
             false;
+    print('Set Language : $setLanguage');
+
+    if (!setLanguage) {
+      SessionController().setLanguage(1);
+      GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, true);
+    }
     isLoginBool =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.isLoginBool) ??
             false;
-    phone.value = await GlobalPreferencesEncrypted.getString(
-        GlobalPreferencesLabels.phoneNumber);
     isEnglish =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.isEnglish) ??
             true;
+
     SessionController().setLanguage(isEnglish! ? 1 : 2);
+
+    phone.value = await GlobalPreferencesEncrypted.getString(
+        GlobalPreferencesLabels.phoneNumber);
   }
 
   Future<void> isSetupMpin() async {
     await prefsData();
-    print('setLanguage: $setLanguage');
     setSessionToken();
     setUserName();
     getfp();

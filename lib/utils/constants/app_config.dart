@@ -472,17 +472,17 @@ class AppConfig {
     //     'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
 
     // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
-    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
-    // commonAppConfig! =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
-    // publicAppConfig! =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
-    // tenantAppConfig! =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
-    // appConfigVendor! =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
-    // landlordAppConfig! =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
+    baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
+    commonAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+    publicAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+    tenantAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+    appConfigVendor =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+    landlordAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
 
 ///////////////////////////////////////////////////////////////////////////
     // Production
@@ -497,11 +497,11 @@ class AppConfig {
 ///////////////////////////////////////////////////////////////////////////
 
     // 44 Server --> uat
-    commonAppConfig = 'https://20.174.25.44/Auth/api/';
-    publicAppConfig = 'https://20.174.25.44/Public/';
-    tenantAppConfig = 'https://20.174.25.44/Tenant/Api/';
-    appConfigVendor = 'https://20.174.25.44/Vendor/Api/';
-    landlordAppConfig = 'https://20.174.25.44/Landlord/Api/';
+    // commonAppConfig = 'https://20.174.25.44/Auth/api/';
+    // publicAppConfig = 'https://20.174.25.44/Public/';
+    // tenantAppConfig = 'https://20.174.25.44/Tenant/Api/';
+    // appConfigVendor = 'https://20.174.25.44/Vendor/Api/';
+    // landlordAppConfig = 'https://20.174.25.44/Landlord/Api/';
 
     // 43 Server
     ///////////////////////////////////////////////////////////////////////////

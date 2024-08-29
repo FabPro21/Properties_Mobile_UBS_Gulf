@@ -227,8 +227,10 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
 
               await _controller.archiveNotifications();
               // Update state to reflect changes
-              _controller.allLength = _controller.allLength - 1;
-              _controller.notifications!.removeAt(index);
+              setState(() {
+                _controller.allLength = _controller.allLength - 1;
+                _controller.notifications!.removeAt(index);
+              });
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

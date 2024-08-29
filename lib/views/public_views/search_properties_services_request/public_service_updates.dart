@@ -136,7 +136,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                             width: 2.w,
                                           ),
                                           SizedBox(
-                                            width: Get.width * 0.72,
+                                            width: Get.width * 0.70,
                                             child: Text(
                                               _controller.fileToUpload.value
                                                       .name ??
@@ -261,7 +261,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                         ),
                       ]),
                       child: Padding(
-                          padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w),
+                          padding: EdgeInsets.only(left: 5.0.w, right: 3.0.w),
                           child: Directionality(
                             textDirection:
                                 SessionController().getLanguage() == 1
@@ -272,7 +272,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: 76.0.w,
+                                    width: 73.0.w,
                                     child: Directionality(
                                       textDirection:
                                           SessionController().getLanguage() == 1
@@ -335,7 +335,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           onPressed: null,
                                           icon: Image.asset(
                                             AppImagesPath.msgsentimg,
-                                            height: 7.0.h,
+                                            height: 6.0.h,
                                           ),
                                         )
                                       : CircleAvatar(
@@ -379,13 +379,13 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
-                      itemCount: _controller.ticketReplies!.ticketReply!.length,
+                      itemCount: _controller.ticketReplies?.ticketReply?.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
-                          alignment: (_controller.ticketReplies!
-                                      .ticketReply![index].userId2 ==
+                          alignment: (_controller.ticketReplies
+                                      ?.ticketReply?[index].userId2 ==
                                   null
                               ? Alignment.topLeft
                               : Alignment.topRight),
@@ -393,8 +393,8 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                             constraints: BoxConstraints(maxWidth: 80.w),
                             child: Container(
                               margin: EdgeInsets.only(top: 2.5.h),
-                              decoration: _controller.ticketReplies!
-                                          .ticketReply![index].userId2 ==
+                              decoration: _controller.ticketReplies
+                                          ?.ticketReply?[index].userId2 ==
                                       null
                                   ? BoxDecoration(
                                       borderRadius: BorderRadius.only(
@@ -413,17 +413,17 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     ),
                               padding: EdgeInsets.all(12),
                               child: Column(
-                                crossAxisAlignment: _controller.ticketReplies!
-                                            .ticketReply![index].userId2 ==
+                                crossAxisAlignment: _controller.ticketReplies
+                                            ?.ticketReply?[index].userId2 ==
                                         null
                                     ? CrossAxisAlignment.end
                                     : CrossAxisAlignment.start,
                                 children: [
-                                  if (_controller.ticketReplies!
-                                              .ticketReply![index].fileName !=
+                                  if (_controller.ticketReplies
+                                              ?.ticketReply?[index].fileName !=
                                           null &&
-                                      _controller.ticketReplies!
-                                              .ticketReply![index].fileName !=
+                                      _controller.ticketReplies
+                                              ?.ticketReply?[index].fileName !=
                                           "")
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -431,8 +431,8 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                         Expanded(
                                           child: Text(
                                             _controller
-                                                    .ticketReplies!
-                                                    .ticketReply![index]
+                                                    .ticketReplies
+                                                    ?.ticketReply?[index]
                                                     .fileName ??
                                                 "",
                                             style: AppTextStyle.semiBoldBlue10,
@@ -443,10 +443,11 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           width: 50,
                                           child: Obx(() {
                                             return _controller
-                                                    .ticketReplies!
-                                                    .ticketReply![index]
-                                                    .downloadingFile!
-                                                    .value
+                                                        .ticketReplies
+                                                        ?.ticketReply?[index]
+                                                        .downloadingFile
+                                                        ?.value ??
+                                                    false
                                                 ? LoadingIndicatorBlue(
                                                     strokeWidth: 2,
                                                     size: 24,
@@ -490,15 +491,15 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   // Communication
                                   Html(
                                     style: {},
-                                    data: _controller.ticketReplies!
-                                        .ticketReply![index].reply,
+                                    data: _controller.ticketReplies
+                                        ?.ticketReply?[index].reply,
                                   ),
                                   SizedBox(
                                     height: 2.h,
                                   ),
                                   Text(
-                                    _controller.ticketReplies!
-                                            .ticketReply![index].dateTime ??
+                                    _controller.ticketReplies
+                                            ?.ticketReply?[index].dateTime ??
                                         "",
                                     style: AppTextStyle.normalGrey8,
                                   ),

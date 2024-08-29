@@ -78,19 +78,29 @@ class _PublicOffersState extends State<PublicOffers> {
                                       onTap: () {
                                         Get.to(() => PublicOfferDetails(
                                             offerId: _controller.offers.value
-                                                .record![index].offerid
+                                                .record?[index].offerid
                                                 .toString()));
                                       },
                                       child: Row(children: [
                                         Text(
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? _controller.offers.value
-                                                    .record![index].title!
-                                                    .trim()
-                                                : _controller.offers.value
-                                                    .record![index].titleAr!
-                                                    .trim(),
+                                            _controller.offers.value.record ==
+                                                    null
+                                                ? ''
+                                                : SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? _controller
+                                                            .offers
+                                                            .value
+                                                            .record![index]
+                                                            .title ??
+                                                        "".trim()
+                                                    : _controller
+                                                            .offers
+                                                            .value
+                                                            .record?[index]
+                                                            .titleAr ??
+                                                        "".trim(),
                                             style:
                                                 AppTextStyle.semiBoldBlack13),
                                         Spacer(),

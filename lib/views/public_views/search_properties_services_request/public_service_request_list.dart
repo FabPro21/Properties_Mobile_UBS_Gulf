@@ -356,7 +356,6 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                               onTap: () {
                                                 Get.to(
                                                   () => PublicServiceRequestTab(
-                                                    // requestNo: 23838828,
                                                     requestNo:
                                                         getServicesController
                                                                 .serviceReq[
