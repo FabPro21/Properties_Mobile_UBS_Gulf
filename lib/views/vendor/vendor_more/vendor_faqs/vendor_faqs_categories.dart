@@ -74,8 +74,8 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                                                     categoryId: _controller
                                                         .faqsCategories
                                                         .value
-                                                        .faqCategories![index]
-                                                        .categoryId,
+                                                        .faqCategories?[index]
+                                                        .categoryId??0,
                                                   ));
                                             },
                                             child: Directionality(

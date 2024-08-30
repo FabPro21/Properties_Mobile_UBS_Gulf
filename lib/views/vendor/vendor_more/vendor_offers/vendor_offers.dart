@@ -80,7 +80,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                   offerId: _controller
                                                       .offers
                                                       .value
-                                                      .record![index]
+                                                      .record?[index]
                                                       .offerid
                                                       .toString()));
                                             },
@@ -160,7 +160,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                         offerId: _controller
                                                             .offers
                                                             .value
-                                                            .record![index]
+                                                            .record?[index]
                                                             .offerid
                                                             .toString()));
                                               },

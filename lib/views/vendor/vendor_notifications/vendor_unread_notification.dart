@@ -233,8 +233,10 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
             icon: Icons.archive,
             // color: Color.fromRGBO(255, 179, 0, 1),
             onPressed: (context) {
-              _controller.unreadLength = _controller.unreadLength - 1;
-              _controller.notificationsUnRead!.removeAt(index);
+              setState(() {
+                _controller.unreadLength = _controller.unreadLength - 1;
+                _controller.notificationsUnRead!.removeAt(index);
+              });
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

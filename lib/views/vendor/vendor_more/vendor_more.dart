@@ -333,7 +333,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                     builder:
                                                         (BuildContext context) {
                                                       return Container(
-                                                        height: 25.h,
+                                                        height: 27.h,
                                                         width: double.infinity,
                                                         margin:
                                                             EdgeInsets.fromLTRB(

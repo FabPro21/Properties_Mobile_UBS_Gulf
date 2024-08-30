@@ -425,7 +425,7 @@ class SessionController {
   }
 
   Map<String?, dynamic> getNotificationData() {
-    return _notificationData!;
+    return _notificationData??{};
   }
 
   void resetSession() {

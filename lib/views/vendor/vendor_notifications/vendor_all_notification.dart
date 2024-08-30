@@ -235,8 +235,11 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                   _controller.notifications![index].notificationId.toString());
               bool res = await _controller.archiveNotifications();
               if (res) {
-                _controller.allLength = _controller.allLength - 1;
-                _controller.notifications!.removeAt(index);
+                // Update state to reflect changes
+                setState(() {
+                  _controller.allLength = _controller.allLength - 1;
+                  _controller.notifications!.removeAt(index);
+                });
               }
             },
             borderRadius: BorderRadius.circular(8.0),

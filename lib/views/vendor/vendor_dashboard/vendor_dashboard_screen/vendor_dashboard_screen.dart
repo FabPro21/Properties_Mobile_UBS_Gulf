@@ -142,7 +142,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                     EdgeInsets.symmetric(horizontal: 0.0.w, vertical: 2.0.h),
                 child: Container(
                   width: 94.0.w,
-                  height: 27.0.h,
+                  height: 29.0.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(1.0.h),
@@ -386,9 +386,8 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                     controller
                                                         .getDataModel
                                                         .value
-                                                        .dashboard!
-                                                        .lpoInProcess
-                                                        .toString(),
+                                                        .dashboard?.lpoInProcess
+                                                        .toString()??"",
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
@@ -425,9 +424,8 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                     controller
                                                         .getDataModel
                                                         .value
-                                                        .dashboard!
-                                                        .invoiceSubmitted
-                                                        .toString(),
+                                                        .dashboard?.invoiceSubmitted
+                                                        .toString()??"",
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
@@ -497,7 +495,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                     AppMetaLabels()
                                             .openServiceRequests
                                             .toUpperCase() +
-                                        '  (${controller.getDataModel.value.dashboard!.totalOpenServiceRequests.toString()})',
+                                        '  (${controller.getDataModel.value.dashboard?.totalOpenServiceRequests.toString()})',
                                     // AppMetaLabels().managePayments,
                                     style: AppTextStyle.semiBoldBlue10,
                                   ),
@@ -514,7 +512,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
               Expanded(
                 child: SingleChildScrollView(
                   child: LposWidget(
-                    manageLpos: widget.manageLpos!,
+                    manageLpos: widget.manageLpos,
                   ),
                 ),
               ),

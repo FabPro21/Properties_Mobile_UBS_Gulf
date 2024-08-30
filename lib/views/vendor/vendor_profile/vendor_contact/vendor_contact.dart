@@ -53,10 +53,10 @@ class _VendorContactState extends State<VendorContact> {
                           shrinkWrap: true,
                           padding: EdgeInsets.zero,
                           itemCount: getContactPersonsController
-                              .vendorContact.value.contactPersons!.length,
+                              .vendorContact.value.contactPersons?.length,
                           itemBuilder: (BuildContext context, int index) {
                             String mystring = getContactPersonsController
-                                .vendorContact.value.contactPersons![index].name??"";
+                                .vendorContact.value.contactPersons?[index].name??"";
 
                             name = mystring[0];
 

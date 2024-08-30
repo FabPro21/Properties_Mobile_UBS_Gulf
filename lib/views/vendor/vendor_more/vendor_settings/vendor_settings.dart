@@ -87,7 +87,7 @@ class _VendorSettingsState extends State<VendorSettings> {
                           ],
                           radiusStyle: true,
                           onToggle: (option) {
-                            setFingerPrintOption(option!);
+                            setFingerPrintOption(option ?? -1);
                           },
                         ),
                       )
@@ -141,6 +141,7 @@ class _VendorSettingsState extends State<VendorSettings> {
   }
 
   void setFingerPrintOption(int option) async {
+    print(option);
     if (option == 0) {
       SessionController().setfingerprint(true);
       await GlobalPreferences.setbool(
