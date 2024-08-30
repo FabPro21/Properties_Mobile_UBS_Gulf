@@ -15,8 +15,8 @@ class GetReqThumbnails {
     if (response is http.Response) {
       try {
         var resp = json.decode(response.body);
-        List<PhotoFile> photos = List<PhotoFile>.from(
-            resp["data"].map((x) => PhotoFile.fromJson(x)));
+        List<PhotoFile?> photos = List<PhotoFile?>.from(
+            resp["data"].map((x) => PhotoFile?.fromJson(x)));
         if (photos.isNotEmpty) {
           return photos;
         } else

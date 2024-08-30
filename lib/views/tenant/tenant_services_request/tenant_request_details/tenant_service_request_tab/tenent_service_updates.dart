@@ -289,7 +289,7 @@ class _TenantServiceRequestUpdatesState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 76.0.w,
+                                      width: 73.0.w,
                                       child: Directionality(
                                         textDirection:
                                             SessionController().getLanguage() ==

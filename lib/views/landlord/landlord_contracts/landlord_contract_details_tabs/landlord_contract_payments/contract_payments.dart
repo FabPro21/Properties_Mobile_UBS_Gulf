@@ -101,9 +101,9 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
   InkWell verifiedPayment(int index) {
     final paidFormatter = NumberFormat('#,##0.00', 'AR');
     String amount = paidFormatter
-        .format(paymentsController.payments.payments![index].amount);
+        .format(paymentsController.payments.payments?[index].amount);
 
-    if (paymentsController.payments.payments![index].paymentType == 'Cheque') {
+    if (paymentsController.payments.payments?[index].paymentType == 'Cheque') {
       paymentsController.getCheque(index);
     }
     return InkWell(
@@ -146,9 +146,9 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                 .payments.payments![index].paymentType ??
                             ""
                         : paymentsController
-                                .payments.payments![index].paymentTypeAr ??
+                                .payments.payments?[index].paymentTypeAr ??
                             ""),
-                if (paymentsController.payments.payments![index].paymentType ==
+                if (paymentsController.payments.payments?[index].paymentType ==
                     'Cheque')
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 2.0.h),
@@ -161,14 +161,14 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                     child: Column(
                       children: [
                         Obx(() {
-                          return paymentsController.payments.payments![index]
+                          return paymentsController.payments.payments?[index]
                                       .loadingCheque!.value ==
                                   true
                               ? Padding(
                                   padding: EdgeInsets.all(2.h),
                                   child: LoadingIndicatorBlue(),
                                 )
-                              : paymentsController.payments.payments![index]
+                              : paymentsController.payments.payments?[index]
                                           .errorLoadingCheque !=
                                       ''
                                   ? Padding(
@@ -176,12 +176,12 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                       child: AppErrorWidget(
                                         errorText: paymentsController
                                                 .payments
-                                                .payments![index]
+                                                .payments?[index]
                                                 .errorLoadingCheque ??
                                             "",
                                       ),
                                     )
-                                  : paymentsController.payments.payments![index]
+                                  : paymentsController.payments.payments?[index]
                                               .cheque !=
                                           null
                                       ? ListView.builder(
@@ -191,7 +191,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                           padding: EdgeInsets.zero,
                                           itemCount: paymentsController
                                               .payments
-                                              .payments![index]
+                                              .payments?[index]
                                               .cheque!
                                               .transactionCheque!
                                               .length,
@@ -204,15 +204,15 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                                         .payments
                                                         .payments![index]
                                                         .cheque!
-                                                        .transactionCheque![
+                                                        .transactionCheque?[
                                                             index2]
                                                         .chequeNo
-                                                        .toString()),
+                                                        .toString()??""),
                                                 rowList(
                                                     AppMetaLabels().chequeDate,
                                                     paymentsController
                                                             .payments
-                                                            .payments![index]
+                                                            .payments?[index]
                                                             .cheque!
                                                             .transactionCheque![
                                                                 index2]
@@ -221,7 +221,9 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                                 rowList(
                                                     AppMetaLabels()
                                                         .chqIssuerBank,
-                                                    SessionController()
+                                                 paymentsController
+                                                                .payments
+                                                                .payments==null?'':   SessionController()
                                                                 .getLanguage() ==
                                                             1
                                                         ? paymentsController
@@ -234,7 +236,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                                             ""
                                                         : paymentsController
                                                                 .payments
-                                                                .payments![index]
+                                                                .payments?[index]
                                                                 .cheque!
                                                                 .transactionCheque![
                                                                     index2]
@@ -252,7 +254,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                                     AppMetaLabels().chqStatus,
                                                     paymentsController
                                                             .payments
-                                                            .payments![index]
+                                                            .payments?[index]
                                                             .cheque!
                                                             .transactionCheque![
                                                                 index2]
@@ -296,18 +298,18 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                   ),
                 rowList(
                     AppMetaLabels().receiptNum,
-                    paymentsController.payments.payments![index].receiptNo ??
+                    paymentsController.payments.payments?[index].receiptNo ??
                         ""),
                 rowList(
                     AppMetaLabels().receiptDate,
-                    paymentsController.payments.payments![index].paymentDate ??
+                    paymentsController.payments.payments?[index].paymentDate ??
                         ""),
                 rowList(
                     AppMetaLabels().paymentFor,
                     SessionController().getLanguage() == 1
                         ? paymentsController.payments.payments![index].paymentFor??""
                         : paymentsController
-                            .payments.payments![index].paymentForAr??""),
+                            .payments.payments?[index].paymentForAr??""),
                 if (!getCDController.contractDetails!.contract!.contractStatus!
                         .toLowerCase()
                         .contains('draft') &&

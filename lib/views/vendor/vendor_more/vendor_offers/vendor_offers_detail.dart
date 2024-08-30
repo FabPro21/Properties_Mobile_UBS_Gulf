@@ -28,7 +28,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.getOffersDetails(widget.offerId!);
+      _controller.getOffersDetails(widget.offerId??"");
     });
     super.initState();
   }
@@ -180,7 +180,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                                                           .value
                                                                           .offerProperties![
                                                                               index]
-                                                                          .propertyName!
+                                                                          .propertyName??""
                                                                           .trim()
                                                                   : _controller
                                                                           .offersDetails

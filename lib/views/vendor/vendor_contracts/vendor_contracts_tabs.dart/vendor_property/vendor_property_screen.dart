@@ -55,8 +55,7 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                       itemCount: vendorPropertiesController.length,
                       itemBuilder: (context, index) {
                         if (vendorPropertiesController.vendorProperty.value
-                            .contractProperties![index].propertyName!
-                            .contains(" ")) {
+                            .contractProperties![index].propertyName!.contains(" ")) {
                           List<String> mystring =
                               SessionController().getLanguage() == 1
                                   ? vendorPropertiesController
@@ -77,17 +76,18 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                           propertyName = a[0] + b[0];
                         } else {
                           String mystring = vendorPropertiesController
-                              .vendorProperty
-                              .value
-                              .contractProperties![index]
-                              .propertyName??"";
+                                  .vendorProperty
+                                  .value
+                                  .contractProperties?[index]
+                                  .propertyName ??
+                              "";
                           propertyName = mystring[0];
                         }
                         //////////////////////////
                         /// Amount
                         //////////////////////////
                         var a = vendorPropertiesController.vendorProperty.value
-                            .contractProperties![index].amount;
+                            .contractProperties?[index].amount;
                         final dFormatter = NumberFormat('#,##0.00', 'AR');
                         amount = dFormatter.format(a);
                         return InkWell(
@@ -212,9 +212,7 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                                       ? vendorPropertiesController
                                                               .vendorProperty
                                                               .value
-                                                              .contractProperties![
-                                                                  index]
-                                                              .propertyName ??
+                                                              .contractProperties![index].propertyName ??
                                                           ""
                                                       : vendorPropertiesController
                                                               .vendorProperty
@@ -234,14 +232,13 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                                 padding: EdgeInsets.only(
                                                     left: 7.0.w),
                                                 child: Text(
-                                                vendorPropertiesController
-                                                              .vendorProperty
-                                                              .value
-                                                              .contractProperties![
-                                                                  index]
-                                                              .propertyId
-                                                              .toString() ,
-                                                      
+                                                  vendorPropertiesController
+                                                      .vendorProperty
+                                                      .value
+                                                      .contractProperties![
+                                                          index]
+                                                      .propertyId
+                                                      .toString(),
                                                   style:
                                                       AppTextStyle.normalBlack9,
                                                 ),

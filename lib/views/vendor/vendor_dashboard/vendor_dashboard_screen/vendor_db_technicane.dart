@@ -147,7 +147,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                     EdgeInsets.symmetric(horizontal: 0.0.w, vertical: 2.0.h),
                 child: Container(
                   width: 94.0.w,
-                  height: 27.0.h,
+                  height: 30.0.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(1.0.h),

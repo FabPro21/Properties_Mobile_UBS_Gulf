@@ -30,7 +30,7 @@ class SvcReqReportController extends GetxController {
   /////photos
   RxBool gettingPhotos = false.obs;
   String errorGettingPhotos = '';
-  List<PhotoFile> photos = [PhotoFile()];
+  List<PhotoFile?> photos = [];
   final ImagePicker _picker = ImagePicker();
   ////report
   Rx<DocFile> report = DocFile().obs;
@@ -59,14 +59,22 @@ class SvcReqReportController extends GetxController {
     photos.clear();
     errorGettingPhotos = '';
     gettingPhotos.value = true;
-    var resp = await VendorRepository.getReqPhotos(caseNo!, 3);
-    if (resp is List<PhotoFile>) {
+    var resp = await VendorRepository.getReqPhotos(caseNo ?? 0, 3);
+    gettingPhotos.value = false;
+    if (resp is List<PhotoFile?>) {
       photos = resp;
-      if (canClose.value) photos.add(PhotoFile());
+      gettingPhotos.value = false;
+      if (canClose.value) {
+        photos.add(null);
+        gettingPhotos.value = false;
+      }
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
-      photos.add(PhotoFile());
-    } else
+      photos.add(null);
+      gettingPhotos.value = false;
+    } else {
       errorGettingPhotos = resp;
+      gettingPhotos.value = false;
+    }
     gettingPhotos.value = false;
   }
 
@@ -96,7 +104,6 @@ class SvcReqReportController extends GetxController {
         var extension = CheckFileExtenstion().getFileSize(photo).split(' ')[1];
 
         if (extension.contains('MB')) {
-          gettingPhotos.value = false;
           if (double.parse(sizeN) > 10) {
             SnakBarWidget.getSnackBarErrorRedWith5Sec(
               AppMetaLabels().error,
@@ -128,44 +135,46 @@ class SvcReqReportController extends GetxController {
           photos[photos.length - 1] =
               PhotoFile(file: photo, path: path, type: file.mimeType);
           uploadPhoto(photos.length - 1);
-          photos.add(PhotoFile());
+          photos.add(null);
+          gettingPhotos.value = false;
         }
         gettingPhotos.value = false;
       }
+      gettingPhotos.value = false;
     } catch (e) {
       print('Exception ::::: $e');
     }
   }
 
   uploadPhoto(int index) async {
-    photos[index].errorUploading = false;
-    photos[index].uploading.value = true;
+    photos[index]?.errorUploading = false;
+    photos[index]?.uploading.value = true;
     try {
       var resp = await VendorRepository.uploadFile(
-          caseNo??0, photos[index].path??"", 'Images', '', 0);
-      photos[index].uploading.value = false;
-      photos[index].id = resp['photoId'];
+          caseNo ?? 0, photos[index]?.path ?? "", 'Images', '', 0);
+      photos[index]?.uploading.value = false;
+      photos[index]?.id = resp['photoId'];
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
-      photos[index].errorUploading = true;
-      photos[index].uploading.value = false;
+      photos[index]?.errorUploading = true;
+      photos[index]?.uploading.value = false;
     }
   }
 
   removePhoto(int index) async {
-    photos[index].errorRemoving = false;
-    photos[index].removing.value = true;
+    photos[index]?.errorRemoving = false;
+    photos[index]?.removing.value = true;
     var resp =
-        await VendorRepository.removeReqPhoto(photos[index].id.toString());
+        await VendorRepository.removeReqPhoto(photos[index]!.id.toString());
     if (resp == 200) {
       gettingPhotos.value = true;
       photos.removeAt(index);
       gettingPhotos.value = false;
     } else {
-      photos[index].errorRemoving = true;
-      photos[index].removing.value = false;
+      photos[index]?.errorRemoving = true;
+      photos[index]?.removing.value = false;
     }
   }
 
@@ -219,7 +228,7 @@ class SvcReqReportController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path??"");
+        File file = File(result.files.single.path ?? "");
         Uint8List bytesFile = await file.readAsBytes();
 
         // checking file size Cheque
@@ -254,7 +263,7 @@ class SvcReqReportController extends GetxController {
     try {
       // 112233 upload file Repo
       var resp = await VendorRepository.uploadFile(
-          caseNo!, report.value.path??"", 'Document', '', 0);
+          caseNo!, report.value.path ?? "", 'Document', '', 0);
 
       loadingReport.value = true;
       var id = resp['photoId'];
@@ -366,7 +375,7 @@ class SvcReqReportController extends GetxController {
         'Path :::: ${path.path}/${this.report.value.name}${this.report.value.type}');
     final file =
         File("${path.path}/${this.report.value.name}${this.report.value.type}");
-        // File("${path.path}/${this.report.value.name}${this.report.value.type}");
+    // File("${path.path}/${this.report.value.name}${this.report.value.type}");
     await file.writeAsBytes(report.value.file!);
     return file.path;
   }

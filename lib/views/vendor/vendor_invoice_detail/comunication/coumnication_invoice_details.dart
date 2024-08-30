@@ -146,7 +146,7 @@ class _VendorInvoiceCommunicationState
                                               width: 2.w,
                                             ),
                                             Container(
-                                              width: Get.width * 0.72,
+                                              width: Get.width * 0.7,
                                               child: Text(
                                                 _controller.fileToUpload.value
                                                         .name ??
@@ -292,7 +292,7 @@ class _VendorInvoiceCommunicationState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 76.0.w,
+                                      width: 73.0.w,
                                       child: Directionality(
                                         textDirection:
                                             SessionController().getLanguage() ==

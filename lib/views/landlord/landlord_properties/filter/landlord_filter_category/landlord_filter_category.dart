@@ -103,7 +103,7 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                                           result: _filterPropertyController
                                               .propertyCategoryModel
                                               .value
-                                              .proppertyCategoris![index]);
+                                              .proppertyCategoris?[index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -111,18 +111,29 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                                       children: [
                                         SizedBox(height: 1.0.h),
                                         Text(
-                                          SessionController().getLanguage() == 1
-                                              ? _filterPropertyController
+                                          _filterPropertyController
                                                       .propertyCategoryModel
                                                       .value
-                                                      .proppertyCategoris![index]
-                                                      .propertyCategory ??
-                                                  ""
-                                              : _filterPropertyController
-                                                  .propertyCategoryModel
-                                                  .value
-                                                  .proppertyCategoris![index]
-                                                  .propertyCategoryAR??"",
+                                                      .proppertyCategoris ==
+                                                  null
+                                              ? ''
+                                              : SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _filterPropertyController
+                                                          .propertyCategoryModel
+                                                          .value
+                                                          .proppertyCategoris![
+                                                              index]
+                                                          .propertyCategory ??
+                                                      ""
+                                                  : _filterPropertyController
+                                                          .propertyCategoryModel
+                                                          .value
+                                                          .proppertyCategoris![
+                                                              index]
+                                                          .propertyCategoryAR ??
+                                                      "",
                                         ),
                                         SizedBox(height: 2.0.h),
                                         index ==

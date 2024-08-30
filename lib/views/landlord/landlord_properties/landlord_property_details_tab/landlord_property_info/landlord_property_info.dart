@@ -28,7 +28,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
   );
   @override
   void initState() {
-    controller.getPropertyDetail(widget.propertID!);
+    controller.getPropertyDetail(widget.propertID??"");
     super.initState();
   }
 
@@ -124,15 +124,11 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                 .getLanguage() ==
                                                             1
                                                         ? controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .propertyName ??
                                                             ''
                                                         : controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .propertyNameAR ??
                                                             '',
                                                     maxLines: 1,
@@ -167,15 +163,11 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                 .getLanguage() ==
                                                             1
                                                         ? controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .emirateName ??
                                                             ''
                                                         : controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .emirateNameAR ??
                                                             '-',
                                                     maxLines: 1,
@@ -208,14 +200,14 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                             //                     .getLanguage() ==
                                             //                 1
                                             //             ? controller
-                                            //                     .propertyDetailInfo!
-                                            //                     .propertyDetails!
+                                            //                     .propertyDetailInfo?
+                                            //                     .propertyDetails?
                                             //                     .first
                                             //                     .roadName ??
                                             //                 ''
                                             //             : controller
-                                            //                     .propertyDetailInfo!
-                                            //                     .propertyDetails!
+                                            //                     .propertyDetailInfo?
+                                            //                     .propertyDetails?
                                             //                     .first
                                             //                     .roadNameAR ??
                                             //                 '',
@@ -249,15 +241,11 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                 .getLanguage() ==
                                                             1
                                                         ? controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .sector ??
                                                             ''
                                                         : controller
-                                                                .propertyDetailInfo!
-                                                                .propertyDetails!
-                                                                .first
+                                                                .propertyDetailInfo?.propertyDetails?.first
                                                                 .sectorAR ??
                                                             '',
                                                     style: AppTextStyle
@@ -287,11 +275,9 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                   width: 40.w,
                                                   child: Text(
                                                     controller
-                                                            .propertyDetailInfo!
-                                                            .propertyDetails!
-                                                            .first
+                                                            .propertyDetailInfo?.propertyDetails?.first
                                                             .noofResidentialFlat
-                                                            .toString(),
+                                                            .toString()??"",
                                                     style: AppTextStyle
                                                         .normalBlack10,
                                                   ),
@@ -319,11 +305,9 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                   width: 40.w,
                                                   child: Text(
                                                     controller
-                                                            .propertyDetailInfo!
-                                                            .propertyDetails!
-                                                            .first
+                                                            .propertyDetailInfo?.propertyDetails?.first
                                                             .noofCommercialFlat
-                                                            .toString(),
+                                                            .toString()??"",
                                                     style: AppTextStyle
                                                         .normalBlack10,
                                                   ),
@@ -348,8 +332,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                             //       width: 58.w,
                                             //       child: Text(
                                             //         controller
-                                            //                 .propertyDetailInfo!
-                                            //                 .propertyDetails!
+                                            //                 .propertyDetailInfo?
+                                            //                 .propertyDetails?
                                             //                 .first
                                             //                 .plotNumber ??
                                             //             '',
@@ -377,8 +361,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                             //       width: 58.w,
                                             //       child: Text(
                                             //         controller
-                                            //                 .propertyDetailInfo!
-                                            //                 .propertyDetails!
+                                            //                 .propertyDetailInfo?
+                                            //                 .propertyDetails?
                                             //                 .first
                                             //                 .plotSize ??
                                             //             '0',
@@ -393,15 +377,11 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                               height: 1.h,
                                             ),
                                             controller
-                                                            .propertyDetailInfo!
-                                                            .propertyDetails!
-                                                            .first
+                                                            .propertyDetailInfo?.propertyDetails?.first
                                                             .propertyAddress ==
                                                         '' ||
                                                     controller
-                                                            .propertyDetailInfo!
-                                                            .propertyDetails!
-                                                            .first
+                                                            .propertyDetailInfo?.propertyDetails?.first
                                                             .propertyAddressAR ==
                                                         ''
                                                 ? SizedBox()
@@ -422,15 +402,11 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                       .getLanguage() ==
                                                                   1
                                                               ? controller
-                                                                      .propertyDetailInfo!
-                                                                      .propertyDetails!
-                                                                      .first
+                                                                      .propertyDetailInfo?.propertyDetails?.first
                                                                       .propertyAddress ??
                                                                   ''
                                                               : controller
-                                                                      .propertyDetailInfo!
-                                                                      .propertyDetails!
-                                                                      .first
+                                                                      .propertyDetailInfo?.propertyDetails?.first
                                                                       .propertyAddressAR ??
                                                                   '',
                                                           style: AppTextStyle
@@ -493,8 +469,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .noofParkinglot
                                   //                           .toString() ??
@@ -522,8 +498,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .parkinglotAvailability ??
                                   //                       '0',
@@ -550,8 +526,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .ratePerParkinglot ??
                                   //                       '0',
@@ -578,8 +554,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 58.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .areaSize ??
                                   //                       '0.0',
@@ -632,8 +608,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //               Spacer(),
                                   //               Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .soldStatus ??
                                   //                       'null',
@@ -662,8 +638,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .purchasedPrice ??
                                   //                       '0',
@@ -690,8 +666,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .purchasedDate ??
                                   //                       '0',
@@ -718,8 +694,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .valuationPrice ??
                                   //                       '0',
@@ -746,8 +722,8 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                   //                 width: 42.w,
                                   //                 child: Text(
                                   //                   controller
-                                  //                           .propertyDetailInfo!
-                                  //                           .propertyDetails!
+                                  //                           .propertyDetailInfo?
+                                  //                           .propertyDetails?
                                   //                           .first
                                   //                           .valuationDate ??
                                   //                       '0.0',

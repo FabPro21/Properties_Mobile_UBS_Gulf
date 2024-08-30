@@ -49,7 +49,7 @@ class _LandlordPropertDetailsTabsState
                     Text(
                       widget.propertyNo == 'null'
                           ? ''
-                          : widget.propertyNo??"",
+                          : widget.propertyNo ?? "",
                       style: AppTextStyle.semiBoldBlack11,
                     ),
                   ],
@@ -72,10 +72,10 @@ class _LandlordPropertDetailsTabsState
                   ),
                   views: [
                     LandlordPropertyInfo(
-                      propertID: widget.propertyId!,
+                      propertID: widget.propertyId ?? "",
                     ),
                     LandlordPropertyUnitInfo(
-                      propertID: widget.propertyId!,
+                      propertID: widget.propertyId ?? "",
                     ),
                   ],
                 ),

@@ -70,7 +70,7 @@ class _VendorContractorState extends State<VendorContractor> {
                                   rowList(
                                     AppMetaLabels().emailAddress,
                                     vendorProfileContrller.vendorProfile.value
-                                            .profile!.email ??
+                                            .profile?.email ??
                                         "",
                                   ),
                                   SizedBox(
@@ -79,7 +79,7 @@ class _VendorContractorState extends State<VendorContractor> {
                                   rowList(
                                     AppMetaLabels().mobileNumber,
                                     vendorProfileContrller.vendorProfile.value
-                                            .profile!.mobileNo ??
+                                            .profile?.mobileNo ??
                                         "",
                                   ),
                                   SizedBox(
@@ -105,14 +105,12 @@ class _VendorContractorState extends State<VendorContractor> {
                                                 ? vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile!
-                                                        .address ??
+                                                        .profile?.address ??
                                                     ""
                                                 : vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile!
-                                                        .addressAR ??
+                                                        .profile?.addressAR ??
                                                     "",
                                             style: AppTextStyle.semiBoldBlack9,
                                             textAlign: TextAlign.right,
@@ -127,7 +125,7 @@ class _VendorContractorState extends State<VendorContractor> {
                                   rowList(
                                     AppMetaLabels().tradeLicenseNo,
                                     vendorProfileContrller.vendorProfile.value
-                                            .profile!.tradeLicenseNo ??
+                                            .profile?.tradeLicenseNo ??
                                         "",
                                   ),
                                   SizedBox(
@@ -136,7 +134,7 @@ class _VendorContractorState extends State<VendorContractor> {
                                   rowList(
                                     AppMetaLabels().supplierTRN,
                                     vendorProfileContrller.vendorProfile.value
-                                            .profile!.supplierTrn ??
+                                            .profile?.supplierTrn ??
                                         "",
                                   ),
                                   SizedBox(
@@ -156,20 +154,17 @@ class _VendorContractorState extends State<VendorContractor> {
                                                 ? vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile!
-                                                        .lpoStatusName ??
+                                                        .profile?.lpoStatusName ??
                                                     ""
                                                 : vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile!
-                                                        .lpoStatusNameAr ??
+                                                        .profile?.lpoStatusNameAr ??
                                                     "",
                                         valueToCompare: vendorProfileContrller
                                             .vendorProfile
                                             .value
-                                            .profile!
-                                            .lpoStatusName,
+                                            .profile?.lpoStatusName,
                                       )
                                       // Container(
                                       //   decoration: BoxDecoration(
@@ -187,13 +182,13 @@ class _VendorContractorState extends State<VendorContractor> {
                                       //           ? vendorProfileContrller
                                       //                   .vendorProfile
                                       //                   .value
-                                      //                   .profile!
+                                      //                   .profile?
                                       //                   .lpoStatusName ??
                                       //               ""
                                       //           : vendorProfileContrller
                                       //                   .vendorProfile
                                       //                   .value
-                                      //                   .profile!
+                                      //                   .profile?
                                       //                   .lpoStatusNameAr ??
                                       //               "",
                                       //       style: AppTextStyle.semiBoldBlack10,
@@ -212,7 +207,7 @@ class _VendorContractorState extends State<VendorContractor> {
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
-            width: 50.w,
+            width: 55.w,
             height: 5.h,
             child: ElevatedButton(
               onPressed: () {

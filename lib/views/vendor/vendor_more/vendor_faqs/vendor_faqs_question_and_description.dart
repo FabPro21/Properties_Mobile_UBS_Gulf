@@ -29,7 +29,7 @@ class _VendorFaqsQuestionsAndDescriptionState
   bool isShowDivider = true;
   @override
   void initState() {
-    _controller.getfaqsQuestionData(widget.categoryId!);
+    _controller.getfaqsQuestionData(widget.categoryId??0);
     super.initState();
   }
 

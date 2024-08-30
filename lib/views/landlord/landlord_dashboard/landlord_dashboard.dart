@@ -238,15 +238,13 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                   ? landLordPropertiesController
                                                           .dashboardData
                                                           .value
-                                                          .dashboard!
-                                                          .first
+                                                          .dashboard?.first
                                                           .landlordName ??
                                                       ""
                                                   : landLordPropertiesController
                                                           .dashboardData
                                                           .value
-                                                          .dashboard!
-                                                          .first
+                                                          .dashboard?.first
                                                           .landlordNameAR ??
                                                       "_",
                                           style: AppTextStyle.semiBoldBlack13,

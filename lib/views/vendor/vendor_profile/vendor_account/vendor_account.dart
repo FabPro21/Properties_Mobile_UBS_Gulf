@@ -76,13 +76,12 @@ class VendorAcconut extends StatelessWidget {
                                   itemCount: _vendorAccountController
                                       .getVendorAccountsModel
                                       .value
-                                      .accounts!
-                                      .length,
+                                      .accounts?.length,
                                   itemBuilder: (context, index) {
                                     String mystring = _vendorAccountController
                                         .getVendorAccountsModel
                                         .value
-                                        .accounts![index]
+                                        .accounts?[index]
                                         .bankName??"";
 
                                     name = mystring[0];
@@ -127,8 +126,7 @@ class VendorAcconut extends StatelessWidget {
                                                         ? _vendorAccountController
                                                                 .getVendorAccountsModel
                                                                 .value
-                                                                .accounts![index]
-                                                                .bankName ??
+                                                                .accounts![index].bankName ??
                                                             'N/A'
                                                         : _vendorAccountController
                                                                 .getVendorAccountsModel

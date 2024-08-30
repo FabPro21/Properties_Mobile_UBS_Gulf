@@ -253,7 +253,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
         motion: const DrawerMotion(), // For the sliding effect
         children: [
           SlidableAction(
-            backgroundColor: Colors.grey[200]?? Colors.grey,
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
             foregroundColor: Colors.black,
             icon: Icons.check_circle_outline,
             // color: Colors.blue,
@@ -298,8 +298,10 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                   .notificationsUnRead![index].notificationId
                   .toString());
               await getTNController.archiveNotifications();
-              getTNController.notificationsUnRead!.removeAt(index);
-              getTNController.unreadLength = getTNController.unreadLength - 1;
+              setState(() {
+                getTNController.notificationsUnRead!.removeAt(index);
+                getTNController.unreadLength = getTNController.unreadLength - 1;
+              });
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

@@ -35,7 +35,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
   getData() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       print('DropDownType ::::::::: ${widget.dropDownType}');
-      _filterPropertyController.getDropdownType(widget.dropDownType!);
+      _filterPropertyController.getDropdownType(widget.dropDownType??"");
     });
   }
 

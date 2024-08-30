@@ -352,7 +352,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                     children: [
                       Container(
                         height: 4.0.h,
-                        width: 25.0.w,
+                        width: 28.0.w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white, // background
@@ -389,7 +389,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                               padding: EdgeInsets.symmetric(horizontal: 1.0.h),
                               child: Container(
                                 height: 4.0.h,
-                                width: 25.0.w,
+                                width: 28.0.w,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white, // background

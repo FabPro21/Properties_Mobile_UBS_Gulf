@@ -5,6 +5,9 @@
 #  // // For Production (Leasing)
 #  // =====================>
 # // // remove +92
+# nust set this
+#  // ###1
+# SessionController().vendorUserType = 'll';
 # Must check both places before going the live
 
 name: fap_properties
@@ -75,7 +78,7 @@ dependencies:
   shared_preferences: ^2.3.2
   shimmer: ^3.0.0
   signature: ^5.5.0
-  
+
   smooth_star_rating_null_safety: ^1.0.4+2
   syncfusion_flutter_charts: ^26.2.11
   syncfusion_flutter_datepicker: ^26.2.11
@@ -104,11 +107,10 @@ dependencies:
   wakelock_plus: ^1.2.8
   system_proxy: ^0.1.0
   flutter_html: ^3.0.0-beta.2
- 
+
   flutter_localizations:
     sdk: flutter
 
- 
 dependency_overrides:
   # ssl_pinning_plugin: any
   # ssl_pinning_plugin: ^2.0.0
@@ -116,9 +118,9 @@ dependency_overrides:
   # image: ^3.0.1 # any #^3.2.0 i can not update this because our main func is disturbinf from this
   # flutter_slidable: ^0.6.0 # i can not update this because our main func is disturbing from this
   web: ^0.5.1 # it not useable in project i added this for getting rid of conflict b/w file_picker & firebase_messaging_web
-  url_launcher_web: any 
+  url_launcher_web: any
   fading_edge_scrollview: ^4.1.1
-  
+
   # not available on pub dev that is why i put in override
   # syncfusion_flutter_charts:
   #   git:

@@ -35,21 +35,21 @@ class _SignaturePadState extends State<SignaturePad> {
             children: <Widget>[
               //SHOW EXPORTED IMAGE IN NEW ROUTE
 
-              IconButton(
-                icon: const Icon(Icons.undo),
-                color: AppColors.blueColor,
-                onPressed: () {
-                  // setState(() => widget.controller!.undo());
-                  widget.controller!.clear();
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.redo),
-                color: AppColors.blueColor,
-                onPressed: () {
-                  // setState(() => widget.controller!.redo());
-                },
-              ),
+              // IconButton(
+              //   icon: const Icon(Icons.undo),
+              //   color: AppColors.blueColor,
+              //   onPressed: () {
+              //     // setState(() => widget.controller!.undo());
+              //     widget.controller!.clear();
+              //   },
+              // ),
+              // IconButton(
+              //   icon: const Icon(Icons.redo),
+              //   color: AppColors.blueColor,
+              //   onPressed: () {
+              //     // setState(() => widget.controller!.redo());
+              //   },
+              // ),
               //CLEAR CANVAS
               IconButton(
                 icon: const Icon(Icons.clear),

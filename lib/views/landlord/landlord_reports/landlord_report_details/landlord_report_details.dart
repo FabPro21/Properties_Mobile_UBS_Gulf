@@ -109,7 +109,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
         print('***:::*****:::::');
       }
     });
-    FlutterDownloader.registerCallback(downloadingCallBack as DownloadCallback);
+    // ###1
+    // FlutterDownloader.registerCallback(downloadingCallBack as DownloadCallback);
     setState(() {});
   }
 
@@ -149,7 +150,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                 child: Column(
                   children: [
                     CustomAppBar2(
-                      title: widget.fileNmae!,
+                      title: widget.fileNmae??"",
                       // title: AppMetaLabels().report,
                     ),
                     Padding(
@@ -1972,7 +1973,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2003,7 +2004,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2029,7 +2030,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??'');
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2066,7 +2067,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2099,7 +2100,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2131,7 +2132,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2160,7 +2161,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2193,7 +2194,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae!);
+                                                data, widget.fileNmae??"");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));

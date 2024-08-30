@@ -78,7 +78,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                               var a = _controller
                                                   .getLpoInvoices
                                                   .value
-                                                  .invoice![index]
+                                                  .invoice?[index]
                                                   .invoiceAmount;
                                               final dFormatter =
                                                   intl.NumberFormat(
@@ -206,7 +206,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                       .value
                                                                       .invoice![
                                                                           index]
-                                                                      .statusName,
+                                                                      .statusName??"",
                                                                 ),
                                                               ],
                                                             ),

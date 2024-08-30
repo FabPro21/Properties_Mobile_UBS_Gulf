@@ -102,7 +102,7 @@ class _VendorContractsStatusFilterState
                                               _filterContractsStatusController
                                                   .contractsStatusModel
                                                   .value
-                                                  .contractStatus![index]);
+                                                  .contractStatus?[index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:

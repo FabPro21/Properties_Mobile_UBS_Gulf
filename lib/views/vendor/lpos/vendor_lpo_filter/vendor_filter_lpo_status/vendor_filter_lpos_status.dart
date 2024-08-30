@@ -92,7 +92,7 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                                         onTap: () {
                                           Get.back(
                                               result: _controller.lpoStatusModel
-                                                  .value.lpoStatus![index]);
+                                                  .value.lpoStatus?[index]);
                                         },
                                         child: Column(
                                           crossAxisAlignment:

@@ -86,7 +86,8 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                           )
                         : _filterContractsStatusController.error.value != ''
                             ? CustomErrorWidget(
-                                errorText: _filterContractsStatusController.error.value,
+                                errorText: _filterContractsStatusController
+                                    .error.value,
                                 errorImage: AppImagesPath.noDataFound,
                               )
                             : ListView.builder(
@@ -99,9 +100,9 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                                       Get.back(
                                           result:
                                               _filterContractsStatusController
-                                                  .propertyEmirateModel 
+                                                  .propertyEmirateModel
                                                   .value
-                                                  .propertyEmirate![index]);
+                                                  .propertyEmirate?[index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -109,19 +110,29 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                                       children: [
                                         SizedBox(height: 1.0.h),
                                         Text(
-                                          SessionController().getLanguage() == 1
-                                              ? _filterContractsStatusController
-                                                      .propertyEmirateModel 
+                                          _filterContractsStatusController
+                                                      .propertyEmirateModel
                                                       .value
-                                                      .propertyEmirate![index]
-                                                      .emirateName ??
-                                                  ""
-                                              : _filterContractsStatusController
-                                                      .propertyEmirateModel 
-                                                      .value
-                                                      .propertyEmirate![index]
-                                                      .emirateNameAR ??
-                                                  "",
+                                                      .propertyEmirate ==
+                                                  null
+                                              ? ''
+                                              : SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _filterContractsStatusController
+                                                          .propertyEmirateModel
+                                                          .value
+                                                          .propertyEmirate![
+                                                              index]
+                                                          .emirateName ??
+                                                      ""
+                                                  : _filterContractsStatusController
+                                                          .propertyEmirateModel
+                                                          .value
+                                                          .propertyEmirate![
+                                                              index]
+                                                          .emirateNameAR ??
+                                                      "",
                                         ),
                                         SizedBox(height: 2.0.h),
                                         index ==

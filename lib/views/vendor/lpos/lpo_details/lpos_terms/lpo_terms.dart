@@ -74,13 +74,13 @@ class _LpoTermsState extends State<LpoTerms> {
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
                                         itemCount: _controller.getLpoTermsResp
-                                            .value.lpoTerms!.length,
+                                            .value.lpoTerms?.length,
                                         itemBuilder: (context, index) {
                                           //////////////////////////
                                           /// Amount
                                           //////////////////////////
                                           var a = _controller.getLpoTermsResp
-                                              .value.lpoTerms![index].amount;
+                                              .value.lpoTerms?[index].amount;
                                           final dFormatter =
                                               NumberFormat('#,##0.00', 'AR');
                                           amount = dFormatter.format(a);
