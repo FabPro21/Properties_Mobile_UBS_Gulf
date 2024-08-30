@@ -52,7 +52,7 @@ class _LpoDetailsState extends State<LpoDetails> {
                     ),
                     const Spacer(),
                     Text(
-                      '${widget.lpo!.lpoReference}',
+                      '${widget.lpo?.lpoReference}',
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                   ],

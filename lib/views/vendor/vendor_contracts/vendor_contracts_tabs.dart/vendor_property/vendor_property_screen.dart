@@ -55,8 +55,7 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                       itemCount: vendorPropertiesController.length,
                       itemBuilder: (context, index) {
                         if (vendorPropertiesController.vendorProperty.value
-                            .contractProperties![index].propertyName!
-                            .contains(" ")) {
+                            .contractProperties![index].propertyName!.contains(" ")) {
                           List<String> mystring =
                               SessionController().getLanguage() == 1
                                   ? vendorPropertiesController

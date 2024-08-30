@@ -83,7 +83,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var d = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices![index]
+                                          .lpoServices?[index]
                                           .discountPercentage;
                                       discountPercentage = d.toStringAsFixed(2);
                                       //////////////////////////
@@ -92,7 +92,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var ga = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices![index]
+                                          .lpoServices?[index]
                                           .netAmount;
                                       final gFormatter =
                                           NumberFormat('#,##0.00', 'AR');
@@ -103,7 +103,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var da = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices![index]
+                                          .lpoServices?[index]
                                           .discountAmount;
                                       final dFormatter =
                                           NumberFormat('#,##0.00', 'AR');
@@ -114,7 +114,7 @@ class _LpoServicesState extends State<LpoServices> {
                                       var na = getLpoServicesController
                                           .lpoServices
                                           .value
-                                          .lpoServices![index]
+                                          .lpoServices?[index]
                                           .totalAmount;
 
                                       final nFormatter =
