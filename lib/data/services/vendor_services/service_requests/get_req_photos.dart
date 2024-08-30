@@ -20,7 +20,7 @@ class VendorGetReqPhotos {
         if (resp['path'] != null || resp['path'].isNotEmpty()) {
           var bytePhotos = resp["path"] as List;
           var photoIds = resp["photoId"] as List;
-          List<PhotoFile> reqPhotos = [];
+          List<PhotoFile?> reqPhotos = [];
           for (int i = 0; i < bytePhotos.length; i++) {
             reqPhotos.add(PhotoFile(
                 file: base64Decode(bytePhotos[i].replaceAll('\n', '')),

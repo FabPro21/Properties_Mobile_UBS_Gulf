@@ -271,7 +271,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: 73.0.w,
+                                    width: 70.0.w,
                                     child: Directionality(
                                       textDirection:
                                           SessionController().getLanguage() == 1
@@ -336,7 +336,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                             icon: Icon(
                                               Icons.send,
                                               color: Colors.white,
-                                              size: 1.8.h,
+                                              size: 1.2.h,
                                             ),
                                           ),
                                         )

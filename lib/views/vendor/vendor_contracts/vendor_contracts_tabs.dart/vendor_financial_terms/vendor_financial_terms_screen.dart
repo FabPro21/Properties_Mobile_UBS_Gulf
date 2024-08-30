@@ -173,7 +173,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                           getContractFinancialTermsController
                                               .getFinalcialTerms
                                               .value
-                                              .contractFinancialTerms![index]
+                                              .contractFinancialTerms?[index]
                                               .amount;
                                       final paidFormatter =
                                           NumberFormat('#,##0.00', 'AR');

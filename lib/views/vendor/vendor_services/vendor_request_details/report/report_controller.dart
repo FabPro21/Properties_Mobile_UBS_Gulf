@@ -30,7 +30,7 @@ class SvcReqReportController extends GetxController {
   /////photos
   RxBool gettingPhotos = false.obs;
   String errorGettingPhotos = '';
-  List<PhotoFile?> photos = [PhotoFile()];
+  List<PhotoFile?> photos = [];
   final ImagePicker _picker = ImagePicker();
   ////report
   Rx<DocFile> report = DocFile().obs;
@@ -61,15 +61,15 @@ class SvcReqReportController extends GetxController {
     gettingPhotos.value = true;
     var resp = await VendorRepository.getReqPhotos(caseNo ?? 0, 3);
     gettingPhotos.value = false;
-    if (resp is List<PhotoFile>) {
+    if (resp is List<PhotoFile?>) {
       photos = resp;
       gettingPhotos.value = false;
       if (canClose.value) {
-        photos.add(PhotoFile());
+        photos.add(null);
         gettingPhotos.value = false;
       }
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
-      photos.add(PhotoFile());
+      photos.add(null);
       gettingPhotos.value = false;
     } else {
       errorGettingPhotos = resp;
@@ -135,7 +135,7 @@ class SvcReqReportController extends GetxController {
           photos[photos.length - 1] =
               PhotoFile(file: photo, path: path, type: file.mimeType);
           uploadPhoto(photos.length - 1);
-          photos.add(PhotoFile());
+          photos.add(null);
           gettingPhotos.value = false;
         }
         gettingPhotos.value = false;
