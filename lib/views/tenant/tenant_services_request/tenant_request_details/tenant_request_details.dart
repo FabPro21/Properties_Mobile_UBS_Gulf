@@ -1397,7 +1397,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                       onTap: () {
                         showBigPhoto(context, index);
                       },
-                      child: tenantRDController.photos[index].source != null
+                      child: tenantRDController.photos[index]!.source != null
                           ? Image.asset(
                               AppImagesPath.thumbnail,
                               width: 22.0.w,
@@ -1435,25 +1435,25 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           //     },
                           //   )
                           : Image.memory(
-                              tenantRDController.photos[index].file!,
+                              tenantRDController.photos[index]!.file!,
                               width: 22.0.w,
                               height: 10.0.h,
                               fit: BoxFit.cover,
                             ),
                     ),
                     Obx(() {
-                      return tenantRDController.photos[index].uploading.value ||
-                              tenantRDController.photos[index].errorUploading
+                      return tenantRDController.photos[index]!.uploading.value ||
+                              tenantRDController.photos[index]!.errorUploading
                           ? Container(
                               color: Color.fromRGBO(255, 255, 255, 0.5),
                               alignment: Alignment.center,
                               child: tenantRDController
-                                      .photos[index].uploading.value
+                                      .photos[index]!.uploading.value
                                   ? LoadingIndicatorBlue(
                                       size: 20,
                                     )
                                   : tenantRDController
-                                          .photos[index].errorUploading
+                                          .photos[index]!.errorUploading
                                       ? IconButton(
                                           onPressed: () {
                                             tenantRDController
@@ -1481,13 +1481,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             BorderRadius.circular(24)),
                                     padding: EdgeInsets.all(2),
                                     child: tenantRDController
-                                            .photos[index].removing.value
+                                            .photos[index]!.removing.value
                                         ? LoadingIndicatorBlue(
                                             size: 20,
                                           )
                                         : Icon(
                                             tenantRDController
-                                                    .photos[index].errorRemoving
+                                                    .photos[index]!.errorRemoving
                                                 ? Icons.refresh_outlined
                                                 : Icons.cancel_outlined,
                                             color: Colors.red),
@@ -1879,7 +1879,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
   }
 
   showBigPhoto(BuildContext context, int index) {
-    if (tenantRDController.photos[index].file == null)
+    if (tenantRDController.photos[index]!.file == null)
       tenantRDController.downloadDoc(index);
     showDialog(
         context: context,
@@ -1898,19 +1898,19 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           maxScale: 3.0, // Optional
                           twoTouchOnly: true, // Defaults to false
                           child: tenantRDController
-                                  .photos[index].downloading.value
+                                  .photos[index]!.downloading.value
                               ? LoadingIndicatorBlue()
                               : tenantRDController
-                                      .photos[index].errorDownloading
+                                      .photos[index]!.errorDownloading
                                   ? AppErrorWidget(
                                       errorText: tenantRDController
-                                          .photos[index].errorText??"",
+                                          .photos[index]!.errorText??"",
                                       onRetry: () {
                                         tenantRDController.downloadDoc(index);
                                       },
                                     )
                                   : Image.memory(
-                                      tenantRDController.photos[index].file!));
+                                      tenantRDController.photos[index]!.file!));
                     }),
                   ),
                   Container(

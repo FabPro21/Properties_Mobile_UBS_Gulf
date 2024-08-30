@@ -131,7 +131,7 @@ class TenantRequestDetailsController extends GetxController {
   //--------photos---------
   RxBool gettingPhotos = false.obs;
   String errorGettingPhotos = '';
-  List<PhotoFile> photos = [];
+  List<PhotoFile?> photos = [];
   final ImagePicker _picker = ImagePicker();
   RxBool reopeningSvcReq = false.obs;
 
@@ -205,12 +205,12 @@ class TenantRequestDetailsController extends GetxController {
     var resp = await TenantRepository.getReqThumbnails(
         tenantRequestDetails.value.detail!.caseNo, 1);
     print('Photo ::::::getReqThumbnails::::::: $resp');
-    if (resp is List<PhotoFile>) {
+    if (resp is List<PhotoFile?>) {
       photos = resp;
-      if (tenantRequestDetails.value.statusInfo!.canCancel!) photos.add(PhotoFile());
+      if (tenantRequestDetails.value.statusInfo!.canCancel!) photos.add(null);
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
       if (tenantRequestDetails.value.statusInfo!.canCancel!)
-        photos.add(PhotoFile());
+        photos.add(null);
       else
         errorGettingPhotos = AppMetaLabels().noPhotos;
     } else
@@ -337,7 +337,7 @@ class TenantRequestDetailsController extends GetxController {
             PhotoFile(file: photo, path: path, type: file.mimeType);
         print(photos);
         uploadPhoto(photos.length - 1);
-        photos.add(PhotoFile());
+        photos.add(null);
       }
       gettingPhotos.value = false;
     }
@@ -356,50 +356,50 @@ class TenantRequestDetailsController extends GetxController {
   }
 
   uploadPhoto(int index) async {
-    photos[index].errorUploading = false;
-    photos[index].uploading.value = true;
+    photos[index]!.errorUploading = false;
+    photos[index]!.uploading.value = true;
     try {
       var resp = await TenantRepository.uploadFile(
           tenantRequestDetails.value.detail!.caseNo.toString(),
-          photos[index].path??"",
+          photos[index]!.path??"",
           'Images',
           '',
           '0');
-      photos[index].id = resp['photoId'];
+      photos[index]!.id = resp['photoId'];
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
-      photos[index].errorUploading = true;
+      photos[index]!.errorUploading = true;
     }
-    photos[index].uploading.value = false;
+    photos[index]!.uploading.value = false;
   }
 
   removePhoto(int index) async {
-    photos[index].errorRemoving = false;
-    photos[index].removing.value = true;
-    var resp = await TenantRepository.removeReqPhoto(photos[index].id);
+    photos[index]!.errorRemoving = false;
+    photos[index]!.removing.value = true;
+    var resp = await TenantRepository.removeReqPhoto(photos[index]!.id);
     if (resp == 200) {
       gettingPhotos.value = true;
       photos.removeAt(index);
       gettingPhotos.value = false;
     } else {
-      photos[index].errorRemoving = true;
-      photos[index].removing.value = false;
+      photos[index]!.errorRemoving = true;
+      photos[index]!.removing.value = false;
     }
   }
 
   void downloadDoc(int index) async {
-    photos[index].errorDownloading = false;
-    photos[index].downloading.value = true;
+    photos[index]!.errorDownloading = false;
+    photos[index]!.downloading.value = true;
     var resp = await TenantRepository.downloadDoc(
-        tenantRequestDetails.value.detail!.caseNo, 1, photos[index].id??-1);
-    photos[index].downloading.value = false;
+        tenantRequestDetails.value.detail!.caseNo, 1, photos[index]!.id??-1);
+    photos[index]!.downloading.value = false;
     if (resp is Uint8List) {
-      photos[index].file = resp;
+      photos[index]!.file = resp;
     } else {
-      photos[index].errorDownloading = true;
-      photos[index].errorText = resp.toString();
+      photos[index]!.errorDownloading = true;
+      photos[index]!.errorText = resp.toString();
     }
   }
 

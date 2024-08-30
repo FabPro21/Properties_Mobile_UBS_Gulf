@@ -137,7 +137,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                             width: 2.w,
                                           ),
                                           SizedBox(
-                                            width: Get.width * 0.75,
+                                            width: Get.width * 0.7,
                                             child: Text(
                                               _controller.fileToUpload.value
                                                       .name ??
@@ -182,7 +182,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                       onTap: () async {
                                         _focusNode.unfocus();
                                         if (formKey.currentState!.validate()) if (await _controller
-                                            .addTicketReply(widget.reqNo!,
+                                            .addTicketReply(widget.reqNo??"",
                                                 _messageTextController.text)) {
                                           _controller.typing.value = false;
                                           _messageTextController.clear();
@@ -271,7 +271,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: 76.0.w,
+                                    width: 73.0.w,
                                     child: Directionality(
                                       textDirection:
                                           SessionController().getLanguage() == 1
@@ -376,13 +376,12 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
-                      itemCount: _controller.ticketReplies!.ticketReply!.length,
+                      itemCount: _controller.ticketReplies?.ticketReply?.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
-                          alignment: (_controller.ticketReplies!
-                                      .ticketReply![index].userId ==
+                          alignment: (_controller.ticketReplies?.ticketReply?[index].userId ==
                                   null
                               ? Alignment.topLeft
                               : Alignment.topRight),
@@ -390,8 +389,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                             constraints: BoxConstraints(maxWidth: 80.w),
                             child: Container(
                               margin: EdgeInsets.only(top: 2.5.h),
-                              decoration: _controller.ticketReplies!
-                                          .ticketReply![index].userId ==
+                              decoration: _controller.ticketReplies?.ticketReply?[index].userId ==
                                       null
                                   ? BoxDecoration(
                                       borderRadius: BorderRadius.only(
@@ -410,17 +408,14 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                     ),
                               padding: EdgeInsets.all(12),
                               child: Column(
-                                crossAxisAlignment: _controller.ticketReplies!
-                                            .ticketReply![index].userId ==
+                                crossAxisAlignment: _controller.ticketReplies?.ticketReply?[index].userId ==
                                         null
                                     ? CrossAxisAlignment.end
                                     : CrossAxisAlignment.start,
                                 children: [
-                                  if (_controller.ticketReplies!
-                                              .ticketReply![index].fileName !=
+                                  if (_controller.ticketReplies?.ticketReply?[index].fileName !=
                                           null &&
-                                      _controller.ticketReplies!
-                                              .ticketReply![index].fileName !=
+                                      _controller.ticketReplies?.ticketReply?[index].fileName !=
                                           "")
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -428,9 +423,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                         Expanded(
                                           child: Text(
                                             _controller
-                                                    .ticketReplies!
-                                                    .ticketReply![index]
-                                                    .fileName ??
+                                                    .ticketReplies?.ticketReply?[index].fileName ??
                                                 "",
                                             style: AppTextStyle.semiBoldBlue10,
                                           ),
@@ -441,8 +434,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                           child: Obx(() {
                                             return _controller
                                                     .ticketReplies!
-                                                    .ticketReply![index]
-                                                    .downloadingFile!
+                                                    .ticketReply![index].downloadingFile!
                                                     .value
                                                 ? LoadingIndicatorBlue(
                                                     strokeWidth: 2,
@@ -487,7 +479,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                   // Communication
                                   Html(
                                     data: _controller
-                                        .ticketReplies!.ticketReply![index].reply,
+                                        .ticketReplies?.ticketReply?[index].reply,
                                     style: {
                                       'html': Style(
                                         textAlign:
@@ -505,8 +497,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                     height: 2.h,
                                   ),
                                   Text(
-                                    _controller.ticketReplies!
-                                            .ticketReply![index].dateTime ??
+                                    _controller.ticketReplies?.ticketReply?[index].dateTime ??
                                         "",
                                     style: AppTextStyle.normalGrey8,
                                   ),
