@@ -87,7 +87,8 @@ class _LandlordFilterPropertyState extends State<LandlordFilterProperty> {
                           )
                         : _filterPropertyController.error.value != ''
                             ? CustomErrorWidget(
-                                errorText: _filterPropertyController.error.value,
+                                errorText:
+                                    _filterPropertyController.error.value,
                                 errorImage: AppImagesPath.noDataFound,
                               )
                             : ListView.builder(
@@ -109,18 +110,27 @@ class _LandlordFilterPropertyState extends State<LandlordFilterProperty> {
                                       children: [
                                         SizedBox(height: 1.0.h),
                                         Text(
-                                          SessionController().getLanguage() == 1
-                                              ? _filterPropertyController
+                                          _filterPropertyController
                                                       .propertyTypesModel
                                                       .value
-                                                      .propertyType![index]
-                                                      .propertyType ??
-                                                  ""
-                                              : _filterPropertyController
-                                                  .propertyTypesModel
-                                                  .value
-                                                  .propertyType![index]
-                                                  .propertyTypeAR??"",
+                                                      .propertyType ==
+                                                  null
+                                              ? ''
+                                              : SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _filterPropertyController
+                                                          .propertyTypesModel
+                                                          .value
+                                                          .propertyType![index]
+                                                          .propertyType ??
+                                                      ""
+                                                  : _filterPropertyController
+                                                          .propertyTypesModel
+                                                          .value
+                                                          .propertyType![index]
+                                                          .propertyTypeAR ??
+                                                      "",
                                         ),
                                         SizedBox(height: 2.0.h),
                                         index ==

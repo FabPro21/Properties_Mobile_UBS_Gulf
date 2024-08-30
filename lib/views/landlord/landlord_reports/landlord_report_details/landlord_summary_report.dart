@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
@@ -51,7 +50,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
           children: [
             Column(children: [
               CustomAppBar2(
-                  title: widget.reportName! + ' ' + AppMetaLabels().summary),
+                  title:
+                      widget.reportName ?? "" + ' ' + AppMetaLabels().summary),
               Expanded(
                   child: Padding(
                       padding: EdgeInsets.only(
@@ -155,7 +155,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                         itemBuilder: (context, index) {
                                           return inkWell(
                                             index,
-                                            widget.reportName!,
+                                            widget.reportName ?? "",
                                           );
                                         },
                                       );
@@ -203,7 +203,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                   children: [
                                     Container(
                                       height: 5.5.h,
-                                      width: 86.0.w,
+                                      width: 80.0.w,
                                       child: isLoading
                                           ? LoadingIndicatorBlue()
                                           : ElevatedButton(
@@ -238,8 +238,9 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                             var res =
                                                                 await lDReportController
                                                                     .downLoadReportFilebase64(
-                                                              widget.reportName!,
-                                                              widget.data!,
+                                                              widget.reportName ??
+                                                                  "",
+                                                              widget.data ?? {},
                                                             );
                                                             if (res) {
                                                               var base64Decoded =
@@ -259,8 +260,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                                       lDReportController
                                                                           .downloadedFileModel!
                                                                           .extension!);
-                                                              final
-                                                                  result =
+                                                              final result =
                                                                   await OpenFile
                                                                       .open(
                                                                           path);
@@ -720,19 +720,19 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                                     child: Text(
                                       SessionController().getLanguage() == 1
                                           ? widget
-                                                  .lDReportController!
-                                                  .lpoReportSummaryModel
-                                                  .value
-                                                  .serviceRequests![widget.index!]
-                                                  .tenantName
-                                                  .toString() 
+                                              .lDReportController!
+                                              .lpoReportSummaryModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .tenantName
+                                              .toString()
                                           : widget
-                                                  .lDReportController!
-                                                  .lpoReportSummaryModel
-                                                  .value
-                                                  .serviceRequests![widget.index!]
-                                                  .tenantNameAR
-                                                  .toString(),
+                                              .lDReportController!
+                                              .lpoReportSummaryModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .tenantNameAR
+                                              .toString(),
                                       textAlign: TextAlign.end,
                                       style: AppTextStyle.normalGrey10,
                                       maxLines: 3,
@@ -842,11 +842,12 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                                               .lpoStatusAR ??
                                           "",
                                   valueToCompare: widget
-                                      .lDReportController!
-                                      .lpoReportSummaryModel
-                                      .value
-                                      .serviceRequests![widget.index!]
-                                      .lpoStatus??"",
+                                          .lDReportController!
+                                          .lpoReportSummaryModel
+                                          .value
+                                          .serviceRequests![widget.index!]
+                                          .lpoStatus ??
+                                      "",
                                 )),
                           ],
                         ),
@@ -1061,19 +1062,19 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                               child: Text(
                                 SessionController().getLanguage() == 1
                                     ? widget
-                                            .lDReportController!
-                                            .vatReportSummaryModel
-                                            .value
-                                            .serviceRequests![widget.index!]
-                                            .tenantName
-                                            .toString() 
+                                        .lDReportController!
+                                        .vatReportSummaryModel
+                                        .value
+                                        .serviceRequests![widget.index!]
+                                        .tenantName
+                                        .toString()
                                     : widget
-                                            .lDReportController!
-                                            .vatReportSummaryModel
-                                            .value
-                                            .serviceRequests![widget.index!]
-                                            .tenantNameAR
-                                            .toString() ,
+                                        .lDReportController!
+                                        .vatReportSummaryModel
+                                        .value
+                                        .serviceRequests![widget.index!]
+                                        .tenantNameAR
+                                        .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 3,
@@ -1673,8 +1674,12 @@ class _UnitStatusSummaryReportWidgetState
                               alignment: Alignment.centerRight,
                               width: 38.w,
                               child: Text(
-                                widget.lDReportController!.unitStatusReportModel
-                                    .value.serviceRequests![widget.index!].unitRef
+                                widget
+                                    .lDReportController!
+                                    .unitStatusReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .unitRef
                                     .toString(),
                                 style: AppTextStyle.normalGrey10,
                                 textAlign: TextAlign.end,
@@ -1773,23 +1778,26 @@ class _UnitStatusSummaryReportWidgetState
                               child: StatusWidget(
                                   text: SessionController().getLanguage() == 1
                                       ? widget
-                                          .lDReportController!
-                                          .unitStatusReportModel
-                                          .value
-                                          .serviceRequests![widget.index!]
-                                          .unitStatus??""
+                                              .lDReportController!
+                                              .unitStatusReportModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .unitStatus ??
+                                          ""
                                       : widget
+                                              .lDReportController!
+                                              .unitStatusReportModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .unitStatusAR ??
+                                          "",
+                                  valueToCompare: widget
                                           .lDReportController!
                                           .unitStatusReportModel
                                           .value
                                           .serviceRequests![widget.index!]
-                                          .unitStatusAR??"",
-                                  valueToCompare: widget
-                                      .lDReportController!
-                                      .unitStatusReportModel
-                                      .value
-                                      .serviceRequests![widget.index!]
-                                      .unitStatus??""),
+                                          .unitStatus ??
+                                      ""),
                             )
                           ],
                         ),
@@ -2026,12 +2034,12 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               width: 38.w,
                               child: Text(
                                 widget
-                                        .lDReportController!
-                                        .occupanyReportModel
-                                        .value
-                                        .serviceRequests![widget.index!]
-                                        .totalUnits
-                                        .toString(),
+                                    .lDReportController!
+                                    .occupanyReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .totalUnits
+                                    .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 3,
@@ -2054,12 +2062,12 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               width: 30.w,
                               child: Text(
                                 widget
-                                        .lDReportController!
-                                        .occupanyReportModel
-                                        .value
-                                        .serviceRequests![widget.index!]
-                                        .occupiedUnits
-                                        .toString() ,
+                                    .lDReportController!
+                                    .occupanyReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .occupiedUnits
+                                    .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 1,
@@ -2082,12 +2090,12 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               width: 30.w,
                               child: Text(
                                 widget
-                                        .lDReportController!
-                                        .occupanyReportModel
-                                        .value
-                                        .serviceRequests![widget.index!]
-                                        .vacantUnits
-                                        .toString(),
+                                    .lDReportController!
+                                    .occupanyReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .vacantUnits
+                                    .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 1,
@@ -2111,12 +2119,12 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               width: 30.w,
                               child: Text(
                                 widget
-                                        .lDReportController!
-                                        .occupanyReportModel
-                                        .value
-                                        .serviceRequests![widget.index!]
-                                        .noOfOccupancy
-                                        .toString() ,
+                                    .lDReportController!
+                                    .occupanyReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .noOfOccupancy
+                                    .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 1,
@@ -2139,12 +2147,12 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               width: 38.w,
                               child: Text(
                                 widget
-                                        .lDReportController!
-                                        .occupanyReportModel
-                                        .value
-                                        .serviceRequests![widget.index!]
-                                        .noOfVacancy
-                                        .toString(),
+                                    .lDReportController!
+                                    .occupanyReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .noOfVacancy
+                                    .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey10,
                                 maxLines: 1,
@@ -2514,8 +2522,12 @@ class _LegalCasereportSummaryWidgetState
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                widget.lDReportController!.legalCaseReportModel
-                                    .value.serviceRequests![widget.index!].period
+                                widget
+                                    .lDReportController!
+                                    .legalCaseReportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .period
                                     .toString(),
                                 textAlign: TextAlign.end,
                                 style: AppTextStyle.normalGrey11,
@@ -3041,11 +3053,12 @@ class _ChequeRegiterReportSummaryWidgetState
                                               .chequeStatusAR ??
                                           "",
                                   valueToCompare: widget
-                                      .lDReportController!
-                                      .chequeRegisterReportModel
-                                      .value
-                                      .serviceRequests![widget.index!]
-                                      .chequeStatus??""),
+                                          .lDReportController!
+                                          .chequeRegisterReportModel
+                                          .value
+                                          .serviceRequests![widget.index!]
+                                          .chequeStatus ??
+                                      ""),
                             ),
                             // Container(
                             //   alignment: Alignment.centerRight,
@@ -3304,19 +3317,19 @@ class _BuildingStatusReportSummaryWidgetState
                                     child: Text(
                                       SessionController().getLanguage() == 1
                                           ? widget
-                                                  .lDReportController!
-                                                  .buildingStatusReportModel
-                                                  .value
-                                                  .serviceRequests![widget.index!]
-                                                  .tenantName
-                                                  .toString()
+                                              .lDReportController!
+                                              .buildingStatusReportModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .tenantName
+                                              .toString()
                                           : widget
-                                                  .lDReportController!
-                                                  .buildingStatusReportModel
-                                                  .value
-                                                  .serviceRequests![widget.index!]
-                                                  .tenantNameAR
-                                                  .toString() ,
+                                              .lDReportController!
+                                              .buildingStatusReportModel
+                                              .value
+                                              .serviceRequests![widget.index!]
+                                              .tenantNameAR
+                                              .toString(),
                                       textAlign: TextAlign.end,
                                       style: AppTextStyle.normalGrey10,
                                       maxLines: 3,
@@ -3791,17 +3804,33 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                         : SizedBox(
                             height: 1.2.h,
                           ),
-                    widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                    widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 "" ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 null ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 "" ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 null
                         ? SizedBox()
                         : Row(
@@ -3837,17 +3866,33 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                               ),
                             ],
                           ),
-                    widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                    widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 "" ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 null ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 "" ||
-                            widget.lDReportController!.amcRepportModel.value
-                                    .serviceRequests![widget.index!].contractor ==
+                            widget
+                                    .lDReportController!
+                                    .amcRepportModel
+                                    .value
+                                    .serviceRequests![widget.index!]
+                                    .contractor ==
                                 null
                         ? SizedBox()
                         : SizedBox(
@@ -4054,7 +4099,8 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
           ),
         ),
         widget.index ==
-                widget.lDReportController!.amcRepportModel.value.totalRecord! - 1
+                widget.lDReportController!.amcRepportModel.value.totalRecord! -
+                    1
             ? SizedBox()
             : AppDivider(),
       ],

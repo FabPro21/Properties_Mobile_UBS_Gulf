@@ -45,7 +45,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
               return controller.loadingContractDetails.value
                   ? LoadingIndicatorBlue()
                   : controller.errorLoadingContractDetails != '' &&
-                          controller.contractDetails!.contract == null &&
+                          controller.contractDetails?.contract == null &&
                           controller.loadingContractDetails.value
                       ? LoadingIndicatorBlue()
                       : controller.errorLoadingContractDetails != ''
@@ -120,8 +120,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                           .toString() +
                                                                       '/' +
                                                                       controller
-                                                                          .contractDetails!
-                                                                          .contract!
+                                                                          .contractDetails!.contract!
                                                                           .noOfDays
                                                                           .toString(),
                                                                   style: AppTextStyle
@@ -163,7 +162,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                               AppTextStyle.normalBlack10,
                                                                         ),
                                                                         Text(
-                                                                          controller.contractDetails!.contract!.contractDate ??
+                                                                          controller.contractDetails?.contract!.contractDate ??
                                                                               "",
                                                                           style:
                                                                               AppTextStyle.semiBoldBlack10,
@@ -185,7 +184,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                               AppTextStyle.normalBlack10,
                                                                         ),
                                                                         Text(
-                                                                          controller.contractDetails!.contract!.contractStartDate ??
+                                                                          controller.contractDetails?.contract!.contractStartDate ??
                                                                               "",
                                                                           style:
                                                                               AppTextStyle.semiBoldBlack10,
@@ -207,7 +206,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                               AppTextStyle.normalBlack10,
                                                                         ),
                                                                         Text(
-                                                                          controller.contractDetails!.contract!.contractEndDate ??
+                                                                          controller.contractDetails?.contract!.contractEndDate ??
                                                                               "",
                                                                           style:
                                                                               AppTextStyle.semiBoldBlack10,
@@ -260,10 +259,10 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                           child:
                                                                               StatusWidget(
                                                                             text: SessionController().getLanguage() == 1
-                                                                                ? controller.contractDetails!.contract!.contractStatus ?? "-"
-                                                                                : controller.contractDetails!.contract!.contractStatusAr ?? '-',
+                                                                                ? controller.contractDetails?.contract!.contractStatus ?? "-"
+                                                                                : controller.contractDetails?.contract!.contractStatusAr ?? '-',
                                                                             valueToCompare:
-                                                                                controller.contractDetails!.contract!.contractStatus ?? "",
+                                                                                controller.contractDetails?.contract!.contractStatus ?? "",
                                                                           ),
                                                                         ),
                                                                       )
@@ -277,8 +276,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                               if (widget.previousContactNo !=
                                                                       null &&
                                                                   controller
-                                                                          .contractDetails!
-                                                                          .contract!
+                                                                          .contractDetails?.contract!
                                                                           .contractno !=
                                                                       widget
                                                                           .previousContactNo)
@@ -363,15 +361,13 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                     SessionController().getLanguage() ==
                                                                             1
                                                                         ? controller
-                                                                            .contractDetails!
-                                                                            .contract!
+                                                                            .contractDetails?.contract!
                                                                             .unitName
-                                                                            .toString()
+                                                                            .toString()??""
                                                                         : controller
-                                                                            .contractDetails!
-                                                                            .contract!
+                                                                            .contractDetails?.contract!
                                                                             .unitNameAr
-                                                                            .toString(),
+                                                                            .toString()??"",
                                                                     style: AppTextStyle
                                                                         .normalBlack10,
                                                                   ),
@@ -386,15 +382,11 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                     child: Text(
                                                                       SessionController().getLanguage() == 1
                                                                           ? controller
-                                                                              .contractDetails!
-                                                                              .contract!
-                                                                              .address
-                                                                              .toString()
+                                                                              .contractDetails?.contract?.address
+                                                                              .toString()??""
                                                                           : controller
-                                                                              .contractDetails!
-                                                                              .contract!
-                                                                              .addressAr
-                                                                              .toString(),
+                                                                              .contractDetails?.contract?.addressAr
+                                                                              .toString()??"",
                                                                       style: AppTextStyle
                                                                           .semiBoldBlack10,
                                                                     ),

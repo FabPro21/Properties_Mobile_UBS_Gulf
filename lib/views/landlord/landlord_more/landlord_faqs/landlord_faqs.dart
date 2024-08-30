@@ -74,7 +74,7 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                         _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .data![index]
+                                                                .data?[index]
                                                                 .categoryId ??
                                                             ''),
                                                   ));
@@ -91,21 +91,27 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                   Container(
                                                     width: 84.w,
                                                     child: Text(
-                                                      SessionController()
-                                                                  .getLanguage() ==
-                                                              1
-                                                          ? _controller
-                                                                  .faqsCategories
-                                                                  .value
-                                                                  .data![index]
-                                                                  .title ??
-                                                              ""
-                                                          : _controller
-                                                                  .faqsCategories
-                                                                  .value
-                                                                  .data![index]
-                                                                  .titleAR ??
-                                                              "",
+                                                      _controller.faqsCategories
+                                                                  .value.data ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? _controller
+                                                                      .faqsCategories
+                                                                      .value
+                                                                      .data![
+                                                                          index]
+                                                                      .title ??
+                                                                  ""
+                                                              : _controller
+                                                                      .faqsCategories
+                                                                      .value
+                                                                      .data![
+                                                                          index]
+                                                                      .titleAR ??
+                                                                  "",
                                                       style: AppTextStyle
                                                           .semiBoldBlack13,
                                                       maxLines: null,

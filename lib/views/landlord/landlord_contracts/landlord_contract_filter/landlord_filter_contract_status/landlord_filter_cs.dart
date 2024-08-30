@@ -115,7 +115,7 @@ class _LandlordFilterCSState extends State<LandlordFilterCS> {
                                           _filterContractsStatusController
                                                       .contractsStatusModel
                                                       .value
-                                                      .data![index]
+                                                      .data?[index]
                                                       .contractType ==
                                                   'Active'
                                               ? SessionController()
