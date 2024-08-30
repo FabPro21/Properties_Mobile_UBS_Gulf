@@ -26,7 +26,6 @@ import '../../../../widgets/snackbar_widget.dart';
 import '../../../card_scanner/card_scanner.dart';
 import '../../../tenant_contracts/tenant_contracts_tabs.dart/tenant_contracts_details.dart/tenant_contracts_detail_controller.dart';
 import 'package:path/path.dart' as p;
-import 'package:image/image.dart' as img;
 
 class SvcReqDocsController extends GetxController {
   final String? caseNo;
