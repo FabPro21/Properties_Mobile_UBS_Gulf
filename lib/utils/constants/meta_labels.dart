@@ -2578,6 +2578,10 @@ class AppMetaLabels {
       ? 'Please enter full Name'
       : 'الرجاء إدخال الاسم الكامل';
 
+  String pleaseEnterEmail = SessionController().getLanguage() == 1
+      ? 'Please enter your Email'
+      : 'الرجاء إدخال البريد الإلكتروني الخاص بك';
+
   String pleaseEnterCorrectID = SessionController().getLanguage() == 1
       ? 'Please enter correct ID Number'
       : "الرجاء إدخال رقم التعريف الصحيح";
