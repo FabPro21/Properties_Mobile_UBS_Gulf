@@ -33,24 +33,33 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
+firebaseMessaging() async {
+  print('Firebase Messaging Message received: func call');
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  // Request permission for iOS
+  _firebaseMessaging.requestPermission();
+  // Configure foreground message handler
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Message received: ${message.messageId}');
+    // Handle foreground message
+  });
+  // Configure background message handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('Handling a background message: ${message.messageId}');
+  // Handle background message
+}
+
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                     */
 /* -------------------------------------------------------------------------- */
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('Handling a background message: ${message.messageId}');
- 
-            
-         
-  // Process your data here
-}
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  // For Production  Must uncomment before go live
   await FirebaseAppCheck.instance.activate(
     androidProvider:
         kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
@@ -58,10 +67,6 @@ Future<void> main() async {
         ? AppleProvider.debug
         : AppleProvider.appAttest,
   );
-  
-  // await FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(true);
-  // await FirebaseAppCheck.instance.getToken();
-  // Must uncomment before go live
 
   // for download file
   await FlutterDownloader.initialize(
@@ -96,6 +101,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // myCustomImplementation();
     // privacyScreen();
+    firebaseMessaging();
     super.initState();
   }
 
