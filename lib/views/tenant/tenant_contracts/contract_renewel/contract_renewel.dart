@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -39,7 +41,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
   @override
   void initState() {
     isDialogOpen = false;
-    controller.getContractRenewalInfo(widget.contractId!);
+    controller.getContractRenewalInfo(widget.contractId??0);
     super.initState();
   }
 
@@ -162,9 +164,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                   .renewelgreyclr)),
                                                   Text(
                                                       controller
-                                                              .renewalInfo!
-                                                              .record!
-                                                              .addNewDate ??
+                                                              .renewalInfo?.record?.addNewDate ??
                                                           '',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
@@ -189,9 +189,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                   .renewelgreyclr)),
                                                   Text(
                                                       controller
-                                                              .renewalInfo!
-                                                              .record!
-                                                              .endNewDate ??
+                                                              .renewalInfo?.record?.endNewDate ??
                                                           '',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
@@ -217,9 +215,8 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                               color: AppColors
                                                                   .renewelgreyclr)),
                                                   Text(
-                                                      controller.renewalInfo!
-                                                          .record!.installments
-                                                          .toString(),
+                                                      controller.renewalInfo?.record?.installments
+                                                          .toString()??'',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
                                                           .copyWith(
@@ -230,25 +227,17 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                               SizedBox(
                                                 height: 1.h,
                                               ),
-                                              controller.renewalInfo!.record!.emirateName!
-                                                          .toLowerCase()
+                                              controller.renewalInfo?.record?.emirateName?.toLowerCase()
                                                           .trim() ==
                                                       'dubai'
                                                   ? SizedBox()
-                                                  : controller
-                                                                  .renewalInfo!
-                                                                  .record!
-                                                                  .amount ==
+                                                  : controller.renewalInfo?.record?.amount ==
                                                               '0' ||
                                                           controller
-                                                                  .renewalInfo!
-                                                                  .record!
-                                                                  .amount ==
+                                                                  .renewalInfo?.record?.amount ==
                                                               '0.00' ||
                                                           controller
-                                                                  .renewalInfo!
-                                                                  .record!
-                                                                  .amount ==
+                                                                  .renewalInfo?.record?.amount ==
                                                               null
                                                       ? SizedBox()
                                                       : Padding(
@@ -267,7 +256,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                     .semiBoldBlack10,
                                                               ),
                                                               Text(
-                                                                '${AppMetaLabels().aed} ${controller.renewalInfo!.record!.amount}',
+                                                                '${AppMetaLabels().aed} ${controller.renewalInfo?.record?.amount}',
                                                                 style: AppTextStyle
                                                                     .semiBoldBlack10,
                                                               )
@@ -384,19 +373,19 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                               ),
 
                                               // if (controller
-                                              //         .renewalInfo!.record!.emirateName ==
+                                              //         .renewalInfo?.record!.emirateName ==
                                               //     'Abu Dhabi')
                                               //   Spacer(),
                                               // if (controller
-                                              //         .renewalInfo!.record!.emirateName ==
+                                              //         .renewalInfo?.record!.emirateName ==
                                               //     'Abu Dhabi')
                                               //   InkWell(
                                               //     onTap: () {
                                               //       launchUrl(Uri.parse(
-                                              //           controller.renewalInfo!.link));
+                                              //           controller.renewalInfo?.link));
                                               //     },
                                               //     child: Text(
-                                              //       controller.renewalInfo!.link ?? '',
+                                              //       controller.renewalInfo?.link ?? '',
                                               //       style: AppTextStyle.normalBlue10,
                                               //     ),
                                               //   ),

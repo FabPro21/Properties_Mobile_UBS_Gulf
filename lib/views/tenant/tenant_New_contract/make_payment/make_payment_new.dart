@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
@@ -54,6 +56,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
         }
         return false;
       },
+      
       child: Scaffold(
         appBar: AppBar(
           title: Text(

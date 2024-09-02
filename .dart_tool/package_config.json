@@ -674,6 +674,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "image_collage",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_collage-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "image_editor_plus",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_editor_plus-1.0.6",
       "packageUri": "lib/",
@@ -1472,7 +1478,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-08-31T15:39:54.196143Z",
+  "generated": "2024-09-02T11:49:03.282146Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///Users/mapmac/FlutterDev/flutter",

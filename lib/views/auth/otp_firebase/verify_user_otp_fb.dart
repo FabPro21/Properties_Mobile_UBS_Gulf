@@ -46,13 +46,13 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       print(' user state ============::::::::::::::::: IF === >  $user');
       if (user != null) {
-        // Navigate the user away from the login screens   
+        // Navigate the user away from the login screens
         print(' user state ============::::::::::::::::: IF === > ');
         autoVerifyOtpBtn();
       } else {
         print('Resetting user state ============::::::::::::::::: ELSE === > ');
       }
-    });  
+    });
     setState(() {
       authController.isCodeSent.value = false;
     });
@@ -157,7 +157,8 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                       width: 85.0.w,
                                       child: PinCodeFieldFB(
                                         controller: authController,
-                                        isForgotMpin: widget.isForgotMpin??false,
+                                        isForgotMpin:
+                                            widget.isForgotMpin ?? false,
                                       ),
                                     ),
                             ),

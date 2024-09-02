@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/views/tenant/tenant_contracts/legal_settlement/legal_settlement_controller.dart';
 import 'package:fap_properties/views/tenant/tenant_services_request/tenant_request_details/tenant_service_request_tab/tenant_service_request_tab.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-// ignore_for_file: implementation_imports, unnecessary_null_comparison
+// ignore_for_file: implementation_imports, unnecessary_null_comparison, deprecated_member_use
 
 import 'package:badges/badges.dart' as badge;
 import 'package:fap_properties/data/helpers/session_controller.dart';

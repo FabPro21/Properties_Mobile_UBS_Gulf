@@ -151,7 +151,6 @@ class UploadSvcReqFile {
         return json.decode(await response.stream.bytesToString());
       } else {
         log("else 1");
-        log(response.reasonPhrase!);
         return response.statusCode;
       }
     } else {

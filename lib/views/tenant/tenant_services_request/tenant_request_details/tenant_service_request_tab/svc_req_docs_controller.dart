@@ -14,6 +14,7 @@ import 'package:fap_properties/views/tenant/tenant_contracts/contracts_with_acti
 import 'package:fap_properties/views/tenant/tenant_services_request/tenant_request_details/tenant_request_details_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -89,23 +90,23 @@ class SvcReqDocsController extends GetxController {
           isDocUploaded.add('false');
         }
 
-        if (resp.docs!.length == 0) {
+        if (resp.docs?.length == 0) {
           isLength.value = true;
           print(
-              '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
+              '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
           errorLoadingDocs = AppMetaLabels().noDatafound;
           loadingDocs.value = false;
         } else {
           docsModel = resp;
           // if documents are rejected then will make empty the expiry
           for (int i = 0; i < docsModel!.docs!.length; i++) {
-            if (docsModel!.docs![i].isRejected!) {
-              docsModel!.docs![i].expiry = '';
+            if (docsModel?.docs?[i].isRejected == true) {
+              docsModel?.docs?[i].expiry = '';
             }
           }
           print(
-              '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
-          print(docsModel!.caseStageInfo!.stageId);
+              '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
+          print(docsModel?.caseStageInfo?.stageId);
           update();
           enableSubmitButton();
         }
@@ -126,49 +127,49 @@ class SvcReqDocsController extends GetxController {
   void enableSubmitButton() {
     enableSubmit.value = true;
     for (int i = 0; i < 2; i++) {
-      if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+      if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
     }
     // commented the below code coz we want to make fisrt two mandatary and other all show b optional
-    // for (int i = 0; i < docsModel!.docs!.length; i++) {
-    //   if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+    // for (int i = 0; i < docsModel?.docs?.length; i++) {
+    //   if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
     // }
   }
 
   removeFile(int index) async {
-    docsModel!.docs![index].removing.value = true;
-    docsModel!.docs![index].errorRemoving = false;
+    docsModel?.docs?[index].removing.value = true;
+    docsModel?.docs?[index].errorRemoving = false;
     var resp = await TenantRepository.removeReqPhoto(
-        docsModel!.docs![index].id.toString());
+        docsModel?.docs?[index].id.toString());
     if (resp == 200) {
       loadingDocs.value = true;
-      docsModel!.docs![index].path = null;
-      docsModel!.docs![index].file = null;
-      docsModel!.docs![index].size = null;
-      docsModel!.docs![index].id = null;
-      docsModel!.docs![index].expiry = null;
+      docsModel?.docs?[index].path = null;
+      docsModel?.docs?[index].file = null;
+      docsModel?.docs?[index].size = null;
+      docsModel?.docs?[index].id = null;
+      docsModel?.docs?[index].expiry = null;
       enableSubmitButton();
       loadingDocs.value = false;
     } else {
-      docsModel!.docs![index].errorRemoving = true;
+      docsModel?.docs?[index].errorRemoving = true;
     }
-    docsModel!.docs![index].removing.value = false;
+    docsModel?.docs?[index].removing.value = false;
   }
 
   int selectedIndexForUploadedDocument = -1;
 
   // passport and other select from gallery
   pickDoc(int index) async {
-    docsModel!.docs![index].loading.value = true;
+    docsModel?.docs?[index].loading.value = true;
     final ImagePicker _picker = ImagePicker();
     XFile? result = await _picker.pickImage(source: ImageSource.gallery);
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
 
     if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
           duration: Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       return;
     }
 
@@ -216,8 +217,8 @@ class SvcReqDocsController extends GetxController {
       final tempDir = await getTemporaryDirectory();
       // File fileNew = await File('${tempDir.path}/image.png').create();
       String fileName = SessionController().getLanguage() == 1
-          ? docsModel!.docs![index].name ?? ""
-          : docsModel!.docs![index].nameAr ?? "";
+          ? docsModel?.docs![index].name ?? ""
+          : docsModel?.docs?[index].nameAr ?? "";
       File fileNew =
           await File('${tempDir.path}/$fileName${p.extension(result.path)}')
               .create();
@@ -225,21 +226,21 @@ class SvcReqDocsController extends GetxController {
 
       print('New File Path : ${fileNew.path}');
       // set values
-      docsModel!.docs![index].path = fileNew.path;
-      docsModel!.docs![index].file = byteFile;
-      docsModel!.docs![index].size = size;
+      docsModel?.docs?[index].path = fileNew.path;
+      docsModel?.docs?[index].file = byteFile;
+      docsModel?.docs?[index].size = size;
       selectedIndexForUploadedDocument = index;
-      if (docsModel!.docs![index].path != null) {
+      if (docsModel?.docs?[index].path != null) {
         isDocUploaded[index] = 'true';
         update();
       }
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
   }
 
   //   // passport and other select from gallery
   pickDocFilePicker(int index) async {
-    docsModel!.docs![index].loading.value = true;
+    docsModel?.docs?[index].loading.value = true;
     FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowedExtensions: [
       'pdf',
@@ -247,14 +248,14 @@ class SvcReqDocsController extends GetxController {
       'jpg',
       'png',
     ], type: FileType.custom);
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
 
     if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
           duration: Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       return;
     }
 
@@ -303,8 +304,8 @@ class SvcReqDocsController extends GetxController {
       final tempDir = await getTemporaryDirectory();
       // File fileNew = await File('${tempDir.path}/image.png').create();
       String fileName = SessionController().getLanguage() == 1
-          ? docsModel!.docs![index].name ?? ""
-          : docsModel!.docs![index].nameAr ?? "";
+          ? docsModel?.docs![index].name ?? ""
+          : docsModel?.docs?[index].nameAr ?? "";
       File fileNew = await File(
               '${tempDir.path}/$fileName${p.extension(result.files.single.path ?? "")}')
           .create();
@@ -312,29 +313,29 @@ class SvcReqDocsController extends GetxController {
 
       print('New File Path : ${fileNew.path}');
       // set values
-      docsModel!.docs![index].path = fileNew.path;
-      docsModel!.docs![index].file = byteFile;
-      docsModel!.docs![index].size = size;
+      docsModel?.docs?[index].path = fileNew.path;
+      docsModel?.docs?[index].file = byteFile;
+      docsModel?.docs?[index].size = size;
       selectedIndexForUploadedDocument = index;
-      if (docsModel!.docs![index].path != null) {
+      if (docsModel?.docs?[index].path != null) {
         isDocUploaded[index] = 'true';
         update();
       }
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
   }
 
   // passport and other take photo
   Future<void> takePhoto(int index) async {
     // From Camera
-    docsModel!.docs![index].loading.value = true;
+    docsModel?.docs?[index].loading.value = true;
 
     // picking file
     final ImagePicker _picker = ImagePicker();
     XFile? result = await _picker.pickImage(
       source: ImageSource.camera,
     );
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
 
     // checking extension
     if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
@@ -342,7 +343,7 @@ class SvcReqDocsController extends GetxController {
           duration: Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       return;
     }
 
@@ -376,24 +377,24 @@ class SvcReqDocsController extends GetxController {
       Uint8List imageInUnit8List = byteFile;
       final tempDir = await getTemporaryDirectory();
       String fileName = SessionController().getLanguage() == 1
-          ? docsModel!.docs![index].name ?? ""
-          : docsModel!.docs![index].nameAr ?? "";
+          ? docsModel?.docs![index].name ?? ""
+          : docsModel?.docs?[index].nameAr ?? "";
       File fileNew =
           await File('${tempDir.path}/$fileName${p.extension(result.path)}')
               .create();
       fileNew.writeAsBytesSync(imageInUnit8List);
 
       // set values
-      docsModel!.docs![index].path = fileNew.path;
-      docsModel!.docs![index].file = byteFile;
-      docsModel!.docs![index].size = size;
+      docsModel?.docs?[index].path = fileNew.path;
+      docsModel?.docs?[index].file = byteFile;
+      docsModel?.docs?[index].size = size;
       selectedIndexForUploadedDocument = index;
-      if (docsModel!.docs![index].path != null) {
+      if (docsModel?.docs?[index].path != null) {
         isDocUploaded[index] = 'true';
         update();
       }
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
   }
 
   RxBool isLoadingForScanning = false.obs;
@@ -403,7 +404,7 @@ class SvcReqDocsController extends GetxController {
 
   RxBool isbothScane = false.obs;
   Future scanEmirateId(ImageSource source, int index) async {
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
     XFile? xfile;
     try {
       xfile = await ImagePicker().pickImage(
@@ -415,11 +416,11 @@ class SvcReqDocsController extends GetxController {
             duration: Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
             colorText: AppColors.white54);
-        docsModel!.docs![index].loading.value = false;
+        docsModel?.docs?[index].loading.value = false;
         return;
       }
     } catch (e) {
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       cardScanModel = CardScanModel();
       mergedId = File('');
       isLoadingForScanning.value = false;
@@ -450,7 +451,7 @@ class SvcReqDocsController extends GetxController {
       if (editedImage == null) {
         await SnakBarWidget.getSnackBarErrorBlue(
             AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
-        docsModel!.docs![index].loading.value = false;
+        docsModel?.docs?[index].loading.value = false;
         return;
       }
       if (editedImage != null) photo = editedImage;
@@ -527,7 +528,7 @@ class SvcReqDocsController extends GetxController {
               isbothScane.value = true;
               await scanEmirateId(source, index);
             } else if (!isbothScane.value) {
-              docsModel!.docs![index].loading.value = false;
+              docsModel?.docs?[index].loading.value = false;
               cardScanModel = CardScanModel();
               mergedId = File('');
               isLoadingForScanning.value = false;
@@ -539,10 +540,10 @@ class SvcReqDocsController extends GetxController {
         }
       }
     } else {
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       cardScanModel = CardScanModel();
       mergedId = File('');
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
       isLoadingForScanning.value = false;
       isbothScane.value = false;
       update();
@@ -554,7 +555,7 @@ class SvcReqDocsController extends GetxController {
       return;
     }
     if (isbothScane.value == true) {
-      docsModel!.docs![index].loading.value = false;
+      docsModel?.docs?[index].loading.value = false;
 
       if (mergedId == null && cardScanModel.backImage != null) {
         SessionController().getLanguage() == 1
@@ -571,14 +572,14 @@ class SvcReqDocsController extends GetxController {
         isDocUploaded[index] = 'true';
         byteFile = await mergedId!.readAsBytes();
         String fileSize = await getFileSize(mergedId!.path);
-        docsModel!.docs![index].path = mergedId!.path;
-        docsModel!.docs![index].file = byteFile;
-        docsModel!.docs![index].size = fileSize;
+        docsModel?.docs?[index].path = mergedId!.path;
+        docsModel?.docs?[index].file = byteFile;
+        docsModel?.docs?[index].size = fileSize;
       }
 
       // Set the Expiry Date
       if (cardScanModel.expiry == null) {
-        docsModel!.docs![index].expiry = '.';
+        docsModel?.docs?[index].expiry = '.';
         cardScanModel.expiry = null;
       } else {
         try {
@@ -591,18 +592,18 @@ class SvcReqDocsController extends GetxController {
           if (isValid) {
             if (cardScanModel.expiry!.isBefore(DateTime.now()) ||
                 cardScanModel.expiry!.isAtSameMomentAs(DateTime.now())) {
-              docsModel!.docs![index].expiry = '.';
+              docsModel?.docs?[index].expiry = '.';
               cardScanModel.expiry = null;
             } else {
-              docsModel!.docs![index].expiry =
+              docsModel?.docs?[index].expiry =
                   '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry!)}';
             }
           } else {
-            docsModel!.docs![index].expiry = '.';
+            docsModel?.docs?[index].expiry = '.';
             cardScanModel.expiry = null;
           }
         } catch (e) {
-          docsModel!.docs![index].expiry = '.';
+          docsModel?.docs?[index].expiry = '.';
           cardScanModel.expiry = null;
         }
       }
@@ -631,29 +632,28 @@ class SvcReqDocsController extends GetxController {
       }
       print(isDocUploaded);
     }
-    docsModel!.docs![index].update.value = true;
-    docsModel!.docs![index].update.value = false;
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].update.value = true;
+    docsModel?.docs?[index].update.value = false;
+    docsModel?.docs?[index].loading.value = false;
   }
 
   // Future scanEmirateId(ImageSource source, int index) async {
-  //   docsModel!.docs![index].loading.value = false;
+  //   docsModel?.docs?[index].loading.value = false;
   //   XFile xfile;
   //   try {
   //     xfile = await ImagePicker().pickImage(
   //       source: source,
   //     );
-
   //     if (!CheckFileExtenstion().checkImageExtFunc(xfile.path)) {
   //       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
   //           duration: Duration(seconds: 5),
   //           backgroundColor: AppColors.redColor,
   //           colorText: AppColors.white54);
-  //       docsModel!.docs![index].loading.value = false;
+  //       docsModel?.docs?[index].loading.value = false;
   //       return;
   //     }
   //   } catch (e) {
-  //     docsModel!.docs![index].loading.value = false;
+  //     docsModel?.docs?[index].loading.value = false;
   //     cardScanModel = CardScanModel();
   //     mergedId! = null;
   //     isLoadingForScanning.value = false;
@@ -661,9 +661,7 @@ class SvcReqDocsController extends GetxController {
   //   }
   //   if (xfile != null) {
   //     Uint8List photo = await xfile.readAsBytes();
-
   //     photo = await compressImage(photo);
-
   //     // checking file size EID
   //     print('Size of file ::: ${CheckFileExtenstion().getFileSize(photo)}');
   //     var size = CheckFileExtenstion().getFileSize(photo).split(' ')[0];
@@ -677,20 +675,17 @@ class SvcReqDocsController extends GetxController {
   //         return;
   //       }
   //     }
-
   //     final editedImage = await Get.to(() => ImageCropper(
   //           image: photo,
   //         ));
   //     if (editedImage == null) {
-  //       docsModel!.docs![index].loading.value = false;
+  //       docsModel?.docs?[index].loading.value = false;
   //       return;
   //     }
   //     if (editedImage != null) photo = editedImage;
-
   //     if (photo != null && await getStoragePermission()) {
   //       final newPath = await getTemporaryDirectory();
   //       final newFile = File("${newPath.path}/${xfile.path.split('/').last}");
-
   //       if (newFile != null) {
   //         await newFile.writeAsBytes(photo);
   //         print('- - - - - - - - - - - -- - - -- - - - -- - - - - - -- ');
@@ -702,10 +697,8 @@ class SvcReqDocsController extends GetxController {
   //         print('**********************************************');
   //         print(
   //             'Back Side Full Conditionc ::::: ${isbothScane.value == true && cardScanModel.backImage == null}');
-
   //         print('Back Side isbothScane val::::: ${isbothScane.value}');
   //         print('cardScanModel.backImage val::::: ${cardScanModel.backImage}');
-
   //         print('- - - - - - - - - - - -- - - -- - - - -- - - - - - -- ');
   //         final result = await Get.to(() => CardScanner(
   //               file: newFile,
@@ -745,11 +738,9 @@ class SvcReqDocsController extends GetxController {
   //           if (result.cardNumber != null && isbothScane.value == true) {
   //             cardScanModel.backImage = photo;
   //           }
-
   //           if (isbothScane.value == true && cardScanModel.backImage == null) {
   //             cardScanModel.backImage = photo;
   //           }
-
   //           if (isbothScane.value == false) {
   //             await SnakBarWidget.getSnackBarErrorBlueRichTExt(
   //                 AppMetaLabels().alert, AppMetaLabels().otherSide);
@@ -757,7 +748,7 @@ class SvcReqDocsController extends GetxController {
   //             isbothScane.value = true;
   //             await scanEmirateId(source, index);
   //           } else if (!isbothScane.value) {
-  //             docsModel!.docs![index].loading.value = false;
+  //             docsModel?.docs?[index].loading.value = false;
   //             cardScanModel = CardScanModel();
   //             mergedId! = null;
   //             isLoadingForScanning.value = false;
@@ -769,10 +760,10 @@ class SvcReqDocsController extends GetxController {
   //       }
   //     }
   //   } else {
-  //     docsModel!.docs![index].loading.value = false;
+  //     docsModel?.docs?[index].loading.value = false;
   //     cardScanModel = CardScanModel();
   //     mergedId! = null;
-  //     docsModel!.docs![index].loading.value = false;
+  //     docsModel?.docs?[index].loading.value = false;
   //     isLoadingForScanning.value = false;
   //     isbothScane.value = false;
   //     update();
@@ -780,33 +771,29 @@ class SvcReqDocsController extends GetxController {
   //     await SnakBarWidget.getSnackBarErrorBlue(
   //         AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
   //     await Future.delayed(Duration(seconds: 2));
-
   //     return;
   //   }
   //   if (isbothScane.value == true) {
-  //     docsModel!.docs![index].loading.value = false;
-
+  //     docsModel?.docs?[index].loading.value = false;
   //     if (mergedId! == null ) {
   //       // if (mergedId! == null) {
   //       await SnakBarWidget.getSnackBarErrorBlueRichTExtForPrepareData(
   //           AppMetaLabels().alert, AppMetaLabels().data);
   //       await Future.delayed(Duration(seconds: 2));
   //     }
-
   //     await mergeEmirateIdSides();
   //     var byteFile;
   //     if (mergedId! != null) {
   //       isDocUploaded[index] = 'true';
   //       byteFile = await mergedId!.readAsBytes();
   //       String fileSize = await getFileSize(mergedId!.path);
-  //       docsModel!.docs![index].path = mergedId!.path;
-  //       docsModel!.docs![index].file = byteFile;
-  //       docsModel!.docs![index].size = fileSize;
+  //       docsModel?.docs?[index].path = mergedId!.path;
+  //       docsModel?.docs?[index].file = byteFile;
+  //       docsModel?.docs?[index].size = fileSize;
   //     }
-
   //     // Set the Expiry Date
   //     if (cardScanModel.expiry == null) {
-  //       docsModel!.docs![index].expiry = '.';
+  //       docsModel?.docs?[index].expiry = '.';
   //       cardScanModel.expiry = null;
   //     }
   //     // if (cardScanModel.expiry != null) {
@@ -823,18 +810,18 @@ class SvcReqDocsController extends GetxController {
   //         if (isValid) {
   //           if (cardScanModel.expiry.isBefore(DateTime.now()) ||
   //               cardScanModel.expiry.isAtSameMomentAs(DateTime.now())) {
-  //             docsModel!.docs![index].expiry = '.';
+  //             docsModel?.docs?[index].expiry = '.';
   //             cardScanModel.expiry = null;
   //           } else {
-  //             docsModel!.docs![index].expiry =
+  //             docsModel?.docs?[index].expiry =
   //                 '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry)}';
   //           }
   //         } else {
-  //           docsModel!.docs![index].expiry = '.';
+  //           docsModel?.docs?[index].expiry = '.';
   //           cardScanModel.expiry = null;
   //         }
   //       } catch (e) {
-  //         docsModel!.docs![index].expiry = '.';
+  //         docsModel?.docs?[index].expiry = '.';
   //         cardScanModel.expiry = null;
   //       }
   //     }
@@ -866,48 +853,87 @@ class SvcReqDocsController extends GetxController {
   //     // isDocUploaded[index] = 'true';
   //     print(isDocUploaded);
   //   }
-  //   docsModel!.docs![index].update.value = true;
-  //   docsModel!.docs![index].update.value = false;
-  //   docsModel!.docs![index].loading.value = false;
+  //   docsModel?.docs?[index].update.value = true;
+  //   docsModel?.docs?[index].update.value = false;
+  //   docsModel?.docs?[index].loading.value = false;
   // }
 
+  Future<File> convertUint8ListToFile(
+      Uint8List uint8List, String fileName) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/$fileName');
+    await file.writeAsBytes(uint8List);
+    return file;
+  }
+
+  Uint8List convertImageToUint8List(img.Image image) {
+    // Encode the image to PNG format
+    final encodedImage = img.encodePng(image);
+    if (encodedImage == null) {
+      throw Exception('Failed to encode image to PNG.');
+    }
+    return Uint8List.fromList(encodedImage);
+  }
+
+  var frontImageAsFile;
+  var backImageAsFile;
+  var frontImageAsImage;
+  var backImageAsImage;
   Future mergeEmirateIdSides() async {
-    // try {
-    //   // with older package
-    //   final front = img.decodeImage(cardScanModel.frontImage!);
-    //   final back = img.decodeImage(cardScanModel.backImage!);
-    //   final mergedImage ;
-    //   // =
-    //   //     img.Image(max(front!.width, back!.width), front.height + back.height);
-    //   // img.copyInto(mergedImage, front, blend: false);
-    //   // img.copyInto(mergedImage, back, dstY: front.height, blend: false);
-    //   // Uint8List byteImage = img.encodePng(mergedImage) as Uint8List;
-    //   final byteImage = encodePng(mergedImage);
-    //   final resizedImage = await compressImage(byteImage);
-    //   // 112233 image extension issue
-    //   String path = await saveFile(
-    //       DocFile(name: 'emirateID', type: '.jpg', file: resizedImage));
-    //   mergedId = new File(path);
-    // } catch (e) {
-    //   print('Exception :::::: mergeEmirateIdSides $e');
-    // }
     try {
-      // with older package
-      // final front = img.decodeImage(cardScanModel.frontImage!);
-      // final back = img.decodeImage(cardScanModel.backImage!);
-      // final mergedImage;=img.Image(width: (front!.width, back!.width), front.height + back.height);
-      // img.copyInto(mergedImage, front, blend: false);
-      // img.copyInto(mergedImage, back, dstY: front.height, blend: false);
-      // Uint8List byteImage = img.encodePng(mergedImage) as Uint8List;
-      // final byteImage = encodePng(mergedImage);
-      // final resizedImage = await compressImage(byteImage);
-      // 112233 image extension issue
-      // String path = await saveFile(
-      //     DocFile(name: 'emirateID', type: '.jpg', file: resizedImage));
-      // mergedId = new File(path);
+      // Decode images using the `image` package
+      final front = img.decodeImage(cardScanModel.frontImage!)!;
+      final back = img.decodeImage(cardScanModel.backImage!)!;
+      print('After :::::::::: front ******* back ******* image');
+
+      var f1 = convertImageToUint8List(front);
+      var b1 = convertImageToUint8List(back);
+      frontImageAsFile = await convertUint8ListToFile(f1, 'front');
+      backImageAsFile = await convertUint8ListToFile(b1, 'back');
+
+      // Create a new image with the combined height and maximum width
+      img.Image mergedImage = img.Image(
+        width: front.width > back.width ? front.width : back.width,
+        height: front.height + back.height,
+      );
+      print('After :::::::::: front ******* back ******* height ------- width');
+      // Draw the front and back image
+
+      img.compositeImage(mergedImage, front, dstX: 0, dstY: 0);
+      img.compositeImage(mergedImage, back, dstX: 0, dstY: back.height);
+
+      print('After :::::::::: Composition :::::::::------*********');
+      final byteImage = img.encodePng(mergedImage);
+      print('After :::::::::: byteImage :::::::::------*********');
+      final resizedImage = await compressImage(byteImage);
+      print('After :::::::::: resizedImage :::::::::------*********');
+      String path = await saveFile(
+          DocFile(name: 'emirateID', type: '.jpg', file: resizedImage));
+      print('After :::::::::path: $path :::::::::------*********');
+      mergedId = new File(path);
+      print('After ::::::::mergedId:: $mergedId :::::::::------*********');
     } catch (e) {
       print('Exception :::::: mergeEmirateIdSides $e');
     }
+    // try {
+    // with older package
+    // final front = img.decodeImage(cardScanModel.frontImage!);
+    // final back = img.decodeImage(cardScanModel.backImage!);
+    // final mergedImage;=img.Image(width: (front!.width, back!.width), front.height + back.height);
+    // img.copyInto(mergedImage, front, blend: false);
+    // img.copyInto(mergedImage, back, dstY: front.height, blend: false);
+
+    // Uint8List byteImage = img.encodePng(mergedImage) as Uint8List;
+
+    // final byteImage = encodePng(mergedImage);
+    // final resizedImage = await compressImage(byteImage);
+    // 112233 image extension issue
+    // String path = await saveFile(
+    //     DocFile(name: 'emirateID', type: '.jpg', file: resizedImage));
+    // mergedId = new File(path);
+    // } catch (e) {
+    //   print('Exception :::::: mergeEmirateIdSides $e');
+    // }
   }
 
   // comparingUint8List comparing the both images if both will same then will
@@ -921,29 +947,29 @@ class SvcReqDocsController extends GetxController {
   }
 
   setExpDate(int index, String date) {
-    docsModel!.docs![index].update.value = true;
-    docsModel!.docs![index].expiry = date;
-    docsModel!.docs![index].update.value = false;
+    docsModel?.docs?[index].update.value = true;
+    docsModel?.docs?[index].expiry = date;
+    docsModel?.docs?[index].update.value = false;
   }
 
   clearExpDate(int index) {
-    docsModel!.docs![index].update.value = true;
-    docsModel!.docs![index].expiry = null;
-    docsModel!.docs![index].update.value = false;
+    docsModel?.docs?[index].update.value = true;
+    docsModel?.docs?[index].expiry = null;
+    docsModel?.docs?[index].update.value = false;
   }
 
   Future uploadDoc(int index) async {
     try {
-      docsModel!.docs![index].loading.value = true;
-      docsModel!.docs![index].errorLoading = false;
+      docsModel?.docs?[index].loading.value = true;
+      docsModel?.docs?[index].errorLoading = false;
       var resp = await TenantRepository.uploadFile(
           caseNo!,
-          docsModel!.docs![index].path ?? "",
-          docsModel!.docs![index].name ?? "",
-          docsModel!.docs![index].expiry ?? "",
-          docsModel!.docs![index].documentTypeId.toString());
+          docsModel?.docs?[index].path ?? "",
+          docsModel?.docs?[index].name ?? "",
+          docsModel?.docs?[index].expiry ?? "",
+          docsModel?.docs?[index].documentTypeId.toString() ?? "");
       var id = resp['photoId'];
-      docsModel!.docs![index].id = id;
+      docsModel?.docs?[index].id = id;
       enableSubmitButton();
       isDocUploaded[index] = 'false';
       update();
@@ -960,9 +986,9 @@ class SvcReqDocsController extends GetxController {
         print(e);
       }
       print(e);
-      docsModel!.docs![index].errorLoading = true;
+      docsModel?.docs?[index].errorLoading = true;
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
     loadingDocs.value = true;
     loadingDocs.value = false;
   }
@@ -981,14 +1007,14 @@ class SvcReqDocsController extends GetxController {
   ) async {
     try {
       print('Inside the func');
-      // docsModel!.docs![index].loading.value = true;
-      docsModel!.docs![index].errorLoading = false;
+      // docsModel?.docs?[index].loading.value = true;
+      docsModel?.docs?[index].errorLoading = false;
       var resp = await TenantRepository.uploadDocWithEIDParameter(
-        caseNo!,
-        docsModel!.docs![index].path ?? "",
-        docsModel!.docs![index].name ?? "",
-        docsModel!.docs![index].expiry ?? "",
-        docsModel!.docs![index].documentTypeId.toString(),
+        caseNo ?? "",
+        docsModel?.docs?[index].path ?? "",
+        docsModel?.docs?[index].name ?? "",
+        docsModel?.docs?[index].expiry ?? "",
+        docsModel?.docs?[index].documentTypeId.toString() ?? "",
         emirateIdNumber,
         nationality,
         nameEng,
@@ -999,7 +1025,7 @@ class SvcReqDocsController extends GetxController {
       print(resp);
       isLoadingForScanning.value = false;
       var id = resp['photoId'];
-      docsModel!.docs![index].id = id;
+      docsModel?.docs?[index].id = id;
       isDocUploaded[index] = 'false';
       isLoadingForScanning.value = false;
       enableSubmitButton();
@@ -1016,26 +1042,26 @@ class SvcReqDocsController extends GetxController {
         print(e);
       }
       print(e);
-      docsModel!.docs![index].errorLoading = true;
+      docsModel?.docs?[index].errorLoading = true;
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
     loadingDocs.value = true;
     loadingDocs.value = false;
   }
 
   Future updateDoc(int index) async {
     try {
-      docsModel!.docs![index].loading.value = true;
+      docsModel?.docs?[index].loading.value = true;
       isLoadingForScanning.value = true;
-      docsModel!.docs![index].errorLoading = false;
+      docsModel?.docs?[index].errorLoading = false;
       var resp = await TenantRepository.updateFile(
-          docsModel!.docs![index].id ?? -1,
-          docsModel!.docs![index].path ?? "",
-          docsModel!.docs![index].expiry ?? "");
+          docsModel?.docs?[index].id ?? -1,
+          docsModel?.docs?[index].path ?? "",
+          docsModel?.docs?[index].expiry ?? "");
       isLoadingForScanning.value = false;
       if (resp == 200) {
-        docsModel!.docs![index].loading.value = false;
-        docsModel!.docs![index].isRejected = false;
+        docsModel?.docs?[index].loading.value = false;
+        docsModel?.docs?[index].isRejected = false;
         enableSubmitButton();
         isDocUploaded[index] = 'false';
         update();
@@ -1047,29 +1073,29 @@ class SvcReqDocsController extends GetxController {
         cardScanModel = CardScanModel();
         mergedId = File('');
       } else {
-        docsModel!.docs![index].loading.value = false;
-        docsModel!.docs![index].errorLoading = true;
+        docsModel?.docs?[index].loading.value = false;
+        docsModel?.docs?[index].errorLoading = true;
       }
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
-      docsModel!.docs![index].errorLoading = true;
+      docsModel?.docs?[index].errorLoading = true;
     }
-    docsModel!.docs![index].loading.value = false;
+    docsModel?.docs?[index].loading.value = false;
     loadingDocs.value = true;
     loadingDocs.value = false;
   }
 
   removePickedFile(int index) {
-    docsModel!.docs![index].update.value = true;
-    docsModel!.docs![index].path = null;
-    docsModel!.docs![index].file = null;
-    docsModel!.docs![index].size = null;
-    docsModel!.docs![index].expiry = null;
+    docsModel?.docs?[index].update.value = true;
+    docsModel?.docs?[index].path = null;
+    docsModel?.docs?[index].file = null;
+    docsModel?.docs?[index].size = null;
+    docsModel?.docs?[index].expiry = null;
     cardScanModel = CardScanModel();
     mergedId = File('');
-    docsModel!.docs![index].update.value = false;
+    docsModel?.docs?[index].update.value = false;
   }
 
   Future<String> getFileSize(String filepath) async {
@@ -1082,15 +1108,15 @@ class SvcReqDocsController extends GetxController {
   }
 
   void downloadDoc(int index) async {
-    docsModel!.docs![index].loading.value = true;
+    docsModel?.docs?[index].loading.value = true;
     var resp = await TenantRepository.downloadDoc(
-        int.parse(caseNo!), 1, docsModel!.docs![index].id ?? -1);
-    docsModel!.docs![index].loading.value = false;
+        int.parse(caseNo!), 1, docsModel?.docs?[index].id ?? -1);
+    docsModel?.docs?[index].loading.value = false;
 
     if (resp is Uint8List) {
-      if (!docsModel!.docs![index].isRejected!)
-        docsModel!.docs![index].file = resp;
-      showFile(docsModel!.docs![index]);
+      if (docsModel?.docs?[index].isRejected! == false)
+        docsModel?.docs?[index].file = resp;
+      showFile(docsModel?.docs?[index]);
     } else {
       SnakBarWidget.getSnackBarSuccess(
         AppMetaLabels().success,
@@ -1101,19 +1127,18 @@ class SvcReqDocsController extends GetxController {
 
   void downloadDocRejected(int index) async {
     isLoadingForScanning.value = true;
-    if (docsModel!.docs![index].path != null) {
-      OpenFile.open(docsModel!.docs![index].path);
+    if (docsModel?.docs?[index].path != null) {
+      OpenFile.open(docsModel?.docs?[index].path);
       isLoadingForScanning.value = false;
     } else {
       Uint8List result = await TenantRepository.downloadDocIsRejected(
-          int.parse(caseNo!), 1, docsModel!.docs![index].id ?? -1);
+          int.parse(caseNo!), 1, docsModel?.docs?[index].id ?? -1);
       print('::::::__>>>>Download<<<<___:::::::');
       if (result is Uint8List) {
         if (await getStoragePermission()) {
-          String path = await createFile(
-              result,
-              docsModel!.docs![index].name ??
-                  "" + '.' + docsModel!.docs![index].type!);
+          var name = docsModel?.docs?[index].name ?? "";
+          var type = docsModel?.docs?[index].type ?? "";
+          String path = await createFile(result, name + '.' + type);
           final result1 = await OpenFile.open(path);
           print('Result 1 :::: 111 :::: 1 1 $result1');
           isLoadingForScanning.value = false;
@@ -1131,23 +1156,24 @@ class SvcReqDocsController extends GetxController {
     }
   }
 
-  Future<String> createFile(Uint8List data, String fileName) async {
+  Future<String> createFile(Uint8List? data, String? fileName) async {
     final output = await getTemporaryDirectory();
     final file = File("${output.path}/$fileName");
     print("File Path :::::::: Downoad ${output.path}/$fileName");
-    await file.writeAsBytes(data.buffer.asUint8List());
+    await file.writeAsBytes(data!.buffer.asUint8List());
     return "${output.path}/$fileName";
   }
 
-  void showFile(DocFile file) async {
+  void showFile(DocFile? file) async {
     print('********');
-    print(file.path);
-    print(file.type);
+    print(file?.path ?? "");
+    print(file?.type ?? "");
     print('********');
-    if (file.path == null) {
+    if (file?.path == null) {
       if (await getStoragePermission()) {
-        String path =
-            await createFile(file.file!, file.name ?? "" + '.' + file.type!);
+        var name = file?.name ?? "";
+        var type = file?.type ?? "";
+        String path = await createFile(file?.file, name + '.' + type);
         try {
           final result = await OpenFile.open(path);
           if (result.message != 'done') {
@@ -1167,7 +1193,7 @@ class SvcReqDocsController extends GetxController {
         }
       }
     } else {
-      await OpenFile.open(file.path);
+      await OpenFile.open(file?.path);
     }
     // OpenFile.open(file.path);
   }
@@ -1193,12 +1219,12 @@ class SvcReqDocsController extends GetxController {
   updateDocStage(String caller) async {
     updatingDocStage.value = true;
     final resp = await TenantRepository.updateContractDocumentStage(
-        docsModel!.caseStageInfo!.dueActionid ?? -1);
+        docsModel?.caseStageInfo?.dueActionid ?? -1);
     updatingDocStage.value = false;
     if (resp == 200) {
       // Get.snackbar(AppMetaLabels().success, AppMetaLabels().stageUpdated,
       //     backgroundColor: AppColors.white54);
-      docsModel!.caseStageInfo!.stageId!.value = 3;
+      docsModel?.caseStageInfo?.stageId!.value = 3;
       enableSubmit.value = false;
       if (caller == 'contract') {
         final contractController = Get.find<GetContractsDetailsController>();
@@ -1244,7 +1270,7 @@ class SvcReqDocsController extends GetxController {
 // class SvcReqDocsController extends GetxController {
 //   SvcReqDocsController({this.caseNo});
 //   String caseNo;
-//   GetDocsModel docsModel!;
+//   GetDocsModel docsModel?;
 //   RxBool isLength = false.obs;
 //   //
 //   // isDocUploaded for restrict the user to setct the other document pla upload karny sy
@@ -1288,34 +1314,34 @@ class SvcReqDocsController extends GetxController {
 //   getFiles() async {
 //     try {
 //       print('============>>>>>> hhh THIS');
-//       docsModel! = GetDocsModel();
+//       docsModel? = GetDocsModel();
 //       errorLoadingDocs = '';
 //       loadingDocs.value = true;
 //       var resp = await TenantRepository.getDocsByType(int.parse(caseNo), 1, 41);
 //       loadingDocs.value = false;
 //       if (resp is GetDocsModel) {
 //         isDocUploaded.clear();
-//         for (int i = 0; i < resp.docs!.length; i++) {
+//         for (int i = 0; i < resp.docs?.length; i++) {
 //           isDocUploaded.add('false');
 //         }
 
-//         if (resp.docs!.length == 0) {
+//         if (resp.docs?.length == 0) {
 //           isLength.value = true;
 //           print(
-//               '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
+//               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
 //           errorLoadingDocs = AppMetaLabels().noDatafound;
 //           loadingDocs.value = false;
 //         } else {
-//           docsModel! = resp ?? GetDocsModel();
+//           docsModel? = resp ?? GetDocsModel();
 //           // if documents are rejected then will make empty the expiry
-//           for (int i = 0; i < docsModel!.docs!.length; i++) {
-//             if (docsModel!.docs![i].isRejected) {
-//               docsModel!.docs![i].expiry = '';
+//           for (int i = 0; i < docsModel?.docs?.length; i++) {
+//             if (docsModel?.docs?[i].isRejected) {
+//               docsModel?.docs?[i].expiry = '';
 //             }
 //           }
 //           print(
-//               '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
-//           print(docsModel!.caseStageInfo.stageId);
+//               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
+//           print(docsModel?.caseStageInfo.stageId);
 //           update();
 //           enableSubmitButton();
 //         }
@@ -1336,32 +1362,32 @@ class SvcReqDocsController extends GetxController {
 //   void enableSubmitButton() {
 //     enableSubmit.value = true;
 //     for (int i = 0; i < 2; i++) {
-//       if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+//       if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
 //     }
 //     // commented the below code coz we want to make fisrt two mandatary and other all show b optional
-//     // for (int i = 0; i < docsModel!.docs!.length; i++) {
-//     //   if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+//     // for (int i = 0; i < docsModel?.docs?.length; i++) {
+//     //   if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
 //     // }
 //   }
 
 //   removeFile(int index) async {
-//     docsModel!.docs![index].removing.value = true;
-//     docsModel!.docs![index].errorRemoving = false;
+//     docsModel?.docs?[index].removing.value = true;
+//     docsModel?.docs?[index].errorRemoving = false;
 //     var resp = await TenantRepository.removeReqPhoto(
-//         docsModel!.docs![index].id.toString());
+//         docsModel?.docs?[index].id.toString());
 //     if (resp == 200) {
 //       loadingDocs.value = true;
-//       docsModel!.docs![index].path = null;
-//       docsModel!.docs![index].file = null;
-//       docsModel!.docs![index].size = null;
-//       docsModel!.docs![index].id = null;
-//       docsModel!.docs![index].expiry = null;
+//       docsModel?.docs?[index].path = null;
+//       docsModel?.docs?[index].file = null;
+//       docsModel?.docs?[index].size = null;
+//       docsModel?.docs?[index].id = null;
+//       docsModel?.docs?[index].expiry = null;
 //       enableSubmitButton();
 //       loadingDocs.value = false;
 //     } else {
-//       docsModel!.docs![index].errorRemoving = true;
+//       docsModel?.docs?[index].errorRemoving = true;
 //     }
-//     docsModel!.docs![index].removing.value = false;
+//     docsModel?.docs?[index].removing.value = false;
 //   }
 
 //   int selectedIndexForUploadedDocument = -1;
@@ -1369,7 +1395,7 @@ class SvcReqDocsController extends GetxController {
 //   // passport and other select from gallery
 //   pickDoc(int index) async {
 //     print('>>>>>>>>>>><<<<<<<<<<<<<<');
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 
 //     FilePickerResult result =
 //         await FilePicker.platform.pickFiles(allowedExtensions: [
@@ -1378,14 +1404,14 @@ class SvcReqDocsController extends GetxController {
 //       'jpg',
 //       'png',
 //     ], type: FileType.custom);
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (!CheckFileExtenstion().checkFileExtFunc(result)) {
 //       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
 //           duration: Duration(seconds: 5),
 //           backgroundColor: AppColors.redColor,
 //           colorText: AppColors.white54);
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       return;
 //     }
 
@@ -1407,33 +1433,33 @@ class SvcReqDocsController extends GetxController {
 //       }
 
 //       String fileSize = await getFileSize(file.path);
-//       docsModel!.docs![index].path = file.path;
-//       docsModel!.docs![index].file = byteFile;
-//       docsModel!.docs![index].size = fileSize;
+//       docsModel?.docs?[index].path = file.path;
+//       docsModel?.docs?[index].file = byteFile;
+//       docsModel?.docs?[index].size = fileSize;
 //       selectedIndexForUploadedDocument = index;
-//       if (docsModel!.docs![index].path != null) {
+//       if (docsModel?.docs?[index].path != null) {
 //         isDocUploaded[index] = 'true';
 //         update();
 //       }
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   // passport and other take photo
 //   Future<void> takePhoto(int index) async {
 //     print('>>>>>>>>>>><<<<<<<<<<<<<<');
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 //     // old one
 //     final ImagePicker _picker = ImagePicker();
 //     XFile result = await _picker.pickImage(source: ImageSource.camera);
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (!CheckFileExtenstion().checkImageExtFunc(result.path)) {
 //       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
 //           duration: Duration(seconds: 5),
 //           backgroundColor: AppColors.redColor,
 //           colorText: AppColors.white54);
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       return;
 //     }
 
@@ -1454,16 +1480,16 @@ class SvcReqDocsController extends GetxController {
 //         }
 //       }
 //       String fileSize = await getFileSize(file.path);
-//       docsModel!.docs![index].path = file.path;
-//       docsModel!.docs![index].file = byteFile;
-//       docsModel!.docs![index].size = fileSize;
+//       docsModel?.docs?[index].path = file.path;
+//       docsModel?.docs?[index].file = byteFile;
+//       docsModel?.docs?[index].size = fileSize;
 //       selectedIndexForUploadedDocument = index;
-//       if (docsModel!.docs![index].path != null) {
+//       if (docsModel?.docs?[index].path != null) {
 //         isDocUploaded[index] = 'true';
 //         update();
 //       }
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   RxBool isLoadingForScanning = false.obs;
@@ -1473,7 +1499,7 @@ class SvcReqDocsController extends GetxController {
 
 //   RxBool isbothScane = false.obs;
 //   Future scanEmirateId(ImageSource source, int index) async {
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     XFile xfile;
 //     try {
 //       xfile = await ImagePicker().pickImage(
@@ -1485,11 +1511,11 @@ class SvcReqDocsController extends GetxController {
 //             duration: Duration(seconds: 5),
 //             backgroundColor: AppColors.redColor,
 //             colorText: AppColors.white54);
-//         docsModel!.docs![index].loading.value = false;
+//         docsModel?.docs?[index].loading.value = false;
 //         return;
 //       }
 //     } catch (e) {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       cardScanModel = CardScanModel();
 //       mergedId! = null;
 //       isLoadingForScanning.value = false;
@@ -1518,7 +1544,7 @@ class SvcReqDocsController extends GetxController {
 //             image: photo,
 //           ));
 //       if (editedImage == null) {
-//         docsModel!.docs![index].loading.value = false;
+//         docsModel?.docs?[index].loading.value = false;
 //         return;
 //       }
 //       if (editedImage != null) photo = editedImage;
@@ -1593,7 +1619,7 @@ class SvcReqDocsController extends GetxController {
 //               isbothScane.value = true;
 //               await scanEmirateId(source, index);
 //             } else if (!isbothScane.value) {
-//               docsModel!.docs![index].loading.value = false;
+//               docsModel?.docs?[index].loading.value = false;
 //               cardScanModel = CardScanModel();
 //               mergedId! = null;
 //               isLoadingForScanning.value = false;
@@ -1605,10 +1631,10 @@ class SvcReqDocsController extends GetxController {
 //         }
 //       }
 //     } else {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       cardScanModel = CardScanModel();
 //       mergedId! = null;
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       isLoadingForScanning.value = false;
 //       update();
 //       await SnakBarWidget.getSnackBarErrorBlueRichTExt(
@@ -1618,7 +1644,7 @@ class SvcReqDocsController extends GetxController {
 //       return;
 //     }
 //     if (isbothScane.value == true) {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 
 //       if (mergedId! == null) {
 //         await SnakBarWidget.getSnackBarErrorBlueRichTExtForPrepareData(
@@ -1631,14 +1657,14 @@ class SvcReqDocsController extends GetxController {
 //       if (mergedId! != null) {
 //         byteFile = await mergedId!.readAsBytes();
 //         String fileSize = await getFileSize(mergedId!.path);
-//         docsModel!.docs![index].path = mergedId!.path;
-//         docsModel!.docs![index].file = byteFile;
-//         docsModel!.docs![index].size = fileSize;
+//         docsModel?.docs?[index].path = mergedId!.path;
+//         docsModel?.docs?[index].file = byteFile;
+//         docsModel?.docs?[index].size = fileSize;
 //       }
 
 //       // Set the Expiry Date
 //       if (cardScanModel.expiry == null) {
-//         docsModel!.docs![index].expiry = '.';
+//         docsModel?.docs?[index].expiry = '.';
 //         cardScanModel.expiry = null;
 //       }
 //       // if (cardScanModel.expiry != null) {
@@ -1655,18 +1681,18 @@ class SvcReqDocsController extends GetxController {
 //           if (isValid) {
 //             if (cardScanModel.expiry.isBefore(DateTime.now()) ||
 //                 cardScanModel.expiry.isAtSameMomentAs(DateTime.now())) {
-//               docsModel!.docs![index].expiry = '.';
+//               docsModel?.docs?[index].expiry = '.';
 //               cardScanModel.expiry = null;
 //             } else {
-//               docsModel!.docs![index].expiry =
+//               docsModel?.docs?[index].expiry =
 //                   '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry)}';
 //             }
 //           } else {
-//             docsModel!.docs![index].expiry = '.';
+//             docsModel?.docs?[index].expiry = '.';
 //             cardScanModel.expiry = null;
 //           }
 //         } catch (e) {
-//           docsModel!.docs![index].expiry = '.';
+//           docsModel?.docs?[index].expiry = '.';
 //           cardScanModel.expiry = null;
 //         }
 //       }
@@ -1699,9 +1725,9 @@ class SvcReqDocsController extends GetxController {
 //       isDocUploaded[index] = 'true';
 //       print(isDocUploaded);
 //     }
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].update.value = false;
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].update.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   Future mergeEmirateIdSides() async {
@@ -1734,29 +1760,29 @@ class SvcReqDocsController extends GetxController {
 //   }
 
 //   setExpDate(int index, String date) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].expiry = date;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].expiry = date;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   clearExpDate(int index) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].expiry = null;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].expiry = null;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   Future uploadDoc(int index) async {
 //     try {
-//       docsModel!.docs![index].loading.value = true;
-//       docsModel!.docs![index].errorLoading = false;
+//       docsModel?.docs?[index].loading.value = true;
+//       docsModel?.docs?[index].errorLoading = false;
 //       var resp = await TenantRepository.uploadFile(
 //           caseNo,
-//           docsModel!.docs![index].path,
-//           docsModel!.docs![index].name,
-//           docsModel!.docs![index].expiry,
-//           docsModel!.docs![index].documentTypeId.toString());
+//           docsModel?.docs?[index].path,
+//           docsModel?.docs?[index].name,
+//           docsModel?.docs?[index].expiry,
+//           docsModel?.docs?[index].documentTypeId.toString());
 //       var id = resp['photoId'];
-//       docsModel!.docs![index].id = id;
+//       docsModel?.docs?[index].id = id;
 //       enableSubmitButton();
 //       isDocUploaded[index] = 'false';
 //       update();
@@ -1773,9 +1799,9 @@ class SvcReqDocsController extends GetxController {
 //         print(e);
 //       }
 //       print(e);
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
@@ -1794,14 +1820,14 @@ class SvcReqDocsController extends GetxController {
 //   ) async {
 //     try {
 //       print('Inside the func');
-//       // docsModel!.docs![index].loading.value = true;
-//       docsModel!.docs![index].errorLoading = false;
+//       // docsModel?.docs?[index].loading.value = true;
+//       docsModel?.docs?[index].errorLoading = false;
 //       var resp = await TenantRepository.uploadDocWithEIDParameter(
 //         caseNo,
-//         docsModel!.docs![index].path,
-//         docsModel!.docs![index].name,
-//         docsModel!.docs![index].expiry,
-//         docsModel!.docs![index].documentTypeId.toString(),
+//         docsModel?.docs?[index].path,
+//         docsModel?.docs?[index].name,
+//         docsModel?.docs?[index].expiry,
+//         docsModel?.docs?[index].documentTypeId.toString(),
 //         emirateIdNumber,
 //         nationality,
 //         nameEng,
@@ -1812,7 +1838,7 @@ class SvcReqDocsController extends GetxController {
 //       print(resp);
 //       isLoadingForScanning.value = false;
 //       var id = resp['photoId'];
-//       docsModel!.docs![index].id = id;
+//       docsModel?.docs?[index].id = id;
 //       isDocUploaded[index] = 'false';
 //       isLoadingForScanning.value = false;
 //       enableSubmitButton();
@@ -1829,24 +1855,24 @@ class SvcReqDocsController extends GetxController {
 //         print(e);
 //       }
 //       print(e);
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
 
 //   Future updateDoc(int index) async {
 //     try {
-//       docsModel!.docs![index].loading.value = true;
+//       docsModel?.docs?[index].loading.value = true;
 //       isLoadingForScanning.value = true;
-//       docsModel!.docs![index].errorLoading = false;
-//       var resp = await TenantRepository.updateFile(docsModel!.docs![index].id,
-//           docsModel!.docs![index].path, docsModel!.docs![index].expiry);
+//       docsModel?.docs?[index].errorLoading = false;
+//       var resp = await TenantRepository.updateFile(docsModel?.docs?[index].id,
+//           docsModel?.docs?[index].path, docsModel?.docs?[index].expiry);
 //       isLoadingForScanning.value = false;
 //       if (resp == 200) {
-//         docsModel!.docs![index].loading.value = false;
-//         docsModel!.docs![index].isRejected = false;
+//         docsModel?.docs?[index].loading.value = false;
+//         docsModel?.docs?[index].isRejected = false;
 //         enableSubmitButton();
 //         isDocUploaded[index] = 'false';
 //         update();
@@ -1858,29 +1884,29 @@ class SvcReqDocsController extends GetxController {
 //         cardScanModel = CardScanModel();
 //         mergedId! = null;
 //       } else {
-//         docsModel!.docs![index].loading.value = false;
-//         docsModel!.docs![index].errorLoading = true;
+//         docsModel?.docs?[index].loading.value = false;
+//         docsModel?.docs?[index].errorLoading = true;
 //       }
 //     } catch (e) {
 //       if (kDebugMode) {
 //         print(e);
 //       }
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
 
 //   removePickedFile(int index) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].path = null;
-//     docsModel!.docs![index].file = null;
-//     docsModel!.docs![index].size = null;
-//     docsModel!.docs![index].expiry = null;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].path = null;
+//     docsModel?.docs?[index].file = null;
+//     docsModel?.docs?[index].size = null;
+//     docsModel?.docs?[index].expiry = null;
 //     cardScanModel = CardScanModel();
 //     mergedId! = null;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   Future<String> getFileSize(String filepath) async {
@@ -1893,14 +1919,14 @@ class SvcReqDocsController extends GetxController {
 //   }
 
 //   void downloadDoc(int index) async {
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 //     var resp = await TenantRepository.downloadDoc(
-//         int.parse(caseNo), 1, docsModel!.docs![index].id);
-//     docsModel!.docs![index].loading.value = false;
+//         int.parse(caseNo), 1, docsModel?.docs?[index].id);
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (resp is Uint8List) {
-//       if (!docsModel!.docs![index].isRejected) docsModel!.docs![index].file = resp;
-//       showFile(docsModel!.docs![index]);
+//       if (!docsModel?.docs?[index].isRejected) docsModel?.docs?[index].file = resp;
+//       showFile(docsModel?.docs?[index]);
 //     } else {
 //       SnakBarWidget.getSnackBarSuccess(
 //         AppMetaLabels().success,
@@ -1911,16 +1937,16 @@ class SvcReqDocsController extends GetxController {
 
 //   void downloadDocRejected(int index) async {
 //     isLoadingForScanning.value = true;
-//     if (docsModel!.docs![index].path != null) {
-//       OpenFile.open(docsModel!.docs![index].path);
+//     if (docsModel?.docs?[index].path != null) {
+//       OpenFile.open(docsModel?.docs?[index].path);
 //       isLoadingForScanning.value = false;
 //     } else {
 //       Uint8List result = await TenantRepository.downloadDocIsRejected(
-//           int.parse(caseNo), 1, docsModel!.docs![index].id);
+//           int.parse(caseNo), 1, docsModel?.docs?[index].id);
 //       print('::::::__>>>>Download<<<<___:::::::');
 //       if (result is Uint8List) {
 //         if (await getStoragePermission()) {
-//           String path = await createFile(result, docsModel!.docs![index].name);
+//           String path = await createFile(result, docsModel?.docs?[index].name);
 //           OpenResult result1 = await OpenFile.open(path);
 //           print('Result 1 :::: 111 :::: 1 1 $result1');
 //           isLoadingForScanning.value = false;
@@ -1976,12 +2002,12 @@ class SvcReqDocsController extends GetxController {
 //   updateDocStage(String caller) async {
 //     updatingDocStage.value = true;
 //     final resp = await TenantRepository.updateContractDocumentStage(
-//         docsModel!.caseStageInfo.dueActionid);
+//         docsModel?.caseStageInfo.dueActionid);
 //     updatingDocStage.value = false;
 //     if (resp == 200) {
 //       // Get.snackbar(AppMetaLabels().success, AppMetaLabels().stageUpdated,
 //       //     backgroundColor: AppColors.white54);
-//       docsModel!.caseStageInfo.stageId.value = 3;
+//       docsModel?.caseStageInfo.stageId.value = 3;
 //       enableSubmit.value = false;
 //       if (caller == 'contract') {
 //         final contractController = Get.find<GetContractsDetailsController>();
@@ -2027,7 +2053,7 @@ class SvcReqDocsController extends GetxController {
 // class SvcReqDocsController extends GetxController {
 //   SvcReqDocsController({this.caseNo});
 //   String caseNo;
-//   GetDocsModel docsModel!;
+//   GetDocsModel docsModel?;
 //   RxBool isLength = false.obs;
 //   //
 //   // isDocUploaded for restrict the user to setct the other document pla upload karny sy
@@ -2071,34 +2097,34 @@ class SvcReqDocsController extends GetxController {
 //   getFiles() async {
 //     try {
 //       print('============>>>>>> hhh THIS');
-//       docsModel! = GetDocsModel();
+//       docsModel? = GetDocsModel();
 //       errorLoadingDocs = '';
 //       loadingDocs.value = true;
 //       var resp = await TenantRepository.getDocsByType(int.parse(caseNo), 1, 41);
 //       loadingDocs.value = false;
 //       if (resp is GetDocsModel) {
 //         isDocUploaded.clear();
-//         for (int i = 0; i < resp.docs!.length; i++) {
+//         for (int i = 0; i < resp.docs?.length; i++) {
 //           isDocUploaded.add('false');
 //         }
 
-//         if (resp.docs!.length == 0) {
+//         if (resp.docs?.length == 0) {
 //           isLength.value = true;
 //           print(
-//               '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
+//               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
 //           errorLoadingDocs = AppMetaLabels().noDatafound;
 //           loadingDocs.value = false;
 //         } else {
-//           docsModel! = resp ?? GetDocsModel();
+//           docsModel? = resp ?? GetDocsModel();
 //           // if documents are rejected then will make empty the expiry
-//           for (int i = 0; i < docsModel!.docs!.length; i++) {
-//             if (docsModel!.docs![i].isRejected) {
-//               docsModel!.docs![i].expiry = '';
+//           for (int i = 0; i < docsModel?.docs?.length; i++) {
+//             if (docsModel?.docs?[i].isRejected) {
+//               docsModel?.docs?[i].expiry = '';
 //             }
 //           }
 //           print(
-//               '=====resp.docs!.length=======>>>>>> doc length ${resp.docs!.length}  $isDocUploaded');
-//           print(docsModel!.caseStageInfo.stageId);
+//               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
+//           print(docsModel?.caseStageInfo.stageId);
 //           update();
 //           enableSubmitButton();
 //         }
@@ -2119,32 +2145,32 @@ class SvcReqDocsController extends GetxController {
 //   void enableSubmitButton() {
 //     enableSubmit.value = true;
 //     for (int i = 0; i < 2; i++) {
-//       if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+//       if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
 //     }
 //     // commented the below code coz we want to make fisrt two mandatary and other all show b optional
-//     // for (int i = 0; i < docsModel!.docs!.length; i++) {
-//     //   if (docsModel!.docs![i].id == null) enableSubmit.value = false;
+//     // for (int i = 0; i < docsModel?.docs?.length; i++) {
+//     //   if (docsModel?.docs?[i].id == null) enableSubmit.value = false;
 //     // }
 //   }
 
 //   removeFile(int index) async {
-//     docsModel!.docs![index].removing.value = true;
-//     docsModel!.docs![index].errorRemoving = false;
+//     docsModel?.docs?[index].removing.value = true;
+//     docsModel?.docs?[index].errorRemoving = false;
 //     var resp = await TenantRepository.removeReqPhoto(
-//         docsModel!.docs![index].id.toString());
+//         docsModel?.docs?[index].id.toString());
 //     if (resp == 200) {
 //       loadingDocs.value = true;
-//       docsModel!.docs![index].path = null;
-//       docsModel!.docs![index].file = null;
-//       docsModel!.docs![index].size = null;
-//       docsModel!.docs![index].id = null;
-//       docsModel!.docs![index].expiry = null;
+//       docsModel?.docs?[index].path = null;
+//       docsModel?.docs?[index].file = null;
+//       docsModel?.docs?[index].size = null;
+//       docsModel?.docs?[index].id = null;
+//       docsModel?.docs?[index].expiry = null;
 //       enableSubmitButton();
 //       loadingDocs.value = false;
 //     } else {
-//       docsModel!.docs![index].errorRemoving = true;
+//       docsModel?.docs?[index].errorRemoving = true;
 //     }
-//     docsModel!.docs![index].removing.value = false;
+//     docsModel?.docs?[index].removing.value = false;
 //   }
 
 //   int selectedIndexForUploadedDocument = -1;
@@ -2152,7 +2178,7 @@ class SvcReqDocsController extends GetxController {
 //   // passport and other select from gallery
 //   pickDoc(int index) async {
 //     print('>>>>>>>>>>><<<<<<<<<<<<<<');
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 
 //     FilePickerResult result = await FilePicker.platform
 //         .pickFiles(allowedExtensions: [
@@ -2161,14 +2187,14 @@ class SvcReqDocsController extends GetxController {
 //       'jpg',
 //       'png',
 //     ], type: FileType.custom);
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (!CheckFileExtenstion().checkFileExtFunc(result)) {
 //       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
 //           duration: Duration(seconds: 5),
 //           backgroundColor: AppColors.redColor,
 //           colorText: AppColors.white54);
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       return;
 //     }
 
@@ -2190,33 +2216,33 @@ class SvcReqDocsController extends GetxController {
 //       }
 
 //       String fileSize = await getFileSize(file.path);
-//       docsModel!.docs![index].path = file.path;
-//       docsModel!.docs![index].file = byteFile;
-//       docsModel!.docs![index].size = fileSize;
+//       docsModel?.docs?[index].path = file.path;
+//       docsModel?.docs?[index].file = byteFile;
+//       docsModel?.docs?[index].size = fileSize;
 //       selectedIndexForUploadedDocument = index;
-//       if (docsModel!.docs![index].path != null) {
+//       if (docsModel?.docs?[index].path != null) {
 //         isDocUploaded[index] = 'true';
 //         update();
 //       }
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   // passport and other take photo
 //   Future<void> takePhoto(int index) async {
 //     print('>>>>>>>>>>><<<<<<<<<<<<<<');
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 //     // old one
 //     final ImagePicker _picker = ImagePicker();
 //     XFile result = await _picker.pickImage(source: ImageSource.camera);
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (!CheckFileExtenstion().checkImageExtFunc(result.path)) {
 //       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
 //           duration: Duration(seconds: 5),
 //           backgroundColor: AppColors.redColor,
 //           colorText: AppColors.white54);
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       return;
 //     }
 
@@ -2237,16 +2263,16 @@ class SvcReqDocsController extends GetxController {
 //         }
 //       }
 //       String fileSize = await getFileSize(file.path);
-//       docsModel!.docs![index].path = file.path;
-//       docsModel!.docs![index].file = byteFile;
-//       docsModel!.docs![index].size = fileSize;
+//       docsModel?.docs?[index].path = file.path;
+//       docsModel?.docs?[index].file = byteFile;
+//       docsModel?.docs?[index].size = fileSize;
 //       selectedIndexForUploadedDocument = index;
-//       if (docsModel!.docs![index].path != null) {
+//       if (docsModel?.docs?[index].path != null) {
 //         isDocUploaded[index] = 'true';
 //         update();
 //       }
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   RxBool isLoadingForScanning = false.obs;
@@ -2254,7 +2280,7 @@ class SvcReqDocsController extends GetxController {
 //   final controllerTRDC = Get.find<TenantRequestDetailsController>();
 //   ImageSource selectedImageSource;
 //   Future scanEmirateId(ImageSource source, int index) async {
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     XFile xfile;
 //     try {
 //       xfile = await ImagePicker().pickImage(
@@ -2266,11 +2292,11 @@ class SvcReqDocsController extends GetxController {
 //             duration: Duration(seconds: 5),
 //             backgroundColor: AppColors.redColor,
 //             colorText: AppColors.white54);
-//         docsModel!.docs![index].loading.value = false;
+//         docsModel?.docs?[index].loading.value = false;
 //         return;
 //       }
 //     } catch (e) {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       cardScanModel = CardScanModel();
 //       mergedId! = null;
 //       isLoadingForScanning.value = false;
@@ -2299,7 +2325,7 @@ class SvcReqDocsController extends GetxController {
 //             image: photo,
 //           ));
 //       if (editedImage == null) {
-//         docsModel!.docs![index].loading.value = false;
+//         docsModel?.docs?[index].loading.value = false;
 //         return;
 //       }
 //       if (editedImage != null) photo = editedImage;
@@ -2352,7 +2378,7 @@ class SvcReqDocsController extends GetxController {
 //               await Future.delayed(Duration(seconds: 5));
 //               await scanEmirateId(source, index);
 //             } else if (!cardScanModel.bothSidesScannedSuccessfully()) {
-//               docsModel!.docs![index].loading.value = false;
+//               docsModel?.docs?[index].loading.value = false;
 //               cardScanModel = CardScanModel();
 //               mergedId! = null;
 //               isLoadingForScanning.value = false;
@@ -2379,10 +2405,10 @@ class SvcReqDocsController extends GetxController {
 //         }
 //       }
 //     } else {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       cardScanModel = CardScanModel();
 //       mergedId! = null;
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 //       isLoadingForScanning.value = false;
 //       update();
 //       await SnakBarWidget.getSnackBarErrorBlueRichTExt(
@@ -2392,7 +2418,7 @@ class SvcReqDocsController extends GetxController {
 //       return;
 //     }
 //     if (cardScanModel.bothSidesScannedSuccessfully()) {
-//       docsModel!.docs![index].loading.value = false;
+//       docsModel?.docs?[index].loading.value = false;
 
 //       if (mergedId! == null) {
 //         await SnakBarWidget.getSnackBarErrorBlueRichTExtForPrepareData(
@@ -2403,11 +2429,11 @@ class SvcReqDocsController extends GetxController {
 //       await mergeEmirateIdSides();
 //       var byteFile = await mergedId!.readAsBytes();
 //       String fileSize = await getFileSize(mergedId!.path);
-//       docsModel!.docs![index].path = mergedId!.path;
-//       docsModel!.docs![index].file = byteFile;
-//       docsModel!.docs![index].size = fileSize;
+//       docsModel?.docs?[index].path = mergedId!.path;
+//       docsModel?.docs?[index].file = byteFile;
+//       docsModel?.docs?[index].size = fileSize;
 //       // latest 9:01
-//       // docsModel!.docs![index].expiry =
+//       // docsModel?.docs?[index].expiry =
 //       //     DateFormat('dd-MM-yyyy').format(cardScanModel.expiry);
 
 //       // Set the Expiry Date
@@ -2423,18 +2449,18 @@ class SvcReqDocsController extends GetxController {
 //         if (isValid) {
 //           if (cardScanModel.expiry.isBefore(DateTime.now()) ||
 //               cardScanModel.expiry.isAtSameMomentAs(DateTime.now())) {
-//             docsModel!.docs![index].expiry = '.';
+//             docsModel?.docs?[index].expiry = '.';
 //             cardScanModel.expiry = null;
 //           } else {
-//             docsModel!.docs![index].expiry =
+//             docsModel?.docs?[index].expiry =
 //                 '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry)}';
 //           }
 //         } else {
-//           docsModel!.docs![index].expiry = '.';
+//           docsModel?.docs?[index].expiry = '.';
 //           cardScanModel.expiry = null;
 //         }
 //       } catch (e) {
-//         docsModel!.docs![index].expiry = '.';
+//         docsModel?.docs?[index].expiry = '.';
 //         cardScanModel.expiry = null;
 //       }
 //       // Set the DOB Date
@@ -2464,9 +2490,9 @@ class SvcReqDocsController extends GetxController {
 //       isDocUploaded[index] = 'true';
 //       print(isDocUploaded);
 //     }
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].update.value = false;
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].update.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //   }
 
 //   Future mergeEmirateIdSides() async {
@@ -2495,29 +2521,29 @@ class SvcReqDocsController extends GetxController {
 //   }
 
 //   setExpDate(int index, String date) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].expiry = date;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].expiry = date;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   clearExpDate(int index) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].expiry = null;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].expiry = null;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   Future uploadDoc(int index) async {
 //     try {
-//       docsModel!.docs![index].loading.value = true;
-//       docsModel!.docs![index].errorLoading = false;
+//       docsModel?.docs?[index].loading.value = true;
+//       docsModel?.docs?[index].errorLoading = false;
 //       var resp = await TenantRepository.uploadFile(
 //           caseNo,
-//           docsModel!.docs![index].path,
-//           docsModel!.docs![index].name,
-//           docsModel!.docs![index].expiry,
-//           docsModel!.docs![index].documentTypeId.toString());
+//           docsModel?.docs?[index].path,
+//           docsModel?.docs?[index].name,
+//           docsModel?.docs?[index].expiry,
+//           docsModel?.docs?[index].documentTypeId.toString());
 //       var id = resp['photoId'];
-//       docsModel!.docs![index].id = id;
+//       docsModel?.docs?[index].id = id;
 //       enableSubmitButton();
 //       isDocUploaded[index] = 'false';
 //       update();
@@ -2534,9 +2560,9 @@ class SvcReqDocsController extends GetxController {
 //         print(e);
 //       }
 //       print(e);
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
@@ -2555,14 +2581,14 @@ class SvcReqDocsController extends GetxController {
 //   ) async {
 //     try {
 //       print('Inside the func');
-//       // docsModel!.docs![index].loading.value = true;
-//       docsModel!.docs![index].errorLoading = false;
+//       // docsModel?.docs?[index].loading.value = true;
+//       docsModel?.docs?[index].errorLoading = false;
 //       var resp = await TenantRepository.uploadDocWithEIDParameter(
 //         caseNo,
-//         docsModel!.docs![index].path,
-//         docsModel!.docs![index].name,
-//         docsModel!.docs![index].expiry,
-//         docsModel!.docs![index].documentTypeId.toString(),
+//         docsModel?.docs?[index].path,
+//         docsModel?.docs?[index].name,
+//         docsModel?.docs?[index].expiry,
+//         docsModel?.docs?[index].documentTypeId.toString(),
 //         emirateIdNumber,
 //         nationality,
 //         nameEng,
@@ -2573,7 +2599,7 @@ class SvcReqDocsController extends GetxController {
 //       print(resp);
 //       isLoadingForScanning.value = false;
 //       var id = resp['photoId'];
-//       docsModel!.docs![index].id = id;
+//       docsModel?.docs?[index].id = id;
 //       isDocUploaded[index] = 'false';
 //       isLoadingForScanning.value = false;
 //       enableSubmitButton();
@@ -2590,24 +2616,24 @@ class SvcReqDocsController extends GetxController {
 //         print(e);
 //       }
 //       print(e);
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
 
 //   Future updateDoc(int index) async {
 //     try {
-//       docsModel!.docs![index].loading.value = true;
+//       docsModel?.docs?[index].loading.value = true;
 //       isLoadingForScanning.value = true;
-//       docsModel!.docs![index].errorLoading = false;
-//       var resp = await TenantRepository.updateFile(docsModel!.docs![index].id,
-//           docsModel!.docs![index].path, docsModel!.docs![index].expiry);
+//       docsModel?.docs?[index].errorLoading = false;
+//       var resp = await TenantRepository.updateFile(docsModel?.docs?[index].id,
+//           docsModel?.docs?[index].path, docsModel?.docs?[index].expiry);
 //       isLoadingForScanning.value = false;
 //       if (resp == 200) {
-//         docsModel!.docs![index].loading.value = false;
-//         docsModel!.docs![index].isRejected = false;
+//         docsModel?.docs?[index].loading.value = false;
+//         docsModel?.docs?[index].isRejected = false;
 //         enableSubmitButton();
 //         isDocUploaded[index] = 'false';
 //         update();
@@ -2619,29 +2645,29 @@ class SvcReqDocsController extends GetxController {
 //         cardScanModel = CardScanModel();
 //         mergedId! = null;
 //       } else {
-//         docsModel!.docs![index].loading.value = false;
-//         docsModel!.docs![index].errorLoading = true;
+//         docsModel?.docs?[index].loading.value = false;
+//         docsModel?.docs?[index].errorLoading = true;
 //       }
 //     } catch (e) {
 //       if (kDebugMode) {
 //         print(e);
 //       }
-//       docsModel!.docs![index].errorLoading = true;
+//       docsModel?.docs?[index].errorLoading = true;
 //     }
-//     docsModel!.docs![index].loading.value = false;
+//     docsModel?.docs?[index].loading.value = false;
 //     loadingDocs.value = true;
 //     loadingDocs.value = false;
 //   }
 
 //   removePickedFile(int index) {
-//     docsModel!.docs![index].update.value = true;
-//     docsModel!.docs![index].path = null;
-//     docsModel!.docs![index].file = null;
-//     docsModel!.docs![index].size = null;
-//     docsModel!.docs![index].expiry = null;
+//     docsModel?.docs?[index].update.value = true;
+//     docsModel?.docs?[index].path = null;
+//     docsModel?.docs?[index].file = null;
+//     docsModel?.docs?[index].size = null;
+//     docsModel?.docs?[index].expiry = null;
 //     cardScanModel = CardScanModel();
 //     mergedId! = null;
-//     docsModel!.docs![index].update.value = false;
+//     docsModel?.docs?[index].update.value = false;
 //   }
 
 //   Future<String> getFileSize(String filepath) async {
@@ -2654,14 +2680,14 @@ class SvcReqDocsController extends GetxController {
 //   }
 
 //   void downloadDoc(int index) async {
-//     docsModel!.docs![index].loading.value = true;
+//     docsModel?.docs?[index].loading.value = true;
 //     var resp = await TenantRepository.downloadDoc(
-//         int.parse(caseNo), 1, docsModel!.docs![index].id);
-//     docsModel!.docs![index].loading.value = false;
+//         int.parse(caseNo), 1, docsModel?.docs?[index].id);
+//     docsModel?.docs?[index].loading.value = false;
 
 //     if (resp is Uint8List) {
-//       if (!docsModel!.docs![index].isRejected) docsModel!.docs![index].file = resp;
-//       showFile(docsModel!.docs![index]);
+//       if (!docsModel?.docs?[index].isRejected) docsModel?.docs?[index].file = resp;
+//       showFile(docsModel?.docs?[index]);
 //     } else {
 //       SnakBarWidget.getSnackBarSuccess(
 //         AppMetaLabels().success,
@@ -2672,16 +2698,16 @@ class SvcReqDocsController extends GetxController {
 
 //   void downloadDocRejected(int index) async {
 //     isLoadingForScanning.value = true;
-//     if (docsModel!.docs![index].path != null) {
-//       OpenFile.open(docsModel!.docs![index].path);
+//     if (docsModel?.docs?[index].path != null) {
+//       OpenFile.open(docsModel?.docs?[index].path);
 //       isLoadingForScanning.value = false;
 //     } else {
 //       Uint8List result = await TenantRepository.downloadDocIsRejected(
-//           int.parse(caseNo), 1, docsModel!.docs![index].id);
+//           int.parse(caseNo), 1, docsModel?.docs?[index].id);
 //       print('::::::__>>>>Download<<<<___:::::::');
 //       if (result is Uint8List) {
 //         if (await getStoragePermission()) {
-//           String path = await createFile(result, docsModel!.docs![index].name);
+//           String path = await createFile(result, docsModel?.docs?[index].name);
 //           OpenResult result1 = await OpenFile.open(path);
 //           print('Result 1 :::: 111 :::: 1 1 $result1');
 //           isLoadingForScanning.value = false;
@@ -2737,12 +2763,12 @@ class SvcReqDocsController extends GetxController {
 //   updateDocStage(String caller) async {
 //     updatingDocStage.value = true;
 //     final resp = await TenantRepository.updateContractDocumentStage(
-//         docsModel!.caseStageInfo.dueActionid);
+//         docsModel?.caseStageInfo.dueActionid);
 //     updatingDocStage.value = false;
 //     if (resp == 200) {
 //       // Get.snackbar(AppMetaLabels().success, AppMetaLabels().stageUpdated,
 //       //     backgroundColor: AppColors.white54);
-//       docsModel!.caseStageInfo.stageId.value = 3;
+//       docsModel?.caseStageInfo.stageId.value = 3;
 //       enableSubmit.value = false;
 //       if (caller == 'contract') {
 //         final contractController = Get.find<GetContractsDetailsController>();

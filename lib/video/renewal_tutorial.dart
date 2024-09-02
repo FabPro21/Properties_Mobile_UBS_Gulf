@@ -46,7 +46,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
       loading.value = true;
       String path = await getFile();
       print('path :::::: $path');
-      controller = VideoPlayerController.network(path)
+      controller = VideoPlayerController.networkUrl(Uri.parse(path))
         ..initialize().then((_) {
           setState(() {});
         });
@@ -61,7 +61,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
     try {
       print('Calling else $path');
       loading.value = true;
-      controller = VideoPlayerController.network(path.trim())
+      controller = VideoPlayerController.networkUrl(Uri.parse(path))
         ..initialize().then((_) {
           controller!.play();
           setState(() {});
@@ -74,7 +74,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
   }
 
   loadAssetVideoPlayer() {
-    String path = SessionController().videoPathFromAsset??"";
+    String path = SessionController().videoPathFromAsset ?? "";
     print('Load From asset : $path');
     // String path = 'assets/video/FAB_8.mp4';
     controller = VideoPlayerController.asset(path);
@@ -92,10 +92,10 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
 
   loadVideoFromURl() async {
     try {
-      String path = SessionController().videoURl??"";
+      String path = SessionController().videoURl ?? "";
       print('Load From URL : $path');
       loading.value = true;
-      controller = VideoPlayerController.network(path.trim())
+      controller = VideoPlayerController.networkUrl(Uri.parse(path))
         ..initialize().then((_) {
           controller!.play();
           setState(() {});
@@ -137,7 +137,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
           });
         }
         Get.back();
-        return false;
+        return true;
       },
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -155,6 +155,8 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
               },
               child: Icon(
                 Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 22,
               ),
             ),
             title: Text(

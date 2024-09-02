@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -38,7 +40,7 @@ class _ContractExtendState extends State<ContractExtend> {
 
   @override
   void initState() {
-    controller.getExtensionPeriods(widget.contractId!);
+    controller.getExtensionPeriods(widget.contractId ?? 0);
     isDialogOpen = false;
     super.initState();
   }
@@ -84,7 +86,7 @@ class _ContractExtendState extends State<ContractExtend> {
                         style: AppTextStyle.semiBoldBlack12,
                       ),
                       Text(
-                        widget.contractNo!,
+                        widget.contractNo ?? "",
                         style: AppTextStyle.semiBoldBlack12,
                       )
                     ],
@@ -168,13 +170,13 @@ class _ContractExtendState extends State<ContractExtend> {
                                                               .duration ??
                                                           ''
                                                       : controller
-                                                          .extensionPeriods!
-                                                          .extensionPeriod![
-                                                              controller
-                                                                  .selectedPeriod
-                                                                  .value]
-                                                          .duration!
-                                                          .replaceAll(
+                                                              .extensionPeriods!
+                                                              .extensionPeriod![
+                                                                  controller
+                                                                      .selectedPeriod
+                                                                      .value]
+                                                              .duration ??
+                                                          "".replaceAll(
                                                               'Month', 'شهر'),
                                                   style:
                                                       AppTextStyle.normalGrey10,
@@ -257,7 +259,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                             ),
                                             Obx(() {
                                               return Text(
-                                                '${AppMetaLabels().aed} ${controller.extensionPeriods!.extensionPeriod![controller.selectedPeriod.value].amount}',
+                                                '${AppMetaLabels().aed} ${controller.extensionPeriods?.extensionPeriod?[controller.selectedPeriod.value].amount}',
                                                 style: AppTextStyle
                                                     .semiBoldBlack10,
                                               );
@@ -289,9 +291,9 @@ class _ContractExtendState extends State<ContractExtend> {
                                                       .unfocus();
                                                   String resp = await controller
                                                       .extendContract(
-                                                          widget.contractId!,
-                                                          widget.caller!,
-                                                          widget.dueActionId!);
+                                                          widget.contractId??0,
+                                                          widget.caller??"",
+                                                          widget.dueActionId??0);
                                                   if (resp == 'ok')
                                                     showDialog(
                                                         context: context,
@@ -403,7 +405,7 @@ class _ContractExtendState extends State<ContractExtend> {
                         Get.back();
                         Get.off(() => TenantServiceRequestTabs(
                               requestNo: controller.caseNo.toString(),
-                              caller: widget.caller!,
+                              caller: widget.caller??"",
                               title: AppMetaLabels().extensionReq,
                             ));
                       },
@@ -443,7 +445,7 @@ class _ContractExtendState extends State<ContractExtend> {
                           padding: EdgeInsets.only(top: 2.0.h),
                           shrinkWrap: true,
                           itemCount: controller
-                              .extensionPeriods!.extensionPeriod!.length,
+                              .extensionPeriods?.extensionPeriod?.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               child: Column(
@@ -459,7 +461,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                             activeColor: AppColors.blueColor,
                                             onChanged: (int? value) {
                                               controller.selectedPeriod.value =
-                                                  value!;
+                                                  value??0;
                                             },
                                             groupValue:
                                                 controller.selectedPeriod.value,
@@ -480,12 +482,12 @@ class _ContractExtendState extends State<ContractExtend> {
                                                 : controller
                                                     .extensionPeriods!
                                                     .extensionPeriod![index]
-                                                    .duration!
+                                                    .duration??""
                                                     .replaceAll('Month', 'شهر'),
                                             style: AppTextStyle.normalBlack10),
                                         Spacer(),
                                         Text(
-                                            '${controller.extensionPeriods!.extensionPeriod![index].extensionDetail!.addNewDate} - ${controller.extensionPeriods!.extensionPeriod![index].extensionDetail!.endNewDate}',
+                                            '${controller.extensionPeriods?.extensionPeriod?[index].extensionDetail?.addNewDate} - ${controller.extensionPeriods?.extensionPeriod?[index].extensionDetail?.endNewDate}',
                                             style: AppTextStyle.normalBlack10),
                                         SizedBox(
                                           width: 3.0.w,

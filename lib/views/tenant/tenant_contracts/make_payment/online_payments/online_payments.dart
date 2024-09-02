@@ -117,7 +117,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                           //       _controller.getOnlinePayable();
                           //     },
                           //   )
-                          : _controller.contractPayableData.record! == null
+                          : _controller.contractPayableData.record == null
                               ? SizedBox()
                               : Center(
                                   child: Container(
@@ -365,7 +365,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         NeverScrollableScrollPhysics(),
                                                     //     itemCount: _controller
                                                     //         .contractPayableData
-                                                    //         .record!
+                                                    //         .record?
                                                     //         .length,
                                                     //     itemBuilder:
                                                     //         (BuildContext
@@ -373,13 +373,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //             int index) {
                                                     //       if (_controller
                                                     //               .contractPayableData
-                                                    //               .record![index]
+                                                    //               .record?[index]
                                                     //               .type ==
                                                     //           'Contract Payable')
                                                     //         return paymentsListItem(
                                                     //             _controller
                                                     //                 .contractPayableData
-                                                    //                 .record![index]);
+                                                    //                 .record?[index]);
                                                     //       else
                                                     //         return SizedBox();
                                                     //     },
@@ -412,7 +412,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         NeverScrollableScrollPhysics(),
                                                     //     itemCount: _controller
                                                     //         .contractPayableData
-                                                    //         .record!
+                                                    //         .record?
                                                     //         .length,
                                                     //     itemBuilder:
                                                     //         (BuildContext
@@ -420,13 +420,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //             int index) {
                                                     //       if (_controller
                                                     //               .contractPayableData
-                                                    //               .record![index]
+                                                    //               .record?[index]
                                                     //               .type ==
                                                     //           'Additional Charges')
                                                     //         return paymentsListItem(
                                                     //             _controller
                                                     //                 .contractPayableData
-                                                    //                 .record![index]);
+                                                    //                 .record?[index]);
                                                     //       else
                                                     //         return SizedBox();
                                                     //     },
@@ -459,7 +459,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         NeverScrollableScrollPhysics(),
                                                     //     itemCount: _controller
                                                     //         .contractPayableData
-                                                    //         .record!
+                                                    //         .record?
                                                     //         .length,
                                                     //     itemBuilder:
                                                     //         (BuildContext
@@ -467,7 +467,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //             int index) {
                                                     //       if (_controller
                                                     //               .contractPayableData
-                                                    //               .record![index]
+                                                    //               .record?[index]
                                                     //               .type
                                                     //               .toLowerCase() ==
                                                     //           'VAT On Rent'
@@ -475,7 +475,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         return paymentsListItem(
                                                     //             _controller
                                                     //                 .contractPayableData
-                                                    //                 .record![index]);
+                                                    //                 .record?[index]);
                                                     //       else
                                                     //         return SizedBox();
                                                     //     },
@@ -508,7 +508,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         NeverScrollableScrollPhysics(),
                                                     //     itemCount: _controller
                                                     //         .contractPayableData
-                                                    //         .record!
+                                                    //         .record?
                                                     //         .length,
                                                     //     itemBuilder:
                                                     //         (BuildContext
@@ -516,7 +516,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //             int index) {
                                                     //       if (_controller
                                                     //               .contractPayableData
-                                                    //               .record![index]
+                                                    //               .record?[index]
                                                     //               .type
                                                     //               .toLowerCase() ==
                                                     //           'Vat On Charges'
@@ -524,7 +524,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                     //         return paymentsListItem(
                                                     //             _controller
                                                     //                 .contractPayableData
-                                                    //                 .record![index]);
+                                                    //                 .record?[index]);
                                                     //       else
                                                     //         return SizedBox();
                                                     //     },
@@ -627,16 +627,14 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
-                                                                          .record!
-                                                                          .length,
+                                                                          .record?.length,
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type ==
+                                                                        if (_controller.contractPayableData.record?[index].type ==
                                                                             'Contract Payable')
                                                                           return paymentsListItem(_controller
-                                                                              .contractPayableData
-                                                                              .record![index]);
+                                                                              .contractPayableData.record![index]);
                                                                         else
                                                                           return SizedBox();
                                                                       },
@@ -675,17 +673,15 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       physics:
                                                                           NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
-                                                                          .contractPayableData
-                                                                          .record!
+                                                                          .contractPayableData.record!
                                                                           .length,
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type ==
+                                                                        if (_controller.contractPayableData.record?[index].type ==
                                                                             'Additional Charges')
                                                                           return paymentsListItem(_controller
-                                                                              .contractPayableData
-                                                                              .record![index]);
+                                                                              .contractPayableData.record![index]);
                                                                         else
                                                                           return SizedBox();
                                                                       },
@@ -730,7 +726,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
+                                                                        if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
                                                                             'VAT On Rent'.toLowerCase())
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
@@ -779,7 +775,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
+                                                                        if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
                                                                             'Vat On Charges'.toLowerCase())
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
@@ -893,7 +889,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type ==
+                                                                        if (_controller.contractPayableData.record?[index].type ==
                                                                             'Contract Payable')
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
@@ -942,7 +938,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type ==
+                                                                        if (_controller.contractPayableData.record?[index].type ==
                                                                             'Additional Charges')
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
@@ -991,7 +987,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
+                                                                        if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
                                                                             'VAT On Rent'.toLowerCase())
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
@@ -1040,7 +1036,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       itemBuilder:
                                                                           (BuildContext context,
                                                                               int index) {
-                                                                        if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
+                                                                        if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
                                                                             'Vat On Charges'.toLowerCase())
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData

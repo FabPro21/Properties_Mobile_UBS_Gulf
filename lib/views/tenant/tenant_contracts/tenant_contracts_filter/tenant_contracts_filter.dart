@@ -3,6 +3,7 @@
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_contracts_status_model.dart';
 import 'package:fap_properties/data/models/tenant_models/tenant_contracts_filter/get_property_types_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_filter/tenant_contracts_filter_controller.dart';
@@ -221,13 +222,13 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                                 ? tCFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractType??"" +
-                                                    ' / Expired'
+                                                        .contractType ??
+                                                    "" + ' / Expired'
                                                 : tCFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractTypeAr??"" +
-                                                    ' / منتهي الصلاحية'
+                                                        .contractTypeAr ??
+                                                    "" + ' / منتهي الصلاحية'
                                             : SessionController()
                                                         .getLanguage() ==
                                                     1
@@ -300,7 +301,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                     // Appbar year like '2023' button
                                     textStyleYearButton: TextStyle(
                                       fontSize: 30.sp,
-                                      color: Colors.blue,
+                                      color: AppColors.blueColor,
                                       fontWeight: FontWeight.bold,
                                       backgroundColor: Colors.grey.shade100,
                                       leadingDistribution:
@@ -583,7 +584,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function?clear;
+  final Function? clear;
   const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override

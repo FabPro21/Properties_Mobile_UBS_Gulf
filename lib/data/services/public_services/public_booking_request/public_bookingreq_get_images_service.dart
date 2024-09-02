@@ -15,7 +15,6 @@ class PublicBookingRequestGetImagesServices {
     var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
-      // log(response.body);
       try {
         var resp = json.decode(response.body);
         String byteString = resp["bytes"];

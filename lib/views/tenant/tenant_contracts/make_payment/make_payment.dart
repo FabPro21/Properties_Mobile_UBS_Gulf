@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
@@ -103,7 +105,7 @@ class _MakePaymentState extends State<MakePayment> {
                 height: double.maxFinite,
                 initialContent:
                     """<body><form action=${widget.data!.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data!.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
-                initialSourceType: SourceType.HTML ,
+                initialSourceType: SourceType.HTML,
                 onPageFinished: (url) {
                   if (url.contains('Finalize')) {
                     setState(() {
