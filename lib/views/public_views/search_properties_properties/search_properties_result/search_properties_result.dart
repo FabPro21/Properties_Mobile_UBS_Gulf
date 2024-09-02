@@ -104,6 +104,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20,
               ),
               iconSize: 2.0.h,
               onPressed: () {
@@ -144,7 +146,10 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           icon: RotationTransition(
                             turns: Tween(begin: 0.0, end: 0.5)
                                 .animate(_controller!),
-                            child: Icon(Icons.sort),
+                            child: Icon(
+                              Icons.sort,
+                              color: Colors.white,
+                            ),
                           ),
                         );
                 },

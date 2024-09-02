@@ -1,9 +1,7 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
 
 import 'package:fap_properties/utils/screen_disable.dart';
 import 'package:fap_properties/utils/styles/fonts.dart';
-import 'package:fap_properties/views/tenant/tenant_contracts/contract_extension/contract_extend.dart';
-import 'package:fap_properties/views/tenant/tenant_contracts/contract_termination/contract_terminate.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_tabs.dart/tenant_contracts_details.dart/municipal_approval/municipal_approval.dart';
 import 'package:fap_properties/views/widgets/due_action_List_button.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
@@ -331,9 +329,9 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       Get.to(() =>
                                                                           OutstandingPayments(
                                                                             contractNo:
-                                                                                controller.contractsList[index].contractno??'',
+                                                                                controller.contractsList[index].contractno ?? '',
                                                                             contractId:
-                                                                                controller.contractsList[index].contractid??0,
+                                                                                controller.contractsList[index].contractid ?? 0,
                                                                           ));
                                                                     },
                                                               child: Center(
@@ -422,9 +420,8 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       );
 
                                                                       String path = await contractDownloadController.downloadContract(
-                                                                          controller
-                                                                              .contractsList[index]
-                                                                              .contractno??'',
+                                                                          controller.contractsList[index].contractno ??
+                                                                              '',
                                                                           false);
 
                                                                       controller
@@ -436,14 +433,20 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                         setState(
                                                                             () {});
                                                                         Get.to(() => AuthenticateContract(
-                                                                            contractNo:
-                                                                                controller.contractsList[index].contractno??'',
-                                                                            contractId: controller.contractsList[index].contractid??0,
-                                                                            filePath: path,
-                                                                            dueActionId: controller.contractsList[index].dueActionid??0,
-                                                                            stageId: controller.contractsList[index].stageId??0,
-                                                                            caller: 'contracts_with_actions',
-                                                                            caseId: controller.contractsList[index].caseId??0));
+                                                                            contractNo: controller.contractsList[index].contractno ??
+                                                                                '',
+                                                                            contractId: controller.contractsList[index].contractid ??
+                                                                                0,
+                                                                            filePath:
+                                                                                path,
+                                                                            dueActionId: controller.contractsList[index].dueActionid ??
+                                                                                0,
+                                                                            stageId: controller.contractsList[index].stageId ??
+                                                                                0,
+                                                                            caller:
+                                                                                'contracts_with_actions',
+                                                                            caseId:
+                                                                                controller.contractsList[index].caseId ?? 0));
                                                                       }
                                                                     },
                                                               child: Center(
@@ -514,9 +517,9 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                             caller:
                                                                                 'contracts_with_actions',
                                                                             dueActionId:
-                                                                                controller.contractsList[index].dueActionid??0,
+                                                                                controller.contractsList[index].dueActionid ?? 0,
                                                                             contractId:
-                                                                                controller.contractsList[index].contractid??0,
+                                                                                controller.contractsList[index].contractid ?? 0,
                                                                           ));
                                                                     },
                                                               child: Center(
@@ -683,7 +686,7 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
     base64VideoPlayPathAvailable(String path) async {
       try {
         loading.value = true;
-        videoCotroller = VideoPlayerController.network(path)
+        videoCotroller = VideoPlayerController.networkUrl(Uri.parse(path))
           ..initialize().then((_) async {
             await videoCotroller!.play();
             setState(() {});
@@ -700,8 +703,8 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
         barrierDismissible: false,
         builder: (context) {
           base64VideoPlayPathAvailable(SessionController().videoPath ?? "");
-          return WillPopScope(
-            onWillPop: () async => false,
+          return PopScope(
+            canPop: false,
             child: AlertDialog(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(3.h))),
@@ -802,7 +805,8 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                     .setContractNo(controller.contractsList[index].contractno);
                 Get.to(() => ContractsDetailsTabs(
                       prevContractNo:
-                          controller.contractsList[index].previousContractNo??'',
+                          controller.contractsList[index].previousContractNo ??
+                              '',
                     ));
               },
               child: Container(
@@ -906,7 +910,8 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                           ),
                                           Text(
                                             controller.contractsList[index]
-                                                .previousContractNo??"",
+                                                    .previousContractNo ??
+                                                "",
                                             style: AppTextStyle.semiBoldBlack10,
                                           ),
                                         ],
@@ -953,7 +958,7 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
 
   // Actions
   Widget showActions(int index, BuildContext context) {
-    int stageId = controller.contractsList[index].stageId??-1;
+    int stageId = controller.contractsList[index].stageId ?? -1;
     print('Stage ID ::: $stageId at : $index');
     switch (stageId) {
       case 1:
@@ -968,117 +973,6 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
 // =====================>
 // For uat (Renew ,Vacat , Extend and Offer Letter)
   // Expiry
-  Widget expiringContractActions(int index) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Renew
-          Padding(
-            padding: EdgeInsets.all(0.0.h),
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3.0.sp),
-                        side: BorderSide(
-                          color: AppColors.blueColor,
-                          width: 1.0,
-                        )),
-                    backgroundColor: AppColors.whiteColor,
-                    shadowColor: AppColors.blueColor),
-                onPressed: () async {
-                  await Get.to(() => ContractRenewel(
-                        contractNo: controller.contractsList[index].contractno,
-                        contractId: controller.contractsList[index].contractid,
-                        caller: 'contracts_with_actions',
-                        dueActionid:
-                            controller.contractsList[index].dueActionid,
-                      ));
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    controller.getContracts();
-                  });
-                },
-                child: Text(
-                  AppMetaLabels().renew,
-                  style: AppTextStyle.normalBlue11,
-                )),
-          ),
-          SizedBox(
-            width: 3,
-          ),
-          if (controller.contractsList[index].showExtend!)
-            Padding(
-                padding: EdgeInsets.all(0.0.h),
-                child: CustomButtonWithoutBackgroud(
-                  text: AppMetaLabels().extend,
-                  onPressed: () async {
-                    await Get.to(() => ContractExtend(
-                          contractNo:
-                              controller.contractsList[index].contractno,
-                          contractId:
-                              controller.contractsList[index].contractid,
-                          caller: 'contracts_with_actions',
-                          dueActionId:
-                              controller.contractsList[index].dueActionid,
-                        ));
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      controller.getContracts();
-                    });
-                  },
-                  borderColor: AppColors.blueColor,
-                )),
-          SizedBox(
-            width: 3,
-          ),
-          // Vacant
-          Padding(
-              padding: EdgeInsets.all(0.0.h),
-              child: CustomButtonWithoutBackgroud(
-                text: AppMetaLabels().terminate,
-                onPressed: () async {
-                  await Get.to(() => ContractTerminate(
-                        contractNo: controller.contractsList[index].contractno,
-                        contractId: controller.contractsList[index].contractid,
-                        caller: 'contracts_with_actions',
-                        dueActionid:
-                            controller.contractsList[index].dueActionid,
-                      ));
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    controller.getContracts();
-                  });
-                },
-                borderColor: AppColors.blueColor,
-              )),
-          SizedBox(
-            width: 3,
-          ),
-
-          // showOfferLetter
-          if (controller.contractsList[index].showOfferLetter == 1)
-            Padding(
-                padding: EdgeInsets.all(0.0.h),
-                child: Obx(() {
-                  return CustomButtonWithoutBackgroud(
-                    loading: controller.contractsList[index].downloading!.value,
-                    text: AppMetaLabels().offerLetter,
-                    onPressed: () async {
-                      controller.isEnableScreen.value = false;
-                      SnakBarWidget.getLoadingWithColor();
-                      await controller
-                          .downloadOfferLetter(controller.contractsList[index]);
-
-                      setState(() {
-                        controller.isEnableScreen.value = true;
-                      });
-                    },
-                    borderColor: AppColors.blueColor,
-                  );
-                })),
-        ]);
-  }
-
-// =====================>
-// // For Production (Renew  and Offer Letter)
   // Widget expiringContractActions(int index) {
   //   return Row(
   //       mainAxisAlignment: MainAxisAlignment.center,
@@ -1117,7 +1011,7 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
   //         SizedBox(
   //           width: 3,
   //         ),
-  //         if (controller.contractsList[index].showExtend)
+  //         if (!controller.contractsList[index].showExtend!)
   //           Padding(
   //               padding: EdgeInsets.all(0.0.h),
   //               child: CustomButtonWithoutBackgroud(
@@ -1163,21 +1057,19 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
   //         SizedBox(
   //           width: 3,
   //         ),
-
   //         // showOfferLetter
   //         if (controller.contractsList[index].showOfferLetter == 1)
   //           Padding(
   //               padding: EdgeInsets.all(0.0.h),
   //               child: Obx(() {
   //                 return CustomButtonWithoutBackgroud(
-  //                   loading: controller.contractsList[index].downloading.value,
+  //                   loading: controller.contractsList[index].downloading!.value,
   //                   text: AppMetaLabels().offerLetter,
   //                   onPressed: () async {
   //                     controller.isEnableScreen.value = false;
   //                     SnakBarWidget.getLoadingWithColor();
   //                     await controller
   //                         .downloadOfferLetter(controller.contractsList[index]);
-
   //                     setState(() {
   //                       controller.isEnableScreen.value = true;
   //                     });
@@ -1190,105 +1082,106 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
 
 // =====================>
 // For Production (Renew  and Offer Letter)
-  // Widget expiringContractActions(int index) {
-  //   return Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       children: [
-  //         // Renew
-  //         Padding(
-  //           padding: EdgeInsets.all(0.0.h),
-  //           child: ElevatedButton(
-  //               style: ElevatedButton.styleFrom(
-  //                   shape: RoundedRectangleBorder(
-  //                       borderRadius: BorderRadius.circular(3.0.sp),
-  //                       side: BorderSide(
-  //                         color: AppColors.blueColor,
-  //                         width: 1.0,
-  //                       )),
-  //                   backgroundColor: AppColors.whiteColor,
-  //                   shadowColor: AppColors.blueColor),
-  //               onPressed: () {
-  //                 Get.to(() => ContractRenewel(
-  //                       contractNo: controller.contractsList[index].contractno,
-  //                       contractId: controller.contractsList[index].contractid,
-  //                       caller: 'contracts_with_actions',
-  //                       dueActionid:
-  //                           controller.contractsList[index].dueActionid,
-  //                     ));
-  //               },
-  //               child: Text(
-  //                 AppMetaLabels().renew,
-  //                 style: AppTextStyle.normalBlue11,
-  //               )),
-  //         ),
-  //         SizedBox(
-  //           width: 3,
-  //         ),
-  //         // if (controller.contractsList[index].showExtend)
-  //         //   Padding(
-  //         //       padding: EdgeInsets.all(0.0.h),
-  //         //       child: CustomButtonWithoutBackgroud(
-  //         //         text: AppMetaLabels().extend,
-  //         //         onPressed: () {
-  //         //           Get.to(() => ContractExtend(
-  //         //                 contractNo:
-  //         //                     controller.contractsList[index].contractno,
-  //         //                 contractId:
-  //         //                     controller.contractsList[index].contractid,
-  //         //                 caller: 'contracts_with_actions',
-  //         //                 dueActionId:
-  //         //                     controller.contractsList[index].dueActionid,
-  //         //               ));
-  //         //         },
-  //         //         borderColor: AppColors.blueColor,
-  //         //       )),
-  //         // SizedBox(
-  //         //   width: 3,
-  //         // ),
-  //         // // Vacant
-  //         // Padding(
-  //         //     padding: EdgeInsets.all(0.0.h),
-  //         //     child: CustomButtonWithoutBackgroud(
-  //         //       text: AppMetaLabels().terminate,
-  //         //       onPressed: () {
-  //         //         Get.to(() => ContractTerminate(
-  //         //               contractNo: controller.contractsList[index].contractno,
-  //         //               contractId: controller.contractsList[index].contractid,
-  //         //               caller: 'contracts_with_actions',
-  //         //               dueActionid:
-  //         //                   controller.contractsList[index].dueActionid,
-  //         //             ));
-  //         //       },
-  //         //       borderColor: AppColors.blueColor,
-  //         //     )),
-  //         // SizedBox(
-  //         //   width: 3,
-  //         // ),
+  Widget expiringContractActions(int index) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Renew
+          Padding(
+            padding: EdgeInsets.all(0.0.h),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3.0.sp),
+                        side: BorderSide(
+                          color: AppColors.blueColor,
+                          width: 1.0,
+                        )),
+                    backgroundColor: AppColors.whiteColor,
+                    shadowColor: AppColors.blueColor),
+                onPressed: () {
+                  Get.to(() => ContractRenewel(
+                        contractNo: controller.contractsList[index].contractno,
+                        contractId: controller.contractsList[index].contractid,
+                        caller: 'contracts_with_actions',
+                        dueActionid:
+                            controller.contractsList[index].dueActionid,
+                      ));
+                },
+                child: Text(
+                  AppMetaLabels().renew,
+                  style: AppTextStyle.normalBlue11,
+                )),
+          ),
+          SizedBox(
+            width: 3,
+          ),
 
-  //         // showOfferLetter
-  //         if (controller.contractsList[index].showOfferLetter == 1)
-  //           Padding(
-  //               padding: EdgeInsets.all(0.0.h),
-  //               child: Obx(() {
-  //                 return CustomButtonWithoutBackgroud(
-  //                   loading: controller.contractsList[index].downloading.value,
-  //                   text: AppMetaLabels().offerLetter,
-  //                   onPressed: () async {
-  //                     controller.isEnableScreen.value = false;
-  //                     SnakBarWidget.getLoadingWithColor();
-  //                     await controller
-  //                         .downloadOfferLetter(controller.contractsList[index]);
+          // if (controller.contractsList[index].showExtend)
+          //   Padding(
+          //       padding: EdgeInsets.all(0.0.h),
+          //       child: CustomButtonWithoutBackgroud(
+          //         text: AppMetaLabels().extend,
+          //         onPressed: () {
+          //           Get.to(() => ContractExtend(
+          //                 contractNo:
+          //                     controller.contractsList[index].contractno,
+          //                 contractId:
+          //                     controller.contractsList[index].contractid,
+          //                 caller: 'contracts_with_actions',
+          //                 dueActionId:
+          //                     controller.contractsList[index].dueActionid,
+          //               ));
+          //         },
+          //         borderColor: AppColors.blueColor,
+          //       )),
+          // SizedBox(
+          //   width: 3,
+          // ),
+          // // Vacant
+          // Padding(
+          //     padding: EdgeInsets.all(0.0.h),
+          //     child: CustomButtonWithoutBackgroud(
+          //       text: AppMetaLabels().terminate,
+          //       onPressed: () {
+          //         Get.to(() => ContractTerminate(
+          //               contractNo: controller.contractsList[index].contractno,
+          //               contractId: controller.contractsList[index].contractid,
+          //               caller: 'contracts_with_actions',
+          //               dueActionid:
+          //                   controller.contractsList[index].dueActionid,
+          //             ));
+          //       },
+          //       borderColor: AppColors.blueColor,
+          //     )),
+          // SizedBox(
+          //   width: 3,
+          // ),
 
-  //                     setState(() {
-  //                       controller.isEnableScreen.value = true;
-  //                     });
-  //                   },
-  //                   borderColor: AppColors.blueColor,
-  //                 );
-  //               })),
-  //       ]);
-  // }
+          // showOfferLetter
+          if (controller.contractsList[index].showOfferLetter == 1)
+            Padding(
+                padding: EdgeInsets.all(0.0.h),
+                child: Obx(() {
+                  return CustomButtonWithoutBackgroud(
+                    loading: controller.contractsList[index].downloading?.value,
+                    text: AppMetaLabels().offerLetter,
+                    onPressed: () async {
+                      controller.isEnableScreen.value = false;
+                      SnakBarWidget.getLoadingWithColor();
+                      await controller
+                          .downloadOfferLetter(controller.contractsList[index]);
+
+                      setState(() {
+                        controller.isEnableScreen.value = true;
+                      });
+                    },
+                    borderColor: AppColors.blueColor,
+                  );
+                })),
+        ]);
+  }
 
   Widget checkIn(int index) {
     return Padding(
@@ -1447,10 +1340,12 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                           print(
                               'Status :::::::: ${controller.contractsList[index].status}');
                           Get.to(() => OutstandingPayments(
-                                contractNo:
-                                    controller.contractsList[index].contractno??"",
-                                contractId:
-                                    controller.contractsList[index].contractid??0,
+                                contractNo: controller
+                                        .contractsList[index].contractno ??
+                                    "",
+                                contractId: controller
+                                        .contractsList[index].contractid ??
+                                    0,
                               ));
                         })
               : StepNoWidget(label: '4', tooltip: AppMetaLabels().makePayment)),
@@ -1487,8 +1382,9 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
 
                               String path = await contractDownloadController
                                   .downloadContract(
-                                      controller
-                                          .contractsList[index].contractno??'',
+                                      controller.contractsList[index]
+                                              .contractno ??
+                                          '',
                                       false);
 
                               controller.isEnableScreen.value = true;
@@ -1497,17 +1393,22 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                 setState(() {});
                                 Get.to(() => AuthenticateContract(
                                     contractNo: controller
-                                        .contractsList[index].contractno??"",
+                                            .contractsList[index].contractno ??
+                                        "",
                                     contractId: controller
-                                        .contractsList[index].contractid??0,
+                                            .contractsList[index].contractid ??
+                                        0,
                                     filePath: path,
                                     dueActionId: controller
-                                        .contractsList[index].dueActionid??0,
-                                    stageId:
-                                        controller.contractsList[index].stageId??-1,
+                                            .contractsList[index].dueActionid ??
+                                        0,
+                                    stageId: controller
+                                            .contractsList[index].stageId ??
+                                        -1,
                                     caller: 'contracts_with_actions',
                                     caseId: controller
-                                        .contractsList[index].caseId??-1));
+                                            .contractsList[index].caseId ??
+                                        -1));
                               }
                             });
                 })
@@ -1545,10 +1446,12 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                       : () {
                           Get.to(() => MunicipalApproval(
                                 caller: 'contracts_with_actions',
-                                dueActionId:
-                                    controller.contractsList[index].dueActionid??0,
-                                contractId:
-                                    controller.contractsList[index].contractid??0,
+                                dueActionId: controller
+                                        .contractsList[index].dueActionid ??
+                                    0,
+                                contractId: controller
+                                        .contractsList[index].contractid ??
+                                    0,
                               ));
                         })
               : StepNoWidget(
@@ -1570,8 +1473,9 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                           SessionController().setContractID(
                               controller.contractsList[index].contractid);
                           Get.to(() => ContractsDetailsTabs(
-                                prevContractNo: controller
-                                    .contractsList[index].previousContractNo??"",
+                                prevContractNo: controller.contractsList[index]
+                                        .previousContractNo ??
+                                    "",
                               ));
                         })
               : StepNoWidget(

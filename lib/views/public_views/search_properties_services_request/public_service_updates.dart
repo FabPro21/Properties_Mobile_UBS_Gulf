@@ -490,7 +490,10 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   // ),
                                   // Communication
                                   Html(
-                                    style: {},
+                                    style: {
+                                      'html':
+                                          AppTextStyle.normalGrey12Communication
+                                    },
                                     data: _controller.ticketReplies
                                         ?.ticketReply?[index].reply,
                                   ),

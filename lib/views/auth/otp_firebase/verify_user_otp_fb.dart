@@ -55,6 +55,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
         authController.otpManuallyVerified = false;
       }
     });
+ 
     setState(() {
       authController.isCodeSent.value = false;
     });
@@ -159,7 +160,8 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                       width: 85.0.w,
                                       child: PinCodeFieldFB(
                                         controller: authController,
-                                        isForgotMpin: widget.isForgotMpin??false,
+                                        isForgotMpin:
+                                            widget.isForgotMpin ?? false,
                                       ),
                                     ),
                             ),

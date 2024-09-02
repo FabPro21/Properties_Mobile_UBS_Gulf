@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
@@ -739,7 +739,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
     base64VideoPlayPathAvailable(String path) async {
       try {
         loading.value = true;
-        videoCotroller = VideoPlayerController.network(path)
+        videoCotroller = VideoPlayerController.networkUrl(Uri.parse(path))
           ..initialize().then((_) async {
             await videoCotroller!.play();
             setState(() {});

@@ -18,29 +18,28 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final splashScreenController = Get.put(SplashScreenController());
 
-  // ###1
+ 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-
   @override
   void initState() {
     // Enable Firebase
     // From SessionController().enableFireBaseOTP this flag we are enabling and disable firebase
     SessionController().enableFireBaseOTP = true;
     splashScreenController.isSetupMpin();
-// ###1
+
     _getFcmToken();
     _setupNotificationListeners();
     super.initState();
   }
 
-// ###1
+
   void _getFcmToken() async {
     // Get the FCM token
     String? token = await _firebaseMessaging.getToken();
     print('FCM Token: $token');
   }
 
-// ###1
+
   void _setupNotificationListeners() {
     // Handle incoming messages
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -55,7 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-// ###1
   static Future<void> _firebaseMessagingBackgroundHandler(
       RemoteMessage message) async {
     print('Handling a background message: ${message.messageId}');

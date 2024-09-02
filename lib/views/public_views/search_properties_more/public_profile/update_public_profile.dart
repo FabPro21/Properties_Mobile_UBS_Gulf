@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/auth_models/verify_user_otp_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';

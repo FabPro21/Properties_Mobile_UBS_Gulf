@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, unnecessary_null_comparison
+// ignore_for_file: unused_local_variable, unnecessary_null_comparison, deprecated_member_use
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/card_model.dart';
@@ -68,15 +68,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
       print('***********1**** ${widget.caller}');
       print('**********2***** ${mainScreenController.feedback}');
       print(
-          '***********3**** ${mainScreenController.tenantRequestDetails.value.detail!.propertyNameAr}');
+          '***********3**** ${mainScreenController.tenantRequestDetails.value.detail?.propertyNameAr}');
       print(
-          '***********4**** ${mainScreenController.tenantRequestDetails.value.detail!.contactName}');
+          '***********4**** ${mainScreenController.tenantRequestDetails.value.detail?.contactName}');
       print(
-          '***********5**** ${mainScreenController.tenantRequestDetails.value.detail!.caseCategouryId}');
+          '***********5**** ${mainScreenController.tenantRequestDetails.value.detail?.caseCategouryId}');
       print(
-          '***********6**** ${mainScreenController.tenantRequestDetails.value.detail!.caseSubCatagouryId}');
+          '***********6**** ${mainScreenController.tenantRequestDetails.value.detail?.caseSubCatagouryId}');
       print(
-          '***********7**** ${mainScreenController.tenantRequestDetails.value.detail!.caseType}');
+          '***********7**** ${mainScreenController.tenantRequestDetails.value.detail?.caseType}');
       getInformation();
     });
     super.initState();
@@ -125,20 +125,22 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               errorText:
                                                   controller.errorLoadingDocs,
                                             )
-                                          : controller.docsModel!.docs! == null
+                                          : controller.docsModel?.docs == null
                                               ? SizedBox()
                                               : Container(
                                                   child: ListView.builder(
                                                       padding: EdgeInsets.zero,
                                                       itemCount: controller
-                                                              .docsModel!
-                                                              .docs!
-                                                              .length +
-                                                          1,
+                                                              .docsModel
+                                                              ?.docs
+                                                              ?.length ??
+                                                          0 + 1,
                                                       itemBuilder:
                                                           (context, index) {
-                                                        if (controller.docsModel!
-                                                                .docs!.length ==
+                                                        if (controller
+                                                                .docsModel
+                                                                ?.docs
+                                                                ?.length ==
                                                             index) {
                                                           return Center(
                                                               child: Obx(() {
@@ -165,12 +167,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                       ),
                                                                     ],
                                                                   )
-                                                                : controller.docsModel!.responseMessageAR ==
+                                                                : controller.docsModel?.responseMessageAR ==
                                                                             '' &&
                                                                         SessionController().getLanguage() !=
                                                                             1
                                                                     ? SizedBox()
-                                                                    : controller.docsModel!.caseStageInfo!.stageId!.value ==
+                                                                    : controller.docsModel?.caseStageInfo?.stageId?.value ==
                                                                             4
                                                                         ? Container(
                                                                             alignment:
@@ -194,7 +196,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Text(
-                                                                                    SessionController().getLanguage() == 1 ? controller.docsModel!.responseMessage ?? '' : controller.docsModel!.responseMessageAR ?? "",
+                                                                                    SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
                                                                                     style: AppTextStyle.normalBlack12,
                                                                                   ),
                                                                                 ),
@@ -224,21 +226,18 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                     child: Text(
                                                                       SessionController().getLanguage() ==
                                                                               1
-                                                                          ? controller.docsModel!.docs![index].name ??
+                                                                          ? controller.docsModel?.docs![index].name ??
                                                                               ""
-                                                                          : controller.docsModel!.docs![index].nameAr ??
+                                                                          : controller.docsModel?.docs?[index].nameAr ??
                                                                               '',
                                                                       style: AppTextStyle
                                                                           .semiBoldBlack12,
                                                                     ),
                                                                   ),
-                                                                  controller.docsModel!.docs![index].id ==
+                                                                  controller.docsModel?.docs?[index].id ==
                                                                               null ||
-                                                                          controller
-                                                                              .docsModel!
-                                                                              .docs![
-                                                                                  index]
-                                                                              .isRejected!
+                                                                          controller.docsModel?.docs?[index].isRejected ==
+                                                                              true
                                                                       ? uploadFile(
                                                                           context,
                                                                           index)
@@ -266,11 +265,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                           child:
                                                                               Obx(() {
                                                                             return FileView(
-                                                                              file: controller.docsModel!.docs![index],
-                                                                              onDelete: controller.docsModel!.docs![index].loading.value == true
+                                                                              file: controller.docsModel?.docs?[index],
+                                                                              onDelete: controller.docsModel?.docs?[index].loading.value == true
                                                                                   ? () {}
                                                                                   : () async {
-                                                                                      if (controller.docsModel!.docs![index].name!.toLowerCase() == 'emirate id') {
+                                                                                      if (controller.docsModel?.docs?[index].name!.toLowerCase() == 'emirate id') {
                                                                                         setState(() {
                                                                                           isEnableScreen = false;
                                                                                         });
@@ -315,12 +314,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                 );
                                 }),
                               ),
-                              controller.docsModel!.docs! == null
+                              controller.docsModel?.docs == null
                                   ? SizedBox()
                                   : SingleChildScrollView(
                                       child: Obx(() {
                                         // implementing the caseCategouryId && caseSubCatagouryId condition
-                                        // because we want to show submit button inside the SR detail!  Documents Tab
+                                        // because we want to show submit button inside the SR detail?  Documents Tab
                                         // when caseCatID and caseSubCatID == 8 and 88 respectively it means that this req is
                                         // renewal Req then will show submit button and if not then will not show submit button
                                         // because it is not a renewal req
@@ -337,8 +336,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                         .caseSubCatagouryId !=
                                                     88
                                             ? SizedBox()
-                                            : controller.docsModel!
-                                                        .caseStageInfo! ==
+                                            : controller.docsModel
+                                                        ?.caseStageInfo ==
                                                     null
                                                 ? SizedBox()
                                                 : controller.loadingDocs.value
@@ -390,7 +389,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                 setState(() {
                                                                                   isEnableScreen = false;
                                                                                 });
-                                                                                await controller.updateDocStage(widget.caller??"");
+                                                                                await controller.updateDocStage(widget.caller ?? "");
                                                                                 setState(() {
                                                                                   isEnableScreen = true;
                                                                                 });
@@ -483,7 +482,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (controller.docsModel!.docs![index].isRejected!)
+                  if (controller.docsModel?.docs?[index].isRejected == true)
                     RichText(
                       text: TextSpan(
                           text: '${AppMetaLabels().your} ',
@@ -491,15 +490,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           children: <TextSpan>[
                             TextSpan(
                                 text: SessionController().getLanguage() == 1
-                                    ? controller.docsModel!.docs![index].name ??
+                                    ? controller.docsModel?.docs![index].name ??
                                         ""
-                                    : controller.docsModel!.docs![index].nameAr ??
+                                    : controller
+                                            .docsModel?.docs?[index].nameAr ??
                                         "",
                                 style: AppTextStyle.normalBlue10,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    if (!controller
-                                        .docsModel!.docs![index].loading.value) {
+                                    if (controller.docsModel?.docs?[index]
+                                            .loading.value ==
+                                        false) {
                                       setState(() {
                                         isEnableScreen = false;
                                       });
@@ -519,16 +520,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                     height: 8,
                   ),
                   Obx(() {
-                    if (controller.docsModel!.docs![index].update.value) {}
-                    return controller.docsModel!.docs![index].path != null
+                    if (controller.docsModel?.docs?[index].update.value ==
+                        true) {}
+                    return controller.docsModel?.docs?[index].path != null
                         ? FileView(
-                            file: controller.docsModel!.docs![index],
+                            file: controller.docsModel?.docs?[index],
                             onPressed: () {
                               controller
-                                  .showFile(controller.docsModel!.docs![index]);
+                                  .showFile(controller.docsModel?.docs?[index]);
                             },
-                            onDelete: controller
-                                        .docsModel!.docs![index].loading.value ==
+                            onDelete: controller.docsModel?.docs?[index].loading
+                                        .value ==
                                     true
                                 ? () {}
                                 : () async {
@@ -544,7 +546,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                     await controller.removePickedFile(index);
                                     setState(() {
                                       controller.isDocUploaded[index] = 'false';
-                                      controller.docsModel!.docs![index]
+                                      controller.docsModel?.docs?[index]
                                           .errorLoading = false;
                                     });
                                     setState(() {
@@ -582,7 +584,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                     AppMetaLabels().uploadAttachedDocFirst);
                                 return;
                               }
-                              if (controller.docsModel!.docs![index].name!
+                              if (controller.docsModel?.docs?[index].name!
                                       .toLowerCase() ==
                                   'emirate id') {
                                 _showPicker(context, index);
@@ -590,7 +592,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 await _showPickerPassport(context, index);
                                 setState(() {
                                   highLightExpiry =
-                                      controller.docsModel!.docs![index].path !=
+                                      controller.docsModel?.docs?[index].path !=
                                               null
                                           ? true
                                           : false;
@@ -636,7 +638,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                           return;
                                         }
                                         if (controller
-                                                .docsModel!.docs![index].name!
+                                                .docsModel?.docs?[index].name!
                                                 .toLowerCase() ==
                                             'emirate id') {
                                           _showPicker(context, index);
@@ -645,8 +647,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               context, index);
                                           setState(() {
                                             highLightExpiry = controller
-                                                        .docsModel!
-                                                        .docs![index]
+                                                        .docsModel
+                                                        ?.docs?[index]
                                                         .path !=
                                                     null
                                                 ? true
@@ -688,7 +690,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                     height: 1.5.h,
                   ),
                   Text(
-                    controller.docsModel!.docs![index].name == 'Emirate ID'
+                    controller.docsModel?.docs?[index].name == 'Emirate ID'
                         ? AppMetaLabels().filedetailsEID
                         : AppMetaLabels().filedetails,
                     style: AppTextStyle.normalGrey9,
@@ -719,7 +721,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           }
 
                           var expDate;
-                          if (controller.docsModel!.docs![index].path != null) {
+                          if (controller.docsModel?.docs?[index].path != null) {
                             print('Tapping :::::: ');
                             expDate = await showRoundedDatePicker(
                               height: 50.0.h,
@@ -785,7 +787,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               DateFormat dateFormat = new DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
-                              if (controller.docsModel!.docs![index].name!
+                              if (controller.docsModel?.docs?[index].name!
                                       .toLowerCase() ==
                                   'emirate id') {
                                 if (controller.cardScanModel.expiry != null) {
@@ -829,10 +831,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
                                 child: Obx(() {
-                                  if (controller
-                                      .docsModel!.docs![index].update.value) {}
+                                  if (controller.docsModel?.docs?[index].update
+                                          .value ==
+                                      true) {}
                                   return Text(
-                                    controller.docsModel!.docs![index].expiry ??
+                                    controller.docsModel?.docs?[index].expiry ??
                                         '',
                                     style: AppTextStyle.normalBlack12,
                                   );
@@ -876,23 +879,28 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       width: 50.w,
                       height: 5.h,
                       child: Obx(() {
-                        return controller.docsModel!.docs![index].loading.value
+                        return controller
+                                    .docsModel?.docs?[index].loading.value ==
+                                true
                             ? LoadingIndicatorBlue(
                                 size: 3.h,
                               )
-                            : controller.docsModel!.docs![index].errorLoading
+                            : controller.docsModel?.docs?[index].errorLoading ==
+                                    true
                                 ? IconButton(
                                     onPressed: () async {
                                       // here also add refresh func for visa and passport
 
-                                      if (controller.docsModel!.docs![index].name!
+                                      if (controller
+                                              .docsModel?.docs?[index].name!
                                               .toLowerCase() !=
                                           'emirate id') {
                                         setState(() {
                                           isEnableScreen = false;
                                         });
-                                        if (controller
-                                            .docsModel!.docs![index].isRejected!) {
+                                        if (controller.docsModel?.docs?[index]
+                                                .isRejected ==
+                                            false) {
                                           setState(() {
                                             isEnableScreen = false;
                                           });
@@ -920,8 +928,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                         controller.isLoadingForScanning.value =
                                             true;
                                       });
-                                      if (controller
-                                          .docsModel!.docs![index].isRejected!) {
+                                      if (controller.docsModel?.docs?[index]
+                                              .isRejected ==
+                                          true) {
                                         await controller.updateDoc(index);
                                         setState(() {
                                           isEnableScreen = false;
@@ -942,7 +951,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                         await controller
                                             .uploadDocWithEIDParameter(
                                           index,
-                                          controller.cardScanModel.idNumber??'',
+                                          controller.cardScanModel.idNumber ??
+                                              '',
                                           controller.cardScanModel.nationality,
                                           controller.cardScanModel.name,
                                           controller.cardScanModel.name,
@@ -969,13 +979,14 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                     ),
                                   )
                                 : Obx(() {
-                                    if (controller
-                                        .docsModel!.docs![index].update.value) {}
+                                    if (controller.docsModel?.docs?[index]
+                                            .update.value ==
+                                        true) {}
                                     return ElevatedButton(
-                                      onPressed: controller.docsModel!
-                                                      .docs![index].expiry ==
+                                      onPressed: controller.docsModel
+                                                      ?.docs?[index].expiry ==
                                                   null ||
-                                              controller.docsModel!.docs![index]
+                                              controller.docsModel?.docs?[index]
                                                       .path ==
                                                   null
                                           ? null
@@ -983,7 +994,14 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               setState(() {
                                                 isEnableScreen = false;
                                               });
-                                              if (controller.mergedId != null) {
+                                              print(
+                                                  'Merge ID ::::::: ${(controller.mergedId != null)}');
+                                              // if (controller.mergedId != null ) {
+                                              if (controller.mergedId != null &&
+                                                  controller.docsModel
+                                                          ?.docs?[index].name!
+                                                          .toLowerCase() ==
+                                                      'emirate id') {
                                                 WidgetsBinding.instance
                                                     .addPostFrameCallback(
                                                   (timeStamp) async {
@@ -1003,20 +1021,23 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                   },
                                                 );
                                               }
-                                              if (controller.docsModel!
-                                                      .docs![index].name!
+                                              if (controller.docsModel
+                                                      ?.docs?[index].name!
                                                       .toLowerCase() !=
                                                   'emirate id') {
-                                                if (controller.docsModel!
-                                                    .docs![index].isRejected!) {
+                                                if (controller
+                                                        .docsModel
+                                                        ?.docs?[index]
+                                                        .isRejected ==
+                                                    true) {
                                                   if (controller
-                                                              .docsModel!
-                                                              .docs![index]
+                                                              .docsModel
+                                                              ?.docs?[index]
                                                               .expiry ==
                                                           '' ||
                                                       controller
-                                                              .docsModel!
-                                                              .docs![index]
+                                                              .docsModel
+                                                              ?.docs?[index]
                                                               .expiry ==
                                                           null) {
                                                     SnakBarWidget
@@ -1044,7 +1065,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                   print(
                                                       ':::::::::::::: ${controller.isLoadingForScanning.value}');
                                                   print(
-                                                      'Expiry : Testing :: ${controller.docsModel!.docs![index].expiry}');
+                                                      'Expiry : Testing :: ${controller.docsModel?.docs?[index].expiry}');
 
                                                   controller.updateDoc(index);
                                                   setState(() {
@@ -1178,7 +1199,10 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         await _showFrontBackImage('gallery', context, index);
 
                         // old
-                        if (controller.mergedId != null) {
+                        if (controller.mergedId != null &&
+                            controller.docsModel?.docs?[index].name!
+                                    .toLowerCase() ==
+                                'emirate id') {
                           WidgetsBinding.instance.addPostFrameCallback(
                             (timeStamp) async {
                               setState(() {
@@ -1219,7 +1243,10 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         });
                         await _showFrontBackImage('camera', context, index);
 
-                        if (controller.mergedId != null) {
+                        if (controller.mergedId != null &&
+                            controller.docsModel?.docs?[index].name!
+                                    .toLowerCase() ==
+                                'emirate id') {
                           WidgetsBinding.instance.addPostFrameCallback(
                             (timeStamp) async {
                               setState(() {
@@ -1251,17 +1278,18 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
   // but when ali bhai publish the api
   // 112233 after scane EmirateID all code
   _showConfirmationDialog(int index, BuildContext context) {
-    String nationality = controller.cardScanModel.nationality??"";
-    String name = controller.cardScanModel.name??"";
+    String nationality = controller.cardScanModel.nationality ?? "";
+    String name = controller.cardScanModel.name ?? "";
     if (nationality != null) {
-      if (controller.cardScanModel.nationality!.contains('Nationality') ==
+      if (controller.cardScanModel.nationality?.contains('Nationality') ==
           true) {
-        if (controller.cardScanModel.nationality!.contains(',')) {
+        if (controller.cardScanModel.nationality?.contains(',') == true) {
           setState(() {
             nationality = controller.cardScanModel.nationality!
                 .replaceAll('Nationality,', '');
           });
-        } else if (controller.cardScanModel.nationality!.contains(':')) {
+        } else if (controller.cardScanModel.nationality?.contains(':') ==
+            true) {
           setState(() {
             nationality = controller.cardScanModel.nationality!
                 .replaceAll('Nationality:', '');
@@ -1275,14 +1303,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
       }
     }
     if (nationality != null) {
-      if (controller.cardScanModel.nationality!.contains('nationality') ==
+      if (controller.cardScanModel.nationality?.contains('nationality') ==
           true) {
-        if (controller.cardScanModel.nationality!.contains(',')) {
+        if (controller.cardScanModel.nationality?.contains(',') == true) {
           setState(() {
             nationality = controller.cardScanModel.nationality!
                 .replaceAll('nationality,', '');
           });
-        } else if (controller.cardScanModel.nationality!.contains(':')) {
+        } else if (controller.cardScanModel.nationality?.contains(':') ==
+            true) {
           setState(() {
             nationality = controller.cardScanModel.nationality!
                 .replaceAll('nationality:', '');
@@ -1296,12 +1325,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
       }
     }
     if (name != null) {
-      if (controller.cardScanModel.name!.contains('Name') == true) {
-        if (controller.cardScanModel.name!.contains(',')) {
+      if (controller.cardScanModel.name?.contains('Name') == true) {
+        if (controller.cardScanModel.name?.contains(',') == true) {
           setState(() {
             name = controller.cardScanModel.name!.replaceAll('Name,', '');
           });
-        } else if (controller.cardScanModel.name!.contains(':')) {
+        } else if (controller.cardScanModel.name?.contains(':') == true) {
           setState(() {
             name = controller.cardScanModel.name!.replaceAll('Name:', '');
           });
@@ -1313,12 +1342,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
       }
     }
     if (name != null) {
-      if (controller.cardScanModel.name!.contains('name') == true) {
-        if (controller.cardScanModel.name!.contains(',')) {
+      if (controller.cardScanModel.name?.contains('name') == true) {
+        if (controller.cardScanModel.name?.contains(',') == true) {
           setState(() {
             name = controller.cardScanModel.name!.replaceAll('name,', '');
           });
-        } else if (controller.cardScanModel.name!.contains(':')) {
+        } else if (controller.cardScanModel.name?.contains(':') == true) {
           setState(() {
             name = controller.cardScanModel.name!.replaceAll('name:', '');
           });
@@ -1333,14 +1362,14 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
     nameText.text = name;
     print('Name TextField :::: ${nameText.text}');
     // nameText.text = controller.cardScanModel.name;
-    iDNumberText.text = controller.cardScanModel.idNumber??"";
+    iDNumberText.text = controller.cardScanModel.idNumber ?? "";
     if (controller.cardScanModel.dob != null) {
       dOBText =
           '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!)}';
     }
     print('iDNumberText TextField :::: ${iDNumberText.text}');
     expiryText = controller.cardScanModel.expiry == null
-        ? controller.docsModel!.docs![index].expiry??""
+        ? controller.docsModel?.docs![index].expiry ?? ""
         : '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!)}';
 
     print('expiryText expiryText :::: $expiryText');
@@ -1621,7 +1650,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                       .dateFormatForShowRoundedDatePicker);
                               setState(() {
                                 expiryText = dateFormat.format(expDate);
-                                controller.docsModel!.docs![index].expiry =
+                                controller.docsModel?.docs?[index].expiry =
                                     dateFormat.format(expDate);
 
                                 isExpiryError = false;
@@ -1663,8 +1692,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   clear: () {
                                     setState(() {
                                       expiryText = '';
-                                      controller.docsModel!.docs![index].expiry =
-                                          '';
+                                      controller
+                                          .docsModel?.docs?[index].expiry = '';
                                     });
                                   },
                                 ),
@@ -1813,7 +1842,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 WidgetsBinding.instance
                                     .addPostFrameCallback((_) {
                                   setState(() {
-                                    controller.docsModel!.docs![index].loading
+                                    controller.docsModel?.docs?[index].loading
                                         .value = false;
                                     controller.cardScanModel = CardScanModel();
                                     controller.mergedId = null;
@@ -1852,8 +1881,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 } else {
                                   WidgetsBinding.instance.addPostFrameCallback(
                                     (timeStamp) async {
-                                      if (controller
-                                          .docsModel!.docs![index].isRejected!) {
+                                      if (controller.docsModel?.docs?[index]
+                                              .isRejected ==
+                                          true) {
                                         if (nameText.text.trim() == '' ||
                                             nameText.text.trim() == null) {
                                           SnakBarWidget.getSnackBarErrorBlue(
@@ -2013,8 +2043,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 } else {
                                   WidgetsBinding.instance.addPostFrameCallback(
                                     (timeStamp) async {
-                                      if (controller
-                                          .docsModel!.docs![index].isRejected!) {
+                                      if (controller.docsModel?.docs?[index]
+                                              .isRejected ==
+                                          true) {
                                         setState(() {
                                           isEnableScreen = false;
                                           controller.isLoadingForScanning
@@ -2104,7 +2135,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 WidgetsBinding.instance
                                     .addPostFrameCallback((_) {
                                   setState(() {
-                                    controller.docsModel!.docs![index].loading
+                                    controller.docsModel?.docs?[index].loading
                                         .value = false;
                                     controller.cardScanModel = CardScanModel();
                                     controller.mergedId = null;
@@ -2198,9 +2229,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             style: ButtonStyle(
                                 elevation:
                                     WidgetStateProperty.all<double>(0.0.h),
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(
-                                        AppColors.whiteColor),
+                                backgroundColor: WidgetStateProperty.all<Color>(
+                                    AppColors.whiteColor),
                                 shape: WidgetStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -2360,7 +2390,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       onPressed: () async {
                         Get.back();
                         Navigator.of(context).pop();
-                        controller.docsModel!.docs![index].loading.value = false;
+                        controller.docsModel?.docs?[index].loading.value =
+                            false;
                         controller.cardScanModel = CardScanModel();
                         controller.mergedId = null;
                         controller.isLoadingForScanning.value = false;
@@ -2468,8 +2499,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                       borderRadius:
                                           BorderRadius.circular(3.0.w),
                                       side: BorderSide(color: Colors.blue))),
-                              backgroundColor: WidgetStateProperty.all<Color>(
-                                  Colors.white),
+                              backgroundColor:
+                                  WidgetStateProperty.all<Color>(Colors.white),
                             ),
                             child: Text(
                               AppMetaLabels().cancel,
@@ -2664,26 +2695,26 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                               errorText:
 //                                                   controller.errorLoadingDocs,
 //                                             )
-//                                           : controller.docsModel!?.docs! == null
+//                                           : controller.docsModel??.docs? == null
 //                                               ? SizedBox()
 //                                               : Container(
 //                                                   child: ListView.builder(
 //                                                       padding: EdgeInsets.zero,
 //                                                       itemCount: controller
-//                                                               .docsModel!
-//                                                               .docs!
+//                                                               .docsModel?
+//                                                               .docs?
 //                                                               .length +
 //                                                           1,
 //                                                       itemBuilder:
 //                                                           (context, index) {
-//                                                         if (controller.docsModel!
-//                                                                 .docs!.length ==
+//                                                         if (controller.docsModel?
+//                                                                 .docs?.length ==
 //                                                             index) {
 //                                                           return Center(
 //                                                               child: Obx(() {
 //                                                             return controller
-//                                                                         .docsModel!
-//                                                                         .caseStageInfo!
+//                                                                         .docsModel?
+//                                                                         .caseStageInfo?!
 //                                                                         .stageId
 //                                                                         .value <
 //                                                                     3
@@ -2704,12 +2735,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                       ),
 //                                                                     ],
 //                                                                   )
-//                                                                 : controller.docsModel!.responseMessageAR ==
+//                                                                 : controller.docsModel?.responseMessageAR ==
 //                                                                             '' &&
 //                                                                         SessionController().getLanguage() !=
 //                                                                             1
 //                                                                     ? SizedBox()
-//                                                                     : controller.docsModel!.caseStageInfo!.stageId.value ==
+//                                                                     : controller.docsModel?.caseStageInfo?!.stageId.value ==
 //                                                                             4
 //                                                                         ? Container(
 //                                                                             alignment:
@@ -2733,7 +2764,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                                 ),
 //                                                                                 Expanded(
 //                                                                                   child: Text(
-//                                                                                     SessionController().getLanguage() == 1 ? controller.docsModel!.responseMessage ?? '' : controller.docsModel!.responseMessageAR ?? "",
+//                                                                                     SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
 //                                                                                     style: AppTextStyle.normalBlack12,
 //                                                                                   ),
 //                                                                                 ),
@@ -2763,19 +2794,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                     child: Text(
 //                                                                       SessionController().getLanguage() ==
 //                                                                               1
-//                                                                           ? controller.docsModel!.docs![index].name ??
+//                                                                           ? controller.docsModel?.docs?[index].name ??
 //                                                                               ""
-//                                                                           : controller.docsModel!.docs![index].nameAr ??
+//                                                                           : controller.docsModel?.docs?[index].nameAr ??
 //                                                                               '',
 //                                                                       style: AppTextStyle
 //                                                                           .semiBoldBlack12,
 //                                                                     ),
 //                                                                   ),
-//                                                                   controller.docsModel!.docs![index].id ==
+//                                                                   controller.docsModel?.docs?[index].id ==
 //                                                                               null ||
 //                                                                           controller
-//                                                                               .docsModel!
-//                                                                               .docs![
+//                                                                               .docsModel?
+//                                                                               .docs?[
 //                                                                                   index]
 //                                                                               .isRejected
 //                                                                       ? uploadFile(
@@ -2805,11 +2836,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                           child:
 //                                                                               Obx(() {
 //                                                                             return FileView(
-//                                                                               file: controller.docsModel!.docs![index],
-//                                                                               onDelete: controller.docsModel!.docs![index].loading.value == true
+//                                                                               file: controller.docsModel?.docs?[index],
+//                                                                               onDelete: controller.docsModel?.docs?[index].loading.value == true
 //                                                                                   ? () {}
 //                                                                                   : () async {
-//                                                                                       if (controller.docsModel!.docs![index].name.toLowerCase() == 'emirate id') {
+//                                                                                       if (controller.docsModel?.docs?[index].name.toLowerCase() == 'emirate id') {
 //                                                                                         setState(() {
 //                                                                                           isEnableScreen = false;
 //                                                                                         });
@@ -2844,7 +2875,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                               onPressed: () {
 //                                                                                 controller.downloadDoc(index);
 //                                                                               },
-//                                                                               canDelete: controller.docsModel!.caseStageInfo!.stageId.value < 3,
+//                                                                               canDelete: controller.docsModel?.caseStageInfo?!.stageId.value < 3,
 //                                                                             );
 //                                                                           }),
 //                                                                         )
@@ -2853,19 +2884,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                 );
 //                                 }),
 //                               ),
-//                               controller.docsModel!?.docs! == null
+//                               controller.docsModel??.docs? == null
 //                                   ? SizedBox()
 //                                   : SingleChildScrollView(
 //                                       child: Obx(() {
 //                                         return controller
-//                                                     .docsModel!.caseStageInfo! ==
+//                                                     .docsModel?.caseStageInfo?! ==
 //                                                 null
 //                                             ? SizedBox()
 //                                             : controller.loadingDocs.value
 //                                                 ? SizedBox()
 //                                                 : controller
-//                                                             .docsModel!
-//                                                             .caseStageInfo!
+//                                                             .docsModel?
+//                                                             .caseStageInfo?!
 //                                                             .stageId
 //                                                             .value >=
 //                                                         3
@@ -2914,7 +2945,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                             setState(() {
 //                                                                               isEnableScreen = true;
 //                                                                             });
-//                                                                             if (controller.docsModel!.caseStageInfo!.stageId.value >=
+//                                                                             if (controller.docsModel?.caseStageInfo?!.stageId.value >=
 //                                                                                 3) {
 //                                                                               showDialog(
 //                                                                                   context: context,
@@ -3014,19 +3045,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //             child: Column(
 //                 crossAxisAlignment: CrossAxisAlignment.center,
 //                 children: [
-//                   if (controller.docsModel!.docs![index].isRejected)
+//                   if (controller.docsModel?.docs?[index].isRejected)
 //                     RichText(
 //                       text: TextSpan(
 //                           text: '${AppMetaLabels().your} ',
 //                           style: AppTextStyle.normalErrorText3,
 //                           children: <TextSpan>[
 //                             TextSpan(
-//                                 text: controller.docsModel!.docs![index].name,
+//                                 text: controller.docsModel?.docs?[index].name,
 //                                 style: AppTextStyle.normalBlue10,
 //                                 recognizer: TapGestureRecognizer()
 //                                   ..onTap = () {
 //                                     if (!controller
-//                                         .docsModel!.docs![index].loading.value) {
+//                                         .docsModel?.docs?[index].loading.value) {
 //                                       setState(() {
 //                                         isEnableScreen = false;
 //                                       });
@@ -3046,16 +3077,16 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                     height: 8,
 //                   ),
 //                   Obx(() {
-//                     if (controller.docsModel!.docs![index].update.value) {}
-//                     return controller.docsModel!.docs![index].path != null
+//                     if (controller.docsModel?.docs?[index].update.value) {}
+//                     return controller.docsModel?.docs?[index].path != null
 //                         ? FileView(
-//                             file: controller.docsModel!.docs![index],
+//                             file: controller.docsModel?.docs?[index],
 //                             onPressed: () {
 //                               controller
-//                                   .showFile(controller.docsModel!.docs![index]);
+//                                   .showFile(controller.docsModel?.docs?[index]);
 //                             },
 //                             onDelete: controller
-//                                         .docsModel!.docs![index].loading.value ==
+//                                         .docsModel?.docs?[index].loading.value ==
 //                                     true
 //                                 ? () {}
 //                                 : () async {
@@ -3071,7 +3102,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     await controller.removePickedFile(index);
 //                                     setState(() {
 //                                       controller.isDocUploaded[index] = 'false';
-//                                       controller.docsModel!.docs![index]
+//                                       controller.docsModel?.docs?[index]
 //                                           .errorLoading = false;
 //                                     });
 //                                     setState(() {
@@ -3109,7 +3140,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     AppMetaLabels().uploadAttachedDocFirst);
 //                                 return;
 //                               }
-//                               if (controller.docsModel!.docs![index].name
+//                               if (controller.docsModel?.docs?[index].name
 //                                       .toLowerCase() ==
 //                                   'emirate id') {
 //                                 _showPicker(context, index);
@@ -3117,7 +3148,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                 await _showPickerPassport(context, index);
 //                                 setState(() {
 //                                   highLightExpiry =
-//                                       controller.docsModel!.docs![index].path !=
+//                                       controller.docsModel?.docs?[index].path !=
 //                                               null
 //                                           ? true
 //                                           : false;
@@ -3163,7 +3194,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                           return;
 //                                         }
 //                                         if (controller
-//                                                 .docsModel!.docs![index].name
+//                                                 .docsModel?.docs?[index].name
 //                                                 .toLowerCase() ==
 //                                             'emirate id') {
 //                                           _showPicker(context, index);
@@ -3172,8 +3203,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                               context, index);
 //                                           setState(() {
 //                                             highLightExpiry = controller
-//                                                         .docsModel!
-//                                                         .docs![index]
+//                                                         .docsModel?
+//                                                         .docs?[index]
 //                                                         .path !=
 //                                                     null
 //                                                 ? true
@@ -3215,7 +3246,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                     height: 1.5.h,
 //                   ),
 //                   Text(
-//                     controller.docsModel!.docs![index].name == 'Emirate ID'
+//                     controller.docsModel?.docs?[index].name == 'Emirate ID'
 //                         ? AppMetaLabels().filedetailsEID
 //                         : AppMetaLabels().filedetails,
 //                     style: AppTextStyle.normalGrey9,
@@ -3246,7 +3277,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                           }
 
 //                           var expDate;
-//                           if (controller.docsModel!.docs![index].path != null) {
+//                           if (controller.docsModel?.docs?[index].path != null) {
 //                             print('Tapping :::::: ');
 //                             expDate = await showRoundedDatePicker(
 //                               height: 50.0.h,
@@ -3311,7 +3342,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                               DateFormat dateFormat = new DateFormat(
 //                                   AppMetaLabels()
 //                                       .dateFormatForShowRoundedDatePicker);
-//                               if (controller.docsModel!.docs![index].name
+//                               if (controller.docsModel?.docs?[index].name
 //                                       .toLowerCase() ==
 //                                   'emirate id') {
 //                                 if (controller.cardScanModel.expiry != null) {
@@ -3356,9 +3387,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     EdgeInsets.symmetric(horizontal: 1.0.h),
 //                                 child: Obx(() {
 //                                   if (controller
-//                                       .docsModel!.docs![index].update.value) {}
+//                                       .docsModel?.docs?[index].update.value) {}
 //                                   return Text(
-//                                     controller.docsModel!.docs![index].expiry ??
+//                                     controller.docsModel?.docs?[index].expiry ??
 //                                         '',
 //                                     style: AppTextStyle.normalBlack12,
 //                                   );
@@ -3402,23 +3433,23 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       width: 50.w,
 //                       height: 5.h,
 //                       child: Obx(() {
-//                         return controller.docsModel!.docs![index].loading.value
+//                         return controller.docsModel?.docs?[index].loading.value
 //                             ? LoadingIndicatorBlue(
 //                                 size: 3.h,
 //                               )
-//                             : controller.docsModel!.docs![index].errorLoading
+//                             : controller.docsModel?.docs?[index].errorLoading
 //                                 ? IconButton(
 //                                     onPressed: () async {
 //                                       // here also add refresh func for visa and passport
 
-//                                       if (controller.docsModel!.docs![index].name
+//                                       if (controller.docsModel?.docs?[index].name
 //                                               .toLowerCase() !=
 //                                           'emirate id') {
 //                                         setState(() {
 //                                           isEnableScreen = false;
 //                                         });
 //                                         if (controller
-//                                             .docsModel!.docs![index].isRejected) {
+//                                             .docsModel?.docs?[index].isRejected) {
 //                                           setState(() {
 //                                             isEnableScreen = false;
 //                                           });
@@ -3447,7 +3478,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                             true;
 //                                       });
 //                                       if (controller
-//                                           .docsModel!.docs![index].isRejected) {
+//                                           .docsModel?.docs?[index].isRejected) {
 //                                         await controller.updateDoc(index);
 //                                         setState(() {
 //                                           isEnableScreen = false;
@@ -3496,12 +3527,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                   )
 //                                 : Obx(() {
 //                                     if (controller
-//                                         .docsModel!.docs![index].update.value) {}
+//                                         .docsModel?.docs?[index].update.value) {}
 //                                     return ElevatedButton(
-//                                       onPressed: controller.docsModel!
-//                                                       .docs![index].expiry ==
+//                                       onPressed: controller.docsModel?
+//                                                       .docs?[index].expiry ==
 //                                                   null ||
-//                                               controller.docsModel!.docs![index]
+//                                               controller.docsModel?.docs?[index]
 //                                                       .path ==
 //                                                   null
 //                                           ? null
@@ -3529,12 +3560,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                   },
 //                                                 );
 //                                               }
-//                                               if (controller.docsModel!
-//                                                       .docs![index].name
+//                                               if (controller.docsModel?
+//                                                       .docs?[index].name
 //                                                       .toLowerCase() !=
 //                                                   'emirate id') {
-//                                                 if (controller.docsModel!
-//                                                     .docs![index].isRejected) {
+//                                                 if (controller.docsModel?
+//                                                     .docs?[index].isRejected) {
 //                                                   setState(() {
 //                                                     isEnableScreen = false;
 //                                                     controller
@@ -3798,7 +3829,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //     }
 
 //     expiryText = controller.cardScanModel.expiry == null
-//         ? controller.docsModel!.docs![index].expiry
+//         ? controller.docsModel?.docs?[index].expiry
 //         : '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry)}';
 
 //     setState(() {
@@ -4050,7 +4081,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                       .dateFormatForShowRoundedDatePicker);
 //                               setState(() {
 //                                 expiryText = dateFormat.format(expDate);
-//                                 controller.docsModel!.docs![index].expiry =
+//                                 controller.docsModel?.docs?[index].expiry =
 //                                     dateFormat.format(expDate);
 
 //                                 isExpiryError = false;
@@ -4092,7 +4123,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                   clear: () {
 //                                     setState(() {
 //                                       expiryText = '';
-//                                       controller.docsModel!.docs![index].expiry =
+//                                       controller.docsModel?.docs?[index].expiry =
 //                                           '';
 //                                     });
 //                                   },
@@ -4236,7 +4267,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       Navigator.of(context).pop();
 //                       WidgetsBinding.instance.addPostFrameCallback((_) {
 //                         setState(() {
-//                           controller.docsModel!.docs![index].loading.value =
+//                           controller.docsModel?.docs?[index].loading.value =
 //                               false;
 //                           controller.cardScanModel = CardScanModel();
 //                           controller.mergedId = null;
@@ -4274,7 +4305,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       } else {
 //                         WidgetsBinding.instance.addPostFrameCallback(
 //                           (timeStamp) async {
-//                             if (controller.docsModel!.docs![index].isRejected) {
+//                             if (controller.docsModel?.docs?[index].isRejected) {
 //                               setState(() {
 //                                 isEnableScreen = false;
 //                                 controller.isLoadingForScanning.value = true;
@@ -4586,7 +4617,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       onPressed: () async {
 //                         Get.back();
 //                         Navigator.of(context).pop();
-//                         controller.docsModel!.docs![index].loading.value = false;
+//                         controller.docsModel?.docs?[index].loading.value = false;
 //                         controller.cardScanModel = CardScanModel();
 //                         controller.mergedId = null;
 //                         controller.isLoadingForScanning.value = false;
@@ -4891,26 +4922,26 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                               errorText:
 //                                                   controller.errorLoadingDocs,
 //                                             )
-//                                           : controller.docsModel!?.docs! == null
+//                                           : controller.docsModel??.docs? == null
 //                                               ? SizedBox()
 //                                               : Container(
 //                                                   child: ListView.builder(
 //                                                       padding: EdgeInsets.zero,
 //                                                       itemCount: controller
-//                                                               .docsModel!
-//                                                               .docs!
+//                                                               .docsModel?
+//                                                               .docs?
 //                                                               .length +
 //                                                           1,
 //                                                       itemBuilder:
 //                                                           (context, index) {
-//                                                         if (controller.docsModel!
-//                                                                 .docs!.length ==
+//                                                         if (controller.docsModel?
+//                                                                 .docs?.length ==
 //                                                             index) {
 //                                                           return Center(
 //                                                               child: Obx(() {
 //                                                             return controller
-//                                                                         .docsModel!
-//                                                                         .caseStageInfo!
+//                                                                         .docsModel?
+//                                                                         .caseStageInfo?!
 //                                                                         .stageId
 //                                                                         .value <
 //                                                                     3
@@ -4931,12 +4962,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                       ),
 //                                                                     ],
 //                                                                   )
-//                                                                 : controller.docsModel!.responseMessageAR ==
+//                                                                 : controller.docsModel?.responseMessageAR ==
 //                                                                             '' &&
 //                                                                         SessionController().getLanguage() !=
 //                                                                             1
 //                                                                     ? SizedBox()
-//                                                                     : controller.docsModel!.caseStageInfo!.stageId.value ==
+//                                                                     : controller.docsModel?.caseStageInfo?!.stageId.value ==
 //                                                                             4
 //                                                                         ? Container(
 //                                                                             alignment:
@@ -4960,7 +4991,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                                 ),
 //                                                                                 Expanded(
 //                                                                                   child: Text(
-//                                                                                     SessionController().getLanguage() == 1 ? controller.docsModel!.responseMessage ?? '' : controller.docsModel!.responseMessageAR ?? "",
+//                                                                                     SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
 //                                                                                     style: AppTextStyle.normalBlack12,
 //                                                                                   ),
 //                                                                                 ),
@@ -4990,19 +5021,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                     child: Text(
 //                                                                       SessionController().getLanguage() ==
 //                                                                               1
-//                                                                           ? controller.docsModel!.docs![index].name ??
+//                                                                           ? controller.docsModel?.docs?[index].name ??
 //                                                                               ""
-//                                                                           : controller.docsModel!.docs![index].nameAr ??
+//                                                                           : controller.docsModel?.docs?[index].nameAr ??
 //                                                                               '',
 //                                                                       style: AppTextStyle
 //                                                                           .semiBoldBlack12,
 //                                                                     ),
 //                                                                   ),
-//                                                                   controller.docsModel!.docs![index].id ==
+//                                                                   controller.docsModel?.docs?[index].id ==
 //                                                                               null ||
 //                                                                           controller
-//                                                                               .docsModel!
-//                                                                               .docs![
+//                                                                               .docsModel?
+//                                                                               .docs?[
 //                                                                                   index]
 //                                                                               .isRejected
 //                                                                       ? uploadFile(
@@ -5032,11 +5063,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                           child:
 //                                                                               Obx(() {
 //                                                                             return FileView(
-//                                                                               file: controller.docsModel!.docs![index],
-//                                                                               onDelete: controller.docsModel!.docs![index].loading.value == true
+//                                                                               file: controller.docsModel?.docs?[index],
+//                                                                               onDelete: controller.docsModel?.docs?[index].loading.value == true
 //                                                                                   ? () {}
 //                                                                                   : () async {
-//                                                                                       if (controller.docsModel!.docs![index].name.toLowerCase() == 'emirate id') {
+//                                                                                       if (controller.docsModel?.docs?[index].name.toLowerCase() == 'emirate id') {
 //                                                                                         setState(() {
 //                                                                                           isEnableScreen = false;
 //                                                                                         });
@@ -5065,7 +5096,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                               onPressed: () {
 //                                                                                 controller.downloadDoc(index);
 //                                                                               },
-//                                                                               canDelete: controller.docsModel!.caseStageInfo!.stageId.value < 3,
+//                                                                               canDelete: controller.docsModel?.caseStageInfo?!.stageId.value < 3,
 //                                                                             );
 //                                                                           }),
 //                                                                         )
@@ -5074,19 +5105,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                 );
 //                                 }),
 //                               ),
-//                               controller.docsModel!?.docs! == null
+//                               controller.docsModel??.docs? == null
 //                                   ? SizedBox()
 //                                   : SingleChildScrollView(
 //                                       child: Obx(() {
 //                                         return controller
-//                                                     .docsModel!.caseStageInfo! ==
+//                                                     .docsModel?.caseStageInfo?! ==
 //                                                 null
 //                                             ? SizedBox()
 //                                             : controller.loadingDocs.value
 //                                                 ? SizedBox()
 //                                                 : controller
-//                                                             .docsModel!
-//                                                             .caseStageInfo!
+//                                                             .docsModel?
+//                                                             .caseStageInfo?!
 //                                                             .stageId
 //                                                             .value >=
 //                                                         3
@@ -5135,7 +5166,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                                             setState(() {
 //                                                                               isEnableScreen = true;
 //                                                                             });
-//                                                                             if (controller.docsModel!.caseStageInfo!.stageId.value >=
+//                                                                             if (controller.docsModel?.caseStageInfo?!.stageId.value >=
 //                                                                                 3) {
 //                                                                               showDialog(
 //                                                                                   context: context,
@@ -5235,19 +5266,19 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //             child: Column(
 //                 crossAxisAlignment: CrossAxisAlignment.center,
 //                 children: [
-//                   if (controller.docsModel!.docs![index].isRejected)
+//                   if (controller.docsModel?.docs?[index].isRejected)
 //                     RichText(
 //                       text: TextSpan(
 //                           text: '${AppMetaLabels().your} ',
 //                           style: AppTextStyle.normalErrorText3,
 //                           children: <TextSpan>[
 //                             TextSpan(
-//                                 text: controller.docsModel!.docs![index].name,
+//                                 text: controller.docsModel?.docs?[index].name,
 //                                 style: AppTextStyle.normalBlue10,
 //                                 recognizer: TapGestureRecognizer()
 //                                   ..onTap = () {
 //                                     if (!controller
-//                                         .docsModel!.docs![index].loading.value) {
+//                                         .docsModel?.docs?[index].loading.value) {
 //                                       setState(() {
 //                                         isEnableScreen = false;
 //                                       });
@@ -5267,16 +5298,16 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                     height: 8,
 //                   ),
 //                   Obx(() {
-//                     if (controller.docsModel!.docs![index].update.value) {}
-//                     return controller.docsModel!.docs![index].path != null
+//                     if (controller.docsModel?.docs?[index].update.value) {}
+//                     return controller.docsModel?.docs?[index].path != null
 //                         ? FileView(
-//                             file: controller.docsModel!.docs![index],
+//                             file: controller.docsModel?.docs?[index],
 //                             onPressed: () {
 //                               controller
-//                                   .showFile(controller.docsModel!.docs![index]);
+//                                   .showFile(controller.docsModel?.docs?[index]);
 //                             },
 //                             onDelete: controller
-//                                         .docsModel!.docs![index].loading.value ==
+//                                         .docsModel?.docs?[index].loading.value ==
 //                                     true
 //                                 ? () {}
 //                                 : () async {
@@ -5286,7 +5317,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     await controller.removePickedFile(index);
 //                                     setState(() {
 //                                       controller.isDocUploaded[index] = 'false';
-//                                       controller.docsModel!.docs![index]
+//                                       controller.docsModel?.docs?[index]
 //                                           .errorLoading = false;
 //                                     });
 //                                     setState(() {
@@ -5324,7 +5355,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     AppMetaLabels().uploadAttachedDocFirst);
 //                                 return;
 //                               }
-//                               if (controller.docsModel!.docs![index].name
+//                               if (controller.docsModel?.docs?[index].name
 //                                       .toLowerCase() ==
 //                                   'emirate id') {
 //                                 _showPicker(context, index);
@@ -5332,7 +5363,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                 await _showPickerPassport(context, index);
 //                                 setState(() {
 //                                   highLightExpiry =
-//                                       controller.docsModel!.docs![index].path !=
+//                                       controller.docsModel?.docs?[index].path !=
 //                                               null
 //                                           ? true
 //                                           : false;
@@ -5378,7 +5409,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                           return;
 //                                         }
 //                                         if (controller
-//                                                 .docsModel!.docs![index].name
+//                                                 .docsModel?.docs?[index].name
 //                                                 .toLowerCase() ==
 //                                             'emirate id') {
 //                                           _showPicker(context, index);
@@ -5387,8 +5418,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                               context, index);
 //                                           setState(() {
 //                                             highLightExpiry = controller
-//                                                         .docsModel!
-//                                                         .docs![index]
+//                                                         .docsModel?
+//                                                         .docs?[index]
 //                                                         .path !=
 //                                                     null
 //                                                 ? true
@@ -5430,7 +5461,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                     height: 1.5.h,
 //                   ),
 //                   Text(
-//                     controller.docsModel!.docs![index].name == 'Emirate ID'
+//                     controller.docsModel?.docs?[index].name == 'Emirate ID'
 //                         ? AppMetaLabels().filedetailsEID
 //                         : AppMetaLabels().filedetails,
 //                     style: AppTextStyle.normalGrey9,
@@ -5461,7 +5492,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                           }
 
 //                           var expDate;
-//                           if (controller.docsModel!.docs![index].path != null) {
+//                           if (controller.docsModel?.docs?[index].path != null) {
 //                             print('Tapping :::::: ');
 //                             expDate = await showRoundedDatePicker(
 //                               height: 50.0.h,
@@ -5526,7 +5557,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                               DateFormat dateFormat = new DateFormat(
 //                                   AppMetaLabels()
 //                                       .dateFormatForShowRoundedDatePicker);
-//                               if (controller.docsModel!.docs![index].name
+//                               if (controller.docsModel?.docs?[index].name
 //                                       .toLowerCase() ==
 //                                   'emirate id') {
 //                                 if (controller.cardScanModel.expiry != null) {
@@ -5571,9 +5602,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                     EdgeInsets.symmetric(horizontal: 1.0.h),
 //                                 child: Obx(() {
 //                                   if (controller
-//                                       .docsModel!.docs![index].update.value) {}
+//                                       .docsModel?.docs?[index].update.value) {}
 //                                   return Text(
-//                                     controller.docsModel!.docs![index].expiry ??
+//                                     controller.docsModel?.docs?[index].expiry ??
 //                                         '',
 //                                     style: AppTextStyle.normalBlack12,
 //                                   );
@@ -5617,23 +5648,23 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       width: 50.w,
 //                       height: 5.h,
 //                       child: Obx(() {
-//                         return controller.docsModel!.docs![index].loading.value
+//                         return controller.docsModel?.docs?[index].loading.value
 //                             ? LoadingIndicatorBlue(
 //                                 size: 3.h,
 //                               )
-//                             : controller.docsModel!.docs![index].errorLoading
+//                             : controller.docsModel?.docs?[index].errorLoading
 //                                 ? IconButton(
 //                                     onPressed: () async {
 //                                       // here also add refresh func for visa and passport
 
-//                                       if (controller.docsModel!.docs![index].name
+//                                       if (controller.docsModel?.docs?[index].name
 //                                               .toLowerCase() !=
 //                                           'emirate id') {
 //                                         setState(() {
 //                                           isEnableScreen = false;
 //                                         });
 //                                         if (controller
-//                                             .docsModel!.docs![index].isRejected) {
+//                                             .docsModel?.docs?[index].isRejected) {
 //                                           setState(() {
 //                                             isEnableScreen = false;
 //                                           });
@@ -5662,7 +5693,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                             true;
 //                                       });
 //                                       if (controller
-//                                           .docsModel!.docs![index].isRejected) {
+//                                           .docsModel?.docs?[index].isRejected) {
 //                                         await controller.updateDoc(index);
 //                                         setState(() {
 //                                           isEnableScreen = false;
@@ -5711,12 +5742,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                   )
 //                                 : Obx(() {
 //                                     if (controller
-//                                         .docsModel!.docs![index].update.value) {}
+//                                         .docsModel?.docs?[index].update.value) {}
 //                                     return ElevatedButton(
-//                                       onPressed: controller.docsModel!
-//                                                       .docs![index].expiry ==
+//                                       onPressed: controller.docsModel?
+//                                                       .docs?[index].expiry ==
 //                                                   null ||
-//                                               controller.docsModel!.docs![index]
+//                                               controller.docsModel?.docs?[index]
 //                                                       .path ==
 //                                                   null
 //                                           ? null
@@ -5744,12 +5775,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                                   },
 //                                                 );
 //                                               }
-//                                               if (controller.docsModel!
-//                                                       .docs![index].name
+//                                               if (controller.docsModel?
+//                                                       .docs?[index].name
 //                                                       .toLowerCase() !=
 //                                                   'emirate id') {
-//                                                 if (controller.docsModel!
-//                                                     .docs![index].isRejected) {
+//                                                 if (controller.docsModel?
+//                                                     .docs?[index].isRejected) {
 //                                                   setState(() {
 //                                                     isEnableScreen = false;
 //                                                     controller
@@ -5948,7 +5979,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //     }
 
 //     expiryText = controller.cardScanModel.expiry == null
-//         ? controller.docsModel!.docs![index].expiry
+//         ? controller.docsModel?.docs?[index].expiry
 //         : '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry)}';
 
 //     setState(() {
@@ -6200,7 +6231,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                       .dateFormatForShowRoundedDatePicker);
 //                               setState(() {
 //                                 expiryText = dateFormat.format(expDate);
-//                                 controller.docsModel!.docs![index].expiry =
+//                                 controller.docsModel?.docs?[index].expiry =
 //                                     dateFormat.format(expDate);
 
 //                                 isExpiryError = false;
@@ -6242,7 +6273,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                                   clear: () {
 //                                     setState(() {
 //                                       expiryText = '';
-//                                       controller.docsModel!.docs![index].expiry =
+//                                       controller.docsModel?.docs?[index].expiry =
 //                                           '';
 //                                     });
 //                                   },
@@ -6386,7 +6417,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       Navigator.of(context).pop();
 //                       WidgetsBinding.instance.addPostFrameCallback((_) {
 //                         setState(() {
-//                           controller.docsModel!.docs![index].loading.value =
+//                           controller.docsModel?.docs?[index].loading.value =
 //                               false;
 //                           controller.cardScanModel = CardScanModel();
 //                           controller.mergedId = null;
@@ -6417,7 +6448,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       } else {
 //                         WidgetsBinding.instance.addPostFrameCallback(
 //                           (timeStamp) async {
-//                             if (controller.docsModel!.docs![index].isRejected) {
+//                             if (controller.docsModel?.docs?[index].isRejected) {
 //                               setState(() {
 //                                 isEnableScreen = false;
 //                                 controller.isLoadingForScanning.value = true;
@@ -6727,7 +6758,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                       onPressed: () async {
 //                         Get.back();
 //                         Navigator.of(context).pop();
-//                         controller.docsModel!.docs![index].loading.value = false;
+//                         controller.docsModel?.docs?[index].loading.value = false;
 //                         controller.cardScanModel = CardScanModel();
 //                         controller.mergedId = null;
 //                         controller.isLoadingForScanning.value = false;

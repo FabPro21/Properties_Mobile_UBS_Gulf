@@ -142,6 +142,7 @@ class _MainInfoState extends State<MainInfo> {
                                                   ),
                                                 ),
                                                 LinearProgressIndicator(
+                                                  color: AppColors.blueColor,
                                                   value: getCDController.comPtg,
                                                   backgroundColor: AppColors
                                                       .chartlightBlueColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:sizer/sizer.dart';
 import 'colors.dart';
 import 'fonts.dart';
@@ -54,6 +55,12 @@ class AppTextStyle {
     color: AppColors.greyColor,
     fontFamily: AppFonts.graphikRegular,
     fontSize: 12.0.sp,
+  );
+
+  static var normalGrey12Communication = Style(
+    color: AppColors.greyColor,
+    fontFamily: AppFonts.graphikRegular,
+    fontSize: FontSize(12.0.sp),
   );
   static TextStyle normalGrey13 = TextStyle(
     color: AppColors.greyColor,
@@ -243,7 +250,7 @@ class AppTextStyle {
   static TextStyle normalWhiteul10 = TextStyle(
       color: AppColors.whiteColor,
       fontFamily: AppFonts.graphikRegular,
-         fontSize: 10.0.sp,
+      fontSize: 10.0.sp,
       decoration: TextDecoration.underline);
   static TextStyle normalWhite10 = TextStyle(
     color: AppColors.whiteColor,
@@ -475,5 +482,4 @@ class AppTextStyle {
   ////////////////
   ///new styles
   ////////////////
-
 }

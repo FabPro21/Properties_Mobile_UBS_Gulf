@@ -3,7 +3,6 @@ import 'package:fap_properties/data/models/tenant_models/service_request/doc_fil
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
-import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/utils/text_validator.dart';
 import 'package:fap_properties/views/vendor/vendor_invoice_detail/comunication/communication_invoice_deatils_controller.dart';
@@ -492,26 +491,19 @@ class _VendorInvoiceCommunicationState
                                   // Communication
                                   Html(
                                     style: {
-                                      'html': Style(
-                                        textAlign:
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? TextAlign.left
-                                                : TextAlign.right,
-                                        color: Colors.black,
-                                        fontFamily: AppFonts.graphikRegular,
-                                        fontSize: FontSize(10.0),
-                                      ),
+                                      'html':
+                                          AppTextStyle.normalGrey12Communication
                                     },
-                                    data: _controller
-                                        .ticketReplies!.ticketReply![index].reply,
+                                    data: _controller.ticketReplies!
+                                        .ticketReply![index].reply,
                                   ),
                                   SizedBox(
                                     height: 2.h,
                                   ),
                                   Text(
-                                    _controller.ticketReplies!.ticketReply![index]
-                                        .dateTime??"",
+                                    _controller.ticketReplies!
+                                            .ticketReply![index].dateTime ??
+                                        "",
                                     style: AppTextStyle.normalGrey8,
                                   ),
                                 ],

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -154,7 +156,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                 physics:
                                                     NeverScrollableScrollPhysics(),
                                                 itemCount: controller
-                                                    .reasons!.record!.length,
+                                                    .reasons?.record?.length,
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
@@ -162,16 +164,12 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                     onTap: () {
                                                       controller.selectedReason
                                                           .value = index;
-                                                      if (controller
-                                                              .reasons!
-                                                              .record![index]
+                                                      if (controller.reasons?.record?[index]
                                                               .vacatingId ==
                                                           3) {
                                                         controller
                                                             .addDesc.value = 1;
-                                                      } else if (controller
-                                                              .reasons!
-                                                              .record![index]
+                                                      } else if (controller.reasons?.record?[index]
                                                               .vacatingId ==
                                                           7) {
                                                         controller
@@ -184,6 +182,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                       children: [
                                                         Obx(() {
                                                           return Radio(
+                                                            activeColor: AppColors.blueColor,
                                                             groupValue: controller
                                                                 .selectedReason
                                                                 .value,
@@ -192,8 +191,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                   .selectedReason
                                                                   .value = value!;
                                                               if (controller
-                                                                      .reasons!
-                                                                      .record![
+                                                                      .reasons?.record?[
                                                                           index]
                                                                       .vacatingId ==
                                                                   3) {
@@ -201,8 +199,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     .addDesc
                                                                     .value = 1;
                                                               } else if (controller
-                                                                      .reasons!
-                                                                      .record![
+                                                                      .reasons?.record?[
                                                                           index]
                                                                       .vacatingId ==
                                                                   7) {
@@ -222,12 +219,9 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                       .getLanguage() ==
                                                                   1
                                                               ? controller
-                                                                  .reasons!
-                                                                  .record![index]
-                                                                  .title??""
+                                                                  .reasons?.record![index].title??""
                                                               : controller
-                                                                  .reasons!
-                                                                  .record![index]
+                                                                  .reasons?.record?[index]
                                                                   .titleAr??"",
                                                           style: AppTextStyle
                                                               .normalBlack11,
@@ -548,8 +542,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     if (resp ==
                                                                         'ok') {
                                                                       if (controller
-                                                                              .reasons!
-                                                                              .record![controller.selectedReason.value]
+                                                                              .reasons?.record?[controller.selectedReason.value]
                                                                               .vacatingId ==
                                                                           3) {
                                                                         controller

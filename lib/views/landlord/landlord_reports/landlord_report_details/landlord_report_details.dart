@@ -109,7 +109,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
         print('***:::*****:::::');
       }
     });
-    // ###1
     // FlutterDownloader.registerCallback(downloadingCallBack as DownloadCallback);
     setState(() {});
   }
