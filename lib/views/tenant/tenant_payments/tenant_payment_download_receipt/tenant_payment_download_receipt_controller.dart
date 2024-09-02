@@ -37,22 +37,23 @@ class PaymentDownloadReceiptController extends GetxController {
     var result = await TenantRepository.paymentsDownloadReceipt();
     print('Condition ::::====>>>>>:::::::=> ${(result is Uint8List)}');
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, payment.receiptNo??"");
-        print('path ::::====>>>>>:::::::=> $path');
-        try {
-          print('path ::TRY::====>>>>>:::::::=> $path');
-          OpenFile.open(path)
-              .then((value) => print('path ::TRY::====>>>>>:::::::=> Done'));
-        } catch (e) {
-          print(e);
-          print('path ::Catch::====>>>>>:::::::=> $e');
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, payment.receiptNo ?? "");
+      print('path ::::====>>>>>:::::::=> $path');
+      try {
+        print('path ::TRY::====>>>>>:::::::=> $path');
+        OpenFile.open(path)
+            .then((value) => print('path ::TRY::====>>>>>:::::::=> Done'));
+      } catch (e) {
+        print(e);
+        print('path ::Catch::====>>>>>:::::::=> $e');
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
+        // }
       }
     } else {
       Get.snackbar(

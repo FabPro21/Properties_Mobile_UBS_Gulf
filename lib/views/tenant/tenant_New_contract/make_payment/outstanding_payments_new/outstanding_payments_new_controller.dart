@@ -167,11 +167,12 @@ class OutstandingPaymentsNewContractController extends GetxController {
     payable.errorDownloadingCheque = false;
     payable.downloadingCheque.value = true;
     final response =
-        await TenantRepository.downloadCheque(payable.paymentSettingId??-1);
-        // await TenantRepository.downloadChequeNew(payable.paymentSettingId);
+        await TenantRepository.downloadCheque(payable.paymentSettingId ?? -1);
+    // await TenantRepository.downloadChequeNew(payable.paymentSettingId);
     print('Response :::::: $response');
     if (response is DownloadChequeModel) {
-      var base64DecodeAble = base64Decode(response.cheque!.replaceAll('\n', ''));
+      var base64DecodeAble =
+          base64Decode(response.cheque!.replaceAll('\n', ''));
       showFile(payable, base64DecodeAble,
           'cheque!${payable.contractPaymentId}${response.chequeName}');
     } else {
@@ -402,7 +403,7 @@ class OutstandingPaymentsNewContractController extends GetxController {
         if (newFile != null) {
           await newFile.writeAsBytes(photo);
           payable.filePath = newFile.path;
-          payable.chequeFile = photo ;
+          payable.chequeFile = photo;
         }
 
         payable.filePath = newFile.path;
@@ -420,8 +421,8 @@ class OutstandingPaymentsNewContractController extends GetxController {
     payable.errorRemovingCheque.value = false;
     payable.removingCheque.value = true;
     final response =
-        await TenantRepository.removeCheque(payable.paymentSettingId?? -1);
-        // await TenantRepository.removeChequeNew(payable.paymentSettingId);
+        await TenantRepository.removeCheque(payable.paymentSettingId ?? -1);
+    // await TenantRepository.removeChequeNew(payable.paymentSettingId);
     payable.removingCheque.value = false;
     if (response == 200) {
       payable.filePath = null;
@@ -515,12 +516,13 @@ class OutstandingPaymentsNewContractController extends GetxController {
   void showFile(Record payable, Uint8List file, String name) async {
     print('Payable File Path :::: ${payable.filePath}');
     if (payable.filePath == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file, name);
-        payable.filePath = path;
-        print('Payable File Path :::: ${payable.filePath}');
-        OpenFile.open(path);
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file, name);
+      payable.filePath = path;
+      print('Payable File Path :::: ${payable.filePath}');
+      OpenFile.open(path);
+      // }
     } else {
       OpenFile.open(payable.filePath);
     }

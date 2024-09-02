@@ -52,7 +52,7 @@
 //           return;
 //         }
 //       }
-      
+
 //       // we are commenting below lines because Editor change the extension 112233
 //       // final editedImage = await Get.to(() => ImageEditor(
 //       //       image: photo,
@@ -121,7 +121,6 @@
 //   }
 // }
 
-
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:io';
@@ -180,7 +179,9 @@ class AddRequestPhotosController extends GetxController {
 
       String path = file.path;
       print('Path before store in local Storage ::: $path');
-      if (photo != null && await getStoragePermission()) {
+      // ###1 permission
+      // if (photo != null && await getStoragePermission()) {
+      if (photo != null) {
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${file.path.split('/').last}");
         if (newFile != null) {

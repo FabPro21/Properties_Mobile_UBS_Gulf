@@ -243,6 +243,8 @@ import 'dart:io';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -312,14 +314,20 @@ class _CardScannerState extends State<CardScanner>
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(AppMetaLabels().scanningCard),
+          title: Text(
+            AppMetaLabels().scanningCard,
+            style: AppTextStyle.semiBoldWhite14,
+          ),
           flexibleSpace: Image.asset(
             AppImagesPath.appbarimg,
             width: double.infinity,
             fit: BoxFit.fill,
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.white54,
+            ),
             onPressed: () {
               if (isScanning) {
               } else {

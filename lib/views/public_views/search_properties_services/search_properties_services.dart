@@ -51,6 +51,15 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
           ),
           backgroundColor: Colors.white,
           centerTitle: true,
+          leading: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+          ),
           title: Text(
             AppMetaLabels().ourServices,
             // "Services",

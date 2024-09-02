@@ -18,7 +18,6 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../../../../data/models/tenant_models/service_request/doc_file.dart';
 
-
 class VendorCommunicationController extends GetxController {
   VendorCommunicationController({this.reqNo});
   String? reqNo;
@@ -72,7 +71,7 @@ class VendorCommunicationController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await VendorRepository.addTicketReply(
-        reqNo, message, fileToUpload.value.path??"");
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies.value = true;
@@ -83,7 +82,7 @@ class VendorCommunicationController extends GetxController {
       print(fileToUpload.value.name);
       print(fileToUpload.value.path);
       ticketReplies!.ticketReply!.add(TicketReply(
-          reply: message ,
+          reply: message,
           dateTime: dateTime,
           userId: 123,
           fileName: fileToUpload.value.name ?? "",
@@ -112,32 +111,33 @@ class VendorCommunicationController extends GetxController {
     } else {
       ticketReplies!.ticketReply![index].downloadingFile!.value = true;
       var result = await VendorRepository.downloadTicketFile(
-          ticketReplies!.ticketReply![index].ticketReplyId??0);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? 0);
 
       ticketReplies!.ticketReply![index].downloadingFile!.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          String path = await createFile(
-              result, ticketReplies!.ticketReply![index].fileName??"");
-          try {
-            final result = await OpenFile.open(path);
-            isLoadingDownload.value = false;
-            if (result.message != 'done') {
-              SnakBarWidget.getSnackBarErrorBlue(
-                AppMetaLabels().error,
-                result.message,
-              );
-            }
-          } catch (e) {
-            print(e);
-            isLoadingDownload.value = false;
-
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        String path = await createFile(
+            result, ticketReplies!.ticketReply![index].fileName ?? "");
+        try {
+          final result = await OpenFile.open(path);
+          isLoadingDownload.value = false;
+          if (result.message != 'done') {
             SnakBarWidget.getSnackBarErrorBlue(
               AppMetaLabels().error,
-              e.toString(),
+              result.message,
             );
           }
+        } catch (e) {
+          print(e);
+          isLoadingDownload.value = false;
+
+          SnakBarWidget.getSnackBarErrorBlue(
+            AppMetaLabels().error,
+            e.toString(),
+          );
         }
+        // }
         isLoadingDownload.value = false;
       } else {
         isLoadingDownload.value = false;
@@ -160,7 +160,7 @@ class VendorCommunicationController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path??"");
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // checking file size Cheque

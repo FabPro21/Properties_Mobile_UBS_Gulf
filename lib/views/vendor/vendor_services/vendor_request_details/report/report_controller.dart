@@ -124,8 +124,9 @@ class SvcReqReportController extends GetxController {
         // final extension = p.extension(path);
         // print('(((((((((((((((((((object)))))))))))))))))))');
         // print(extension);
-
-        if (photo != null && await getStoragePermission()) {
+// ###1 permission
+        // if (photo != null && await getStoragePermission()) {
+        if (photo != null) {
           final newPath = await getTemporaryDirectory();
           final newFile = File("${newPath.path}/${file.path.split('/').last}");
           if (newFile != null) {
@@ -350,10 +351,11 @@ class SvcReqReportController extends GetxController {
   void showReport() async {
     // This
     if (report.value.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveReport();
-        report.value.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveReport();
+      report.value.path = path;
+      // }
     }
     await OpenFile.open(report.value.path);
   }
@@ -386,71 +388,73 @@ class SvcReqReportController extends GetxController {
     tenantSignatureSaved.value = false;
     savingTenantSign.value = true;
     bool saved = false;
-    if (await getStoragePermission()) {
-      String path = await createFile(signature!, 'signature.png');
-      if (path != null) {
-        var resp = await VendorRepository.uploadTenantSing(
-          caseNo.toString(),
-          path,
-        );
-        if (resp is int) {
-          SnakBarWidget.getSnackBarErrorBlue(
-            AppMetaLabels().error,
-            AppMetaLabels().anyError,
-          );
-        } else {
-          SnakBarWidget.getSnackBarErrorBlue(
-            AppMetaLabels().success,
-            AppMetaLabels().signatureSaved,
-          );
-
-          saved = true;
-          tenantSignatureSaved.value = true;
-        }
-      } else {
-        SnakBarWidget.getSnackBarError(
+    // ###1 permission
+    // if (await getStoragePermission()) {
+    String path = await createFile(signature!, 'signature.png');
+    if (path != null) {
+      var resp = await VendorRepository.uploadTenantSing(
+        caseNo.toString(),
+        path,
+      );
+      if (resp is int) {
+        SnakBarWidget.getSnackBarErrorBlue(
           AppMetaLabels().error,
           AppMetaLabels().anyError,
         );
+      } else {
+        SnakBarWidget.getSnackBarErrorBlue(
+          AppMetaLabels().success,
+          AppMetaLabels().signatureSaved,
+        );
+
+        saved = true;
+        tenantSignatureSaved.value = true;
       }
     } else {
       SnakBarWidget.getSnackBarError(
         AppMetaLabels().error,
-        AppMetaLabels().storagePermissions,
+        AppMetaLabels().anyError,
       );
     }
+    // } else {
+    //   SnakBarWidget.getSnackBarError(
+    //     AppMetaLabels().error,
+    //     AppMetaLabels().storagePermissions,
+    //   );
+    // }
     savingTenantSign.value = false;
     return saved;
   }
 
   Future<bool> saveVendorSignature(Uint8List signature) async {
-    if (await getStoragePermission()) {
-      String path = await createFile(signature, 'signature.png');
-      if (path != null) {
-        var resp = await VendorRepository.uploadVendorSing(
-          caseNo.toString(),
-          path,
-        );
-        if (resp is int) {
-          SnakBarWidget.getSnackBarError(
-            AppMetaLabels().error,
-            AppMetaLabels().anyError,
-          );
-        } else {
-          return true;
-        }
-      } else {
+    // ###1 permission
+    // if (await getStoragePermission()) {
+    String path = await createFile(signature, 'signature.png');
+    if (path != null) {
+      var resp = await VendorRepository.uploadVendorSing(
+        caseNo.toString(),
+        path,
+      );
+      if (resp is int) {
         SnakBarWidget.getSnackBarError(
           AppMetaLabels().error,
           AppMetaLabels().anyError,
         );
+      } else {
+        return true;
       }
     } else {
       SnakBarWidget.getSnackBarError(
         AppMetaLabels().error,
-        AppMetaLabels().storagePermissions,
+        AppMetaLabels().anyError,
       );
     }
+    // } else {
+    //   SnakBarWidget.getSnackBarError(
+    //     AppMetaLabels().error,
+    //     AppMetaLabels().storagePermissions,
+    //   );
+    // }
     return false;
   }
 

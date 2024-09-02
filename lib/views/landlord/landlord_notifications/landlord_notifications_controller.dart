@@ -181,7 +181,8 @@ class LandlordNotificationsController extends GetxController {
     try {
       noMoreDataUnRead.value = '';
       isLoadingUnReadNotification.value = true;
-      var result = await LandlordRepository.getNotificationsPagination('Unread',pagaNoP);
+      var result = await LandlordRepository.getNotificationsPagination(
+          'Unread', pagaNoP);
       isLoadingUnReadNotification.value = false;
       print('Result ::::: $result');
       if (result is notif.GetLandLordNotificationsModel) {
@@ -196,7 +197,8 @@ class LandlordNotificationsController extends GetxController {
           for (int i = 0;
               i < unreadNotifications.value.notifications!.length;
               i++) {
-            notificationsUnRead!.add(unreadNotifications.value.notifications![i]);
+            notificationsUnRead!
+                .add(unreadNotifications.value.notifications![i]);
           }
           unreadLength = notificationsUnRead!.length;
           unreadCheckbox.marked = List<RxBool>.filled(unreadLength, false.obs);
@@ -335,19 +337,20 @@ class LandlordNotificationsController extends GetxController {
 
     files!.record![index].downloading!.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createFile(result, files!.record![index].fileName!);
-        try {
-          OpenFile.open(path);
-        } catch (e) {
-          print(e);
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createFile(result, files!.record![index].fileName!);
+      try {
+        OpenFile.open(path);
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,

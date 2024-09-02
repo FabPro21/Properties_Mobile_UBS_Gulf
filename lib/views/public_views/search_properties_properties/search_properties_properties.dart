@@ -46,6 +46,15 @@ class _SearchPropertiesPropertiesState
           ),
           backgroundColor: Colors.white,
           centerTitle: true,
+          leading: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+          ),
           title: Text(
             AppMetaLabels().propertyMgt,
             style: AppTextStyle.semiBoldWhite14,

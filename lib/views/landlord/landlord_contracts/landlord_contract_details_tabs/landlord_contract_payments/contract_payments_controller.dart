@@ -96,7 +96,8 @@ class LandlordContractPaymentsController extends GetxController {
         payments.payments![index].cheque = result;
       }
     } else {
-      payments.payments![index].errorLoadingCheque = AppMetaLabels().noDatafound;
+      payments.payments![index].errorLoadingCheque =
+          AppMetaLabels().noDatafound;
     }
     payments.payments![index].loadingCheque!.value = false;
   }
@@ -107,26 +108,27 @@ class LandlordContractPaymentsController extends GetxController {
       await Get.to(NoInternetScreen());
     }
     payment.downloadingReceipt!.value = true;
-     print('Condition """"::::');
+    print('Condition """"::::');
     SessionController().setTransactionId(payment.transactionId.toString());
     var result = await LandlordRepository.paymentsDownloadReceipt();
     print('Condition """"::::::"""""" ${(result is Uint8List)}');
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, payment.receiptNo??"");
-        print('path """"::::::"""""" $path');
-        try {
-          print('path """"::Inside Try ::::"""""" $path');
-          OpenFile.open(path);
-        } catch (e) {
-          print('path """" Catch:: $e');
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, payment.receiptNo ?? "");
+      print('path """"::::::"""""" $path');
+      try {
+        print('path """"::Inside Try ::::"""""" $path');
+        OpenFile.open(path);
+      } catch (e) {
+        print('path """" Catch:: $e');
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,

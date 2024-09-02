@@ -68,7 +68,7 @@ class PublicServiceUpdatesController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await PublicRepositoryDrop2.publicAddTicketReply(
-        reqNo, message, fileToUpload.value.path??"");
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies.value = true;
@@ -101,34 +101,35 @@ class PublicServiceUpdatesController extends GetxController {
       ticketReplies!.ticketReply![index].downloadingFile!.value = true;
 
       var result = await PublicRepositoryDrop2.downloadTicketFile(
-          ticketReplies!.ticketReply![index].ticketReplyId??0);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? 0);
 
       ticketReplies!.ticketReply![index].downloadingFile!.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          String path = await createFile(
-              result, ticketReplies!.ticketReply![index].fileName??"");
-          try {
-            final result = await OpenFile.open(path);
-            // OpenResult result = await OpenFile.open(path);
-            isLoadingDownload.value = false;
-            if (result.message != 'done') {
-              Get.snackbar(
-                AppMetaLabels().error,
-                result.message,
-                backgroundColor: AppColors.white54,
-              );
-            }
-          } catch (e) {
-            print(e);
-            isLoadingDownload.value = false;
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        String path = await createFile(
+            result, ticketReplies!.ticketReply![index].fileName ?? "");
+        try {
+          final result = await OpenFile.open(path);
+          // OpenResult result = await OpenFile.open(path);
+          isLoadingDownload.value = false;
+          if (result.message != 'done') {
             Get.snackbar(
               AppMetaLabels().error,
-              e.toString(),
+              result.message,
               backgroundColor: AppColors.white54,
             );
           }
+        } catch (e) {
+          print(e);
+          isLoadingDownload.value = false;
+          Get.snackbar(
+            AppMetaLabels().error,
+            e.toString(),
+            backgroundColor: AppColors.white54,
+          );
         }
+        // }
         isLoadingDownload.value = false;
       } else {
         isLoadingDownload.value = false;
@@ -154,7 +155,7 @@ class PublicServiceUpdatesController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path??"");
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // checking file size Cheque

@@ -189,7 +189,8 @@ class GetTenantNotificationsController extends GetxController {
           for (int i = 0;
               i < unreadNotifications.value.notifications!.length;
               i++) {
-            notificationsUnRead!.add(unreadNotifications.value.notifications![i]);
+            notificationsUnRead!
+                .add(unreadNotifications.value.notifications![i]);
           }
           unreadLength = notificationsUnRead!.length;
           unreadCheckbox.marked = List<RxBool>.filled(unreadLength, false.obs);
@@ -339,7 +340,7 @@ class GetTenantNotificationsController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
           loadingnotificationsDetail.value = false;
         } else {
-          getFiles(result.notification!.notificationId??0);
+          getFiles(result.notification!.notificationId ?? 0);
           loadingnotificationsDetail.value = false;
         }
       } else {
@@ -371,22 +372,24 @@ class GetTenantNotificationsController extends GetxController {
   void downloadFile(int index) async {
     files!.record![index].downloading!.value = true;
     var result = await TenantRepository.downloadNotificationFiles(
-        files!.record![index].fileId??0);
+        files!.record![index].fileId ?? 0);
 
     files!.record![index].downloading!.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createFile(result, files!.record![index].fileName??"");
-        try {
-          OpenFile.open(path);
-        } catch (e) {
-          print(e);
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path =
+          await createFile(result, files!.record![index].fileName ?? "");
+      try {
+        OpenFile.open(path);
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
+        // }
       }
     } else {
       Get.snackbar(

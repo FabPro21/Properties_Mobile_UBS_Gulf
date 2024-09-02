@@ -111,6 +111,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
+                color: Colors.white,
               ),
               iconSize: 2.0.h,
               onPressed: () {

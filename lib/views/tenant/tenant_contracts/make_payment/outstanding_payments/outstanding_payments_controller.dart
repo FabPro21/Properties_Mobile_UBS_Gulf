@@ -172,15 +172,17 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorDownloadingCheque = false;
     payable.downloadingCheque.value = true;
     final response =
-        await TenantRepository.downloadCheque(payable.paymentSettingId??-1);
+        await TenantRepository.downloadCheque(payable.paymentSettingId ?? -1);
     print('Response :::::: $response');
     if (response is DownloadChequeModel) {
-      var base64DecodeAble = base64Decode(response.cheque!.replaceAll('\n', ''));
+      var base64DecodeAble =
+          base64Decode(response.cheque!.replaceAll('\n', ''));
       showFile(payable, base64DecodeAble,
           'cheque${payable.contractPaymentId}${response.chequeName}');
     } else {
       payable.errorDownloadingCheque = true;
-      SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
+      SnakBarWidget.getSnackBarErrorBlue(
+          AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
     }
     payable.downloadingCheque.value = false;
   }
@@ -424,7 +426,7 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorRemovingCheque.value = false;
     payable.removingCheque.value = true;
     final response =
-        await TenantRepository.removeCheque(payable.paymentSettingId??-1);
+        await TenantRepository.removeCheque(payable.paymentSettingId ?? -1);
     payable.removingCheque.value = false;
     if (response == 200) {
       payable.filePath = null;
@@ -538,12 +540,13 @@ class OutstandingPaymentsController extends GetxController {
   void showFile(Record payable, Uint8List file, String name) async {
     print('Payable File Path :::: ${payable.filePath}');
     if (payable.filePath == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file, name);
-        payable.filePath = path;
-        print('Payable File Path :::: ${payable.filePath}');
-        OpenFile.open(path);
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file, name);
+      payable.filePath = path;
+      print('Payable File Path :::: ${payable.filePath}');
+      OpenFile.open(path);
+      // }
     } else {
       OpenFile.open(payable.filePath);
     }

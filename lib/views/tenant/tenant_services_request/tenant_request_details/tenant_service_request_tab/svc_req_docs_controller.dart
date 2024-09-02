@@ -448,6 +448,8 @@ class SvcReqDocsController extends GetxController {
       final editedImage = await Get.to(() => ImageCropper(
             image: photo,
           ));
+      print('Edited Image :::::1  $editedImage');
+      print('Edited Image :::::2  ${(editedImage == null)}');
       if (editedImage == null) {
         await SnakBarWidget.getSnackBarErrorBlue(
             AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
@@ -455,8 +457,11 @@ class SvcReqDocsController extends GetxController {
         return;
       }
       if (editedImage != null) photo = editedImage;
-
-      if (photo != null && await getStoragePermission()) {
+      print('Edited  photo :::::3  $photo');
+      print('Edited  photo :::::4  ${(photo != null)}');
+      // ###1 permission
+      // if (photo != null && await getStoragePermission()) {
+      if (photo != null) {
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${xfile.path.split('/').last}");
 
@@ -1135,14 +1140,15 @@ class SvcReqDocsController extends GetxController {
           int.parse(caseNo!), 1, docsModel?.docs?[index].id ?? -1);
       print('::::::__>>>>Download<<<<___:::::::');
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          var name = docsModel?.docs?[index].name ?? "";
-          var type = docsModel?.docs?[index].type ?? "";
-          String path = await createFile(result, name + '.' + type);
-          final result1 = await OpenFile.open(path);
-          print('Result 1 :::: 111 :::: 1 1 $result1');
-          isLoadingForScanning.value = false;
-        }
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        var name = docsModel?.docs?[index].name ?? "";
+        var type = docsModel?.docs?[index].type ?? "";
+        String path = await createFile(result, name + '.' + type);
+        final result1 = await OpenFile.open(path);
+        print('Result 1 :::: 111 :::: 1 1 $result1');
+        isLoadingForScanning.value = false;
+        // }
         isLoadingForScanning.value = false;
       } else {
         isLoadingForScanning.value = false;
@@ -1170,28 +1176,29 @@ class SvcReqDocsController extends GetxController {
     print(file?.type ?? "");
     print('********');
     if (file?.path == null) {
-      if (await getStoragePermission()) {
-        var name = file?.name ?? "";
-        var type = file?.type ?? "";
-        String path = await createFile(file?.file, name + '.' + type);
-        try {
-          final result = await OpenFile.open(path);
-          if (result.message != 'done') {
-            Get.snackbar(
-              AppMetaLabels().error,
-              result.message,
-              backgroundColor: AppColors.white54,
-            );
-          }
-        } catch (e) {
-          print(e);
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      var name = file?.name ?? "";
+      var type = file?.type ?? "";
+      String path = await createFile(file?.file, name + '.' + type);
+      try {
+        final result = await OpenFile.open(path);
+        if (result.message != 'done') {
           Get.snackbar(
             AppMetaLabels().error,
-            e.toString(),
+            result.message,
             backgroundColor: AppColors.white54,
           );
         }
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       await OpenFile.open(file?.path);
     }
