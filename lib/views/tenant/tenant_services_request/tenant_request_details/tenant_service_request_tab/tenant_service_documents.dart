@@ -282,6 +282,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                           iDNumberText.clear();
                                                                                           expiryText = '';
                                                                                           dOBText = '';
+                                                                                          controller.mergedId = null;
+                                                                                          controller.cardScanModel.backImage = null;
+                                                                                          controller.cardScanModel.frontImage = null;
                                                                                         });
                                                                                         await controller.removePickedFile(index);
                                                                                         await controller.removeFile(index);
@@ -462,7 +465,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
   }
 
   Container uploadFile(BuildContext context, int index) {
-    print('Index :::::: $index');
+    print('Index :::::: => $index');
     return Container(
         width: 100.0.w,
         decoration: BoxDecoration(
@@ -543,6 +546,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                       expiryText = '';
                                       dOBText = '';
                                     });
+                                    if (controller.docsModel?.docs?[index].name!
+                                            .toLowerCase() ==
+                                        'emirate id') {
+                                      setState(() {
+                                        controller.cardScanModel.frontImage =
+                                            null;
+                                        controller.cardScanModel.backImage =
+                                            null;
+                                        controller.mergedId = null;
+                                      });
+                                    }
                                     await controller.removePickedFile(index);
                                     setState(() {
                                       controller.isDocUploaded[index] = 'false';
@@ -587,6 +601,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               if (controller.docsModel?.docs?[index].name!
                                       .toLowerCase() ==
                                   'emirate id') {
+                                setState(() {
+                                  controller.mergedId = null;
+                                });
                                 _showPicker(context, index);
                               } else {
                                 await _showPickerPassport(context, index);
@@ -641,6 +658,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                 .docsModel?.docs?[index].name!
                                                 .toLowerCase() ==
                                             'emirate id') {
+                                          setState(() {
+                                            controller.mergedId = null;
+                                          });
                                           _showPicker(context, index);
                                         } else {
                                           await _showPickerPassport(
@@ -936,41 +956,42 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                           isEnableScreen = false;
                                         });
                                       } else {
-                                        var dOB;
-                                        var exp;
-                                        if (controller.cardScanModel.dob !=
-                                            null) {
-                                          dOB =
-                                              '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!)}';
+                                        bool isTrue = false;
+                                        for (int i = 0;
+                                            i < controller.isDocUploaded.length;
+                                            i++) {
+                                          if (controller
+                                                  .docsModel?.docs?[index].name
+                                                  ?.contains('Emirate ID') ==
+                                              true) {
+                                            if (controller.isDocUploaded[i] ==
+                                                'true') {
+                                              setState(() {
+                                                isTrue = true;
+                                                controller.isDocUploaded[i] =
+                                                    false;
+                                              });
+                                            }
+                                          }
                                         }
-                                        if (controller.cardScanModel.expiry !=
-                                            null) {
-                                          exp =
-                                              '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!)}';
-                                        }
-                                        await controller
-                                            .uploadDocWithEIDParameter(
-                                          index,
-                                          controller.cardScanModel.idNumber ??
-                                              '',
-                                          controller.cardScanModel.nationality,
-                                          controller.cardScanModel.name,
-                                          controller.cardScanModel.name,
-                                          '',
-                                          // controller.cardScanModel.dob,
-                                          dOB,
-                                        );
                                         setState(() {
                                           isEnableScreen = true;
                                           controller.isLoadingForScanning
                                               .value = false;
+                                          controller.docsModel?.docs?[index]
+                                              .errorLoading = false;
+                                          controller.docsModel?.docs?[index]
+                                              .path = null;
+                                          SnakBarWidget.getSnackBarErrorBlue(
+                                              AppMetaLabels().alert,
+                                              AppMetaLabels()
+                                                      .someThingWentWrong +
+                                                  ' ' +
+                                                  AppMetaLabels().please +
+                                                  ' ' +
+                                                  AppMetaLabels().reScane);
                                         });
                                       }
-                                      setState(() {
-                                        isEnableScreen = true;
-                                        controller.isLoadingForScanning.value =
-                                            false;
-                                      });
                                     },
                                     icon: Icon(
                                       Icons.refresh,
@@ -1994,24 +2015,33 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                           });
                                           return;
                                         } else {
-                                          setState(() {
-                                            isEnableScreen = false;
-                                            controller.isLoadingForScanning
-                                                .value = true;
-                                          });
-                                          Navigator.of(context).pop();
-                                          await controller
-                                              .uploadDocWithEIDParameter(
-                                            index,
-                                            iDNumberText.text,
-                                            controller
-                                                .cardScanModel.nationality,
-                                            nameText.text,
-                                            nameText.text,
-                                            '',
-                                            dOBText,
-                                          );
-                                          isEnableScreen = true;
+                                          try {
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = true;
+                                            });
+                                            Navigator.of(context).pop();
+                                            await controller
+                                                .uploadDocWithEIDParameter(
+                                              index,
+                                              iDNumberText.text,
+                                              controller
+                                                  .cardScanModel.nationality,
+                                              nameText.text,
+                                              nameText.text,
+                                              '',
+                                              dOBText,
+                                            );
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = false;
+                                            });
+                                          } catch (e) {
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = false;
+                                            });
+                                          }
                                         }
                                       }
                                     },
@@ -2104,24 +2134,33 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                           });
                                           return;
                                         } else {
-                                          setState(() {
-                                            isEnableScreen = false;
-                                            controller.isLoadingForScanning
-                                                .value = true;
-                                          });
-                                          Navigator.of(context).pop();
-                                          await controller
-                                              .uploadDocWithEIDParameter(
-                                            index,
-                                            iDNumberText.text,
-                                            controller
-                                                .cardScanModel.nationality,
-                                            nameText.text,
-                                            nameText.text,
-                                            '',
-                                            dOBText,
-                                          );
-                                          isEnableScreen = true;
+                                          try {
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = true;
+                                            });
+                                            Navigator.of(context).pop();
+                                            await controller
+                                                .uploadDocWithEIDParameter(
+                                              index,
+                                              iDNumberText.text,
+                                              controller
+                                                  .cardScanModel.nationality,
+                                              nameText.text,
+                                              nameText.text,
+                                              '',
+                                              dOBText,
+                                            );
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = false;
+                                            });
+                                          } catch (e) {
+                                            setState(() {
+                                              controller.isLoadingForScanning
+                                                  .value = false;
+                                            });
+                                          }
                                         }
                                       }
                                     },

@@ -31,15 +31,17 @@ class UploadSvcReqFile {
     log(filePath.toString());
 
     var response;
-    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+    response =
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
-      print('Response :::::respStr:: '); 
+      print('Response :::::respStr:: ');
       // print(await response.stream.bytesToString());
       // 112233 HTML NEW
       // 112233 will show only when error come like a HTML
       if (response.statusCode == 404) {
         final respStr = await response.stream.bytesToString();
-        print('Response :::::respStr:: $respStr');        // 112233 convert HTML page will work
+        print(
+            'Response :::::respStr:: $respStr'); // 112233 convert HTML page will work
         if (response.statusCode == 404 && respStr.contains('HTML') == true ||
             respStr.contains(
                     '!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN') ==
@@ -85,6 +87,7 @@ class UploadSvcReqFile {
   ) async {
     var url = AppConfig().uploadEIDFilesDetail;
     print(url);
+    print('Next ::::::');
 
     if (exp == '') {
       var now = DateTime.now();
@@ -92,57 +95,62 @@ class UploadSvcReqFile {
       String foramteDate = formatter.format(now);
       exp = foramteDate;
     }
-    print('EID :::: $emirateIdNumber');
-    print('nationality :::: $nationality');
-    print('nameEng :::: $nameEng');
-    print('nameAr :::: $nameAr');
-    print('issueDate :::: $issueDate');
-    print('dOB :::: $dOB');
-    print('exp :::: $exp');
 
     var dOBString;
-    // if (dOB != null) {
-    //   var formatter = DateFormat('dd-MM-yyyy');
-    //   String foramteDate = formatter.format(dOB);
-    //   dOBString = foramteDate;
-    // }
-
     if (dOB == '' || dOB == null) {
       dOBString = '01-01-1900';
     } else {
       dOBString = dOB;
     }
 
-    print('dOBString :::: $dOBString');
+    print('CaseNo :::: $reqNo');
+    print('AttachmentType :::: $fileType');
+    print('ExpireDate :::: $exp');
+    print('DocumentTypeId :::: $docTypeId');
+    print('EmirateIdNumber :::: $emirateIdNumber');
+    print('Nationality :::: $nationality');
+    print('NameEng :::: $nameEng');
+    print('NameAr :::: $nameAr');
+    print('DOB :::: ${dOBString.toString()}');
 
     var data = {
       'CaseNo': encriptdatasingle(reqNo).toString(),
       'AttachmentType': encriptdatasingle(fileType).toString(),
       'ExpireDate': encriptdatasingle(exp).toString(),
       'DocumentTypeId': encriptdatasingle(docTypeId).toString(),
-      'EmirateIdNumber':
-          encriptdatasingle(emirateIdNumber.toString()).toString(),
-      'Nationality': encriptdatasingle(nationality.toString()).toString(),
-      'NameEng': encriptdatasingle(nameEng.toString()).toString(),
-      'NameAr': encriptdatasingle(nameAr.toString()).toString(),
+      'EmirateIdNumber': emirateIdNumber != ''
+          ? encriptdatasingle(emirateIdNumber.toString()).toString()
+          : emirateIdNumber,
+      'Nationality': nationality != ''
+          ? encriptdatasingle(nationality.toString()).toString()
+          : '',
+      'NameEng': nationality != ''
+          ? encriptdatasingle(nameEng.toString()).toString()
+          : '',
+      'NameAr': nationality != ''
+          ? encriptdatasingle(nameAr.toString()).toString()
+          : '',
       'IssueDate': '',
       'DOB': encriptdatasingle(dOBString.toString()).toString(),
     };
-    var dataWithoutEncrp = {
-      'CaseNo': reqNo,
-      'AttachmentType': fileType,
-      'ExpireDate': exp,
-      'DocumentTypeId': docTypeId,
-      'EmirateIdNumber': emirateIdNumber.toString(),
-      'Nationality': nationality.toString(),
-      'NameEng': nameEng.toString(),
-      'NameAr': nameAr.toString(),
-      'IssueDate': '',
-      'DOB': dOBString.toString(),
-    };
-    log(dataWithoutEncrp.toString());
+    print('data :::: $data');
+    // var dataWithoutEncrp = {
+    //   'CaseNo': reqNo,
+    //   'AttachmentType': fileType,
+    //   'ExpireDate': exp,
+    //   'DocumentTypeId': docTypeId,
+    //   'EmirateIdNumber': emirateIdNumber.toString(),
+    //   'Nationality': nationality.toString(),
+    //   'NameEng': nameEng.toString(),
+    //   'NameAr': nameAr.toString(),
+    //   'IssueDate': '',
+    //   'DOB': dOBString.toString(),
+    // };
+    // log(dataWithoutEncrp.toString());
     var response;
-    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+    response =
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+    print('Service Req File ::::::::::: $response');
     if (response is StreamedResponse) {
       log(response.statusCode.toString());
       // final respStr = await response.stream.bytesToString();
@@ -159,6 +167,7 @@ class UploadSvcReqFile {
     }
   }
 }
+
 class UploadSvcReqFileNew {
   static Future<dynamic> uploadFileNew(String reqNo, String filePath,
       String fileType, String exp, String docTypeId) async {
@@ -181,7 +190,8 @@ class UploadSvcReqFileNew {
     log(filePath.toString());
 
     var response;
-    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+    response =
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       // print(await response.stream.bytesToString());
       // 112233 HTML NEW
@@ -291,7 +301,8 @@ class UploadSvcReqFileNew {
     };
     log(dataWithoutEncrp.toString());
     var response;
-    response = await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+    response =
+        await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
     if (response is StreamedResponse) {
       log(response.statusCode.toString());
       // final respStr = await response.stream.bytesToString();

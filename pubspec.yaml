@@ -5,9 +5,8 @@
 #  // // For Production (Leasing)
 #  // =====================>
 # // // remove +92
-# nust set this
-#  // ###1
-# SessionController().vendorUserType = 'll';
+# should uncomment the below lines
+#  // ### SelectRole1
 # Must check both places before going the live
 
 name: fap_properties
