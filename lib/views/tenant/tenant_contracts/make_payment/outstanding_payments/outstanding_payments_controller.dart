@@ -351,8 +351,12 @@ class OutstandingPaymentsController extends GetxController {
           )
         ]);
 
+        var editedImage;
+        if (crop == null) {
+          return;
+        }
         print('Edited Image :::::2  crop $crop');
-        var editedImage = await convertCroppedFileToUint8List(crop!);
+        editedImage = await convertCroppedFileToUint8List(crop);
         print('Edited Image :::::2  ${(editedImage == null)}');
 
         photo = editedImage;
@@ -438,8 +442,12 @@ class OutstandingPaymentsController extends GetxController {
           )
         ]);
 
+        var editedImage;
+        if (crop == null) {
+          return;
+        }
         print('Edited Image :::::2  crop $crop');
-        var editedImage = await convertCroppedFileToUint8List(crop!);
+        editedImage = await convertCroppedFileToUint8List(crop);
         print('Edited Image :::::2  ${(editedImage == null)}');
         photo = editedImage;
         print('editedImage Path 22::::::::: before store $editedImage ');

@@ -587,6 +587,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? 'Your cheque' : 'الشيك الخاص بك';
 
   String your = SessionController().getLanguage() == 1 ? 'Your' : 'لك';
+  String please = SessionController().getLanguage() == 1 ? 'Please' : 'لو سمحت';
 
   String fileRejected = SessionController().getLanguage() == 1
       ? 'has been rejected, please upload again'

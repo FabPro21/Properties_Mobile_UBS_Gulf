@@ -110,7 +110,7 @@ class SvcReqDocsController extends GetxController {
           update();
           enableSubmitButton();
         }
-        Future.delayed(Duration(seconds: 1));
+        // Future.delayed(Duration(seconds: 1));
         loadingDocs.value = false;
       } else {
         errorLoadingDocs = resp;
@@ -211,8 +211,13 @@ class SvcReqDocsController extends GetxController {
           )
         ]);
 
+        var editedImage;
+        if (crop == null) {
+          docsModel?.docs?[index].loading.value = false;
+          return;
+        }
         print('Edited Image :::::2  crop $crop');
-        var editedImage = await convertCroppedFileToUint8List(crop!);
+        editedImage = await convertCroppedFileToUint8List(crop);
         print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
@@ -320,9 +325,13 @@ class SvcReqDocsController extends GetxController {
             ],
           )
         ]);
-
+        var editedImage;
+        if (crop == null) {
+          docsModel?.docs?[index].loading.value = false;
+          return;
+        }
         print('Edited Image :::::2  crop $crop');
-        var editedImage = await convertCroppedFileToUint8List(crop!);
+        editedImage = await convertCroppedFileToUint8List(crop);
         print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
@@ -424,8 +433,13 @@ class SvcReqDocsController extends GetxController {
         )
       ]);
 
+      var editedImage;
+      if (crop == null) {
+        docsModel?.docs?[index].loading.value = false;
+        return;
+      }
       print('Edited Image :::::2  crop $crop');
-      var editedImage = await convertCroppedFileToUint8List(crop!);
+      editedImage = await convertCroppedFileToUint8List(crop);
       print('Edited Image :::::2  ${(editedImage == null)}');
 
       // compress the image
@@ -489,7 +503,7 @@ class SvcReqDocsController extends GetxController {
       xfile = await ImagePicker().pickImage(
         source: source,
       );
-
+      docsModel?.docs?[index].loading.value = false;
       if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
             duration: Duration(seconds: 5),
@@ -501,7 +515,7 @@ class SvcReqDocsController extends GetxController {
     } catch (e) {
       docsModel?.docs?[index].loading.value = false;
       cardScanModel = CardScanModel();
-      mergedId = File('');
+      mergedId = null;
       isLoadingForScanning.value = false;
       update();
     }
@@ -511,7 +525,8 @@ class SvcReqDocsController extends GetxController {
       photo = await compressImage(photo);
 
       // checking file size EID
-      print('Size of file ::: ${CheckFileExtenstion().getFileSize(photo)}');
+      print(
+          'Size of file  After Compress ::: ${CheckFileExtenstion().getFileSize(photo)}');
       var size = CheckFileExtenstion().getFileSize(photo).split(' ')[0];
       var extension = CheckFileExtenstion().getFileSize(photo).split(' ')[1];
       if (extension.contains('MB')) {
@@ -548,10 +563,14 @@ class SvcReqDocsController extends GetxController {
           ],
         )
       ]);
-
-      print('Edited Image :::::2  crop $crop');
-      var editedImage = await convertCroppedFileToUint8List(crop!);
-      print('Edited Image :::::2  ${(editedImage == null)}');
+      var editedImage;
+      if (crop == null) {
+        await SnakBarWidget.getSnackBarErrorBlue(
+            AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
+        docsModel?.docs?[index].loading.value = false;
+        return;
+      }
+      editedImage = await convertCroppedFileToUint8List(crop);
       if (editedImage == null) {
         await SnakBarWidget.getSnackBarErrorBlue(
             AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
@@ -559,8 +578,6 @@ class SvcReqDocsController extends GetxController {
         return;
       }
       if (editedImage != null) photo = editedImage;
-      print('Edited  photo :::::3  $photo');
-      print('Edited  photo :::::4  ${(photo != null)}');
       // ###1 permission
       // if (photo != null && await getStoragePermission()) {
       if (photo != null) {
@@ -569,19 +586,6 @@ class SvcReqDocsController extends GetxController {
 
         if (newFile != null) {
           await newFile.writeAsBytes(photo);
-          print('- - - - - - - - - - - -- - - -- - - - -- - - - - - -- ');
-          print(
-              'Front Side Funll Condition ::::: ${isbothScane.value == false && cardScanModel.frontImage == null}');
-          print('Front Side isbothScane val ::::: ${isbothScane.value}');
-          print(
-              'cardScanModel.frontImage val::::: ${cardScanModel.frontImage}');
-          print('**********************************************');
-          print(
-              'Back Side Full Conditionc ::::: ${isbothScane.value == true && cardScanModel.backImage == null}');
-
-          print('Back Side isbothScane val::::: ${isbothScane.value}');
-          print('cardScanModel.backImage val::::: ${cardScanModel.backImage}');
-
           print('- - - - - - - - - - - -- - - -- - - - -- - - - - - -- ');
           final result = await Get.to(() => CardScanner(
                 file: newFile,
@@ -637,7 +641,7 @@ class SvcReqDocsController extends GetxController {
             } else if (!isbothScane.value) {
               docsModel?.docs?[index].loading.value = false;
               cardScanModel = CardScanModel();
-              mergedId = File('');
+              mergedId = null;
               isLoadingForScanning.value = false;
               update();
               SnakBarWidget.getSnackBarError(AppMetaLabels().cardScanningFailed,
@@ -649,7 +653,7 @@ class SvcReqDocsController extends GetxController {
     } else {
       docsModel?.docs?[index].loading.value = false;
       cardScanModel = CardScanModel();
-      mergedId = File('');
+      mergedId = null;
       docsModel?.docs?[index].loading.value = false;
       isLoadingForScanning.value = false;
       isbothScane.value = false;
@@ -672,7 +676,6 @@ class SvcReqDocsController extends GetxController {
                 .getSnackBarErrorBlueRichTExtForPrepareDataAr();
         await Future.delayed(Duration(seconds: 2));
       }
-
       await mergeEmirateIdSides();
       var byteFile;
       if (mergedId != null) {
@@ -982,43 +985,27 @@ class SvcReqDocsController extends GetxController {
     return Uint8List.fromList(encodedImage);
   }
 
-  var frontImageAsFile;
-  var backImageAsFile;
-  var frontImageAsImage;
-  var backImageAsImage;
   Future mergeEmirateIdSides() async {
     try {
       // Decode images using the `image` package
       final front = img.decodeImage(cardScanModel.frontImage!)!;
       final back = img.decodeImage(cardScanModel.backImage!)!;
-      print('After :::::::::: front ******* back ******* image');
-
-      var f1 = convertImageToUint8List(front);
-      var b1 = convertImageToUint8List(back);
-      frontImageAsFile = await convertUint8ListToFile(f1, 'front');
-      backImageAsFile = await convertUint8ListToFile(b1, 'back');
 
       // Create a new image with the combined height and maximum width
-      img.Image mergedImage = img.Image(
-        width: front.width > back.width ? front.width : back.width,
-        height: front.height + back.height,
-      );
-      print('After :::::::::: front ******* back ******* height ------- width');
-      // Draw the front and back image
-
+      final width = front.width > back.width ? front.width : back.width;
+      final height = front.height + back.height;
+      img.Image mergedImage = img.Image(width: width, height: height);
+      // merge both images
       img.compositeImage(mergedImage, front, dstX: 0, dstY: 0);
       img.compositeImage(mergedImage, back, dstX: 0, dstY: back.height);
 
-      print('After :::::::::: Composition :::::::::------*********');
       final byteImage = img.encodePng(mergedImage);
-      print('After :::::::::: byteImage :::::::::------*********');
       final resizedImage = await compressImage(byteImage);
-      print('After :::::::::: resizedImage :::::::::------*********');
-      String path = await saveFile(
-          DocFile(name: 'emirateID', type: '.jpg', file: resizedImage));
-      print('After :::::::::path: $path :::::::::------*********');
+
+      String path = await saveFile(DocFile(
+          name: 'emirateID ${DateTime.now()}', type: '.jpg', file: resizedImage));
+
       mergedId = new File(path);
-      print('After ::::::::mergedId:: $mergedId :::::::::------*********');
     } catch (e) {
       print('Exception :::::: mergeEmirateIdSides $e');
     }
@@ -1087,7 +1074,7 @@ class SvcReqDocsController extends GetxController {
       );
 
       cardScanModel = CardScanModel();
-      mergedId = File('');
+      mergedId = null;
     } catch (e) {
       if (kDebugMode) {
         print(e);
@@ -1113,7 +1100,7 @@ class SvcReqDocsController extends GetxController {
     // DateTime dOB
   ) async {
     try {
-      print('Inside the func');
+      print('Inside the func ::::');
       // docsModel?.docs?[index].loading.value = true;
       docsModel?.docs?[index].errorLoading = false;
       var resp = await TenantRepository.uploadDocWithEIDParameter(
@@ -1129,7 +1116,7 @@ class SvcReqDocsController extends GetxController {
         issueDate,
         dOB,
       );
-      print(resp);
+      print('Inside the func :::: Result ::::********');
       isLoadingForScanning.value = false;
       var id = resp['photoId'];
       docsModel?.docs?[index].id = id;
@@ -1142,7 +1129,7 @@ class SvcReqDocsController extends GetxController {
         AppMetaLabels().fileUploaded,
       );
       cardScanModel = CardScanModel();
-      mergedId = File('');
+      mergedId = null;
     } catch (e) {
       isLoadingForScanning.value = false;
       if (kDebugMode) {
@@ -1178,7 +1165,7 @@ class SvcReqDocsController extends GetxController {
           AppMetaLabels().fileUploaded,
         );
         cardScanModel = CardScanModel();
-        mergedId = File('');
+        mergedId = null;
       } else {
         docsModel?.docs?[index].loading.value = false;
         docsModel?.docs?[index].errorLoading = true;
@@ -1201,7 +1188,7 @@ class SvcReqDocsController extends GetxController {
     docsModel?.docs?[index].size = null;
     docsModel?.docs?[index].expiry = null;
     cardScanModel = CardScanModel();
-    mergedId = File('');
+    mergedId = null;
     docsModel?.docs?[index].update.value = false;
   }
 
