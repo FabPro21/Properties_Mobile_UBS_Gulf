@@ -57,6 +57,54 @@ class SelectRoloesController extends GetxController {
     loadingData.value = false;
   }
 
+  bool isUpdateNeededFuncForIos(String appVersion, String storeVersion) {
+    print('App Version ::1:: $appVersion');
+    print('Stor Version :2: $storeVersion');
+    List<int> parseVersion(String version) {
+      return version.split('.').map(int.parse).toList();
+    }
+
+    List<int> v1Parts = parseVersion(appVersion);
+    List<int> v2Parts = parseVersion(storeVersion);
+
+    print('App Version ::v1Parts:: ${appVersion.length}');
+    print('Stor Version :v2Parts: ${storeVersion.length}');
+    for (int i = 0; i < appVersion.length; i++) {
+      print('App Version ::for:: ${appVersion[i]}');
+    }
+    print('----------------------------');
+    for (int i = 0; i < appVersion.length; i++) {
+      print('Stor Version :for: ${storeVersion[i]}');
+    }
+    print('v1Parts.length: ${v1Parts.length}');
+    print('v2Parts.length: ${v2Parts.length}');
+    print('----------------------------');
+    print(
+        'v1Parts.length: ${v1Parts.length > v2Parts.length ? v1Parts.length : v2Parts.length}');
+    print('----------------------------');
+
+    // Pad the shorter version list with zeros
+    int length =
+        v1Parts.length > v2Parts.length ? v1Parts.length : v2Parts.length;
+    while (v1Parts.length < length) v1Parts.add(0);
+    while (v2Parts.length < length) v2Parts.add(0);
+
+    // Compare versions
+    for (int i = 0; i < length; i++) {
+      print('v1Parts[i]: ${v1Parts[i]}');
+      print('v2Parts[i]: ${v2Parts[i]}');
+      if (v1Parts[i] < v2Parts[i]) {
+        print('v2Parts[i]: ${v2Parts[i]}  true greater');
+        return true;
+      }
+      if (v1Parts[i] > v2Parts[i]) {
+        print('v1Parts[i]: ${v1Parts[i]}  false smaller');
+        return false;
+      }
+    }
+    return false;
+  }
+
   Future<void> compareToken(num) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -187,7 +235,7 @@ class SelectRoloesController extends GetxController {
     await FirebaseMessaging.instance.getToken().then(
       (String? token) {
         assert(token != null);
-        devToken = token??"";
+        devToken = token ?? "";
       },
     );
   }
@@ -217,7 +265,7 @@ class SelectRoloesController extends GetxController {
     try {
       loadingData.value = true;
       var url = AppConfig().proceedToLogin;
-      var result = await BaseClientClass.postwithheader(url??"", data,
+      var result = await BaseClientClass.postwithheader(url ?? "", data,
           token: SessionController().getLoginToken());
       if (result is http.Response) {
         var resp = refreshTokenModelFromJson(result.body);
@@ -231,7 +279,7 @@ class SelectRoloesController extends GetxController {
               'User Role ::::: user type ${(userRoles[i].roleId.toString() == userid)}');
           if (userRoles[i].roleId.toString() == userid) {
             print('User Role ::::: user type ${userRoles[i].userType}');
-            userType = userRoles[i].userType??"";
+            userType = userRoles[i].userType ?? "";
           }
         }
         print('User Type From code $userType');
@@ -272,7 +320,7 @@ class SelectRoloesController extends GetxController {
     try {
       var url = AppConfig().getNewToken;
       var result = await BaseClientClass.postwithheaderwithouttoken(
-        url??"",
+        url ?? "",
         data,
       );
       if (result is http.Response) {

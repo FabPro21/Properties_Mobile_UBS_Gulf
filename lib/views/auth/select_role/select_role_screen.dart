@@ -105,7 +105,13 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // then will move toward AppUpdate where we define the
       // the deatil and update update button set
       // this this this
-      selectRoloesController.initialize();
+      SessionController().storeAppVerison = '1.0.18';
+      appVersion = '1.0.16';
+      var canUpdate = selectRoloesController.isUpdateNeededFuncForIos(
+          SessionController().storeAppVerison ?? '0.0.0', appVersion);
+      print('CanUpdate :::::::: $canUpdate');
+
+      // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
       // if (SessionController().storeAppVerison == appVersion) {
@@ -137,6 +143,22 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      InkWell(
+                          onTap: () {
+                            print('object');
+                            SessionController().storeAppVerison = '1.0.18';
+                            appVersion = '1.0.17';
+                            var canUpdate =
+                                selectRoloesController.isUpdateNeededFuncForIos(
+                              appVersion,
+                              SessionController().storeAppVerison ?? '0.0.0',
+                            );
+                            print('CanUpdate :::::::: $canUpdate');
+                          },
+                          child: Icon(
+                            Icons.abc,
+                            size: 40,
+                          )),
                       Align(
                         alignment: Alignment.topRight,
                         child: TextButton(
