@@ -179,8 +179,12 @@ class UploadDocsController extends GetxController {
       print('*******************=======>');
       print(docs[index].expiry);
       print('<========*******************');
-      var resp = await VendorRepository.uploadFile(caseNo!, docs[index].path??"",
-          docs[index].name??"", docs[index].expiry??"", docs[index].documentTypeId!);
+      var resp = await VendorRepository.uploadFile(
+          caseNo!,
+          docs[index].path ?? "",
+          docs[index].name ?? "",
+          docs[index].expiry ?? "",
+          docs[index].documentTypeId!);
 
       var id = resp['photoId'];
       docs[index].id = id;
@@ -201,8 +205,8 @@ class UploadDocsController extends GetxController {
     try {
       docs[index].loading.value = true;
       docs[index].errorLoading = false;
-      var resp = await VendorRepository.updateFile(
-          docs[index].id??0, docs[index].path??"", docs[index].expiry??"");
+      var resp = await VendorRepository.updateFile(docs[index].id ?? 0,
+          docs[index].path ?? "", docs[index].expiry ?? "");
       if (resp == 200) {
         docs[index].isRejected = false;
 
@@ -243,7 +247,8 @@ class UploadDocsController extends GetxController {
 
   Future<void> downloadDoc(int index) async {
     docs[index].loading.value = true;
-    var resp = await VendorRepository.downloadDoc(caseNo!, 3, docs[index].id??0);
+    var resp =
+        await VendorRepository.downloadDoc(caseNo!, 3, docs[index].id ?? 0);
     docs[index].loading.value = false;
     if (resp is Uint8List) {
       docs[index].file = resp;
@@ -258,10 +263,11 @@ class UploadDocsController extends GetxController {
 
   void showFile(DocFile file) async {
     if (file.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file);
-        file.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file);
+      file.path = path;
+      // }
     }
     OpenFile.open(file.path);
   }

@@ -15,7 +15,7 @@ import 'package:fap_properties/views/tenant/tenant_services_request/tenant_reque
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:image/image.dart' as img;
-import 'package:image_editor_plus/image_editor_plus.dart';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -179,7 +179,7 @@ class SvcReqDocsController extends GetxController {
       var byteFile = await file.readAsBytes();
 
       print('Extension :::::: ${p.extension(result.path)}');
-      Uint8List editedImage;
+      // Uint8List editedImage;
       // if doc's extension will .pdf then will not compress or crop
       // if doc's extension will jpg,png or jpeg then will edit and crop
       if (p.extension(result.path) == 'pdf') {
@@ -187,10 +187,33 @@ class SvcReqDocsController extends GetxController {
       } else {
         print('This is not pdf :::::: ');
         // crop the image
-        editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
-        print('File ::2:::: $byteFile');
+        // editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
       // // crop the image
@@ -263,7 +286,7 @@ class SvcReqDocsController extends GetxController {
       // if file is not empty then
       File file = File(result.files.single.path ?? "");
       var byteFile = await file.readAsBytes();
-      Uint8List editedImage;
+      // Uint8List editedImage;
 
       print('Extension ::::1:: ${result.files[0].extension}');
       // if doc's extension will .pdf then will not compress or crop
@@ -274,9 +297,33 @@ class SvcReqDocsController extends GetxController {
         print('This is not pdf :::::: ');
         print('File :::1::: $byteFile');
         // crop the image
-        editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
+        // editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.files.single.path ?? "", uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
 
@@ -353,9 +400,33 @@ class SvcReqDocsController extends GetxController {
       var byteFile = await file.readAsBytes();
 
       // crop the image
-      final editedImage = await Get.to(() => ImageCropper(
-            image: byteFile,
-          ));
+      // final editedImage = await Get.to(() => ImageCropper(
+      //       image: byteFile,
+      //     ));
+      final crop = await LatestCropper.ImageCropper()
+          .cropImage(sourcePath: result.path, uiSettings: [
+        LatestCropper.AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+          toolbarColor: AppColors.blueColor,
+          toolbarWidgetColor: AppColors.whiteColor,
+          lockAspectRatio: false,
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        ),
+        LatestCropper.IOSUiSettings(
+          title: 'Cropper',
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        )
+      ]);
+
+      print('Edited Image :::::2  crop $crop');
+      var editedImage = await convertCroppedFileToUint8List(crop!);
+      print('Edited Image :::::2  ${(editedImage == null)}');
 
       // compress the image
       byteFile = await compressImage(editedImage);
@@ -398,6 +469,14 @@ class SvcReqDocsController extends GetxController {
   }
 
   RxBool isLoadingForScanning = false.obs;
+
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
 
   final controllerTRDC = Get.find<TenantRequestDetailsController>();
   ImageSource? selectedImageSource;
@@ -445,9 +524,34 @@ class SvcReqDocsController extends GetxController {
         }
       }
 
-      final editedImage = await Get.to(() => ImageCropper(
-            image: photo,
-          ));
+      // final editedImage = await Get.to(() => ImageCropper(
+      //       image: photo,
+      //     ));
+
+      final crop = await LatestCropper.ImageCropper()
+          .cropImage(sourcePath: xfile.path, uiSettings: [
+        LatestCropper.AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+          toolbarColor: AppColors.blueColor,
+          toolbarWidgetColor: AppColors.whiteColor,
+          lockAspectRatio: false,
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        ),
+        LatestCropper.IOSUiSettings(
+          title: 'Cropper',
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        )
+      ]);
+
+      print('Edited Image :::::2  crop $crop');
+      var editedImage = await convertCroppedFileToUint8List(crop!);
+      print('Edited Image :::::2  ${(editedImage == null)}');
       if (editedImage == null) {
         await SnakBarWidget.getSnackBarErrorBlue(
             AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
@@ -455,8 +559,11 @@ class SvcReqDocsController extends GetxController {
         return;
       }
       if (editedImage != null) photo = editedImage;
-
-      if (photo != null && await getStoragePermission()) {
+      print('Edited  photo :::::3  $photo');
+      print('Edited  photo :::::4  ${(photo != null)}');
+      // ###1 permission
+      // if (photo != null && await getStoragePermission()) {
+      if (photo != null) {
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${xfile.path.split('/').last}");
 
@@ -1135,14 +1242,15 @@ class SvcReqDocsController extends GetxController {
           int.parse(caseNo!), 1, docsModel?.docs?[index].id ?? -1);
       print('::::::__>>>>Download<<<<___:::::::');
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          var name = docsModel?.docs?[index].name ?? "";
-          var type = docsModel?.docs?[index].type ?? "";
-          String path = await createFile(result, name + '.' + type);
-          final result1 = await OpenFile.open(path);
-          print('Result 1 :::: 111 :::: 1 1 $result1');
-          isLoadingForScanning.value = false;
-        }
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        var name = docsModel?.docs?[index].name ?? "";
+        var type = docsModel?.docs?[index].type ?? "";
+        String path = await createFile(result, name + '.' + type);
+        final result1 = await OpenFile.open(path);
+        print('Result 1 :::: 111 :::: 1 1 $result1');
+        isLoadingForScanning.value = false;
+        // }
         isLoadingForScanning.value = false;
       } else {
         isLoadingForScanning.value = false;
@@ -1170,28 +1278,29 @@ class SvcReqDocsController extends GetxController {
     print(file?.type ?? "");
     print('********');
     if (file?.path == null) {
-      if (await getStoragePermission()) {
-        var name = file?.name ?? "";
-        var type = file?.type ?? "";
-        String path = await createFile(file?.file, name + '.' + type);
-        try {
-          final result = await OpenFile.open(path);
-          if (result.message != 'done') {
-            Get.snackbar(
-              AppMetaLabels().error,
-              result.message,
-              backgroundColor: AppColors.white54,
-            );
-          }
-        } catch (e) {
-          print(e);
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      var name = file?.name ?? "";
+      var type = file?.type ?? "";
+      String path = await createFile(file?.file, name + '.' + type);
+      try {
+        final result = await OpenFile.open(path);
+        if (result.message != 'done') {
           Get.snackbar(
             AppMetaLabels().error,
-            e.toString(),
+            result.message,
             backgroundColor: AppColors.white54,
           );
         }
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       await OpenFile.open(file?.path);
     }

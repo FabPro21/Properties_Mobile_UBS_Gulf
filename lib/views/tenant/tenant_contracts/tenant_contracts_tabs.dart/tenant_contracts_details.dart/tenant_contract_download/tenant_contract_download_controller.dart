@@ -29,23 +29,24 @@ class ContractDownloadController extends GetxController {
 
     downloading.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, contractNo);
-        if (save) {
-          try {
-            OpenFile.open(path);
-          } catch (e) {
-            print(e);
-            Get.snackbar(
-              AppMetaLabels().error,
-              e.toString(),
-              backgroundColor: AppColors.white54,
-            );
-          }
-        } else {
-          return path;
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, contractNo);
+      if (save) {
+        try {
+          OpenFile.open(path);
+        } catch (e) {
+          print(e);
+          Get.snackbar(
+            AppMetaLabels().error,
+            e.toString(),
+            backgroundColor: AppColors.white54,
+          );
         }
+      } else {
+        return path;
       }
+      // }
     } else {
       print('::::::::: Result ::::::::::');
       print(result);
@@ -79,23 +80,24 @@ class ContractDownloadController extends GetxController {
 
     downloading.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, contractNo);
-        if (save) {
-          try {
-            OpenFile.open(path);
-          } catch (e) {
-            print(e);
-            Get.snackbar(
-              AppMetaLabels().error,
-              e.toString(),
-              backgroundColor: AppColors.white54,
-            );
-          }
-        } else {
-          return path;
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, contractNo);
+      if (save) {
+        try {
+          OpenFile.open(path);
+        } catch (e) {
+          print(e);
+          Get.snackbar(
+            AppMetaLabels().error,
+            e.toString(),
+            backgroundColor: AppColors.white54,
+          );
         }
+      } else {
+        return path;
       }
+      // }
     } else {
       print('::::::::: Result ::::::::::');
       print(result);
@@ -127,19 +129,20 @@ class ContractDownloadController extends GetxController {
 
     downloading.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, contractNo);
-        try {
-          OpenFile.open(path);
-        } catch (e) {
-          print(e);
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, contractNo);
+      try {
+        OpenFile.open(path);
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
       return true;
     } else {
       Get.snackbar(

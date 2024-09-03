@@ -45,7 +45,7 @@ class TenantRequestDetailsController extends GetxController {
     try {
       // 112233 Uploaded Document
       var resp = await VendorRepository.uploadFile(
-          caseNo, report.value.path??"", 'Document', '', 0);
+          caseNo, report.value.path ?? "", 'Document', '', 0);
 
       loadingReport.value = true;
       var id = resp['photoId'];
@@ -81,7 +81,7 @@ class TenantRequestDetailsController extends GetxController {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(allowedExtensions: ['pdf'], type: FileType.custom);
     if (result != null) {
-      File file = File(result.files.single.path??"");
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
       String path = file.path;
       String size = getFileSize(bytesFile);
@@ -100,10 +100,11 @@ class TenantRequestDetailsController extends GetxController {
 
   void showReport() async {
     if (report.value.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveReport();
-        report.value.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveReport();
+      report.value.path = path;
+      // }
     }
     await OpenFile.open(report.value.path);
   }
@@ -319,12 +320,14 @@ class TenantRequestDetailsController extends GetxController {
       //       image: photo,
       //     ));
       // if (editedImage != null) photo = editedImage;
-   
+
       // for testing
       await getFileSizeFromPath(file.path);
 
       String path = file.path;
-      if (photo != null && await getStoragePermission()) {
+      if (photo != null) {
+        // ###1 permission
+        // if (photo != null && await getStoragePermission()) {
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${file.path.split('/').last}");
 
@@ -361,7 +364,7 @@ class TenantRequestDetailsController extends GetxController {
     try {
       var resp = await TenantRepository.uploadFile(
           tenantRequestDetails.value.detail!.caseNo.toString(),
-          photos[index]!.path??"",
+          photos[index]!.path ?? "",
           'Images',
           '',
           '0');
@@ -393,7 +396,7 @@ class TenantRequestDetailsController extends GetxController {
     photos[index]!.errorDownloading = false;
     photos[index]!.downloading.value = true;
     var resp = await TenantRepository.downloadDoc(
-        tenantRequestDetails.value.detail!.caseNo, 1, photos[index]!.id??-1);
+        tenantRequestDetails.value.detail!.caseNo, 1, photos[index]!.id ?? -1);
     photos[index]!.downloading.value = false;
     if (resp is Uint8List) {
       photos[index]!.file = resp;
@@ -405,10 +408,11 @@ class TenantRequestDetailsController extends GetxController {
 
   void showFile(PhotoFile file) async {
     if (file.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file);
-        file.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file);
+      file.path = path;
+      // }
     }
     OpenFile.open(file.path);
   }

@@ -129,7 +129,8 @@ class TenantServiceUpdatesController extends GetxController {
       print('::::::__>>>>Download<<<<___:::::::');
       // ticketReplies!.ticketReply[index].downloadingFile.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
+        // ###1 permission
+        // if (await getStoragePermission()) {
           String path = await createFile(
               result, ticketReplies!.ticketReply![index].fileName ?? "");
           print('Path :::: $path');
@@ -153,7 +154,7 @@ class TenantServiceUpdatesController extends GetxController {
               e.toString(),
               backgroundColor: AppColors.white54,
             );
-          }
+          // }
         }
         ticketReplies!.ticketReply![index].downloadingFile!.value = false;
         isLoadingDownload.value = false;

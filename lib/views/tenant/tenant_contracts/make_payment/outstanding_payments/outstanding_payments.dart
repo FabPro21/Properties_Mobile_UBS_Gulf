@@ -121,7 +121,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppMetaLabels().paymentMethod,
+                            AppMetaLabels().paymentMethod +'',
                             style: AppTextStyle.semiBoldBlack15,
                           ),
                           InkWell(
@@ -2373,7 +2373,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                       children: [
                                         payable.filePath != null
                                             ? Container(
-                                                width: Get.width * 0.67,
+                                                width: Get.width * 0.63,
                                                 child: Row(
                                                   children: [
                                                     TextButton(
@@ -2383,7 +2383,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                         );
                                                       },
                                                       child: SizedBox(
-                                                        width: Get.width * 0.55,
+                                                        width: Get.width * 0.5,
                                                         child: Text(
                                                           payable.filePath!
                                                               .split('/')
@@ -2428,7 +2428,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                             .center,
                                                     children: [
                                                       Container(
-                                                        width: Get.width * 0.67,
+                                                        width: Get.width * 0.63,
                                                         height:
                                                             Get.height * 0.05,
                                                         margin: EdgeInsets.only(
@@ -2488,7 +2488,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                         ),
                                         Spacer(),
                                         SizedBox(
-                                            width: 37.w,
+                                            width: 33.w,
                                             height: 6.h,
                                             child: TextField(
                                               // controller: chequeController,

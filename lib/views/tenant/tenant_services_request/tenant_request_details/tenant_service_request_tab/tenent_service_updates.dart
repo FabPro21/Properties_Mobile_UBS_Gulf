@@ -145,7 +145,7 @@ class _TenantServiceRequestUpdatesState
                                               width: 2.w,
                                             ),
                                             Container(
-                                              width: Get.width * 0.72,
+                                              width: Get.width * 0.71,
                                               child: Text(
                                                 _controller.fileToUpload.value
                                                         .name ??

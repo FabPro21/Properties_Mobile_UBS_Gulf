@@ -59,7 +59,8 @@ dependencies:
   http_proxy: ^1.2.2
   image: ^4.2.0 # if create any issue the will use 4.0.7
   image_collage: ^0.0.4
-  image_editor_plus: any #^1.0.6 #^1.0.6
+  image_editor_plus: ^1.0.6 #^1.0.6
+  image_cropper: ^8.0.2
   image_picker: ^1.1.2
   intl: ^0.19.0
   keyboard_actions: ^4.2.0
@@ -80,7 +81,6 @@ dependencies:
   shared_preferences: ^2.3.2
   shimmer: ^3.0.0
   signature: ^5.5.0
-
   smooth_star_rating_null_safety: ^1.0.4+2
   syncfusion_flutter_charts: ^26.2.11
   syncfusion_flutter_datepicker: ^26.2.11

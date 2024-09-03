@@ -112,14 +112,14 @@ class VendorInvoiceDocsController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path??"");
+        File file = File(result.files.single.path ?? "");
         var byteFile = await file.readAsBytes();
 
         Uint8List editedImage;
         // if doc's extension will .pdf then will not compress or crop
         // if doc's extension will jpg,png or jpeg then will edit and crop
-        if (p.extension(result.files.single.path??"") == 'pdf' ||
-            p.extension(result.files.single.path??"") == '.pdf') {
+        if (p.extension(result.files.single.path ?? "") == 'pdf' ||
+            p.extension(result.files.single.path ?? "") == '.pdf') {
         } else {
           // crop the image
           editedImage = await Get.to(() => ImageCropper(
@@ -148,7 +148,7 @@ class VendorInvoiceDocsController extends GetxController {
             ? docs[index].name ?? ""
             : docs[index].nameAr ?? "";
         File fileNew = await File(
-                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path??"")}')
+                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path ?? "")}')
             .create();
 
         // controller.docs[index].path
@@ -260,10 +260,10 @@ class VendorInvoiceDocsController extends GetxController {
       isEnableScreen.value = false;
       var resp = await VendorRepository.uploadFileInvoiceSR(
           caseNo,
-          docs[index].path??"",
-          docs[index].name??"",
+          docs[index].path ?? "",
+          docs[index].name ?? "",
           '',
-          docs[index].documentTypeId??0,
+          docs[index].documentTypeId ?? 0,
           reqID);
       var id = resp['photoId'];
       docs[index].id = id;
@@ -294,7 +294,7 @@ class VendorInvoiceDocsController extends GetxController {
       docs[index].errorLoading = false;
       isEnableScreen.value = false;
       var resp = await VendorRepository.updateFile(
-          docs[index].id??0, docs[index].path??"", '');
+          docs[index].id ?? 0, docs[index].path ?? "", '');
       if (resp == 200) {
         docs[index].isRejected = false;
         enableSubmitButton();
@@ -342,7 +342,8 @@ class VendorInvoiceDocsController extends GetxController {
     docs[index].loading.value = true;
     isEnableScreen.value = false;
 
-    var resp = await VendorRepository.downloadDoc(caseNo, 3, docs[index].id??0);
+    var resp =
+        await VendorRepository.downloadDoc(caseNo, 3, docs[index].id ?? 0);
     docs[index].loading.value = false;
     if (resp is Uint8List) {
       if (!docs[index].isRejected!) docs[index].file = resp;
@@ -357,10 +358,11 @@ class VendorInvoiceDocsController extends GetxController {
 
   void showFile(DocFile file) async {
     if (file.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file);
-        file.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file);
+      file.path = path;
+      // }
     }
     OpenFile.open(file.path);
   }

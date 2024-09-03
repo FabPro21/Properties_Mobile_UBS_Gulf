@@ -10,8 +10,7 @@ import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
-
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -172,15 +171,17 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorDownloadingCheque = false;
     payable.downloadingCheque.value = true;
     final response =
-        await TenantRepository.downloadCheque(payable.paymentSettingId??-1);
+        await TenantRepository.downloadCheque(payable.paymentSettingId ?? -1);
     print('Response :::::: $response');
     if (response is DownloadChequeModel) {
-      var base64DecodeAble = base64Decode(response.cheque!.replaceAll('\n', ''));
+      var base64DecodeAble =
+          base64Decode(response.cheque!.replaceAll('\n', ''));
       showFile(payable, base64DecodeAble,
           'cheque${payable.contractPaymentId}${response.chequeName}');
     } else {
       payable.errorDownloadingCheque = true;
-      SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
+      SnakBarWidget.getSnackBarErrorBlue(
+          AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
     }
     payable.downloadingCheque.value = false;
   }
@@ -294,6 +295,14 @@ class OutstandingPaymentsController extends GetxController {
     print(chequesToShowAddress);
   }
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   Future<void> pickDoc(Record payable) async {
     XFile? xfile;
     try {
@@ -317,9 +326,35 @@ class OutstandingPaymentsController extends GetxController {
           'Size of file Before Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
+
         photo = editedImage;
 
         photo = await compressImage(photo);
@@ -375,21 +410,47 @@ class OutstandingPaymentsController extends GetxController {
     }
     if (xfile != null) {
       Uint8List photo = await xfile.readAsBytes();
+      print(
+          'Size of file Before Compress 11::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         photo = editedImage;
-        print('editedImage Path ::::::::: before store $editedImage ');
+        print('editedImage Path 22::::::::: before store $editedImage ');
         print(
-            'Size of file Before Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
+            'Size of file Before Compress 33::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
         photo = await compressImage(photo);
 
         // checking file size EID
         print(
-            'Size of file After Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
+            'Size of file After Compress 44::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
         var size = CheckFileExtenstion().getFileSize(photo).split(' ')[0];
         var extension = CheckFileExtenstion().getFileSize(photo).split(' ')[1];
         if (extension.contains('MB')) {
@@ -401,6 +462,7 @@ class OutstandingPaymentsController extends GetxController {
             return;
           }
         }
+        print('Selecte Path :::::::::55 after store  ');
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${xfile.path.split('/').last}");
         if (newFile != null) {
@@ -424,7 +486,7 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorRemovingCheque.value = false;
     payable.removingCheque.value = true;
     final response =
-        await TenantRepository.removeCheque(payable.paymentSettingId??-1);
+        await TenantRepository.removeCheque(payable.paymentSettingId ?? -1);
     payable.removingCheque.value = false;
     if (response == 200) {
       payable.filePath = null;
@@ -538,12 +600,13 @@ class OutstandingPaymentsController extends GetxController {
   void showFile(Record payable, Uint8List file, String name) async {
     print('Payable File Path :::: ${payable.filePath}');
     if (payable.filePath == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file, name);
-        payable.filePath = path;
-        print('Payable File Path :::: ${payable.filePath}');
-        OpenFile.open(path);
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file, name);
+      payable.filePath = path;
+      print('Payable File Path :::: ${payable.filePath}');
+      OpenFile.open(path);
+      // }
     } else {
       OpenFile.open(payable.filePath);
     }

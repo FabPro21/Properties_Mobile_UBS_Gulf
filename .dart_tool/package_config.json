@@ -680,6 +680,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "image_cropper",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_cropper-8.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "image_cropper_for_web",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_cropper_for_web-6.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "image_cropper_platform_interface",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_cropper_platform_interface-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "image_editor_plus",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_editor_plus-1.0.6",
       "packageUri": "lib/",
@@ -1478,7 +1496,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-09-02T13:00:36.441686Z",
+  "generated": "2024-09-03T06:16:10.006839Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///Users/mapmac/FlutterDev/flutter",

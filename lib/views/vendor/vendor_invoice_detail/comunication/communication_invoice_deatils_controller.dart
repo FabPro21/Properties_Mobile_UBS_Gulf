@@ -23,7 +23,7 @@ class CommunicationInvoiceController extends GetxController {
   String? reqNo;
   RxBool? gettingReplies = false.obs;
   String? errorGettingReplies = '';
-  GetTicketRepliesModel?ticketReplies;
+  GetTicketRepliesModel? ticketReplies;
 
   RxBool typing = false.obs;
   RxBool addingReply = false.obs;
@@ -74,7 +74,7 @@ class CommunicationInvoiceController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await VendorRepository.addTicketReply(
-        reqNo, message, fileToUpload.value.path??"");
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies!.value = true;
@@ -107,31 +107,32 @@ class CommunicationInvoiceController extends GetxController {
     } else {
       ticketReplies!.ticketReply![index].downloadingFile!.value = true;
       var result = await VendorRepository.downloadTicketFile(
-          ticketReplies!.ticketReply![index].ticketReplyId??0);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? 0);
       print('::::::__>>>>Download<<<<___::::1:::');
       ticketReplies!.ticketReply![index].downloadingFile!.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          String path = await createFile(
-              result, ticketReplies!.ticketReply![index].fileName??"");
-          print('Path :::: $path');
-          try {
-            final result = await OpenFile.open(path);
-            if (result.message != 'done') {
-              SnakBarWidget.getSnackBarErrorBlue(
-                AppMetaLabels().error,
-                result.message,
-              );
-            }
-          } catch (e) {
-            print(e);
-
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        String path = await createFile(
+            result, ticketReplies!.ticketReply![index].fileName ?? "");
+        print('Path :::: $path');
+        try {
+          final result = await OpenFile.open(path);
+          if (result.message != 'done') {
             SnakBarWidget.getSnackBarErrorBlue(
               AppMetaLabels().error,
-              e.toString(),
+              result.message,
             );
           }
+        } catch (e) {
+          print(e);
+
+          SnakBarWidget.getSnackBarErrorBlue(
+            AppMetaLabels().error,
+            e.toString(),
+          );
         }
+        // }
       } else {
         SnakBarWidget.getSnackBarErrorBlue(
           AppMetaLabels().error,
@@ -155,7 +156,7 @@ class CommunicationInvoiceController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path??"");
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // 112233 checking file size file
