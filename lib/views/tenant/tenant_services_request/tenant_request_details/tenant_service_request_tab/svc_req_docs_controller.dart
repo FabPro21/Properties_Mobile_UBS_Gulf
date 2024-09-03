@@ -15,7 +15,7 @@ import 'package:fap_properties/views/tenant/tenant_services_request/tenant_reque
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:image/image.dart' as img;
-import 'package:image_editor_plus/image_editor_plus.dart';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -179,7 +179,7 @@ class SvcReqDocsController extends GetxController {
       var byteFile = await file.readAsBytes();
 
       print('Extension :::::: ${p.extension(result.path)}');
-      Uint8List editedImage;
+      // Uint8List editedImage;
       // if doc's extension will .pdf then will not compress or crop
       // if doc's extension will jpg,png or jpeg then will edit and crop
       if (p.extension(result.path) == 'pdf') {
@@ -187,10 +187,33 @@ class SvcReqDocsController extends GetxController {
       } else {
         print('This is not pdf :::::: ');
         // crop the image
-        editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
-        print('File ::2:::: $byteFile');
+        // editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
       // // crop the image
@@ -263,7 +286,7 @@ class SvcReqDocsController extends GetxController {
       // if file is not empty then
       File file = File(result.files.single.path ?? "");
       var byteFile = await file.readAsBytes();
-      Uint8List editedImage;
+      // Uint8List editedImage;
 
       print('Extension ::::1:: ${result.files[0].extension}');
       // if doc's extension will .pdf then will not compress or crop
@@ -274,9 +297,33 @@ class SvcReqDocsController extends GetxController {
         print('This is not pdf :::::: ');
         print('File :::1::: $byteFile');
         // crop the image
-        editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
+        // editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.files.single.path ?? "", uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        print('Edited Image :::::2  crop $crop');
+        var editedImage = await convertCroppedFileToUint8List(crop!);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         byteFile = await compressImage(editedImage);
       }
 
@@ -353,9 +400,33 @@ class SvcReqDocsController extends GetxController {
       var byteFile = await file.readAsBytes();
 
       // crop the image
-      final editedImage = await Get.to(() => ImageCropper(
-            image: byteFile,
-          ));
+      // final editedImage = await Get.to(() => ImageCropper(
+      //       image: byteFile,
+      //     ));
+      final crop = await LatestCropper.ImageCropper()
+          .cropImage(sourcePath: result.path, uiSettings: [
+        LatestCropper.AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+          toolbarColor: AppColors.blueColor,
+          toolbarWidgetColor: AppColors.whiteColor,
+          lockAspectRatio: false,
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        ),
+        LatestCropper.IOSUiSettings(
+          title: 'Cropper',
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        )
+      ]);
+
+      print('Edited Image :::::2  crop $crop');
+      var editedImage = await convertCroppedFileToUint8List(crop!);
+      print('Edited Image :::::2  ${(editedImage == null)}');
 
       // compress the image
       byteFile = await compressImage(editedImage);
@@ -398,6 +469,14 @@ class SvcReqDocsController extends GetxController {
   }
 
   RxBool isLoadingForScanning = false.obs;
+
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
 
   final controllerTRDC = Get.find<TenantRequestDetailsController>();
   ImageSource? selectedImageSource;
@@ -445,10 +524,33 @@ class SvcReqDocsController extends GetxController {
         }
       }
 
-      final editedImage = await Get.to(() => ImageCropper(
-            image: photo,
-          ));
-      print('Edited Image :::::1  $editedImage');
+      // final editedImage = await Get.to(() => ImageCropper(
+      //       image: photo,
+      //     ));
+
+      final crop = await LatestCropper.ImageCropper()
+          .cropImage(sourcePath: xfile.path, uiSettings: [
+        LatestCropper.AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+          toolbarColor: AppColors.blueColor,
+          toolbarWidgetColor: AppColors.whiteColor,
+          lockAspectRatio: false,
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        ),
+        LatestCropper.IOSUiSettings(
+          title: 'Cropper',
+          aspectRatioPresets: [
+            LatestCropper.CropAspectRatioPreset.original,
+            LatestCropper.CropAspectRatioPreset.square,
+          ],
+        )
+      ]);
+
+      print('Edited Image :::::2  crop $crop');
+      var editedImage = await convertCroppedFileToUint8List(crop!);
       print('Edited Image :::::2  ${(editedImage == null)}');
       if (editedImage == null) {
         await SnakBarWidget.getSnackBarErrorBlue(

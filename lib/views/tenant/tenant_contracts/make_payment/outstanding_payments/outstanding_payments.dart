@@ -121,7 +121,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppMetaLabels().paymentMethod,
+                            AppMetaLabels().paymentMethod +'',
                             style: AppTextStyle.semiBoldBlack15,
                           ),
                           InkWell(
