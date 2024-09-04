@@ -11,7 +11,7 @@ name: fap_properties
 description: A new Flutter project.
 publish_to: "none"
 
-version: 1.0.18+34
+version: 1.0.18+35
 
 environment:
   sdk: ">=2.17.0 <3.0.0"

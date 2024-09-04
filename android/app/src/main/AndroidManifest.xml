@@ -19,7 +19,7 @@
     android:fullBackupOnly="false"
     android:label="FAB Properties"
     android:icon="@mipmap/ic_launcher"
-    android:usesCleartextTraffic="true"
+    android:usesCleartextTraffic="false"
     android:extractNativeLibs="true">
 
     <provider
@@ -63,7 +63,8 @@
       android:grantUriPermissions="true">
       <meta-data
         android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
+        android:resource="@xml/file_paths"
+        android:networkSecurityConfig="@xml/network_security_config" />
       <meta-data
         android:name="firebasePhoneAuthenticationRecaptchaEnabled"
         android:value="false" />

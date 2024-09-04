@@ -45,6 +45,7 @@ class GetLanguageController extends GetxController {
       var result = await CommonRepository.getLanguage();
       loadingData.value = false;
       if (result is GetLanguagesModel) {
+        error.value = '';
         _langSelected = true;
         model.value = result;
         selectedLang.value =
