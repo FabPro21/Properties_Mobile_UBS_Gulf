@@ -9,11 +9,12 @@ import 'package:fap_properties/data/repository/vendor_repository.dart';
 import 'package:fap_properties/utils/constants/check_file_extension.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/image_compress.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
@@ -88,6 +89,14 @@ class UploadDocsController extends GetxController {
     docs[index].removing.value = false;
   }
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   // vendor Doc
   pickDoc(int index) async {
     docs[index].update.value = true;
@@ -119,10 +128,42 @@ class UploadDocsController extends GetxController {
         print('This is pdf :::::: ');
       } else {
         print('This is not pdf :::::: ');
+
         // crop the image
-        editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
+        // editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.files.single.path ?? "", uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        if (crop == null) {
+          docs[index].update.value = false;
+          return;
+        }
+        
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
+
         byteFile = await compressImage(editedImage);
       }
 

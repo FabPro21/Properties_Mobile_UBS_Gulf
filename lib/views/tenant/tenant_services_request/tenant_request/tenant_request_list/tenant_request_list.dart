@@ -1219,6 +1219,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                   readOnly: true,
                                   onTap: () async {
                                     final dT = await showRoundedDatePicker(
+                                      theme: ThemeData(
+                                          primaryColor: AppColors.blueColor),
                                       height: 50.0.h,
                                       context: context,
                                       // locale: Locale('en'),
@@ -1288,6 +1290,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                   readOnly: true,
                                   onTap: () async {
                                     final dT = await showRoundedDatePicker(
+                                      theme: ThemeData(
+                                          primaryColor: AppColors.blueColor),
                                       height: 50.0.h,
                                       context: context,
                                       // locale: Locale('en'),
@@ -1543,9 +1547,8 @@ class ServiceRequestsList extends StatelessWidget {
                 );
                 Get.to(
                   () => TenantServiceRequestTabs(
-                    requestNo: serviceRequests?[index].requestNo.toString(),
-                    title: serviceRequests?[index].caseType,
-                    caller: 'ServiceRequestTab',
+                    requestNo: serviceRequests![index].requestNo.toString(),
+                    title: serviceRequests![index].caseType ?? "",
                   ),
                 );
               },
@@ -1589,7 +1592,7 @@ class ServiceRequestsList extends StatelessWidget {
                             child: Text(
                               SessionController().getLanguage() == 1
                                   ? serviceRequests![index].propertyName ?? ""
-                                  : serviceRequests?[index].propertyNameAr ??
+                                  : serviceRequests![index].propertyNameAr ??
                                       "",
                               style: AppTextStyle.normalGrey10,
                             ),
@@ -1615,8 +1618,8 @@ class ServiceRequestsList extends StatelessWidget {
                                 : StatusWidget(
                                     text: SessionController().getLanguage() == 1
                                         ? serviceRequests![index].status ??
-                                            "" + ''
-                                        : serviceRequests?[index].statusAR ??
+                                            "" + ' '
+                                        : serviceRequests![index].statusAR ??
                                             '',
                                     valueToCompare:
                                         serviceRequests?[index].status,

@@ -1385,6 +1385,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                               .invoiceDateError.value = '';
                                           var expDate;
                                           expDate = await showRoundedDatePicker(
+                                            theme: ThemeData(
+                                                primaryColor:
+                                                    AppColors.blueColor),
                                             height: 50.0.h,
                                             context: context,
                                             // locale: Locale('en'),
@@ -1693,6 +1696,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                             var expDate;
                                             expDate =
                                                 await showRoundedDatePicker(
+                                              theme: ThemeData(
+                                                  primaryColor:
+                                                      AppColors.blueColor),
                                               height: 50.0.h,
                                               context: context,
                                               // locale: Locale('en'),

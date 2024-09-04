@@ -267,8 +267,9 @@ class SelectRoloesController extends GetxController {
           }
         }
         print('User Type From code $userType');
-        // ### SelectRole1
-        SessionController().vendorUserType = userType;
+        // ###1 SessionController().vendorUserType
+        // SessionController().vendorUserType = userType;
+        SessionController().vendorUserType = 'lll';
 
         print('User Type From Session ${SessionController().vendorUserType}');
         SessionController().setToken(resp.token);

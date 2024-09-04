@@ -1,9 +1,19 @@
 #  /* Note */
+<<<<<<< HEAD
 #  For Production (Renew  and Offer Letter)
 #  For Production (Leasing)
 #  remove +92
 #  SelectRole1
 #  Production // For url
+=======
+#  // =====================>
+#  // // For Production (Renew  and Offer Letter)
+#  // =====================>
+#  // // For Production (Leasing)
+#  // =====================>
+# // // remove +92
+###1 SessionController().vendorUserType
+>>>>>>> 9badbc2fb9babeef92f971f5f5a991eb139cfcc0
 # Must check both places before going the live
 
 name: fap_properties

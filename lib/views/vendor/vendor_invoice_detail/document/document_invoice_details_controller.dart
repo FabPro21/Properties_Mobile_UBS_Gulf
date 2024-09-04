@@ -8,11 +8,11 @@ import 'package:fap_properties/data/repository/vendor_repository.dart';
 import 'package:fap_properties/utils/constants/check_file_extension.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/image_compress.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/vendor/vendor_invoice_detail/vendor_invoice_details_controller.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -20,6 +20,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 
 class VendorInvoiceDocsController extends GetxController {
   VendorInvoiceDocsController({this.caseNo});
@@ -88,6 +89,14 @@ class VendorInvoiceDocsController extends GetxController {
 
   int selectedIndexForUploadedDocument = -1;
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   //  select from gallery
   pickDoc(int index, BuildContext context) async {
     try {
@@ -122,9 +131,41 @@ class VendorInvoiceDocsController extends GetxController {
             p.extension(result.files.single.path ?? "") == '.pdf') {
         } else {
           // crop the image
-          editedImage = await Get.to(() => ImageCropper(
-                image: byteFile,
-              ));
+          // editedImage = await Get.to(() => ImageCropper(
+          //       image: byteFile,
+          //     ));
+
+          final crop = await LatestCropper.ImageCropper().cropImage(
+              sourcePath: result.files.single.path ?? "",
+              uiSettings: [
+                LatestCropper.AndroidUiSettings(
+                  toolbarTitle: 'Cropper',
+                  toolbarColor: AppColors.blueColor,
+                  toolbarWidgetColor: AppColors.whiteColor,
+                  lockAspectRatio: false,
+                  aspectRatioPresets: [
+                    LatestCropper.CropAspectRatioPreset.original,
+                    LatestCropper.CropAspectRatioPreset.square,
+                  ],
+                ),
+                LatestCropper.IOSUiSettings(
+                  title: 'Cropper',
+                  aspectRatioPresets: [
+                    LatestCropper.CropAspectRatioPreset.original,
+                    LatestCropper.CropAspectRatioPreset.square,
+                  ],
+                )
+              ]);
+
+          if (crop == null) {
+            docs[index].update.value = false;
+            return;
+          }
+
+          print('Edited Image :::::2  crop $crop');
+          editedImage = await convertCroppedFileToUint8List(crop);
+          print('Edited Image :::::2  ${(editedImage == null)}');
+
           byteFile = await compressImage(editedImage);
         }
         var size = CheckFileExtenstion().getFileSize(byteFile).split(' ')[0];
@@ -194,9 +235,40 @@ class VendorInvoiceDocsController extends GetxController {
         var byteFile = await file.readAsBytes();
 
         // crop the image
-        final editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+
+        var editedImage;
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        if (crop == null) {
+          docs[index].update.value = false;
+          return;
+        }
+
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
 
         // compress the image
         byteFile = await compressImage(editedImage);

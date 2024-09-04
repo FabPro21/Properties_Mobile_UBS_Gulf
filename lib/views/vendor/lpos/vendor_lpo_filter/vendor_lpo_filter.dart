@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/vendor_models/get_lpo_status_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/lpos/vendor_lpo_filter/vendor_filter_lpo_status/vendor_filter_lpos_status.dart';
@@ -193,6 +194,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
@@ -292,6 +295,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
