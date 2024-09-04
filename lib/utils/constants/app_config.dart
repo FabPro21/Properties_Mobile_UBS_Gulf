@@ -472,26 +472,26 @@ class AppConfig {
     //     'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
 
     // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
-    baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
-    commonAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
-    publicAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
-    tenantAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
-    appConfigVendor =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
-    landlordAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
+    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
+    // commonAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+    // publicAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+    // tenantAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+    // appConfigVendor =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+    // landlordAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
 
 ///////////////////////////////////////////////////////////////////////////
-    // Production
-    // baseUrl = 'https://landlord.fabproperties.ae';
-    // commonAppConfig = 'https://landlord.fabproperties.ae/auth01/api/';
-    // publicAppConfig = 'https://landlord.fabproperties.ae/public/';
-    // tenantAppConfig = 'https://landlord.fabproperties.ae/tenant01/api/';
-    // appConfigVendor = 'https://landlord.fabproperties.ae/vendor01/api/';
-    // landlordAppConfig = 'https://landlord.fabproperties.ae/landlord/api/';
+    //  Production // For url
+    baseUrl = 'https://landlord.fabproperties.ae';
+    commonAppConfig = 'https://landlord.fabproperties.ae/auth01/api/';
+    publicAppConfig = 'https://landlord.fabproperties.ae/public/';
+    tenantAppConfig = 'https://landlord.fabproperties.ae/tenant01/api/';
+    appConfigVendor = 'https://landlord.fabproperties.ae/vendor01/api/';
+    landlordAppConfig = 'https://landlord.fabproperties.ae/landlord/api/';
 
     // Internal Testing
 ///////////////////////////////////////////////////////////////////////////

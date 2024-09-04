@@ -1,5 +1,5 @@
-// // // =====================>
-// // // // For uat (Maintaince)
+// // // // =====================>
+// // // // // For uat (Maintaince)
 // import 'package:fap_properties/data/helpers/session_controller.dart';
 // import 'package:fap_properties/utils/constants/assets_path.dart';
 // import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -67,7 +67,7 @@
 //                   ),
 //                   Spacer(),
 //                   Text(
-//                     AppMetaLabels().serviceRequests?,
+//                     AppMetaLabels().serviceRequests,
 //                     style: AppTextStyle.semiBoldWhite15,
 //                   ),
 //                   Spacer(),
@@ -692,7 +692,7 @@
 //                   ),
 //                 )
 //               : ServiceRequestsList(
-//                   serviceRequests?: getTSRController.serviceRequestsFM,
+//                   serviceRequests: getTSRController.serviceRequestsFM,
 //                   type: 'FM',
 //                 );
 //     });
@@ -728,7 +728,7 @@
 //                   ),
 //                 )
 //               : ServiceRequestsList(
-//                   serviceRequests?: getTSRController.serviceRequestsPM,
+//                   serviceRequests: getTSRController.serviceRequestsPM,
 //                   type: 'PM',
 //                 );
 //     });
@@ -737,8 +737,8 @@
 
 // class ServiceRequestsList extends StatelessWidget {
 //   final String? type;
-//   final List<ServiceRequest>? serviceRequests?;
-//   const ServiceRequestsList({Key? key, this.serviceRequests?, this.type})
+//   final List<ServiceRequest>? serviceRequests;
+//   const ServiceRequestsList({Key? key, this.serviceRequests, this.type})
 //       : super(key: key);
 
 //   @override
@@ -746,19 +746,19 @@
 //     return ListView.builder(
 //         padding: EdgeInsets.zero,
 //         shrinkWrap: true,
-//         itemCount: serviceRequests?!.length,
+//         itemCount: serviceRequests?.length,
 //         itemBuilder: (context, index) {
 //           return Padding(
 //             padding: EdgeInsets.only(left: 2.0.h, right: 1.0.h),
 //             child: InkWell(
 //               onTap: () {
 //                 SessionController().setCaseNo(
-//                   serviceRequests?![index].requestNo.toString(),
+//                   serviceRequests?[index].requestNo.toString(),
 //                 );
 //                 Get.to(
 //                   () => TenantServiceRequestTabs(
-//                     requestNo: serviceRequests?![index].requestNo.toString(),
-//                     title: serviceRequests?![index].caseType??"",
+//                     requestNo: serviceRequests?[index].requestNo.toString(),
+//                     title: serviceRequests?[index].caseType??"",
 //                   ),
 //                 );
 //               },
@@ -775,13 +775,13 @@
 //                           children: [
 //                             Text(
 //                               SessionController().getLanguage() == 1
-//                                   ? serviceRequests?![index].category ?? ""
-//                                   : serviceRequests?![index].categoryAR ?? "",
+//                                   ? serviceRequests![index].category ?? ""
+//                                   : serviceRequests?[index].categoryAR ?? "",
 //                               style: AppTextStyle.semiBoldGrey10,
 //                             ),
 //                             Spacer(),
 //                             Text(
-//                               serviceRequests?![index].requestNo.toString(),
+//                               serviceRequests![index].requestNo.toString(),
 //                               style: AppTextStyle.semiBoldGrey10,
 //                             ),
 //                           ],
@@ -791,23 +791,23 @@
 //                         ),
 //                         Text(
 //                           SessionController().getLanguage() == 1
-//                               ? serviceRequests?![index].subCategory ?? ""
-//                               : serviceRequests?![index].subCategoryAR ?? "",
+//                               ? serviceRequests![index].subCategory ?? ""
+//                               : serviceRequests?[index].subCategoryAR ?? "",
 //                           style: AppTextStyle.normalGrey10,
 //                         ),
-//                         if (serviceRequests?![index].propertyName != null)
+//                         if (serviceRequests?[index].propertyName != null)
 //                           Padding(
 //                             padding: EdgeInsets.only(top: 1.0.h),
 //                             child: Text(
 //                               SessionController().getLanguage() == 1
-//                                   ? serviceRequests?![index].propertyName ?? ""
-//                                   : serviceRequests?![index].propertyNameAr ?? "",
+//                                   ? serviceRequests![index].propertyName ?? ""
+//                                   : serviceRequests?[index].propertyNameAr ?? "",
 //                               style: AppTextStyle.normalGrey10,
 //                             ),
 //                           ),
-//                         if (serviceRequests?![index].unitRefNo != null)
+//                         if (serviceRequests?[index].unitRefNo != null)
 //                           Text(
-//                             serviceRequests?![index].unitRefNo ?? '',
+//                             serviceRequests?[index].unitRefNo ?? '',
 //                             style: AppTextStyle.semiBoldGrey10,
 //                           ),
 //                         SizedBox(
@@ -816,25 +816,25 @@
 //                         Row(
 //                           children: [
 //                             Text(
-//                               serviceRequests?![index].date ?? "",
+//                               serviceRequests?[index].date ?? "",
 //                               style: AppTextStyle.semiBoldGrey10,
 //                             ),
 //                             Spacer(),
-//                             serviceRequests?![index].status == ''
+//                             serviceRequests?[index].status == ''
 //                                 ? SizedBox()
 //                                 : StatusWidget(
 //                                     text: SessionController().getLanguage() == 1
-//                                         ? serviceRequests?![index].status??"" + ' '
-//                                         : serviceRequests?![index].statusAR ?? '',
+//                                         ? serviceRequests![index].status??"" + ' '
+//                                         : serviceRequests?[index].statusAR ?? '',
 //                                     valueToCompare:
-//                                         serviceRequests?![index].status,
+//                                         serviceRequests?[index].status,
 //                                   )
 //                           ],
 //                         ),
 //                         SizedBox(
 //                           height: 1.0.h,
 //                         ),
-//                         index == serviceRequests?!.length - 1
+//                         index == serviceRequests!.length - 1
 //                             ? Container()
 //                             : AppDivider(),
 //                       ],

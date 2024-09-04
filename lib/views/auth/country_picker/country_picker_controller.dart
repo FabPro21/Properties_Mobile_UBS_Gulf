@@ -36,6 +36,7 @@ class CountryPickerController extends GetxController {
       loadingData.value = false;
       if (result is CountryPickerModel) {
         countryPicker.value = result;
+        // remove +92
         // adding this
         // countryPicker.value.countries!.add(Country(
         //   countryId: 1,

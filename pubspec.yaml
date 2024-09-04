@@ -2,16 +2,15 @@
 #  For Production (Renew  and Offer Letter)
 #  For Production (Leasing)
 #  remove +92
-#  for app update
-#  should uncomment the below lines
 #  SelectRole1
+#  Production // For url
 # Must check both places before going the live
 
 name: fap_properties
 description: A new Flutter project.
 publish_to: "none"
 
-version: 1.0.18+35
+version: 1.0.18+36
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
