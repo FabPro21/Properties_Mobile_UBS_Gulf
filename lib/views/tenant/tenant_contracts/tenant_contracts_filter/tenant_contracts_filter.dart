@@ -285,6 +285,8 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                             InkWell(
                               onTap: () async {
                                 var dT = await showRoundedDatePicker(
+                                  theme: ThemeData(
+                                      primaryColor: AppColors.blueColor),
                                   height: 50.0.h,
                                   context: context,
                                   // locale: Locale('en'),
@@ -388,6 +390,8 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                             InkWell(
                               onTap: () async {
                                 var dT = await showRoundedDatePicker(
+                                  theme: ThemeData(
+                                      primaryColor: AppColors.blueColor),
                                   height: 50.0.h,
                                   context: context,
                                   // locale: Locale('en'),

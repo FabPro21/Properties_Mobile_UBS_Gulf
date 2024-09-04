@@ -59,10 +59,14 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
   initForSetState() {
     setState(() {
       print('testing ::::');
-      lDReportController.selectedPropType.value = dropDownModel.ServiceRequests();
-      lDReportController.selectedcontractorType.value = dropDownModel.ServiceRequests();
-      lDReportController.selectedcontractCategoryType.value = dropDownModel.ServiceRequests();
-      lDReportController.selectedserviceContractStatusType.value = dropDownModel.ServiceRequests();
+      lDReportController.selectedPropType.value =
+          dropDownModel.ServiceRequests();
+      lDReportController.selectedcontractorType.value =
+          dropDownModel.ServiceRequests();
+      lDReportController.selectedcontractCategoryType.value =
+          dropDownModel.ServiceRequests();
+      lDReportController.selectedserviceContractStatusType.value =
+          dropDownModel.ServiceRequests();
       // lDReportController.selectedPropType.value = null;
       // lDReportController.selectedcontractorType.value = null;
       // lDReportController.selectedcontractCategoryType.value = null;
@@ -149,7 +153,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                 child: Column(
                   children: [
                     CustomAppBar2(
-                      title: widget.fileNmae??"",
+                      title: widget.fileNmae ?? "",
                       // title: AppMetaLabels().report,
                     ),
                     Padding(
@@ -296,8 +300,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               clear: () {
                                                 setState(() {
                                                   lDReportController
-                                                      .selectedPropType
-                                                      .value = dropDownModel.ServiceRequests();;
+                                                          .selectedPropType
+                                                          .value =
+                                                      dropDownModel
+                                                          .ServiceRequests();
+                                                  ;
                                                 });
                                               },
                                             ),
@@ -410,8 +417,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         clear: () {
                                                           setState(() {
                                                             lDReportController
-                                                                .selectedChequeStatus
-                                                                .value = dropDownModel.ServiceRequests();;
+                                                                    .selectedChequeStatus
+                                                                    .value =
+                                                                dropDownModel
+                                                                    .ServiceRequests();
+                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -510,8 +520,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         clear: () {
                                                           setState(() {
                                                             lDReportController
-                                                                .selectedUnitStatus
-                                                                .value = dropDownModel.ServiceRequests();;
+                                                                    .selectedUnitStatus
+                                                                    .value =
+                                                                dropDownModel
+                                                                    .ServiceRequests();
+                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -625,8 +638,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         clear: () {
                                                           setState(() {
                                                             lDReportController
-                                                                .selectedcontractorType
-                                                                .value = dropDownModel.ServiceRequests();;
+                                                                    .selectedcontractorType
+                                                                    .value =
+                                                                dropDownModel
+                                                                    .ServiceRequests();
+                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -749,8 +765,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         clear: () {
                                                           setState(() {
                                                             lDReportController
-                                                                .selectedcontractCategoryType
-                                                                .value = dropDownModel.ServiceRequests();;
+                                                                    .selectedcontractCategoryType
+                                                                    .value =
+                                                                dropDownModel
+                                                                    .ServiceRequests();
+                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -870,8 +889,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         clear: () {
                                                           setState(() {
                                                             lDReportController
-                                                                .selectedserviceContractStatusType
-                                                                .value = dropDownModel.ServiceRequests();
+                                                                    .selectedserviceContractStatusType
+                                                                    .value =
+                                                                dropDownModel
+                                                                    .ServiceRequests();
                                                           });
                                                         },
                                                       ),
@@ -908,6 +929,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               try {
                                                 var dT =
                                                     await showRoundedDatePicker(
+                                                  theme: ThemeData(
+                                                      primaryColor:
+                                                          AppColors.blueColor),
                                                   height: 50.0.h,
                                                   context: context,
                                                   // locale: Locale('en'),
@@ -1314,6 +1338,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                   try {
                                                     var dT =
                                                         await showRoundedDatePicker(
+                                                      theme: ThemeData(
+                                                          primaryColor:
+                                                              AppColors
+                                                                  .blueColor),
                                                       height: 50.0.h,
                                                       context: context,
                                                       // locale: Locale('en'),
@@ -1491,6 +1519,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     }
                                                     var dT =
                                                         await showRoundedDatePicker(
+                                                      theme: ThemeData(
+                                                          primaryColor:
+                                                              AppColors
+                                                                  .blueColor),
                                                       height: 50.0.h,
                                                       context: context,
                                                       // locale: Locale('en'),
@@ -1972,7 +2004,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2003,7 +2035,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2029,7 +2061,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??'');
+                                                data, widget.fileNmae ?? '');
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2066,7 +2098,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2099,7 +2131,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2131,7 +2163,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2160,7 +2192,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));
@@ -2193,7 +2225,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'B-Move FilName:${widget.fileNmae}');
                                         await lDReportController
                                             .getreportSummary(
-                                                data, widget.fileNmae??"");
+                                                data, widget.fileNmae ?? "");
                                         Get.to(() => LandLordSummaryReports(
                                             reportName: widget.fileNmae,
                                             data: data));

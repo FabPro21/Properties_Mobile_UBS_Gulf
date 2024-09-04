@@ -743,6 +743,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           if (controller.docsModel?.docs?[index].path != null) {
                             print('Tapping :::::: ');
                             expDate = await showRoundedDatePicker(
+                              theme:
+                                  ThemeData(primaryColor: AppColors.blueColor),
                               height: 50.0.h,
                               context: context,
                               // locale: Locale('en'),
@@ -1628,6 +1630,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         onTap: () async {
                           print('Show ::::::');
                           var expDate = await showRoundedDatePicker(
+                            theme: ThemeData(primaryColor: AppColors.blueColor),
                             height: 50.0.h,
                             context: context,
                             // locale: Locale('en'),
@@ -1745,6 +1748,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       InkWell(
                         onTap: () async {
                           var expDate = await showRoundedDatePicker(
+                            theme: ThemeData(primaryColor: AppColors.blueColor),
                             height: 50.0.h,
                             context: context,
                             // locale: Locale('en'),

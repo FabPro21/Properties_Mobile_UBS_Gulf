@@ -113,19 +113,7 @@ class SvcReqReportController extends GetxController {
           }
         }
 
-        // we are commenting below lines because Editor change the extension 112233
-        // final editedImage = await Get.to(() => ImageEditor(
-        //       image: photo,
-        //     ));
-        // if (editedImage != null) photo = editedImage;
-
         String path = file.path;
-
-        // final extension = p.extension(path);
-        // print('(((((((((((((((((((object)))))))))))))))))))');
-        // print(extension);
-// ###1 permission
-        // if (photo != null && await getStoragePermission()) {
         if (photo != null) {
           final newPath = await getTemporaryDirectory();
           final newFile = File("${newPath.path}/${file.path.split('/').last}");

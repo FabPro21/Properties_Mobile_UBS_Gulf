@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/vendor_models/vendor_status_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_contracts_filter_controller.dart';
@@ -202,6 +203,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                 onTap: () async {
                                   try {
                                     var dT = await showRoundedDatePicker(
+                                      theme: ThemeData(
+                                          primaryColor: AppColors.blueColor),
                                       height: 50.0.h,
                                       context: context,
                                       // locale: Locale('en'),
@@ -305,6 +308,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                 onTap: () async {
                                   try {
                                     var dT = await showRoundedDatePicker(
+                                      theme: ThemeData(
+                                          primaryColor: AppColors.blueColor),
                                       height: 50.0.h,
                                       context: context,
                                       // locale: Locale('en'),
