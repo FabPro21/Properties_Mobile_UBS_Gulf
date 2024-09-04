@@ -7,6 +7,7 @@ import 'dart:io' as ui;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/app_update_manually/app_version.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/constants/version/update_app.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,43 +86,34 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      // if (updateInfo?.updateAvailability ==
-      //     UpdateAvailability.updateAvailable) {
-      //   Get.off(() => AppUpdate(
-      //         appVersion: updateInfo.availableVersionCode.toString(),
-      //         availableVersion: SessionController().storeAppVerison,
-      //       ));
-      // } else {
-      //   selectRoloesController.initialize();
-      // }
+      if (updateInfo?.updateAvailability ==
+          UpdateAvailability.updateAvailable) {
+        Get.off(() => AppUpdate(
+              appVersion: updateInfo!.availableVersionCode.toString(),
+              availableVersion: SessionController().storeAppVerison,
+            ));
+      } else {
+        selectRoloesController.initialize();
+      }
     } else {
       print(':::: iOS ::::');
       selectRoloesController.loadingData.value = true;
       await CheckVerion().fetchAppVersion();
       selectRoloesController.loadingData.value = false;
-      // IF storeAppVersion & appVersion are same
-      // then will call normal func
-      // & IF storeAppVersion & appVersion are not same
-      // then will move toward AppUpdate where we define the
-      // the deatil and update update button set
-      // this this this
-      SessionController().storeAppVerison = '1.0.18';
-      appVersion = '1.0.16';
-      var canUpdate = selectRoloesController.isUpdateNeededFuncForIos(
-          SessionController().storeAppVerison ?? '0.0.0', appVersion);
-      print('CanUpdate :::::::: $canUpdate');
 
-      // selectRoloesController.initialize();
       // for app update
       // should uncomment the below lines
-      // if (SessionController().storeAppVerison == appVersion) {
-      //   selectRoloesController.initialize();
-      // } else {
-      //   Get.off(() => AppUpdate(
-      //         appVersion: appVersion,
-      //         availableVersion: SessionController().storeAppVerison,
-      //       ));
-      // }
+      var isAppUpdateAvailabel =
+          selectRoloesController.isUpdateNeededFuncForIos(
+              SessionController().storeAppVerison ?? "0.0.0", appVersion);
+      if (isAppUpdateAvailabel == false) {
+        selectRoloesController.initialize();
+      } else {
+        Get.off(() => AppUpdate(
+              appVersion: appVersion,
+              availableVersion: SessionController().storeAppVerison,
+            ));
+      }
     }
   }
 
@@ -143,22 +135,6 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      InkWell(
-                          onTap: () {
-                            print('object');
-                            SessionController().storeAppVerison = '1.0.18';
-                            appVersion = '1.0.17';
-                            var canUpdate =
-                                selectRoloesController.isUpdateNeededFuncForIos(
-                              appVersion,
-                              SessionController().storeAppVerison ?? '0.0.0',
-                            );
-                            print('CanUpdate :::::::: $canUpdate');
-                          },
-                          child: Icon(
-                            Icons.abc,
-                            size: 40,
-                          )),
                       Align(
                         alignment: Alignment.topRight,
                         child: TextButton(

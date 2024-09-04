@@ -948,21 +948,27 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                       child: ElevatedButton(
                                         onPressed: () {
                                           FocusScope.of(context).unfocus();
+                                          setState(() {
+                                            tenantRDController.rating = 0;
+                                            feedbackDescController.text = '';
+                                          });
                                           showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                    contentPadding:
-                                                        EdgeInsets.fromLTRB(
-                                                            1.0.w,
-                                                            1.0.h,
-                                                            1.0.w,
-                                                            1.0.h),
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    content:
-                                                        showFeedbackField());
-                                              });
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                content: FeedbackWidget(
+                                                  tenantRDController:
+                                                      tenantRDController,
+                                                  feedbackDescController:
+                                                      feedbackDescController,
+                                                  context: context,
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          setState(() {});
                                         },
                                         child: Text(
                                           AppMetaLabels().addFeedback,
@@ -1044,15 +1050,27 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                       child: ElevatedButton(
                                         onPressed: () {
                                           FocusScope.of(context).unfocus();
+                                          setState(() {
+                                            tenantRDController.rating = 0;
+                                            feedbackDescController.text = '';
+                                          });
                                           showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    content:
-                                                        showFeedbackField());
-                                              });
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                content: FeedbackWidget(
+                                                  tenantRDController:
+                                                      tenantRDController,
+                                                  feedbackDescController:
+                                                      feedbackDescController,
+                                                  context: context,
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          setState(() {});
                                         },
                                         child: Text(
                                           AppMetaLabels().addFeedback,
@@ -1442,7 +1460,8 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                             ),
                     ),
                     Obx(() {
-                      return tenantRDController.photos[index]!.uploading.value ||
+                      return tenantRDController
+                                  .photos[index]!.uploading.value ||
                               tenantRDController.photos[index]!.errorUploading
                           ? Container(
                               color: Color.fromRGBO(255, 255, 255, 0.5),
@@ -1486,8 +1505,8 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             size: 20,
                                           )
                                         : Icon(
-                                            tenantRDController
-                                                    .photos[index]!.errorRemoving
+                                            tenantRDController.photos[index]!
+                                                    .errorRemoving
                                                 ? Icons.refresh_outlined
                                                 : Icons.cancel_outlined,
                                             color: Colors.red),
@@ -1666,7 +1685,80 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
     ]);
   }
 
-  Widget showFeedbackField() {
+  showBigPhoto(BuildContext context, int index) {
+    if (tenantRDController.photos[index]!.file == null)
+      tenantRDController.downloadDoc(index);
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Material(
+            child: Center(
+              child: Stack(
+                children: [
+                  Container(
+                    color: Colors.white,
+                    width: 100.w,
+                    height: 80.h,
+                    child: Obx(() {
+                      return ZoomOverlay(
+                          minScale: 0.5, // Optional
+                          maxScale: 3.0, // Optional
+                          twoTouchOnly: true, // Defaults to false
+                          child: tenantRDController
+                                  .photos[index]!.downloading.value
+                              ? LoadingIndicatorBlue()
+                              : tenantRDController
+                                      .photos[index]!.errorDownloading
+                                  ? AppErrorWidget(
+                                      errorText: tenantRDController
+                                              .photos[index]!.errorText ??
+                                          "",
+                                      onRetry: () {
+                                        tenantRDController.downloadDoc(index);
+                                      },
+                                    )
+                                  : Image.memory(
+                                      tenantRDController.photos[index]!.file!));
+                    }),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(0.5.w),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24),
+                        color: Colors.grey[100]),
+                    child: IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(Icons.cancel)),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+}
+
+class FeedbackWidget extends StatefulWidget {
+  const FeedbackWidget({
+    super.key,
+    required this.tenantRDController,
+    required this.feedbackDescController,
+    required this.context,
+  });
+
+  final TenantRequestDetailsController tenantRDController;
+  final TextEditingController feedbackDescController;
+  final BuildContext context;
+
+  @override
+  State<FeedbackWidget> createState() => _FeedbackWidgetState();
+}
+
+class _FeedbackWidgetState extends State<FeedbackWidget> {
+  @override
+  Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return SingleChildScrollView(
       child: Container(
@@ -1746,7 +1838,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                       child: SmoothStarRating(
                         color: AppColors.blueColor,
                         borderColor: AppColors.blueColor,
-                        rating: 0,
+                        rating: widget.tenantRDController.rating,
                         // isReadOnly: false,
                         size: 10.0.w,
                         filledIconData: Icons.star,
@@ -1757,7 +1849,9 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         spacing: 2.0.w,
                         onRatingChanged: (value) {
                           print('Value ::::***::::::: $value');
-                          tenantRDController.rating = value;
+                          setState(() {
+                            widget.tenantRDController.rating = value;
+                          });
                         },
                       ),
                     ),
@@ -1799,7 +1893,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           child: TextFormField(
                             maxLines: 3,
                             textAlign: TextAlign.start,
-                            controller: feedbackDescController,
+                            controller: widget.feedbackDescController,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(8),
                               hintText: AppMetaLabels().enterRemarks,
@@ -1839,7 +1933,8 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           height: 6.0.h,
                           width: 65.0.w,
                           child: Obx(() {
-                            return tenantRDController.addingFeedback.value
+                            return widget
+                                    .tenantRDController.addingFeedback.value
                                 ? LoadingIndicatorBlue()
                                 : ElevatedButton(
                                     style: ElevatedButton.styleFrom(
@@ -1851,16 +1946,17 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           Color.fromRGBO(0, 61, 166, 1),
                                     ),
                                     onPressed: () async {
-                                      if (tenantRDController.rating == 0) {
+                                      if (widget.tenantRDController.rating ==
+                                          0) {
                                         SnakBarWidget.getSnackBarErrorBlue(
                                             AppMetaLabels().alert,
                                             AppMetaLabels().selectRating);
                                       } else if (formKey.currentState!
                                           .validate()) {
-                                        if (await tenantRDController
-                                            .addFeedback(
-                                                feedbackDescController.text))
-                                          Navigator.pop(context);
+                                        if (await widget.tenantRDController
+                                            .addFeedback(widget
+                                                .feedbackDescController
+                                                .text)) Navigator.pop(context);
                                       }
                                     },
                                     child: Text(
@@ -1876,58 +1972,5 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             ),
           )),
     );
-  }
-
-  showBigPhoto(BuildContext context, int index) {
-    if (tenantRDController.photos[index]!.file == null)
-      tenantRDController.downloadDoc(index);
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Material(
-            child: Center(
-              child: Stack(
-                children: [
-                  Container(
-                    color: Colors.white,
-                    width: 100.w,
-                    height: 80.h,
-                    child: Obx(() {
-                      return ZoomOverlay(
-                          minScale: 0.5, // Optional
-                          maxScale: 3.0, // Optional
-                          twoTouchOnly: true, // Defaults to false
-                          child: tenantRDController
-                                  .photos[index]!.downloading.value
-                              ? LoadingIndicatorBlue()
-                              : tenantRDController
-                                      .photos[index]!.errorDownloading
-                                  ? AppErrorWidget(
-                                      errorText: tenantRDController
-                                          .photos[index]!.errorText??"",
-                                      onRetry: () {
-                                        tenantRDController.downloadDoc(index);
-                                      },
-                                    )
-                                  : Image.memory(
-                                      tenantRDController.photos[index]!.file!));
-                    }),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(0.5.w),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        color: Colors.grey[100]),
-                    child: IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(Icons.cancel)),
-                  )
-                ],
-              ),
-            ),
-          );
-        });
   }
 }

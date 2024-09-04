@@ -57,7 +57,7 @@ class SelectRoloesController extends GetxController {
     loadingData.value = false;
   }
 
-  bool isUpdateNeededFuncForIos(String appVersion, String storeVersion) {
+  bool isUpdateNeededFuncForIos(String storeVersion, String appVersion) {
     print('App Version ::1:: $appVersion');
     print('Stor Version :2: $storeVersion');
     List<int> parseVersion(String version) {
@@ -66,22 +66,6 @@ class SelectRoloesController extends GetxController {
 
     List<int> v1Parts = parseVersion(appVersion);
     List<int> v2Parts = parseVersion(storeVersion);
-
-    print('App Version ::v1Parts:: ${appVersion.length}');
-    print('Stor Version :v2Parts: ${storeVersion.length}');
-    for (int i = 0; i < appVersion.length; i++) {
-      print('App Version ::for:: ${appVersion[i]}');
-    }
-    print('----------------------------');
-    for (int i = 0; i < appVersion.length; i++) {
-      print('Stor Version :for: ${storeVersion[i]}');
-    }
-    print('v1Parts.length: ${v1Parts.length}');
-    print('v2Parts.length: ${v2Parts.length}');
-    print('----------------------------');
-    print(
-        'v1Parts.length: ${v1Parts.length > v2Parts.length ? v1Parts.length : v2Parts.length}');
-    print('----------------------------');
 
     // Pad the shorter version list with zeros
     int length =
