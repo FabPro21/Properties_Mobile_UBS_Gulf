@@ -9,17 +9,10 @@ import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_actions/external/platform_check/platform_check.dart';
 import 'package:launch_review/launch_review.dart';
-// import 'package:path_provider/path_provider.dart';
 import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class AppUpdate extends StatefulWidget {
-  final String? appVersion;
-  final String? availableVersion;
-  const AppUpdate(
-      {Key? key, @required this.appVersion, @required this.availableVersion})
-      : super(key: key);
-
   @override
   State<AppUpdate> createState() => _AppUpdateState();
 }
@@ -27,8 +20,6 @@ class AppUpdate extends StatefulWidget {
 class _AppUpdateState extends State<AppUpdate> {
   @override
   Widget build(BuildContext context) {
-    print(AppImagesPath.appStore);
-    print(AppImagesPath.playStore);
     return Directionality(
       textDirection: SessionController().getLanguage() == 1
           ? ui.TextDirection.ltr
@@ -141,50 +132,6 @@ class _AppUpdateState extends State<AppUpdate> {
                               height:
                                   PlatformCheck.isAndroid == true ? 1.h : 2.5.h,
                             ),
-                            // available version
-                            PlatformCheck.isAndroid == true
-                                ? SizedBox()
-                                : RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              AppMetaLabels().availableVersion,
-                                          style: AppTextStyle.semiBoldBlack12
-                                              .copyWith(height: 1.2),
-                                        ),
-                                        TextSpan(
-                                          text: widget.availableVersion,
-                                          style: AppTextStyle.normalBlack12
-                                              .copyWith(height: 1.2),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                            SizedBox(
-                              height: 0.5.h,
-                            ),
-                            // app version
-                            PlatformCheck.isAndroid == true
-                                ? SizedBox()
-                                : RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: AppMetaLabels().appVersion,
-                                          style: AppTextStyle.semiBoldBlack12
-                                              .copyWith(height: 1.2),
-                                        ),
-                                        TextSpan(
-                                          text: widget.appVersion,
-                                          style: AppTextStyle.normalBlack12
-                                              .copyWith(height: 1.2),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                             SizedBox(
                               height: 5.h,
                             ),

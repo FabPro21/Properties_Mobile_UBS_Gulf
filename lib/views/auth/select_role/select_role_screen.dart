@@ -84,17 +84,10 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       await checkForUpdateAndroid();
       selectRoloesController.loadingData.value = false;
 
-      // for without App update
-      // selectRoloesController.initialize();
-
       // for app update
-      // should uncomment the below lines
       if (updateInfo?.updateAvailability ==
           UpdateAvailability.updateAvailable) {
-        Get.off(() => AppUpdate(
-              appVersion: updateInfo!.availableVersionCode.toString(),
-              availableVersion: SessionController().storeAppVerison,
-            ));
+        Get.off(() => AppUpdate());
       } else {
         selectRoloesController.initialize();
       }
@@ -103,28 +96,15 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       selectRoloesController.loadingData.value = true;
       await CheckVerion().fetchAppVersion();
       selectRoloesController.loadingData.value = false;
-      // IF storeAppVersion & appVersion are same
-      // then will call normal func
-      // & IF storeAppVersion & appVersion are not same
-      // then will move toward AppUpdate where we define the
-      // the deatil and update update button set
-      // this this this
-
-      // for without App update
-      // selectRoloesController.initialize();
 
       // for app update
-      // should uncomment the below lines
-      // must correct the condition of the Appversion
-
-
-      if (SessionController().storeAppVerison?.trim() == appVersion.trim()) {
+      var isAppUpdateAvailabel =
+          selectRoloesController.isUpdateNeededFuncForIos(
+              SessionController().storeAppVerison ?? "0.0.0", appVersion);
+      if (isAppUpdateAvailabel == false) {
         selectRoloesController.initialize();
       } else {
-        Get.off(() => AppUpdate(
-              appVersion: appVersion,
-              availableVersion: SessionController().storeAppVerison,
-            ));
+        Get.off(() => AppUpdate());
       }
     }
   }
