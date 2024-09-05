@@ -13,7 +13,7 @@ import 'package:flutter/foundation.dart';
 class LandlordGetPropertyUnitsServices {
   static Future<dynamic> getPropertyUnits(String propertyId) async {
     var response = await BaseClientClass.post(
-        AppConfig().getLandlordPropertyUnits, {"propertyID": propertyId});
+        AppConfig().getLandlordPropertyUnits??"", {"propertyID": propertyId});
     try {
       if (response is Response) {
         try {
@@ -32,7 +32,7 @@ class LandlordGetPropertyUnitsServices {
 
   static Future<dynamic> getPropertyDetail(String propertyId) async {
     var response = await BaseClientClass.post(
-        AppConfig().getLandlordPropertyDetails, {"propertyID": propertyId});
+        AppConfig().getLandlordPropertyDetails??"", {"propertyID": propertyId});
     try {
       if (response is Response) {
         log(response.body);
@@ -47,7 +47,7 @@ class LandlordGetPropertyUnitsServices {
 
   static Future<dynamic> getPropertyUnitDetail(String propertyId) async {
     var response = await BaseClientClass.post(
-        AppConfig().getLandlordPropertyUnitDetails, {"unitID": propertyId});
+        AppConfig().getLandlordPropertyUnitDetails??"", {"unitID": propertyId});
     try {
       if (response is Response) {
         log(response.body);

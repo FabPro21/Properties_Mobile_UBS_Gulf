@@ -6,27 +6,27 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-OnlinePaymentsModel onlinePaymentsModelFromJson(String str) =>
-    OnlinePaymentsModel.fromJson(json.decode(str));
+OnlinePaymentsModel onlinePaymentsModelFromJson(String? str) =>
+    OnlinePaymentsModel.fromJson(json.decode(str!));
 
-String onlinePaymentsModelToJson(OnlinePaymentsModel data) =>
+String? onlinePaymentsModelToJson(OnlinePaymentsModel data) =>
     json.encode(data.toJson());
 
 class OnlinePaymentsModel {
   OnlinePaymentsModel({this.contractPayments, this.note});
 
-  List<ContractPayment> contractPayments;
-  String note;
+  List<ContractPayment>? contractPayments;
+  String? note;
 
-  factory OnlinePaymentsModel.fromJson(Map<String, dynamic> json) =>
+  factory OnlinePaymentsModel.fromJson(Map<String?, dynamic> json) =>
       OnlinePaymentsModel(
           contractPayments: List<ContractPayment>.from(
               json["contractPayments"].map((x) => ContractPayment.fromJson(x))),
           note: json["note"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractPayments":
-            List<dynamic>.from(contractPayments.map((x) => x.toJson())),
+            List<dynamic>.from(contractPayments!.map((x) => x.toJson())),
       };
 }
 
@@ -42,18 +42,18 @@ class ContractPayment {
     this.amount,
   });
 
-  int paymentDetailId;
-  String title;
-  String description;
-  String status;
-  String contractno;
-  String refNo;
-  String createdOn;
-  String amount;
+  int? paymentDetailId;
+  String? title;
+  String? description;
+  String? status;
+  String? contractno;
+  String? refNo;
+  String? createdOn;
+  String? amount;
 
-  factory ContractPayment.fromJson(Map<String, dynamic> json) {
+  factory ContractPayment.fromJson(Map<String?, dynamic> json) {
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    String amount = amountFormat.format(json["amount"] ?? 0);
+    String? amount = amountFormat.format(json["amount"] ?? 0);
     return ContractPayment(
       paymentDetailId: json["paymentDetailId"],
       title: json["title"],
@@ -66,7 +66,7 @@ class ContractPayment {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paymentDetailId": paymentDetailId,
         "title": title,
         "description": description,

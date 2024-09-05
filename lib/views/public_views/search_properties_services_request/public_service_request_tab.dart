@@ -13,12 +13,12 @@ import 'public_main_info.dart';
 import 'public_service_updates.dart';
 
 class PublicServiceRequestTab extends StatefulWidget {
-  final int requestNo;
-  final int unitId;
-  final bool backToSearch;
-  final bool canCommunicate;
+  final int? requestNo;
+  final int? unitId;
+  final bool? backToSearch;
+  final bool? canCommunicate;
   const PublicServiceRequestTab(
-      {Key key,
+      {Key? key,
       this.requestNo,
       this.unitId,
       this.backToSearch = false,
@@ -53,7 +53,7 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
                 style: AppTextStyle.semiBoldWhite14),
             leading: InkWell(
               onTap: () {
-                if (widget.backToSearch) {
+                if (widget.backToSearch!) {
                   Get.back();
                   Get.back();
                   Get.back();
@@ -107,8 +107,8 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
                       caseno: widget.requestNo,
                     ),
                     PublicServiceUpdates(
-                      reqNo: widget.requestNo,
-                      canCommunicate: widget.canCommunicate,
+                      reqNo: widget.requestNo ?? 0,
+                      canCommunicate: widget.canCommunicate ?? false,
                     ),
                   ],
                 ),

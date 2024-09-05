@@ -1,8 +1,11 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/landlord_models/filter_property_type_model.dart';
 import 'package:fap_properties/data/models/landlord_models/landlord_contract_stauts_model.dart'
     as contractStatus;
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_contract_status/landlord_filter_cs.dart';
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_property/landlord_filter_property.dart';
@@ -15,7 +18,8 @@ import 'package:sizer/sizer.dart';
 
 class LandLordFilterContract extends StatefulWidget {
   final bool clear;
-  const LandLordFilterContract({Key key, this.clear}) : super(key: key);
+  const LandLordFilterContract({Key? key, required this.clear})
+      : super(key: key);
 
   @override
   _LandLordFilterContractState createState() => _LandLordFilterContractState();
@@ -220,13 +224,13 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                                 ? lDFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractType +
-                                                    ' / Expired'
+                                                        .contractType ??
+                                                    "" + ' / Expired'
                                                 : lDFilterController
                                                         .contractStatus
                                                         .value
-                                                        .contractTypeAR +
-                                                    ' / منتهي الصلاحية'
+                                                        .contractTypeAR ??
+                                                    "" + ' / منتهي الصلاحية'
                                             : SessionController()
                                                         .getLanguage() ==
                                                     1
@@ -284,6 +288,8 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
@@ -327,7 +333,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                       // ),
                                     ),
                                   );
-                                  if (!lDFilterController.setFromDate(dT)) {
+                                  if (!lDFilterController.setFromDate(dT!)) {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -390,6 +396,8 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
@@ -433,7 +441,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                       // ),
                                     ),
                                   );
-                                  if (!lDFilterController.setToDate(dT)) {
+                                  if (!lDFilterController.setToDate(dT!)) {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -588,7 +596,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
 
 class ClearButton extends StatelessWidget {
   final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  const ClearButton({Key? key, required this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

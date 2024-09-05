@@ -8,7 +8,7 @@ class ExpiringIn30DaysService {
   static Future<dynamic> getData() async {
     var url = AppConfig().contractsExpiringIn30Days;
 
-    var response = await BaseClientClass.post(url, '');
+    var response = await BaseClientClass.post(url ?? "", '');
     if (response is http.Response) {
       try {
         return contractExpire30DaysFromJson(response.body);

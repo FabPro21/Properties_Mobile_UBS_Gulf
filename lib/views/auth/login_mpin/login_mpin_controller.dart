@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/auth_models/session_token_model.dart';
@@ -32,7 +34,7 @@ class LoginMpinController extends GetxController {
   RxString currentText = "".obs;
   RxInt failedAattempts = 0.obs;
   RxBool isForgot = false.obs;
-  String otpCode;
+  String? otpCode;
   RxBool resettingMpin = false.obs;
   RxInt mpinAttemptsCounter = 0.obs;
   String userMpin = "";
@@ -118,7 +120,7 @@ class LoginMpinController extends GetxController {
       // Get.to(() => VerifyUserOtpScreen());
       print('OTP Code IS :::: +=====> ${_resp.otpCode}');
       Get.to(() => VerifyUserOtpScreen(
-            otpCodeForVerifyOTP: _resp.otpCode,
+            otpCodeForVerifyOTP: _resp.otpCode??"",
           ));
       SessionController().setOtpCode(_resp.otpCode);
     } else {
@@ -136,7 +138,7 @@ class LoginMpinController extends GetxController {
     GlobalPreferences.setbool(GlobalPreferencesLabels.isLoginBool, false);
 
     print('Firebase is  enable');
-    final String phone = SessionController().getPhone();
+    final String phone = SessionController().getPhone()??"";
     print('Phone Validation ::: $phone');
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -205,7 +207,7 @@ class LoginMpinController extends GetxController {
 
         break;
     }
-    SessionController().setNotificationData(null);
+    SessionController().setNotificationData({});
   }
 
   Future<bool> _authenticate() async {

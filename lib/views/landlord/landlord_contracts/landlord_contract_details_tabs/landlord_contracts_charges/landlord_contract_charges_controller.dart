@@ -40,7 +40,7 @@ class GetLandlordChargesController extends GetxController {
         loadingData.value = false;
       } else {
         getCharges.value = result;
-        length = getCharges.value.contractCharges.length;
+        length = getCharges.value.contractCharges?.length??0;
         totalCharges = getCharges.value.totalCharges;
 
         double am = double.parse(getCharges.value.totalCharges.toString());

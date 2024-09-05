@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicCancelBookingRequestModel publicCancelBookingRequestModelFromJson(String str) => PublicCancelBookingRequestModel.fromJson(json.decode(str));
+PublicCancelBookingRequestModel publicCancelBookingRequestModelFromJson(String? str) => PublicCancelBookingRequestModel.fromJson(json.decode(str!));
 
-String publicCancelBookingRequestModelToJson(PublicCancelBookingRequestModel data) => json.encode(data.toJson());
+String? publicCancelBookingRequestModelToJson(PublicCancelBookingRequestModel data) => json.encode(data.toJson());
 
 class PublicCancelBookingRequestModel {
     PublicCancelBookingRequestModel({
@@ -14,15 +14,15 @@ class PublicCancelBookingRequestModel {
         this.message,
     });
 
-    String status;
-    String message;
+    String? status;
+    String? message;
 
-    factory PublicCancelBookingRequestModel.fromJson(Map<String, dynamic> json) => PublicCancelBookingRequestModel(
+    factory PublicCancelBookingRequestModel.fromJson(Map<String?, dynamic> json) => PublicCancelBookingRequestModel(
         status: json["status"],
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
         "message": message,
     };

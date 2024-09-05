@@ -18,7 +18,7 @@ class VendorGetNotificationsServices {
         "pageSize": 500.toString()
       };
     }
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var data = vendorGetNotificationModelFromJson(response.body);
       return data;
@@ -37,7 +37,7 @@ class VendorGetNotificationsServices {
         "pageSize": 20.toString()
       };
     }
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var data = vendorGetNotificationModelFromJson(response.body);
       return data;

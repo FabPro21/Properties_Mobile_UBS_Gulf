@@ -11,7 +11,7 @@ import '../contracts_with_action/contracts_with_actions_controller.dart';
 
 class TerminateContractController extends GetxController {
   RxBool terminating = false.obs;
-  int caseNo;
+  int? caseNo;
   RxString vacationDate = ''.obs;
   RxBool earlyTermination = false.obs;
   RxInt addDesc = 0.obs;
@@ -27,7 +27,7 @@ class TerminateContractController extends GetxController {
     terminating.value = true;
     var resp = await TenantRepository.terminateContract(
         contractId,
-        reasons.record[selectedReason.value].vacatingId,
+        reasons!.record![selectedReason.value].vacatingId??0,
         vacationDate.value,
         desc,
         dueActionid);
@@ -57,7 +57,7 @@ class TerminateContractController extends GetxController {
 
   //////////////terminate contract reasons
 
-  VacatingReasons reasons;
+  VacatingReasons? reasons;
   RxBool gettingReasons = false.obs;
   String errorGettingReasons = '';
   RxInt selectedReason = (-1).obs;

@@ -11,8 +11,8 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class ChargesReceipts extends StatefulWidget {
-  final int chargesTypeId;
-  const ChargesReceipts({Key key, @required this.chargesTypeId})
+  final int? chargesTypeId;
+  const ChargesReceipts({Key? key, @required this.chargesTypeId})
       : super(key: key);
   @override
   State<ChargesReceipts> createState() => _ChargesReceiptsState();
@@ -24,7 +24,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
 
   @override
   void initState() {
-    _controller.getContractChargesReceipts(widget.chargesTypeId);
+    _controller.getContractChargesReceipts(widget.chargesTypeId??0);
     super.initState();
   }
 
@@ -140,8 +140,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                                   .receipts[
                                                                       index]
                                                                   .receiptNo
-                                                                  .toString() ??
-                                                              "",
+                                                                  .toString() ,
                                                           style: AppTextStyle
                                                               .semiBoldBlack10,
                                                         )
@@ -154,7 +153,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                         AppMetaLabels().date,
                                                         _controller
                                                             .receipts[index]
-                                                            .transactionDate),
+                                                            .transactionDate??""),
                                                     SizedBox(
                                                       height: 3,
                                                     ),
@@ -163,7 +162,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                             .paymentType,
                                                         _controller
                                                             .receipts[index]
-                                                            .paymentType),
+                                                            .paymentType??""),
                                                     SizedBox(
                                                       height: 3,
                                                     ),

@@ -10,7 +10,7 @@ class GetVendorProfileSvc {
     var completeUrl = AppConfig().getVendorProfile;
     var data;
 
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       try {
         return vendorGetProfileModelFromJson(response.body);

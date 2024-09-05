@@ -16,7 +16,7 @@ class GetLposwithFilterService {
       "pageSize": 20.toString(),
     };
     var response =
-        await BaseClientClass.post(AppConfig().getLpowithFilter, data);
+        await BaseClientClass.post(AppConfig().getLpowithFilter??"", data);
     if (response is http.Response) {
       try {
         GetAllLpoModel getLpoDataResponse =
@@ -41,7 +41,7 @@ class GetLposwithFilterService {
     
     };
     var response =
-        await BaseClientClass.post(AppConfig().getLpowithFilter, data);
+        await BaseClientClass.post(AppConfig().getLpowithFilter??"", data);
     if (response is http.Response) {
       try {
         GetAllLpoModel getLpoDataResponse =

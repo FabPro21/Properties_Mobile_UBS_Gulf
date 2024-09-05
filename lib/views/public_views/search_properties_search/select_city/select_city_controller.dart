@@ -29,7 +29,7 @@ class SelectCityController extends GetxController {
     loadingData.value = false;
     if (result is GetEmirateModel) {
       selectCity.value = result;
-      length = selectCity.value.emirate.length;
+      length = selectCity.value.emirate!.length;
       update();
     } else {
       error.value = result;

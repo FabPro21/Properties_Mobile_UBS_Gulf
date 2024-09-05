@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class ContractorRejectedCase {
   static Future<dynamic> rejectCase(int caseId) async {
     Map data = {"CaseId": caseId.toString()};
-    var resp = await BaseClientClass.post(AppConfig().contractorRejected, data);
+    var resp = await BaseClientClass.post(AppConfig().contractorRejected??"", data);
     if (resp is http.Response) {
       return resp.statusCode;
     }

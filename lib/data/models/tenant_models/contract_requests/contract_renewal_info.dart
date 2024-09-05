@@ -6,10 +6,10 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-ContractRenewalInfo contractRenewalInfoFromJson(String str) =>
-    ContractRenewalInfo.fromJson(json.decode(str));
+ContractRenewalInfo contractRenewalInfoFromJson(String? str) =>
+    ContractRenewalInfo.fromJson(json.decode(str!));
 
-String contractRenewalInfoToJson(ContractRenewalInfo data) =>
+String? contractRenewalInfoToJson(ContractRenewalInfo data) =>
     json.encode(data.toJson());
 
 class ContractRenewalInfo {
@@ -19,20 +19,20 @@ class ContractRenewalInfo {
     this.link,
   });
 
-  String status;
-  Record record;
-  String link;
+  String? status;
+  Record? record;
+  String? link;
 
-  factory ContractRenewalInfo.fromJson(Map<String, dynamic> json) =>
+  factory ContractRenewalInfo.fromJson(Map<String?, dynamic> json) =>
       ContractRenewalInfo(
         status: json["status"],
         record: Record.fromJson(json["record"]),
         link: json["link"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "record": record.toJson(),
+        "record": record!.toJson(),
         "link": link,
       };
 }
@@ -52,21 +52,21 @@ class Record {
     this.emirateName,
   });
 
-  int contractId;
-  int installments;
-  int emirateId;
-  double totalAmount;
-  String amount;
-  String contractno;
-  String fromDate;
-  String endDate;
-  String addNewDate;
-  String endNewDate;
-  String emirateName;
+  int? contractId;
+  int? installments;
+  int? emirateId;
+  double? totalAmount;
+  String? amount;
+  String? contractno;
+  String? fromDate;
+  String? endDate;
+  String? addNewDate;
+  String? endNewDate;
+  String? emirateName;
 
-  factory Record.fromJson(Map<String, dynamic> json) {
+  factory Record.fromJson(Map<String?, dynamic> json) {
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    String amount = amountFormat.format(json["amount"] ?? 0);
+    String? amount = amountFormat.format(json["amount"] ?? 0);
     return Record(
       contractId: json["contractID"],
       installments: json["installments"],
@@ -82,7 +82,7 @@ class Record {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractID": contractId,
         "installments": installments,
         "emirateID": emirateId,

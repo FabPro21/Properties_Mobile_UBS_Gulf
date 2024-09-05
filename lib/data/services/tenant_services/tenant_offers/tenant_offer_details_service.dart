@@ -9,7 +9,7 @@ class TenantOffersDetailsSerice {
 
     Map data = {"OfferId": offerId};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       var getModel = tenantOffersDetailsModelFromJson(response.body);

@@ -7,7 +7,7 @@ class TenantRemoveChequeService {
     var url = AppConfig().removeCheque;
     var data = {"PaymentSettingId": paymentSettingId.toString()};
 
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       return resp.statusCode;
@@ -20,7 +20,7 @@ class TenantRemoveChequeServiceNew {
     var url = AppConfig().removeChequeNew;
     var data = {"PaymentSettingId": paymentSettingId.toString()};
 
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       return resp.statusCode;

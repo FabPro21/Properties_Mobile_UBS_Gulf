@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicBookingRequestAgentModel publicBookingRequestAgentModelFromJson(String str) => PublicBookingRequestAgentModel.fromJson(json.decode(str));
+PublicBookingRequestAgentModel publicBookingRequestAgentModelFromJson(String? str) => PublicBookingRequestAgentModel.fromJson(json.decode(str!));
 
-String publicBookingRequestAgentModelToJson(PublicBookingRequestAgentModel data) => json.encode(data.toJson());
+String? publicBookingRequestAgentModelToJson(PublicBookingRequestAgentModel data) => json.encode(data.toJson());
 
 class PublicBookingRequestAgentModel {
     PublicBookingRequestAgentModel({
@@ -15,19 +15,19 @@ class PublicBookingRequestAgentModel {
         this.message,
     });
 
-    String status;
-    List<AgentList> agentList;
-    String message;
+    String? status;
+    List<AgentList>? agentList;
+    String? message;
 
-    factory PublicBookingRequestAgentModel.fromJson(Map<String, dynamic> json) => PublicBookingRequestAgentModel(
+    factory PublicBookingRequestAgentModel.fromJson(Map<String?, dynamic> json) => PublicBookingRequestAgentModel(
         status: json["status"],
         agentList: List<AgentList>.from(json["agentList"].map((x) => AgentList.fromJson(x))),
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
-        "agentList": List<dynamic>.from(agentList.map((x) => x.toJson())),
+        "agentList": List<dynamic>.from(agentList!.map((x) => x.toJson())),
         "message": message,
     };
 }
@@ -41,13 +41,13 @@ class AgentList {
         this.nameAr,
     });
 
-    int agentId;
-    String agentName;
-    String phone;
-    String email;
-    String nameAr;
+    int? agentId;
+    String? agentName;
+    String? phone;
+    String? email;
+    String? nameAr;
 
-    factory AgentList.fromJson(Map<String, dynamic> json) => AgentList(
+    factory AgentList.fromJson(Map<String?, dynamic> json) => AgentList(
         agentId: json["agentId"],
         agentName: json["agentName"],
         phone: json["phone"],
@@ -55,7 +55,7 @@ class AgentList {
         nameAr: json["nameAR"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "agentId": agentId,
         "agentName": agentName,
         "phone": phone,

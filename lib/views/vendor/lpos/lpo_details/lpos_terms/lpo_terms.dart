@@ -13,7 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class LpoTerms extends StatefulWidget {
-  LpoTerms({Key key}) : super(key: key);
+  LpoTerms({Key? key}) : super(key: key);
 
   @override
   _LpoTermsState createState() => _LpoTermsState();
@@ -61,7 +61,7 @@ class _LpoTermsState extends State<LpoTerms> {
                                   borderRadius: BorderRadius.circular(2.0.h),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey[200],
+                                      color: Colors.grey[200] ?? Colors.grey,
                                       blurRadius: 0.4.h,
                                       spreadRadius: 0.8.h,
                                       offset: Offset(0.1.h, 0.1.h),
@@ -74,13 +74,13 @@ class _LpoTermsState extends State<LpoTerms> {
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
                                         itemCount: _controller.getLpoTermsResp
-                                            .value.lpoTerms.length,
+                                            .value.lpoTerms?.length,
                                         itemBuilder: (context, index) {
                                           //////////////////////////
                                           /// Amount
                                           //////////////////////////
                                           var a = _controller.getLpoTermsResp
-                                              .value.lpoTerms[index].amount;
+                                              .value.lpoTerms?[index].amount;
                                           final dFormatter =
                                               NumberFormat('#,##0.00', 'AR');
                                           amount = dFormatter.format(a);
@@ -119,14 +119,14 @@ class _LpoTermsState extends State<LpoTerms> {
                                                                 ? _controller
                                                                         .getLpoTermsResp
                                                                         .value
-                                                                        .lpoTerms[
+                                                                        .lpoTerms![
                                                                             index]
                                                                         .termName ??
                                                                     ""
                                                                 : _controller
                                                                         .getLpoTermsResp
                                                                         .value
-                                                                        .lpoTerms[
+                                                                        .lpoTerms![
                                                                             index]
                                                                         .termNameAr ??
                                                                     "",
@@ -162,7 +162,7 @@ class _LpoTermsState extends State<LpoTerms> {
                                                               _controller
                                                                       .getLpoTermsResp
                                                                       .value
-                                                                      .lpoTerms
+                                                                      .lpoTerms!
                                                                       .length -
                                                                   1
                                                           ? Container()
@@ -171,7 +171,7 @@ class _LpoTermsState extends State<LpoTerms> {
                                                               _controller
                                                                       .getLpoTermsResp
                                                                       .value
-                                                                      .lpoTerms
+                                                                      .lpoTerms!
                                                                       .length -
                                                                   1
                                                           ? Container()

@@ -5,8 +5,8 @@
 import 'dart:convert';
 
 GetTenantServiceRequestsModel getTenantServiceRequestsModelFromJson(
-        String str) =>
-    GetTenantServiceRequestsModel.fromJson(json.decode(str));
+        String? str) =>
+    GetTenantServiceRequestsModel.fromJson(json.decode(str!));
 
 class GetTenantServiceRequestsModel {
   GetTenantServiceRequestsModel({
@@ -15,11 +15,11 @@ class GetTenantServiceRequestsModel {
     this.message,
   });
 
-  String status;
-  List<ServiceRequest> serviceRequests;
-  String message;
+  String? status;
+  List<ServiceRequest>? serviceRequests;
+  String? message;
 
-  factory GetTenantServiceRequestsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetTenantServiceRequestsModel.fromJson(Map<String?, dynamic> json) =>
       GetTenantServiceRequestsModel(
         status: json["status"],
         serviceRequests: List<ServiceRequest>.from(
@@ -50,25 +50,25 @@ class ServiceRequest {
       this.stageId});
 
   dynamic requestNo;
-  String category;
-  String categoryAR;
-  String detail;
-  String detailAR;
-  String date;
-  String propertyName;
-  String propertyNameAr;
-  String status;
-  String statusAR;
+  String? category;
+  String? categoryAR;
+  String? detail;
+  String? detailAR;
+  String? date;
+  String? propertyName;
+  String? propertyNameAr;
+  String? status;
+  String? statusAR;
   dynamic units;
-  String subCategory;
-  String subCategoryAR;
-  String unitRefNo;
-  int code;
-  String caseType;
-  int dueActionId;
-  int stageId;
+  String? subCategory;
+  String? subCategoryAR;
+  String? unitRefNo;
+  int? code;
+  String? caseType;
+  int? dueActionId;
+  int? stageId;
 
-  factory ServiceRequest.fromJson(Map<String, dynamic> json) => ServiceRequest(
+  factory ServiceRequest.fromJson(Map<String?, dynamic> json) => ServiceRequest(
       requestNo: json["requestNo"],
       category: json["category"] ?? '',
       categoryAR: json["categoryAR"] ?? '',

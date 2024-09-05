@@ -17,7 +17,7 @@ import '../../widgets/common_widgets/button_widget.dart';
 import 'public_login_controller.dart';
 
 class PublicLoginScreen extends GetView<PublicLoginController> {
-  PublicLoginScreen({Key key}) : super(key: key) {
+  PublicLoginScreen({Key? key}) : super(key: key) {
     Get.put(PublicLoginController());
   }
 
@@ -76,8 +76,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                           padding: EdgeInsets.only(
                                               top: 6.0.h, bottom: 1.h),
                                           child: Text(
-                                            controller.profileData.profileDetail
-                                                .mobile,
+                                            controller.profileData!.profileDetail!
+                                                .mobile??"",
                                             style: AppTextStyle.normalWhite12,
                                           ),
                                         ),
@@ -108,13 +108,13 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                   onChanged: (value) {
                                                     if (value !=
                                                             controller
-                                                                .profileData
-                                                                .profileDetail
+                                                                .profileData!
+                                                                .profileDetail!
                                                                 .fullName ||
                                                         value !=
                                                             controller
-                                                                .profileData
-                                                                .profileDetail
+                                                                .profileData!
+                                                                .profileDetail!
                                                                 .fullNameAr)
                                                       controller.updateEnabled
                                                           .value = true;
@@ -161,8 +161,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                   onChanged: (value) {
                                                     if (value !=
                                                         controller
-                                                            .profileData
-                                                            .profileDetail
+                                                            .profileData!
+                                                            .profileDetail!
                                                             .email)
                                                       controller.updateEnabled
                                                           .value = true;
@@ -214,7 +214,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                     ? () {
                                                         FocusScope.of(context)
                                                             .unfocus();
-                                                        if (formKey.currentState
+                                                        if (formKey.currentState!
                                                             .validate())
                                                           controller
                                                               .updateProfile();

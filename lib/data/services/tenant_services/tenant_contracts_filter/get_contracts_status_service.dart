@@ -8,8 +8,8 @@ class GetContractsStatusService {
   static Future<dynamic> getData() async {
     print(':::::::::::::+++++ Vendor +++++++::::::::::::::::::::');
     var url = AppConfig().getContractStatus;
-    Map data;
-    var response = await BaseClientClass.post(url, data);
+    Map? data;
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         GetContractStatusModel contractStatusModel =

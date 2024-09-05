@@ -38,15 +38,15 @@ class VendorContractsDetailsController extends GetxController {
           loadingData.value = false;
         } else {
           getContractsDetails.value = result;
-          var am = getContractsDetails.value.contractDetail.amount;
+          var am = getContractsDetails.value.contractDetail!.amount;
           final paidFormatter = NumberFormat('#,##0.00', 'AR');
           amountCurrency.value = paidFormatter.format(am);
           DateTime startDate =
-              DateFormat('dd-mm-yyyy').parse(result.contractDetail.startDate);
+              DateFormat('dd-mm-yyyy').parse(result.contractDetail!.startDate??"");
           DateTime endDate =
-              DateFormat('dd-mm-yyyy').parse(result.contractDetail.endDate);
+              DateFormat('dd-mm-yyyy').parse(result.contractDetail!.endDate??"");
           DateTime now = DateTime.now();
-          int cLength = int.parse(result.contractDetail.contractLength);
+          int cLength = int.parse(result.contractDetail!.contractLength??"");
           if (now.compareTo(startDate) <= 0) {
             daysPassed = 0;
             comPtg = 0;

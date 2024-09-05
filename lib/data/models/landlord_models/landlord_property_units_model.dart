@@ -4,35 +4,35 @@
 
 import 'dart:convert';
 
-LandlordPropertyUnitsModel landlordPropertyUnitsModelFromJson(String str) =>
-    LandlordPropertyUnitsModel.fromJson(json.decode(str));
+LandlordPropertyUnitsModel landlordPropertyUnitsModelFromJson(String? str) =>
+    LandlordPropertyUnitsModel.fromJson(json.decode(str!));
 
-String landlordPropertyUnitsModelToJson(LandlordPropertyUnitsModel data) =>
+String? landlordPropertyUnitsModelToJson(LandlordPropertyUnitsModel data) =>
     json.encode(data.toJson());
 
 class LandlordPropertyUnitsModel {
-  String status;
-  List<Cities> cities;
-  String message;
+  String? status;
+  List<Cities>? cities;
+  String? message;
 
   LandlordPropertyUnitsModel({this.status, this.cities, this.message});
 
-  LandlordPropertyUnitsModel.fromJson(Map<String, dynamic> json) {
+  LandlordPropertyUnitsModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     if (json['cities'] != null) {
       cities = <Cities>[];
       json['cities'].forEach((v) {
-        cities.add(new Cities.fromJson(v));
+        cities!.add(new Cities.fromJson(v));
       });
     }
     message = json['message'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['status'] = this.status;
     if (this.cities != null) {
-      data['cities'] = this.cities.map((v) => v.toJson()).toList();
+      data['cities'] = this.cities!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -42,23 +42,23 @@ class LandlordPropertyUnitsModel {
 class Cities {
   dynamic measurementType;
   dynamic areaSizeSqm;
-  String areasize;
+  String? areasize;
   dynamic unitID;
   dynamic propertyImageInByte;
-  String propertyImage;
-  String propertyName;
-  String propertyNameAR;
-  String unitName;
+  String? propertyImage;
+  String? propertyName;
+  String? propertyNameAR;
+  String? unitName;
   dynamic unitTypeAR;
   dynamic unitViewAR;
-  String unitRefNo;
-  String unitNo;
-  String unitCategory;
-  String unitCategoryAR;
-  String landlord;
-  String landlordAR;
-  String unitView;
-  String unitType;
+  String? unitRefNo;
+  String? unitNo;
+  String? unitCategory;
+  String? unitCategoryAR;
+  String? landlord;
+  String? landlordAR;
+  String? unitView;
+  String? unitType;
   dynamic currentRent;
   dynamic floorNo;
   dynamic bedRooms;
@@ -101,7 +101,7 @@ class Cities {
       this.driverRooms,
       this.contractID});
 
-  Cities.fromJson(Map<String, dynamic> json) {
+  Cities.fromJson(Map<String?, dynamic> json) {
     measurementType = json['measurementType'];
     areaSizeSqm = json['areaSizeSqm'];
     areasize = json['areasize'];
@@ -133,8 +133,8 @@ class Cities {
     contractID = json['contractID'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['measurementType'] = this.measurementType;
     data['areaSizeSqm'] = this.areaSizeSqm;
     data['areasize'] = this.areasize;

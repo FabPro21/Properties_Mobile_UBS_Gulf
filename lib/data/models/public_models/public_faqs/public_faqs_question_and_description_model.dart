@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicFaqsQuestionAndDescriptionModel publicFaqsQuestionAndDescriptionModelFromJson(String str) => PublicFaqsQuestionAndDescriptionModel.fromJson(json.decode(str));
+PublicFaqsQuestionAndDescriptionModel publicFaqsQuestionAndDescriptionModelFromJson(String? str) => PublicFaqsQuestionAndDescriptionModel.fromJson(json.decode(str!));
 
-String publicFaqsQuestionAndDescriptionModelToJson(PublicFaqsQuestionAndDescriptionModel data) => json.encode(data.toJson());
+String? publicFaqsQuestionAndDescriptionModelToJson(PublicFaqsQuestionAndDescriptionModel data) => json.encode(data.toJson());
 
 class PublicFaqsQuestionAndDescriptionModel {
     PublicFaqsQuestionAndDescriptionModel({
@@ -15,19 +15,19 @@ class PublicFaqsQuestionAndDescriptionModel {
         this.message,
     });
 
-    String status;
-    List<Faq> faq;
-    String message;
+    String? status;
+    List<Faq>? faq;
+    String? message;
 
-    factory PublicFaqsQuestionAndDescriptionModel.fromJson(Map<String, dynamic> json) => PublicFaqsQuestionAndDescriptionModel(
+    factory PublicFaqsQuestionAndDescriptionModel.fromJson(Map<String?, dynamic> json) => PublicFaqsQuestionAndDescriptionModel(
         status: json["status"],
         faq: List<Faq>.from(json["faq"].map((x) => Faq.fromJson(x))),
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
-        "faq": List<dynamic>.from(faq.map((x) => x.toJson())),
+        "faq": List<dynamic>.from(faq!.map((x) => x.toJson())),
         "message": message,
     };
 }
@@ -40,19 +40,19 @@ class Faq {
         this.descriptionAr,
     });
 
-    String title;
-    String titleAr;
-    String description;
-    String descriptionAr;
+    String? title;
+    String? titleAr;
+    String? description;
+    String? descriptionAr;
 
-    factory Faq.fromJson(Map<String, dynamic> json) => Faq(
+    factory Faq.fromJson(Map<String?, dynamic> json) => Faq(
         title: json["title"],
         titleAr: json["titleAR"],
         description: json["description"],
         descriptionAr: json["descriptionAR"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "title": title,
         "titleAR": titleAr,
         "description": description,

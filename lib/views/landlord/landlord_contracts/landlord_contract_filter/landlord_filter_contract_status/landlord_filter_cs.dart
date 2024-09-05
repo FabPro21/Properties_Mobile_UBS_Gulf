@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordFilterCS extends StatefulWidget {
-  const LandlordFilterCS({Key key}) : super(key: key);
+  const LandlordFilterCS({Key? key}) : super(key: key);
 
   @override
   _LandlordFilterCSState createState() => _LandlordFilterCSState();
@@ -104,7 +104,7 @@ class _LandlordFilterCSState extends State<LandlordFilterCS> {
                                               _filterContractsStatusController
                                                   .contractsStatusModel
                                                   .value
-                                                  .data[index]);
+                                                  .data?[index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -115,27 +115,27 @@ class _LandlordFilterCSState extends State<LandlordFilterCS> {
                                           _filterContractsStatusController
                                                       .contractsStatusModel
                                                       .value
-                                                      .data[index]
+                                                      .data?[index]
                                                       .contractType ==
                                                   'Active'
                                               ? SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? '${_filterContractsStatusController.contractsStatusModel.value.data[index].contractType} / Expired'
-                                                  : '${_filterContractsStatusController.contractsStatusModel.value.data[index].contractTypeAR} / منتهي الصلاحية'
+                                                  ? '${_filterContractsStatusController.contractsStatusModel.value.data?[index].contractType} / Expired'
+                                                  : '${_filterContractsStatusController.contractsStatusModel.value.data?[index].contractTypeAR} / منتهي الصلاحية'
                                               : SessionController()
                                                           .getLanguage() ==
                                                       1
                                                   ? _filterContractsStatusController
                                                           .contractsStatusModel
                                                           .value
-                                                          .data[index]
+                                                          .data![index]
                                                           .contractType ??
                                                       ""
                                                   : _filterContractsStatusController
                                                           .contractsStatusModel
                                                           .value
-                                                          .data[index]
+                                                          .data![index]
                                                           .contractTypeAR ??
                                                       "",
                                         ),

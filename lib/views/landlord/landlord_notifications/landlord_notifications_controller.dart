@@ -48,7 +48,7 @@ class LandlordNotificationsController extends GetxController {
     super.onInit();
   }
 
-  List<notif.Notification> notifications;
+  List<notif.Notification>? notifications;
   String pagaNoPAll = '1';
   getData(String pagaNoP) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
@@ -64,12 +64,12 @@ class LandlordNotificationsController extends GetxController {
       loadingData.value = false;
       if (result is notif.GetLandLordNotificationsModel) {
         getNotifications.value = result;
-        notifications = getNotifications.value.notifications;
+        notifications = getNotifications.value.notifications!;
         if (getNotifications.value.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
           loadingData.value = false;
         } else {
-          allLength = getNotifications.value.notifications.length;
+          allLength = getNotifications.value.notifications!.length;
           allCheckbox.marked = List<RxBool>.filled(allLength, false.obs);
           loadingData.value = false;
         }
@@ -108,11 +108,11 @@ class LandlordNotificationsController extends GetxController {
           isLoadingAllNotification.value = false;
         } else {
           for (int i = 0;
-              i < getNotifications.value.notifications.length;
+              i < getNotifications.value.notifications!.length;
               i++) {
-            notifications.add(getNotifications.value.notifications[i]);
+            notifications!.add(getNotifications.value.notifications![i]);
           }
-          allLength = notifications.length;
+          allLength = notifications!.length;
           allCheckbox.marked = List<RxBool>.filled(allLength, false.obs);
           loadingData.value = false;
         }
@@ -134,7 +134,7 @@ class LandlordNotificationsController extends GetxController {
   }
 
   String pagaNoPURead = '1';
-  List<notif.Notification> notificationsUnRead;
+  List<notif.Notification>? notificationsUnRead;
   unReadNotifications(String pagaNoP) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -150,12 +150,12 @@ class LandlordNotificationsController extends GetxController {
       print('Result ::::: $result');
       if (result is notif.GetLandLordNotificationsModel) {
         unreadNotifications.value = result;
-        notificationsUnRead = unreadNotifications.value.notifications;
+        notificationsUnRead = unreadNotifications.value.notifications!;
         if (unreadNotifications.value.status == AppMetaLabels().notFound) {
           errorUnread.value = AppMetaLabels().noDatafound;
           unreadNotificationsLoading.value = false;
         } else {
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead!.length;
           unreadCheckbox.marked = List<RxBool>.filled(unreadLength, false.obs);
           unreadNotificationsLoading.value = false;
         }
@@ -181,7 +181,8 @@ class LandlordNotificationsController extends GetxController {
     try {
       noMoreDataUnRead.value = '';
       isLoadingUnReadNotification.value = true;
-      var result = await LandlordRepository.getNotificationsPagination('Unread',pagaNoP);
+      var result = await LandlordRepository.getNotificationsPagination(
+          'Unread', pagaNoP);
       isLoadingUnReadNotification.value = false;
       print('Result ::::: $result');
       if (result is notif.GetLandLordNotificationsModel) {
@@ -194,11 +195,12 @@ class LandlordNotificationsController extends GetxController {
           isLoadingUnReadNotification.value = false;
         } else {
           for (int i = 0;
-              i < unreadNotifications.value.notifications.length;
+              i < unreadNotifications.value.notifications!.length;
               i++) {
-            notificationsUnRead.add(unreadNotifications.value.notifications[i]);
+            notificationsUnRead!
+                .add(unreadNotifications.value.notifications![i]);
           }
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead!.length;
           unreadCheckbox.marked = List<RxBool>.filled(unreadLength, false.obs);
           isLoadingUnReadNotification.value = false;
         }
@@ -233,7 +235,7 @@ class LandlordNotificationsController extends GetxController {
           } else {
             if (list == 'all') {
               loadingData.value = true;
-              getNotifications.value.notifications[index].isRead = true;
+              getNotifications.value.notifications![index].isRead = true;
               loadingData.value = false;
             } else if (list == 'unread') {
               unreadNotificationsLoading.value = true;
@@ -299,7 +301,7 @@ class LandlordNotificationsController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
           loadingnotificationsDetail.value = false;
         } else {
-          getFiles(result.notification.notificationId);
+          getFiles(result.notification!.notificationId!);
           loadingnotificationsDetail.value = false;
         }
       } else {
@@ -314,7 +316,7 @@ class LandlordNotificationsController extends GetxController {
 
   //////////////////////get notification files////////
 
-  NotificationFiles files;
+  NotificationFiles? files;
   RxBool loadingFiles = false.obs;
 // getFiles() get the files
   void getFiles(int id) async {
@@ -329,25 +331,26 @@ class LandlordNotificationsController extends GetxController {
   ///////////////////download file////////////
   // downloadFile() download the file
   void downloadFile(int index) async {
-    files.record[index].downloading.value = true;
+    files!.record![index].downloading!.value = true;
     var result = await LandlordRepository.downloadNotificationFiles(
-        files.record[index].fileId);
+        files!.record![index].fileId!);
 
-    files.record[index].downloading.value = false;
+    files!.record![index].downloading!.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createFile(result, files.record[index].fileName);
-        try {
-          OpenFile.open(path);
-        } catch (e) {
-          print(e);
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createFile(result, files!.record![index].fileName!);
+      try {
+        OpenFile.open(path);
+      } catch (e) {
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,

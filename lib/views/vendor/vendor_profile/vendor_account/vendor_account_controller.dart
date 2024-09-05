@@ -42,7 +42,8 @@ class VendorAccountController extends GetxController {
   }
 
   String getMaskedString(String text) {
-    if (text == null) return '';
+    if (text.isEmpty) return '';
+    // if (text == null) return ''; #1
     String mask = '';
     for (int i = 4; i < text.length - 4; i++) mask = mask + '*';
     return text.substring(0, 4) +

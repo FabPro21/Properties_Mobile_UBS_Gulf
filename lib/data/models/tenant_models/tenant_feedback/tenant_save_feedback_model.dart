@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-TenantSaveFeedbackModel tenantSaveFeedbackModelFromJson(String str) => TenantSaveFeedbackModel.fromJson(json.decode(str));
+TenantSaveFeedbackModel tenantSaveFeedbackModelFromJson(String? str) => TenantSaveFeedbackModel.fromJson(json.decode(str!));
 
-String tenantSaveFeedbackModelToJson(TenantSaveFeedbackModel data) => json.encode(data.toJson());
+String? tenantSaveFeedbackModelToJson(TenantSaveFeedbackModel data) => json.encode(data.toJson());
 
 class TenantSaveFeedbackModel {
     TenantSaveFeedbackModel({
@@ -14,15 +14,15 @@ class TenantSaveFeedbackModel {
         this.message,
     });
 
-    String status;
-    String message;
+    String? status;
+    String? message;
 
-    factory TenantSaveFeedbackModel.fromJson(Map<String, dynamic> json) => TenantSaveFeedbackModel(
+    factory TenantSaveFeedbackModel.fromJson(Map<String?, dynamic> json) => TenantSaveFeedbackModel(
         status: json["status"],
         message: json["message"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "status": status,
         "message": message,
     };

@@ -11,7 +11,7 @@ class ValidateUserServices {
     };
     var url = AppConfig().validateUser;
     print(url);
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getLoginToken());
     if (response is http.Response) {
       ValidateUserModel model = validateUserModelFromJson(response.body);
@@ -26,7 +26,7 @@ class ValidateUserServices {
     };
     var url = AppConfig().validateUserFB;
     print(url);
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getLoginToken());
     if (response is http.Response) {
       ValidateUserModel model = validateUserModelFromJson(response.body);

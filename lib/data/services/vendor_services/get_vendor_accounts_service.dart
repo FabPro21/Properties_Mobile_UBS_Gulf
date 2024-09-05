@@ -8,7 +8,7 @@ import '../../../utils/constants/meta_labels.dart';
 class GetVendorAccountsService {
   static Future<dynamic> getData() async {
     var url = AppConfig().getVendorAccounts;
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is Response) {
       try {

@@ -16,8 +16,8 @@ class CanCheckinModel {
     this.caseNo,
   });
 
-  bool checkIn;
-  int caseNo;
+  bool? checkIn;
+  int? caseNo;
 
   factory CanCheckinModel.fromJson(Map<String, dynamic> json) =>
       CanCheckinModel(

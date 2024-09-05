@@ -16,7 +16,7 @@ import 'package:get/get.dart';
 import 'tenant_contracts_controller.dart';
 
 class TenantContractsScreen extends StatefulWidget {
-  TenantContractsScreen({Key key}) : super(key: key);
+  TenantContractsScreen({Key? key}) : super(key: key);
 
   @override
   State<TenantContractsScreen> createState() => _TenantContractsScreenState();
@@ -360,7 +360,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                       children: [
                         Container(
                           height: 4.0.h,
-                          width: 25.0.w,
+                          width: 30.0.w,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
@@ -397,7 +397,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                                 child: Container(
                                   height: 4.0.h,
                                   width: SessionController().getLanguage() == 1
-                                      ? 25.0.w
+                                      ? 30.0.w
                                       : 40.0.w,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
@@ -458,7 +458,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
 
         Get.to(() => ContractsDetailsTabs(
               prevContractNo:
-                  getContractsController.contracts[index].previousContactNo,
+                  getContractsController.contracts[index].previousContactNo??"",
             ));
       },
       child: Padding(

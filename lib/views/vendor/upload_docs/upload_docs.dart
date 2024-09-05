@@ -1,6 +1,7 @@
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/screen_disable.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -22,11 +23,11 @@ import '../../../data/helpers/session_controller.dart';
 // 112233 upload document Vendor
 // ignore: must_be_immutable
 class UploadDocs extends StatefulWidget {
-  final String title;
-  final int caseNo;
-  final int docCode;
+  final String? title;
+  final int? caseNo;
+  final int? docCode;
 
-  UploadDocs({Key key, this.caseNo, this.title, this.docCode})
+  UploadDocs({Key? key, this.caseNo, this.title, this.docCode})
       : super(key: key);
 
   @override
@@ -34,7 +35,7 @@ class UploadDocs extends StatefulWidget {
 }
 
 class _UploadDocsState extends State<UploadDocs> {
-  UploadDocsController controller;
+  UploadDocsController? controller;
   bool isEnableScreen = true;
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _UploadDocsState extends State<UploadDocs> {
         UploadDocsController(caseNo: widget.caseNo, docCode: widget.docCode));
     print('Case No :::: ${widget.caseNo}');
     print('Doc No :::: ${widget.docCode}');
-    print('Case Nooooooo : ${controller.caseNo}');
+    print('Case Nooooooo : ${controller!.caseNo}');
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -58,11 +59,11 @@ class _UploadDocsState extends State<UploadDocs> {
                 ),
                 Expanded(
                   child: Obx(() {
-                    return controller.loadingDocs.value
+                    return controller!.loadingDocs.value
                         ? Center(child: LoadingIndicatorBlue())
-                        : controller.errorLoadingDocs != ''
+                        : controller!.errorLoadingDocs != ''
                             ? AppErrorWidget(
-                                errorText: controller.errorLoadingDocs,
+                                errorText: controller!.errorLoadingDocs,
                               )
                             : Column(
                                 children: [
@@ -78,7 +79,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                           style: AppTextStyle.semiBoldBlack12,
                                         ),
                                         Text(
-                                          controller.caseNo.toString(),
+                                          controller!.caseNo.toString(),
                                           style: AppTextStyle.semiBoldBlack12,
                                         )
                                       ],
@@ -88,7 +89,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                   Expanded(
                                     child: ListView.builder(
                                         padding: EdgeInsets.zero,
-                                        itemCount: 2, //controller.docs.length,
+                                        itemCount: 2, //controller!.docs.length,
                                         itemBuilder: (context, index) {
                                           return Padding(
                                               padding: EdgeInsets.all(2.0.h),
@@ -102,17 +103,19 @@ class _UploadDocsState extends State<UploadDocs> {
                                                           bottom: 2.0.h,
                                                           right: 4.0.w),
                                                       child: Text(
-                                                        controller
-                                                            .docs[index].name,
+                                                        controller!.docs[index]
+                                                                .name ??
+                                                            "",
                                                         style: AppTextStyle
                                                             .semiBoldBlack12,
                                                       ),
                                                     ),
-                                                    controller.docs[index].id ==
+                                                    controller!.docs[index]
+                                                                    .id ==
                                                                 null ||
-                                                            controller
+                                                            controller!
                                                                 .docs[index]
-                                                                .isRejected
+                                                                .isRejected!
                                                         ? uploadFile(
                                                             context, index)
                                                         : Container(
@@ -146,24 +149,34 @@ class _UploadDocsState extends State<UploadDocs> {
                                                               ],
                                                             ),
                                                             child: FileView(
-                                                              file: controller
+                                                              file: controller!
                                                                   .docs[index],
                                                               onDelete:
                                                                   () async {
                                                                 setState(() {
                                                                   isEnableScreen =
                                                                       false;
+                                                                  controller!
+                                                                      .docs[
+                                                                          index]
+                                                                      .update
+                                                                      .value = false;
                                                                 });
-                                                                await controller
+                                                                await controller!
                                                                     .removeFile(
                                                                         index);
                                                                 setState(() {
-                                                                  controller
+                                                                  controller!
                                                                       .docs[
                                                                           index]
                                                                       .expiry = '';
                                                                   isEnableScreen =
                                                                       true;
+                                                                  controller!
+                                                                      .docs[
+                                                                          index]
+                                                                      .update
+                                                                      .value = false;
                                                                 });
                                                               },
                                                               onPressed:
@@ -172,7 +185,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                                                   isEnableScreen =
                                                                       false;
                                                                 });
-                                                                await controller
+                                                                await controller!
                                                                     .downloadDoc(
                                                                         index);
                                                                 setState(() {
@@ -217,14 +230,14 @@ class _UploadDocsState extends State<UploadDocs> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (controller.docs[index].isRejected)
+                  if (controller!.docs[index].isRejected!)
                     RichText(
                       text: TextSpan(
                           text: '${AppMetaLabels().your} ',
                           style: AppTextStyle.normalErrorText3,
                           children: <TextSpan>[
                             TextSpan(
-                                text: controller.docs[index].name,
+                                text: controller!.docs[index].name,
                                 style: AppTextStyle.normalBlue10,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
@@ -232,8 +245,8 @@ class _UploadDocsState extends State<UploadDocs> {
                                       isEnableScreen = false;
                                     });
 
-                                    if (!controller.docs[index].loading.value)
-                                      await controller.downloadDoc(index);
+                                    if (!controller!.docs[index].loading.value)
+                                      await controller!.downloadDoc(index);
 
                                     setState(() {
                                       isEnableScreen = true;
@@ -248,45 +261,51 @@ class _UploadDocsState extends State<UploadDocs> {
                     height: 8,
                   ),
                   Obx(() {
-                    if (controller.docs[index].update.value) {}
-                    return controller.docs[index].path != null
+                    if (controller!.docs[index].update.value) {}
+                    return controller!.docs[index].path != null
                         ? FileView(
-                            file: controller.docs[index],
+                            file: controller!.docs[index],
                             onPressed: () {
-                              controller.showFile(controller.docs[index]);
+                              controller!.showFile(controller!.docs[index]);
                             },
                             onDelete: () async {
                               setState(() {
+                                controller!.docs[index].update.value = false;
                                 isEnableScreen = false;
                               });
-                              await controller.removePickedFile(index);
+                              await controller!.removePickedFile(index);
 
                               setState(() {
-                                controller.docs[index].expiry = '';
+                                controller!.docs[index].expiry = '';
                                 isEnableScreen = true;
+                                controller!.docs[index].update.value = false;
                               });
                               setState(() {
-                                if (controller
+                                if (controller!
                                         .selectedIndexForUploadedDocument ==
                                     index) {
-                                  controller.selectedIndexForUploadedDocument =
+                                  controller!.selectedIndexForUploadedDocument =
                                       -1;
                                 }
                               });
                             },
                           )
-                        : IconButton(
-                            onPressed: () async {
-                              await controller.pickDoc(index);
-                              setState(() {});
-                            },
-                            icon: Image.asset(
-                              AppImagesPath.downloadimg,
-                              width: 4.5.h,
-                              height: 4.5.h,
-                              fit: BoxFit.contain,
-                            ),
-                          );
+                        : controller!.docs[index].update.value
+                            ? LoadingIndicatorBlue(
+                                size: 3.h,
+                              )
+                            : IconButton(
+                                onPressed: () async {
+                                  await controller!.pickDoc(index);
+                                  setState(() {});
+                                },
+                                icon: Image.asset(
+                                  AppImagesPath.downloadimg,
+                                  width: 4.5.h,
+                                  height: 4.5.h,
+                                  fit: BoxFit.contain,
+                                ),
+                              );
                   }),
                   SizedBox(
                     height: 2.5.h,
@@ -315,8 +334,10 @@ class _UploadDocsState extends State<UploadDocs> {
                       InkWell(
                         onTap: () async {
                           var expDate = await showRoundedDatePicker(
+                            theme: ThemeData(primaryColor: AppColors.blueColor),
                             height: 50.0.h,
                             context: context,
+
                             // locale: Locale('en'),
                             locale: SessionController().getLanguage() == 1
                                 ? Locale('en', '')
@@ -341,13 +362,13 @@ class _UploadDocsState extends State<UploadDocs> {
                                       .dateFormatForShowRoundedDatePicker);
                               // intl.DateFormat dateFormat = new intl.DateFormat(
                               //     AppMetaLabels().dateFormat);
-                              controller.setExpDate(
+                              controller!.setExpDate(
                                   index, dateFormat.format(expDate));
                               setState(() {
-                                if (controller
+                                if (controller!
                                         .selectedIndexForUploadedDocument ==
                                     index) {
-                                  controller.selectedIndexForUploadedDocument =
+                                  controller!.selectedIndexForUploadedDocument =
                                       -1;
                                 }
                               });
@@ -362,7 +383,7 @@ class _UploadDocsState extends State<UploadDocs> {
                               borderRadius: BorderRadius.circular(1.0.h),
                               border: Border.all(
                                   color: index ==
-                                          controller
+                                          controller!
                                               .selectedIndexForUploadedDocument
                                       ? Colors.red
                                       : Colors.transparent)),
@@ -373,9 +394,9 @@ class _UploadDocsState extends State<UploadDocs> {
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
                                 child: Obx(() {
-                                  if (controller.docs[index].update.value) {}
+                                  if (controller!.docs[index].update.value) {}
                                   return Text(
-                                    controller.docs[index].expiry ?? '',
+                                    controller!.docs[index].expiry ?? '',
                                     style: AppTextStyle.normalBlack12,
                                   );
                                 }),
@@ -386,7 +407,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
                                 child: ClearButton(
                                   clear: () {
-                                    controller.clearExpDate(index);
+                                    controller!.clearExpDate(index);
                                   },
                                 ),
                               ),
@@ -396,7 +417,7 @@ class _UploadDocsState extends State<UploadDocs> {
                       ),
                     ],
                   ),
-                  controller.selectedIndexForUploadedDocument == index
+                  controller!.selectedIndexForUploadedDocument == index
                       ? SizedBox(
                           height: 20,
                           child: Center(
@@ -413,15 +434,15 @@ class _UploadDocsState extends State<UploadDocs> {
                       width: 50.w,
                       height: 5.h,
                       child: Obx(() {
-                        return controller.docs[index].loading.value
+                        return controller!.docs[index].loading.value
                             ? LoadingIndicatorBlue(size: 3.h)
-                            : controller.docs[index].errorLoading
+                            : controller!.docs[index].errorLoading
                                 ? IconButton(
                                     onPressed: () async {
                                       setState(() {
                                         isEnableScreen = false;
                                       });
-                                      await controller.uploadDoc(index);
+                                      await controller!.uploadDoc(index);
                                       setState(() {
                                         isEnableScreen = true;
                                       });
@@ -433,31 +454,31 @@ class _UploadDocsState extends State<UploadDocs> {
                                     ),
                                   )
                                 : Obx(() {
-                                    if (controller.docs[index].update.value) {}
+                                    if (controller!.docs[index].update.value) {}
                                     return ElevatedButton(
-                                      onPressed:
-                                          controller.docs[index].expiry ==
-                                                      null ||
-                                                  controller.docs[index].path ==
-                                                      null
-                                              ? null
-                                              : () async {
-                                                  setState(() {
-                                                    isEnableScreen = false;
-                                                  });
+                                      onPressed: controller!
+                                                      .docs[index].expiry ==
+                                                  null ||
+                                              controller!.docs[index].path ==
+                                                  null
+                                          ? null
+                                          : () async {
+                                              setState(() {
+                                                isEnableScreen = false;
+                                              });
 
-                                                  if (controller
-                                                      .docs[index].isRejected)
-                                                    await controller
-                                                        .updateDoc(index);
-                                                  else
-                                                    await controller
-                                                        .uploadDoc(index);
+                                              if (controller!
+                                                  .docs[index].isRejected!)
+                                                await controller!
+                                                    .updateDoc(index);
+                                              else
+                                                await controller!
+                                                    .uploadDoc(index);
 
-                                                  setState(() {
-                                                    isEnableScreen = true;
-                                                  });
-                                                },
+                                              setState(() {
+                                                isEnableScreen = true;
+                                              });
+                                            },
                                       child: Text(
                                         AppMetaLabels().submit,
                                         style: AppTextStyle.semiBoldWhite12,

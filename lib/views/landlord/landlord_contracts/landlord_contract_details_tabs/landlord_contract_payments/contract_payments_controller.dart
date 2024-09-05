@@ -47,7 +47,7 @@ class LandlordContractPaymentsController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
         } else {
           payments = result;
-          length = payments.payments.length;
+          length = payments.payments!.length;
         }
       } else {
         error.value = AppMetaLabels().noDatafound;
@@ -69,7 +69,7 @@ class LandlordContractPaymentsController extends GetxController {
       errorLoadingUnverified = '';
       var result = await LandlordRepository.getUnverifiedPayments();
       if (result is UnverifiedContractPaymentsLandlord) {
-        if (result.contractPayments.isEmpty) {
+        if (result.contractPayments!.isEmpty) {
           errorLoadingUnverified = AppMetaLabels().noDatafound;
         } else {
           unverifiedPayments = result;
@@ -84,21 +84,22 @@ class LandlordContractPaymentsController extends GetxController {
   }
 
   getCheque(int index) async {
-    payments.payments[index].loadingCheque.value = true;
-    payments.payments[index].errorLoadingCheque = '';
+    payments.payments![index].loadingCheque!.value = true;
+    payments.payments![index].errorLoadingCheque = '';
     var result = await LandlordRepository.getCheque(
-        payments.payments[index].transactionId.toString());
+        payments.payments![index].transactionId.toString());
     if (result is GetContractChequesModelLandlord) {
       if (result.status == AppMetaLabels().notFound) {
-        payments.payments[index].errorLoadingCheque =
+        payments.payments![index].errorLoadingCheque =
             AppMetaLabels().noDatafound;
       } else {
-        payments.payments[index].cheque = result;
+        payments.payments![index].cheque = result;
       }
     } else {
-      payments.payments[index].errorLoadingCheque = AppMetaLabels().noDatafound;
+      payments.payments![index].errorLoadingCheque =
+          AppMetaLabels().noDatafound;
     }
-    payments.payments[index].loadingCheque.value = false;
+    payments.payments![index].loadingCheque!.value = false;
   }
 
   void downloadReceipt(Payment payment) async {
@@ -106,27 +107,28 @@ class LandlordContractPaymentsController extends GetxController {
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
     }
-    payment.downloadingReceipt.value = true;
-     print('Condition """"::::');
+    payment.downloadingReceipt!.value = true;
+    print('Condition """"::::');
     SessionController().setTransactionId(payment.transactionId.toString());
     var result = await LandlordRepository.paymentsDownloadReceipt();
     print('Condition """"::::::"""""" ${(result is Uint8List)}');
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, payment.receiptNo);
-        print('path """"::::::"""""" $path');
-        try {
-          print('path """"::Inside Try ::::"""""" $path');
-          OpenFile.open(path);
-        } catch (e) {
-          print('path """" Catch:: $e');
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, payment.receiptNo ?? "");
+      print('path """"::::::"""""" $path');
+      try {
+        print('path """"::Inside Try ::::"""""" $path');
+        OpenFile.open(path);
+      } catch (e) {
+        print('path """" Catch:: $e');
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,
@@ -134,7 +136,7 @@ class LandlordContractPaymentsController extends GetxController {
         backgroundColor: AppColors.white54,
       );
     }
-    payment.downloadingReceipt.value = false;
+    payment.downloadingReceipt!.value = false;
   }
 
   Future<bool> getStoragePermission() async {

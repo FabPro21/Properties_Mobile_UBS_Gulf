@@ -20,7 +20,7 @@ class TenantOffersController extends GetxController {
   String pagaNo = '1';
   var loadingDetailsMore = false.obs;
   RxString errorDetailsMore = "".obs;
-  List<model.Record> record;
+  List<model.Record>? record;
   getOffers(String pageNo) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -30,13 +30,13 @@ class TenantOffersController extends GetxController {
       loadingOffers.value = true;
       var result = await TenantRepository.getOffers(pageNo);
       if (result is model.TenantOffersModel) {
-        if (result.record.length == 0) {
+        if (result.record!.length == 0) {
           errorOffers.value = AppMetaLabels().noDatafound;
           loadingOffers.value = false;
         } else {
           offers.value = result;
           record = offers.value.record;
-          length = offers.value.record.length;
+          length = offers.value.record!.length;
           loadingOffers.value = false;
         }
       } else {
@@ -58,14 +58,14 @@ class TenantOffersController extends GetxController {
       loadingOffers.value = true;
       var result = await TenantRepository.getOffers(pageNo);
       if (result is model.TenantOffersModel) {
-        if (result.record.length == 0) {
+        if (result.record!.length == 0) {
           errorDetailsMore.value = AppMetaLabels().noDatafound;
           loadingOffers.value = false;
         } else {
-          for (int i; i < result.record.length; i++) {
-            record.add(result.record[i]);
+          for (int? i; i! < result.record!.length; i++) {
+            record!.add(result.record![i]);
           }
-          length = record.length;
+          length = record!.length;
           loadingOffers.value = false;
         }
       } else {

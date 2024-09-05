@@ -24,7 +24,7 @@ import '../../../data/repository/auth_repository.dart';
 import 'dart:ui' as ui;
 
 class TenantMoreScreen extends StatefulWidget {
-  const TenantMoreScreen({Key key}) : super(key: key);
+  const TenantMoreScreen({Key? key}) : super(key: key);
 
   @override
   State<TenantMoreScreen> createState() => _TenantMoreScreenState();
@@ -162,7 +162,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(3.0.h),
                             child: Text(
-                              name ?? "",
+                              name,
                               style: AppTextStyle.semiBoldWhite16
                                   .copyWith(fontSize: 24.sp),
                             ),
@@ -225,31 +225,32 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              //  ListTile(
-                              //             onTap: () async {
-                              //               await showDialog(
-                              //                   context: context,
-                              //                   barrierDismissible: false,
-                              //                   builder: (BuildContext context) {
-                              //                     return AlertDialog(
-                              //                       contentPadding: EdgeInsets.zero,
-                              //                       backgroundColor:
-                              //                           Colors.transparent,
-                              //                       content: showDialogForVideo(),
-                              //                     );
-                              //                   });
-                              //             },
-                              //             leading: Icon(
-                              //               Icons.play_arrow,
-                              //               size: 3.3.h,
-                              //               color: AppColors.blackColor,
-                              //             ),
-                              //             title: Text(
-                              //               AppMetaLabels().renewalFlowMore,
-                              //               style: AppTextStyle.normalBlack12,
-                              //             ),
-                              //           )
-                              //  ,
+                              SessionController().isFabApp == 2
+                                  ? SizedBox()
+                                  : ListTile(
+                                      onTap: () async {
+                                        await showDialog(
+                                            context: context,
+                                            barrierDismissible: false,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                contentPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                content: showDialogForVideo(),
+                                              );
+                                            });
+                                      },
+                                      leading: Icon(
+                                        Icons.play_arrow,
+                                        size: 3.3.h,
+                                        color: AppColors.blackColor,
+                                      ),
+                                      title: Text(
+                                        AppMetaLabels().renewalFlowMore,
+                                        style: AppTextStyle.normalBlack12,
+                                      ),
+                                    ),
                               ListTile(
                                 onTap: () {
                                   Get.off(() => TenantSettings());
@@ -493,7 +494,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().fabEmail}"));
+                                                        "mailto:${AppMetaLabels().menaEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
@@ -695,13 +696,12 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                     width: 30.0.w,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3.0.w),
-                                    side: BorderSide(color: Colors.blue))),
+                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0.w),
+                                side: BorderSide(color: Colors.blue))),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                            WidgetStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();

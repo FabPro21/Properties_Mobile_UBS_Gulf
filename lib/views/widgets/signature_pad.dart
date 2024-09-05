@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:signature/signature.dart';
 
 class SignaturePad extends StatefulWidget {
-  final double height;
-  final SignatureController controller;
-  const SignaturePad({Key key, this.height, this.controller}) : super(key: key);
+  final double? height;
+  final SignatureController? controller;
+  const SignaturePad({Key? key, this.height, this.controller}) : super(key: key);
 
   @override
   _SignaturePadState createState() => _SignaturePadState();
@@ -23,7 +23,7 @@ class _SignaturePadState extends State<SignaturePad> {
     return Column(
       children: [
         Signature(
-          controller: widget.controller,
+          controller: widget.controller!,
           height: widget.height,
           backgroundColor: AppColors.greyBG,
         ),
@@ -35,26 +35,27 @@ class _SignaturePadState extends State<SignaturePad> {
             children: <Widget>[
               //SHOW EXPORTED IMAGE IN NEW ROUTE
 
-              IconButton(
-                icon: const Icon(Icons.undo),
-                color: AppColors.blueColor,
-                onPressed: () {
-                  setState(() => widget.controller.undo());
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.redo),
-                color: AppColors.blueColor,
-                onPressed: () {
-                  setState(() => widget.controller.redo());
-                },
-              ),
+              // IconButton(
+              //   icon: const Icon(Icons.undo),
+              //   color: AppColors.blueColor,
+              //   onPressed: () {
+              //     // setState(() => widget.controller!.undo());
+              //     widget.controller!.clear();
+              //   },
+              // ),
+              // IconButton(
+              //   icon: const Icon(Icons.redo),
+              //   color: AppColors.blueColor,
+              //   onPressed: () {
+              //     // setState(() => widget.controller!.redo());
+              //   },
+              // ),
               //CLEAR CANVAS
               IconButton(
                 icon: const Icon(Icons.clear),
                 color: AppColors.blueColor,
                 onPressed: () {
-                  setState(() => widget.controller.clear());
+                  setState(() => widget.controller!.clear());
                 },
               ),
             ],

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetAllLpoModel getAllLpoModelFromJson(String str) =>
-    GetAllLpoModel.fromJson(json.decode(str));
+GetAllLpoModel getAllLpoModelFromJson(String? str) =>
+    GetAllLpoModel.fromJson(json.decode(str!));
 
-String getAllLpoModelToJson(GetAllLpoModel data) => json.encode(data.toJson());
+String? getAllLpoModelToJson(GetAllLpoModel data) => json.encode(data.toJson());
 
 class GetAllLpoModel {
   GetAllLpoModel({
@@ -17,23 +17,23 @@ class GetAllLpoModel {
     this.lpos,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<Lpo> lpos;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Lpo>? lpos;
 
-  factory GetAllLpoModel.fromJson(Map<String, dynamic> json) => GetAllLpoModel(
+  factory GetAllLpoModel.fromJson(Map<String?, dynamic> json) => GetAllLpoModel(
         statusCode: json["statusCode"],
         status: json["status"],
         message: json["message"],
         lpos: List<Lpo>.from(json["lpos"].map((x) => Lpo.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
         "message": message,
-        "lpos": List<dynamic>.from(lpos.map((x) => x.toJson())),
+        "lpos": List<dynamic>.from(lpos!.map((x) => x.toJson())),
       };
 }
 
@@ -57,23 +57,23 @@ class Lpo {
       this.caseNo});
 
   dynamic lpoId;
-  String status;
-  String lpoReference;
-  String docReference;
-  String lpoDate;
+  String? status;
+  String? lpoReference;
+  String? docReference;
+  String? lpoDate;
   dynamic grossAmount;
-  String lpoName;
-  String lpoStatus;
-  String lpoStatusAr;
+  String? lpoName;
+  String? lpoStatus;
+  String? lpoStatusAr;
   dynamic discountAmount;
   dynamic netAmount;
-  String workStatus;
-  String lpoType;
-  String lpoTypeAr;
-  double discountPercentage;
+  String? workStatus;
+  String? lpoType;
+  String? lpoTypeAr;
+  double? discountPercentage;
   dynamic caseNo;
 
-  factory Lpo.fromJson(Map<String, dynamic> json) => Lpo(
+  factory Lpo.fromJson(Map<String?, dynamic> json) => Lpo(
       lpoId: json["lpoID"],
       status: json["status"],
       lpoReference: json["lpoReference"],
@@ -91,7 +91,7 @@ class Lpo {
       discountPercentage: json["discountPercentage"].toDouble() ?? 0,
       caseNo: json["caseNo"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "lpoID": lpoId,
         "status": status,
         "lpoReference": lpoReference,
@@ -110,10 +110,10 @@ class Lpo {
 }
 
 class LpoFilterData {
-  String dateFrom;
-  String dateTo;
+  String? dateFrom;
+  String? dateTo;
   dynamic statusId;
-  String propName;
+  String? propName;
 
   LpoFilterData({this.statusId, this.dateFrom, this.dateTo, this.propName});
 }

@@ -11,7 +11,7 @@ class VendorNotificationsDetailServices {
 
     // NotificationId
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     print('::::::::::$response:::::::::::::');
     if (response is http.Response) {
       

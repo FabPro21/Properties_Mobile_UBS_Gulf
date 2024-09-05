@@ -10,7 +10,7 @@ class LpoInvoicesServices {
     var url = AppConfig().lpoInvoices;
     Map data = {"LpoId": lpoId};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       LpoInvoicesModel lpoModel = lpoInvoicesModelFromJson(response.body);
       return lpoModel;

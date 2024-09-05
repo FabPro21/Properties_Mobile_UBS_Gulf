@@ -61,23 +61,23 @@ class LandlordPropsWidgetController extends GetxController {
       } else {
         dashboardData.value = result;
         openCases.value = dashboardData
-            .value.dashboard.first.openCases
+            .value.dashboard!.first.openCases
             .toString();
         closeCases.value = dashboardData
-            .value.dashboard.first.closeCases
+            .value.dashboard!.first.closeCases
             .toString();
 
         occupiedUnits.value =
-            dashboardData.value.dashboard.first.occupiedUnits.toDouble();
+            dashboardData.value.dashboard!.first.occupiedUnits!.toDouble();
         activeContract.value =
-            dashboardData.value.dashboard.first.activeContracts.toDouble();
+            dashboardData.value.dashboard!.first.activeContracts!.toDouble();
         vacantUnit.value =
-            dashboardData.value.dashboard.first.vacantUnits.toDouble();
+            dashboardData.value.dashboard!.first.vacantUnits!.toDouble();
         totalUnits.value =
-            dashboardData.value.dashboard.first.totalUnits.toString();
+            dashboardData.value.dashboard!.first.totalUnits.toString();
 
         // no of notification on badge
-        lengthNotiification.value = int.parse(result.unreadNotifications);
+        lengthNotiification.value = int.parse(result.unreadNotifications!);
 
         setData();
         update();
@@ -99,17 +99,17 @@ class LandlordPropsWidgetController extends GetxController {
     chartData = [
       ChartData(
           AppMetaLabels().occupiedUnits,
-          dashboardData.value.dashboard.first.occupiedUnits
+          dashboardData.value.dashboard!.first.occupiedUnits!
               .toDouble(), //val1 - val2,
           AppColors.chartDarkBlueColor),
       ChartData(
           AppMetaLabels().vacantUnits,
-          dashboardData.value.dashboard.first.vacantUnits.toDouble(),
+          dashboardData.value.dashboard!.first.vacantUnits!.toDouble(),
           AppColors.amber.withOpacity(0.2)),
     ];
   }
 
-  LandlordPropertiesModel propsModel;
+  LandlordPropertiesModel? propsModel;
   RxBool loadingProperties = false.obs;
   String errorLoadingProperties = '';
   int length = 0;
@@ -120,11 +120,11 @@ class LandlordPropsWidgetController extends GetxController {
     print(response);
     if (response is LandlordPropertiesModel) {
       propsModel = response;
-      if (propsModel.serviceRequests.length < 1) {
+      if (propsModel!.serviceRequests!.length < 1) {
         errorLoadingProperties = AppMetaLabels().noDatafound;
       }
-      if (propsModel.serviceRequests.length <= 3)
-        length = propsModel.serviceRequests.length;
+      if (propsModel!.serviceRequests!.length <= 3)
+        length = propsModel!.serviceRequests!.length;
       else
         length = 3;
     } else
@@ -134,7 +134,7 @@ class LandlordPropsWidgetController extends GetxController {
 
   Stream<Uint8List> getImage(int index) async* {
     var resp = await LandlordRepository.getImages(
-        propsModel.serviceRequests[index].buildingRefNo);
+        propsModel!.serviceRequests![index].buildingRefNo);
     if (resp is Uint8List) {
       yield resp;
     } else {}

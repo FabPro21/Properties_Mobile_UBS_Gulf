@@ -10,7 +10,7 @@ class CreateSignatureRequest {
   static Future<dynamic> createReq(int contractId) async {
     var url = AppConfig().createSignatureRequest;
 
-    var response = await BaseClientClass.post(url, {'contractId': contractId});
+    var response = await BaseClientClass.post(url ?? "", {'contractId': contractId});
     if (response is http.Response) {
       try {
         Map<String, dynamic> _jsonResp = json.decode(response.body);

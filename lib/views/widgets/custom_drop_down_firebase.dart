@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomDropDown extends StatelessWidget {
-  final Function onPressed;
-  final String icon;
-  final String selectedValue;
-  const CustomDropDown({Key key, this.onPressed, this.icon, this.selectedValue})
+  final VoidCallback? onPressed;
+  final String? icon;
+  final String? selectedValue;
+  const CustomDropDown({Key? key, this.onPressed, this.icon, this.selectedValue})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class CustomDropDown extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
             side: BorderSide(color: AppColors.greyColor2, width: 0.3)),
-        onPressed: onPressed,
+        onPressed: onPressed!,
         child: Padding(
           padding: EdgeInsets.all(2.w),
           child: Row(
@@ -30,7 +30,7 @@ class CustomDropDown extends StatelessWidget {
                 width: 2.w,
               ),
               Text(
-                selectedValue,
+                selectedValue!,
                 style: TextStyle(
                     color: AppColors.greyColor2,
                     fontSize: 14.sp,

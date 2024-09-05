@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
@@ -8,9 +10,9 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TermsAndConditions extends StatelessWidget {
-  final String title;
+  final String? title;
   TermsAndConditions({
-    Key key,
+    Key? key,
     this.title,
   }) : super(key: key);
 
@@ -18,7 +20,7 @@ class TermsAndConditions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.getData(title);
+    controller.getData(title??"");
     return WillPopScope(
       onWillPop: () async {
         return true;
@@ -26,7 +28,7 @@ class TermsAndConditions extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            title,
+            title??"",
             style: AppTextStyle.semiBoldWhite15,
           ),
           centerTitle: true,
@@ -60,7 +62,7 @@ class TermsAndConditions extends StatelessWidget {
                               Text(controller.errorLoadingData),
                               IconButton(
                                 onPressed: () {
-                                  controller.getData(title);
+                                  controller.getData(title??"");
                                 },
                                 icon: Icon(Icons.refresh),
                               )

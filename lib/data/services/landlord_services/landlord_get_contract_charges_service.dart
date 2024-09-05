@@ -10,7 +10,7 @@ import '../../models/landlord_models/landlord_contract_charges_model.dart';
 class LandlordGetContractChargesServices {
   static Future<dynamic> getContractCharges(int contractId) async {
     var response = await BaseClientClass.post(
-        AppConfig().getLandlordContractCharges, {'ContractId': contractId});
+        AppConfig().getLandlordContractCharges??"", {'ContractId': contractId});
     try {
       if (response is Response) {
         return landlordContractChargesModelFromJson(response.body);

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-PublicUpdateProfileModel publicUpdateProfileModelFromJson(String str) =>
-    PublicUpdateProfileModel.fromJson(json.decode(str));
+PublicUpdateProfileModel publicUpdateProfileModelFromJson(String? str) =>
+    PublicUpdateProfileModel.fromJson(json.decode(str!));
 
-String publicUpdateProfileModelToJson(PublicUpdateProfileModel data) =>
+String? publicUpdateProfileModelToJson(PublicUpdateProfileModel data) =>
     json.encode(data.toJson());
 
 class PublicUpdateProfileModel {
@@ -17,11 +17,11 @@ class PublicUpdateProfileModel {
     this.message,
   });
 
-  String status;
-  AddServiceRequest addServiceRequest;
-  String message;
+  String? status;
+  AddServiceRequest? addServiceRequest;
+  String? message;
 
-  factory PublicUpdateProfileModel.fromJson(Map<String, dynamic> json) =>
+  factory PublicUpdateProfileModel.fromJson(Map<String?, dynamic> json) =>
       PublicUpdateProfileModel(
         status: json["status"],
         addServiceRequest:
@@ -29,9 +29,9 @@ class PublicUpdateProfileModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "addServiceRequest": addServiceRequest.toJson(),
+        "addServiceRequest": addServiceRequest!.toJson(),
         "message": message,
       };
 }
@@ -41,14 +41,14 @@ class AddServiceRequest {
     this.caseNo,
   });
 
-  int caseNo;
+  int? caseNo;
 
-  factory AddServiceRequest.fromJson(Map<String, dynamic> json) =>
+  factory AddServiceRequest.fromJson(Map<String?, dynamic> json) =>
       AddServiceRequest(
         caseNo: json["caseNo"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
       };
 }

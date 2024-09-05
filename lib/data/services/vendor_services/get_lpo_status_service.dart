@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class GetLpoStatusService {
   static Future<dynamic> getData() async {
     var url = AppConfig().getlpostatus;
-    var response = await BaseClientClass.post(url, '');
+    var response = await BaseClientClass.post(url ?? "", '');
     if (response is http.Response) {
       try {
         GetLpoStatusModel lpoStatusModel =

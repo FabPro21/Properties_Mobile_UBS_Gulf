@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 
 class TenantDownloadCheque {
   static Future<dynamic> downloadcheque(int paymentSettingId) async {
-    final String url = AppConfig().downloadCheque;
+    final String url = AppConfig().downloadCheque??"";
     var response = await BaseClientClass.post(url, {"PaymentSettingId":paymentSettingId.toString()});
     if (response is http.Response) {
       try {
@@ -29,7 +29,7 @@ class TenantDownloadCheque {
 }
 class TenantDownloadChequeNew {
   static Future<dynamic> downloadchequeNew(int paymentSettingId) async {
-    final String url = AppConfig().downloadChequeNew;
+    final String url = AppConfig().downloadChequeNew??"";
     var response = await BaseClientClass.post(url, {"PaymentSettingId":paymentSettingId.toString()});
     if (response is http.Response) {
       try {

@@ -37,7 +37,7 @@ class UnitInfoController extends GetxController {
         loadingData.value = false;
       } else {
         unitInfo.value = result;
-        length = unitInfo.value.contractUnits.length;
+        length = unitInfo.value.contractUnits!.length;
         update();
         loadingData.value = false;
       }
@@ -49,7 +49,7 @@ class UnitInfoController extends GetxController {
 
   Stream<Uint8List> getImage(int index) async* {
     var resp = await TenantRepository.getUnitImage(
-        unitInfo.value.contractUnits[index].unitId);
+        unitInfo.value.contractUnits![index].unitId);
     if (resp is Uint8List) {
       yield resp;
     } else {

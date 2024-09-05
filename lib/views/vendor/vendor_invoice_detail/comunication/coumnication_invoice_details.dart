@@ -19,9 +19,9 @@ import 'package:open_file/open_file.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorInvoiceCommunication extends StatefulWidget {
-  final String reqNo;
-  final bool canCommunicate;
-  VendorInvoiceCommunication({Key key, this.reqNo, this.canCommunicate})
+  final String? reqNo;
+  final bool? canCommunicate;
+  VendorInvoiceCommunication({Key? key, this.reqNo, this.canCommunicate})
       : super(key: key) {
     Get.put(CommunicationInvoiceController(reqNo: reqNo));
   }
@@ -94,7 +94,7 @@ class _VendorInvoiceCommunicationState
                                     hintStyle: AppTextStyle.normalGrey11,
                                   ),
                                   validator: (value) {
-                                    if (value.isEmpty) {
+                                    if (value!.isEmpty) {
                                       return AppMetaLabels().requiredField;
                                     } else if (!textValidator.hasMatch(
                                         value.replaceAll('\n', ' '))) {
@@ -145,7 +145,7 @@ class _VendorInvoiceCommunicationState
                                               width: 2.w,
                                             ),
                                             Container(
-                                              width: Get.width * 0.72,
+                                              width: Get.width * 0.7,
                                               child: Text(
                                                 _controller.fileToUpload.value
                                                         .name ??
@@ -192,7 +192,7 @@ class _VendorInvoiceCommunicationState
                                       InkWell(
                                         onTap: () async {
                                           _focusNode.unfocus();
-                                          if (formKey.currentState.validate()) if (await _controller
+                                          if (formKey.currentState!.validate()) if (await _controller
                                               .addTicketReply(
                                                   detailController.caseNoInvoice
                                                       .toString(),
@@ -266,7 +266,7 @@ class _VendorInvoiceCommunicationState
                         );
                       }),
                     ),
-                  if (!_controller.typing.value && widget.canCommunicate)
+                  if (!_controller.typing.value && widget.canCommunicate!)
                     Container(
                         height: 8.0.h,
                         width: double.maxFinite,
@@ -291,7 +291,7 @@ class _VendorInvoiceCommunicationState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 76.0.w,
+                                      width: 73.0.w,
                                       child: Directionality(
                                         textDirection:
                                             SessionController().getLanguage() ==
@@ -303,7 +303,7 @@ class _VendorInvoiceCommunicationState
                                           style: AppTextStyle.normalGrey12,
                                           readOnly: true,
                                           onTap: () {
-                                            if (widget.canCommunicate) {
+                                            if (widget.canCommunicate!) {
                                               _controller.typing.value = true;
                                               _focusNode.requestFocus();
                                             } else {
@@ -384,7 +384,7 @@ class _VendorInvoiceCommunicationState
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             scrollToEndofChat();
           });
-          return _controller.gettingReplies.value
+          return _controller.gettingReplies!.value
               ? Center(
                   child: LoadingIndicatorBlue(),
                 )
@@ -394,13 +394,13 @@ class _VendorInvoiceCommunicationState
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
-                      itemCount: _controller.ticketReplies.ticketReply.length,
+                      itemCount: _controller.ticketReplies!.ticketReply!.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
-                          alignment: (_controller.ticketReplies
-                                      .ticketReply[index].userId ==
+                          alignment: (_controller.ticketReplies!
+                                      .ticketReply![index].userId ==
                                   null
                               ? Alignment.topLeft
                               : Alignment.topRight),
@@ -408,8 +408,8 @@ class _VendorInvoiceCommunicationState
                             constraints: BoxConstraints(maxWidth: 80.w),
                             child: Container(
                               margin: EdgeInsets.only(top: 2.5.h),
-                              decoration: _controller.ticketReplies
-                                          .ticketReply[index].userId ==
+                              decoration: _controller.ticketReplies!
+                                          .ticketReply![index].userId ==
                                       null
                                   ? BoxDecoration(
                                       borderRadius: BorderRadius.only(
@@ -428,25 +428,28 @@ class _VendorInvoiceCommunicationState
                                     ),
                               padding: EdgeInsets.all(12),
                               child: Column(
-                                crossAxisAlignment: _controller.ticketReplies
-                                            .ticketReply[index].userId ==
+                                crossAxisAlignment: _controller.ticketReplies!
+                                            .ticketReply![index].userId ==
                                         null
                                     ? CrossAxisAlignment.end
                                     : CrossAxisAlignment.start,
                                 children: [
-                                  if (_controller.ticketReplies
-                                              .ticketReply[index].fileName !=
+                                  if (_controller.ticketReplies!
+                                              .ticketReply![index].fileName !=
                                           null &&
-                                      _controller.ticketReplies
-                                              .ticketReply[index].fileName !=
+                                      _controller.ticketReplies!
+                                              .ticketReply![index].fileName !=
                                           "")
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            _controller.ticketReplies
-                                                .ticketReply[index].fileName,
+                                            _controller
+                                                    .ticketReplies!
+                                                    .ticketReply![index]
+                                                    .fileName ??
+                                                "",
                                             style: AppTextStyle.semiBoldBlue10,
                                           ),
                                         ),
@@ -455,9 +458,9 @@ class _VendorInvoiceCommunicationState
                                           width: 50,
                                           child: Obx(() {
                                             return _controller
-                                                    .ticketReplies
-                                                    .ticketReply[index]
-                                                    .downloadingFile
+                                                    .ticketReplies!
+                                                    .ticketReply![index]
+                                                    .downloadingFile!
                                                     .value
                                                 ? LoadingIndicatorBlue(
                                                     strokeWidth: 2,
@@ -487,21 +490,20 @@ class _VendorInvoiceCommunicationState
                                   // ),
                                   // Communication
                                   Html(
-                                    customTextAlign: (_) =>
-                                        SessionController().getLanguage() == 1
-                                            ? TextAlign.left
-                                            : TextAlign.right,
-                                    data: _controller
-                                        .ticketReplies.ticketReply[index].reply,
-                                    defaultTextStyle: AppTextStyle.normalGrey12
-                                        .copyWith(fontWeight: FontWeight.w600),
+                                    style: {
+                                      'html':
+                                          AppTextStyle.normalGrey12Communication
+                                    },
+                                    data: _controller.ticketReplies!
+                                        .ticketReply![index].reply,
                                   ),
                                   SizedBox(
                                     height: 2.h,
                                   ),
                                   Text(
-                                    _controller.ticketReplies.ticketReply[index]
-                                        .dateTime,
+                                    _controller.ticketReplies!
+                                            .ticketReply![index].dateTime ??
+                                        "",
                                     style: AppTextStyle.normalGrey8,
                                   ),
                                 ],

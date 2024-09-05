@@ -52,13 +52,13 @@ class GetContractFinancialTermsController extends GetxController {
 
         totalAmountSum.value = 0.0;
 
-        getFinalcialTerms.value.contractFinancialTerms.forEach((element) {
+        getFinalcialTerms.value.contractFinancialTerms!.forEach((element) {
           totalAmountSum.value = totalAmountSum.value + element.amount;
         });
         /////////
         /// balance = total -paid;
         /////////
-        totalPaid.value = getFinalcialTerms.value.paid.paid;
+        totalPaid.value = getFinalcialTerms.value.paid!.paid;
         balance.value = totalAmountSum.value - totalPaid.value;
 
         ///////////////////////////////
@@ -80,7 +80,7 @@ class GetContractFinancialTermsController extends GetxController {
         final tacFormatter = NumberFormat('#,##0.00', 'AR');
         totalAmountSumFormat.value = tacFormatter.format(tas);
 
-        length = getFinalcialTerms.value.contractFinancialTerms.length;
+        length = getFinalcialTerms.value.contractFinancialTerms!.length;
         update();
         loadingData.value = false;
       }

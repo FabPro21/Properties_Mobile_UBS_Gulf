@@ -117,12 +117,12 @@
 //     final RecognizedText recognizedText =
 //         await textRecognizer.processImage(inputImage);
 
-//     String idNumber;
-//     String name;
-//     String nationality;
-//     String gender;
+//     String? idNumber;
+//     String? name;
+//     String? nationality;
+//     String? gender;
 //     List<DateTime> dates = [];
-//     String cardNumber;
+//     String? cardNumber;
 //     for (TextBlock block in recognizedText.blocks) {
 //       // block.recognizedLanguages.add('ar');
 //       for (TextLine line in block.lines) {
@@ -235,6 +235,7 @@
 //   }
 // }
 
+// ignore_for_file: deprecated_member_use
 
 // // with all validations
 import 'dart:async';
@@ -242,6 +243,8 @@ import 'dart:io';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -251,8 +254,8 @@ import 'package:sizer/sizer.dart';
 import '../../../data/models/tenant_models/card_model.dart';
 
 class CardScanner extends StatefulWidget {
-  final File file;
-  const CardScanner({Key key, @required this.file}) : super(key: key);
+  final File? file;
+  const CardScanner({Key? key, @required this.file}) : super(key: key);
 
   @override
   _CardScannerState createState() => _CardScannerState();
@@ -260,7 +263,7 @@ class CardScanner extends StatefulWidget {
 
 class _CardScannerState extends State<CardScanner>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  AnimationController? _animationController;
   bool reverse = true;
   bool front = false;
   bool back = false;
@@ -285,23 +288,23 @@ class _CardScannerState extends State<CardScanner>
 
   void animateScanAnimation() {
     if (reverse) {
-      _animationController.reverse(from: 1.0);
+      _animationController!.reverse(from: 1.0);
     } else {
-      _animationController.forward(from: 0.0);
+      _animationController!.forward(from: 0.0);
     }
     reverse = !reverse;
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController!.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final image = Image.file(
-      widget.file,
+      widget.file!,
       width: 100.w,
       height: 30.h,
       fit: BoxFit.fitHeight,
@@ -311,14 +314,20 @@ class _CardScannerState extends State<CardScanner>
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(AppMetaLabels().scanningCard),
+          title: Text(
+            AppMetaLabels().scanningCard,
+            style: AppTextStyle.semiBoldWhite14,
+          ),
           flexibleSpace: Image.asset(
             AppImagesPath.appbarimg,
             width: double.infinity,
             fit: BoxFit.fill,
           ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.white54,
+            ),
             onPressed: () {
               if (isScanning) {
               } else {
@@ -335,8 +344,8 @@ class _CardScannerState extends State<CardScanner>
               children: [
                 Center(child: image),
                 ImageScannerAnimation(
-                  image.width,
-                  animation: _animationController,
+                  image.width!,
+                  animation: _animationController!,
                 )
               ],
             ),
@@ -351,17 +360,17 @@ class _CardScannerState extends State<CardScanner>
     setState(() {
       isScanning = true;
     });
-    final inputImage = InputImage.fromFilePath(widget.file.path);
+    final inputImage = InputImage.fromFilePath(widget.file!.path);
     final textRecognizer = TextRecognizer();
     final RecognizedText recognizedText =
         await textRecognizer.processImage(inputImage);
 
-    String idNumber;
-    String name;
-    String nationality;
-    String gender;
+    String? idNumber;
+    String? name;
+    String? nationality;
+    String? gender;
     List<DateTime> dates = [];
-    String cardNumber;
+    String? cardNumber;
     var regExpForDigit = RegExp('[0-9]');
     var regExpForDash = RegExp('-');
 
@@ -472,11 +481,11 @@ class _CardScannerState extends State<CardScanner>
 class ImageScannerAnimation extends AnimatedWidget {
   final double width;
 
-  ImageScannerAnimation(this.width, {Key key, Animation<double> animation})
-      : super(key: key, listenable: animation);
+  ImageScannerAnimation(this.width, {Key? key, Animation<double>? animation})
+      : super(key: key, listenable: animation!);
 
   Widget build(BuildContext context) {
-    final Animation<double> animation = listenable;
+    final Animation<double> animation = listenable as Animation<double>;
     final scorePosition = (animation.value * 24.h);
 
     Color color1 = Color(0x5532CD32);

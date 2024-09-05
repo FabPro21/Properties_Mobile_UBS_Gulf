@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class InfoItem1 extends StatelessWidget {
-  final String title;
-  final String text;
+  final String? title;
+  final String? text;
   const InfoItem1({
-    Key key,@required this.title,@required this.text,
+    Key? key,@required this.title,@required this.text,
   }) : super(key: key);
 
   @override
@@ -16,8 +16,8 @@ class InfoItem1 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title,style: AppTextStyle.normalBlack10,),
-          Text(text,style: AppTextStyle.normalBlack10,)
+          Text(title!,style: AppTextStyle.normalBlack10,),
+          Text(text!,style: AppTextStyle.normalBlack10,)
         ],
       ),
     );

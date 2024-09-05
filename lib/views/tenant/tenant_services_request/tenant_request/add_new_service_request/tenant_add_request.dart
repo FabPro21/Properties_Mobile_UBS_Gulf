@@ -21,7 +21,7 @@ import 'tenant_sub_case_category/tenant_sub_case_category.dart';
 import 'package:flutter/services.dart';
 
 class TenantAddServicesRequest extends StatefulWidget {
-  const TenantAddServicesRequest({Key key}) : super(key: key);
+  const TenantAddServicesRequest({Key? key}) : super(key: key);
 
   @override
   State<TenantAddServicesRequest> createState() =>
@@ -101,7 +101,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                       errorText: propertiesController.error.value,
                     )
                   : propertiesController
-                              .getTenantProperties.value.properties.length ==
+                              .getTenantProperties.value.properties!.length ==
                           0
                       ? Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -288,8 +288,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                               Text(
                                                                 tASRController
                                                                         .caseCategoryName
-                                                                        .value ??
-                                                                    "",
+                                                                        .value ,
                                                                 style: AppTextStyle
                                                                     .normalGrey10,
                                                               ),
@@ -416,8 +415,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   child: Text(
                                                                     tASRController
                                                                             .caseSubCategoryName
-                                                                            .value ??
-                                                                        "",
+                                                                            .value,
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                     overflow:
@@ -519,8 +517,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                           Text(
                                                             tASRController
                                                                     .contractUnitName
-                                                                    .value ??
-                                                                "",
+                                                                    .value ,
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                           ),
@@ -587,10 +584,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                 Row(
                                                   children: [
                                                     Checkbox(
-                                                      onChanged: (bool value) {
+                                                      onChanged: (bool? value) {
                                                         tASRController
                                                             .otherThanTenant
-                                                            .value = value;
+                                                            .value = value!;
                                                       },
                                                       value: tASRController
                                                           .otherThanTenant
@@ -633,8 +630,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         style: AppTextStyle
                                                             .normalGrey10,
                                                         maxLines: 1,
-                                                        validator: (value) {
-                                                          if (value.isEmpty)
+                                                        validator: (String? value) {
+                                                          if (value!.isEmpty)
                                                             return AppMetaLabels()
                                                                 .requiredField;
                                                           else if (!nameValidator
@@ -678,8 +675,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         style: AppTextStyle
                                                             .normalGrey10,
                                                         maxLines: 1,
-                                                        validator: (value) {
-                                                          if (value.isEmpty)
+                                                        validator: (String? value) {
+                                                          if (value!.isEmpty)
                                                             return AppMetaLabels()
                                                                 .requiredField;
                                                           else if (!phoneValidator
@@ -772,8 +769,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     Text(
                                                                       tASRController
                                                                               .preferredTime
-                                                                              .value ??
-                                                                          "",
+                                                                              .value ,
                                                                       style: AppTextStyle
                                                                           .normalGrey10,
                                                                     ),
@@ -868,8 +864,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                   style:
                                                       AppTextStyle.normalGrey10,
                                                   maxLines: 5,
-                                                  validator: (value) {
-                                                    if (value.isEmpty)
+                                                  validator: (String? value) {
+                                                    if (value!.isEmpty)
                                                       return AppMetaLabels()
                                                           .requiredField;
                                                     else if (!textValidator
@@ -954,7 +950,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                 enableButton = false;
                                               }
                                               if (enableButton &&
-                                                  formKey.currentState
+                                                  formKey.currentState!
                                                       .validate()) {
                                                 tASRController.submitRequest();
                                               } else {

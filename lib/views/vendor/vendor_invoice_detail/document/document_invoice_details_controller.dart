@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -6,11 +8,11 @@ import 'package:fap_properties/data/repository/vendor_repository.dart';
 import 'package:fap_properties/utils/constants/check_file_extension.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/image_compress.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/vendor/vendor_invoice_detail/vendor_invoice_details_controller.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -18,11 +20,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 
 class VendorInvoiceDocsController extends GetxController {
   VendorInvoiceDocsController({this.caseNo});
   final controller = Get.find<VendorInvoiceDetailsController>();
-  String caseNo;
+  String? caseNo;
   // isDocUploaded for restrict the user to select the other document pla upload karny sy
   RxList isDocUploaded = [].obs;
   RxBool loadingDocs = false.obs;
@@ -86,11 +89,19 @@ class VendorInvoiceDocsController extends GetxController {
 
   int selectedIndexForUploadedDocument = -1;
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   //  select from gallery
   pickDoc(int index, BuildContext context) async {
     try {
       docs[index].loading.value = true;
-      FilePickerResult result =
+      FilePickerResult? result =
           await FilePicker.platform.pickFiles(allowedExtensions: [
         'pdf',
         'jpeg',
@@ -100,7 +111,7 @@ class VendorInvoiceDocsController extends GetxController {
 
       docs[index].loading.value = false;
 
-      if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+      if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -110,19 +121,51 @@ class VendorInvoiceDocsController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path);
+        File file = File(result.files.single.path ?? "");
         var byteFile = await file.readAsBytes();
 
         Uint8List editedImage;
         // if doc's extension will .pdf then will not compress or crop
         // if doc's extension will jpg,png or jpeg then will edit and crop
-        if (p.extension(result.files.single.path) == 'pdf' ||
-            p.extension(result.files.single.path) == '.pdf') {
+        if (p.extension(result.files.single.path ?? "") == 'pdf' ||
+            p.extension(result.files.single.path ?? "") == '.pdf') {
         } else {
           // crop the image
-          editedImage = await Get.to(() => ImageCropper(
-                image: byteFile,
-              ));
+          // editedImage = await Get.to(() => ImageCropper(
+          //       image: byteFile,
+          //     ));
+
+          final crop = await LatestCropper.ImageCropper().cropImage(
+              sourcePath: result.files.single.path ?? "",
+              uiSettings: [
+                LatestCropper.AndroidUiSettings(
+                  toolbarTitle: 'Cropper',
+                  toolbarColor: AppColors.blueColor,
+                  toolbarWidgetColor: AppColors.whiteColor,
+                  lockAspectRatio: false,
+                  aspectRatioPresets: [
+                    LatestCropper.CropAspectRatioPreset.original,
+                    LatestCropper.CropAspectRatioPreset.square,
+                  ],
+                ),
+                LatestCropper.IOSUiSettings(
+                  title: 'Cropper',
+                  aspectRatioPresets: [
+                    LatestCropper.CropAspectRatioPreset.original,
+                    LatestCropper.CropAspectRatioPreset.square,
+                  ],
+                )
+              ]);
+
+          if (crop == null) {
+            docs[index].update.value = false;
+            return;
+          }
+
+          print('Edited Image :::::2  crop $crop');
+          editedImage = await convertCroppedFileToUint8List(crop);
+          print('Edited Image :::::2  ${(editedImage == null)}');
+
           byteFile = await compressImage(editedImage);
         }
         var size = CheckFileExtenstion().getFileSize(byteFile).split(' ')[0];
@@ -146,7 +189,7 @@ class VendorInvoiceDocsController extends GetxController {
             ? docs[index].name ?? ""
             : docs[index].nameAr ?? "";
         File fileNew = await File(
-                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path)}')
+                '${tempDir.path}/${fileName.replaceAll(' ', '')}${p.extension(result.files.single.path ?? "")}')
             .create();
 
         // controller.docs[index].path
@@ -174,11 +217,11 @@ class VendorInvoiceDocsController extends GetxController {
       docs[index].loading.value = true;
       // old one
       final ImagePicker _picker = ImagePicker();
-      XFile result = await _picker.pickImage(source: ImageSource.camera);
+      XFile? result = await _picker.pickImage(source: ImageSource.camera);
 
       docs[index].loading.value = false;
 
-      if (!CheckFileExtenstion().checkImageExtFunc(result.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -192,9 +235,40 @@ class VendorInvoiceDocsController extends GetxController {
         var byteFile = await file.readAsBytes();
 
         // crop the image
-        final editedImage = await Get.to(() => ImageCropper(
-              image: byteFile,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: byteFile,
+        //     ));
+
+        var editedImage;
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: result.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        if (crop == null) {
+          docs[index].update.value = false;
+          return;
+        }
+
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
 
         // compress the image
         byteFile = await compressImage(editedImage);
@@ -258,10 +332,10 @@ class VendorInvoiceDocsController extends GetxController {
       isEnableScreen.value = false;
       var resp = await VendorRepository.uploadFileInvoiceSR(
           caseNo,
-          docs[index].path,
-          docs[index].name,
+          docs[index].path ?? "",
+          docs[index].name ?? "",
           '',
-          docs[index].documentTypeId,
+          docs[index].documentTypeId ?? 0,
           reqID);
       var id = resp['photoId'];
       docs[index].id = id;
@@ -292,7 +366,7 @@ class VendorInvoiceDocsController extends GetxController {
       docs[index].errorLoading = false;
       isEnableScreen.value = false;
       var resp = await VendorRepository.updateFile(
-          docs[index].id, docs[index].path, '');
+          docs[index].id ?? 0, docs[index].path ?? "", '');
       if (resp == 200) {
         docs[index].isRejected = false;
         enableSubmitButton();
@@ -340,10 +414,11 @@ class VendorInvoiceDocsController extends GetxController {
     docs[index].loading.value = true;
     isEnableScreen.value = false;
 
-    var resp = await VendorRepository.downloadDoc(caseNo, 3, docs[index].id);
+    var resp =
+        await VendorRepository.downloadDoc(caseNo, 3, docs[index].id ?? 0);
     docs[index].loading.value = false;
     if (resp is Uint8List) {
-      if (!docs[index].isRejected) docs[index].file = resp;
+      if (!docs[index].isRejected!) docs[index].file = resp;
       showFile(docs[index]);
     } else {
       SnakBarWidget.getSnackBarSuccess(
@@ -355,10 +430,11 @@ class VendorInvoiceDocsController extends GetxController {
 
   void showFile(DocFile file) async {
     if (file.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file);
-        file.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file);
+      file.path = path;
+      // }
     }
     OpenFile.open(file.path);
   }
@@ -377,7 +453,7 @@ class VendorInvoiceDocsController extends GetxController {
   Future<String> saveFile(DocFile reqFile) async {
     final path = await getTemporaryDirectory();
     final file = File("${path.path}/${reqFile.name}${reqFile.type}");
-    await file.writeAsBytes(reqFile.file);
+    await file.writeAsBytes(reqFile.file!);
     return file.path;
   }
 }

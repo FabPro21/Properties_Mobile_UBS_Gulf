@@ -12,9 +12,9 @@ class LandlordDashboardGetDataServices {
   static Future<dynamic> getData() async {
     var url = AppConfig().landlordDashboardGetData;
 
-    Map data;
+    Map? data;
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
          log(response.body.toString());

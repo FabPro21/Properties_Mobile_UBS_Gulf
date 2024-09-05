@@ -9,8 +9,8 @@ class TenantOffersSerice {
     Map data = {"pageNo": pageNo, "pageSize": '20'};
     print('Data:::: $data');
     print('Url:::: $url');
-    var response = await BaseClientClass.post(url, data);
-    // var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", data);
+    // var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       var getModel = tenantOffersModelFromJson(response.body);

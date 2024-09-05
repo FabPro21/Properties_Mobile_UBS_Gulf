@@ -6,10 +6,10 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-GetContractUnitDetailsModel getContractUnitDetailsModelFromJson(String str) =>
-    GetContractUnitDetailsModel.fromJson(json.decode(str));
+GetContractUnitDetailsModel getContractUnitDetailsModelFromJson(String? str) =>
+    GetContractUnitDetailsModel.fromJson(json.decode(str!));
 
-String getContractUnitDetailsModelToJson(GetContractUnitDetailsModel data) =>
+String? getContractUnitDetailsModelToJson(GetContractUnitDetailsModel data) =>
     json.encode(data.toJson());
 
 class GetContractUnitDetailsModel {
@@ -20,12 +20,12 @@ class GetContractUnitDetailsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  ContractUnit contractUnit;
-  String message;
+  String? status;
+  String? statusCode;
+  ContractUnit? contractUnit;
+  String? message;
 
-  factory GetContractUnitDetailsModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContractUnitDetailsModel.fromJson(Map<String?, dynamic> json) =>
       GetContractUnitDetailsModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -33,10 +33,10 @@ class GetContractUnitDetailsModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "contractUnit": contractUnit.toJson(),
+        "contractUnit": contractUnit!.toJson(),
         "message": message,
       };
 }
@@ -73,24 +73,24 @@ class ContractUnit {
     this.contractId,
   });
 
-  String measurementType;
+  String? measurementType;
   dynamic areaSizeSqm;
-  String areasize;
+  String? areasize;
   dynamic unitId;
   dynamic propertyImageInByte;
-  String propertyImage;
-  String propertyName;
-  String propertyNameAr;
-  String unitName;
-  String unitNo;
-  String unitCategory;
-  String unitCategoryAr;
-  String landlord;
-  String landlordAr;
-  String unitView;
-  String unitType;
-  String unitViewAr;
-  String unitTypeAr;
+  String? propertyImage;
+  String? propertyName;
+  String? propertyNameAr;
+  String? unitName;
+  String? unitNo;
+  String? unitCategory;
+  String? unitCategoryAr;
+  String? landlord;
+  String? landlordAr;
+  String? unitView;
+  String? unitType;
+  String? unitViewAr;
+  String? unitTypeAr;
   dynamic currentRent;
   dynamic floorNo;
   dynamic bedRooms;
@@ -102,9 +102,9 @@ class ContractUnit {
   dynamic driverRooms;
   dynamic contractId;
 
-  factory ContractUnit.fromJson(Map<String, dynamic> json) {
+  factory ContractUnit.fromJson(Map<String?, dynamic> json) {
     final paidFormatter = NumberFormat('#,##0.00', 'AR');
-    String rent = paidFormatter.format(json["currentRent"] ?? 0);
+    String? rent = paidFormatter.format(json["currentRent"] ?? 0);
     return ContractUnit(
       measurementType: json["measurementType"],
       areaSizeSqm: json["areaSizeSqm"].toDouble(),
@@ -137,7 +137,7 @@ class ContractUnit {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "measurementType": measurementType,
         "areaSizeSqm": areaSizeSqm,
         "areasize": areasize,

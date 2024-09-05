@@ -5,63 +5,63 @@
 import 'dart:convert';
 
 TenantDashboardNotificationPopupModel
-    tenantDashboardNotificationPopupModelFromJson(String str) =>
-        TenantDashboardNotificationPopupModel.fromJson(json.decode(str));
+    tenantDashboardNotificationPopupModelFromJson(String? str) =>
+        TenantDashboardNotificationPopupModel.fromJson(json.decode(str!));
 
-String tenantDashboardNotificationPopupModelToJson(
+String? tenantDashboardNotificationPopupModelToJson(
         TenantDashboardNotificationPopupModel data) =>
     json.encode(data.toJson());
 
 class TenantDashboardNotificationPopupModel {
-  String statusCode;
-  String status;
-  String message;
-  List<Notifications> notifications;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Notifications>? notifications;
 
   TenantDashboardNotificationPopupModel(
       {this.statusCode, this.status, this.message, this.notifications});
 
-  TenantDashboardNotificationPopupModel.fromJson(Map<String, dynamic> json) {
+  TenantDashboardNotificationPopupModel.fromJson(Map<String?, dynamic> json) {
     statusCode = json['statusCode'];
     status = json['status'];
     message = json['message'];
     if (json['notifications'] != null) {
       notifications = <Notifications>[];
       json['notifications'].forEach((v) {
-        notifications.add(new Notifications.fromJson(v));
+        notifications!.add(new Notifications.fromJson(v));
       });
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['statusCode'] = this.statusCode;
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.notifications != null) {
       data['notifications'] =
-          this.notifications.map((v) => v.toJson()).toList();
+          this.notifications!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Notifications {
-  String contractno;
-  String fromDate;
-  String toDate;
-  int stageId;
-  int notificationId;
-  int recordId;
-  String title;
-  String titleAr;
-  String recordType;
-  String description;
-  String descriptionAr;
-  String createdOn;
-  int dueActionid;
-  int caseId;
-  bool showExtend;
+  String? contractno;
+  String? fromDate;
+  String? toDate;
+  int? stageId;
+  int? notificationId;
+  int? recordId;
+  String? title;
+  String? titleAr;
+  String? recordType;
+  String? description;
+  String? descriptionAr;
+  String? createdOn;
+  int? dueActionid;
+  int? caseId;
+  bool? showExtend;
 
   Notifications(
       {this.contractno,
@@ -81,7 +81,7 @@ class Notifications {
       this.showExtend,
       });
 
-  Notifications.fromJson(Map<String, dynamic> json) {
+  Notifications.fromJson(Map<String?, dynamic> json) {
     contractno = json['contractno'];
     fromDate = json['fromDate'];
     toDate = json['toDate'];
@@ -99,8 +99,8 @@ class Notifications {
     showExtend = json['showExtend'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String?, dynamic> toJson() {
+    final Map<String?, dynamic> data = new Map<String?, dynamic>();
     data['contractno'] = this.contractno;
     data['fromDate'] = this.fromDate;
     data['toDate'] = this.toDate;
@@ -128,13 +128,13 @@ class Notifications {
 //     this.notifications,
 //   });
 
-//   String statusCode;
-//   String status;
-//   String message;
+//   String? statusCode;
+//   String? status;
+//   String? message;
 //   List<Notification> notifications;
 
 //   factory TenantDashboardNotificationPopupModel.fromJson(
-//           Map<String, dynamic> json) =>
+//           Map<String?, dynamic> json) =>
 //       TenantDashboardNotificationPopupModel(
 //         statusCode: json["statusCode"],
 //         status: json["status"],
@@ -143,7 +143,7 @@ class Notifications {
 //             json["notifications"].map((x) => Notification.fromJson(x))),
 //       );
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "statusCode": statusCode,
 //         "status": status,
 //         "message": message,
@@ -170,21 +170,21 @@ class Notifications {
 //       this.caseId});
 
 //   int notificationId;
-//   String title;
-//   String titleAr;
-//   String description;
-//   String descriptionAr;
-//   String createdOn;
+//   String? title;
+//   String? titleAr;
+//   String? description;
+//   String? descriptionAr;
+//   String? createdOn;
 //   int recordId;
-//   String contractNo;
-//   String fromDate;
-//   String toDate;
+//   String? contractNo;
+//   String? fromDate;
+//   String? toDate;
 //   int stageId = 1;
 //   int dueActionId;
 //   int caseId;
 //   bool showExtend;
 
-//   factory Notification.fromJson(Map<String, dynamic> json) {
+//   factory Notification.fromJson(Map<String?, dynamic> json) {
 //     bool showExtend = true;
 //     try {
 //       DateTime endDate = DateFormat('dd-MM-yyyy').parse(json["toDate"]);
@@ -209,7 +209,7 @@ class Notifications {
 //         caseId: json["caseId"]);
 //   }
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "notificationId": notificationId,
 //         "title": title,
 //         "titleAR": titleAr,

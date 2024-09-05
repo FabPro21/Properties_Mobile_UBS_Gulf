@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProperties extends StatefulWidget {
-  const LandLordProperties({Key key}) : super(key: key);
+  const LandLordProperties({Key? key}) : super(key: key);
 
   @override
   _LandLordPropertiesState createState() => _LandLordPropertiesState();
@@ -332,7 +332,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Container(
                 height: 4.0.h,
-                width: 25.0.w,
+                width: 30.0.w,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white, // background
@@ -373,7 +373,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                         child: Container(
                           height: 4.0.h,
                           width: SessionController().getLanguage() == 1
-                              ? 25.0.w
+                              ? 30.0.w
                               : 40.0.w,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -433,9 +433,9 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
         Get.to(() => LandlordPropertDetailsTabs(
               propertyId: controller.props[index].propertyID.toString(),
               propertyNo: SessionController().getLanguage() == 1
-                  ? controller.propsModel.serviceRequests[index].emirateName
+                  ? controller.propsModel?.serviceRequests![index].emirateName
                       .toString()
-                  : controller.propsModel.serviceRequests[index].emirateNameAR
+                  : controller.propsModel?.serviceRequests![index].emirateNameAR
                       .toString(),
             ));
       },

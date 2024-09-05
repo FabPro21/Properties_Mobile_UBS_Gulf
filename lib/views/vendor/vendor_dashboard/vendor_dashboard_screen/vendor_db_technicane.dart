@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
@@ -19,10 +19,10 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../data/models/chart_data.dart';
 
 class VendorDashboardTechnicane extends StatefulWidget {
-  final Function(int) manageServiceReq;
-  final BuildContext parentContext;
+  final Function(int)? manageServiceReq;
+  final BuildContext? parentContext;
   const VendorDashboardTechnicane(
-      {Key key, this.manageServiceReq, this.parentContext})
+      {Key? key, this.manageServiceReq, this.parentContext})
       : super(key: key);
 
   @override
@@ -101,7 +101,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                           await Get.to(() => VendorNotification());
                           getData();
                         },
-                        child: Badge(
+                        child: badge.Badge(
                           showBadge: controller.getDataModel.value
                                           .unreadNotification ==
                                       null ||
@@ -110,11 +110,18 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                       0
                               ? false
                               : true,
-                          padding: EdgeInsets.all(0.8.h),
-                          position:
-                              BadgePosition.topEnd(top: -1.0.h, end: 0.0.h),
-                          animationDuration: Duration(milliseconds: 300),
-                          animationType: BadgeAnimationType.slide,
+                          badgeStyle: badge.BadgeStyle(
+                            padding: EdgeInsets.all(0.8.h),
+                          ),
+                          position: badge.BadgePosition.topEnd(
+                              top: -1.0.h, end: 0.0.h),
+                          badgeAnimation: badge.BadgeAnimation.rotation(
+                            animationDuration: Duration(seconds: 300),
+                            colorChangeAnimationDuration: Duration(seconds: 1),
+                            loopAnimation: false,
+                            curve: Curves.fastOutSlowIn,
+                            colorChangeAnimationCurve: Curves.easeInCubic,
+                          ),
                           badgeContent: Text(
                             '${controller.getDataModel.value.unreadNotification}',
                             style: TextStyle(
@@ -140,7 +147,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                     EdgeInsets.symmetric(horizontal: 0.0.w, vertical: 2.0.h),
                 child: Container(
                   width: 94.0.w,
-                  height: 27.0.h,
+                  height: 30.0.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(1.0.h),
@@ -159,7 +166,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                           ? Center(
                               child: SizedBox(
                                 child: Text(
-                                  controller.error.value ?? '',
+                                  controller.error.value,
                                   style: AppTextStyle.semiBoldGrey10,
                                 ),
                               ),
@@ -171,8 +178,8 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                       horizontal: 2.0.h, vertical: 1.0.h),
                                   child: Text(
                                     SessionController().getLanguage() == 1
-                                        ? controller.company.value ?? ""
-                                        : controller.companyAr.value ?? "_",
+                                        ? controller.company.value
+                                        : controller.companyAr.value,
                                     style: AppTextStyle.semiBoldBlack13,
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
@@ -190,24 +197,27 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                         SizedBox(
                                           width: 22.0.w,
                                           height: 12.0.h,
-                                          child: SfCircularChart(series: <
-                                              CircularSeries>[
-                                            DoughnutSeries<ChartData, String>(
-                                              onPointTap: (value) {},
-                                              innerRadius: '85%',
-                                              radius: "100%",
-                                              explode: true,
-                                              dataSource:
-                                                  getVSRController.chartData,
-                                              pointColorMapper:
-                                                  (ChartData data, _) =>
-                                                      data.color,
-                                              xValueMapper:
-                                                  (ChartData data, _) => data.x,
-                                              yValueMapper:
-                                                  (ChartData data, _) => data.y,
-                                            ),
-                                          ]),
+                                          child: SfCircularChart(
+                                              series: <CircularSeries>[
+                                                DoughnutSeries<ChartData,
+                                                    String>(
+                                                  onPointTap: (value) {},
+                                                  innerRadius: '85%',
+                                                  radius: "100%",
+                                                  explode: true,
+                                                  dataSource: getVSRController
+                                                      .chartData,
+                                                  pointColorMapper:
+                                                      (ChartData data, _) =>
+                                                          data.color,
+                                                  xValueMapper:
+                                                      (ChartData data, _) =>
+                                                          data.x,
+                                                  yValueMapper:
+                                                      (ChartData data, _) =>
+                                                          data.y,
+                                                ),
+                                              ]),
                                         ),
                                         Container(
                                           width: 66.0.w,
@@ -328,7 +338,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                         MaterialTapTargetSize.shrinkWrap,
                                   ),
                                   onPressed: () {
-                                    widget.manageServiceReq(1);
+                                    widget.manageServiceReq!(1);
                                   },
                                   child: Text(
                                     AppMetaLabels().manageServiceRequestCap,
@@ -347,7 +357,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
               Expanded(
                 child: SingleChildScrollView(
                   child: ServiceReqWidget(
-                    manageServiceReqs: widget.manageServiceReq,
+                    manageServiceReqs: widget.manageServiceReq!,
                   ),
                 ),
               ),

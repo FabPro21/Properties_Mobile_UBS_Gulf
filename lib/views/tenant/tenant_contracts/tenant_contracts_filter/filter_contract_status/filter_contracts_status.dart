@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class ContractsStatusFilter extends StatefulWidget {
-  const ContractsStatusFilter({Key key}) : super(key: key);
+  const ContractsStatusFilter({Key? key}) : super(key: key);
 
   @override
   _ContractsStatusFilterState createState() => _ContractsStatusFilterState();
@@ -100,7 +100,7 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                                               _filterContractsStatusController
                                                   .contractsStatusModel
                                                   .value
-                                                  .contractStatus[index]);
+                                                  .contractStatus![index]);
                                     },
                                     child: Column(
                                       crossAxisAlignment:
@@ -111,27 +111,27 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                                           _filterContractsStatusController
                                                       .contractsStatusModel
                                                       .value
-                                                      .contractStatus[index]
+                                                      .contractStatus![index]
                                                       .contractType ==
                                                   'Active'
                                               ? SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? '${_filterContractsStatusController.contractsStatusModel.value.contractStatus[index].contractType} / Expired'
-                                                  : '${_filterContractsStatusController.contractsStatusModel.value.contractStatus[index].contractTypeAr} / منتهي الصلاحية'
+                                                  ? '${_filterContractsStatusController.contractsStatusModel.value.contractStatus![index].contractType} / Expired'
+                                                  : '${_filterContractsStatusController.contractsStatusModel.value.contractStatus![index].contractTypeAr} / منتهي الصلاحية'
                                               : SessionController()
                                                           .getLanguage() ==
                                                       1
                                                   ? _filterContractsStatusController
                                                           .contractsStatusModel
                                                           .value
-                                                          .contractStatus[index]
+                                                          .contractStatus![index]
                                                           .contractType ??
                                                       ""
                                                   : _filterContractsStatusController
                                                           .contractsStatusModel
                                                           .value
-                                                          .contractStatus[index]
+                                                          .contractStatus![index]
                                                           .contractTypeAr ??
                                                       "",
                                         ),

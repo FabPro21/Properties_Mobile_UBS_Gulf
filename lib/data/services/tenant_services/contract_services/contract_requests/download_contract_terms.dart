@@ -9,7 +9,7 @@ class DownloadContractTerms {
     var url = AppConfig().downloadContractTerms;
     print(url);
     var data = {"ContractId":contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);
@@ -30,7 +30,7 @@ class DownloadContractTermsNew{
     var url = AppConfig().downloadContractTermsNew;
     print(url);
     var data = {"ContractId":contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

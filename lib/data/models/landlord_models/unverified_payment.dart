@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-UnverifiedContractPaymentsLandLord unverifiedLLDContractPaymentsFromJson(String str) =>
-    UnverifiedContractPaymentsLandLord.fromJson(json.decode(str));
+UnverifiedContractPaymentsLandLord unverifiedLLDContractPaymentsFromJson(String? str) =>
+    UnverifiedContractPaymentsLandLord.fromJson(json.decode(str!));
 
-String unverifiedLLDContractPaymentsToJson(UnverifiedContractPaymentsLandLord data) =>
+String? unverifiedLLDContractPaymentsToJson(UnverifiedContractPaymentsLandLord data) =>
     json.encode(data.toJson());
 
 class UnverifiedContractPaymentsLandLord {
@@ -17,11 +17,11 @@ class UnverifiedContractPaymentsLandLord {
     this.note,
   });
 
-  String status;
-  List<ContractPayment> contractPayments;
-  String note;
+  String? status;
+  List<ContractPayment>? contractPayments;
+  String? note;
 
-  factory UnverifiedContractPaymentsLandLord.fromJson(Map<String, dynamic> json) =>
+  factory UnverifiedContractPaymentsLandLord.fromJson(Map<String?, dynamic> json) =>
       UnverifiedContractPaymentsLandLord(
         status: json["status"],
         contractPayments: List<ContractPayment>.from(
@@ -29,10 +29,10 @@ class UnverifiedContractPaymentsLandLord {
         note: json["note"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "contractPayments":
-            List<dynamic>.from(contractPayments.map((x) => x.toJson())),
+            List<dynamic>.from(contractPayments!.map((x) => x.toJson())),
         "note": note,
       };
 }
@@ -52,20 +52,20 @@ class ContractPayment {
       this.paymentTypeAR,
       this.chequeNo});
 
-  int paymentDetailId;
-  String title;
-  String titleAR;
-  String referenceNo;
-  String description;
-  String status;
-  String contractno;
-  String createdOn;
-  double amount;
-  String paymentType;
-  String paymentTypeAR;
-  String chequeNo;
+  int? paymentDetailId;
+  String? title;
+  String? titleAR;
+  String? referenceNo;
+  String? description;
+  String? status;
+  String? contractno;
+  String? createdOn;
+  double? amount;
+  String? paymentType;
+  String? paymentTypeAR;
+  String? chequeNo;
 
-  factory ContractPayment.fromJson(Map<String, dynamic> json) =>
+  factory ContractPayment.fromJson(Map<String?, dynamic> json) =>
       ContractPayment(
           paymentDetailId: json["paymentDetailId"],
           title: json["title"],
@@ -80,7 +80,7 @@ class ContractPayment {
           paymentTypeAR: json['paymentTypeAR'],
           chequeNo: json['chequeNo']);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paymentDetailId": paymentDetailId,
         "title": title,
         "titleAR": titleAR,

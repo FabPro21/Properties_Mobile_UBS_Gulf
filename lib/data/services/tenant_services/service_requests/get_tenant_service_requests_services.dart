@@ -16,7 +16,7 @@ class GetTenantServiceRequestsServices {
     print('Data ::::: $data');
     print('URl :::::: $url');
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetTenantServiceRequestsModel getContractsModel =
@@ -31,7 +31,7 @@ class GetTenantServiceRequestsServices {
 
   //   var data = {"Type": type};
 
-  //   var response = await BaseClientClass.post(url, data);
+  //   var response = await BaseClientClass.post(url ?? "", data);
 
   //   if (response is http.Response) {
   //     GetTenantServiceRequestsModel getContractsModel =

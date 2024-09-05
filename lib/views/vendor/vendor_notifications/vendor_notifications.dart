@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -13,7 +15,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'dart:ui' as ui;
 
 class VendorNotification extends StatefulWidget {
-  VendorNotification({Key key}) : super(key: key);
+  VendorNotification({Key? key}) : super(key: key);
 
   @override
   State<VendorNotification> createState() => _VendorNotificationState();
@@ -94,7 +96,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                               ],
                               radiusStyle: true,
                               onToggle: (index) async {
-                                _controller.currentIndex.value = index;
+                                _controller.currentIndex.value = index!;
                                 if (index == 0) {
                                   await _getData();
                                   setState(() {});

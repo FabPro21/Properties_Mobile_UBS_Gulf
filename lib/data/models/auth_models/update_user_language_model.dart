@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-UpdateUserLanguageModel updateUserLanguageModelFromJson(String str) =>
-    UpdateUserLanguageModel.fromJson(json.decode(str));
+UpdateUserLanguageModel updateUserLanguageModelFromJson(String? str) =>
+    UpdateUserLanguageModel.fromJson(json.decode(str!));
 
-String updateUserLanguageModelToJson(UpdateUserLanguageModel data) =>
+String? updateUserLanguageModelToJson(UpdateUserLanguageModel data) =>
     json.encode(data.toJson());
 
 class UpdateUserLanguageModel {
@@ -17,18 +17,18 @@ class UpdateUserLanguageModel {
     this.statusCode,
   });
 
-  String message;
-  String status;
-  String statusCode;
+  String? message;
+  String? status;
+  String? statusCode;
 
-  factory UpdateUserLanguageModel.fromJson(Map<String, dynamic> json) =>
+  factory UpdateUserLanguageModel.fromJson(Map<String?, dynamic> json) =>
       UpdateUserLanguageModel(
         message: json["message"],
         status: json["status"],
         statusCode: json["statusCode"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "message": message,
         "status": status,
         "statusCode": statusCode,

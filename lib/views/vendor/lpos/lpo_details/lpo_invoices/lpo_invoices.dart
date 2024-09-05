@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'lpo_invoices_controller.dart';
 
 class LpoInvoicesSereen extends StatefulWidget {
-  const LpoInvoicesSereen({Key key}) : super(key: key);
+  const LpoInvoicesSereen({Key? key}) : super(key: key);
 
   @override
   _LpoInvoicesSereenState createState() => _LpoInvoicesSereenState();
@@ -58,7 +58,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                       borderRadius: BorderRadius.circular(2.0.h),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey[200],
+                                          color: Colors.grey[200]??Colors.grey,
                                           blurRadius: 0.4.h,
                                           spreadRadius: 0.8.h,
                                           offset: Offset(0.1.h, 0.1.h),
@@ -78,7 +78,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                               var a = _controller
                                                   .getLpoInvoices
                                                   .value
-                                                  .invoice[index]
+                                                  .invoice?[index]
                                                   .invoiceAmount;
                                               final dFormatter =
                                                   intl.NumberFormat(
@@ -122,11 +122,10 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                   _controller
                                                                           .getLpoInvoices
                                                                           .value
-                                                                          .invoice[
+                                                                          .invoice![
                                                                               index]
                                                                           .lpono
-                                                                          .toString() ??
-                                                                      "",
+                                                                          .toString() ,
                                                                   style: AppTextStyle
                                                                       .semiBoldBlack11,
                                                                 ),
@@ -142,7 +141,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                               _controller
                                                                       .getLpoInvoices
                                                                       .value
-                                                                      .invoice[
+                                                                      .invoice![
                                                                           index]
                                                                       .requestDate ??
                                                                   "",
@@ -157,11 +156,10 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                               _controller
                                                                       .getLpoInvoices
                                                                       .value
-                                                                      .invoice[
+                                                                      .invoice![
                                                                           index]
                                                                       .invoiceDate
-                                                                      .toString() ??
-                                                                  "",
+                                                                      .toString() ,
                                                             ),
                                                             SizedBox(
                                                               height: 1.0.h,
@@ -193,22 +191,22 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                       ? _controller
                                                                               .getLpoInvoices
                                                                               .value
-                                                                              .invoice[
+                                                                              .invoice![
                                                                                   index]
                                                                               .statusName ??
                                                                           ""
                                                                       : _controller
                                                                               .getLpoInvoices
                                                                               .value
-                                                                              .invoice[index]
+                                                                              .invoice![index]
                                                                               .statusNameAr ??
                                                                           "",
                                                                   valueToCompare: _controller
                                                                       .getLpoInvoices
                                                                       .value
-                                                                      .invoice[
+                                                                      .invoice![
                                                                           index]
-                                                                      .statusName,
+                                                                      .statusName??"",
                                                                 ),
                                                               ],
                                                             ),

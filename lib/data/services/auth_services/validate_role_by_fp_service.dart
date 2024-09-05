@@ -15,7 +15,7 @@ class ValidateRoleByFPService {
 
     };
     var url = AppConfig().validateRoleByFP;
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: null);
     if (response is http.Response) {
       Map<String, dynamic> _jsonResp = json.decode(response.body);

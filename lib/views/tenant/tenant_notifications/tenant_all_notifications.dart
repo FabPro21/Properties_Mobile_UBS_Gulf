@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -14,8 +15,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantAllNotifications extends StatefulWidget {
-  final int index;
-  const TenantAllNotifications({Key key, this.index}) : super(key: key);
+  final int? index;
+  const TenantAllNotifications({Key? key, this.index}) : super(key: key);
 
   @override
   _TenantAllNotificationsState createState() => _TenantAllNotificationsState();
@@ -44,7 +45,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                         child: Row(
                           children: [
                             Checkbox(
-                              onChanged: (bool value) {
+                              onChanged: (bool? value) {
                                 getTNController.allCheckbox.toggleMarkAll();
                               },
                               value: getTNController.allCheckbox.markAll.value,
@@ -88,11 +89,12 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                     return ListTile(
                                       onTap: () async {
                                         SessionController().setNotificationId(
-                                            getTNController.notifications[index]
+                                            getTNController
+                                                .notifications![index]
                                                 .notificationId
                                                 .toString());
                                         if (!getTNController
-                                            .notifications[index].isRead)
+                                            .notifications![index].isRead!)
                                           await getTNController
                                               .readNotifications(index, 'all');
                                         Get.to(
@@ -108,7 +110,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                                 setState(
                                                   () {
                                                     getTNController.allCheckbox
-                                                        .markItem(index, val);
+                                                        .markItem(index, val!);
                                                   },
                                                 );
                                               },
@@ -200,87 +202,133 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
-          ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(
-                getTNController.notifications[index].notificationId.toString());
-            getTNController.loadingData.value = true;
-            await getTNController.readNotifications(index, 'all');
-            getTNController.loadingData.value = false;
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () async {
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the sliding effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            // color: Colors.blue,
+            onPressed: (context) async {
               SessionController().setNotificationId(getTNController
-                  .notifications[index].notificationId
+                  .notifications![index].notificationId
+                  .toString());
+              getTNController.loadingData.value = true;
+              await getTNController.readNotifications(index, 'all');
+              getTNController.loadingData.value = false;
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) async {
+              SessionController().setNotificationId(getTNController
+                  .notifications![index].notificationId
                   .toString());
 
               await getTNController.archiveNotifications();
-              setState(() {
-                getTNController.allLength = getTNController.allLength - 1;
-                getTNController.notifications.removeAt(index);
-              });
-            }),
-      ],
+              // Use a callback or setState to update the UI if necessary
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: notification(index),
-      actionPane: SlidableDrawerActionPane(),
     );
+
+    // Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(
+    //             getTNController.notifications![index].notificationId.toString());
+    //         getTNController.loadingData.value = true;
+    //         await getTNController.readNotifications(index, 'all');
+    //         getTNController.loadingData.value = false;
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () async {
+    //           SessionController().setNotificationId(getTNController
+    //               .notifications![index].notificationId
+    //               .toString());
+
+    //           await getTNController.archiveNotifications();
+    //           setState(() {
+    //             getTNController.allLength = getTNController.allLength - 1;
+    //             getTNController.notifications!.removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: notification(index),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 
   Widget notification(int index) {
@@ -296,7 +344,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
               children: [
                 Row(
                   children: [
-                    if (!getTNController.notifications[index].isRead)
+                    if (!getTNController.notifications![index].isRead!)
                       Container(
                         height: 1.0.h,
                         width: 2.0.w,
@@ -313,8 +361,8 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                           : 75.0.w,
                       child: Text(
                         SessionController().getLanguage() == 1
-                            ? getTNController.notifications[index].title ?? ""
-                            : getTNController.notifications[index].titleAR ??
+                            ? getTNController.notifications![index].title ?? ""
+                            : getTNController.notifications![index].titleAR ??
                                 "",
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.semiBoldBlack11,
@@ -325,21 +373,27 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 1.6.w),
                   child: Html(
-                    customTextAlign: (_) =>
-                        SessionController().getLanguage() == 1
+                    data: SessionController().getLanguage() == 1
+                        ? getTNController.notifications![index].description ??
+                            ""
+                        : getTNController.notifications![index].descriptionAR ??
+                            "",
+                    style: {
+                      'html': Style(
+                        textAlign: SessionController().getLanguage() == 1
                             ? TextAlign.left
                             : TextAlign.right,
-                    data: SessionController().getLanguage() == 1
-                        ? getTNController.notifications[index].description ?? ""
-                        : getTNController.notifications[index].descriptionAR ??
-                            "",
-                    defaultTextStyle: AppTextStyle.normalBlack10,
+                        color: Colors.black,
+                        fontFamily: AppFonts.graphikRegular,
+                        fontSize: FontSize(10.0),
+                      ),
+                    },
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 2.w),
                   child: Text(
-                    getTNController.notifications[index].createdOn ?? "",
+                    getTNController.notifications![index].createdOn ?? "",
                     style: AppTextStyle.normalBlack10,
                   ),
                 ),

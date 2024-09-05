@@ -1,4 +1,6 @@
-import 'package:badges/badges.dart';
+// ignore_for_file: unnecessary_null_comparison
+
+import 'package:badges/badges.dart' as badge;
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
@@ -23,7 +25,7 @@ import 'package:flutter/services.dart';
 import 'select_city/select_city.dart';
 
 class SearchPropertiesSearch extends StatefulWidget {
-  const SearchPropertiesSearch({Key key}) : super(key: key);
+  const SearchPropertiesSearch({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesSearchState createState() => _SearchPropertiesSearchState();
@@ -114,16 +116,10 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 2.0.h, vertical: 1.h),
+                          padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                           child: Row(
                             children: [
-                              AppLogoMenaRealEstateDB(
-                                menaFontSize: AppTextStyle.semiBoldWhite23,
-                                menaRealEstateSolFont:
-                                    AppTextStyle.semiBoldWhite10,
-                                height: 4.3.h,
-                              ),
+                              SizedBox(width: 45.0.w, child: AppLogo()),
                               const Spacer(),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -132,19 +128,25 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                   onTap: () {
                                     Get.to(() => PublicNotification());
                                   },
-                                  child: Badge(
+                                  child: badge.Badge(
                                     showBadge:
                                         _countController.countN.value == 0 ||
                                                 _countController.countN.value ==
                                                     null
                                             ? false
                                             : true,
-                                    padding: EdgeInsets.all(0.8.h),
-                                    position: BadgePosition.topEnd(
+                                    badgeAnimation:
+                                        badge.BadgeAnimation.rotation(
+                                      animationDuration: Duration(seconds: 300),
+                                      colorChangeAnimationDuration:
+                                          Duration(seconds: 1),
+                                      loopAnimation: false,
+                                      curve: Curves.fastOutSlowIn,
+                                      colorChangeAnimationCurve:
+                                          Curves.easeInCubic,
+                                    ),
+                                    position: badge.BadgePosition.topEnd(
                                         top: -1.0.h, end: 0.0.h),
-                                    animationDuration:
-                                        Duration(milliseconds: 300),
-                                    animationType: BadgeAnimationType.slide,
                                     badgeContent: Text(
                                       "${_countController.countN.value}",
                                       style: TextStyle(
@@ -353,8 +355,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              sPSConrtoller.cityName.value ??
-                                                  "",
+                                              sPSConrtoller.cityName.value,
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                             Spacer(),
@@ -416,9 +417,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              sPSConrtoller
-                                                      .categoryName.value ??
-                                                  "",
+                                              sPSConrtoller.categoryName.value,
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
@@ -499,8 +498,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              sPSConrtoller.unitType.value ??
-                                                  "",
+                                              sPSConrtoller.unitType.value,
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
@@ -843,13 +841,15 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             _selectedValue,
                                                         activeColor:
                                                             AppColors.blueColor,
-                                                        onChanged: (value) {
+                                                        onChanged:
+                                                            (String? value) {
                                                           setState(() {
                                                             _selectedValue =
                                                                 SessionController()
                                                                             .getLanguage() ==
                                                                         1
-                                                                    ? value
+                                                                    ? value ??
+                                                                        ""
                                                                     : 'المساحة بالقدم المربع';
                                                           });
                                                           print(
@@ -885,13 +885,15 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             _selectedValue,
                                                         activeColor:
                                                             AppColors.blueColor,
-                                                        onChanged: (value) {
+                                                        onChanged:
+                                                            (String? value) {
                                                           setState(() {
                                                             _selectedValue =
                                                                 SessionController()
                                                                             .getLanguage() ==
                                                                         1
-                                                                    ? value
+                                                                    ? value ??
+                                                                        ""
                                                                     : 'المساحة بالمتر المربع';
                                                           });
                                                           print(

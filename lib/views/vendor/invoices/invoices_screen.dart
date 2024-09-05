@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
@@ -16,7 +18,7 @@ import 'package:sizer/sizer.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class InvoicesScreen extends StatefulWidget {
-  InvoicesScreen({Key key}) : super(key: key);
+  InvoicesScreen({Key? key}) : super(key: key);
 
   @override
   State<InvoicesScreen> createState() => _InvoicesScreenState();
@@ -272,8 +274,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                     _controller
                                                                             .allInvoice[index]
                                                                             .invoiceNumber
-                                                                            .toString() ??
-                                                                        "",
+                                                                            .toString() ,
                                                                     style: AppTextStyle
                                                                         .semiBoldBlack10,
                                                                     overflow:
@@ -308,8 +309,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                           .allInvoice[
                                                                               index]
                                                                           .invoiceDate
-                                                                          .toString() ??
-                                                                      ""),
+                                                                          .toString() ),
                                                           SizedBox(
                                                             height: 1.0.h,
                                                           ),
@@ -333,7 +333,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                 text: _controller
                                                                         .allInvoice[
                                                                             index]
-                                                                        .statusName
+                                                                        .statusName!
                                                                         .contains(
                                                                             'Draft')
                                                                     ? AppMetaLabels()
@@ -347,7 +347,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                 valueToCompare: _controller
                                                                         .allInvoice[
                                                                             index]
-                                                                        .statusName
+                                                                        .statusName!
                                                                         .contains(
                                                                             'Draft')
                                                                     ? AppMetaLabels()

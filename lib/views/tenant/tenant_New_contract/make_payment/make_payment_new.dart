@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
@@ -21,9 +23,9 @@ import 'package:webviewx/webviewx.dart';
 import 'online_payments_new/online_payments_new_controller.dart';
 
 class MakePaymentNewContract extends StatefulWidget {
-  final RegisterPaymentResponse data;
-  final String contractNo;
-  const MakePaymentNewContract({Key key, this.data, this.contractNo}) : super(key: key);
+  final RegisterPaymentResponse? data;
+  final String? contractNo;
+  const MakePaymentNewContract({Key? key, this.data, this.contractNo}) : super(key: key);
 
   @override
   State<MakePaymentNewContract> createState() => _MakePaymentNewContractState();
@@ -36,7 +38,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
       Get.put(OutstandingPaymentsNewContractController());
   final onlinePaymentsController = Get.put(OnlinePaymentsNewContractController());
   bool showBack = false;
-  int noOfPaymentsLeft;
+  int? noOfPaymentsLeft;
 
   @override
   void initState() {
@@ -54,6 +56,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
         }
         return false;
       },
+      
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -100,8 +103,8 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
                 width: double.maxFinite,
                 height: double.maxFinite,
                 initialContent:
-                    """<body><form action=${widget.data.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
-                initialSourceType: SourceType.html,
+                    """<body><form action=${widget.data!.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data!.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
+                initialSourceType: SourceType.HTML,
                 onPageFinished: (url) {
                   print(url);
                   if (url.contains('Finalize')) {
@@ -210,7 +213,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().stage5_12,
+                AppMetaLabels().menaStage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),
@@ -226,11 +229,11 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
                     width: 65.0.w,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          elevation: MaterialStateProperty.all<double>(0.0.h),
-                          backgroundColor: MaterialStateProperty.all<Color>(
+                          elevation: WidgetStateProperty.all<double>(0.0.h),
+                          backgroundColor: WidgetStateProperty.all<Color>(
                               AppColors.whiteColor),
                           shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(2.0.w),
                                 side: BorderSide(

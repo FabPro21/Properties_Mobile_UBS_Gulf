@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -14,9 +16,9 @@ import 'dart:ui' as ui;
 import '../../tenant_request_details_controller.dart';
 
 class TakeSurvey extends GetView<TakeSurveyController> {
-  final int reqNo;
-  final int catId;
-  TakeSurvey({Key key, this.reqNo, this.catId}) : super(key: key) {
+  final int? reqNo;
+  final int? catId;
+  TakeSurvey({Key? key, this.reqNo, this.catId}) : super(key: key) {
     Get.put(TakeSurveyController(catId: catId, caseNo: reqNo));
   }
 
@@ -84,12 +86,13 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                               child: Column(
                                 children: [
                                   Text(
-                                      '${controller.currentQuestion.value.toInt() + 1}/${controller.questions.faqQuestion.length}'),
+                                      '${controller.currentQuestion.value.toInt() + 1}/${controller.questions?.faqQuestion?.length}'),
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(1.h),
                                     child: LinearProgressIndicator(
                                       value: controller.progress.value,
                                       minHeight: 1.h,
+                                      color: AppColors.blueColor,
                                       backgroundColor: AppColors.blueColor2,
                                     ),
                                   ),
@@ -110,7 +113,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                     ? LoadingIndicatorBlue()
                     : controller.errorLoadingQuestions != ''
                         ? AppErrorWidget(
-                            errorText: controller.errorLoadingQuestions,
+                            errorText: controller.errorLoadingQuestions??"",
                           )
                         : controller.questions != null
                             ? Container(
@@ -140,15 +143,11 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                     Text(
                                       SessionController().getLanguage() == 1
                                           ? controller
-                                                  .questions
-                                                  .faqQuestion[controller
-                                                      .currentQuestion.value
-                                                      .toInt()]
-                                                  .title ??
+                                                  .questions?.faqQuestion![controller.currentQuestion.value
+                                                      .toInt()].title ??
                                               ''
                                           : controller
-                                                  .questions
-                                                  .faqQuestion[controller
+                                                  .questions?.faqQuestion?[controller
                                                       .currentQuestion.value
                                                       .toInt()]
                                                   .titleAr ??
@@ -158,31 +157,27 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                     Expanded(
                                         child:
                                             controller
-                                                    .questions
-                                                    .faqQuestion[controller
+                                                    .questions?.faqQuestion?[controller
                                                         .currentQuestion
                                                         .toInt()]
                                                     .loadingAnswers
-                                                    .value
+                                                    .value==true
                                                 ? LoadingIndicatorBlue()
                                                 : controller
-                                                            .questions
-                                                            .faqQuestion[controller
+                                                            .questions?.faqQuestion?[controller
                                                                 .currentQuestion
                                                                 .toInt()]
                                                             .errorLoadingAnswers !=
                                                         ''
                                                     ? AppErrorWidget(
                                                         errorText: controller
-                                                            .questions
-                                                            .faqQuestion[controller
+                                                            .questions?.faqQuestion?[controller
                                                                 .currentQuestion
                                                                 .toInt()]
-                                                            .errorLoadingAnswers,
+                                                            .errorLoadingAnswers??"",
                                                       )
                                                     : controller
-                                                                .questions
-                                                                .faqQuestion[
+                                                                .questions?.faqQuestion?[
                                                                     controller
                                                                         .currentQuestion
                                                                         .toInt()]
@@ -193,25 +188,22 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                                 EdgeInsets.only(
                                                                     top: 3.h),
                                                             itemCount: controller
-                                                                .questions
-                                                                .faqQuestion[controller.currentQuestion.toInt()]
-                                                                .answers
-                                                                .faqOptions
+                                                                .questions?.faqQuestion?[controller.currentQuestion.toInt()]
+                                                                .answers!
+                                                                .faqOptions!
                                                                 .length,
                                                             itemBuilder: (context, index) {
                                                               return InkWell(
                                                                 onTap: () {
                                                                   controller
-                                                                      .questions
-                                                                      .faqQuestion[controller
+                                                                      .questions?.faqQuestion?[controller
                                                                           .currentQuestion
                                                                           .value
                                                                           .toInt()]
                                                                       .selectedAnswer
                                                                       .value = index;
                                                                   print(controller
-                                                                      .questions
-                                                                      .faqQuestion[controller
+                                                                      .questions?.faqQuestion?[controller
                                                                           .currentQuestion
                                                                           .value
                                                                           .toInt()]
@@ -222,24 +214,22 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                                   children: [
                                                                     Obx(() {
                                                                       return Radio(
+                                                                        activeColor: AppColors.blueColor,
                                                                         materialTapTargetSize:
                                                                             MaterialTapTargetSize.shrinkWrap,
                                                                         groupValue: controller
-                                                                            .questions
-                                                                            .faqQuestion[controller.currentQuestion.value.toInt()]
+                                                                            .questions?.faqQuestion?[controller.currentQuestion.value.toInt()]
                                                                             .selectedAnswer
                                                                             .value,
                                                                         onChanged:
                                                                             (value) {
                                                                           controller
-                                                                              .questions
-                                                                              .faqQuestion[controller.currentQuestion.value.toInt()]
+                                                                              .questions?.faqQuestion?[controller.currentQuestion.value.toInt()]
                                                                               .selectedAnswer
                                                                               .value = index;
 
                                                                           print(controller
-                                                                              .questions
-                                                                              .faqQuestion[controller.currentQuestion.value.toInt()]
+                                                                              .questions?.faqQuestion?[controller.currentQuestion.value.toInt()]
                                                                               .selectedAnswer
                                                                               .value);
                                                                         },
@@ -250,9 +240,9 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                                     Text(
                                                                       SessionController().getLanguage() ==
                                                                               1
-                                                                          ? controller.questions.faqQuestion[controller.currentQuestion.toInt()].answers.faqOptions[index].optionTitle ??
+                                                                          ? controller.questions?.faqQuestion![controller.currentQuestion.toInt()].answers?.faqOptions![index].optionTitle ??
                                                                               ""
-                                                                          : controller.questions.faqQuestion[controller.currentQuestion.toInt()].answers.faqOptions[index].optionTitleAr ??
+                                                                          : controller.questions?.faqQuestion?[controller.currentQuestion.toInt()].answers?.faqOptions?[index].optionTitleAr ??
                                                                               "",
                                                                       style: AppTextStyle
                                                                           .normalBlack12,
@@ -279,8 +269,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                     vertical: 1.8.h),
                                               ),
                                               onPressed: controller
-                                                          .questions
-                                                          .faqQuestion[controller
+                                                          .questions?.faqQuestion?[controller
                                                               .currentQuestion
                                                               .value
                                                               .toInt()]
@@ -308,7 +297,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                   ],
                                 ),
                               )
-                            : null,
+                            : SizedBox(),
               );
             })),
       );
@@ -401,5 +390,4 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                       ])));
         });
   }
-
 }

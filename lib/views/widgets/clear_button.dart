@@ -3,7 +3,7 @@ import 'package:sizer/sizer.dart';
 
 class ClearButton extends StatelessWidget {
   final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  const ClearButton({Key? key, required this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

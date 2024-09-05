@@ -13,7 +13,7 @@ class CheckVerion {
     if (!_isInternetConnected) {
       await Get.offAll(NoInternetScreen());
     }
-    final String bundle = 'com.mena.realestate';
+    final String bundle = 'com.fab.properties';
     final String url = 'https://itunes.apple.com/lookup?bundleId=$bundle';
     http.Response response;
     try {

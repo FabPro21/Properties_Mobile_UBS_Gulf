@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ContractInvoices extends StatefulWidget {
-  const ContractInvoices({Key key}) : super(key: key);
+  const ContractInvoices({Key? key}) : super(key: key);
 
   @override
   _ContractInvoicesState createState() => _ContractInvoicesState();
@@ -92,10 +92,8 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                                         contractInvoicesController
                                                                 .contractInvoices
                                                                 .value
-                                                                .invoice[index]
-                                                                .invoiceNumber
-                                                                .toString() ??
-                                                            "",
+                                                                .invoice?[index].invoiceNumber
+                                                                .toString()??"",
                                                         style: AppTextStyle
                                                             .semiBoldBlack11,
                                                       ),
@@ -113,17 +111,16 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                                       contractInvoicesController
                                                               .contractInvoices
                                                               .value
-                                                              .invoice[index]
-                                                              .invoiceDate
-                                                              .toString() ??
-                                                          ""),
+                                                              .invoice?[index].invoiceDate
+                                                              .toString()??""
+                                                      ),
                                                   SizedBox(
                                                     height: 1.0.h,
                                                   ),
                                                   rowList(
                                                       AppMetaLabels()
                                                           .invoiceAmount,
-                                                      "${AppMetaLabels().aed} ${contractInvoicesController.contractInvoices.value.invoice[index].invoiceAmount}"),
+                                                      "${AppMetaLabels().aed} ${contractInvoicesController.contractInvoices.value.invoice?[index].invoiceAmount}"),
                                                   SizedBox(
                                                     height: 1.0.h,
                                                   ),
@@ -141,14 +138,14 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                                         text: contractInvoicesController
                                                                 .contractInvoices
                                                                 .value
-                                                                .invoice[index]
+                                                                .invoice?[index]
                                                                 .statusName ??
                                                             "",
                                                         valueToCompare:
                                                             contractInvoicesController
                                                                 .contractInvoices
                                                                 .value
-                                                                .invoice[index]
+                                                                .invoice?[index]
                                                                 .statusName,
                                                       ),
                                                     ],

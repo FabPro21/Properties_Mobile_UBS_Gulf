@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -33,7 +35,7 @@ import 'contracts_new_actions_controller.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class ContractNewAction extends StatefulWidget {
-  ContractNewAction({Key key}) : super(key: key);
+  ContractNewAction({Key? key}) : super(key: key);
 
   @override
   State<ContractNewAction> createState() => _ContractNewActionState();
@@ -57,7 +59,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
   }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  VideoPlayerController videoCotroller;
+  VideoPlayerController? videoCotroller;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -66,7 +68,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
           controller.isEnableScreen.value = true;
         });
         Get.back();
-        return;
+        return false;
       },
       child: Directionality(
           textDirection: SessionController().getLanguage() == 1
@@ -311,8 +313,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                               'Status :::::::: ${controller.contractsList[index].status}');
                                                                           Get.to(() =>
                                                                               OutstandingPaymentsNewContract(
-                                                                                contractNo: controller.contractsList[index].contractno,
-                                                                                contractId: controller.contractsList[index].contractid,
+                                                                                contractNo: controller.contractsList[index].contractno ?? "",
+                                                                                contractId: controller.contractsList[index].contractid ?? 0,
                                                                               ));
                                                                         },
                                                                   child: Center(
@@ -391,7 +393,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
 
                                                                           String
                                                                               path =
-                                                                              await contractDownloadController.downloadContractNew(controller.contractsList[index].contractno, false);
+                                                                              await contractDownloadController.downloadContractNew(controller.contractsList[index].contractno ?? "", false);
 
                                                                           controller
                                                                               .isEnableScreen
@@ -401,13 +403,13 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                             Get.closeAllSnackbars();
                                                                             setState(() {});
                                                                             Get.to(() => AuthenticateNewContract(
-                                                                                contractNo: controller.contractsList[index].contractno,
-                                                                                contractId: controller.contractsList[index].contractid,
+                                                                                contractNo: controller.contractsList[index].contractno ?? "",
+                                                                                contractId: controller.contractsList[index].contractid ?? 0,
                                                                                 filePath: path,
-                                                                                dueActionId: controller.contractsList[index].dueActionid,
-                                                                                stageId: controller.contractsList[index].stageId,
+                                                                                dueActionId: controller.contractsList[index].dueActionid ?? 0,
+                                                                                stageId: controller.contractsList[index].stageId ?? -1,
                                                                                 caller: 'contracts_with_actions',
-                                                                                caseId: controller.contractsList[index].caseId));
+                                                                                caseId: controller.contractsList[index].caseId ?? 0));
                                                                           }
                                                                         },
                                                                   child: Center(
@@ -469,8 +471,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           Get.to(() =>
                                                                               MunicipalApprovalNewContract(
                                                                                 caller: 'contracts_with_actions',
-                                                                                dueActionId: controller.contractsList[index].dueActionid,
-                                                                                contractId: controller.contractsList[index].contractid,
+                                                                                dueActionId: controller.contractsList[index].dueActionid ?? 0,
+                                                                                contractId: controller.contractsList[index].contractid ?? 0,
                                                                               ));
                                                                         },
                                                                   child: Center(
@@ -586,20 +588,20 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                             : controller.contractsList[index].stageId == 2
                                                                                 ? AppMetaLabels().stage2
                                                                                 : controller.contractsList[index].stageId == 3
-                                                                                    ? AppMetaLabels().stage3
+                                                                                    ? AppMetaLabels().menaStage3
                                                                                     : controller.contractsList[index].stageId == 4
-                                                                                        ? AppMetaLabels().stage4
+                                                                                        ? AppMetaLabels().menaStage4
                                                                                         : controller.contractsList[index].stageId == 5
                                                                                             ? controller.contractsList[index].isAllPaid == 1
-                                                                                                ? AppMetaLabels().stage5_1
-                                                                                                : AppMetaLabels().stage5
+                                                                                                ? AppMetaLabels().menaStage5_1
+                                                                                                : AppMetaLabels().menaStage5
                                                                                             : controller.contractsList[index].stageId == 6
                                                                                                 ? AppMetaLabels().stage6
                                                                                                 : controller.contractsList[index].stageId == 7
                                                                                                     ? AppMetaLabels().stage7
                                                                                                     : controller.contractsList[index].stageId == 8
                                                                                                         ? AppMetaLabels().stage8
-                                                                                                        : AppMetaLabels().stage9,
+                                                                                                        : AppMetaLabels().menaStage9,
                                                                         textAlign:
                                                                             TextAlign.justify,
                                                                         style: AppTextStyle
@@ -737,9 +739,9 @@ class _ContractNewActionState extends State<ContractNewAction> {
     base64VideoPlayPathAvailable(String path) async {
       try {
         loading.value = true;
-        videoCotroller = VideoPlayerController.network(path)
+        videoCotroller = VideoPlayerController.networkUrl(Uri.parse(path))
           ..initialize().then((_) async {
-            await videoCotroller.play();
+            await videoCotroller!.play();
             setState(() {});
           });
         loading.value = false;
@@ -766,9 +768,9 @@ class _ContractNewActionState extends State<ContractNewAction> {
                   alignment: Alignment.topRight,
                   child: InkWell(
                       onTap: () {
-                        if (videoCotroller.value.isPlaying) {
+                        if (videoCotroller!.value.isPlaying) {
                           setState(() {
-                            videoCotroller.pause();
+                            videoCotroller!.pause();
                           });
                         }
                         Navigator.of(context, rootNavigator: true)
@@ -801,24 +803,24 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      videoCotroller.value.isPlaying
-                                          ? videoCotroller.pause()
-                                          : videoCotroller.play();
-                                      if (videoCotroller.value.isPlaying) {
+                                      videoCotroller!.value.isPlaying
+                                          ? videoCotroller!.pause()
+                                          : videoCotroller!.play();
+                                      if (videoCotroller!.value.isPlaying) {
                                         setState(() {
-                                          videoCotroller.pause();
+                                          videoCotroller!.pause();
                                         });
                                       }
                                       setState(() {});
                                     },
                                     child: AspectRatio(
                                         aspectRatio:
-                                            videoCotroller.value.aspectRatio,
-                                        child: VideoPlayer(videoCotroller)),
+                                            videoCotroller!.value.aspectRatio,
+                                        child: VideoPlayer(videoCotroller!)),
                                   ),
                                   Container(
                                     child: VideoProgressIndicator(
-                                      videoCotroller,
+                                      videoCotroller!,
                                       allowScrubbing: true,
                                       colors: VideoProgressColors(
                                         backgroundColor: Colors.white24,
@@ -946,7 +948,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                 controller.contractsList[index].contractno !=
                                     controller.contractsList[index]
                                         .previousContractNo)
-                              controller.contractsList[index].stageId < 4
+                              controller.contractsList[index].stageId! < 4
                                   ? SizedBox()
                                   : Padding(
                                       padding: EdgeInsets.only(top: 5.0),
@@ -960,7 +962,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                           ),
                                           Text(
                                             controller.contractsList[index]
-                                                .previousContractNo,
+                                                    .previousContractNo ??
+                                                '',
                                             style: AppTextStyle.semiBoldBlack10,
                                           ),
                                         ],
@@ -1008,15 +1011,15 @@ class _ContractNewActionState extends State<ContractNewAction> {
 
   // Actions
   Widget showActions(int index, BuildContext context) {
-    int stageId = controller.contractsList[index].stageId;
+    int stageId = controller.contractsList[index].stageId!;
     print('Stage ID ::: $stageId at : $index');
     switch (stageId) {
       case 1:
         return expiringContractActions(index);
-        break;
+
       case 10:
         return checkIn(index);
-        break;
+
       default:
         return renewalActions(index, context);
     }
@@ -1106,7 +1109,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                 padding: EdgeInsets.all(0.0.h),
                 child: Obx(() {
                   return CustomButtonWithoutBackgroud(
-                    loading: controller.contractsList[index].downloading.value,
+                    loading: controller.contractsList[index].downloading!.value,
                     text: AppMetaLabels().offerLetter,
                     onPressed: () async {
                       controller.isEnableScreen.value = false;
@@ -1321,8 +1324,9 @@ class _ContractNewActionState extends State<ContractNewAction> {
 
                               String path = await contractDownloadController
                                   .downloadContract(
-                                      controller
-                                          .contractsList[index].contractno,
+                                      controller.contractsList[index]
+                                              .contractno ??
+                                          "",
                                       false);
 
                               controller.isEnableScreen.value = true;

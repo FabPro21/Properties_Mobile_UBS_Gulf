@@ -13,8 +13,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PropertiesWidget extends StatefulWidget {
-  final Function(int) manageProperties;
-  const PropertiesWidget({Key key, this.manageProperties}) : super(key: key);
+  final Function(int)? manageProperties;
+  const PropertiesWidget({Key? key, this.manageProperties}) : super(key: key);
 
   @override
   _PropertiesWidgetState createState() => _PropertiesWidgetState();
@@ -79,27 +79,35 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: controller.length,
                             itemBuilder: (context, index) {
-                              final property =
-                                  controller.propsModel.serviceRequests[index];
+                              final property = controller
+                                  .propsModel?.serviceRequests?[index];
                               return InkWell(
                                 onTap: () {
                                   Get.to(() => LandlordPropertDetailsTabs(
                                         propertyId: controller.propsModel
-                                            .serviceRequests[index].propertyID
+                                            ?.serviceRequests?[index].propertyID
                                             .toString(),
-                                        propertyNo:
-                                            SessionController().getLanguage() ==
+                                        propertyNo: controller.propsModel
+                                                    ?.serviceRequests ==
+                                                null
+                                            ? ''
+                                            : SessionController()
+                                                        .getLanguage() ==
                                                     1
                                                 ? controller
-                                                    .propsModel
-                                                    .serviceRequests[index]
-                                                    .emirateName
-                                                    .toString()
+                                                        .propsModel
+                                                        ?.serviceRequests![
+                                                            index]
+                                                        .emirateName
+                                                        .toString() ??
+                                                    ""
                                                 : controller
-                                                    .propsModel
-                                                    .serviceRequests[index]
-                                                    .emirateNameAR
-                                                    .toString(),
+                                                        .propsModel
+                                                        ?.serviceRequests?[
+                                                            index]
+                                                        .emirateNameAR
+                                                        .toString() ??
+                                                    "",
                                       ));
                                 },
                                 child: Column(
@@ -145,10 +153,10 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                                     .getLanguage() ==
                                                                 1
                                                             ? property
-                                                                    .propertyName ??
+                                                                    ?.propertyName ??
                                                                 ""
                                                             : property
-                                                                    .propertyNameAR ??
+                                                                    ?.propertyNameAR ??
                                                                 "",
                                                         maxLines: 1,
                                                         style: AppTextStyle
@@ -178,10 +186,10 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                                         .getLanguage() ==
                                                                     1
                                                                 ? property
-                                                                        .emirateName ??
+                                                                        ?.emirateName ??
                                                                     ""
                                                                 : property
-                                                                        .emirateNameAR ??
+                                                                        ?.emirateNameAR ??
                                                                     "",
                                                             style: AppTextStyle
                                                                 .semiBoldBlack11,
@@ -243,10 +251,10 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                                         .getLanguage() ==
                                                                     1
                                                                 ? property
-                                                                        .propertyType ??
+                                                                        ?.propertyType ??
                                                                     ""
                                                                 : property
-                                                                        .propertyTypeAR ??
+                                                                        ?.propertyTypeAR ??
                                                                     "",
                                                             style: AppTextStyle
                                                                 .normalGrey10,
@@ -276,12 +284,11 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                                         .getLanguage() ==
                                                                     1
                                                                 ? property
-                                                                        .propertyCategory ??
+                                                                        ?.propertyCategory ??
                                                                     ""
                                                                 : property
-                                                                        .propertyCategoryAR
-                                                                        .trim() ??
-                                                                    "",
+                                                                        ?.propertyCategoryAR ??
+                                                                    "".trim(),
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                             maxLines: 1,
@@ -342,7 +349,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: () {
-                          widget.manageProperties(1);
+                          widget.manageProperties!(1);
                           setState(() {});
                         },
                         child: Text(

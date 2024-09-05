@@ -78,10 +78,10 @@ class PublicProfileController extends GetxController {
       if (result is PublicUpdateProfileModel) {
         if (result.status == "Ok") {
           updateProfileData.value = result;
-          caseNo = result.addServiceRequest.caseNo;
+          caseNo = result.addServiceRequest!.caseNo??0;
           return true;
         } else {
-          Get.snackbar(AppMetaLabels().error, result.message,
+          Get.snackbar(AppMetaLabels().error, result.message??"",
               backgroundColor: AppColors.white54);
           return false;
         }

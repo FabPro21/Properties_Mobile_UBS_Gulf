@@ -2,25 +2,25 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-LpoReportSummaryModel getLpoReportSummaryModelFromJson(String str) =>
-    LpoReportSummaryModel.fromJson(json.decode(str));
+LpoReportSummaryModel getLpoReportSummaryModelFromJson(String? str) =>
+    LpoReportSummaryModel.fromJson(json.decode(str!));
 
 class LpoReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   LpoReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  LpoReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  LpoReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -28,22 +28,22 @@ class LpoReportSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String lpoType;
-  String lpoTypeAR;
-  String contractor;
-  String contractorAR;
-  String lpoStatus;
-  String lpoStatusAR;
-  String lpoTitle;
-  String lpoTitleAR;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? lpoType;
+  String? lpoTypeAR;
+  String? contractor;
+  String? contractorAR;
+  String? lpoStatus;
+  String? lpoStatusAR;
+  String? lpoTitle;
+  String? lpoTitleAR;
   dynamic propertiesAmount;
   dynamic totalAmount;
   dynamic netAmount;
@@ -72,7 +72,7 @@ class ServiceRequests {
     this.recoveryAmount,
   });
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final propertiesAmountFormat = NumberFormat('#,##0.00', 'AR');
     final totalAmountFormat = NumberFormat('#,##0.00', 'AR');
     final netAmountFormat = NumberFormat('#,##0.00', 'AR');

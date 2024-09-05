@@ -13,7 +13,7 @@ import '../../../../data/helpers/session_controller.dart';
 
 // ignore: must_be_immutable
 class VendorAcconut extends StatelessWidget {
-  VendorAcconut({Key key}) : super(key: key);
+  VendorAcconut({Key? key}) : super(key: key);
 
   final VendorAccountController _vendorAccountController =
       Get.put(VendorAccountController());
@@ -76,14 +76,13 @@ class VendorAcconut extends StatelessWidget {
                                   itemCount: _vendorAccountController
                                       .getVendorAccountsModel
                                       .value
-                                      .accounts
-                                      .length,
+                                      .accounts?.length,
                                   itemBuilder: (context, index) {
                                     String mystring = _vendorAccountController
                                         .getVendorAccountsModel
                                         .value
-                                        .accounts[index]
-                                        .bankName;
+                                        .accounts?[index]
+                                        .bankName??"";
 
                                     name = mystring[0];
 
@@ -127,13 +126,12 @@ class VendorAcconut extends StatelessWidget {
                                                         ? _vendorAccountController
                                                                 .getVendorAccountsModel
                                                                 .value
-                                                                .accounts[index]
-                                                                .bankName ??
+                                                                .accounts![index].bankName ??
                                                             'N/A'
                                                         : _vendorAccountController
                                                                 .getVendorAccountsModel
                                                                 .value
-                                                                .accounts[index]
+                                                                .accounts![index]
                                                                 .bankNameAr ??
                                                             'N/A',
                                                     style: AppTextStyle
@@ -148,7 +146,7 @@ class VendorAcconut extends StatelessWidget {
                                                       // ignore: unrelated_type_equality_checks
                                                       AppMetaLabels()
                                                               .accountTitle +
-                                                          "${SessionController().getLanguage() == 1 ? _vendorAccountController.getVendorAccountsModel.value.accounts[index].accountTitle ?? '' : _vendorAccountController.getVendorAccountsModel.value.accounts[index].accountTitleAR ?? ''}",
+                                                          "${SessionController().getLanguage() == 1 ? _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitle ?? '' : _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitleAR ?? ''}",
 
                                                       style: AppTextStyle
                                                           .normalGrey12,
@@ -175,8 +173,8 @@ class VendorAcconut extends StatelessWidget {
                                                         _vendorAccountController
                                                             .getVendorAccountsModel
                                                             .value
-                                                            .accounts[index]
-                                                            .accountNumber),
+                                                            .accounts![index]
+                                                            .accountNumber??""),
                                                 style:
                                                     AppTextStyle.semiBoldGrey10,
                                               ),
@@ -193,8 +191,8 @@ class VendorAcconut extends StatelessWidget {
                                                         _vendorAccountController
                                                             .getVendorAccountsModel
                                                             .value
-                                                            .accounts[index]
-                                                            .iban),
+                                                            .accounts![index]
+                                                            .iban??""),
                                                 style:
                                                     AppTextStyle.semiBoldGrey10,
                                               ),
@@ -205,7 +203,7 @@ class VendorAcconut extends StatelessWidget {
                                                 _vendorAccountController
                                                             .getVendorAccountsModel
                                                             .value
-                                                            .accounts[index]
+                                                            .accounts![index]
                                                             .swiftCode ==
                                                         ''
                                                     ? ''
@@ -216,7 +214,7 @@ class VendorAcconut extends StatelessWidget {
                                                 _vendorAccountController
                                                         .getVendorAccountsModel
                                                         .value
-                                                        .accounts[index]
+                                                        .accounts![index]
                                                         .swiftCode ??
                                                     '',
                                                 style:
@@ -228,7 +226,7 @@ class VendorAcconut extends StatelessWidget {
                                                   _vendorAccountController
                                                           .getVendorAccountsModel
                                                           .value
-                                                          .accounts
+                                                          .accounts!
                                                           .length -
                                                       1
                                               ? SizedBox()

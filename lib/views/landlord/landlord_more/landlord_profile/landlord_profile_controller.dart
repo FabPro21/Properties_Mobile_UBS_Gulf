@@ -16,7 +16,7 @@ class LandLordProfileController extends GetxController {
   RxString errorUpdate = "".obs;
 
   RxBool loadingCanEdit = true.obs;
-  int caseNo;
+  int? caseNo;
 
   getData() async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
@@ -32,7 +32,7 @@ class LandLordProfileController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
         } else {
           landLordProfile.value = result;
-          print('Result 2 ::::: ${landLordProfile.value.data[0]}');
+          print('Result 2 ::::: ${landLordProfile.value.data![0]}');
           update();
         }
       } else {
@@ -76,12 +76,12 @@ class LandLordProfileController extends GetxController {
       if (result is LandlordUpdateProfileModel) {
         if (result.status == "Ok") {
           updateProfiledata.value = result;
-          caseNo = result.addServiceRequest.caseNo;
+          caseNo = result.addServiceRequest!.caseNo;
           loadingCanEdit.value = true;
           loadingCanEdit.value = false;
           return true;
         } else {
-          Get.snackbar(AppMetaLabels().error, result.message);
+          Get.snackbar(AppMetaLabels().error, result.message??"");
           return false;
         }
       } else {

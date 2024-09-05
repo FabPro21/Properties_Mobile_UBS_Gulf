@@ -10,10 +10,10 @@ class MessageBorderCircle extends ShapeBorder {
       EdgeInsets.only(bottom: usePadding ? 20 : 0);
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) => null;
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) => Path(); // #1 returning Path() instead of null
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     rect = Rect.fromPoints(rect.topLeft, rect.bottomRight - Offset(0, 20));
     return Path()
       ..addRRect(
@@ -25,7 +25,7 @@ class MessageBorderCircle extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
 
   @override
   ShapeBorder scale(double t) => this;
@@ -41,10 +41,10 @@ class MessageBorder extends ShapeBorder {
       EdgeInsets.only(bottom: usePadding ? 0 : 10);
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) => null;
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) => Path();
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     rect = Rect.fromPoints(rect.topLeft - Offset(0, -10), rect.bottomRight);
     return Path()
       ..addRRect(
@@ -56,7 +56,7 @@ class MessageBorder extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
 
   @override
   ShapeBorder scale(double t) => this;
@@ -72,10 +72,10 @@ class MessageBorderForVideoTutorial extends ShapeBorder {
       EdgeInsets.only(bottom: usePadding ? 0 : 10);
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) => null;
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) => Path();
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     rect = Rect.fromPoints(rect.topLeft - Offset(0, -10), rect.bottomRight);
     return Path()
       ..addRRect(
@@ -87,7 +87,7 @@ class MessageBorderForVideoTutorial extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
 
   @override
   ShapeBorder scale(double t) => this;

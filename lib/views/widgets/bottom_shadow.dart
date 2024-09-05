@@ -3,7 +3,7 @@ import 'package:sizer/sizer.dart';
 
 class BottomShadow extends StatelessWidget {
   const BottomShadow({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override 

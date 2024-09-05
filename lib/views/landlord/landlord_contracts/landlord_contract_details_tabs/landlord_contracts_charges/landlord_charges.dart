@@ -18,7 +18,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class LandlordChargesScreen extends StatefulWidget {
-  const LandlordChargesScreen({Key key}) : super(key: key);
+  const LandlordChargesScreen({Key? key}) : super(key: key);
 
   @override
   _LandlordChargesScreenState createState() => _LandlordChargesScreenState();
@@ -93,16 +93,13 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                               columnList(
                                 AppColors.chartlightBlueColorCharges,
                                 AppMetaLabels().paidCharges,
-                                getCCController.paidChargesCurrency
-                                        .toString() ??
-                                    "",
+                                getCCController.paidChargesCurrency.toString(),
                               ),
                               columnList(
                                   AppColors.amber.withOpacity(0.5),
                                   AppMetaLabels().outstanding,
                                   getCCController.outstandingChargesCurrency
-                                          .toString() ??
-                                      ""),
+                                      .toString()),
                               // columnList(
                               //     AppColors.chartlightBlueColor,
                               //     AppMetaLabels().paidCharges,
@@ -138,30 +135,33 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                     itemCount: getCCController.length,
                                     itemBuilder: (context, index) {
                                       double am = double.parse(getCCController
-                                          .getCharges
-                                          .value
-                                          .contractCharges[index]
-                                          .amount
-                                          .toString());
+                                              .getCharges
+                                              .value
+                                              .contractCharges?[index]
+                                              .amount
+                                              .toString() ??
+                                          "");
 
                                       final paidFormatter =
                                           NumberFormat('#,##0.00', 'AR');
                                       amount = paidFormatter.format(am);
                                       double va = double.parse(getCCController
-                                          .getCharges
-                                          .value
-                                          .contractCharges[index]
-                                          .vatAmount
-                                          .toString());
+                                              .getCharges
+                                              .value
+                                              .contractCharges?[index]
+                                              .vatAmount
+                                              .toString() ??
+                                          "");
                                       final vaFormatter =
                                           NumberFormat('#,##0.00', 'AR');
                                       vAmount = vaFormatter.format(va);
                                       double ta = double.parse(getCCController
-                                          .getCharges
-                                          .value
-                                          .contractCharges[index]
-                                          .totalAmount
-                                          .toString());
+                                              .getCharges
+                                              .value
+                                              .contractCharges?[index]
+                                              .totalAmount
+                                              .toString() ??
+                                          "");
                                       final tFormatter =
                                           NumberFormat('#,##0.00', 'AR');
                                       tAmount = tFormatter.format(ta);
@@ -183,23 +183,21 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                     children: [
                                                       rowList(
                                                           AppMetaLabels().date,
-                                                          "${getCCController.getCharges.value.contractCharges[index].createdOn ?? ""}"),
+                                                          "${getCCController.getCharges.value.contractCharges?[index].createdOn ?? ""}"),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
                                                       rowList(
                                                           AppMetaLabels()
                                                               .amount,
-                                                          "${AppMetaLabels().aed} ${amount.toString() ?? ""}" ??
-                                                              ""),
+                                                          "${AppMetaLabels().aed} ${amount.toString()}"),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
                                                       rowList(
                                                           AppMetaLabels()
                                                               .vatAmount,
-                                                          "${AppMetaLabels().aed} ${vAmount.toString() ?? ""}" ??
-                                                              ""),
+                                                          "${AppMetaLabels().aed} ${vAmount.toString()}"),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
@@ -212,14 +210,14 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                             ? getCCController
                                                                     .getCharges
                                                                     .value
-                                                                    .contractCharges[
+                                                                    .contractCharges![
                                                                         index]
                                                                     .chargesType ??
                                                                 ""
                                                             : getCCController
                                                                     .getCharges
                                                                     .value
-                                                                    .contractCharges[
+                                                                    .contractCharges![
                                                                         index]
                                                                     .chargesTypeAr ??
                                                                 '',
@@ -237,8 +235,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                           ),
                                                           Spacer(),
                                                           Text(
-                                                            "${AppMetaLabels().aed} ${tAmount.toString() ?? ""}" ??
-                                                                "",
+                                                            "${AppMetaLabels().aed} ${tAmount.toString()}",
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10,
                                                           ),
@@ -253,19 +250,17 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                                 right: 8.0),
                                                         child: InkWell(
                                                           onTap: () {
-                                                            print(getCCController
-                                                                .getCharges
-                                                                .value
-                                                                .contractCharges[
-                                                                    index]
-                                                                .chargesTypeId);
-                                                            Get.to(() => LandlordChargesReceipts(
-                                                                chargesTypeId: getCCController
-                                                                    .getCharges
-                                                                    .value
-                                                                    .contractCharges[
-                                                                        index]
-                                                                    .chargesTypeId));
+                                                            Get.to(() =>
+                                                                LandlordChargesReceipts(
+                                                                  chargesTypeId: getCCController
+                                                                          .getCharges
+                                                                          .value
+                                                                          .contractCharges?[
+                                                                              index]
+                                                                          .chargesTypeId ??
+                                                                      0,
+                                                                  key: null,
+                                                                ));
                                                           },
                                                           child: Text(
                                                               AppMetaLabels()

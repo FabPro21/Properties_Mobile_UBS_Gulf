@@ -10,8 +10,8 @@ import '../../../../data/helpers/session_controller.dart';
 import 'get_unit_type_controller.dart';
 
 class GetUnitType extends StatefulWidget {
-  final String categoryName;
-  GetUnitType({Key key, this.categoryName}) : super(key: key);
+  final String? categoryName;
+  GetUnitType({Key? key, this.categoryName}) : super(key: key);
 
   @override
   State<GetUnitType> createState() => _GetUnitTypeState();
@@ -26,7 +26,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
     print(" ---------- ${widget.categoryName} ------------");
     gPCController.getData(SessionController().getLanguage() == 1
         ? widget.categoryName ?? ""
-        : widget.categoryName + 'AR' ?? "");
+        : widget.categoryName! + 'AR');
     super.initState();
   }
 
@@ -155,8 +155,8 @@ class _GetUnitTypeState extends State<GetUnitType> {
                                           } else if ((gPCController
                                                           .getUnitType
                                                           .value
-                                                          .unitTypes
-                                                          .unitTypes[index]
+                                                          .unitTypes!
+                                                          .unitTypes![index]
                                                           .unitTypeName ??
                                                       "")
                                                   .toLowerCase()
@@ -165,8 +165,8 @@ class _GetUnitTypeState extends State<GetUnitType> {
                                               (gPCController
                                                               .getUnitType
                                                               .value
-                                                              .unitTypes
-                                                              .unitTypes[index]
+                                                              .unitTypes!
+                                                              .unitTypes![index]
                                                               .unitTypeName ??
                                                           "")
                                                       .toLowerCase()
@@ -179,8 +179,8 @@ class _GetUnitTypeState extends State<GetUnitType> {
                                           } else if ((gPCController
                                                           .getUnitType
                                                           .value
-                                                          .unitTypes
-                                                          .unitTypes[index]
+                                                          .unitTypes!
+                                                          .unitTypes![index]
                                                           .unitTypeNameAR ??
                                                       "")
                                                   .toLowerCase()
@@ -189,8 +189,8 @@ class _GetUnitTypeState extends State<GetUnitType> {
                                               (gPCController
                                                               .getUnitType
                                                               .value
-                                                              .unitTypes
-                                                              .unitTypes[index]
+                                                              .unitTypes!
+                                                              .unitTypes![index]
                                                               .unitTypeNameAR ??
                                                           "")
                                                       .toLowerCase()
@@ -222,54 +222,54 @@ class _GetUnitTypeState extends State<GetUnitType> {
     return InkWell(
       onTap: () async {
         SessionController().setUnitTypeName(gPCController
-                    .getUnitType.value.unitTypes.unitTypes[index].unitTypeName
+                    .getUnitType.value.unitTypes!.unitTypes![index].unitTypeName!
                     .trim() ==
                 'معسكر العمل'
             ? 'سكن عمال'
-            : gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                        .unitTypeName
+            : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                        .unitTypeName!
                         .trim() ==
                     'محال البيع بالتجزئة'
                 ? 'متجر'
-                : gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                            .unitTypeName
+                : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                            .unitTypeName!
                             .trim() ==
                         'قاعة عرض'
                     ? 'صالة عرض'
-                    : gPCController.getUnitType.value.unitTypes.unitTypes[index]
+                    : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
                             .unitTypeName ??
                         "");
         var selecteUnitName = gPCController
-                    .getUnitType.value.unitTypes.unitTypes[index].unitTypeName
+                    .getUnitType.value.unitTypes!.unitTypes![index].unitTypeName!
                     .trim() ==
                 'معسكر العمل'
             ? 'سكن عمال'
-            : gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                        .unitTypeName
+            : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                        .unitTypeName!
                         .trim() ==
                     'محال البيع بالتجزئة'
                 ? 'متجر'
-                : gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                            .unitTypeName
+                : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                            .unitTypeName!
                             .trim() ==
                         'قاعة عرض'
                     ? 'صالة عرض'
-                    : gPCController.getUnitType.value.unitTypes.unitTypes[index]
+                    : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
                             .unitTypeName ??
                         "";
         Get.back(result: [selecteUnitName]);
         // Get.back(result: [
         //   gPCController
-        //           .getUnitType.value.unitTypes.unitTypes[index].unitTypeName ??
+        //           .getUnitType.value.unitTypes!.unitTypes![index].unitTypeName ??
         //       ""
         //   // SessionController().getLanguage() == 1
-        //   //     ? gPCController.getUnitType.value.unitTypes.unitTypes[index]
+        //   //     ? gPCController.getUnitType.value.unitTypes!.unitTypes![index]
         //   //             .unitTypeName ??
         //   //         ""
-        //   //     : gPCController.getUnitType.value.unitTypes.unitTypes[index]
+        //   //     : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
         //   //             .unitTypeNameAR ??
         //   //         "",
-        //   // gPCController.getUnitType.value.unitTypes.showArea
+        //   // gPCController.getUnitType.value.unitTypes!.showArea
         // ]);
       },
       child: Column(
@@ -280,26 +280,26 @@ class _GetUnitTypeState extends State<GetUnitType> {
             // do not change this becasue when we will send arabic unitTypeNameAR get arabic list of name
             // and when we will send english unitTypeName get english list of name
             child: Text(
-              // gPCController.getUnitType.value.unitTypes.unitTypes[index]
+              // gPCController.getUnitType.value.unitTypes!.unitTypes![index]
               //         .unitTypeName ??
               //     "",
-              gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                          .unitTypeName
+              gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                          .unitTypeName!
                           .trim() ==
                       'معسكر العمل'
                   ? 'سكن عمال'
-                  : gPCController.getUnitType.value.unitTypes.unitTypes[index]
-                              .unitTypeName
+                  : gPCController.getUnitType.value.unitTypes!.unitTypes![index]
+                              .unitTypeName!
                               .trim() ==
                           'محال البيع بالتجزئة'
                       ? 'متجر'
-                      : gPCController.getUnitType.value.unitTypes
-                                  .unitTypes[index].unitTypeName
+                      : gPCController.getUnitType.value.unitTypes!
+                                  .unitTypes![index].unitTypeName!
                                   .trim() ==
                               'قاعة عرض'
                           ? 'صالة عرض'
-                          : gPCController.getUnitType.value.unitTypes
-                                  .unitTypes[index].unitTypeName ??
+                          : gPCController.getUnitType.value.unitTypes!
+                                  .unitTypes![index].unitTypeName ??
                               "",
               style: AppTextStyle.normalGrey10,
             ),

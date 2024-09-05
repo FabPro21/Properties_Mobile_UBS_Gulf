@@ -26,7 +26,7 @@ class PublicOffersController extends GetxController {
       var result = await PublicRepositoryDrop2.getOffers();
       if (result is PublicOffersModel) {
         offers.value = result;
-        length = offers.value.record.length;
+        length = offers.value.record!.length;
         if (length == 0) {
           errorOffers.value = AppMetaLabels().noDatafound;
         }

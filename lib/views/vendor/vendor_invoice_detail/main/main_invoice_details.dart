@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/vendor_models/installmment_drop_sown_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -18,10 +18,10 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';
 
 class VendorInvoiceMainDetails extends StatefulWidget {
-  final String caller;
-  final String caseNo;
+  final String? caller;
+  final String? caseNo;
   VendorInvoiceMainDetails({
-    Key key,
+    Key? key,
     this.caller,
     this.caseNo,
   }) : super(key: key) {
@@ -62,7 +62,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
     // clear all text field
     // else
     // call func for get data related to the Invoice No
-    vendorController.callerInvoice = widget.caller;
+    vendorController.callerInvoice = widget.caller!;
     if (vendorController.callerInvoice == 'Add New Invoice' &&
         !vendorController.isEnableInvoiceNo.value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -83,7 +83,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
         vendorController.caseNoInvoice =
             widget.caseNo == null || widget.caseNo == ''
                 ? controller.caseNoInvoice
-                : int.parse(widget.caseNo);
+                : int.parse(widget.caseNo!);
         print('CALLING IN ADD NEW SERVICE :::::::: ELSE ++++++ >');
         getdata();
       });
@@ -219,11 +219,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 onChanged: vendorController
                                                         .isEnableInvoiceNo.value
                                                     ? null
-                                                    : (value) {
+                                                    : (int? value) {
                                                         setState(() {
                                                           vendorController
                                                               .isServiceRqTypeRadioButtonVal
-                                                              .value = value;
+                                                              .value = value!;
                                                           vendorController
                                                               .serviceTypeError
                                                               .value = '';
@@ -284,12 +284,12 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 onChanged: vendorController
                                                         .isEnableInvoiceNo.value
                                                     ? null
-                                                    : (value) {
+                                                    : (int? value) {
                                                         setState(() {
                                                           setState(() {
                                                             vendorController
                                                                 .isServiceRqTypeRadioButtonVal
-                                                                .value = value;
+                                                                .value = value!;
                                                             vendorController
                                                                 .serviceTypeError
                                                                 .value = '';
@@ -543,12 +543,12 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                     width: 90.w,
                                                     height: vendorController
                                                                 .lopsNoModelData
-                                                                .lpos
+                                                                .lpos!
                                                                 .length <
                                                             4
                                                         ? vendorController
                                                                 .lopsNoModelData
-                                                                .lpos
+                                                                .lpos!
                                                                 .length *
                                                             3.5.h
                                                         : 15.h,
@@ -580,7 +580,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                     child: Scrollbar(
                                                       controller:
                                                           scrollcontrollerLpo,
-                                                      isAlwaysShown: true,
+                                                      // isAlwaysShown: true,
                                                       child: ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -590,7 +590,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                         itemCount:
                                                             vendorController
                                                                 .lopsNoModelData
-                                                                .lpos
+                                                                .lpos!
                                                                 .length,
                                                         itemBuilder:
                                                             (context, index) {
@@ -602,22 +602,22 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                     srNoController
                                                                         .text = vendorController
                                                                             .lopsNoModelData
-                                                                            .lpos[index]
+                                                                            .lpos![index]
                                                                             .name ??
                                                                         "";
                                                                     vendorController
                                                                         .serviceNoError
                                                                         .value = '';
                                                                     vendorController
-                                                                            .selectedLopAmcDropDownVal
-                                                                            .value =
-                                                                        vendorController
+                                                                        .selectedLopAmcDropDownVal
+                                                                        .value = vendorController
                                                                             .lopsNoModelData
-                                                                            .lpos[index]
-                                                                            .id;
+                                                                            .lpos![index]
+                                                                            .id ??
+                                                                        0;
                                                                     vendorController.balanceAmountofSelectedLPO.value = double.parse(vendorController
                                                                         .lopsNoModelData
-                                                                        .lpos[
+                                                                        .lpos![
                                                                             index]
                                                                         .balance
                                                                         .toString());
@@ -636,7 +636,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                   child: Text(
                                                                     vendorController
                                                                             .lopsNoModelData
-                                                                            .lpos[index]
+                                                                            .lpos![index]
                                                                             .name ??
                                                                         "",
                                                                     textAlign:
@@ -655,7 +655,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                       .value ==
                                                                   0)
                                                                 index ==
-                                                                        vendorController.lopsNoModelData.lpos.length -
+                                                                        vendorController.lopsNoModelData.lpos!.length -
                                                                             1
                                                                     ? SizedBox()
                                                                     : AppDivider(),
@@ -794,12 +794,12 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                     width: 90.w,
                                                     height: vendorController
                                                                 .aMCModelData
-                                                                .amcData
+                                                                .amcData!
                                                                 .length <
                                                             4
                                                         ? vendorController
                                                                 .aMCModelData
-                                                                .amcData
+                                                                .amcData!
                                                                 .length *
                                                             3.5.h
                                                         : 15.h,
@@ -831,7 +831,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                     child: Scrollbar(
                                                       controller:
                                                           scrollcontrollerAMc,
-                                                      isAlwaysShown: true,
+                                                      // isAlwaysShown: true,
                                                       child: ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -841,7 +841,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                         itemCount:
                                                             vendorController
                                                                 .aMCModelData
-                                                                .amcData
+                                                                .amcData!
                                                                 .length,
                                                         itemBuilder:
                                                             (context, index) {
@@ -856,7 +856,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                         setState(
                                                                             () {
                                                                           srNoController.text =
-                                                                              vendorController.aMCModelData.amcData[index].name ?? "";
+                                                                              vendorController.aMCModelData.amcData![index].name ?? "";
                                                                           vendorController
                                                                               .serviceNoError
                                                                               .value = '';
@@ -867,14 +867,15 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                               InstallmentDropDownModel();
                                                                         });
                                                                         await vendorController.getAMCInstdropDownForInvoice(
-                                                                            vendorController.aMCModelData.amcData[index].name.toString(),
-                                                                            vendorController.aMCModelData.amcData[index].id.toString());
+                                                                            vendorController.aMCModelData.amcData![index].name.toString(),
+                                                                            vendorController.aMCModelData.amcData![index].id.toString());
                                                                         setState(
                                                                             () {
-                                                                          vendorController.selectedLopAmcDropDownVal.value = vendorController
-                                                                              .aMCModelData
-                                                                              .amcData[index]
-                                                                              .id;
+                                                                          vendorController
+                                                                              .selectedLopAmcDropDownVal
+                                                                              .value = vendorController
+                                                                                  .aMCModelData.amcData![index].id ??
+                                                                              0;
                                                                           vendorController
                                                                               .isServiceRqTypeRadioButtonVal
                                                                               .value = 1;
@@ -895,7 +896,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                   child: Text(
                                                                     vendorController
                                                                             .aMCModelData
-                                                                            .amcData[index]
+                                                                            .amcData![index]
                                                                             .name ??
                                                                         "",
                                                                     textAlign:
@@ -913,7 +914,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                       .isServiceRqTypeRadioButtonVal
                                                                       .value ==
                                                                   1)
-                                                                index == vendorController.aMCModelData.amcData.length - 1 &&
+                                                                index == vendorController.aMCModelData.amcData!.length - 1 &&
                                                                         vendorController.isServiceRqTypeRadioButtonVal.value ==
                                                                             1
                                                                     ? SizedBox()
@@ -1125,7 +1126,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                     child: Scrollbar(
                                                       controller:
                                                           scrollcontrollerInstallment,
-                                                      isAlwaysShown: true,
+                                                      // isAlwaysShown: true,
                                                       child: ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -1133,10 +1134,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             scrollcontrollerInstallment,
                                                         shrinkWrap: true,
                                                         itemCount: vendorController
-                                                                .installmentModelData
-                                                                .installmentData
-                                                                .length ??
-                                                            0,
+                                                            .installmentModelData
+                                                            .installmentData!
+                                                            .length,
                                                         itemBuilder:
                                                             (context, index) {
                                                           return Column(
@@ -1146,7 +1146,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                   setState(() {
                                                                     instNoController.text = vendorController
                                                                         .installmentModelData
-                                                                        .installmentData[
+                                                                        .installmentData![
                                                                             index]
                                                                         .name
                                                                         .toString();
@@ -1158,20 +1158,20 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                             .value =
                                                                         vendorController
                                                                             .installmentModelData
-                                                                            .installmentData[index]
+                                                                            .installmentData![index]
                                                                             .id
                                                                             .toString();
 
                                                                     vendorController.selectedInstallmentDropDownNo.value = vendorController
                                                                         .installmentModelData
-                                                                        .installmentData[
+                                                                        .installmentData![
                                                                             index]
                                                                         .instNo
                                                                         .toString();
 
                                                                     vendorController.balanceAmountofSelectedInstallment.value = double.parse(vendorController
                                                                         .installmentModelData
-                                                                        .installmentData[
+                                                                        .installmentData![
                                                                             index]
                                                                         .balance
                                                                         .toString());
@@ -1197,11 +1197,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                               4),
                                                                   child: Text(
                                                                     vendorController
-                                                                            .installmentModelData
-                                                                            .installmentData[index]
-                                                                            .name
-                                                                            .toString() ??
-                                                                        "",
+                                                                        .installmentModelData
+                                                                        .installmentData![
+                                                                            index]
+                                                                        .name
+                                                                        .toString(),
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
@@ -1216,7 +1216,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                               index ==
                                                                       vendorController
                                                                               .installmentModelData
-                                                                              .installmentData
+                                                                              .installmentData!
                                                                               .length -
                                                                           1
                                                                   ? SizedBox()
@@ -1385,6 +1385,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                               .invoiceDateError.value = '';
                                           var expDate;
                                           expDate = await showRoundedDatePicker(
+                                            theme: ThemeData(
+                                                primaryColor:
+                                                    AppColors.blueColor),
                                             height: 50.0.h,
                                             context: context,
                                             // locale: Locale('en'),
@@ -1693,6 +1696,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                             var expDate;
                                             expDate =
                                                 await showRoundedDatePicker(
+                                              theme: ThemeData(
+                                                  primaryColor:
+                                                      AppColors.blueColor),
                                               height: 50.0.h,
                                               context: context,
                                               // locale: Locale('en'),

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -20,7 +22,7 @@ import 'public_profile/public_profile.dart';
 import 'public_settings/public_settings.dart';
 
 class SearchPropertiesMore extends StatefulWidget {
-  const SearchPropertiesMore({Key key}) : super(key: key);
+  const SearchPropertiesMore({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesMoreState createState() => _SearchPropertiesMoreState();
@@ -48,7 +50,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async =>
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+          await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Directionality(
@@ -164,7 +166,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             child: Padding(
                               padding: EdgeInsets.all(3.0.h),
                               child: Text(
-                                name ?? "",
+                                name,
                                 style: AppTextStyle.semiBoldWhite16
                                     .copyWith(fontSize: 24.sp),
                               ),
@@ -235,7 +237,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                   color: AppColors.blackColor,
                                 ),
                                 title: Text(
-                                  AppMetaLabels().menaRealEstate,
+                                  AppMetaLabels().menaProps,
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
@@ -326,7 +328,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                       builder: (BuildContext
                                                           context) {
                                                         return Container(
-                                                          height: 25.h,
+                                                          height: 30.h,
                                                           width:
                                                               double.infinity,
                                                           margin: EdgeInsets
@@ -483,7 +485,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().fabEmail}"));
+                                                        "mailto:${AppMetaLabels().menaEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(

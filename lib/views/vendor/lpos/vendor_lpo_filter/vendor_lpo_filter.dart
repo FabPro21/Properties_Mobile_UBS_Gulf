@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/vendor_models/get_lpo_status_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/lpos/vendor_lpo_filter/vendor_filter_lpo_status/vendor_filter_lpos_status.dart';
@@ -11,8 +12,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorLpoFilter extends StatefulWidget {
-  final bool clear;
-  const VendorLpoFilter({Key key, this.clear}) : super(key: key);
+  final bool? clear;
+  const VendorLpoFilter({Key? key, this.clear}) : super(key: key);
 
   @override
   _VendorLpoFilterState createState() => _VendorLpoFilterState();
@@ -24,7 +25,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
 
   @override
   void initState() {
-    if (widget.clear) {
+    if (widget.clear!) {
       _controller.resetValues();
       propertyController.text = _controller.propertyName;
     }
@@ -193,6 +194,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
@@ -234,7 +237,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                       // ),
                                     ),
                                   );
-                                  if (!_controller.setFromDate(dT)) {
+                                  if (!_controller.setFromDate(dT!)) {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -292,6 +295,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               onTap: () async {
                                 try {
                                   var dT = await showRoundedDatePicker(
+                                    theme: ThemeData(
+                                        primaryColor: AppColors.blueColor),
                                     height: 50.0.h,
                                     context: context,
                                     // locale: Locale('en'),
@@ -333,7 +338,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                       // ),
                                     ),
                                   );
-                                  if (!_controller.setToDate(dT)) {
+                                  if (!_controller.setToDate(dT!)) {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
@@ -485,14 +490,14 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
 }
 
 class ClearButton extends StatelessWidget {
-  final Function clear;
-  const ClearButton({Key key, this.clear}) : super(key: key);
+  final Function? clear;
+  const ClearButton({Key? key, this.clear}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        clear();
+        clear!();
       },
       child: Container(
         decoration: BoxDecoration(

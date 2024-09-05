@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
@@ -33,8 +35,8 @@ import 'tenant_contract_download/tenant_contract_download_controller.dart';
 import 'tenant_contracts_detail_controller.dart';
 
 class MainInfo extends StatefulWidget {
-  final String prevContractNo;
-  const MainInfo({Key key, @required this.prevContractNo}) : super(key: key);
+  final String? prevContractNo;
+  const MainInfo({Key? key, @required this.prevContractNo}) : super(key: key);
 
   @override
   _MainInfoState createState() => _MainInfoState();
@@ -48,8 +50,8 @@ class _MainInfoState extends State<MainInfo> {
   @override
   void initState() {
     print('****************');
-    print(getCDController.getContractsDetails.value.contract.isCanceled);
-    print(getCDController.getContractsDetails.value.contract.contractno);
+    print(getCDController.getContractsDetails.value.contract!.isCanceled);
+    print(getCDController.getContractsDetails.value.contract!.contractno);
     print(getCDController.getContractsDetails.value.caseNo);
     print('****************');
     super.initState();
@@ -65,13 +67,13 @@ class _MainInfoState extends State<MainInfo> {
               child: Obx(() {
                 return Container(
                   height: getCDController.canDownload.value &&
-                          getCDController.getContractsDetails.value.contract
+                          getCDController.getContractsDetails.value.contract!
                                   .contractStatus ==
                               'Legal Case'
                       ? 115.h
                       : getCDController.canDownload.value
                           ? 105.h
-                          : getCDController.getContractsDetails.value.contract
+                          : getCDController.getContractsDetails.value.contract!
                                       .contractStatus ==
                                   'Legal Case'
                               ? 98.h
@@ -132,15 +134,15 @@ class _MainInfoState extends State<MainInfo> {
                                                             getCDController
                                                                 .getContractsDetails
                                                                 .value
-                                                                .contract
+                                                                .contract!
                                                                 .noOfDays
-                                                                .toString() ??
-                                                        "",
+                                                                .toString(),
                                                     style: AppTextStyle
                                                         .normalBlack10,
                                                   ),
                                                 ),
                                                 LinearProgressIndicator(
+                                                  color: AppColors.blueColor,
                                                   value: getCDController.comPtg,
                                                   backgroundColor: AppColors
                                                       .chartlightBlueColor,
@@ -172,7 +174,7 @@ class _MainInfoState extends State<MainInfo> {
                                                             getCDController
                                                                     .getContractsDetails
                                                                     .value
-                                                                    .contract
+                                                                    .contract!
                                                                     .contractDate ??
                                                                 "",
                                                             style: AppTextStyle
@@ -198,7 +200,7 @@ class _MainInfoState extends State<MainInfo> {
                                                             getCDController
                                                                     .getContractsDetails
                                                                     .value
-                                                                    .contract
+                                                                    .contract!
                                                                     .contractStartDate ??
                                                                 "",
                                                             style: AppTextStyle
@@ -224,7 +226,7 @@ class _MainInfoState extends State<MainInfo> {
                                                             getCDController
                                                                     .getContractsDetails
                                                                     .value
-                                                                    .contract
+                                                                    .contract!
                                                                     .contractEndDate ??
                                                                 "",
                                                             style: AppTextStyle
@@ -285,19 +287,19 @@ class _MainInfoState extends State<MainInfo> {
                                                                   ? getCDController
                                                                       .getContractsDetails
                                                                       .value
-                                                                      .contract
+                                                                      .contract!
                                                                       .contractStatus
                                                                   : getCDController
                                                                           .getContractsDetails
                                                                           .value
-                                                                          .contract
+                                                                          .contract!
                                                                           .contractStatusAR ??
                                                                       '',
                                                               valueToCompare:
                                                                   getCDController
                                                                       .getContractsDetails
                                                                       .value
-                                                                      .contract
+                                                                      .contract!
                                                                       .contractStatus,
                                                             ),
                                                           ),
@@ -314,7 +316,7 @@ class _MainInfoState extends State<MainInfo> {
                                                     getCDController
                                                             .getContractsDetails
                                                             .value
-                                                            .contract
+                                                            .contract!
                                                             .contractno !=
                                                         widget.prevContractNo)
                                                   Row(
@@ -329,7 +331,8 @@ class _MainInfoState extends State<MainInfo> {
                                                             .normalBlack11,
                                                       ),
                                                       Text(
-                                                        widget.prevContractNo,
+                                                        widget.prevContractNo ??
+                                                            '',
                                                         style: AppTextStyle
                                                             .semiBoldBlack11,
                                                       ),
@@ -382,19 +385,17 @@ class _MainInfoState extends State<MainInfo> {
                                                                   .getLanguage() ==
                                                               1
                                                           ? getCDController
-                                                                  .getContractsDetails
-                                                                  .value
-                                                                  .contract
-                                                                  .unitName
-                                                                  .toString() ??
-                                                              ""
+                                                              .getContractsDetails
+                                                              .value
+                                                              .contract!
+                                                              .unitName
+                                                              .toString()
                                                           : getCDController
-                                                                  .getContractsDetails
-                                                                  .value
-                                                                  .contract
-                                                                  .unitNameAr
-                                                                  .toString() ??
-                                                              "",
+                                                              .getContractsDetails
+                                                              .value
+                                                              .contract!
+                                                              .unitNameAr
+                                                              .toString(),
                                                       style: AppTextStyle
                                                           .normalBlack10,
                                                     ),
@@ -408,19 +409,17 @@ class _MainInfoState extends State<MainInfo> {
                                                                     .getLanguage() ==
                                                                 1
                                                             ? getCDController
-                                                                    .getContractsDetails
-                                                                    .value
-                                                                    .contract
-                                                                    .address
-                                                                    .toString() ??
-                                                                ''
+                                                                .getContractsDetails
+                                                                .value
+                                                                .contract!
+                                                                .address
+                                                                .toString()
                                                             : getCDController
-                                                                    .getContractsDetails
-                                                                    .value
-                                                                    .contract
-                                                                    .addressAr
-                                                                    .toString() ??
-                                                                '',
+                                                                .getContractsDetails
+                                                                .value
+                                                                .contract!
+                                                                .addressAr
+                                                                .toString(),
                                                         style: AppTextStyle
                                                             .semiBoldBlack10,
                                                       ),
@@ -647,16 +646,14 @@ class _MainInfoState extends State<MainInfo> {
                                                                           Material(
                                                                         child:
                                                                             InkWell(
-                                                                          onTap: 
-                                                                          getCDController.getContractsDetails.value.contract.isCanceled == 1
+                                                                          onTap: getCDController.getContractsDetails.value.contract!.isCanceled == 1
                                                                               ? () {
                                                                                   SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().alert, AppMetaLabels().yourRequestCancelled);
                                                                                 }
-                                                                              :
-                                                                               () {
+                                                                              : () {
                                                                                   Get.to(() => OutstandingPayments(
-                                                                                        contractNo: getCDController.getContractsDetails.value.contract.contractno,
-                                                                                        contractId: getCDController.getContractsDetails.value.contract.contractId,
+                                                                                        contractNo: getCDController.getContractsDetails.value.contract!.contractno,
+                                                                                        contractId: getCDController.getContractsDetails.value.contract!.contractId,
                                                                                       ));
                                                                                 },
                                                                           child:
@@ -915,7 +912,7 @@ class _MainInfoState extends State<MainInfo> {
                                         //                                     .caseNo
                                         //                                     .toString(),
                                         //                                 caller:
-                                        //                                     'contract',
+                                        //                                     'contract!',
                                         //                                 title: AppMetaLabels()
                                         //                                     .renewalReq,
                                         //                                 initialIndex:
@@ -980,7 +977,7 @@ class _MainInfoState extends State<MainInfo> {
                                         if (getCDController
                                                 .getContractsDetails
                                                 .value
-                                                .contract
+                                                .contract!
                                                 .contractStatus ==
                                             'Legal Case')
                                           Container(
@@ -1016,12 +1013,12 @@ class _MainInfoState extends State<MainInfo> {
                                                                   contractNo: getCDController
                                                                       .getContractsDetails
                                                                       .value
-                                                                      .contract
+                                                                      .contract!
                                                                       .contractno,
                                                                   contractId: getCDController
                                                                       .getContractsDetails
                                                                       .value
-                                                                      .contract
+                                                                      .contract!
                                                                       .contractId,
                                                                 ));
                                                       },
@@ -1043,7 +1040,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                       .legalCaseNo
                                                                       .toString(),
                                                                   caller:
-                                                                      'contract',
+                                                                      'contract!',
                                                                   title: AppMetaLabels()
                                                                       .legalReq,
                                                                 ));
@@ -1096,12 +1093,12 @@ class _MainInfoState extends State<MainInfo> {
                                         //                               contractNo: getCDController
                                         //                                   .getContractsDetails
                                         //                                   .value
-                                        //                                   .contract
+                                        //                                   .contract!
                                         //                                   .contractno,
                                         //                               contractId: getCDController
                                         //                                   .getContractsDetails
                                         //                                   .value
-                                        //                                   .contract
+                                        //                                   .contract!
                                         //                                   .contractId,
                                         //                             ));
                                         //                   },
@@ -1157,7 +1154,7 @@ class _MainInfoState extends State<MainInfo> {
                                         //                               showPhotos:
                                         //                                   false,
                                         //                               caller:
-                                        //                                   'contract',
+                                        //                                   'contract!',
                                         //                               title: AppMetaLabels()
                                         //                                   .checkinReq,
                                         //                             ));
@@ -1259,10 +1256,10 @@ class _MainInfoState extends State<MainInfo> {
                             Obx(() {
                               return getCDController.loadingCanDownload.value ||
                                       getCDController.getContractsDetails.value
-                                              .caseStageInfo.stageId ==
+                                              .caseStageInfo!.stageId! ==
                                           null ||
                                       getCDController.getContractsDetails.value
-                                              .caseStageInfo.stageId <
+                                              .caseStageInfo!.stageId! <
                                           8
                                   ? SizedBox()
                                   : getCDController.canDownloadContract
@@ -1438,18 +1435,18 @@ class _MainInfoState extends State<MainInfo> {
                                                     getCDController
                                                         .getContractsDetails
                                                         .value
-                                                        .caseStageInfo
+                                                        .caseStageInfo!
                                                         .caseid
                                                         .toString(),
                                                   );
                                                   print(
-                                                      'Case No :::in Production::: ${getCDController.getContractsDetails.value.caseStageInfo.caseid.toString()}');
+                                                      'Case No :::in Production::: ${getCDController.getContractsDetails.value.caseStageInfo!.caseid.toString()}');
                                                   Get.to(() =>
                                                       TenantServiceRequestTabs(
                                                         requestNo: getCDController
                                                             .getContractsDetails
                                                             .value
-                                                            .caseStageInfo
+                                                            .caseStageInfo!
                                                             .caseid
                                                             .toString(),
                                                         caller:
@@ -1525,27 +1522,26 @@ class _MainInfoState extends State<MainInfo> {
           print(
               'getCDController.errorLoadingContract.value *********  2 ***** ***** ${getCDController.errorLoadingContract.value}');
           print(
-              'getContractsDetails.contract.contractStatus ********* 3 ***** ***** ${getCDController.getContractsDetails.value.contract.contractStatus}');
+              'getContractsDetails.contract!.contractStatus ********* 3 ***** ***** ${getCDController.getContractsDetails.value.contract!.contractStatus}');
           print(
               'getCDController.getContractsDetails.caseStageInfo *** 4 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo}');
           print(
-              'getCDController.caseStageInfo.stageId ******** ****** 5 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo.stageId}');
+              'getCDController.caseStageInfo.stageId ******** ****** 5 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo!.stageId}');
 
           return getCDController.loadingContract.value ||
                   getCDController.errorLoadingContract.value != '' ||
                   getCDController
-                          .getContractsDetails.value.contract.contractStatus ==
+                          .getContractsDetails.value.contract!.contractStatus ==
                       'Ended' ||
                   getCDController.getContractsDetails.value.caseStageInfo ==
                       null ||
-                  getCDController
-                          .getContractsDetails.value.caseStageInfo.stageId ==
+                  getCDController.getContractsDetails.value.caseStageInfo!.stageId ==
                       null ||
                   getCDController
-                          .getContractsDetails.value.caseStageInfo.stageId <
+                          .getContractsDetails.value.caseStageInfo!.stageId! <
                       1 ||
                   getCDController
-                          .getContractsDetails.value.caseStageInfo.stageId >
+                          .getContractsDetails.value.caseStageInfo!.stageId! >
                       9
               ? SizedBox()
               : SizedBox();
@@ -1570,11 +1566,11 @@ class _MainInfoState extends State<MainInfo> {
 
   Widget showActions() {
     int stageId =
-        getCDController.getContractsDetails.value.caseStageInfo.stageId;
+        getCDController.getContractsDetails.value.caseStageInfo!.stageId!;
     switch (stageId) {
       case 1:
         return expiringContractActions();
-        break;
+
       default:
         return renewalActions(stageId);
     }
@@ -1593,12 +1589,12 @@ class _MainInfoState extends State<MainInfo> {
                   onPressed: () {
                     Get.to(() => ContractExtend(
                           contractNo: getCDController
-                              .getContractsDetails.value.contract.contractno,
+                              .getContractsDetails.value.contract!.contractno,
                           contractId: getCDController
-                              .getContractsDetails.value.contract.contractId,
-                          caller: 'contract',
+                              .getContractsDetails.value.contract!.contractId,
+                          caller: 'contract!',
                           dueActionId: getCDController.getContractsDetails.value
-                              .caseStageInfo.dueActionid,
+                              .caseStageInfo!.dueActionid,
                         ));
                   },
                   borderColor: AppColors.blueColor,
@@ -1620,12 +1616,12 @@ class _MainInfoState extends State<MainInfo> {
                 onPressed: () {
                   Get.to(() => ContractRenewel(
                         contractNo: getCDController
-                            .getContractsDetails.value.contract.contractno,
+                            .getContractsDetails.value.contract!.contractno,
                         contractId: getCDController
-                            .getContractsDetails.value.contract.contractId,
-                        caller: 'contract',
+                            .getContractsDetails.value.contract!.contractId,
+                        caller: 'contract!',
                         dueActionid: getCDController.getContractsDetails.value
-                            .caseStageInfo.dueActionid,
+                            .caseStageInfo!.dueActionid,
                       ));
                 },
                 child: Text(AppMetaLabels().renew,
@@ -1640,12 +1636,12 @@ class _MainInfoState extends State<MainInfo> {
                   onPressed: () {
                     Get.to(() => ContractTerminate(
                           contractNo: getCDController
-                              .getContractsDetails.value.contract.contractno,
+                              .getContractsDetails.value.contract!.contractno,
                           contractId: getCDController
-                              .getContractsDetails.value.contract.contractId,
-                          caller: 'contract',
+                              .getContractsDetails.value.contract!.contractId,
+                          caller: 'contract!',
                           dueActionid: getCDController.getContractsDetails.value
-                              .caseStageInfo.dueActionid,
+                              .caseStageInfo!.dueActionid,
                         ));
                   },
                   borderColor: AppColors.blueColor)),
@@ -1693,7 +1689,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().uploadDocs,
                   srNo: '1',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1703,14 +1699,14 @@ class _MainInfoState extends State<MainInfo> {
                       : () {
                           SessionController().setCaseNo(
                             getCDController
-                                .getContractsDetails.value.caseStageInfo.caseid
+                                .getContractsDetails.value.caseStageInfo!.caseid
                                 .toString(),
                           );
                           Get.to(() => TenantServiceRequestTabs(
                                 requestNo: getCDController.getContractsDetails
-                                    .value.caseStageInfo.caseid
+                                    .value.caseStageInfo!.caseid
                                     .toString(),
-                                caller: 'contract',
+                                caller: 'contract!',
                                 title: AppMetaLabels().renewalReq,
                                 initialIndex: 1,
                               ));
@@ -1723,7 +1719,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().docsSubmitted,
                   srNo: '2',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1733,14 +1729,14 @@ class _MainInfoState extends State<MainInfo> {
                       : () {
                           SessionController().setCaseNo(
                             getCDController
-                                .getContractsDetails.value.caseStageInfo.caseid
+                                .getContractsDetails.value.caseStageInfo!.caseid
                                 .toString(),
                           );
                           Get.to(() => TenantServiceRequestTabs(
                                 requestNo: getCDController.getContractsDetails
-                                    .value.caseStageInfo.caseid
+                                    .value.caseStageInfo!.caseid
                                     .toString(),
-                                caller: 'contract',
+                                caller: 'contract!',
                                 title: AppMetaLabels().renewalReq,
                                 initialIndex: 1,
                               ));
@@ -1754,7 +1750,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().docsApproved,
                   srNo: '3',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1764,14 +1760,14 @@ class _MainInfoState extends State<MainInfo> {
                       : () {
                           SessionController().setCaseNo(
                             getCDController
-                                .getContractsDetails.value.caseStageInfo.caseid
+                                .getContractsDetails.value.caseStageInfo!.caseid
                                 .toString(),
                           );
                           Get.to(() => TenantServiceRequestTabs(
                                 requestNo: getCDController.getContractsDetails
-                                    .value.caseStageInfo.caseid
+                                    .value.caseStageInfo!.caseid
                                     .toString(),
-                                caller: 'contract',
+                                caller: 'contract!',
                                 title: AppMetaLabels().renewalReq,
                                 initialIndex: 1,
                               ));
@@ -1785,7 +1781,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().makePayment,
                   srNo: '4',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1794,14 +1790,14 @@ class _MainInfoState extends State<MainInfo> {
                         }
                       : () {
                           SessionController().setContractID(getCDController
-                              .getContractsDetails.value.contract.contractId);
+                              .getContractsDetails.value.contract!.contractId);
                           SessionController().setContractNo(getCDController
-                              .getContractsDetails.value.contract.contractno);
+                              .getContractsDetails.value.contract!.contractno);
                           Get.to(() => OutstandingPayments(
                                 contractNo: getCDController.getContractsDetails
-                                    .value.contract.contractno,
+                                    .value.contract!.contractno,
                                 contractId: getCDController.getContractsDetails
-                                    .value.contract.contractId,
+                                    .value.contract!.contractId,
                               ));
                         })
               : StepNoWidget(label: '4', tooltip: AppMetaLabels().makePayment)),
@@ -1814,7 +1810,7 @@ class _MainInfoState extends State<MainInfo> {
                       srNo: '5',
                       loading: contractDownloadController.downloading.value,
                       onPressed: getCDController.getContractsDetails.value
-                                  .contract.isCanceled ==
+                                  .contract!.isCanceled ==
                               1
                           ? () {
                               SnakBarWidget.getSnackBarErrorBlue(
@@ -1827,12 +1823,12 @@ class _MainInfoState extends State<MainInfo> {
                               SessionController().setContractID(getCDController
                                   .getContractsDetails
                                   .value
-                                  .contract
+                                  .contract!
                                   .contractId);
                               SessionController().setContractNo(getCDController
                                   .getContractsDetails
                                   .value
-                                  .contract
+                                  .contract!
                                   .contractno);
 
                               // for loading
@@ -1846,7 +1842,7 @@ class _MainInfoState extends State<MainInfo> {
                               String path = await contractDownloadController
                                   .downloadContract(
                                       getCDController.getContractsDetails.value
-                                          .contract.contractno,
+                                          .contract!.contractno??'',
                                       false);
                               getCDController.isEnableScreen.value = true;
                               if (path != null) {
@@ -1855,24 +1851,24 @@ class _MainInfoState extends State<MainInfo> {
                                     contractNo: getCDController
                                         .getContractsDetails
                                         .value
-                                        .contract
+                                        .contract!
                                         .contractno,
                                     contractId: getCDController
                                         .getContractsDetails
                                         .value
-                                        .contract
+                                        .contract!
                                         .contractId,
                                     filePath: path,
                                     dueActionId: getCDController
                                         .getContractsDetails
                                         .value
-                                        .caseStageInfo
+                                        .caseStageInfo!
                                         .dueActionid,
                                     stageId: getCDController.getContractsDetails
-                                        .value.caseStageInfo.stageId,
-                                    caller: 'contract',
+                                        .value.caseStageInfo!.stageId,
+                                    caller: 'contract!',
                                     caseId: getCDController.getContractsDetails
-                                        .value.caseStageInfo.caseid));
+                                        .value.caseStageInfo!.caseid));
                               }
                             });
                 })
@@ -1885,7 +1881,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().contractSigned,
                   srNo: '6',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1902,7 +1898,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().approveMunicipal,
                   srNo: '7',
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1911,11 +1907,11 @@ class _MainInfoState extends State<MainInfo> {
                         }
                       : () {
                           Get.to(() => MunicipalApproval(
-                                caller: 'contract',
+                                caller: 'contract!',
                                 dueActionId: getCDController.getContractsDetails
-                                    .value.caseStageInfo.dueActionid,
+                                    .value.caseStageInfo!.dueActionid??0,
                                 contractId: getCDController.getContractsDetails
-                                    .value.contract.contractId,
+                                    .value.contract!.contractId,
                               ));
                         })
               : StepNoWidget(
@@ -1928,7 +1924,7 @@ class _MainInfoState extends State<MainInfo> {
                   text: AppMetaLabels().downloadContract,
                   loading: getCDController.downloadingContract.value,
                   onPressed: getCDController
-                              .getContractsDetails.value.contract.isCanceled ==
+                              .getContractsDetails.value.contract!.isCanceled ==
                           1
                       ? () {
                           SnakBarWidget.getSnackBarErrorBlue(
@@ -1943,7 +1939,7 @@ class _MainInfoState extends State<MainInfo> {
                                   .canDownloadContract.canDownload ==
                               '2')
                             Get.snackbar(AppMetaLabels().error,
-                                getCDController.canDownloadContract.message,
+                                getCDController.canDownloadContract.message??"",
                                 backgroundColor: AppColors.white54);
                         })
               : StepNoWidget(
@@ -1968,11 +1964,11 @@ class _MainInfoState extends State<MainInfo> {
 }
 
 class CustomButton2 extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final bool loading;
+  final Function? onPressed;
+  final String? text;
+  final bool? loading;
   const CustomButton2(
-      {Key key, this.onPressed, this.text, this.loading = false})
+      {Key? key, this.onPressed, this.text, this.loading = false})
       : super(key: key);
 
   @override
@@ -1980,18 +1976,18 @@ class CustomButton2 extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
       child: ElevatedButton(
-        onPressed: loading
+        onPressed: loading!
             ? null
             : () {
-                onPressed();
+                onPressed!();
               },
-        child: loading
+        child: loading!
             ? AnimatedTextKit(
                 isRepeatingAnimation: true,
                 repeatForever: true,
                 pause: Duration(milliseconds: 10),
                 animatedTexts: [
-                  ColorizeAnimatedText(text ?? '',
+                  ColorizeAnimatedText(text??"",
                       textStyle: AppTextStyle.normalBlue12
                           .copyWith(color: Colors.white),
                       colors: [
@@ -2067,8 +2063,8 @@ class CustomButton2 extends StatelessWidget {
 //   @override
 //   void initState() {
 //     print('****************');
-//     print(getCDController.getContractsDetails.value.contract.isCanceled);
-//     print(getCDController.getContractsDetails.value.contract.contractno);
+//     print(getCDController.getContractsDetails.value.contract!.isCanceled);
+//     print(getCDController.getContractsDetails.value.contract!.contractno);
 //     print(getCDController.getContractsDetails.value.caseNo);
 //     print('****************');
 //     super.initState();
@@ -2084,13 +2080,13 @@ class CustomButton2 extends StatelessWidget {
 //               child: Obx(() {
 //                 return Container(
 //                   height: getCDController.canDownload.value &&
-//                           getCDController.getContractsDetails.value.contract
+//                           getCDController.getContractsDetails.value.contract!
 //                                   .contractStatus ==
 //                               'Legal Case'
 //                       ? 115.h
 //                       : getCDController.canDownload.value
 //                           ? 105.h
-//                           : getCDController.getContractsDetails.value.contract
+//                           : getCDController.getContractsDetails.value.contract!
 //                                       .contractStatus ==
 //                                   'Legal Case'
 //                               ? 95.h
@@ -2149,7 +2145,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                             getCDController
 //                                                                 .getContractsDetails
 //                                                                 .value
-//                                                                 .contract
+//                                                                 .contract!
 //                                                                 .noOfDays
 //                                                                 .toString() ??
 //                                                         "",
@@ -2189,7 +2185,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                             getCDController
 //                                                                     .getContractsDetails
 //                                                                     .value
-//                                                                     .contract
+//                                                                     .contract!
 //                                                                     .contractDate ??
 //                                                                 "",
 //                                                             style: AppTextStyle
@@ -2215,7 +2211,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                             getCDController
 //                                                                     .getContractsDetails
 //                                                                     .value
-//                                                                     .contract
+//                                                                     .contract!
 //                                                                     .contractStartDate ??
 //                                                                 "",
 //                                                             style: AppTextStyle
@@ -2241,7 +2237,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                             getCDController
 //                                                                     .getContractsDetails
 //                                                                     .value
-//                                                                     .contract
+//                                                                     .contract!
 //                                                                     .contractEndDate ??
 //                                                                 "",
 //                                                             style: AppTextStyle
@@ -2297,19 +2293,19 @@ class CustomButton2 extends StatelessWidget {
 //                                                                   ? getCDController
 //                                                                       .getContractsDetails
 //                                                                       .value
-//                                                                       .contract
+//                                                                       .contract!
 //                                                                       .contractStatus
 //                                                                   : getCDController
 //                                                                           .getContractsDetails
 //                                                                           .value
-//                                                                           .contract
+//                                                                           .contract!
 //                                                                           .contractStatusAR ??
 //                                                                       '',
 //                                                               valueToCompare:
 //                                                                   getCDController
 //                                                                       .getContractsDetails
 //                                                                       .value
-//                                                                       .contract
+//                                                                       .contract!
 //                                                                       .contractStatus,
 //                                                             ),
 //                                                           ),
@@ -2326,7 +2322,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                     getCDController
 //                                                             .getContractsDetails
 //                                                             .value
-//                                                             .contract
+//                                                             .contract!
 //                                                             .contractno !=
 //                                                         widget.prevContractNo)
 //                                                   Row(
@@ -2396,14 +2392,14 @@ class CustomButton2 extends StatelessWidget {
 //                                                           ? getCDController
 //                                                                   .getContractsDetails
 //                                                                   .value
-//                                                                   .contract
+//                                                                   .contract!
 //                                                                   .unitName
 //                                                                   .toString() ??
 //                                                               ""
 //                                                           : getCDController
 //                                                                   .getContractsDetails
 //                                                                   .value
-//                                                                   .contract
+//                                                                   .contract!
 //                                                                   .unitNameAr
 //                                                                   .toString() ??
 //                                                               "",
@@ -2422,14 +2418,14 @@ class CustomButton2 extends StatelessWidget {
 //                                                             ? getCDController
 //                                                                     .getContractsDetails
 //                                                                     .value
-//                                                                     .contract
+//                                                                     .contract!
 //                                                                     .address
 //                                                                     .toString() ??
 //                                                                 ''
 //                                                             : getCDController
 //                                                                     .getContractsDetails
 //                                                                     .value
-//                                                                     .contract
+//                                                                     .contract!
 //                                                                     .addressAr
 //                                                                     .toString() ??
 //                                                                 '',
@@ -2659,14 +2655,14 @@ class CustomButton2 extends StatelessWidget {
 //                                                                           Material(
 //                                                                         child:
 //                                                                             InkWell(
-//                                                                           onTap: getCDController.getContractsDetails.value.contract.isCanceled == 1
+//                                                                           onTap: getCDController.getContractsDetails.value.contract!.isCanceled == 1
 //                                                                               ? () {
 //                                                                                   SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().alert, AppMetaLabels().yourRequestCancelled);
 //                                                                                 }
 //                                                                               : () {
 //                                                                                   Get.to(() => OutstandingPayments(
-//                                                                                         contractNo: getCDController.getContractsDetails.value.contract.contractno,
-//                                                                                         contractId: getCDController.getContractsDetails.value.contract.contractId,
+//                                                                                         contractNo: getCDController.getContractsDetails.value.contract!.contractno,
+//                                                                                         contractId: getCDController.getContractsDetails.value.contract!.contractId,
 //                                                                                       ));
 //                                                                                 },
 //                                                                           child:
@@ -2925,7 +2921,7 @@ class CustomButton2 extends StatelessWidget {
 //                                         //                                     .caseNo
 //                                         //                                     .toString(),
 //                                         //                                 caller:
-//                                         //                                     'contract',
+//                                         //                                     'contract!',
 //                                         //                                 title: AppMetaLabels()
 //                                         //                                     .renewalReq,
 //                                         //                                 initialIndex:
@@ -2990,7 +2986,7 @@ class CustomButton2 extends StatelessWidget {
 //                                         if (getCDController
 //                                                 .getContractsDetails
 //                                                 .value
-//                                                 .contract
+//                                                 .contract!
 //                                                 .contractStatus ==
 //                                             'Legal Case')
 //                                           Container(
@@ -3026,12 +3022,12 @@ class CustomButton2 extends StatelessWidget {
 //                                                                   contractNo: getCDController
 //                                                                       .getContractsDetails
 //                                                                       .value
-//                                                                       .contract
+//                                                                       .contract!
 //                                                                       .contractno,
 //                                                                   contractId: getCDController
 //                                                                       .getContractsDetails
 //                                                                       .value
-//                                                                       .contract
+//                                                                       .contract!
 //                                                                       .contractId,
 //                                                                 ));
 //                                                       },
@@ -3053,7 +3049,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                                       .legalCaseNo
 //                                                                       .toString(),
 //                                                                   caller:
-//                                                                       'contract',
+//                                                                       'contract!',
 //                                                                   title: AppMetaLabels()
 //                                                                       .legalReq,
 //                                                                 ));
@@ -3106,12 +3102,12 @@ class CustomButton2 extends StatelessWidget {
 //                                         //                               contractNo: getCDController
 //                                         //                                   .getContractsDetails
 //                                         //                                   .value
-//                                         //                                   .contract
+//                                         //                                   .contract!
 //                                         //                                   .contractno,
 //                                         //                               contractId: getCDController
 //                                         //                                   .getContractsDetails
 //                                         //                                   .value
-//                                         //                                   .contract
+//                                         //                                   .contract!
 //                                         //                                   .contractId,
 //                                         //                             ));
 //                                         //                   },
@@ -3167,7 +3163,7 @@ class CustomButton2 extends StatelessWidget {
 //                                         //                               showPhotos:
 //                                         //                                   false,
 //                                         //                               caller:
-//                                         //                                   'contract',
+//                                         //                                   'contract!',
 //                                         //                               title: AppMetaLabels()
 //                                         //                                   .checkinReq,
 //                                         //                             ));
@@ -3471,7 +3467,7 @@ class CustomButton2 extends StatelessWidget {
 //                                                                       .caseNo
 //                                                                       .toString(),
 //                                                               caller:
-//                                                                   'contract',
+//                                                                   'contract!',
 //                                                               title:
 //                                                                   AppMetaLabels()
 //                                                                       .renewalReq,
@@ -3548,7 +3544,7 @@ class CustomButton2 extends StatelessWidget {
 //           print(
 //               'getCDController.errorLoadingContract.value *********  2 ***** ***** ${getCDController.errorLoadingContract.value}');
 //           print(
-//               'getContractsDetails.contract.contractStatus ********* 3 ***** ***** ${getCDController.getContractsDetails.value.contract.contractStatus}');
+//               'getContractsDetails.contract!.contractStatus ********* 3 ***** ***** ${getCDController.getContractsDetails.value.contract!.contractStatus}');
 //           print(
 //               'getCDController.getContractsDetails.caseStageInfo *** 4 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo}');
 //           print(
@@ -3557,7 +3553,7 @@ class CustomButton2 extends StatelessWidget {
 //           return getCDController.loadingContract.value ||
 //                   getCDController.errorLoadingContract.value != '' ||
 //                   getCDController
-//                           .getContractsDetails.value.contract.contractStatus ==
+//                           .getContractsDetails.value.contract!.contractStatus ==
 //                       'Ended' ||
 //                   getCDController.getContractsDetails.value.caseStageInfo ==
 //                       null ||
@@ -3616,10 +3612,10 @@ class CustomButton2 extends StatelessWidget {
 //                   onPressed: () {
 //                     Get.to(() => ContractExtend(
 //                           contractNo: getCDController
-//                               .getContractsDetails.value.contract.contractno,
+//                               .getContractsDetails.value.contract!.contractno,
 //                           contractId: getCDController
-//                               .getContractsDetails.value.contract.contractId,
-//                           caller: 'contract',
+//                               .getContractsDetails.value.contract!.contractId,
+//                           caller: 'contract!',
 //                           dueActionId: getCDController.getContractsDetails.value
 //                               .caseStageInfo.dueActionid,
 //                         ));
@@ -3643,10 +3639,10 @@ class CustomButton2 extends StatelessWidget {
 //                 onPressed: () {
 //                   Get.to(() => ContractRenewel(
 //                         contractNo: getCDController
-//                             .getContractsDetails.value.contract.contractno,
+//                             .getContractsDetails.value.contract!.contractno,
 //                         contractId: getCDController
-//                             .getContractsDetails.value.contract.contractId,
-//                         caller: 'contract',
+//                             .getContractsDetails.value.contract!.contractId,
+//                         caller: 'contract!',
 //                         dueActionid: getCDController.getContractsDetails.value
 //                             .caseStageInfo.dueActionid,
 //                       ));
@@ -3663,10 +3659,10 @@ class CustomButton2 extends StatelessWidget {
 //                   onPressed: () {
 //                     Get.to(() => ContractTerminate(
 //                           contractNo: getCDController
-//                               .getContractsDetails.value.contract.contractno,
+//                               .getContractsDetails.value.contract!.contractno,
 //                           contractId: getCDController
-//                               .getContractsDetails.value.contract.contractId,
-//                           caller: 'contract',
+//                               .getContractsDetails.value.contract!.contractId,
+//                           caller: 'contract!',
 //                           dueActionid: getCDController.getContractsDetails.value
 //                               .caseStageInfo.dueActionid,
 //                         ));
@@ -3716,7 +3712,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().uploadDocs,
 //                   srNo: '1',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3733,7 +3729,7 @@ class CustomButton2 extends StatelessWidget {
 //                                 requestNo: getCDController.getContractsDetails
 //                                     .value.caseStageInfo.caseid
 //                                     .toString(),
-//                                 caller: 'contract',
+//                                 caller: 'contract!',
 //                                 title: AppMetaLabels().renewalReq,
 //                                 initialIndex: 1,
 //                               ));
@@ -3746,7 +3742,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().docsSubmitted,
 //                   srNo: '2',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3763,7 +3759,7 @@ class CustomButton2 extends StatelessWidget {
 //                                 requestNo: getCDController.getContractsDetails
 //                                     .value.caseStageInfo.caseid
 //                                     .toString(),
-//                                 caller: 'contract',
+//                                 caller: 'contract!',
 //                                 title: AppMetaLabels().renewalReq,
 //                                 initialIndex: 1,
 //                               ));
@@ -3777,7 +3773,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().docsApproved,
 //                   srNo: '3',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3794,7 +3790,7 @@ class CustomButton2 extends StatelessWidget {
 //                                 requestNo: getCDController.getContractsDetails
 //                                     .value.caseStageInfo.caseid
 //                                     .toString(),
-//                                 caller: 'contract',
+//                                 caller: 'contract!',
 //                                 title: AppMetaLabels().renewalReq,
 //                                 initialIndex: 1,
 //                               ));
@@ -3808,7 +3804,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().makePayment,
 //                   srNo: '4',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3817,14 +3813,14 @@ class CustomButton2 extends StatelessWidget {
 //                         }
 //                       : () {
 //                           SessionController().setContractID(getCDController
-//                               .getContractsDetails.value.contract.contractId);
+//                               .getContractsDetails.value.contract!.contractId);
 //                           SessionController().setContractNo(getCDController
-//                               .getContractsDetails.value.contract.contractno);
+//                               .getContractsDetails.value.contract!.contractno);
 //                           Get.to(() => OutstandingPayments(
 //                                 contractNo: getCDController.getContractsDetails
-//                                     .value.contract.contractno,
+//                                     .value.contract!.contractno,
 //                                 contractId: getCDController.getContractsDetails
-//                                     .value.contract.contractId,
+//                                     .value.contract!.contractId,
 //                               ));
 //                         })
 //               : StepNoWidget(label: '4', tooltip: AppMetaLabels().makePayment)),
@@ -3837,7 +3833,7 @@ class CustomButton2 extends StatelessWidget {
 //                       srNo: '5',
 //                       loading: contractDownloadController.downloading.value,
 //                       onPressed: getCDController.getContractsDetails.value
-//                                   .contract.isCanceled ==
+//                                   .contract!.isCanceled ==
 //                               1
 //                           ? () {
 //                               SnakBarWidget.getSnackBarErrorBlue(
@@ -3850,12 +3846,12 @@ class CustomButton2 extends StatelessWidget {
 //                               SessionController().setContractID(getCDController
 //                                   .getContractsDetails
 //                                   .value
-//                                   .contract
+//                                   .contract!
 //                                   .contractId);
 //                               SessionController().setContractNo(getCDController
 //                                   .getContractsDetails
 //                                   .value
-//                                   .contract
+//                                   .contract!
 //                                   .contractno);
 
 //                               // for loading
@@ -3869,7 +3865,7 @@ class CustomButton2 extends StatelessWidget {
 //                               String path = await contractDownloadController
 //                                   .downloadContract(
 //                                       getCDController.getContractsDetails.value
-//                                           .contract.contractno,
+//                                           .contract!.contractno,
 //                                       false);
 //                               getCDController.isEnableScreen.value = true;
 //                               if (path != null) {
@@ -3878,12 +3874,12 @@ class CustomButton2 extends StatelessWidget {
 //                                     contractNo: getCDController
 //                                         .getContractsDetails
 //                                         .value
-//                                         .contract
+//                                         .contract!
 //                                         .contractno,
 //                                     contractId: getCDController
 //                                         .getContractsDetails
 //                                         .value
-//                                         .contract
+//                                         .contract!
 //                                         .contractId,
 //                                     filePath: path,
 //                                     dueActionId: getCDController
@@ -3893,7 +3889,7 @@ class CustomButton2 extends StatelessWidget {
 //                                         .dueActionid,
 //                                     stageId: getCDController.getContractsDetails
 //                                         .value.caseStageInfo.stageId,
-//                                     caller: 'contract',
+//                                     caller: 'contract!',
 //                                     caseId: getCDController.getContractsDetails
 //                                         .value.caseStageInfo.caseid));
 //                               }
@@ -3908,7 +3904,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().contractSigned,
 //                   srNo: '6',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3925,7 +3921,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().approveMunicipal,
 //                   srNo: '7',
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(
@@ -3934,11 +3930,11 @@ class CustomButton2 extends StatelessWidget {
 //                         }
 //                       : () {
 //                           Get.to(() => MunicipalApproval(
-//                                 caller: 'contract',
+//                                 caller: 'contract!',
 //                                 dueActionId: getCDController.getContractsDetails
 //                                     .value.caseStageInfo.dueActionid,
 //                                 contractId: getCDController.getContractsDetails
-//                                     .value.contract.contractId,
+//                                     .value.contract!.contractId,
 //                               ));
 //                         })
 //               : StepNoWidget(
@@ -3951,7 +3947,7 @@ class CustomButton2 extends StatelessWidget {
 //                   text: AppMetaLabels().downloadContract,
 //                   loading: getCDController.downloadingContract.value,
 //                   onPressed: getCDController
-//                               .getContractsDetails.value.contract.isCanceled ==
+//                               .getContractsDetails.value.contract!.isCanceled ==
 //                           1
 //                       ? () {
 //                           SnakBarWidget.getSnackBarErrorBlue(

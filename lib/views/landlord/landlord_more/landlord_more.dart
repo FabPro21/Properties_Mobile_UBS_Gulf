@@ -18,7 +18,7 @@ import 'landlord_settings/landlord_settings.dart';
 import 'dart:ui' as ui;
 
 class LandLordMore extends StatefulWidget {
-  const LandLordMore({Key key}) : super(key: key);
+  const LandLordMore({Key? key}) : super(key: key);
 
   @override
   _LandLordMoreState createState() => _LandLordMoreState();
@@ -166,7 +166,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                           child: Padding(
                             padding: EdgeInsets.all(3.0.h),
                             child: Text(
-                              name ?? "",
+                              name,
                               style: AppTextStyle.semiBoldWhite16
                                   .copyWith(fontSize: 24.sp),
                             ),
@@ -493,7 +493,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().fabEmail}"));
+                                                        "mailto:${AppMetaLabels().menaEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(

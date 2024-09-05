@@ -12,7 +12,7 @@ class VendorGetContractPropsSvc {
     var contractID = SessionController().getContractID().toString();
     Map data = {"ContractId": contractID};
 
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
 
     if (response is http.Response) {
       try {

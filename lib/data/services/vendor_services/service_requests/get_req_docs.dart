@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 
 class VendorGetReqDocs {
   static Future<dynamic> getDocs(String caseNo, int roleId) async {
-    final String url = AppConfig().vendorGetServiceRequestDocs;
+    final String url = AppConfig().vendorGetServiceRequestDocs??"";
     Map data = {
       "CaseNo": caseNo.toString(),
       "RoleId": roleId.toString(),

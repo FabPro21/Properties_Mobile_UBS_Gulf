@@ -14,8 +14,8 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class UnitInfoDetails extends StatelessWidget {
-  final String unitRefNo;
-  UnitInfoDetails({Key key, this.unitRefNo}) : super(key: key);
+  final String? unitRefNo;
+  UnitInfoDetails({Key? key, this.unitRefNo}) : super(key: key);
   final TenantUnitInfoDetailsController _unitInfoDetailsController =
       Get.put(TenantUnitInfoDetailsController());
 
@@ -50,13 +50,13 @@ class UnitInfoDetails extends StatelessWidget {
                                         ? _unitInfoDetailsController
                                                 .unitDetails
                                                 .value
-                                                .contractUnit
+                                                .contractUnit!
                                                 .propertyName ??
                                             ''
                                         : _unitInfoDetailsController
                                                 .unitDetails
                                                 .value
-                                                .contractUnit
+                                                .contractUnit!
                                                 .propertyNameAr ??
                                             '',
                                     overflow: TextOverflow.ellipsis,
@@ -142,7 +142,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                 ) {
                                                   if (snapshot.hasData) {
                                                     return Image.memory(
-                                                        snapshot.data,
+                                                        snapshot.data!,
                                                         fit: BoxFit.cover);
                                                   } else {
                                                     return Center(
@@ -150,8 +150,8 @@ class UnitInfoDetails extends StatelessWidget {
                                                         _unitInfoDetailsController
                                                             .unitDetails
                                                             .value
-                                                            .contractUnit
-                                                            .unitName,
+                                                            .contractUnit!
+                                                            .unitName??"",
                                                         style: AppTextStyle
                                                             .semiBoldBlack16
                                                             .copyWith(
@@ -209,13 +209,13 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 ? _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitCategory ??
                                                                     ''
                                                                 : _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitCategoryAr ??
                                                                     ''),
                                                       ),
@@ -230,13 +230,13 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 ? _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitType ??
                                                                     ''
                                                                 : _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitTypeAr ??
                                                                     ''),
                                                       ),
@@ -251,13 +251,13 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 ? _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitView ??
                                                                     ''
                                                                 : _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .unitViewAr ??
                                                                     ''),
                                                       ),
@@ -280,7 +280,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                         _unitInfoDetailsController
                                                                 .unitDetails
                                                                 .value
-                                                                .contractUnit
+                                                                .contractUnit!
                                                                 .areasize ??
                                                             'N/A'),
                                                   ),
@@ -289,7 +289,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                     child: columnList(
                                                         AppMetaLabels()
                                                             .currentRent,
-                                                        "${AppMetaLabels().aed} ${_unitInfoDetailsController.unitDetails.value.contractUnit.currentRent ?? 0.0}"),
+                                                        "${AppMetaLabels().aed} ${_unitInfoDetailsController.unitDetails.value.contractUnit!.currentRent ?? 0.0}"),
                                                   ),
                                                   Container(
                                                     width: 25.0.w,
@@ -369,9 +369,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                     Text(
                                                                       SessionController().getLanguage() ==
                                                                               1
-                                                                          ? _unitInfoDetailsController.additionalUnitDetails.value.additionalInfo[index].facilityDescription ??
+                                                                          ? _unitInfoDetailsController.additionalUnitDetails.value.additionalInfo![index].facilityDescription ??
                                                                               ""
-                                                                          : _unitInfoDetailsController.additionalUnitDetails.value.additionalInfo[index].facilityDescriptionAr ??
+                                                                          : _unitInfoDetailsController.additionalUnitDetails.value.additionalInfo![index].facilityDescriptionAr ??
                                                                               "",
                                                                       style: AppTextStyle
                                                                           .normalBlack10,
@@ -389,7 +389,7 @@ class UnitInfoDetails extends StatelessWidget {
                                       _unitInfoDetailsController
                                                   .unitDetails
                                                   .value
-                                                  .contractUnit
+                                                  .contractUnit!
                                                   .unitCategory ==
                                               AppMetaLabels().residential
                                           ? Container(
@@ -418,10 +418,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .bedRooms
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString() ,
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .start),
@@ -433,10 +432,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .kitchens
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString(),
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .center),
@@ -448,10 +446,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .maidRooms
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString() ,
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .end),
@@ -470,10 +467,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .livingRooms
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString() ,
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .start),
@@ -485,10 +481,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .balconies
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString(),
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .center),
@@ -500,10 +495,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .washrooms
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString() ,
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .end),
@@ -522,10 +516,9 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 _unitInfoDetailsController
                                                                         .unitDetails
                                                                         .value
-                                                                        .contractUnit
+                                                                        .contractUnit!
                                                                         .driverRooms
-                                                                        .toString() ??
-                                                                    '',
+                                                                        .toString() ,
                                                                 alignment:
                                                                     CrossAxisAlignment
                                                                         .start),

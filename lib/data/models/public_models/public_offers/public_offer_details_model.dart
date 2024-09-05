@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-PublicOffersDetailsModel publicOffersDetailsModelFromJson(String str) => PublicOffersDetailsModel.fromJson(json.decode(str));
+PublicOffersDetailsModel publicOffersDetailsModelFromJson(String? str) => PublicOffersDetailsModel.fromJson(json.decode(str!));
 
-String publicOffersDetailsModelToJson(PublicOffersDetailsModel data) => json.encode(data.toJson());
+String? publicOffersDetailsModelToJson(PublicOffersDetailsModel data) => json.encode(data.toJson());
 
 class PublicOffersDetailsModel {
     PublicOffersDetailsModel({
@@ -15,20 +15,20 @@ class PublicOffersDetailsModel {
         this.offerProperties,
     });
 
-    String statsus;
-    Record record;
-    List<OfferProperty> offerProperties;
+    String? statsus;
+    Record? record;
+    List<OfferProperty>? offerProperties;
 
-    factory PublicOffersDetailsModel.fromJson(Map<String, dynamic> json) => PublicOffersDetailsModel(
+    factory PublicOffersDetailsModel.fromJson(Map<String?, dynamic> json) => PublicOffersDetailsModel(
         statsus: json["statsus"],
         record: Record.fromJson(json["record"]),
         offerProperties: List<OfferProperty>.from(json["offerProperties"].map((x) => OfferProperty.fromJson(x))),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "statsus": statsus,
-        "record": record.toJson(),
-        "offerProperties": List<dynamic>.from(offerProperties.map((x) => x.toJson())),
+        "record": record!.toJson(),
+        "offerProperties": List<dynamic>.from(offerProperties!.map((x) => x.toJson())),
     };
 }
 
@@ -39,17 +39,17 @@ class OfferProperty {
         this.propertyNameAr,
     });
 
-    int propertyId;
-    String propertyName;
-    String propertyNameAr;
+    int? propertyId;
+    String? propertyName;
+    String? propertyNameAr;
 
-    factory OfferProperty.fromJson(Map<String, dynamic> json) => OfferProperty(
+    factory OfferProperty.fromJson(Map<String?, dynamic> json) => OfferProperty(
         propertyId: json["propertyID"],
         propertyName: json["propertyName"],
         propertyNameAr: json["propertyNameAR"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "propertyID": propertyId,
         "propertyName": propertyName,
         "propertyNameAR": propertyNameAr,
@@ -67,15 +67,15 @@ class Record {
         this.desriptionAr,
     });
 
-    int offerid;
-    String title;
-    String titleAr;
-    String validateFrom;
-    String validateTo;
-    String description;
+    int? offerid;
+    String? title;
+    String? titleAr;
+    String? validateFrom;
+    String? validateTo;
+    String? description;
     dynamic desriptionAr;
 
-    factory Record.fromJson(Map<String, dynamic> json) => Record(
+    factory Record.fromJson(Map<String?, dynamic> json) => Record(
         offerid: json["offerid"],
         title: json["title"],
         titleAr: json["titleAr"],
@@ -85,7 +85,7 @@ class Record {
         desriptionAr: json["desriptionAR"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String?, dynamic> toJson() => {
         "offerid": offerid,
         "title": title,
         "titleAr": titleAr,

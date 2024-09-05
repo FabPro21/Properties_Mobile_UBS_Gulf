@@ -10,7 +10,7 @@ class ContractInvoicesServices {
     var url = AppConfig().contractInvoices;
     Map data = {"ContractId": contractId.toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       ContractInvoicesModel contractModel =
           contractInvoicesModelFromJson(response.body);

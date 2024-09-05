@@ -25,31 +25,31 @@ class ContractWithDueAction {
       this.emirateName,
       this.showOfferLetter});
 
-  int dueActionid;
-  int contractid;
-  int caseId;
-  int expiringingDays;
-  int renewalContractid;
-  int stageId;
-  String stageName;
-  String previousContractNo;
-  String propertyName;
-  String propertyNameAr;
-  String fromdate;
-  String toDate;
-  String contractno;
-  int isCanceled;
-  int isClosed;
-  String status;
-  String statusAr;
-  bool showExtend;
-  int isAllPaid;
-  String emirateName;
-  int showOfferLetter;
+  int? dueActionid;
+  int? contractid;
+  int? caseId;
+  int? expiringingDays;
+  int? renewalContractid;
+  int? stageId;
+  String? stageName;
+  String? previousContractNo;
+  String? propertyName;
+  String? propertyNameAr;
+  String? fromdate;
+  String? toDate;
+  String? contractno;
+  int? isCanceled;
+  int? isClosed;
+  String? status;
+  String? statusAr;
+  bool? showExtend;
+  int? isAllPaid;
+  String? emirateName;
+  int? showOfferLetter;
 
-  RxBool downloading = false.obs;
+  RxBool? downloading = false.obs;
 
-  factory ContractWithDueAction.fromJson(Map<String, dynamic> json) {
+  factory ContractWithDueAction.fromJson(Map<String?, dynamic> json) {
     bool showExtend = true;
     try {
       DateTime endDate = DateFormat('dd-MM-yyyy').parse(json["toDate"]);
@@ -81,7 +81,7 @@ class ContractWithDueAction {
         showOfferLetter: json["showOfferLetter"]);
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "dueActionid": dueActionid,
         "contractid": contractid,
         "caseId": caseId,

@@ -15,8 +15,8 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class VerifyUserOtpScreen extends StatefulWidget {
-  final String otpCodeForVerifyOTP;
-  VerifyUserOtpScreen({Key key, this.otpCodeForVerifyOTP}) : super(key: key);
+  final String? otpCodeForVerifyOTP;
+  VerifyUserOtpScreen({Key? key, this.otpCodeForVerifyOTP}) : super(key: key);
 
   @override
   State<VerifyUserOtpScreen> createState() => _VerifyUserOtpScreenState();
@@ -28,7 +28,7 @@ class _VerifyUserOtpScreenState extends State<VerifyUserOtpScreen> {
 
   String getPhone() {
     var p = SessionController().getPhone();
-    var l = p.length;
+    var l = p!.length;
     var first = p.substring(0, 5);
     var last = p.substring(l - 3, l);
     return first + "****" + last;

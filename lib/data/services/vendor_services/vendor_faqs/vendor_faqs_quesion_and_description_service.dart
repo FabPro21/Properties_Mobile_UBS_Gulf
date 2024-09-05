@@ -7,7 +7,7 @@ class VendorFaqsQuestionsAndDescriptionSerice {
   static Future<dynamic> getFaqsQuestion(int categoryId) async {
     var url = AppConfig().getVendorFaqsQuestionAndDescription;
     Map data = {"CategoryId": categoryId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       VendorFaqsQuestionAndDescriptionModel getModel =
           vendorFaqsQuestionAndDescriptionModelFromJson(response.body);

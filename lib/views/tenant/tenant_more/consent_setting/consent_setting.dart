@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantConsentSetting extends StatefulWidget {
-  const TenantConsentSetting({Key key}) : super(key: key);
+  const TenantConsentSetting({Key? key}) : super(key: key);
 
   @override
   _TenantConsentSettingState createState() => _TenantConsentSettingState();
@@ -66,7 +66,7 @@ class _TenantConsentSettingState extends State<TenantConsentSetting> {
                             Obx(() {
                               return FlutterSwitch(
                                 inactiveColor: Color.fromRGBO(188, 190, 192, 1),
-                                activeColor: Colors.blue[600],
+                                activeColor: Colors.blue[600]??Colors.lightBlue,
                                 activeToggleColor: Colors.white,
                                 inactiveToggleColor:
                                     Color.fromRGBO(76, 78, 84, 1),

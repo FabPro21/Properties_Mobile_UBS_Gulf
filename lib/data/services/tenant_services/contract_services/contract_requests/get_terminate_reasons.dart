@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 class GetTerminateReasonsService {
   static Future<dynamic> getData() async {
     var response =
-        await BaseClientClass.post(AppConfig().getTerminateReasons, {});
+        await BaseClientClass.post(AppConfig().getTerminateReasons??"", {});
     if (response is http.Response) {
       try {
         return vacatingReasonsFromJson(response.body);

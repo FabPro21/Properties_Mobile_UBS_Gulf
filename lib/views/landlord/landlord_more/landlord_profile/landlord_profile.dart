@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProfile extends StatefulWidget {
-  const LandLordProfile({Key key}) : super(key: key);
+  const LandLordProfile({Key? key}) : super(key: key);
 
   @override
   _LandLordProfileState createState() => _LandLordProfileState();
@@ -20,7 +20,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
 
   String name = "";
   _getName() {
-    String mystring = SessionController().getUserName();
+    String mystring = SessionController().getUserName() ?? "";
     var a = mystring.trim();
     if (a.isEmpty == false) {
       name = a[0];
@@ -131,7 +131,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                     child: Padding(
                                       padding: EdgeInsets.all(3.0.h),
                                       child: Text(
-                                        name[0] ?? "",
+                                        name[0],
                                         // landlordProfileController.error.value !=
                                         //         ''
                                         //     ? '-'
@@ -141,13 +141,13 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                         //         ? landlordProfileController
                                         //                 .landLordProfile
                                         //                 .value
-                                        //                 .data[0]
+                                        //                 .data![0]
                                         //                 .landlordName[0] ??
                                         //             ""
                                         //         : landlordProfileController
                                         //                 .landLordProfile
                                         //                 .value
-                                        //                 .data[0]
+                                        //                 .data![0]
                                         //                 .landlordNameAR[0] ??
                                         //             "",
                                         style: AppTextStyle.semiBoldWhite16
@@ -206,7 +206,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                                   : landlordProfileController
                                                           .landLordProfile
                                                           .value
-                                                          .data[0]
+                                                          .data?[0]
                                                           .mobile ??
                                                       "",
                                               style:
@@ -216,13 +216,13 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                           landlordProfileController
                                                           .landLordProfile
                                                           .value
-                                                          .data[0]
+                                                          .data?[0]
                                                           .email ==
                                                       '' ||
                                                   landlordProfileController
                                                           .landLordProfile
                                                           .value
-                                                          .data[0]
+                                                          .data?[0]
                                                           .email ==
                                                       null
                                               ? SizedBox()
@@ -238,13 +238,13 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                           landlordProfileController
                                                           .landLordProfile
                                                           .value
-                                                          .data[0]
+                                                          .data?[0]
                                                           .email ==
                                                       '' ||
                                                   landlordProfileController
                                                           .landLordProfile
                                                           .value
-                                                          .data[0]
+                                                          .data?[0]
                                                           .email ==
                                                       null
                                               ? SizedBox()
@@ -259,7 +259,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                                         : landlordProfileController
                                                                 .landLordProfile
                                                                 .value
-                                                                .data[0]
+                                                                .data?[0]
                                                                 .email ??
                                                             'N/A',
                                                     style: AppTextStyle
@@ -278,53 +278,62 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                             padding:
                                                 EdgeInsets.only(top: 0.5.h),
                                             child: Text(
-                                              landlordProfileController
-                                                          .error.value !=
+                                              landlordProfileController.error.value !=
                                                       ''
                                                   ? '-'
-                                                  : SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? landlordProfileController
+                                                  : landlordProfileController
+                                                              .landLordProfile
+                                                              .value
+                                                              .data ==
+                                                          null
+                                                      ? ''
+                                                      : SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? landlordProfileController
+                                                                          .landLordProfile
+                                                                          .value
+                                                                          .data![
+                                                                              0]
+                                                                          .address ==
+                                                                      '' ||
+                                                                  landlordProfileController
+                                                                          .landLordProfile
+                                                                          .value
+                                                                          .data![
+                                                                              0]
+                                                                          .address ==
+                                                                      null
+                                                              ? AppMetaLabels()
+                                                                  .pleaseEnter
+                                                              : landlordProfileController
                                                                       .landLordProfile
                                                                       .value
-                                                                      .data[0]
-                                                                      .address ==
-                                                                  '' ||
-                                                              landlordProfileController
-                                                                      .landLordProfile
-                                                                      .value
-                                                                      .data[0]
-                                                                      .address ==
-                                                                  null
-                                                          ? AppMetaLabels()
-                                                              .pleaseEnter
+                                                                      .data![0]
+                                                                      .address ??
+                                                                  ''
                                                           : landlordProfileController
-                                                                  .landLordProfile
-                                                                  .value
-                                                                  .data[0]
-                                                                  .address ??
-                                                              ''
-                                                      : landlordProfileController
+                                                                          .landLordProfile
+                                                                          .value
+                                                                          .data![
+                                                                              0]
+                                                                          .addressAR ==
+                                                                      '' ||
+                                                                  landlordProfileController
+                                                                          .landLordProfile
+                                                                          .value
+                                                                          .data![
+                                                                              0]
+                                                                          .addressAR ==
+                                                                      null
+                                                              ? AppMetaLabels()
+                                                                  .pleaseEnter
+                                                              : landlordProfileController
                                                                       .landLordProfile
                                                                       .value
-                                                                      .data[0]
-                                                                      .addressAR ==
-                                                                  '' ||
-                                                              landlordProfileController
-                                                                      .landLordProfile
-                                                                      .value
-                                                                      .data[0]
-                                                                      .addressAR ==
-                                                                  null
-                                                          ? AppMetaLabels()
-                                                              .pleaseEnter
-                                                          : landlordProfileController
-                                                                  .landLordProfile
-                                                                  .value
-                                                                  .data[0]
-                                                                  .addressAR ??
-                                                              '',
+                                                                      .data![0]
+                                                                      .addressAR ??
+                                                                  '',
                                               style:
                                                   AppTextStyle.semiBoldBlack11,
                                             ),
@@ -371,7 +380,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                               //                                 landlordProfileController
                               //                                     .landLordProfile
                               //                                     .value
-                              //                                     .data[0],
+                              //                                     .data![0],
                               //                           ));
                               //                     } else {
                               //                       print('00000000000');

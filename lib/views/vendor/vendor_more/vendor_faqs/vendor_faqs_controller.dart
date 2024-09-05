@@ -29,7 +29,7 @@ class VendorFaqsController extends GetxController {
       var result = await VendorFaqsCategoriesSerice.getVendorFaqsCatg();
       if (result is VendorFaqsCategoriesModel) {
         faqsCategories.value = result;
-        length = faqsCategories.value.faqCategories.length;
+        length = faqsCategories.value.faqCategories!.length;
 
         loadingFaqsCatg.value = false;
       } else {
@@ -53,7 +53,7 @@ class VendorFaqsController extends GetxController {
               categoryId);
       if (result is VendorFaqsQuestionAndDescriptionModel) {
         faqsQuestions.value = result;
-        questionLength = faqsQuestions.value.faq.length;
+        questionLength = faqsQuestions.value.faq!.length;
         loadingQuestions.value = false;
       } else {
         errorQuestions.value = AppMetaLabels().noDatafound;

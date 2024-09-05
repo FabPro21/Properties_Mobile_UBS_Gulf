@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/auth_models/verify_user_otp_model.dart';
@@ -7,14 +9,14 @@ import 'package:http/http.dart' as http;
 
 class VerifyUserOtpServices {
   static Future<dynamic> getData(
-      String otpCode, String otpCodeForVerifyOTP) async {
+      String? otpCode, String? otpCodeForVerifyOTP) async {
     var data = {
       "mobile": SessionController().getPhone(),
       "otp": otpCode,
       "otpCode": otpCodeForVerifyOTP == null ? otpCode : otpCodeForVerifyOTP
     };
     var url = AppConfig().verifyUserOtp;
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getLoginToken());
     print('Verify User Model log $response');
     if (response is http.Response) {
@@ -26,7 +28,7 @@ class VerifyUserOtpServices {
   }
 
   static Future<dynamic> getDataFB(
-      String otpCode, String otpCodeForVerifyOTP, bool status) async {
+      String? otpCode, String? otpCodeForVerifyOTP, bool status) async {
     var data = {
       "Mobile": SessionController().getPhone(),
       "OTP": otpCode,
@@ -36,7 +38,7 @@ class VerifyUserOtpServices {
     print('Data :::::getDataFB $data');
     var url = AppConfig().verifyUserOtpFB;
     print('url :::::getDataFB $url');
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getLoginToken());
     print('Response ::::::');
     print('Verify User Model log $response');

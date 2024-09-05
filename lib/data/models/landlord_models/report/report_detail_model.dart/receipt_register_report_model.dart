@@ -3,25 +3,25 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 
 ReceipRegisterReportSummaryModel getReceiptRegisterReportModelFromJson(
-        String str) =>
-    ReceipRegisterReportSummaryModel.fromJson(json.decode(str));
+        String? str) =>
+    ReceipRegisterReportSummaryModel.fromJson(json.decode(str!));
 
 class ReceipRegisterReportSummaryModel {
-  String status;
-  int totalRecord;
-  List<ServiceRequests> serviceRequests;
-  String message;
+  String? status;
+  int? totalRecord;
+  List<ServiceRequests>? serviceRequests;
+  String? message;
 
   ReceipRegisterReportSummaryModel(
       {this.status, this.totalRecord, this.serviceRequests, this.message});
 
-  ReceipRegisterReportSummaryModel.fromJson(Map<String, dynamic> json) {
+  ReceipRegisterReportSummaryModel.fromJson(Map<String?, dynamic> json) {
     status = json['status'];
     totalRecord = json['totalRecord'];
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(new ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
@@ -29,18 +29,18 @@ class ReceipRegisterReportSummaryModel {
 }
 
 class ServiceRequests {
-  String landlordName;
-  String landlordNameAR;
-  String propertyName;
-  String propertyNameAR;
-  String emirateName;
-  String emirateNameAR;
-  String tenantName;
-  String tenantNameAR;
-  String unitType;
-  String unitTypeAR;
-  String modeofPayment;
-  String modeofPaymentAR;
+  String? landlordName;
+  String? landlordNameAR;
+  String? propertyName;
+  String? propertyNameAR;
+  String? emirateName;
+  String? emirateNameAR;
+  String? tenantName;
+  String? tenantNameAR;
+  String? unitType;
+  String? unitTypeAR;
+  String? modeofPayment;
+  String? modeofPaymentAR;
   dynamic totalAmount;
   dynamic cardCharges;
   dynamic netAmount;
@@ -63,7 +63,7 @@ class ServiceRequests {
     this.netAmount,
   });
 
-  ServiceRequests.fromJson(Map<String, dynamic> json) {
+  ServiceRequests.fromJson(Map<String?, dynamic> json) {
     final totalAmountFormat = NumberFormat('#,##0.00', 'AR');
     final cardChargesFormat = NumberFormat('#,##0.00', 'AR');
     final netAmountFormat = NumberFormat('#,##0.00', 'AR');

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
@@ -8,8 +10,7 @@ import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
-
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -74,9 +75,9 @@ class OutstandingPaymentsController extends GetxController {
           errorLoadingOutstandingPayments.value = AppMetaLabels().noDatafound;
         } else {
           outstandingPayments = resp;
-          if (outstandingPayments.record.first.aramexAddress != '') {
+          if (outstandingPayments.record!.first.aramexAddress != '') {
             locationTextController.text =
-                outstandingPayments.record.first.aramexAddress ?? '';
+                outstandingPayments.record!.first.aramexAddress ?? '';
             pickupDeliveryText.value = locationTextController.text;
             print(locationTextController.text);
             print('Location is  not empty :::::::::: => :::::::::');
@@ -101,8 +102,8 @@ class OutstandingPaymentsController extends GetxController {
       loadingOutstandingPayments.value = false;
     }
     int noOfPayments = 0;
-    if (outstandingPayments.record != null)
-      noOfPayments = outstandingPayments.record.length;
+    if (outstandingPayments.record! != null)
+      noOfPayments = outstandingPayments.record!.length;
     return noOfPayments;
   }
 
@@ -151,7 +152,7 @@ class OutstandingPaymentsController extends GetxController {
 
         // if (response['status'] == 'ok') {
         payable.forceUploadCheque.value = false;
-        payable.cheque = payable.filePath.split('/').last;
+        payable.cheque = payable.filePath!.split('/').last;
         payable.isRejected = false;
       } else {
         payable.errorUploadingCheque = true;
@@ -170,22 +171,24 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorDownloadingCheque = false;
     payable.downloadingCheque.value = true;
     final response =
-        await TenantRepository.downloadCheque(payable.paymentSettingId);
+        await TenantRepository.downloadCheque(payable.paymentSettingId ?? -1);
     print('Response :::::: $response');
     if (response is DownloadChequeModel) {
-      var base64DecodeAble = base64Decode(response.cheque.replaceAll('\n', ''));
+      var base64DecodeAble =
+          base64Decode(response.cheque!.replaceAll('\n', ''));
       showFile(payable, base64DecodeAble,
           'cheque${payable.contractPaymentId}${response.chequeName}');
     } else {
       payable.errorDownloadingCheque = true;
-      SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
+      SnakBarWidget.getSnackBarErrorBlue(
+          AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
     }
     payable.downloadingCheque.value = false;
   }
 
   void removeZeroBalance() {
-    outstandingPayments.record.forEach((element) {
-      if (element.amount == 0) outstandingPayments.record.remove(element);
+    outstandingPayments.record!.forEach((element) {
+      if (element.amount == 0) outstandingPayments.record!.remove(element);
     });
   }
 
@@ -194,21 +197,21 @@ class OutstandingPaymentsController extends GetxController {
     double additionalSum = 0;
     double vatRentSum = 0;
     double vatChargesSum = 0;
-    for (int i = 0; i < outstandingPayments.record.length; i++) {
-      if (outstandingPayments.record[i].type == 'Contract Payable')
-        rentalSum = rentalSum + (outstandingPayments.record[i].amount ?? 0);
-      else if (outstandingPayments.record[i].type == 'Additional Charges')
+    for (int i = 0; i < outstandingPayments.record!.length; i++) {
+      if (outstandingPayments.record?[i].type == 'Contract Payable')
+        rentalSum = rentalSum + (outstandingPayments.record![i].amount ?? 0);
+      else if (outstandingPayments.record![i].type == 'Additional Charges')
         additionalSum =
-            additionalSum + (outstandingPayments.record[i].amount ?? 0);
-      else if (outstandingPayments.record[i].type.toLowerCase() ==
+            additionalSum + (outstandingPayments.record![i].amount ?? 0);
+      else if (outstandingPayments.record![i].type?.toLowerCase() ==
           'Vat On Rent'.toLowerCase())
-        vatRentSum = vatRentSum + (outstandingPayments.record[i].amount ?? 0);
-      else if (outstandingPayments.record[i].type.toLowerCase() ==
+        vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);
+      else if (outstandingPayments.record![i].type?.toLowerCase() ==
           'Vat On Charges'.toLowerCase())
         vatChargesSum =
-            vatChargesSum + (outstandingPayments.record[i].amount ?? 0);
-      if (outstandingPayments.record[i].isRejected) {
-        outstandingPayments.record[i].filePath = null;
+            vatChargesSum + (outstandingPayments.record![i].amount ?? 0);
+      if (outstandingPayments.record![i].isRejected!) {
+        outstandingPayments.record![i].filePath = null;
       }
     }
     final amountFormat = NumberFormat('#,##0.00', 'AR');
@@ -226,13 +229,13 @@ class OutstandingPaymentsController extends GetxController {
       paymentsToShow.add(AppMetaLabels().renatalpayments);
       // chequesToShowAddress
       // adding false as a string in chequesToShowAddress because we want to
-      // show some fields on the base of payment Mode type if the payment  type is
+      // show some fields on the base of payment Mode type? if the payment  type? is
       // cheque then will show delivery field that is why we are adding fals in this array
       // => Its value update in inside updatePaymentMethod() func  and where it is called
       chequesToShowAddress.add('false');
-      for (Record payable in outstandingPayments.record) {
-        if (payable.type.toLowerCase() == 'Contract Payable'.toLowerCase()) {
-          if (payable.defaultpaymentmethodtype.value == 2) {
+      for (Record payable in outstandingPayments.record!) {
+        if (payable.type?.toLowerCase() == 'Contract Payable'.toLowerCase()) {
+          if (payable.defaultpaymentmethodtype?.value == 2) {
             chequesToShowAddress.add('true');
             showDeliveryOptionsTestForButton.value = true;
           } else {
@@ -245,10 +248,10 @@ class OutstandingPaymentsController extends GetxController {
     if (totalAdditionalCharges.value != '0.00') {
       paymentsToShow.add(AppMetaLabels().additionalCharges);
       chequesToShowAddress.add('false');
-      for (Record payable in outstandingPayments.record) {
-        if (payable.type.toLowerCase() == 'Additional Charges'.toLowerCase()) {
+      for (Record payable in outstandingPayments.record!) {
+        if (payable.type?.toLowerCase() == 'Additional Charges'.toLowerCase()) {
           paymentsToShow.add(payable);
-          if (payable.defaultpaymentmethodtype.value == 2) {
+          if (payable.defaultpaymentmethodtype?.value == 2) {
             chequesToShowAddress.add('true');
             showDeliveryOptionsTestForButton.value = true;
           } else {
@@ -260,10 +263,10 @@ class OutstandingPaymentsController extends GetxController {
     if (totalVatOnRent.value != '0.00') {
       paymentsToShow.add(AppMetaLabels().vatOnRent);
       chequesToShowAddress.add('false');
-      for (Record payable in outstandingPayments.record) {
-        if (payable.type.toLowerCase() == 'Vat On Rent'.toLowerCase()) {
+      for (Record payable in outstandingPayments.record!) {
+        if (payable.type?.toLowerCase() == 'Vat On Rent'.toLowerCase()) {
           paymentsToShow.add(payable);
-          if (payable.defaultpaymentmethodtype.value == 2) {
+          if (payable.defaultpaymentmethodtype?.value == 2) {
             chequesToShowAddress.add('true');
             showDeliveryOptionsTestForButton.value = true;
           } else {
@@ -275,10 +278,10 @@ class OutstandingPaymentsController extends GetxController {
     if (totalVatOnCharges.value != '0.00') {
       paymentsToShow.add(AppMetaLabels().vatOnCharges);
       chequesToShowAddress.add('false');
-      for (Record payable in outstandingPayments.record) {
-        if (payable.type.toLowerCase() == 'Vat On Charges'.toLowerCase()) {
+      for (Record payable in outstandingPayments.record!) {
+        if (payable.type?.toLowerCase() == 'Vat On Charges'.toLowerCase()) {
           // chequesToShowAddress.add('false');
-          if (payable.defaultpaymentmethodtype.value == 2) {
+          if (payable.defaultpaymentmethodtype?.value == 2) {
             chequesToShowAddress.add('true');
             showDeliveryOptionsTestForButton.value = true;
           } else {
@@ -292,14 +295,22 @@ class OutstandingPaymentsController extends GetxController {
     print(chequesToShowAddress);
   }
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   Future<void> pickDoc(Record payable) async {
-    XFile xfile;
+    XFile? xfile;
     try {
       xfile = await ImagePicker().pickImage(
         source: ImageSource.gallery,
       );
 
-      if (!CheckFileExtenstion().checkImageExtFunc(xfile.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
             duration: Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
@@ -315,9 +326,39 @@ class OutstandingPaymentsController extends GetxController {
           'Size of file Before Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        var editedImage;
+        if (crop == null) {
+          return;
+        }
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
+
         photo = editedImage;
 
         photo = await compressImage(photo);
@@ -341,7 +382,7 @@ class OutstandingPaymentsController extends GetxController {
         if (newFile != null) {
           await newFile.writeAsBytes(photo);
           payable.filePath = newFile.path;
-          payable.chequeFile = photo ?? photo;
+          payable.chequeFile = photo;
         }
         payable.filePath = newFile.path;
         payable.chequeFile = photo;
@@ -355,13 +396,13 @@ class OutstandingPaymentsController extends GetxController {
   }
 
   Future<void> takePhoto(Record payable) async {
-    XFile xfile;
+    XFile? xfile;
     try {
       xfile = await ImagePicker().pickImage(
         source: ImageSource.camera,
       );
 
-      if (!CheckFileExtenstion().checkImageExtFunc(xfile.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
             duration: Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
@@ -373,21 +414,51 @@ class OutstandingPaymentsController extends GetxController {
     }
     if (xfile != null) {
       Uint8List photo = await xfile.readAsBytes();
+      print(
+          'Size of file Before Compress 11::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        var editedImage;
+        if (crop == null) {
+          return;
+        }
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         photo = editedImage;
-        print('editedImage Path ::::::::: before store $editedImage ');
+        print('editedImage Path 22::::::::: before store $editedImage ');
         print(
-            'Size of file Before Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
+            'Size of file Before Compress 33::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
 
         photo = await compressImage(photo);
 
         // checking file size EID
         print(
-            'Size of file After Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
+            'Size of file After Compress 44::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
         var size = CheckFileExtenstion().getFileSize(photo).split(' ')[0];
         var extension = CheckFileExtenstion().getFileSize(photo).split(' ')[1];
         if (extension.contains('MB')) {
@@ -399,12 +470,13 @@ class OutstandingPaymentsController extends GetxController {
             return;
           }
         }
+        print('Selecte Path :::::::::55 after store  ');
         final newPath = await getTemporaryDirectory();
         final newFile = File("${newPath.path}/${xfile.path.split('/').last}");
         if (newFile != null) {
           await newFile.writeAsBytes(photo);
           payable.filePath = newFile.path;
-          payable.chequeFile = photo ?? photo;
+          payable.chequeFile = photo;
         }
 
         payable.filePath = newFile.path;
@@ -422,7 +494,7 @@ class OutstandingPaymentsController extends GetxController {
     payable.errorRemovingCheque.value = false;
     payable.removingCheque.value = true;
     final response =
-        await TenantRepository.removeCheque(payable.paymentSettingId);
+        await TenantRepository.removeCheque(payable.paymentSettingId ?? -1);
     payable.removingCheque.value = false;
     if (response == 200) {
       payable.filePath = null;
@@ -435,19 +507,19 @@ class OutstandingPaymentsController extends GetxController {
   }
 
   int areAllChequesUploaded() {
-    for (int i = 0; i < outstandingPayments.record.length; i++) {
-      Record payable = outstandingPayments.record[i];
+    for (int i = 0; i < outstandingPayments.record!.length; i++) {
+      Record payable = outstandingPayments.record![i];
       payable.forceUploadCheque.value = false;
-      if (payable.defaultpaymentmethodtype.value == 2 &&
+      if (payable.defaultpaymentmethodtype?.value == 2 &&
           (payable.cheque == null ||
-              payable.cheque.isEmpty ||
+              payable.cheque!.isEmpty ||
               payable.errorUploadingCheque ||
-              payable.isRejected)) {
+              payable.isRejected!)) {
         SnakBarWidget.getSnackBarError(
             AppMetaLabels().error, AppMetaLabels().pleaseUploadCheque);
         return i;
       }
-      // if (payable.defaultpaymentmethodtype.value == 2 &&
+      // if (payable.defaultpaymentmethodtype?.value == 2 &&
       //     (payable.cheque == null ||
       //         payable.cheque.isEmpty ||
       //         payable.errorUploadingCheque)) {
@@ -460,12 +532,12 @@ class OutstandingPaymentsController extends GetxController {
   }
 
   shouldShowAddressFieldTest() {
-    for (int i = 0; i < outstandingPayments.record.length; i++) {
-      Record payable = outstandingPayments.record[i];
+    for (int i = 0; i < outstandingPayments.record!.length; i++) {
+      Record payable = outstandingPayments.record![i];
       print(payable);
       print('Here:::::::::');
       print(chequeDeliveryOption.value);
-      if (payable.defaultpaymentmethodtype.value == 2) {
+      if (payable.defaultpaymentmethodtype?.value == 2) {
         chequesToShowAddress[i] = 'true';
         showDeliveryOptionsTest.value = true;
       }
@@ -473,10 +545,10 @@ class OutstandingPaymentsController extends GetxController {
   }
 
   void shouldShowAddressField() {
-    for (int i = 0; i < outstandingPayments.record.length; i++) {
-      Record payable = outstandingPayments.record[i];
+    for (int i = 0; i < outstandingPayments.record!.length; i++) {
+      Record payable = outstandingPayments.record![i];
       print(payable);
-      if (payable.defaultpaymentmethodtype.value == 2) {
+      if (payable.defaultpaymentmethodtype?.value == 2) {
         showDeliveryOptions.value = true;
         showDeliveryOptionsTest.value = true;
       }
@@ -501,10 +573,10 @@ class OutstandingPaymentsController extends GetxController {
 
   void shouldGoToOnlinePayments() {
     gotoOnlinePayments.value = false;
-    for (int i = 0; i < outstandingPayments.record.length; i++) {
-      Record payable = outstandingPayments.record[i];
-      if (payable.defaultpaymentmethodtype.value == 1 ||
-          payable.defaultpaymentmethodtype.value == 3) {
+    for (int i = 0; i < outstandingPayments.record!.length; i++) {
+      Record payable = outstandingPayments.record![i];
+      if (payable.defaultpaymentmethodtype?.value == 1 ||
+          payable.defaultpaymentmethodtype?.value == 3) {
         gotoOnlinePayments.value = true;
       }
     }
@@ -517,7 +589,7 @@ class OutstandingPaymentsController extends GetxController {
     final resp = await TenantRepository.updateAramexAddress(
         contractId, address, chequeDeliveryOption.value);
     if (resp == 'ok') {
-      for (Record payable in outstandingPayments.record) {
+      for (Record payable in outstandingPayments.record!) {
         payable.aramexAddress = address;
         payable.confirmed = 1;
       }
@@ -536,12 +608,13 @@ class OutstandingPaymentsController extends GetxController {
   void showFile(Record payable, Uint8List file, String name) async {
     print('Payable File Path :::: ${payable.filePath}');
     if (payable.filePath == null) {
-      if (await getStoragePermission()) {
-        String path = await saveFile(file, name);
-        payable.filePath = path;
-        print('Payable File Path :::: ${payable.filePath}');
-        OpenFile.open(path);
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveFile(file, name);
+      payable.filePath = path;
+      print('Payable File Path :::: ${payable.filePath}');
+      OpenFile.open(path);
+      // }
     } else {
       OpenFile.open(payable.filePath);
     }
@@ -644,9 +717,9 @@ class OutstandingPaymentsController extends GetxController {
 //           errorLoadingOutstandingPayments.value = AppMetaLabels().noDatafound;
 //         } else {
 //           outstandingPayments = resp;
-//           if (outstandingPayments.record.first.aramexAddress != '') {
+//           if (outstandingPayments.record!.first.aramexAddress != '') {
 //             locationTextController.text =
-//                 outstandingPayments.record.first.aramexAddress ?? '';
+//                 outstandingPayments.record!.first.aramexAddress ?? '';
 //             pickupDeliveryText.value = locationTextController.text;
 //             print(locationTextController.text);
 //             print('Location is  not empty :::::::::: => :::::::::');
@@ -671,25 +744,25 @@ class OutstandingPaymentsController extends GetxController {
 //       loadingOutstandingPayments.value = false;
 //     }
 //     int noOfPayments = 0;
-//     if (outstandingPayments.record != null)
-//       noOfPayments = outstandingPayments.record.length;
+//     if (outstandingPayments.record! != null)
+//       noOfPayments = outstandingPayments.record!.length;
 //     return noOfPayments;
 //   }
 
 //   updatePaymentMethod(
-//       Record payable, int index, BuildContext context, String type) async {
+//       Record payable, int index, BuildContext context, String type?) async {
 //     payable.errorUpdatingPaymentMethod = false;
 //     payable.updatingPaymentMethod.value = true;
 //     final response = await TenantRepository.updatePaymentMethod(payable);
 //     if (response['status'] == 'ok') {
 //       print('Index  :::: $index => ${index - 1}');
 //       print('chequesToShowAddress  ::::  $chequesToShowAddress');
-//       if (type == 'Cheque') {
+//       if (type? == 'Cheque') {
 //         chequesToShowAddress[index - 1] = 'true';
 //         print('Inside func Cheque::::: $chequesToShowAddress');
 //         print('Inside func Cheque::::: ${chequesToShowAddress.length}');
 //         (context as Element).markNeedsBuild();
-//       } else if (type == 'bankTransfer') {
+//       } else if (type? == 'bankTransfer') {
 //         chequesToShowAddress[index - 1] = 'false';
 //         print('Inside func Cheque::::: $chequesToShowAddress');
 //         (context as Element).markNeedsBuild();
@@ -745,8 +818,8 @@ class OutstandingPaymentsController extends GetxController {
 //     payable.downloadingCheque.value = false;
 //   }
 //   void removeZeroBalance() {
-//     outstandingPayments.record.forEach((element) {
-//       if (element.amount == 0) outstandingPayments.record.remove(element);
+//     outstandingPayments.record!.forEach((element) {
+//       if (element.amount == 0) outstandingPayments.record!.remove(element);
 //     });
 //   }
 
@@ -755,21 +828,21 @@ class OutstandingPaymentsController extends GetxController {
 //     double additionalSum = 0;
 //     double vatRentSum = 0;
 //     double vatChargesSum = 0;
-//     for (int i = 0; i < outstandingPayments.record.length; i++) {
-//       if (outstandingPayments.record[i].type == 'Contract Payable')
-//         rentalSum = rentalSum + (outstandingPayments.record[i].amount ?? 0);
-//       else if (outstandingPayments.record[i].type == 'Additional Charges')
+//     for (int i = 0; i < outstandingPayments.record!.length; i++) {
+//       if (outstandingPayments.record![i].type? == 'Contract Payable')
+//         rentalSum = rentalSum + (outstandingPayments.record![i].amount ?? 0);
+//       else if (outstandingPayments.record![i].type? == 'Additional Charges')
 //         additionalSum =
-//             additionalSum + (outstandingPayments.record[i].amount ?? 0);
-//       else if (outstandingPayments.record[i].type.toLowerCase() ==
+//             additionalSum + (outstandingPayments.record![i].amount ?? 0);
+//       else if (outstandingPayments.record![i].type?.toLowerCase() ==
 //           'Vat On Rent'.toLowerCase())
-//         vatRentSum = vatRentSum + (outstandingPayments.record[i].amount ?? 0);
-//       else if (outstandingPayments.record[i].type.toLowerCase() ==
+//         vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);
+//       else if (outstandingPayments.record![i].type?.toLowerCase() ==
 //           'Vat On Charges'.toLowerCase())
 //         vatChargesSum =
-//             vatChargesSum + (outstandingPayments.record[i].amount ?? 0);
-//       if (outstandingPayments.record[i].isRejected) {
-//         outstandingPayments.record[i].filePath = null;
+//             vatChargesSum + (outstandingPayments.record![i].amount ?? 0);
+//       if (outstandingPayments.record![i].isRejected) {
+//         outstandingPayments.record![i].filePath = null;
 //       }
 //     }
 //     final amountFormat = NumberFormat('#,##0.00', 'AR');
@@ -787,12 +860,12 @@ class OutstandingPaymentsController extends GetxController {
 //       paymentsToShow.add(AppMetaLabels().renatalpayments);
 //       // chequesToShowAddress
 //       // adding false as a string in chequesToShowAddress because we want to
-//       // show some fields on the base of payment Mode type if the payment  type is
+//       // show some fields on the base of payment Mode type? if the payment  type? is
 //       // cheque then will show delivery field that is why we are adding fals in this array
 //       // => Its value update in inside updatePaymentMethod() func  and where it is called
 //       chequesToShowAddress.add('false');
-//       for (Record payable in outstandingPayments.record) {
-//         if (payable.type.toLowerCase() == 'Contract Payable'.toLowerCase()) {
+//       for (Record payable in outstandingPayments.record!) {
+//         if (payable.type?.toLowerCase() == 'Contract Payable'.toLowerCase()) {
 //           if (payable.paymentMethodId.value == 2) {
 //             chequesToShowAddress.add('true');
 //             showDeliveryOptionsTestForButton.value = true;
@@ -806,8 +879,8 @@ class OutstandingPaymentsController extends GetxController {
 //     if (totalAdditionalCharges.value != '0.00') {
 //       paymentsToShow.add(AppMetaLabels().additionalCharges);
 //       chequesToShowAddress.add('false');
-//       for (Record payable in outstandingPayments.record) {
-//         if (payable.type.toLowerCase() == 'Additional Charges'.toLowerCase()) {
+//       for (Record payable in outstandingPayments.record!) {
+//         if (payable.type?.toLowerCase() == 'Additional Charges'.toLowerCase()) {
 //           paymentsToShow.add(payable);
 //           if (payable.paymentMethodId.value == 2) {
 //             chequesToShowAddress.add('true');
@@ -821,8 +894,8 @@ class OutstandingPaymentsController extends GetxController {
 //     if (totalVatOnRent.value != '0.00') {
 //       paymentsToShow.add(AppMetaLabels().vatOnRent);
 //       chequesToShowAddress.add('false');
-//       for (Record payable in outstandingPayments.record) {
-//         if (payable.type.toLowerCase() == 'Vat On Rent'.toLowerCase()) {
+//       for (Record payable in outstandingPayments.record!) {
+//         if (payable.type?.toLowerCase() == 'Vat On Rent'.toLowerCase()) {
 //           paymentsToShow.add(payable);
 //           if (payable.paymentMethodId.value == 2) {
 //             chequesToShowAddress.add('true');
@@ -836,8 +909,8 @@ class OutstandingPaymentsController extends GetxController {
 //     if (totalVatOnCharges.value != '0.00') {
 //       paymentsToShow.add(AppMetaLabels().vatOnCharges);
 //       chequesToShowAddress.add('false');
-//       for (Record payable in outstandingPayments.record) {
-//         if (payable.type.toLowerCase() == 'Vat On Charges'.toLowerCase()) {
+//       for (Record payable in outstandingPayments.record!) {
+//         if (payable.type?.toLowerCase() == 'Vat On Charges'.toLowerCase()) {
 //           // chequesToShowAddress.add('false');
 //           if (payable.paymentMethodId.value == 2) {
 //             chequesToShowAddress.add('true');
@@ -994,8 +1067,8 @@ class OutstandingPaymentsController extends GetxController {
 //   }
 
 //   int areAllChequesUploaded() {
-//     for (int i = 0; i < outstandingPayments.record.length; i++) {
-//       Record payable = outstandingPayments.record[i];
+//     for (int i = 0; i < outstandingPayments.record!.length; i++) {
+//       Record payable = outstandingPayments.record![i];
 //       payable.forceUploadCheque.value = false;
 //       if (payable.paymentMethodId.value == 2 &&
 //           (payable.cheque == null ||
@@ -1010,8 +1083,8 @@ class OutstandingPaymentsController extends GetxController {
 //   }
 
 //   shouldShowAddressFieldTest() {
-//     for (int i = 0; i < outstandingPayments.record.length; i++) {
-//       Record payable = outstandingPayments.record[i];
+//     for (int i = 0; i < outstandingPayments.record!.length; i++) {
+//       Record payable = outstandingPayments.record![i];
 //       print(payable);
 //       print('Here:::::::::');
 //       print(chequeDeliveryOption.value);
@@ -1023,8 +1096,8 @@ class OutstandingPaymentsController extends GetxController {
 //   }
 
 //   void shouldShowAddressField() {
-//     for (int i = 0; i < outstandingPayments.record.length; i++) {
-//       Record payable = outstandingPayments.record[i];
+//     for (int i = 0; i < outstandingPayments.record!.length; i++) {
+//       Record payable = outstandingPayments.record![i];
 //       print(payable);
 //       if (payable.paymentMethodId.value == 2) {
 //         showDeliveryOptions.value = true;
@@ -1040,8 +1113,8 @@ class OutstandingPaymentsController extends GetxController {
 
 //   void shouldGoToOnlinePayments() {
 //     gotoOnlinePayments.value = false;
-//     for (int i = 0; i < outstandingPayments.record.length; i++) {
-//       Record payable = outstandingPayments.record[i];
+//     for (int i = 0; i < outstandingPayments.record!.length; i++) {
+//       Record payable = outstandingPayments.record![i];
 //       if (payable.paymentMethodId.value == 1 ||
 //           payable.paymentMethodId.value == 3) {
 //         gotoOnlinePayments.value = true;
@@ -1056,7 +1129,7 @@ class OutstandingPaymentsController extends GetxController {
 //     final resp = await TenantRepository.updateAramexAddress(
 //         contractId, address, chequeDeliveryOption.value);
 //     if (resp == 'ok') {
-//       for (Record payable in outstandingPayments.record) {
+//       for (Record payable in outstandingPayments.record!) {
 //         payable.aramexAddress = address;
 //         payable.confirmed = 1;
 //       }

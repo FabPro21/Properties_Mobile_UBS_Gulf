@@ -38,7 +38,7 @@ class BookingRequestController extends GetxController {
     loadingAgent.value = false;
     if (result is PublicBookingRequestAgentModel) {
       selectAgent.value = result;
-      lengthAgent = selectAgent.value.agentList.length;
+      lengthAgent = selectAgent.value.agentList!.length;
       print('Length of Agent List :::: $lengthAgent');
       print('Length of Agent List :::: ${selectAgent.value.agentList}');
     } else {
@@ -68,7 +68,7 @@ class BookingRequestController extends GetxController {
             AppMetaLabels().saved, AppMetaLabels().requestAddedSuccessfully);
         // Get.snackbar(
         //     AppMetaLabels().saved, AppMetaLabels().requestAddedSuccessfully);
-        return result.addServiceRequest.caseNo;
+        return result.addServiceRequest!.caseNo;
         // Get.to(()=>PublicServiceRequestList());
 
       } else {

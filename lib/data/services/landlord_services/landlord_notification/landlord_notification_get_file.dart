@@ -7,7 +7,7 @@ class GetLandLordNotificationsFiles {
   static Future<dynamic> getNotificationFiles(int id) async {
     var url = AppConfig().landLordgetNotificationFilese;
     Map data = {"NotificationId": id.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       return notificationFilesFromJson(response.body);
     }

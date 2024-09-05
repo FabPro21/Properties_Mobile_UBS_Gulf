@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 import 'package:fap_properties/data/helpers/base_client.dart';
@@ -23,12 +25,12 @@ import '../main_info/main_info_controller.dart';
 class SvcReqReportController extends GetxController {
   //
   final mainInfoController = Get.find<SvcReqMainInfoController>();
-  int caseNo;
-  bool status;
+  int? caseNo;
+  bool? status;
   /////photos
   RxBool gettingPhotos = false.obs;
   String errorGettingPhotos = '';
-  List<PhotoFile> photos = [null];
+  List<PhotoFile?> photos = [];
   final ImagePicker _picker = ImagePicker();
   ////report
   Rx<DocFile> report = DocFile().obs;
@@ -50,31 +52,39 @@ class SvcReqReportController extends GetxController {
   onInit() {
     super.onInit();
     canClose.value =
-        mainInfoController.vendorRequestDetails.value.statusInfo.canClose;
+        mainInfoController.vendorRequestDetails.value.statusInfo!.canClose!;
   }
 
   Future<void> getPhotos() async {
     photos.clear();
     errorGettingPhotos = '';
     gettingPhotos.value = true;
-    var resp = await VendorRepository.getReqPhotos(caseNo, 3);
-    if (resp is List<PhotoFile>) {
+    var resp = await VendorRepository.getReqPhotos(caseNo ?? 0, 3);
+    gettingPhotos.value = false;
+    if (resp is List<PhotoFile?>) {
       photos = resp;
-      if (canClose.value) photos.add(null);
+      gettingPhotos.value = false;
+      if (canClose.value) {
+        photos.add(null);
+        gettingPhotos.value = false;
+      }
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
       photos.add(null);
-    } else
+      gettingPhotos.value = false;
+    } else {
       errorGettingPhotos = resp;
+      gettingPhotos.value = false;
+    }
     gettingPhotos.value = false;
   }
 
   pickPhoto(ImageSource source) async {
     try {
       print(source);
-      XFile file = await _picker.pickImage(source: source);
+      XFile? file = await _picker.pickImage(source: source);
 
       // checking file ext Cheque
-      if (!CheckFileExtenstion().checkImageExtFunc(file.path)) {
+      if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -94,7 +104,6 @@ class SvcReqReportController extends GetxController {
         var extension = CheckFileExtenstion().getFileSize(photo).split(' ')[1];
 
         if (extension.contains('MB')) {
-          gettingPhotos.value = false;
           if (double.parse(sizeN) > 10) {
             SnakBarWidget.getSnackBarErrorRedWith5Sec(
               AppMetaLabels().error,
@@ -104,19 +113,8 @@ class SvcReqReportController extends GetxController {
           }
         }
 
-        // we are commenting below lines because Editor change the extension 112233
-        // final editedImage = await Get.to(() => ImageEditor(
-        //       image: photo,
-        //     ));
-        // if (editedImage != null) photo = editedImage;
-
         String path = file.path;
-
-        // final extension = p.extension(path);
-        // print('(((((((((((((((((((object)))))))))))))))))))');
-        // print(extension);
-
-        if (photo != null && await getStoragePermission()) {
+        if (photo != null) {
           final newPath = await getTemporaryDirectory();
           final newFile = File("${newPath.path}/${file.path.split('/').last}");
           if (newFile != null) {
@@ -127,54 +125,56 @@ class SvcReqReportController extends GetxController {
               PhotoFile(file: photo, path: path, type: file.mimeType);
           uploadPhoto(photos.length - 1);
           photos.add(null);
+          gettingPhotos.value = false;
         }
         gettingPhotos.value = false;
       }
+      gettingPhotos.value = false;
     } catch (e) {
       print('Exception ::::: $e');
     }
   }
 
   uploadPhoto(int index) async {
-    photos[index].errorUploading = false;
-    photos[index].uploading.value = true;
+    photos[index]?.errorUploading = false;
+    photos[index]?.uploading.value = true;
     try {
       var resp = await VendorRepository.uploadFile(
-          caseNo, photos[index].path, 'Images', '', 0);
-      photos[index].uploading.value = false;
-      photos[index].id = resp['photoId'];
+          caseNo ?? 0, photos[index]?.path ?? "", 'Images', '', 0);
+      photos[index]?.uploading.value = false;
+      photos[index]?.id = resp['photoId'];
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
-      photos[index].errorUploading = true;
-      photos[index].uploading.value = false;
+      photos[index]?.errorUploading = true;
+      photos[index]?.uploading.value = false;
     }
   }
 
   removePhoto(int index) async {
-    photos[index].errorRemoving = false;
-    photos[index].removing.value = true;
+    photos[index]?.errorRemoving = false;
+    photos[index]?.removing.value = true;
     var resp =
-        await VendorRepository.removeReqPhoto(photos[index].id.toString());
+        await VendorRepository.removeReqPhoto(photos[index]!.id.toString());
     if (resp == 200) {
       gettingPhotos.value = true;
       photos.removeAt(index);
       gettingPhotos.value = false;
     } else {
-      photos[index].errorRemoving = true;
-      photos[index].removing.value = false;
+      photos[index]?.errorRemoving = true;
+      photos[index]?.removing.value = false;
     }
   }
 
   // 112233 Close Service Request
   // Future<bool> closeSvcReq(Uint8List signature) async {
-  Future<bool> closeSvcReq(Uint8List signature, String fabCorrectiveAction,
+  Future<bool> closeSvcReq(Uint8List? signature, String fabCorrectiveAction,
       remedy, description) async {
     errorClosingReq = false;
     closingReq.value = true;
     bool closed = false;
-    if (await saveVendorSignature(signature)) {
+    if (await saveVendorSignature(signature!)) {
       // var resp = await VendorRepository.closeSvcReq(caseNo);
       var resp = await VendorRepository.closeSvcReq(
           caseNo, fabCorrectiveAction, remedy, description);
@@ -205,10 +205,10 @@ class SvcReqReportController extends GetxController {
   pickReport() async {
     try {
       print('Insideeee::::');
-      FilePickerResult result = await FilePicker.platform
+      FilePickerResult? result = await FilePicker.platform
           .pickFiles(allowedExtensions: ['pdf'], type: FileType.custom);
 
-      if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+      if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
         SnakBarWidget.getSnackBarErrorRedWith5Sec(
           AppMetaLabels().error,
           AppMetaLabels().fileExtensionError,
@@ -217,7 +217,7 @@ class SvcReqReportController extends GetxController {
       }
 
       if (result != null) {
-        File file = File(result.files.single.path);
+        File file = File(result.files.single.path ?? "");
         Uint8List bytesFile = await file.readAsBytes();
 
         // checking file size Cheque
@@ -252,7 +252,7 @@ class SvcReqReportController extends GetxController {
     try {
       // 112233 upload file Repo
       var resp = await VendorRepository.uploadFile(
-          caseNo, report.value.path, 'Document', '', 0);
+          caseNo!, report.value.path ?? "", 'Document', '', 0);
 
       loadingReport.value = true;
       var id = resp['photoId'];
@@ -287,11 +287,11 @@ class SvcReqReportController extends GetxController {
         getSRReportModel.value = result;
         if (getSRReportModel.value.status == "Data found successfully") {
           listTitle = AppMetaLabels().fABCorrectiveActionList[
-              getSRReportModel.value.data.fgpCorrectionId];
+              getSRReportModel.value.data!.fgpCorrectionId!];
           textEditingControlerFET1.text =
-              getSRReportModel.value.data.proposedRemedy ?? "";
+              getSRReportModel.value.data!.proposedRemedy ?? "";
           textEditingControlerFET2.text =
-              getSRReportModel.value.data.description ?? "";
+              getSRReportModel.value.data!.description ?? "";
         } else {
           textEditingControlerFET1.text = '';
           textEditingControlerFET2.text = '';
@@ -316,7 +316,7 @@ class SvcReqReportController extends GetxController {
     if (resp is List<DocFile>) {
       if (resp.isNotEmpty) {
         report.value = resp[0];
-        report.value.size = getFileSize(report.value.file);
+        report.value.size = getFileSize(report.value.file!);
       }
     } else
       errorLoadingReport = resp;
@@ -339,10 +339,11 @@ class SvcReqReportController extends GetxController {
   void showReport() async {
     // This
     if (report.value.path == null) {
-      if (await getStoragePermission()) {
-        String path = await saveReport();
-        report.value.path = path;
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await saveReport();
+      report.value.path = path;
+      // }
     }
     await OpenFile.open(report.value.path);
   }
@@ -364,82 +365,84 @@ class SvcReqReportController extends GetxController {
         'Path :::: ${path.path}/${this.report.value.name}${this.report.value.type}');
     final file =
         File("${path.path}/${this.report.value.name}${this.report.value.type}");
-        // File("${path.path}/${this.report.value.name}${this.report.value.type}");
-    await file.writeAsBytes(report.value.file);
+    // File("${path.path}/${this.report.value.name}${this.report.value.type}");
+    await file.writeAsBytes(report.value.file!);
     return file.path;
   }
 
   RxBool savingTenantSign = false.obs;
   RxBool tenantSignatureSaved = false.obs;
-  Future<bool> saveTenantSignature(Uint8List signature) async {
+  Future<bool> saveTenantSignature(Uint8List? signature) async {
     tenantSignatureSaved.value = false;
     savingTenantSign.value = true;
     bool saved = false;
-    if (await getStoragePermission()) {
-      String path = await createFile(signature, 'signature.png');
-      if (path != null) {
-        var resp = await VendorRepository.uploadTenantSing(
-          caseNo.toString(),
-          path,
-        );
-        if (resp is int) {
-          SnakBarWidget.getSnackBarErrorBlue(
-            AppMetaLabels().error,
-            AppMetaLabels().anyError,
-          );
-        } else {
-          SnakBarWidget.getSnackBarErrorBlue(
-            AppMetaLabels().success,
-            AppMetaLabels().signatureSaved,
-          );
-
-          saved = true;
-          tenantSignatureSaved.value = true;
-        }
-      } else {
-        SnakBarWidget.getSnackBarError(
+    // ###1 permission
+    // if (await getStoragePermission()) {
+    String path = await createFile(signature!, 'signature.png');
+    if (path != null) {
+      var resp = await VendorRepository.uploadTenantSing(
+        caseNo.toString(),
+        path,
+      );
+      if (resp is int) {
+        SnakBarWidget.getSnackBarErrorBlue(
           AppMetaLabels().error,
           AppMetaLabels().anyError,
         );
+      } else {
+        SnakBarWidget.getSnackBarErrorBlue(
+          AppMetaLabels().success,
+          AppMetaLabels().signatureSaved,
+        );
+
+        saved = true;
+        tenantSignatureSaved.value = true;
       }
     } else {
       SnakBarWidget.getSnackBarError(
         AppMetaLabels().error,
-        AppMetaLabels().storagePermissions,
+        AppMetaLabels().anyError,
       );
     }
+    // } else {
+    //   SnakBarWidget.getSnackBarError(
+    //     AppMetaLabels().error,
+    //     AppMetaLabels().storagePermissions,
+    //   );
+    // }
     savingTenantSign.value = false;
     return saved;
   }
 
   Future<bool> saveVendorSignature(Uint8List signature) async {
-    if (await getStoragePermission()) {
-      String path = await createFile(signature, 'signature.png');
-      if (path != null) {
-        var resp = await VendorRepository.uploadVendorSing(
-          caseNo.toString(),
-          path,
-        );
-        if (resp is int) {
-          SnakBarWidget.getSnackBarError(
-            AppMetaLabels().error,
-            AppMetaLabels().anyError,
-          );
-        } else {
-          return true;
-        }
-      } else {
+    // ###1 permission
+    // if (await getStoragePermission()) {
+    String path = await createFile(signature, 'signature.png');
+    if (path != null) {
+      var resp = await VendorRepository.uploadVendorSing(
+        caseNo.toString(),
+        path,
+      );
+      if (resp is int) {
         SnakBarWidget.getSnackBarError(
           AppMetaLabels().error,
           AppMetaLabels().anyError,
         );
+      } else {
+        return true;
       }
     } else {
       SnakBarWidget.getSnackBarError(
         AppMetaLabels().error,
-        AppMetaLabels().storagePermissions,
+        AppMetaLabels().anyError,
       );
     }
+    // } else {
+    //   SnakBarWidget.getSnackBarError(
+    //     AppMetaLabels().error,
+    //     AppMetaLabels().storagePermissions,
+    //   );
+    // }
     return false;
   }
 

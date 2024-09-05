@@ -15,7 +15,7 @@ class PublicAddTicketService {
     };
 
     var response;
-    response = await BaseClientClass.uploadFile(url, data, "File", filePath,
+    response = await BaseClientClass.uploadFile(url ?? "", data, "File", filePath,
         token: SessionController().getPublicToken());
 
     if (response is StreamedResponse) {

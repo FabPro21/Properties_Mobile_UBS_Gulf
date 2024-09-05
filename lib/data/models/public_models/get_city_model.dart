@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-GetEmirateModel getEmirateModelFromJson(String str) =>
-    GetEmirateModel.fromJson(json.decode(str));
+GetEmirateModel getEmirateModelFromJson(String? str) =>
+    GetEmirateModel.fromJson(json.decode(str!));
 
 class GetEmirateModel {
   GetEmirateModel({
@@ -15,12 +15,12 @@ class GetEmirateModel {
     this.emirate,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<Emirate> emirate;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Emirate>? emirate;
 
-  factory GetEmirateModel.fromJson(Map<String, dynamic> json) =>
+  factory GetEmirateModel.fromJson(Map<String?, dynamic> json) =>
       GetEmirateModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -37,11 +37,11 @@ class Emirate {
     this.emirateNameAr,
   });
 
-  int emirateId;
-  String emirateName;
-  String emirateNameAr;
+  int? emirateId;
+  String? emirateName;
+  String? emirateNameAr;
 
-  factory Emirate.fromJson(Map<String, dynamic> json) => Emirate(
+  factory Emirate.fromJson(Map<String?, dynamic> json) => Emirate(
         emirateId: json["emirateID"],
         emirateName: json["emirateName"],
         emirateNameAr: json["emirateNameAR"],

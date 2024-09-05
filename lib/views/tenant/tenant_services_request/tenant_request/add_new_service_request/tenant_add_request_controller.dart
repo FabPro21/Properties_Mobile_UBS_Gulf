@@ -58,13 +58,13 @@ class TenantAddServicesRequestController extends GetxController {
     if (result is SaveServiceRequestModel) {
       model.value = result;
       SessionController()
-          .setCaseNo(model.value.addServiceRequest.caseNo.toString());
+          .setCaseNo(model.value.addServiceRequest!.caseNo.toString());
       print(
-          'Case No :::Before move toward ADDPhoto From Model::: ${model.value.addServiceRequest.caseNo.toString()}');
+          'Case No :::Before move toward ADDPhoto From Model::: ${model.value.addServiceRequest!.caseNo.toString()}');
       print(
           'Case No :::Before move toward ADDPhoto From Session::: ${SessionController().getCaseNo()}');
       await Get.off(() => AddRequestPhotos(
-            caseNo: model.value.addServiceRequest.caseNo.toString(),
+            caseNo: model.value.addServiceRequest!.caseNo.toString(),
           ));
       Get.back(result: 'added');
       update();

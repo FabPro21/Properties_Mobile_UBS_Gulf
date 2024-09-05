@@ -10,7 +10,7 @@ class DownloadOfferLetter {
     // add ContractId because it is 
     Map data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().downloadOfferLetter, data);
+        await BaseClientClass.post(AppConfig().downloadOfferLetter??"", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

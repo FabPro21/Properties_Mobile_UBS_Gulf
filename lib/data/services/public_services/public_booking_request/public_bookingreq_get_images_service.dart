@@ -11,11 +11,10 @@ class PublicBookingRequestGetImagesServices {
     var url = AppConfig().getBookingReqPropertyImage;
     print(url);
     print(propertyId);
-    var data = {"PropertyId":propertyId.toString()};
-    var response = await BaseClientClass.post(url , data,
+    var data = {"PropertyId": propertyId.toString()};
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
-      // log(response.body);
       try {
         var resp = json.decode(response.body);
         String byteString = resp["bytes"];
@@ -26,10 +25,11 @@ class PublicBookingRequestGetImagesServices {
     }
     return response;
   }
+
   static Future<dynamic> getImages(int unitId) async {
     var url = AppConfig().getBookingReqImages;
-    var data = {"UnitId":unitId.toString()};
-    var response = await BaseClientClass.post(url , data,
+    var data = {"UnitId": unitId.toString()};
+    var response = await BaseClientClass.post(url ??"", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       try {

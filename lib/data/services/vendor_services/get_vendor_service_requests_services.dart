@@ -15,7 +15,7 @@ class GetVendorServiceRequestsServices {
     var data = {"type": null, "search": '', "pageNo": '1', "pageSize": '20'};
     print('Data :::::: $data');
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetVendorServiceRequests getContractsModel =
@@ -37,7 +37,7 @@ class GetVendorServiceRequestsServices {
       "pageSize": '20'
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       GetVendorServiceRequests getContractsModel =
@@ -51,7 +51,7 @@ class GetVendorServiceRequestsServices {
   //   var url = AppConfig().getVendorServiceRequest;
   //   // var data;
 
-  //   var response = await BaseClientClass.post(url, data);
+  //   var response = await BaseClientClass.post(url ?? "", data);
 
   //   if (response is http.Response) {
   //     GetVendorServiceRequests getContractsModel =

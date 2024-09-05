@@ -8,7 +8,7 @@ import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:http/http.dart' as http;
 
 class ValidateRoleByMpinService {
-  static Future<dynamic> getData(String mpin) async {
+  static Future<dynamic> getData(String? mpin) async {
     var data = {
       "MPIN": mpin,
       "RoleId": SessionController().getSelectedRoleId(),
@@ -19,7 +19,7 @@ class ValidateRoleByMpinService {
     print(data);
     // print('**************************');
     var url = AppConfig().validateRoleByMpin;
-    var response = await BaseClientClass.postwithheader(url, data,
+    var response = await BaseClientClass.postwithheader(url??"", data,
         token: SessionController().getToken());
     if (response is http.Response) {
       print(response);

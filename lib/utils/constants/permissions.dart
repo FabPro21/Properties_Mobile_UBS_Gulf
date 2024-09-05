@@ -36,7 +36,7 @@ class PermissionHandlerClass {
                   children: [
                     Container(
                       child: Text(
-                          '${AppMetaLabels().fabPropertiesSource} $source',
+                          '${AppMetaLabels().menaPropertiesSource} $source',
                           textAlign: TextAlign.center,
                           style: AppTextStyle.semiBoldBlack11),
                     ),

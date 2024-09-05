@@ -13,7 +13,7 @@ class GetServiceRequestDetailsServices {
     print(url);
     var data= {"CaseNo":caseNo};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
 
     if (response is http.Response) {
       log(response.body);

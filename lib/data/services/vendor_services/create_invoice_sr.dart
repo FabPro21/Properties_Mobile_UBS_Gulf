@@ -35,7 +35,7 @@ class SaveServiceRequestServices {
     };
     print("Invoice ::::: add ::::: $data");
     try {
-      var response = await BaseClientClass.post(url, data);
+      var response = await BaseClientClass.post(url ?? "", data);
       if (response is http.Response) {
         var json = jsonDecode(response.body);
         print('JSON Response :::: $json');
@@ -51,7 +51,7 @@ class SaveServiceRequestServices {
     var url = AppConfig().vendorGetInvoiceServiceRequest;
     var data = {"CaseNo": caseNo};
     try {
-      var response = await BaseClientClass.post(url, data);
+      var response = await BaseClientClass.post(url ?? "", data);
       print(response);
       if (response is http.Response) {
         var json = jsonDecode(response.body);
@@ -68,7 +68,7 @@ class SaveServiceRequestServices {
     var url = AppConfig().getLpoDropdownForIvoice;
     var data = {};
     try {
-      var response = await BaseClientClass.post(url, data);
+      var response = await BaseClientClass.post(url ?? "", data);
       print(response);
       if (response is http.Response) {
         var lpoDropDown = LpoDropDownModel.fromJson(jsonDecode(response.body));
@@ -85,7 +85,7 @@ class SaveServiceRequestServices {
     var url = AppConfig().getAMCDropdownForInvoice;
     var data = {};
     try {
-      var response = await BaseClientClass.post(url, data);
+      var response = await BaseClientClass.post(url ?? "", data);
       print(response);
       if (response is http.Response) {
         var json = AmcDropDownModel.fromJson(jsonDecode(response.body));
@@ -105,7 +105,7 @@ class SaveServiceRequestServices {
       "ContractID": contractID
     };
     try {
-      var response = await BaseClientClass.post(url, data);
+      var response = await BaseClientClass.post(url ?? "", data);
       print(response);
       if (response is http.Response) {
         var json = InstallmentDropDownModel.fromJson(jsonDecode(response.body));

@@ -15,7 +15,7 @@ class CloseSvcReq {
     };
     print('************************* === > $data1');
     // print('************************* === > $data');
-    var resp = await BaseClientClass.post(AppConfig().vendorCloseRequest, data1);
+    var resp = await BaseClientClass.post(AppConfig().vendorCloseRequest??"", data1);
     if (resp is http.Response) {
       return resp.statusCode;
     }

@@ -3,7 +3,7 @@ import 'package:fap_properties/data/repository/landlord_repository.dart';
 import 'package:get/get.dart';
 
 class LandlordUnitInfoController extends GetxController {
-  LandlordContractUnitsModel contractUnits;
+  late LandlordContractUnitsModel contractUnits;
   RxBool loadingUnits = false.obs;
   String errorLoadingUnits = '';
 

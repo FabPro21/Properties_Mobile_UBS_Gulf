@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-VendorUpdateProfileRequest vendorUpdateProfileRequestFromJson(String str) =>
-    VendorUpdateProfileRequest.fromJson(json.decode(str));
+VendorUpdateProfileRequest vendorUpdateProfileRequestFromJson(String? str) =>
+    VendorUpdateProfileRequest.fromJson(json.decode(str!));
 
-String vendorUpdateProfileRequestToJson(VendorUpdateProfileRequest data) =>
+String? vendorUpdateProfileRequestToJson(VendorUpdateProfileRequest data) =>
     json.encode(data.toJson());
 
 class VendorUpdateProfileRequest {
@@ -18,12 +18,12 @@ class VendorUpdateProfileRequest {
     this.document,
   });
 
-  String status;
-  AddServiceRequest addServiceRequest;
-  String message;
-  List<dynamic> document;
+  String? status;
+  AddServiceRequest? addServiceRequest;
+  String? message;
+  List<dynamic>? document;
 
-  factory VendorUpdateProfileRequest.fromJson(Map<String, dynamic> json) =>
+  factory VendorUpdateProfileRequest.fromJson(Map<String?, dynamic> json) =>
       VendorUpdateProfileRequest(
         status: json["status"],
         addServiceRequest:
@@ -32,11 +32,11 @@ class VendorUpdateProfileRequest {
         document: List<dynamic>.from(json["document"].map((x) => x)),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "addServiceRequest": addServiceRequest.toJson(),
+        "addServiceRequest": addServiceRequest!.toJson(),
         "message": message,
-        "document": List<dynamic>.from(document.map((x) => x)),
+        "document": List<dynamic>.from(document!.map((x) => x)),
       };
 }
 
@@ -45,14 +45,14 @@ class AddServiceRequest {
     this.caseNo,
   });
 
-  int caseNo;
+  int? caseNo;
 
-  factory AddServiceRequest.fromJson(Map<String, dynamic> json) =>
+  factory AddServiceRequest.fromJson(Map<String?, dynamic> json) =>
       AddServiceRequest(
         caseNo: json["caseNo"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "caseNo": caseNo,
       };
 }

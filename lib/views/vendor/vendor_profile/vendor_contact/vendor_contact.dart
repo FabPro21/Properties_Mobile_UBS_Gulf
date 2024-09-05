@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorContact extends StatefulWidget {
-  VendorContact({Key key}) : super(key: key);
+  VendorContact({Key? key}) : super(key: key);
 
   @override
   State<VendorContact> createState() => _VendorContactState();
@@ -53,10 +53,10 @@ class _VendorContactState extends State<VendorContact> {
                           shrinkWrap: true,
                           padding: EdgeInsets.zero,
                           itemCount: getContactPersonsController
-                              .vendorContact.value.contactPersons.length,
+                              .vendorContact.value.contactPersons?.length,
                           itemBuilder: (BuildContext context, int index) {
                             String mystring = getContactPersonsController
-                                .vendorContact.value.contactPersons[index].name;
+                                .vendorContact.value.contactPersons?[index].name??"";
 
                             name = mystring[0];
 
@@ -112,13 +112,13 @@ class _VendorContactState extends State<VendorContact> {
                                                       ? getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .name ??
                                                       ""
                                                       : getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .nameAr ??
                                                       "",
                                                   
@@ -135,13 +135,13 @@ class _VendorContactState extends State<VendorContact> {
                                                       ? getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .positionAR ??
                                                       ""
                                                       : getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .positionAR ??
                                                       "",
                                                   style:
@@ -160,7 +160,7 @@ class _VendorContactState extends State<VendorContact> {
                                         getContactPersonsController
                                                 .vendorContact
                                                 .value
-                                                .contactPersons[index]
+                                                .contactPersons![index]
                                                 .mobile ??
                                             "",
                                       ),
@@ -172,7 +172,7 @@ class _VendorContactState extends State<VendorContact> {
                                         getContactPersonsController
                                                 .vendorContact
                                                 .value
-                                                .contactPersons[index]
+                                                .contactPersons![index]
                                                 .faxNumber ??
                                             "",
                                       ),
@@ -184,7 +184,7 @@ class _VendorContactState extends State<VendorContact> {
                                         getContactPersonsController
                                                 .vendorContact
                                                 .value
-                                                .contactPersons[index]
+                                                .contactPersons![index]
                                                 .phone ??
                                             "",
                                       ),
@@ -196,7 +196,7 @@ class _VendorContactState extends State<VendorContact> {
                                         getContactPersonsController
                                                 .vendorContact
                                                 .value
-                                                .contactPersons[index]
+                                                .contactPersons![index]
                                                 .email ??
                                             "",
                                       ),
@@ -211,13 +211,13 @@ class _VendorContactState extends State<VendorContact> {
                                                       ? getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .isAuthorizedSignatory ??
                                                       ""
                                                       : getContactPersonsController
                                                           .vendorContact
                                                           .value
-                                                          .contactPersons[index]
+                                                          .contactPersons![index]
                                                           .isAuthorizedSignatoryAR ??
                                                       "",
                                       ),

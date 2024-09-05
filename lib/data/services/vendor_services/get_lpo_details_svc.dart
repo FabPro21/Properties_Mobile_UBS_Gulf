@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 class VendorGetLpoDetailsSvc {
   static Future<dynamic> getData(String lpoId) async {
     Map data = {"LpoId": lpoId.toString()};
-    var response = await BaseClientClass.post(AppConfig().getlposdetail, data);
+    var response = await BaseClientClass.post(AppConfig().getlposdetail??"", data);
     if (response is Response) {
       try {
         return GetLpoDetailsResponse.fromRawJson(response.body);

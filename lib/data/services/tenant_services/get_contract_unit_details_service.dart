@@ -6,11 +6,9 @@ import 'package:http/http.dart' as http;
 
 class GetContractUnitDetailsServices {
   static Future<dynamic> getData() async {
-     Map data ={"UnitId":  SessionController().getContractUnitID().toString()};
+    Map data = {"UnitId": SessionController().getContractUnitID().toString()};
     var response = await BaseClientClass.post(
-        AppConfig().getContractUnitDetails ,
-         data
-        );
+        AppConfig().getContractUnitDetails ?? "", data);
     if (response is http.Response) {
       GetContractUnitDetailsModel getContractsModel =
           getContractUnitDetailsModelFromJson(response.body);

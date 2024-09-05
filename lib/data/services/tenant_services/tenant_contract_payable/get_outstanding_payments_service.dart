@@ -13,7 +13,7 @@ class GetOutstandingPaymentsService {
     var url = AppConfig().getOutstandingPayments;
     var data = {"ContractId": SessionController().getContractID().toString()};
     print( "ContractId:::::GetOutstandingPaymentsService::::::::::$data");
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       if (kDebugMode) log(resp.body);
@@ -32,7 +32,7 @@ class GetOutstandingPaymentsNewContractService {
     var url = AppConfig().getOutstandingPaymentsNew;
     var data = {"ContractId": SessionController().getContractID().toString()};
     print( "ContractId:::::GetOutstandingPaymentsService::::::::::$data");
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       if (kDebugMode) log(resp.body);

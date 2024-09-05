@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -16,12 +18,12 @@ import 'dart:ui' as ui;
 import '../../../../../../utils/styles/colors.dart';
 
 class MunicipalApproval extends StatefulWidget {
-  final String caller;
-  final int dueActionId;
-  final int contractId;
+  final String? caller;
+  final int? dueActionId;
+  final int? contractId;
 
   MunicipalApproval(
-      {Key key, this.caller, this.dueActionId, @required this.contractId})
+      {Key? key, this.caller, this.dueActionId, @required this.contractId})
       : super(key: key);
 
   @override
@@ -34,7 +36,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
 
   @override
   void initState() {
-    controller.getInstructions(widget.contractId);
+    controller.getInstructions(widget.contractId??0);
     controller.isShowpopUp.value = false;
     super.initState();
   }
@@ -151,7 +153,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                       .errorLoadingData,
                                                   onRetry: () {
                                                     controller.getInstructions(
-                                                        widget.contractId);
+                                                        widget.contractId??0);
                                                   })
                                               : InkWell(
                                                   onTap: () {
@@ -311,9 +313,9 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                             return Checkbox(
                                               activeColor: AppColors.blueColor,
                                               value: controller.approved.value,
-                                              onChanged: (bool value) {
+                                              onChanged: (bool? value) {
                                                 controller.approved.value =
-                                                    value;
+                                                    value!;
                                               },
                                             );
                                           }), //Check
@@ -346,9 +348,9 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                         await controller
                                                             .updateContractStage(
                                                                 widget
-                                                                    .dueActionId,
+                                                                    .dueActionId??0,
                                                                 9,
-                                                                widget.caller);
+                                                                widget.caller??"");
                                                         controller.isShowpopUp
                                                             .value = true;
                                                       
@@ -382,18 +384,18 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                               ),
                                               style: ButtonStyle(
                                                   elevation:
-                                                      MaterialStateProperty.all<
+                                                      WidgetStateProperty.all<
                                                           double>(0.0),
                                                   backgroundColor: !controller
                                                           .approved.value
-                                                      ? MaterialStateProperty.all<
+                                                      ? WidgetStateProperty.all<
                                                               Color>(
                                                           Colors.grey.shade400)
-                                                      : MaterialStateProperty
+                                                      : WidgetStateProperty
                                                           .all<Color>(AppColors
                                                               .blueColor),
                                                   shape:
-                                                      MaterialStateProperty.all<
+                                                      WidgetStateProperty.all<
                                                           RoundedRectangleBorder>(
                                                     RoundedRectangleBorder(
                                                       borderRadius:
@@ -464,7 +466,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().stage9,
+                                        AppMetaLabels().menaStage9,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack10
                                             .copyWith(
@@ -492,14 +494,14 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                 child: ElevatedButton(
                                                   style: ButtonStyle(
                                                       elevation:
-                                                          MaterialStateProperty
+                                                          WidgetStateProperty
                                                               .all<double>(
                                                                   0.0.h),
                                                       backgroundColor:
-                                                          MaterialStateProperty
+                                                          WidgetStateProperty
                                                               .all<Color>(AppColors
                                                                   .whiteColor),
-                                                      shape: MaterialStateProperty
+                                                      shape: WidgetStateProperty
                                                           .all<
                                                               RoundedRectangleBorder>(
                                                         RoundedRectangleBorder(

@@ -15,7 +15,7 @@ import 'dart:ui' as ui;
 // ignore: must_be_immutable
 class LoginMpinScreen extends StatefulWidget {
   const LoginMpinScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
   @override
   State<LoginMpinScreen> createState() => _LoginMpinScreenState();
@@ -73,17 +73,10 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                   ),
                                 )
                               : Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(top: 9.0.h),
-                                      child: AppLogoMenaRealEstate(
-                                        menaFontSize:
-                                            AppTextStyle.semiBoldWhite36,
-                                        menaReaEstateEnglishFont:
-                                            AppTextStyle.semiBoldWhite12,
-                                        height: 10.0.h,
-                                      ),
+                                      child: const AppLogo(),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 6.0.h),

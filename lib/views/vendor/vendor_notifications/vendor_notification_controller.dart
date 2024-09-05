@@ -27,14 +27,14 @@ class VendorNotificationsController extends GetxController {
   RxString errorUnread = "".obs;
   RxBool editTap = false.obs;
   RxBool markasRead = false.obs;
-  List<bool> isChecked;
+  List<bool>? isChecked;
   RxInt currentIndex = 0.obs;
 
   int pageNo = 1;
   int pageSize = 2;
   int recordCount = 0;
 
-  List<notif.Notification> notifications;
+  List<notif.Notification>? notifications;
   String pagaNoPAll = '1';
   getData(String pagaNoP) async {
     print(':::::::::: getData()');
@@ -50,13 +50,13 @@ class VendorNotificationsController extends GetxController {
           await VendorRepository.getNotificationsPagination('', pagaNoP);
       if (result is notif.VendorGetNotificationModel) {
         getNotifications.value = result;
-        notifications = getNotifications.value.notifications;
+        notifications = getNotifications.value.notifications!;
         print('AFTER PARSE :::: ${getNotifications.value}');
         if (getNotifications.value.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
           loadingData.value = false;
         } else {
-          allLength = notifications.length;
+          allLength = notifications!.length;
           isChecked = List<bool>.filled(allLength, false);
           loadingData.value = false;
         }
@@ -94,11 +94,11 @@ class VendorNotificationsController extends GetxController {
           isLoadingAllNotification.value = false;
         } else {
           for (int i = 0;
-              i < getNotifications.value.notifications.length;
+              i < getNotifications.value.notifications!.length;
               i++) {
-            notifications.add(getNotifications.value.notifications[i]);
+            notifications!.add(getNotifications.value.notifications![i]);
           }
-          allLength = notifications.length;
+          allLength = notifications!.length;
           isChecked = List<bool>.filled(allLength, false);
           isLoadingAllNotification.value = false;
         }
@@ -119,7 +119,7 @@ class VendorNotificationsController extends GetxController {
   }
 
   String pagaNoPURead = '1';
-  List<notif.Notification> notificationsUnRead;
+  List<notif.Notification>? notificationsUnRead;
   unReadNotifications(String pagaNoP) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -134,12 +134,12 @@ class VendorNotificationsController extends GetxController {
       unreadNotificationsLoading.value = false;
       if (result is notif.VendorGetNotificationModel) {
         unreadNotifications.value = result;
-        notificationsUnRead = unreadNotifications.value.notifications;
+        notificationsUnRead = unreadNotifications.value.notifications!;
         if (unreadNotifications.value.status == AppMetaLabels().notFound) {
           errorUnread.value = AppMetaLabels().noDatafound;
           unreadNotificationsLoading.value = false;
         } else {
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead!.length;
           unreadNotificationsLoading.value = false;
         }
       } else {
@@ -175,11 +175,11 @@ class VendorNotificationsController extends GetxController {
           isLoadingUnReadNotification.value = false;
         } else {
           for (int i = 0;
-              i < unreadNotifications.value.notifications.length;
+              i < unreadNotifications.value.notifications!.length;
               i++) {
-            notificationsUnRead.add(unreadNotifications.value.notifications[i]);
+            notificationsUnRead!.add(unreadNotifications.value.notifications![i]);
           }
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead!.length;
           isLoadingUnReadNotification.value = false;
         }
       } else {

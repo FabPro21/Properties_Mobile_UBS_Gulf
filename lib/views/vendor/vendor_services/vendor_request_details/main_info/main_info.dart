@@ -15,7 +15,7 @@ import '../../../../widgets/common_widgets/status_widget.dart';
 import 'main_info_controller.dart';
 
 class SvcReqMainInfo extends StatelessWidget {
-  SvcReqMainInfo({Key key}) : super(key: key);
+  SvcReqMainInfo({Key? key}) : super(key: key);
   final controller = Get.find<SvcReqMainInfoController>();
   @override
   Widget build(BuildContext context) {
@@ -69,10 +69,10 @@ class SvcReqMainInfo extends StatelessWidget {
                                     Text(
                                       SessionController().getLanguage() == 1
                                           ? controller.vendorRequestDetails
-                                                  .value.detail.category ??
+                                                  .value.detail?.category ??
                                               ""
                                           : controller.vendorRequestDetails
-                                                  .value.detail.categoryAR ??
+                                                  .value.detail?.categoryAR ??
                                               "",
                                       style: AppTextStyle.normalGrey10,
                                     ),
@@ -82,26 +82,29 @@ class SvcReqMainInfo extends StatelessWidget {
                                     Text(
                                       SessionController().getLanguage() == 1
                                           ? controller.vendorRequestDetails
-                                                  .value.detail.subCategory ??
-                                              ""
-                                          : controller.vendorRequestDetails
-                                                  .value.detail.subcategoryAR ??
-                                              "",
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                    SizedBox(
-                                      height: 1.h,
-                                    ),
-                                    Text(
-                                      SessionController().getLanguage() == 1
-                                          ? controller.vendorRequestDetails
-                                                  .value.detail.propertyName ??
+                                                  .value.detail?.subCategory ??
                                               ""
                                           : controller
                                                   .vendorRequestDetails
                                                   .value
                                                   .detail
-                                                  .propertyNameAr ??
+                                                  ?.subcategoryAR ??
+                                              "",
+                                      style: AppTextStyle.normalGrey10,
+                                    ),
+                                    SizedBox(
+                                      height: 1.h,
+                                    ),
+                                    Text(
+                                      SessionController().getLanguage() == 1
+                                          ? controller.vendorRequestDetails
+                                                  .value.detail?.propertyName ??
+                                              ""
+                                          : controller
+                                                  .vendorRequestDetails
+                                                  .value
+                                                  .detail
+                                                  ?.propertyNameAr ??
                                               "",
                                       style: AppTextStyle.normalGrey10,
                                     ),
@@ -110,7 +113,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                     ),
                                     Text(
                                       controller.vendorRequestDetails.value
-                                              .detail.unitRefNo ??
+                                              .detail?.unitRefNo ??
                                           "",
                                       style: AppTextStyle.semiBoldGrey10,
                                     ),
@@ -122,14 +125,14 @@ class SvcReqMainInfo extends StatelessWidget {
                                         Text(
                                           '',
                                           // controller.vendorRequestDetails.value
-                                          //         .detail.time ??
+                                          //         .detail?.time ??
                                           //     "",
                                           style: AppTextStyle.normalGrey10,
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(left: 2.0.w),
                                           child: Text(
-                                            '${controller.vendorRequestDetails.value.detail.date ?? ""} ${controller.vendorRequestDetails.value.detail.time ?? ""}',
+                                            '${controller.vendorRequestDetails.value.detail?.date ?? ""} ${controller.vendorRequestDetails.value.detail?.time ?? ""}',
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                         ),
@@ -141,23 +144,24 @@ class SvcReqMainInfo extends StatelessWidget {
                                                             .vendorRequestDetails
                                                             .value
                                                             .detail
-                                                            .status
-                                                            .trim() ==
+                                                            ?.status
+                                                            ?.trim() ==
                                                         'Received' &&
                                                     controller
                                                             .vendorRequestDetails
                                                             .value
                                                             .detail
-                                                            .subCategory ==
+                                                            ?.subCategory ==
                                                         'Supplier Invoice'
                                                 ? StatusWidgetVendor(
                                                     text: AppMetaLabels()
                                                         .submitted,
                                                     valueToCompare: controller
-                                                        .vendorRequestDetails
-                                                        .value
-                                                        .detail
-                                                        .status,
+                                                            .vendorRequestDetails
+                                                            .value
+                                                            .detail
+                                                            ?.status ??
+                                                        "",
                                                   )
                                                 : StatusWidgetVendor(
                                                     text: SessionController()
@@ -167,19 +171,20 @@ class SvcReqMainInfo extends StatelessWidget {
                                                                 .vendorRequestDetails
                                                                 .value
                                                                 .detail
-                                                                .status ??
+                                                                ?.status ??
                                                             ""
                                                         : controller
                                                                 .vendorRequestDetails
                                                                 .value
                                                                 .detail
-                                                                .statusAR ??
+                                                                ?.statusAR ??
                                                             "",
                                                     valueToCompare: controller
-                                                        .vendorRequestDetails
-                                                        .value
-                                                        .detail
-                                                        .status,
+                                                            .vendorRequestDetails
+                                                            .value
+                                                            .detail
+                                                            ?.status ??
+                                                        "",
                                                   )),
                                       ],
                                     ),
@@ -226,9 +231,12 @@ class SvcReqMainInfo extends StatelessWidget {
                                                     .vendorRequestDetails
                                                     .value
                                                     .detail
-                                                    .otherContactName ??
-                                                controller.vendorRequestDetails
-                                                    .value.detail.contactName ??
+                                                    ?.otherContactName ??
+                                                controller
+                                                    .vendorRequestDetails
+                                                    .value
+                                                    .detail
+                                                    ?.contactName ??
                                                 '',
                                             style: AppTextStyle.normalGrey10,
                                           )
@@ -249,12 +257,12 @@ class SvcReqMainInfo extends StatelessWidget {
                                                     .vendorRequestDetails
                                                     .value
                                                     .detail
-                                                    .otherContactPhone ??
+                                                    ?.otherContactPhone ??
                                                 controller
                                                     .vendorRequestDetails
                                                     .value
                                                     .detail
-                                                    .contactPhone ??
+                                                    ?.contactPhone ??
                                                 '',
                                             style: AppTextStyle.normalGrey10,
                                           )
@@ -275,7 +283,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                     .vendorRequestDetails
                                                     .value
                                                     .detail
-                                                    .contactTiming ??
+                                                    ?.contactTiming ??
                                                 '-',
                                             style: AppTextStyle.normalGrey10,
                                           )
@@ -310,7 +318,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                   ),
                                   Text(
                                     controller.vendorRequestDetails.value.detail
-                                            .description ??
+                                            ?.description ??
                                         '',
                                     style: AppTextStyle.normalGrey10,
                                   ),
@@ -399,7 +407,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                             context,
                                                             controller
                                                                 .photos[index]
-                                                                .file);
+                                                                .file!);
                                                       },
                                                       child: ClipRRect(
                                                         borderRadius:
@@ -408,7 +416,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                         child: Image.memory(
                                                           controller
                                                               .photos[index]
-                                                              .file,
+                                                              .file!,
                                                           width: 20.0.w,
                                                           height: 9.0.h,
                                                           fit: BoxFit.cover,
@@ -422,14 +430,14 @@ class SvcReqMainInfo extends StatelessWidget {
                               ),
                             ),
                             controller.vendorRequestDetails.value.detail
-                                            .contractorAcknowledged !=
+                                            ?.contractorAcknowledged !=
                                         true &&
                                     controller.vendorRequestDetails.value.detail
-                                            .contractorRejected !=
+                                            ?.contractorRejected !=
                                         true &&
                                     controller.vendorRequestDetails.value.detail
-                                            .status
-                                            .trim() ==
+                                            ?.status
+                                            ?.trim() ==
                                         'Assigned to Contractor'
                                 ? Container(
                                     width: 100.0.w,
@@ -493,10 +501,10 @@ class SvcReqMainInfo extends StatelessWidget {
                                             );
                                     }))
                                 : controller.vendorRequestDetails.value.detail
-                                                .contractorAcknowledged ==
+                                                ?.contractorAcknowledged ==
                                             true ||
                                         controller.vendorRequestDetails.value
-                                                .detail.contractorRejected ==
+                                                .detail?.contractorRejected ==
                                             true
                                     ? Container(
                                         width: 100.0.w,
@@ -522,14 +530,14 @@ class SvcReqMainInfo extends StatelessWidget {
                                                           .vendorRequestDetails
                                                           .value
                                                           .detail
-                                                          .contractorAcknowledged ==
+                                                          ?.contractorAcknowledged ==
                                                       true
                                                   ? AppMetaLabels().acknowledged
                                                   : controller
                                                               .vendorRequestDetails
                                                               .value
                                                               .detail
-                                                              .contractorRejected ==
+                                                              ?.contractorRejected ==
                                                           true
                                                       ? AppMetaLabels().rejected
                                                       : '',

@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class ButtonWidget extends StatelessWidget {
-  final VoidCallback onPress;
-  final String buttonText;
+  final VoidCallback? onPress;
+  final String? buttonText;
 
-  const ButtonWidget({Key key, this.buttonText, this.onPress})
+  const ButtonWidget({Key? key, this.buttonText, this.onPress})
       : super(key: key);
 
   @override
@@ -20,14 +20,13 @@ class ButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1.3.h),
-          ),
-          primary: AppColors.whiteColor,
+          ), backgroundColor: AppColors.whiteColor,
           padding: EdgeInsets.symmetric(horizontal: 6.0.h, vertical: 1.5.h),
           // textStyle: AppTextStyle.buttonTextStyle,
         ),
         onPressed: onPress,
         child: Text(
-          buttonText,
+          buttonText??"",
           style: AppTextStyle.buttonTextStyle,
         ),
       ),
@@ -36,10 +35,10 @@ class ButtonWidget extends StatelessWidget {
 }
 
 class ButtonWidgetBlue extends StatelessWidget {
-  final VoidCallback onPress;
-  final String buttonText;
+  final VoidCallback? onPress;
+  final String? buttonText;
 
-  const ButtonWidgetBlue({Key key, this.buttonText, this.onPress})
+  const ButtonWidgetBlue({Key? key, this.buttonText, this.onPress})
       : super(key: key);
 
   @override
@@ -50,14 +49,13 @@ class ButtonWidgetBlue extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1.3.h),
-          ),
-          primary: AppColors.blueColor,
+          ), backgroundColor: AppColors.blueColor,
           padding: EdgeInsets.symmetric(horizontal: 6.0.h, vertical: 1.5.h),
           // textStyle: AppTextStyle.buttonTextStyle,
         ),
         onPressed: onPress,
         child: Text(
-          buttonText,
+          buttonText??"",
           style: AppTextStyle.buttonTextStyle.copyWith(color: Colors.white),
         ),
       ),

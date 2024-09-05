@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-RegisterPaymentResponse registerPaymentResponseFromJson(String str) =>
-    RegisterPaymentResponse.fromJson(json.decode(str));
+RegisterPaymentResponse registerPaymentResponseFromJson(String? str) =>
+    RegisterPaymentResponse.fromJson(json.decode(str!));
 
-String registerPaymentResponseToJson(RegisterPaymentResponse data) =>
+String? registerPaymentResponseToJson(RegisterPaymentResponse data) =>
     json.encode(data.toJson());
 
 class RegisterPaymentResponse {
@@ -18,12 +18,12 @@ class RegisterPaymentResponse {
     this.status,
   });
 
-  int orderId;
-  String transactionId;
-  String url;
-  String status;
+  int? orderId;
+  String? transactionId;
+  String? url;
+  String? status;
 
-  factory RegisterPaymentResponse.fromJson(Map<String, dynamic> json) =>
+  factory RegisterPaymentResponse.fromJson(Map<String?, dynamic> json) =>
       RegisterPaymentResponse(
         orderId: json["orderId"],
         transactionId: json["transactionID"],
@@ -31,7 +31,7 @@ class RegisterPaymentResponse {
         status: json["status"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "orderId": orderId,
         "transactionID": transactionId,
         "url": url,

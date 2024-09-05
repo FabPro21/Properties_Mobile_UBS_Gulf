@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -14,7 +16,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class TenantNotifications extends StatefulWidget {
-  TenantNotifications({Key key}) : super(key: key);
+  TenantNotifications({Key? key}) : super(key: key);
 
   @override
   State<TenantNotifications> createState() => _TenantNotificationsState();
@@ -93,7 +95,7 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                             ],
                             radiusStyle: true,
                             onToggle: (index) async {
-                              getTNController.currentIndex.value = index;
+                              getTNController.currentIndex.value = index!;
                               if (index == 0) {
                                 await getTNController.getData(
                                     getTNController.pagaNoPAll.toString());

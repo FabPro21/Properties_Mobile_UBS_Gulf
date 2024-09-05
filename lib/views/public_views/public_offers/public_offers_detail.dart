@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -13,8 +15,8 @@ import '../../../../data/helpers/session_controller.dart';
 import 'public_offers_controller.dart';
 
 class PublicOfferDetails extends StatefulWidget {
-  final String offerId;
-  const PublicOfferDetails({Key key, this.offerId}) : super(key: key);
+  final String? offerId;
+  const PublicOfferDetails({Key? key, this.offerId}) : super(key: key);
 
   @override
   _PublicOfferDetailsState createState() => _PublicOfferDetailsState();
@@ -26,7 +28,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.getOffersDetails(widget.offerId);
+      _controller.getOffersDetails(widget.offerId ?? "");
     });
 
     super.initState();
@@ -73,14 +75,17 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                               SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? _controller.offersDetails
-                                                          .value.record.title ??
+                                                  ? _controller
+                                                          .offersDetails
+                                                          .value
+                                                          .record
+                                                          ?.title ??
                                                       ""
                                                   : _controller
                                                           .offersDetails
                                                           .value
                                                           .record
-                                                          .titleAr ??
+                                                          ?.titleAr ??
                                                       "",
                                               style:
                                                   AppTextStyle.semiBoldBlack14,
@@ -109,21 +114,21 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                             .offersDetails
                                                             .value
                                                             .record
-                                                            .description ??
+                                                            ?.description ??
                                                         ""
                                                     : _controller
                                                             .offersDetails
                                                             .value
                                                             .record
-                                                            .desriptionAr ??
+                                                            ?.desriptionAr ??
                                                         "_",
                                           ),
                                           //  Text(
                                           //   SessionController().getLanguage() == 1
-                                          //       ? _controller.offersDetails.value.record
+                                          //       ? _controller.offersDetails.value.record!
                                           //               .description ??
                                           //           ""
-                                          //       : _controller.offersDetails.value.record
+                                          //       : _controller.offersDetails.value.record!
                                           //               .desriptionAr ??
                                           //           "_",
                                           //   style: AppTextStyle.normalBlack12,
@@ -153,7 +158,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                         .offersDetails
                                                         .value
                                                         .offerProperties
-                                                        .length ==
+                                                        ?.length ==
                                                     0
                                                 ? AppErrorWidget(
                                                     errorText: AppMetaLabels()
@@ -168,7 +173,7 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                             .offersDetails
                                                             .value
                                                             .offerProperties
-                                                            .length,
+                                                            ?.length,
                                                         itemBuilder:
                                                             (context, index) {
                                                           return Padding(
@@ -193,12 +198,12 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                                                   ),
                                                                   Expanded(
                                                                     child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? _controller.offersDetails.value.offerProperties[index].propertyName.trim() ??
-                                                                              ""
-                                                                          : _controller.offersDetails.value.offerProperties[index].propertyNameAr ??
-                                                                              "",
+                                                                      _controller.offersDetails.value.offerProperties ==
+                                                                              null
+                                                                          ? ''
+                                                                          : SessionController().getLanguage() == 1
+                                                                              ? _controller.offersDetails.value.offerProperties![index].propertyName ?? "".trim()
+                                                                              : _controller.offersDetails.value.offerProperties![index].propertyNameAr ?? "".trim(),
                                                                       style: AppTextStyle
                                                                           .normalBlack12,
                                                                       maxLines:

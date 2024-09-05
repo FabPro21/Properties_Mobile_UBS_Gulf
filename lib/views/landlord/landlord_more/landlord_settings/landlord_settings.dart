@@ -12,7 +12,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'dart:ui' as ui;
 
 class LandLordSettings extends StatefulWidget {
-  const LandLordSettings({Key key}) : super(key: key);
+  const LandLordSettings({Key? key}) : super(key: key);
 
   @override
   _LandLordSettingsState createState() => _LandLordSettingsState();
@@ -84,7 +84,7 @@ class _LandLordSettingsState extends State<LandLordSettings> {
                           ],
                           radiusStyle: true,
                           onToggle: (option) {
-                            setFingerPrintOption(option);
+                            setFingerPrintOption(option!);
                           },
                         ),
                       )

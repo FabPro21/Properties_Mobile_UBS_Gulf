@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notification_details.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notifications_controller.dart';
@@ -14,8 +15,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordUnReadNotifications extends StatefulWidget {
-  final int index;
-  const LandLordUnReadNotifications({Key key, this.index}) : super(key: key);
+  final int? index;
+  const LandLordUnReadNotifications({Key? key, this.index}) : super(key: key);
 
   @override
   _LandLordUnReadNotificationsState createState() =>
@@ -61,7 +62,7 @@ class _LandLordUnReadNotificationsState
                           child: Row(
                             children: [
                               Checkbox(
-                                onChanged: (bool value) {
+                                onChanged: (bool? value) {
                                   getLandLController.unreadCheckbox
                                       .toggleMarkAll();
                                 },
@@ -110,11 +111,11 @@ class _LandLordUnReadNotificationsState
                                         getLandLController
                                             .unreadNotifications
                                             .value
-                                            .notifications[index]
+                                            .notifications![index]
                                             .notificationId
                                             .toString());
                                     if (!getLandLController.unreadNotifications
-                                        .value.notifications[index].isRead)
+                                        .value.notifications![index].isRead!)
                                       getLandLController
                                           .unreadNotificationsLoading
                                           .value = true;
@@ -123,7 +124,7 @@ class _LandLordUnReadNotificationsState
                                     print('Result ::::: $res');
                                     if (res) {
                                       setState(() {
-                                        getLandLController.notificationsUnRead
+                                        getLandLController.notificationsUnRead!
                                             .removeAt(index);
                                         getLandLController.unreadLength =
                                             getLandLController.unreadLength - 1;
@@ -141,7 +142,7 @@ class _LandLordUnReadNotificationsState
                                               .value,
                                           onChanged: (val) {
                                             getLandLController.unreadCheckbox
-                                                .markItem(index, val);
+                                                .markItem(index, val!);
                                           },
                                         )
                                       : null,
@@ -160,99 +161,164 @@ class _LandLordUnReadNotificationsState
 
   Slidable slideable(int index) {
     return Slidable(
-      actions: <Widget>[
-        SlideAction(
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(1.0.h),
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.white,
-                    size: 3.0.h,
-                  ),
-                ),
-              ),
-              Text(
-                AppMetaLabels().markAsRead,
-                style: AppTextStyle.semiBoldBlue8,
-              )
-            ],
-          ),
-          //not defined closeOnTap so list will get closed when clicked
-          onTap: () async {
-            SessionController().setNotificationId(getLandLController
-                .unreadNotifications.value.notifications[index].notificationId
-                .toString());
-            getLandLController.unreadNotificationsLoading.value = true;
-            bool res =
-                await getLandLController.readNotifications(index, 'unread');
-            print('Result ::::: $res');
-            if (res) {
-              setState(() {
-                getLandLController.notificationsUnRead.removeAt(index);
-                getLandLController.unreadLength =
-                    getLandLController.unreadLength - 1;
-              });
-            }
-            getLandLController.unreadNotificationsLoading.value = false;
-          },
-        ),
-      ],
-      secondaryActions: <Widget>[
-        SlideAction(
-            color: Colors.grey[200],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 179, 0, 1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(1.0.h),
-                    child: Icon(
-                      Icons.archive,
-                      color: Colors.white,
-                      size: 3.0.h,
-                    ),
-                  ),
-                ),
-                Text(
-                  AppMetaLabels().archive,
-                  style: AppTextStyle.semiBoldBlue8
-                      .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
-                )
-              ],
-            ),
-            //not defined closeOnTap so list will get closed when clicked
-            onTap: () async {
-              SessionController().setNotificationId(getLandLController
-                  .unreadNotifications.value.notifications[index].notificationId
-                  .toString());
-
-              await getLandLController.archiveNotifications();
-              setState(() {
-                getLandLController.unreadLength =
-                    getLandLController.unreadLength - 1;
-                getLandLController.getNotifications.value.notifications
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the slide effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.check_circle_outline,
+            // color: Colors.blue,
+            onPressed: (context) async {
+              SessionController().setNotificationId(
+                getLandLController.unreadNotifications.value
+                    .notifications![index].notificationId
+                    .toString(),
+              );
+              getLandLController.unreadNotificationsLoading.value = true;
+              bool res =
+                  await getLandLController.readNotifications(index, 'unread');
+              print('Result ::::: $res');
+              if (res) {
+                // Update state to reflect changes
+                getLandLController.unreadNotifications.value.notifications!
                     .removeAt(index);
-              });
-            }),
-      ],
+                getLandLController.unreadLength =
+                    getLandLController.unreadLength - 1;
+              }
+              getLandLController.unreadNotificationsLoading.value = false;
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(), // Use DrawerMotion for the slide effect
+        children: [
+          SlidableAction(
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
+            foregroundColor: Colors.black,
+            icon: Icons.archive,
+            // color: Color.fromRGBO(255, 179, 0, 1),
+            onPressed: (context) async {
+              SessionController().setNotificationId(
+                getLandLController.unreadNotifications.value
+                    .notifications![index].notificationId
+                    .toString(),
+              );
+              await getLandLController.archiveNotifications();
+              // Update state to reflect changes
+              getLandLController.unreadLength =
+                  getLandLController.unreadLength - 1;
+              getLandLController.unreadNotifications.value.notifications!
+                  .removeAt(index);
+            },
+            borderRadius: BorderRadius.circular(8.0),
+            spacing: 8.0,
+          ),
+        ],
+      ),
       child: notification(index),
-      actionPane: SlidableDrawerActionPane(),
     );
+
+    // Slidable(
+    //   actions: <Widget>[
+    //     SlideAction(
+    //       color: Colors.grey[200],
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         children: [
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.blue,
+    //               shape: BoxShape.circle,
+    //             ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(1.0.h),
+    //               child: Icon(
+    //                 Icons.check_circle_outline,
+    //                 color: Colors.white,
+    //                 size: 3.0.h,
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             AppMetaLabels().markAsRead,
+    //             style: AppTextStyle.semiBoldBlue8,
+    //           )
+    //         ],
+    //       ),
+    //       //not defined closeOnTap so list will get closed when clicked
+    //       onTap: () async {
+    //         SessionController().setNotificationId(getLandLController
+    //             .unreadNotifications.value.notifications![index].notificationId
+    //             .toString());
+    //         getLandLController.unreadNotificationsLoading.value = true;
+    //         bool res =
+    //             await getLandLController.readNotifications(index, 'unread');
+    //         print('Result ::::: $res');
+    //         if (res) {
+    //           setState(() {
+    //             getLandLController.notificationsUnRead!.removeAt(index);
+    //             getLandLController.unreadLength =
+    //                 getLandLController.unreadLength - 1;
+    //           });
+    //         }
+    //         getLandLController.unreadNotificationsLoading.value = false;
+    //       },
+    //     ),
+    //   ],
+    //   secondaryActions: <Widget>[
+    //     SlideAction(
+    //         color: Colors.grey[200],
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.center,
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           children: [
+    //             Container(
+    //               decoration: BoxDecoration(
+    //                 color: Color.fromRGBO(255, 179, 0, 1),
+    //                 shape: BoxShape.circle,
+    //               ),
+    //               child: Padding(
+    //                 padding: EdgeInsets.all(1.0.h),
+    //                 child: Icon(
+    //                   Icons.archive,
+    //                   color: Colors.white,
+    //                   size: 3.0.h,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               AppMetaLabels().archive,
+    //               style: AppTextStyle.semiBoldBlue8
+    //                   .copyWith(color: Color.fromRGBO(255, 179, 0, 1)),
+    //             )
+    //           ],
+    //         ),
+    //         //not defined closeOnTap so list will get closed when clicked
+    //         onTap: () async {
+    //           SessionController().setNotificationId(getLandLController
+    //               .unreadNotifications
+    //               .value
+    //               .notifications![index]
+    //               .notificationId
+    //               .toString());
+
+    //           await getLandLController.archiveNotifications();
+    //           setState(() {
+    //             getLandLController.unreadLength =
+    //                 getLandLController.unreadLength - 1;
+    //             getLandLController.getNotifications.value.notifications!
+    //                 .removeAt(index);
+    //           });
+    //         }),
+    //   ],
+    //   child: notification(index),
+    //   actionPane: SlidableDrawerActionPane(),
+    // );
   }
 
   Widget notification(int index) {
@@ -266,7 +332,7 @@ class _LandLordUnReadNotificationsState
               Row(
                 children: [
                   if (!getLandLController
-                      .unreadNotifications.value.notifications[index].isRead)
+                      .unreadNotifications.value.notifications![index].isRead!)
                     Container(
                       height: 1.0.h,
                       width: 2.0.w,
@@ -284,10 +350,10 @@ class _LandLordUnReadNotificationsState
                     child: Text(
                       SessionController().getLanguage() == 1
                           ? getLandLController.getNotifications.value
-                                  .notifications[index].title ??
+                                  .notifications![index].title ??
                               ""
                           : getLandLController.getNotifications.value
-                                  .notifications[index].titleAR ??
+                                  .notifications![index].titleAR ??
                               "",
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.semiBoldBlack11,
@@ -298,17 +364,23 @@ class _LandLordUnReadNotificationsState
               Padding(
                 padding: EdgeInsets.only(left: 5.5.w, right: 5.5.w),
                 child: Html(
-                  customTextAlign: (_) => SessionController().getLanguage() == 1
-                      ? TextAlign.left
-                      : TextAlign.right,
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                   data: SessionController().getLanguage() == 1
                       ? getLandLController.getNotifications.value
-                              .notifications[index].description ??
+                              .notifications![index].description ??
                           ""
                       : getLandLController.getNotifications.value
-                              .notifications[index].descriptionAR ??
+                              .notifications![index].descriptionAR ??
                           "",
-                  defaultTextStyle: AppTextStyle.normalBlack10,
                 ),
               ),
               Padding(
@@ -317,7 +389,7 @@ class _LandLordUnReadNotificationsState
                 ),
                 child: Text(
                   getLandLController.unreadNotifications.value
-                          .notifications[index].createdOn ??
+                          .notifications![index].createdOn ??
                       "",
                   style: AppTextStyle.normalBlack10,
                 ),

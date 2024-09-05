@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-PaymentMethods paymentMethodsFromJson(String str) =>
-    PaymentMethods.fromJson(json.decode(str));
+PaymentMethods paymentMethodsFromJson(String? str) =>
+    PaymentMethods.fromJson(json.decode(str!));
 
-String paymentMethodsToJson(PaymentMethods data) => json.encode(data.toJson());
+String? paymentMethodsToJson(PaymentMethods data) => json.encode(data.toJson());
 
 class PaymentMethods {
   PaymentMethods({
@@ -17,12 +17,12 @@ class PaymentMethods {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<Payment> payments;
-  String message;
+  String? status;
+  String? statusCode;
+  List<Payment>? payments;
+  String? message;
 
-  factory PaymentMethods.fromJson(Map<String, dynamic> json) => PaymentMethods(
+  factory PaymentMethods.fromJson(Map<String?, dynamic> json) => PaymentMethods(
         status: json["status"],
         statusCode: json["statusCode"],
         payments: List<Payment>.from(
@@ -30,10 +30,10 @@ class PaymentMethods {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
-        "payments": List<dynamic>.from(payments.map((x) => x.toJson())),
+        "payments": List<dynamic>.from(payments!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -44,15 +44,15 @@ class Payment {
     this.name,
   });
 
-  int paymentMethodId;
-  String name;
+  int? paymentMethodId;
+  String? name;
 
-  factory Payment.fromJson(Map<String, dynamic> json) => Payment(
+  factory Payment.fromJson(Map<String?, dynamic> json) => Payment(
         paymentMethodId: json["paymentMethodId"],
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "paymentMethodId": paymentMethodId,
         "name": name,
       };

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -17,7 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class VendorDashboardTabs extends StatefulWidget {
-  const VendorDashboardTabs({Key key}) : super(key: key);
+  const VendorDashboardTabs({Key? key}) : super(key: key);
 
   @override
   _VendorDashboardTabsState createState() => _VendorDashboardTabsState();
@@ -34,7 +36,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
     super.initState();
   }
 
-  List<Widget> _buildScreens;
+  List<Widget>? _buildScreens;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
 
     return WillPopScope(
         onWillPop: () async =>
-            SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+            await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
         child: Directionality(
           textDirection: SessionController().getLanguage() == 1
               ? TextDirection.ltr
@@ -122,7 +124,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                   child: Column(
                     children: [
                       Expanded(
-                        child: _buildScreens[_selectedIndex],
+                        child: _buildScreens![_selectedIndex],
                       ),
                       SessionController().vendorUserType == 'Technician'
                           ? CustomNavBar(

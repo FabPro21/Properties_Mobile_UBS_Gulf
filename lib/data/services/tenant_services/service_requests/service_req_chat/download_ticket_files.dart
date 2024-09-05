@@ -10,7 +10,7 @@ class DownloadTenantTicketFiles {
   static Future<dynamic> getData(int id) async {
     var url = AppConfig().downloadTicketFile;
 
-    var response = await BaseClientClass.post(url, {"TicketReplyId":id.toString()});
+    var response = await BaseClientClass.post(url ?? "", {"TicketReplyId":id.toString()});
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

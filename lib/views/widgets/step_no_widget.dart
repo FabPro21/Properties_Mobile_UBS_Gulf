@@ -5,12 +5,12 @@ import 'package:sizer/sizer.dart';
 import '../../utils/styles/colors.dart';
 
 class StepNoWidget extends StatelessWidget {
-  final String label;
-  final String tooltip;
-  final Color color;
-  final Color textColor;
+  final String? label;
+  final String? tooltip;
+  final Color? color;
+  final Color? textColor;
   StepNoWidget({
-    Key key,
+    Key? key,
     this.label,
     this.tooltip,
     this.color = Colors.black12,

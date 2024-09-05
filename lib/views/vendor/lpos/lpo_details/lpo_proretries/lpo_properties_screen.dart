@@ -17,8 +17,8 @@ import '../../../../../data/helpers/session_controller.dart';
 import 'lpo_proretries_controller.dart';
 
 class LpoPropertiesScreen extends StatefulWidget {
-  final Lpo lpo;
-  const LpoPropertiesScreen({Key key, this.lpo}) : super(key: key);
+  final Lpo? lpo;
+  const LpoPropertiesScreen({Key? key, this.lpo}) : super(key: key);
 
   @override
   _LpoPropertiesScreenState createState() => _LpoPropertiesScreenState();
@@ -74,7 +74,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                     borderRadius: BorderRadius.circular(2.0.h),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey[200],
+                                        color: Colors.grey[200] ?? Colors.grey,
                                         blurRadius: 0.4.h,
                                         spreadRadius: 0.8.h,
                                         offset: Offset(0.1.h, 0.1.h),
@@ -87,33 +87,33 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                     child: Column(
                                       children: [
                                         rowList(AppMetaLabels().lpoDate,
-                                            " ${widget.lpo.lpoDate}"),
+                                            " ${widget.lpo?.lpoDate}"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
                                         rowList(AppMetaLabels().lPOType,
-                                            "${widget.lpo.lpoType}"),
+                                            "${widget.lpo?.lpoType}"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
                                         rowList(AppMetaLabels().amount,
-                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo.grossAmount)}"),
+                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo?.grossAmount)}"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
                                         rowList(AppMetaLabels().discountAmount,
-                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo.discountAmount)}"),
+                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo?.discountAmount)}"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
                                         rowList(
                                             AppMetaLabels().discountPercentage,
-                                            "${widget.lpo.discountPercentage.toStringAsFixed(2)}%"),
+                                            "${widget.lpo?.discountPercentage?.toStringAsFixed(2)}%"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
                                         rowList(AppMetaLabels().netAmount,
-                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo.netAmount)}"),
+                                            "${AppMetaLabels().aed} ${intl.NumberFormat('#,##0.00', 'AR').format(widget.lpo?.netAmount)}"),
                                         SizedBox(
                                           height: 1.0.h,
                                         ),
@@ -129,11 +129,11 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                               text: SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? widget.lpo.lpoStatus ?? ""
-                                                  : widget.lpo.lpoStatusAr ??
+                                                  ? widget.lpo?.lpoStatus ?? ""
+                                                  : widget.lpo?.lpoStatusAr ??
                                                       "",
                                               valueToCompare:
-                                                  widget.lpo.lpoStatus,
+                                                  widget.lpo?.lpoStatus,
                                             ),
                                           ],
                                         ),
@@ -148,14 +148,14 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                   height: 3.0.h,
                                 ),
                                 Container(
-                                  // height: widget.lpo.caseNo != 0 ? 75.h : 85.h,
+                                  // height: widget.lpo?.caseNo != 0 ? 75.h : 85.h,
                                   margin: EdgeInsets.symmetric(horizontal: 2.w),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(2.0.h),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey[200],
+                                        color: Colors.grey[200] ?? Colors.grey,
                                         blurRadius: 0.4.h,
                                         spreadRadius: 0.8.h,
                                         offset: Offset(0.1.h, 0.1.h),
@@ -171,15 +171,17 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                       String propName =
                                           SessionController().getLanguage() == 1
                                               ? getLpoPropertiesController
-                                                  .lpoProperties
-                                                  .value
-                                                  .lpoProperties[index]
-                                                  .propertyName
+                                                      .lpoProperties
+                                                      .value
+                                                      .lpoProperties![index]
+                                                      .propertyName ??
+                                                  ""
                                               : getLpoPropertiesController
-                                                  .lpoProperties
-                                                  .value
-                                                  .lpoProperties[index]
-                                                  .propertyNameAr;
+                                                      .lpoProperties
+                                                      .value
+                                                      .lpoProperties![index]
+                                                      .propertyNameAr ??
+                                                  "";
                                       if (propName.contains(" ")) {
                                         List<String> mystring =
                                             propName.split(" ");
@@ -193,7 +195,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                       double am = getLpoPropertiesController
                                           .lpoProperties
                                           .value
-                                          .lpoProperties[index]
+                                          .lpoProperties![index]
                                           .amount;
                                       final paidFormatter =
                                           intl.NumberFormat('#,##0.00', 'AR');
@@ -231,7 +233,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                       ) {
                                                         if (snapshot.hasData) {
                                                           return Image.memory(
-                                                              snapshot.data,
+                                                              snapshot.data!,
                                                               fit:
                                                                   BoxFit.cover);
                                                         } else {
@@ -274,17 +276,19 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                                         .getLanguage() ==
                                                                     1
                                                                 ? getLpoPropertiesController
-                                                                    .lpoProperties
-                                                                    .value
-                                                                    .lpoProperties[
-                                                                        index]
-                                                                    .propertyName
+                                                                        .lpoProperties
+                                                                        .value
+                                                                        .lpoProperties![
+                                                                            index]
+                                                                        .propertyName ??
+                                                                    ""
                                                                 : getLpoPropertiesController
-                                                                    .lpoProperties
-                                                                    .value
-                                                                    .lpoProperties[
-                                                                        index]
-                                                                    .propertyNameAr,
+                                                                        .lpoProperties
+                                                                        .value
+                                                                        .lpoProperties![
+                                                                            index]
+                                                                        .propertyNameAr ??
+                                                                    "",
                                                             style: AppTextStyle
                                                                 .semiBoldBlack11,
                                                             overflow:
@@ -307,14 +311,14 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                               ? getLpoPropertiesController
                                                                       .lpoProperties
                                                                       .value
-                                                                      .lpoProperties[
+                                                                      .lpoProperties![
                                                                           index]
                                                                       .propertyAddress ??
                                                                   ""
                                                               : getLpoPropertiesController
                                                                       .lpoProperties
                                                                       .value
-                                                                      .lpoProperties[
+                                                                      .lpoProperties![
                                                                           index]
                                                                       .propertyAddressAr ??
                                                                   "",
@@ -349,8 +353,8 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
 
                                 // commented this 16 March 2024
                                 // jb hum funcionality implement karain gay tb uncomment kar lain gay
-                                // if (widget.lpo.caseNo != '0')
-                                // if (widget.lpo.caseNo != '')
+                                // if (widget.lpo?.caseNo != '0')
+                                // if (widget.lpo?.caseNo != '')
                                 //     Container(
                                 //       margin: EdgeInsets.only(top: 2.h),
                                 //       height: 13.0.h,
@@ -370,14 +374,14 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                 //       child: ElevatedButton(
                                 //         onPressed: () {
                                 //           print(
-                                //               'Case No :::: ${(widget.lpo.caseNo != '0')}');
+                                //               'Case No :::: ${(widget.lpo?.caseNo != '0')}');
                                 //           print(
-                                //               'Case No :::: ${(widget.lpo.caseNo != null)}');
+                                //               'Case No :::: ${(widget.lpo?.caseNo != null)}');
                                 //           print(
-                                //               'Case No :::: ${widget.lpo.caseNo}');
+                                //               'Case No :::: ${widget.lpo?.caseNo}');
                                 //           Get.to(() => UploadDocs(
                                 //                 caseNo: int.parse(widget
-                                //                     .lpo.caseNo
+                                //                     .lpo?.caseNo
                                 //                     .toString()),
                                 //                 title: AppMetaLabels().lpoAck,
                                 //                 docCode: 91,
@@ -397,7 +401,6 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                 //         ),
                                 //       ),
                                 //     )
-                             
                               ],
                             ),
                           ),

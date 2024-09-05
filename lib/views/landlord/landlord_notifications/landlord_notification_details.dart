@@ -1,5 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notifications_controller.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -12,14 +15,15 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordNotificationDetails extends StatefulWidget {
-  const LandlordNotificationDetails({Key key}) : super(key: key);
+  const LandlordNotificationDetails({Key? key}) : super(key: key);
 
   @override
   State<LandlordNotificationDetails> createState() =>
       _LandlordNotificationDetailsState();
 }
 
-class _LandlordNotificationDetailsState extends State<LandlordNotificationDetails> {
+class _LandlordNotificationDetailsState
+    extends State<LandlordNotificationDetails> {
   var getLandLController = Get.put(LandlordNotificationsController());
   _getData() async {
     await getLandLController.notificationsDetails();
@@ -69,7 +73,8 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                 child: Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Obx(() {
-                    return getLandLController.loadingnotificationsDetail.value ==
+                    return getLandLController
+                                .loadingnotificationsDetail.value ==
                             true
                         ? Padding(
                             padding: EdgeInsets.only(top: 40.0.h),
@@ -108,19 +113,17 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                             SessionController().getLanguage() ==
                                                     1
                                                 ? getLandLController
-                                                        .notificationsDetailModel
-                                                        .value
-                                                        .notification
-                                                        .title
-                                                        .toString() ??
-                                                    ""
+                                                    .notificationsDetailModel
+                                                    .value
+                                                    .notification!
+                                                    .title
+                                                    .toString()
                                                 : getLandLController
-                                                        .notificationsDetailModel
-                                                        .value
-                                                        .notification
-                                                        .titleAR
-                                                        .toString() ??
-                                                    "",
+                                                    .notificationsDetailModel
+                                                    .value
+                                                    .notification!
+                                                    .titleAR
+                                                    .toString(),
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 2,
                                             style: AppTextStyle.semiBoldBlack13,
@@ -136,10 +139,9 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                             getLandLController
                                                     .notificationsDetailModel
                                                     .value
-                                                    .notification
+                                                    .notification!
                                                     .createdOn
-                                                    .toString() ??
-                                                "",
+                                                    .toString() ,
                                             style: AppTextStyle.normalBlack10,
                                           ),
                                         ),
@@ -150,31 +152,34 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                               top: 1.0.h,
                                               bottom: 1.0.h),
                                           child: Html(
-                                            customTextAlign: (_) =>
-                                                SessionController()
-                                                            .getLanguage() ==
-                                                        1
-                                                    ? TextAlign.left
-                                                    : TextAlign.right,
                                             data: SessionController()
                                                         .getLanguage() ==
                                                     1
                                                 ? getLandLController
-                                                        .notificationsDetailModel
-                                                        .value
-                                                        .notification
-                                                        .description
-                                                        .toString() ??
-                                                    ""
+                                                    .notificationsDetailModel
+                                                    .value
+                                                    .notification!
+                                                    .description
+                                                    .toString()
                                                 : getLandLController
-                                                        .notificationsDetailModel
-                                                        .value
-                                                        .notification
-                                                        .descriptionAR
-                                                        .toString() ??
-                                                    "",
-                                            defaultTextStyle:
-                                                AppTextStyle.normalBlack10,
+                                                    .notificationsDetailModel
+                                                    .value
+                                                    .notification!
+                                                    .descriptionAR
+                                                    .toString(),
+                                            style: {
+                                              'html': Style(
+                                                textAlign: SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? TextAlign.left
+                                                    : TextAlign.right,
+                                                color: Colors.black,
+                                                fontFamily:
+                                                    AppFonts.graphikRegular,
+                                                fontSize: FontSize(10.0),
+                                              ),
+                                            },
                                           ),
                                         ),
                                       ],
@@ -182,7 +187,8 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                   ),
                                   if (!getLandLController.loadingFiles.value &&
                                       getLandLController.files != null &&
-                                      getLandLController.files.record.isNotEmpty)
+                                      getLandLController
+                                          .files!.record!.isNotEmpty)
                                     Container(
                                       margin: EdgeInsets.only(top: 3.h),
                                       padding: EdgeInsets.all(2.h),
@@ -215,7 +221,7 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                               physics:
                                                   NeverScrollableScrollPhysics(),
                                               itemCount: getLandLController
-                                                  .files.record.length,
+                                                  .files!.record!.length,
                                               itemBuilder: (context, index) {
                                                 return Column(
                                                   children: [
@@ -226,8 +232,8 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                                       children: [
                                                         Text(
                                                           getLandLController
-                                                                  .files
-                                                                  .record[index]
+                                                                  .files!
+                                                                  .record![index]
                                                                   .fileName ??
                                                               '',
                                                           style: AppTextStyle
@@ -238,10 +244,10 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                                           width: 50,
                                                           child: Obx(() {
                                                             return getLandLController
-                                                                    .files
-                                                                    .record[
+                                                                    .files!
+                                                                    .record![
                                                                         index]
-                                                                    .downloading
+                                                                    .downloading!
                                                                     .value
                                                                 ? LoadingIndicatorBlue(
                                                                     strokeWidth:
@@ -270,8 +276,8 @@ class _LandlordNotificationDetailsState extends State<LandlordNotificationDetail
                                                       ],
                                                     ),
                                                     if (index <
-                                                        getLandLController.files
-                                                                .record.length -
+                                                        getLandLController.files!
+                                                                .record!.length -
                                                             1)
                                                       AppDivider()
                                                   ],

@@ -42,27 +42,28 @@ class ContractEndActionsController extends GetxController {
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
     }
-    contract.downloading.value = true;
+    contract.downloading!.value = true;
     var result =
-        await TenantRepository.downloadOfferLetter(contract.contractid);
+        await TenantRepository.downloadOfferLetter(contract.contractid ?? 0);
 
-    contract.downloading.value = false;
+    contract.downloading!.value = false;
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, contract.contractno);
-        try {
-          Get.back();
-          OpenFile.open(path);
-        } catch (e) {
-          Get.back();
-          print(e);
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, contract.contractno ?? '');
+      try {
+        Get.back();
+        OpenFile.open(path);
+      } catch (e) {
+        Get.back();
+        print(e);
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
       }
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,

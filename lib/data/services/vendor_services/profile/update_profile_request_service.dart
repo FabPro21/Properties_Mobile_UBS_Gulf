@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart' as foundation;
 
 class UpdateProfileRequestService {
   static Future<dynamic> updateProfileRequest() async {
-    var resp = await BaseClientClass.post(AppConfig().updateProfileRequest, {});
+    var resp = await BaseClientClass.post(AppConfig().updateProfileRequest??"", {});
     if (resp is http.Response) {
       try {
         return vendorUpdateProfileRequestFromJson(resp.body);

@@ -13,8 +13,8 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantOffersDetails extends StatefulWidget {
-  final String offerId;
-  const TenantOffersDetails({Key key, this.offerId}) : super(key: key);
+  final String? offerId;
+  const TenantOffersDetails({Key? key, this.offerId}) : super(key: key);
 
   @override
   _TenantOffersDetailsState createState() => _TenantOffersDetailsState();
@@ -30,7 +30,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
   }
 
   _getdata() async {
-    await _controller.getOffersDetails(widget.offerId);
+    await _controller.getOffersDetails(widget.offerId!);
   }
 
   @override
@@ -84,13 +84,16 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                               SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? _controller.offersDetails
-                                                          .value.record.title ??
+                                                  ? _controller
+                                                          .offersDetails
+                                                          .value
+                                                          .record!
+                                                          .title ??
                                                       ""
                                                   : _controller
                                                           .offersDetails
                                                           .value
-                                                          .record
+                                                          .record!
                                                           .titleAr ??
                                                       "",
                                               style:
@@ -115,19 +118,20 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                             data: SessionController()
                                                         .getLanguage() ==
                                                     1
-                                                ? _controller
-                                                        .offersDetails
-                                                        .value
-                                                        .record
-                                                        .description.trim() ??
-                                                    "-"
+                                                ? _controller.offersDetails
+                                                    .value.record!.description!
+                                                    .trim()
                                                 : _controller
                                                         .offersDetails
                                                         .value
-                                                        .record
-                                                        .desriptionAr.trim() ??
+                                                        .record!
+                                                        .desriptionAr
+                                                        .trim() ??
                                                     "_",
-                                            padding: EdgeInsets.zero,
+                                            style: {
+                                              'html': Style(
+                                                  padding: HtmlPaddings.zero),
+                                            },
                                           ),
                                           // child: Text(
                                           //   SessionController().getLanguage() ==
@@ -149,7 +153,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                         ),
                                       ),
                                       _controller.offersDetails.value
-                                                  .offerProperties.length ==
+                                                  .offerProperties!.length ==
                                               0
                                           ? SizedBox()
                                           : Padding(
@@ -180,7 +184,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                               itemCount: _controller
                                                   .offersDetails
                                                   .value
-                                                  .offerProperties
+                                                  .offerProperties!
                                                   .length,
                                               itemBuilder: (context, index) {
                                                 return Padding(
@@ -207,17 +211,17 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                                                 ? _controller
                                                                         .offersDetails
                                                                         .value
-                                                                        .offerProperties[
+                                                                        .offerProperties![
                                                                             index]
-                                                                        .propertyName.trim() ??
-                                                                    ""
+                                                                        .propertyName!
+                                                                        .trim() 
                                                                 : _controller
                                                                         .offersDetails
                                                                         .value
-                                                                        .offerProperties[
+                                                                        .offerProperties![
                                                                             index]
-                                                                        .propertyNameAr.trim() ??
-                                                                    "",
+                                                                        .propertyNameAr!
+                                                                        .trim() ,
                                                             style: AppTextStyle
                                                                 .normalBlack12,
                                                             maxLines: null,

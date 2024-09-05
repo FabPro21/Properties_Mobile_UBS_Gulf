@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as crasul;
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class CarouselSearchMap extends StatelessWidget {
-  CarouselSearchMap({Key key}) : super(key: key);
-  final CarouselController buttonCarouselController = CarouselController();
+  CarouselSearchMap({Key? key}) : super(key: key);
+  // final CarouselController buttonCarouselController = CarouselController();
 
   @override
-  Widget build(BuildContext context) => CarouselSlider.builder(
-        options: CarouselOptions(
-          enlargeStrategy: CenterPageEnlargeStrategy.scale,
+  Widget build(BuildContext context) => crasul.CarouselSlider.builder(
+        options: crasul.CarouselOptions(
+          enlargeStrategy: crasul.CenterPageEnlargeStrategy.scale,
           aspectRatio: 10 / 2,
           enlargeCenterPage: false,
           viewportFraction: 0.83,

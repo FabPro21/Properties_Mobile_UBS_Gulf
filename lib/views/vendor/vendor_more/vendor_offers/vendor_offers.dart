@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorOffers extends StatefulWidget {
-  const VendorOffers({Key key}) : super(key: key);
+  const VendorOffers({Key? key}) : super(key: key);
 
   @override
   _VendorOffersState createState() => _VendorOffersState();
@@ -80,7 +80,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                   offerId: _controller
                                                       .offers
                                                       .value
-                                                      .record[index]
+                                                      .record?[index]
                                                       .offerid
                                                       .toString()));
                                             },
@@ -92,13 +92,13 @@ class _VendorOffersState extends State<VendorOffers> {
                                                       ? _controller
                                                               .offers
                                                               .value
-                                                              .record[index]
+                                                              .record![index]
                                                               .title ??
                                                           ""
                                                       : _controller
                                                               .offers
                                                               .value
-                                                              .record[index]
+                                                              .record![index]
                                                               .titleAr ??
                                                           "",
                                                   style: AppTextStyle
@@ -160,7 +160,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                         offerId: _controller
                                                             .offers
                                                             .value
-                                                            .record[index]
+                                                            .record?[index]
                                                             .offerid
                                                             .toString()));
                                               },
@@ -172,13 +172,13 @@ class _VendorOffersState extends State<VendorOffers> {
                                                         ? _controller
                                                                 .offers
                                                                 .value
-                                                                .record[index]
+                                                                .record![index]
                                                                 .title ??
                                                             ""
                                                         : _controller
                                                                 .offers
                                                                 .value
-                                                                .record[index]
+                                                                .record![index]
                                                                 .titleAr ??
                                                             "",
                                                     style: AppTextStyle

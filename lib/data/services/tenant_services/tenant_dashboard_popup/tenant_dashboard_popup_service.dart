@@ -7,7 +7,7 @@ class TenantDashboardPopupService {
   static Future<dynamic> getPopup() async {
     var url = AppConfig().getDashboardPopup;
 
-    var response = await BaseClientClass.post(url, {});
+    var response = await BaseClientClass.post(url ?? "", {});
 
     if (response is http.Response) {
       var model = tenantDashboardNotificationPopupModelFromJson(response.body);

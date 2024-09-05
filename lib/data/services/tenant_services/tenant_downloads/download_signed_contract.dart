@@ -9,7 +9,7 @@ class DownloadSignedContract {
   static Future<dynamic> getData(int contractId) async {
     var url = AppConfig().downloadSignedContract;
     var data = {"ContractId":contractId.toString()};
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

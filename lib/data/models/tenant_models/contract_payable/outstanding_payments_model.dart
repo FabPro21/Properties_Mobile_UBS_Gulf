@@ -8,10 +8,10 @@ import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-OutstandingPaymentsModel outstandingPaymentsModelFromJson(String str) =>
-    OutstandingPaymentsModel.fromJson(json.decode(str));
+OutstandingPaymentsModel outstandingPaymentsModelFromJson(String? str) =>
+    OutstandingPaymentsModel.fromJson(json.decode(str!));
 
-String outstandingPaymentsModelToJson(OutstandingPaymentsModel data) =>
+String? outstandingPaymentsModelToJson(OutstandingPaymentsModel data) =>
     json.encode(data.toJson());
 
 class OutstandingPaymentsModel {
@@ -20,18 +20,18 @@ class OutstandingPaymentsModel {
     this.status,
   });
 
-  List<Record> record;
-  String status;
+  List<Record>? record;
+  String? status;
 
-  factory OutstandingPaymentsModel.fromJson(Map<String, dynamic> json) =>
+  factory OutstandingPaymentsModel.fromJson(Map<String?, dynamic> json) =>
       OutstandingPaymentsModel(
         record:
             List<Record>.from(json["record"].map((x) => Record.fromJson(x))),
         status: json["status"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "record": List<dynamic>.from(record.map((x) => x.toJson())),
+  Map<String?, dynamic> toJson() => {
+        "record": List<dynamic>.from(record!.map((x) => x.toJson())),
         "status": status,
       };
 }
@@ -61,29 +61,29 @@ class Record {
       this.isRejected,
       this.acceptPaymentType});
 
-  String type;
-  String title;
-  String paymentMode;
-  String cheque;
-  double amount;
-  String amountFormatted;
-  String description;
-  String paymentDate;
-  int paymentSettingId;
-  int contractId;
+  String? type;
+  String? title;
+  String? paymentMode;
+  String? cheque;
+  double? amount;
+  String? amountFormatted;
+  String? description;
+  String? paymentDate;
+  int? paymentSettingId;
+  int? contractId;
   // int paymentMethodId;
-  int contractchargeId;
-  int contractPaymentId;
-  int vatOnRentContractId;
-  int vatOnChargeId;
-  String selfDelivery;
-  int confirmed;
-  String chequeNo = '';
-  bool isRejected;
-  int acceptPaymentType;
+  int? contractchargeId;
+  int? contractPaymentId;
+  int? vatOnRentContractId;
+  int? vatOnChargeId;
+  String? selfDelivery;
+  int? confirmed;
+  String? chequeNo = '';
+  bool? isRejected;
+  int? acceptPaymentType;
 
   RxBool isChecked = false.obs;
-  RxInt defaultpaymentmethodtype = 0.obs;
+  RxInt? defaultpaymentmethodtype = 0.obs;
   RxBool updatingPaymentMethod = false.obs;
   bool errorUpdatingPaymentMethod = false;
   RxBool uploadingCheque = false.obs;
@@ -94,14 +94,14 @@ class Record {
   RxBool errorRemovingCheque = false.obs;
   RxBool removingCheque = false.obs;
   RxBool errorChequeNo = false.obs;
-  Uint8List chequeFile;
-  String filePath;
-  String aramexAddress;
-  String titleAr;
+  Uint8List? chequeFile;
+  String? filePath;
+  String? aramexAddress;
+  String? titleAr;
 
-  factory Record.fromJson(Map<String, dynamic> json) {
+  factory Record.fromJson(Map<String?, dynamic> json) {
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    String amountFormatted = amountFormat.format(json["amount"] ?? 0);
+    String? amountFormatted = amountFormat.format(json["amount"] ?? 0);
     int paymentMethodId = json["paymentMethodId"];
     RxInt paymentMethodId2 = paymentMethodId.obs;
     return Record(
@@ -129,7 +129,7 @@ class Record {
         acceptPaymentType: json['acceptPaymentType']);
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "type": type,
         "title": title,
         "paymentMode": paymentMode,
@@ -158,10 +158,10 @@ class Record {
 // import 'package:get/get.dart';
 // import 'package:intl/intl.dart';
 
-// OutstandingPaymentsModel outstandingPaymentsModelFromJson(String str) =>
+// OutstandingPaymentsModel outstandingPaymentsModelFromJson(String? str) =>
 //     OutstandingPaymentsModel.fromJson(json.decode(str));
 
-// String outstandingPaymentsModelToJson(OutstandingPaymentsModel data) =>
+// String? outstandingPaymentsModelToJson(OutstandingPaymentsModel data) =>
 //     json.encode(data.toJson());
 
 // class OutstandingPaymentsModel {
@@ -171,16 +171,16 @@ class Record {
 //   });
 
 //   List<Record> record;
-//   String status;
+//   String? status;
 
-//   factory OutstandingPaymentsModel.fromJson(Map<String, dynamic> json) =>
+//   factory OutstandingPaymentsModel.fromJson(Map<String?, dynamic> json) =>
 //       OutstandingPaymentsModel(
 //         record:
 //             List<Record>.from(json["record"].map((x) => Record.fromJson(x))),
 //         status: json["status"],
 //       );
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "record": List<dynamic>.from(record.map((x) => x.toJson())),
 //         "status": status,
 //       };
@@ -211,14 +211,14 @@ class Record {
 //       this.isRejected,
 //       this.acceptPaymentType});
 
-//   String type;
-//   String title;
-//   String paymentMode;
-//   String cheque;
+//   String? type;
+//   String? title;
+//   String? paymentMode;
+//   String? cheque;
 //   double amount;
-//   String amountFormatted;
-//   String description;
-//   String paymentDate;
+//   String? amountFormatted;
+//   String? description;
+//   String? paymentDate;
 //   int paymentSettingId;
 //   int contractId;
 //   // int paymentMethodId;
@@ -226,9 +226,9 @@ class Record {
 //   int contractPaymentId;
 //   int vatOnRentContractId;
 //   int vatOnChargeId;
-//   String selfDelivery;
+//   String? selfDelivery;
 //   int confirmed;
-//   String chequeNo = '';
+//   String? chequeNo = '';
 //   bool isRejected;
 //   int acceptPaymentType;
 
@@ -245,13 +245,13 @@ class Record {
 //   RxBool removingCheque = false.obs;
 //   RxBool errorChequeNo = false.obs;
 //   Uint8List chequeFile;
-//   String filePath;
-//   String aramexAddress;
-//   String titleAr;
+//   String? filePath;
+//   String? aramexAddress;
+//   String? titleAr;
 
-//   factory Record.fromJson(Map<String, dynamic> json) {
+//   factory Record.fromJson(Map<String?, dynamic> json) {
 //     final amountFormat = NumberFormat('#,##0.00', 'AR');
-//     String amountFormatted = amountFormat.format(json["amount"] ?? 0);
+//     String? amountFormatted = amountFormat.format(json["amount"] ?? 0);
 //     int paymentMethodId = json["paymentMethodId"];
 //     RxInt paymentMethodId2 = paymentMethodId.obs;
 //     return Record(
@@ -279,7 +279,7 @@ class Record {
 //         acceptPaymentType: json['acceptPaymentType']);
 //   }
 
-//   Map<String, dynamic> toJson() => {
+//   Map<String?, dynamic> toJson() => {
 //         "type": type,
 //         "title": title,
 //         "paymentMode": paymentMode,

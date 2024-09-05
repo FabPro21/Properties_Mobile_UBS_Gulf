@@ -19,12 +19,12 @@ import '../tenant_request_details_controller.dart';
 // 1122 workin in this class
 // ignore: must_be_immutable
 class TenantServiceRequestTabs extends StatefulWidget {
-  final String requestNo;
-  final String caller;
-  final int initialIndex;
-  String title;
+  final String? requestNo;
+  final String? caller;
+  final int? initialIndex;
+  String? title;
   TenantServiceRequestTabs({
-    Key key,
+    Key? key,
     this.requestNo,
     this.caller,
     this.title,
@@ -42,7 +42,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
   final tenantRDController = Get.put(TenantRequestDetailsController());
   @override
   void initState() {
-    tenantRDController.caseNo = int.parse(widget.requestNo);
+    tenantRDController.caseNo = int.parse(widget.requestNo??"");
     print('********initState******** ${widget.caller}');
     print(tenantRDController.caseNo);
     super.initState();
@@ -88,7 +88,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                       ),
                       const Spacer(),
                       Text(
-                        widget.requestNo,
+                        widget.requestNo??"",
                         style: AppTextStyle.semiBoldBlack12,
                       ),
                     ],
@@ -109,7 +109,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                                     tabBarViewProperties: TabBarViewProperties(
                                       physics: NeverScrollableScrollPhysics(),
                                     ),
-                                    initialIndex: widget.initialIndex,
+                                    initialIndex: widget.initialIndex??0,
                                     onChange: (index) {
                                       FocusScope.of(context).unfocus();
                                     },
@@ -122,8 +122,8 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                                       if (tenantRDController
                                           .tenantRequestDetails
                                           .value
-                                          .statusInfo
-                                          .canUploadDocs)
+                                          .statusInfo!
+                                          .canUploadDocs!)
                                         Tab(
                                             text: AppMetaLabels()
                                                 .documentsCapital),
@@ -140,22 +140,22 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                                     ),
                                     views: [
                                       TenantRequestDetails(
-                                        caller: widget.caller,
-                                        caseNo: widget.requestNo,
+                                        caller: widget.caller??"",
+                                        caseNo: widget.requestNo??"0",
                                       ),
                                       if (tenantRDController
                                           .tenantRequestDetails
                                           .value
-                                          .statusInfo
-                                          .canUploadDocs)
+                                          .statusInfo!
+                                          .canUploadDocs!)
                                         TenantServiceDocuments(
-                                          caseNo: widget.requestNo,
-                                          caller: widget.caller,
+                                          caseNo: widget.requestNo??'0',
+                                          caller: widget.caller??"",
                                         ),
                                       TenantServiceRequestUpdates(
                                           canCommunicate:
                                               tenantRDController.canCommunicate,
-                                          reqNo: widget.requestNo),
+                                          reqNo: widget.requestNo??'0'),
                                     ],
                                   ),
                                   !tenantRDController.isEnableBackButton.value

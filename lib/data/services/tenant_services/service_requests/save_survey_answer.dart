@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class SaveSurveyAnswer {
   static Future<dynamic> saveAnswer(
       int customerChoice, int answerId, String desc, int isCompleted) async {
-    var response = await BaseClientClass.post(AppConfig().saveSurveyAnswer, {
+    var response = await BaseClientClass.post(AppConfig().saveSurveyAnswer??"", {
       "answerId": answerId,
       "customerChoice": customerChoice,
       "description": desc,

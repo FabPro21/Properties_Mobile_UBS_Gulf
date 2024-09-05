@@ -21,7 +21,7 @@ import 'contract_payments_controller.dart';
 // unverified
 class PaymentsScreen extends StatefulWidget {
   const PaymentsScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -207,11 +207,11 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
   InkWell verifiedPayment(int index) {
     final paidFormatter = NumberFormat('#,##0.00', 'AR');
     String amount = paidFormatter
-        .format(paymentsController.payments.payments[index].amount);
+        .format(paymentsController.payments.payments![index].amount);
 
     print(
-        'Cheque Api Condition ::: ${paymentsController.payments.payments[index].paymentType.trim().toLowerCase()}');
-    if (paymentsController.payments.payments[index].paymentType
+        'Cheque Api Condition ::: ${paymentsController.payments.payments![index].paymentType!.trim().toLowerCase()}');
+    if (paymentsController.payments.payments![index].paymentType!
             .trim()
             .toLowerCase() ==
         'cheque') {
@@ -221,7 +221,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       onTap: () {
         // Get.to(
         //   () => TenantPaymentDetails(
-        //       payment: paymentsController.payments.payments[index]),
+        //       payment: paymentsController.payments.payments![index]),
         // );
       },
       child: Column(
@@ -254,12 +254,12 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     AppMetaLabels().paymentType,
                     SessionController().getLanguage() == 1
                         ? paymentsController
-                                .payments.payments[index].paymentType ??
+                                .payments.payments![index].paymentType ??
                             ""
                         : paymentsController
-                                .payments.payments[index].paymentTypeAr ??
+                                .payments.payments![index].paymentTypeAr ??
                             ""),
-                if (paymentsController.payments.payments[index].paymentType ==
+                if (paymentsController.payments.payments![index].paymentType ==
                     'Cheque')
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 2.0.h),
@@ -272,24 +272,24 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     child: Column(
                       children: [
                         Obx(() {
-                          return paymentsController.payments.payments[index]
-                                      .loadingCheque.value ==
+                          return paymentsController.payments.payments![index]
+                                      .loadingCheque!.value ==
                                   true
                               ? Padding(
                                   padding: EdgeInsets.all(2.h),
                                   child: LoadingIndicatorBlue(),
                                 )
-                              : paymentsController.payments.payments[index]
+                              : paymentsController.payments.payments![index]
                                           .errorLoadingCheque !=
                                       ''
                                   ? Padding(
                                       padding: EdgeInsets.all(2.h),
                                       child: AppErrorWidget(
                                         errorText: paymentsController.payments
-                                            .payments[index].errorLoadingCheque,
+                                            .payments![index].errorLoadingCheque??"error",
                                       ),
                                     )
-                                  : paymentsController.payments.payments[index]
+                                  : paymentsController.payments.payments![index]
                                               .cheque !=
                                           null
                                       ? ListView.builder(
@@ -299,9 +299,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                           padding: EdgeInsets.zero,
                                           itemCount: paymentsController
                                               .payments
-                                              .payments[index]
-                                              .cheque
-                                              .transactionCheque
+                                              .payments![index]
+                                              .cheque!
+                                              .transactionCheque!
                                               .length,
                                           itemBuilder: (context, index2) {
                                             return Column(
@@ -310,20 +310,19 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                                     AppMetaLabels().chequeNo,
                                                     paymentsController
                                                             .payments
-                                                            .payments[index]
-                                                            .cheque
-                                                            .transactionCheque[
+                                                            .payments![index]
+                                                            .cheque!
+                                                            .transactionCheque![
                                                                 index2]
                                                             .chequeNo
-                                                            .toString() ??
-                                                        ""),
+                                                            .toString() ),
                                                 rowList(
                                                     AppMetaLabels().chequeDate,
                                                     paymentsController
                                                             .payments
-                                                            .payments[index]
-                                                            .cheque
-                                                            .transactionCheque[
+                                                            .payments![index]
+                                                            .cheque!
+                                                            .transactionCheque![
                                                                 index2]
                                                             .chequeDate ??
                                                         ""),
@@ -335,17 +334,17 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                                             1
                                                         ? paymentsController
                                                                 .payments
-                                                                .payments[index]
-                                                                .cheque
-                                                                .transactionCheque[
+                                                                .payments![index]
+                                                                .cheque!
+                                                                .transactionCheque![
                                                                     index2]
                                                                 .bankName ??
                                                             ""
                                                         : paymentsController
                                                                 .payments
-                                                                .payments[index]
-                                                                .cheque
-                                                                .transactionCheque[
+                                                                .payments![index]
+                                                                .cheque!
+                                                                .transactionCheque![
                                                                     index2]
                                                                 .bankNameAr ??
                                                             ""),
@@ -364,17 +363,17 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                                             1
                                                         ? paymentsController
                                                                 .payments
-                                                                .payments[index]
-                                                                .cheque
-                                                                .transactionCheque[
+                                                                .payments![index]
+                                                                .cheque!
+                                                                .transactionCheque![
                                                                     index2]
                                                                 .chequeStatus ??
                                                             ""
                                                         : paymentsController
                                                                 .payments
-                                                                .payments[index]
-                                                                .cheque
-                                                                .transactionCheque[
+                                                                .payments![index]
+                                                                .cheque!
+                                                                .transactionCheque![
                                                                     index2]
                                                                 .chequeStatusAR ??
                                                             ""),
@@ -399,9 +398,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                                 index2 ==
                                                         paymentsController
                                                                 .payments
-                                                                .payments[index]
-                                                                .cheque
-                                                                .transactionCheque
+                                                                .payments![index]
+                                                                .cheque!
+                                                                .transactionCheque!
                                                                 .length -
                                                             1
                                                     ? SizedBox()
@@ -416,24 +415,24 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ),
                 rowList(
                     AppMetaLabels().receiptNum,
-                    paymentsController.payments.payments[index].receiptNo ??
+                    paymentsController.payments.payments![index].receiptNo ??
                         ""),
                 rowList(
                     AppMetaLabels().receiptDate,
-                    paymentsController.payments.payments[index].paymentDate ??
+                    paymentsController.payments.payments![index].paymentDate ??
                         ""),
                 rowList(
                     AppMetaLabels().paymentFor,
                     SessionController().getLanguage() == 1
-                        ? paymentsController.payments.payments[index].paymentFor
+                        ? paymentsController.payments.payments![index].paymentFor??""
                         : paymentsController
-                            .payments.payments[index].paymentForAr),
+                            .payments.payments![index].paymentForAr??""),
                 if (!getCDController
-                        .getContractsDetails.value.contract.contractStatus
+                        .getContractsDetails.value.contract!.contractStatus!
                         .toLowerCase()
                         .contains('draft') &&
                     !getCDController
-                        .getContractsDetails.value.contract.contractStatus
+                        .getContractsDetails.value.contract!.contractStatus!
                         .toLowerCase()
                         .contains('under approval'))
                   Padding(
@@ -442,15 +441,15 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                       return Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 2.0.h, vertical: 2.h),
-                        child: paymentsController.payments.payments[index]
-                                    .downloadingReceipt.value ==
+                        child: paymentsController.payments.payments![index]
+                                    .downloadingReceipt!.value ==
                                 true
                             ? LoadingIndicatorBlue()
                             : InkWell(
                                 onTap: () async {
                                   paymentDownloadReceiptController
                                       .downloadReceipt(paymentsController
-                                          .payments.payments[index]);
+                                          .payments.payments![index]);
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -503,7 +502,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount: paymentsController
-                    .unverifiedPayments.contractPayments.length,
+                    .unverifiedPayments.contractPayments!.length,
                 itemBuilder: (context, index) {
                   return unverifiedPayment(index);
                 });
@@ -512,7 +511,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
   InkWell unverifiedPayment(int index) {
     final paidFormatter = NumberFormat('#,##0.00', 'AR');
     String amount = paidFormatter.format(
-        paymentsController.unverifiedPayments.contractPayments[index].amount);
+        paymentsController.unverifiedPayments.contractPayments![index].amount);
 
     return InkWell(
       onTap: () {},
@@ -535,7 +534,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     Spacer(),
                     Text(
                       paymentsController.unverifiedPayments
-                              .contractPayments[index].referenceNo ??
+                              .contractPayments![index].referenceNo ??
                           "",
                       style: AppTextStyle.semiBoldGrey11,
                     ),
@@ -548,10 +547,10 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   AppMetaLabels().reasonOfPayment,
                   SessionController().getLanguage() == 1
                       ? paymentsController.unverifiedPayments
-                              .contractPayments[index].title ??
+                              .contractPayments![index].title ??
                           ""
                       : paymentsController.unverifiedPayments
-                              .contractPayments[index].titleAR ??
+                              .contractPayments![index].titleAR ??
                           "",
                 ),
                 SizedBox(
@@ -560,7 +559,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                 rowList(
                     AppMetaLabels().date,
                     paymentsController
-                        .unverifiedPayments.contractPayments[index].createdOn
+                        .unverifiedPayments.contractPayments![index].createdOn!
                         .split(' ')
                         .first),
                 SizedBox(
@@ -570,20 +569,20 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   AppMetaLabels().paymentType,
                   SessionController().getLanguage() == 1
                       ? paymentsController.unverifiedPayments
-                              .contractPayments[index].paymentType ??
+                              .contractPayments![index].paymentType ??
                           ''
                       : paymentsController.unverifiedPayments
-                              .contractPayments[index].paymentTypeAR ??
+                              .contractPayments![index].paymentTypeAR ??
                           '',
                 ),
                 SizedBox(
                   height: 2.0.h,
                 ),
                 if (paymentsController.unverifiedPayments
-                            .contractPayments[index].paymentType !=
+                            .contractPayments![index].paymentType !=
                         null &&
                     paymentsController
-                        .unverifiedPayments.contractPayments[index].paymentType
+                        .unverifiedPayments.contractPayments![index].paymentType!
                         .toLowerCase()
                         .contains('cheque'))
                   Padding(
@@ -591,7 +590,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     child: rowList(
                         AppMetaLabels().chequeNo,
                         paymentsController.unverifiedPayments
-                            .contractPayments[index].chequeNo),
+                            .contractPayments![index].chequeNo??""),
                   ),
                 Row(
                   children: [
@@ -632,7 +631,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             alignment: SessionController().getLanguage() == 1
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
-            child: Text(t2 ?? '',
+            child: Text(t2,
                 style: AppTextStyle.normalGrey11, textAlign: TextAlign.end),
           ),
         ),

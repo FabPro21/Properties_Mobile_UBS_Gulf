@@ -29,7 +29,7 @@ class GetCaseTypesController extends GetxController {
     loadingData.value = false;
     if (result is GetCaseTypesModel) {
       getCaseTypes.value = result;
-      length = getCaseTypes.value.serviceRequests.length;
+      length = getCaseTypes.value.serviceRequests!.length;
       update();
     } else {
       error.value = result;

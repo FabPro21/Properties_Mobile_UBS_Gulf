@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class UpdateContractDocumentStage {
   static Future<dynamic> updateStage(int dueActionId) async {
     var response = await BaseClientClass.post(
-        AppConfig().updateContractDocumentStage, {"DueActionId":dueActionId.toString()});
+        AppConfig().updateContractDocumentStage??"", {"DueActionId":dueActionId.toString()});
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);

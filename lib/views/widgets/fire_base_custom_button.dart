@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   bool loading = false;
 
   CustomButton({
-    Key key,
+    Key? key,
     @required this.text,
     @required this.onPressed,
     this.enabled = true,

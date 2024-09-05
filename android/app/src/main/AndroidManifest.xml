@@ -6,8 +6,8 @@
   unregister DNS*  -->
   <uses-permission android:name="android.permission.USE_FINGERPRINT" />
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
   <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
@@ -20,7 +20,7 @@
     android:fullBackupOnly="false"
     android:label="MENA Real Estate Solutions"
     android:icon="@mipmap/ic_launcher"
-    android:usesCleartextTraffic="true"
+    android:usesCleartextTraffic="false"
     android:extractNativeLibs="true">
 
     <provider
@@ -64,7 +64,8 @@
       android:grantUriPermissions="true">
       <meta-data
         android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
+        android:resource="@xml/file_paths"
+        android:networkSecurityConfig="@xml/network_security_config" />
       <meta-data
         android:name="firebasePhoneAuthenticationRecaptchaEnabled"
         android:value="false" />
@@ -78,8 +79,9 @@
       android:theme="@style/LaunchTheme"
       android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
       android:hardwareAccelerated="true"
-      android:windowSoftInputMode="adjustResize"
+      android:windowSoftInputMode="adjustResize|stateUnspecified"
       android:exported="true">
+
       <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -102,6 +104,11 @@
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+    </activity>
+    <activity
+      android:name="com.yalantis.ucrop.UCropActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar">
     </activity>
     <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

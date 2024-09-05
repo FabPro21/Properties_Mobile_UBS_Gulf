@@ -8,15 +8,15 @@ class GetLpoDataResponse {
     this.lpos,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<Lpo> lpos;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<Lpo>? lpos;
 
-  factory GetLpoDataResponse.fromRawJson(String str) =>
-      GetLpoDataResponse.fromJson(json.decode(str));
+  factory GetLpoDataResponse.fromRawJson(String? str) =>
+      GetLpoDataResponse.fromJson(json.decode(str!));
 
-  factory GetLpoDataResponse.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoDataResponse.fromJson(Map<String?, dynamic> json) =>
       GetLpoDataResponse(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -40,21 +40,21 @@ class Lpo {
     this.lpoTypeId,
   });
 
-  int lpoId;
-  String propertyName;
-  String unitNo;
-  String lpoName;
-  String lpoReference;
+  int? lpoId;
+  String? propertyName;
+  String? unitNo;
+  String? lpoName;
+  String? lpoReference;
   dynamic netAmount;
-  String lpoDate;
+  String? lpoDate;
   dynamic lpoTypeName;
-  String contractor;
-  String completedDate;
-  int lpoTypeId;
+  String? contractor;
+  String? completedDate;
+  int? lpoTypeId;
 
-  factory Lpo.fromRawJson(String str) => Lpo.fromJson(json.decode(str));
+  factory Lpo.fromRawJson(String? str) => Lpo.fromJson(json.decode(str!));
 
-  factory Lpo.fromJson(Map<String, dynamic> json) => Lpo(
+  factory Lpo.fromJson(Map<String?, dynamic> json) => Lpo(
         lpoId: json["lpoID"],
         propertyName: json["propertyName"],
         unitNo: json["unitNo"],

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -20,8 +22,8 @@ import '../../common/about_app.dart/about_app.dart';
 import '../vendor_services/vendor_request_list/vendor_request_list.dart';
 
 class VendorMoreScreen extends StatefulWidget {
-  final Function(int) manageMenu;
-  const VendorMoreScreen({Key key, @required this.manageMenu})
+  final Function(int)? manageMenu;
+  const VendorMoreScreen({Key? key, @required this.manageMenu})
       : super(key: key);
 
   @override
@@ -51,7 +53,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async =>
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+         await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Directionality(
@@ -174,7 +176,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                             child: Padding(
                               padding: EdgeInsets.all(3.0.h),
                               child: Text(
-                                name ?? "",
+                                name ,
                                 style: AppTextStyle.semiBoldWhite16
                                     .copyWith(fontSize: 24.sp),
                               ),
@@ -333,7 +335,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                     builder:
                                                         (BuildContext context) {
                                                       return Container(
-                                                        height: 25.h,
+                                                        height: 27.h,
                                                         width: double.infinity,
                                                         margin:
                                                             EdgeInsets.fromLTRB(
@@ -506,7 +508,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                 onTap: () {
                                                   Navigator.pop(context);
                                                   launchUrl(Uri.parse(
-                                                      "mailto:${AppMetaLabels().fabEmail}"));
+                                                      "mailto:${AppMetaLabels().menaEmail}"));
                                                 },
                                                 child: Padding(
                                                   padding: EdgeInsets.only(

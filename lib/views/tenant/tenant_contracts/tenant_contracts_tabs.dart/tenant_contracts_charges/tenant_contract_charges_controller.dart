@@ -40,7 +40,7 @@ class GetContractChargesController extends GetxController {
         loadingData.value = false;
       } else {
         getCharges.value = result;
-        length = getCharges.value.contractCharges.length;
+        length = getCharges.value.contractCharges!.length;
         totalCharges = getCharges.value.totalCharges;
 
         double am = double.parse(getCharges.value.totalCharges.toString());

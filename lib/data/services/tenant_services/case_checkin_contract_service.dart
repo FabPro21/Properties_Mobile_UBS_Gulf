@@ -11,7 +11,7 @@ class CaseCheckinContractService {
       int contractId, int caseNo, int dueActionId) async {
     var url = AppConfig().caseCheckinContract;
 
-    var response = await BaseClientClass.post(url, {
+    var response = await BaseClientClass.post(url ?? "", {
       'ContractId': contractId.toString(),
       'CaseNo': caseNo.toString(),
       'ActionDueId': dueActionId.toString()

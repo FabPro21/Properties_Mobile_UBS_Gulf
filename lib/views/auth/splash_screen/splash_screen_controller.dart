@@ -19,7 +19,7 @@ class SplashScreenController extends GetxController {
   RxString phone = "".obs;
   bool setLanguage = false;
   //bool setLanguage = false;
-  bool isEnglish;
+  bool? isEnglish;
 
   SelectRoloesController obj = Get.put(SelectRoloesController());
   @override
@@ -42,20 +42,27 @@ class SplashScreenController extends GetxController {
     setLanguage =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.setLanguage) ??
             false;
+    print('Set Language : $setLanguage');
+
+    if (!setLanguage) {
+      SessionController().setLanguage(1);
+      GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, true);
+    }
     isLoginBool =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.isLoginBool) ??
             false;
-    phone.value = await GlobalPreferencesEncrypted.getString(
-        GlobalPreferencesLabels.phoneNumber);
     isEnglish =
         await GlobalPreferences.getBool(GlobalPreferencesLabels.isEnglish) ??
             true;
-    SessionController().setLanguage(isEnglish ? 1 : 2);
+
+    SessionController().setLanguage(isEnglish! ? 1 : 2);
+
+    phone.value = await GlobalPreferencesEncrypted.getString(
+        GlobalPreferencesLabels.phoneNumber);
   }
 
   Future<void> isSetupMpin() async {
     await prefsData();
-    print('setLanguage: $setLanguage');
     setSessionToken();
     setUserName();
     getfp();
@@ -65,7 +72,7 @@ class SplashScreenController extends GetxController {
     String path = await GlobalPreferencesEncrypted.getString(
         GlobalPreferencesLabels.videoTutorail);
     print('Path ::: From Preference ::: $path');
-    if (path == '' || path == null) {
+    if (path == '' || path.isEmpty) {
       var videoPath = await getVideoFileFromAssets();
       SessionController().videoPath = videoPath;
       print('Video path getting First time : ${SessionController().videoPath}');

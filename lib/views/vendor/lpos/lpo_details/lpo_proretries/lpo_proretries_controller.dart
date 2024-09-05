@@ -39,7 +39,7 @@ class GetLpoPropertiesController extends GetxController {
         loadingData.value = false;
       } else {
         lpoProperties.value = result;
-        length = lpoProperties.value.lpoProperties.length;
+        length = lpoProperties.value.lpoProperties!.length;
         update();
         loadingData.value = false;
       }
@@ -54,7 +54,7 @@ class GetLpoPropertiesController extends GetxController {
 
   Stream<Uint8List> getImage(int index) async* {
     var resp = await TenantRepository.getPropertyImage(
-        lpoProperties.value.lpoProperties[index].propertyID);
+        lpoProperties.value.lpoProperties![index].propertyID??0);
     if (resp is Uint8List) {
       yield resp;
     } else {

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -25,17 +29,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Client</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>app-1-166669147827-ios-493cd309334a30fea31ac6</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>app-1-166669147827-ios-493cd309334a30fea31ac6</string>
+				<string>com.googleusercontent.apps.166669147827-k1fgms0ic7vcohq7dpcfnjhb2ni5hgbk</string>
 			</array>
 		</dict>
 		<dict>
@@ -51,8 +49,6 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FDMaximumConcurrentTasks</key>
 	<integer>5</integer>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>FirebasePhoneAuthenticationRecaptchaEnabled</key>
 	<false/>
 	<key>INIntentsSupported</key>
@@ -91,9 +87,12 @@
 	<string>We need to request your permission to read your photos to load them into the app. </string>
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
 	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UIFileSharingEnabled</key>

@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordContractUnitInfo extends StatefulWidget {
   final int contractId;
-  const LandlordContractUnitInfo({Key key, @required this.contractId})
+  const LandlordContractUnitInfo({ Key? key, required this.contractId})
       : super(key: key);
 
   @override
@@ -45,16 +45,16 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                   : ListView.builder(
                       shrinkWrap: true,
                       padding: EdgeInsets.symmetric(vertical: 2.h),
-                      itemCount: controller.contractUnits.contractUnits.length,
+                      itemCount: controller.contractUnits.contractUnits?.length,
                       itemBuilder: (context, index) {
                         String unitShortName;
                         final unit =
-                            controller.contractUnits.contractUnits[index];
-                        if (unit.propertyName.contains(" ")) {
-                          List<String> mystring = unit.propertyName.split(" ");
+                            controller.contractUnits.contractUnits![index];
+                        if (unit.propertyName!.contains(" ")) {
+                          List<String> mystring = unit.propertyName!.split(" ");
                           unitShortName = mystring[0][0] + mystring[1][0];
                         } else {
-                          unitShortName = unit.propertyName[0];
+                          unitShortName = unit.propertyName?[0]??"";
                         }
 
                         final paidFormatter = NumberFormat('#,##0.00', 'AR');
@@ -100,13 +100,13 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                             ) {
                                               if (snapshot.hasData) {
                                                 return Image.memory(
-                                                  snapshot.data,
+                                                  snapshot.data!,
                                                   fit: BoxFit.cover,
                                                 );
                                               } else {
                                                 return Center(
                                                   child: Text(
-                                                    unitShortName ?? "-",
+                                                    unitShortName ,
                                                     style: AppTextStyle
                                                         .semiBoldBlack16
                                                         .copyWith(
@@ -116,7 +116,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                   ),
                                                 );
                                               }
-                                            },
+                                            }, stream: null,
                                           ),
                                         )),
                                   ),
@@ -125,8 +125,8 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                       Get.to(
                                         () => LandlordPropertyUnitInfoDetails(
                                           unitID: controller.contractUnits
-                                              .contractUnits[index].unitId
-                                              .toString(),
+                                              .contractUnits?[index].unitId
+                                              .toString()??"",
                                         ),
                                       );
                                     },

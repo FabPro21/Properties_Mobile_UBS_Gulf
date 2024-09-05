@@ -21,19 +21,19 @@ class PublicLocationController extends GetxController {
     loading.value = false;
     if (resp is PublicLocationModel) {
       data.value = resp;
-      length.value = data.value.locationVm.length;
+      length.value = data.value.locationVm!.length;
       print(
-          'Latitude and Longitude at index 0 :::: ${data.value.locationVm[0].latLog}');
+          'Latitude and Longitude at index 0 :::: ${data.value.locationVm![0].latLog}');
       print(
-          'Latitude and Longitude at index 1 :::: ${data.value.locationVm[1].latLog}');
+          'Latitude and Longitude at index 1 :::: ${data.value.locationVm![1].latLog}');
       print(
-          'Lat And lng at index 0 :::: ${data.value.locationVm[0].lat} , ${data.value.locationVm[0].lng}');
+          'Lat And lng at index 0 :::: ${data.value.locationVm![0].lat} , ${data.value.locationVm![0].lng}');
       print(
-          'Lat And lng  at index 1 :::: ${data.value.locationVm[1].lat} , ${data.value.locationVm[0].lng}');
+          'Lat And lng  at index 1 :::: ${data.value.locationVm![1].lat} , ${data.value.locationVm![0].lng}');
       print(
-          'Camera Position at index 0  :::: ${data.value.locationVm[0].cameraPositionAm}');
+          'Camera Position at index 0  :::: ${data.value.locationVm![0].cameraPositionAm}');
       print(
-          'Camera Position at index 1 :::: ${data.value.locationVm[1].cameraPositionAm}');
+          'Camera Position at index 1 :::: ${data.value.locationVm![1].cameraPositionAm}');
     } else {
       loading.value = false;
       error.value = resp;

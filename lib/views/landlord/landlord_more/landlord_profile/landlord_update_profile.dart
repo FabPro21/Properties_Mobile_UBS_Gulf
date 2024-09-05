@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandlordUpdatesProfile extends StatefulWidget {
-  final Data profile;
-  const LandlordUpdatesProfile({Key key, this.profile}) : super(key: key);
+  final Data? profile;
+  const LandlordUpdatesProfile({Key? key, this.profile}) : super(key: key);
 
   @override
   _LandlordUpdatesProfileState createState() => _LandlordUpdatesProfileState();
@@ -27,27 +27,27 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
 
   @override
   void initState() {
-    if (widget.profile.landlordName != null ||
-        widget.profile.landlordName != '' ||
-        widget.profile.landlordNameAR != null ||
-        widget.profile.landlordNameAR != '') {
+    if (widget.profile!.landlordName != null ||
+        widget.profile!.landlordName != '' ||
+        widget.profile!.landlordNameAR != null ||
+        widget.profile!.landlordNameAR != '') {
       _nameController.text = SessionController().getLanguage() == 1
-          ? widget.profile.landlordName ?? ""
-          : widget.profile.landlordNameAR ?? "";
+          ? widget.profile!.landlordName ?? ""
+          : widget.profile!.landlordNameAR ?? "";
     }
-    if (widget.profile.email != null || widget.profile.email != '') {
-      _emailController.text = widget.profile.email ?? "";
+    if (widget.profile!.email != null || widget.profile!.email != '') {
+      _emailController.text = widget.profile!.email ?? "";
     }
-    if (widget.profile.mobile != null || widget.profile.mobile != '') {
-      _phoneController.text = widget.profile.mobile ?? "";
+    if (widget.profile!.mobile != null || widget.profile!.mobile != '') {
+      _phoneController.text = widget.profile!.mobile ?? "";
     }
-    if (widget.profile.address != null ||
-        widget.profile.address != '' ||
-        widget.profile.addressAR != null ||
-        widget.profile.addressAR != '') {
+    if (widget.profile!.address != null ||
+        widget.profile!.address != '' ||
+        widget.profile!.addressAR != null ||
+        widget.profile!.addressAR != '') {
       _addressController.text = SessionController().getLanguage() == 1
-          ? widget.profile.address ?? ""
-          : widget.profile.addressAR ?? "";
+          ? widget.profile!.address ?? ""
+          : widget.profile!.addressAR ?? "";
     }
 
     super.initState();
@@ -116,7 +116,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                           padding: EdgeInsets.only(
                               top: 2.0.h, left: 5.0.h, right: 5.0.h),
                           child: Text(
-                            name ?? '',
+                            name ,
                             style: AppTextStyle.semiBoldWhite15,
                             textAlign: TextAlign.center,
                           ),
@@ -322,23 +322,23 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                             child: ElevatedButton(
                               onPressed: () async {
                                 // if (_nameController.text !=
-                                //         widget.profile.name ||
+                                //         widget.profile!.name ||
                                 //     _emailController.text !=
-                                //         widget.profile.email ||
+                                //         widget.profile!.email ||
                                 //     _phoneController.text !=
-                                //         widget.profile.mobile ||
+                                //         widget.profile!.mobile ||
                                 //     _addressController.text !=
-                                //         widget.profile.address)
+                                //         widget.profile!.address)
                                 if (_nameController.text != '' ||
                                     _emailController.text != '' ||
                                     _phoneController.text != '' ||
                                     _addressController.text != '') {
                                   if (await landLordProfileController
                                       .updateProfile(
-                                          _nameController.text ?? '',
-                                          _phoneController.text ?? '',
-                                          _emailController.text ?? '',
-                                          _addressController.text ?? ''))
+                                          _nameController.text ,
+                                          _phoneController.text ,
+                                          _emailController.text ,
+                                          _addressController.text))
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -366,11 +366,11 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                               ),
                               style: ButtonStyle(
                                   elevation:
-                                      MaterialStateProperty.all<double>(0.0),
+                                      WidgetStateProperty.all<double>(0.0),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           AppColors.whiteColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
@@ -421,7 +421,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                 height: 6.0.h,
               ),
               Text(
-                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${landLordProfileController.updateProfiledata.value.addServiceRequest.caseNo}',
+                '${AppMetaLabels().requestAddedSuccessfully}\n${AppMetaLabels().requestno} ${landLordProfileController.updateProfiledata.value.addServiceRequest!.caseNo}',
                 style: AppTextStyle.semiBoldBlack12,
                 textAlign: TextAlign.center,
               ),

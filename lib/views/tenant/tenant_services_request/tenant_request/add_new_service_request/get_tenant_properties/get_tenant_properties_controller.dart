@@ -30,7 +30,7 @@ class GetTenantPropertiesController extends GetxController {
     if (result is GetTenantPropertiesModel) {
       getTenantProperties.value = result;
       print(result);
-      length = getTenantProperties.value.properties.length;
+      length = getTenantProperties.value.properties!.length;
       update();
     } else {
       error.value = result;

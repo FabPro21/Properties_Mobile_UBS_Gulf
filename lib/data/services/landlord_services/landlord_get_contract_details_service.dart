@@ -13,7 +13,7 @@ class LandlordGetContractDetailsServices {
   static Future<dynamic> getContractDetails(int contractId) async {
     var data = {"ContractId": contractId.toString()};
     var response = await BaseClientClass.post(
-        AppConfig().getLandlordContractDetails, data);
+        AppConfig().getLandlordContractDetails??"", data);
     try {
       if (response is Response) {
         return landlordContractDetailsModelFromJson(response.body);
@@ -30,7 +30,7 @@ class LandlordGetContractDetailsServices {
     var data = {"ContractId": SessionController().getContractID().toString()};
     print(
         'ContractId :::::: getContractPayable from GetContractsDetailsController $data');
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       try {

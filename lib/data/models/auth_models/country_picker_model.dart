@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-CountryPickerModel countryPickerModelFromJson(String str) =>
-    CountryPickerModel.fromJson(json.decode(str));
+CountryPickerModel countryPickerModelFromJson(String? str) =>
+    CountryPickerModel.fromJson(json.decode(str!));
 
-String countryPickerModelToJson(CountryPickerModel data) =>
+String? countryPickerModelToJson(CountryPickerModel data) =>
     json.encode(data.toJson());
 
 class CountryPickerModel {
@@ -18,12 +18,12 @@ class CountryPickerModel {
     this.message,
   });
 
-  String statusCode;
-  String status;
-  List<Country> countries;
-  String message;
+  String? statusCode;
+  String? status;
+  List<Country>? countries;
+  String? message;
 
-  factory CountryPickerModel.fromJson(Map<String, dynamic> json) =>
+  factory CountryPickerModel.fromJson(Map<String?, dynamic> json) =>
       CountryPickerModel(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -32,10 +32,10 @@ class CountryPickerModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "statusCode": statusCode,
         "status": status,
-        "countries": List<dynamic>.from(countries.map((x) => x.toJson())),
+        "countries": List<dynamic>.from(countries!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -49,13 +49,13 @@ class Country {
     this.flag,
   });
 
-  int countryId;
-  String countryName;
-  String countryCode;
-  String dialingCode;
-  String flag;
+  int? countryId;
+  String? countryName;
+  String? countryCode;
+  String? dialingCode;
+  String? flag;
 
-  factory Country.fromJson(Map<String, dynamic> json) => Country(
+  factory Country.fromJson(Map<String?, dynamic> json) => Country(
         countryId: json["countryId"],
         countryName: json["countryName"],
         countryCode: json["countryCode"],
@@ -63,7 +63,7 @@ class Country {
         flag: json["flag"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "countryId": countryId,
         "countryName": countryName,
         "countryCode": countryCode,

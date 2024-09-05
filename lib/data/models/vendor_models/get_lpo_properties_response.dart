@@ -8,15 +8,15 @@ class GetLpoPropertiesResponse {
     this.dashboardPropertiess,
   });
 
-  String statusCode;
-  String status;
-  String message;
-  List<DashboardPropertiess> dashboardPropertiess;
+  String? statusCode;
+  String? status;
+  String? message;
+  List<DashboardPropertiess>? dashboardPropertiess;
 
-  factory GetLpoPropertiesResponse.fromRawJson(String str) =>
-      GetLpoPropertiesResponse.fromJson(json.decode(str));
+  factory GetLpoPropertiesResponse.fromRawJson(String? str) =>
+      GetLpoPropertiesResponse.fromJson(json.decode(str!));
 
-  factory GetLpoPropertiesResponse.fromJson(Map<String, dynamic> json) =>
+  factory GetLpoPropertiesResponse.fromJson(Map<String?, dynamic> json) =>
       GetLpoPropertiesResponse(
         statusCode: json["statusCode"],
         status: json["status"],
@@ -39,19 +39,19 @@ class DashboardPropertiess {
     this.deliveryDate,
   });
 
-  String propertyName;
+  String? propertyName;
   dynamic amount;
-  int unitId;
-  String propertyImage;
-  String buildingRefNo;
-  String referenceNo;
-  String lpoDate;
-  String deliveryDate;
+  int? unitId;
+  String? propertyImage;
+  String? buildingRefNo;
+  String? referenceNo;
+  String? lpoDate;
+  String? deliveryDate;
 
-  factory DashboardPropertiess.fromRawJson(String str) =>
-      DashboardPropertiess.fromJson(json.decode(str));
+  factory DashboardPropertiess.fromRawJson(String? str) =>
+      DashboardPropertiess.fromJson(json.decode(str!));
 
-  factory DashboardPropertiess.fromJson(Map<String, dynamic> json) =>
+  factory DashboardPropertiess.fromJson(Map<String?, dynamic> json) =>
       DashboardPropertiess(
         propertyName: json["propertyName"],
         amount: json["amount"],

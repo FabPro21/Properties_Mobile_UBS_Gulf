@@ -7,7 +7,7 @@ class GetMunicipalApproval {
   static Future<dynamic> getData(int contractId) async {
     Map data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().getApproveMunicipal, data);
+        await BaseClientClass.post(AppConfig().getApproveMunicipal??"", data);
     if (response is http.Response) {
       final data = municipalInstructionsFromJson(response.body);
       if (data.statusCode == '200')
@@ -22,7 +22,7 @@ class GetMunicipalApprovalNew {
   static Future<dynamic> getDataNew(int contractId) async {
     Map data = {"ContractId": contractId.toString()};
     var response =
-        await BaseClientClass.post(AppConfig().getApproveMunicipalNew, data);
+        await BaseClientClass.post(AppConfig().getApproveMunicipalNew??"", data);
     if (response is http.Response) {
       final data = municipalInstructionsFromJson(response.body);
       if (data.statusCode == '200')

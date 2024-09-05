@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -15,7 +17,7 @@ class OnlinePayablesService {
     };
     // var data = {"ContractId": SessionController().getContractID().toString()};
     print('ContractId :::::: getContractPayable from getOnlinePayable $data');
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       try {
@@ -37,7 +39,7 @@ class OnlinePayablesServiceNew {
     };
     // var data = {"ContractId": SessionController().getContractID().toString()};
     print('ContractId :::::: getContractPayable from getOnlinePayable $data');
-    var resp = await BaseClientClass.post(url, data);
+    var resp = await BaseClientClass.post(url ?? "", data);
 
     if (resp is http.Response) {
       try {

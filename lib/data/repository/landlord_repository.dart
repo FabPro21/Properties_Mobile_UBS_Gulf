@@ -89,7 +89,7 @@ class LandlordRepository {
       LandlordArchiveNotificationsServices.archiveNotification();
   static Future<dynamic> notificationDetails() =>
       LandLordNotificationsDetailServices.notificationDetails(
-          SessionController().getNotificationId());
+          SessionController().getNotificationId()??'');
   static Future<dynamic> downloadNotificationFiles(int id) =>
       DownloadLandLordNotificationsFiles.downloadNotificationFiles(id);
   static Future<dynamic> getNotificationFiles(int id) =>

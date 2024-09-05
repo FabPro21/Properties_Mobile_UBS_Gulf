@@ -6,7 +6,7 @@
 // import 'package:sizer/sizer.dart';
 
 // class YourContracts extends StatelessWidget {
-//   const YourContracts({Key key}) : super(key: key);
+//   const YourContracts({Key? key}) : super(key: key);
 
 //   @override
 //   Widget build(BuildContext context) {

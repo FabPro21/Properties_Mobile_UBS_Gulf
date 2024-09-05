@@ -17,12 +17,12 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorInvoiceRequestTabs extends StatefulWidget {
-  final String requestNo;
-  final String caller;
-  final int initialIndex;
-  String title;
+  final String? requestNo;
+  final String? caller;
+  final int? initialIndex;
+  String? title;
   VendorInvoiceRequestTabs({
-    Key key,
+    Key? key,
     this.requestNo,
     this.caller,
     this.title,
@@ -40,11 +40,11 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
   final controller = Get.put(VendorInvoiceDetailsController());
   @override
   void initState() {
-    controller.tabIndex.value = widget.initialIndex;
+    controller.tabIndex.value = widget.initialIndex!;
     if (widget.caller == 'Add New Invoice') {
       controller.isEnableInvoiceNo.value = false;
     } else {
-      controller.caseNoInvoice = int.parse(widget.requestNo);
+      controller.caseNoInvoice = int.parse(widget.requestNo!);
       controller.isEnableInvoiceNo.value = true;
     }
     print('downloading ::::: ${widget.requestNo}');
@@ -177,7 +177,7 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
 
 class DocumentDumnyWidget extends StatefulWidget {
   const DocumentDumnyWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -260,7 +260,7 @@ class _DocumentDumnyWidgetState extends State<DocumentDumnyWidget> {
 
 class CommunicationDumnyWidget extends StatefulWidget {
   const CommunicationDumnyWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

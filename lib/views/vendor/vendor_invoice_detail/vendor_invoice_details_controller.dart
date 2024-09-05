@@ -227,7 +227,7 @@ class VendorInvoiceDetailsController extends GetxController {
           contractRefNo, contractID);
       loadingDataOfInstallment.value = false;
       if (result is InstallmentDropDownModel) {
-        if (result.installmentData.length == 0) {
+        if (result.installmentData!.length == 0) {
           errorInstallment.value = AppMetaLabels().noDatafound;
           loadingDataOfInstallment.value = false;
           return AppMetaLabels().noDatafound;

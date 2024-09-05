@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import 'get_contact_timing_controller.dart';
 
 class GetContactTiming extends StatefulWidget {
-  GetContactTiming({Key key}) : super(key: key);
+  GetContactTiming({Key? key}) : super(key: key);
 
   @override
   State<GetContactTiming> createState() => _GetContactTimingState();
@@ -150,7 +150,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
                                           } else if ((getCTController
                                                       .getContactTiming
                                                       .value
-                                                      .contactTiming[index]
+                                                      .contactTiming![index]
                                                       .name ??
                                                   "")
                                               .toLowerCase()
@@ -178,17 +178,14 @@ class _GetContactTimingState extends State<GetContactTiming> {
     return InkWell(
       onTap: () {
         SessionController().setCaseTypeId(
-          getCTController.getContactTiming.value.contactTiming[index].id
-                  .toString() ??
-              "",
+          getCTController.getContactTiming.value.contactTiming![index].id
+                  .toString(),
         );
         Get.back(result: [
-          getCTController.getContactTiming.value.contactTiming[index].name
-                  .toString() ??
-              "",
-          getCTController.getContactTiming.value.contactTiming[index].id
-                  .toString() ??
-              "",
+          getCTController.getContactTiming.value.contactTiming![index].name
+                  .toString(),
+          getCTController.getContactTiming.value.contactTiming![index].id
+                  .toString(),
         ]);
       },
       child: Column(
@@ -198,7 +195,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
             padding: EdgeInsets.all(2.0.h),
             child: Text(
               getCTController
-                      .getContactTiming.value.contactTiming[index].name ??
+                      .getContactTiming.value.contactTiming![index].name ??
                   "",
               style: AppTextStyle.normalGrey10,
             ),

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -27,11 +29,12 @@ class AuthenticateContractController extends GetxController {
     var resp = await TenantRepository.downloadContractTerms(contractId);
     loadingTerms.value = false;
     if (resp is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createFile(resp, 'TC$contractNo.pdf');
-        print(path);
-        OpenFile.open(path);
-      }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createFile(resp, 'TC$contractNo.pdf');
+      print(path);
+      OpenFile.open(path);
+      // }
     } else {
       Get.snackbar(
         AppMetaLabels().error,
@@ -44,27 +47,28 @@ class AuthenticateContractController extends GetxController {
   Future<bool> saveSignature(Uint8List signature, int dueActionId, int stageId,
       String caller, int caseId) async {
     savingSignature.value = true;
-    if (await getStoragePermission()) {
-      String path = await createFile(signature, 'signature.png');
-      if (path != null) {
-        var resp = await TenantRepository.uploadFile(
-            caseId.toString(), path, 'Signature', '', '0');
-        if (resp is int) {
-          Get.snackbar(AppMetaLabels().error, AppMetaLabels().anyError,
-              backgroundColor: Colors.white54);
-        } else {
-          savingSignature.value = false;
-          return await updateDocStage(
-              dueActionId, 7, caller, 'fromSaveSignature');
-        }
-      } else {
+    // ###1 permission
+    // if (await getStoragePermission()) {
+    String path = await createFile(signature, 'signature.png');
+    if (path != null) {
+      var resp = await TenantRepository.uploadFile(
+          caseId.toString(), path, 'Signature', '', '0');
+      if (resp is int) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().anyError,
             backgroundColor: Colors.white54);
+      } else {
+        savingSignature.value = false;
+        return await updateDocStage(
+            dueActionId, 7, caller, 'fromSaveSignature');
       }
     } else {
-      Get.snackbar(AppMetaLabels().error, AppMetaLabels().storagePermissions,
+      Get.snackbar(AppMetaLabels().error, AppMetaLabels().anyError,
           backgroundColor: Colors.white54);
     }
+    // } else {
+    //   Get.snackbar(AppMetaLabels().error, AppMetaLabels().storagePermissions,
+    //       backgroundColor: Colors.white54);
+    // }
     savingSignature.value = false;
     return false;
   }

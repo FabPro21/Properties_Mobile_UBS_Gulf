@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-GetContractStatusModel getContractStatusModelFromJson(String str) =>
-    GetContractStatusModel.fromJson(json.decode(str));
+GetContractStatusModel getContractStatusModelFromJson(String? str) =>
+    GetContractStatusModel.fromJson(json.decode(str!));
 
-String getContractStatusModelToJson(GetContractStatusModel data) =>
+String? getContractStatusModelToJson(GetContractStatusModel data) =>
     json.encode(data.toJson());
 
 class GetContractStatusModel {
@@ -18,12 +18,12 @@ class GetContractStatusModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<ContractStatus> contractStatus;
-  String message;
+  String? status;
+  String? statusCode;
+  List<ContractStatus>? contractStatus;
+  String? message;
 
-  factory GetContractStatusModel.fromJson(Map<String, dynamic> json) =>
+  factory GetContractStatusModel.fromJson(Map<String?, dynamic> json) =>
       GetContractStatusModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -32,11 +32,11 @@ class GetContractStatusModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "contractStatus":
-            List<dynamic>.from(contractStatus.map((x) => x.toJson())),
+            List<dynamic>.from(contractStatus!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -48,17 +48,17 @@ class ContractStatus {
     this.contractTypeAr,
   });
 
-  int contractTypeId;
-  String contractType;
-  String contractTypeAr;
+  int? contractTypeId;
+  String? contractType;
+  String? contractTypeAr;
 
-  factory ContractStatus.fromJson(Map<String, dynamic> json) => ContractStatus(
+  factory ContractStatus.fromJson(Map<String?, dynamic> json) => ContractStatus(
         contractTypeId: json["contractTypeID"],
         contractType: json["contractType"],
         contractTypeAr: json["contractTypeAR"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractTypeID": contractTypeId,
         "contractType": contractType,
         "contractTypeAR": contractTypeAr,

@@ -11,7 +11,7 @@ class VendorGetLpoTermsSvc {
       "LpoId": SessionController().getLpoId(),
     };
 
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       GetLpoTermsModel getLpoTermsModel =
           getLpoTermsModelFromJson(response.body);

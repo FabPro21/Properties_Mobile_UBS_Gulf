@@ -11,7 +11,7 @@ class ExtendContractService {
       String startDate, String endDate, int dueActionId) async {
     var url = AppConfig().extendContract;
 
-    var response = await BaseClientClass.post(url, {
+    var response = await BaseClientClass.post(url ?? "", {
       'contractId': contractId.toString(),
       'duration': duration,
       'startDate': startDate,

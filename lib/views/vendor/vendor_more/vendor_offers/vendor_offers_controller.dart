@@ -27,7 +27,7 @@ class VendorOffersController extends GetxController {
       var result = await VendorRepository.getOffers();
       if (result is VendorOffersModel) {
         offers.value = result;
-        length = offers.value.record.length;
+        length = offers.value.record!.length;
         if (length == 0) {
           errorOffers.value = AppMetaLabels().noDatafound;
         }

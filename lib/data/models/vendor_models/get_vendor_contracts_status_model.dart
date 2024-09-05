@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 GetVendorContractsStatusModel getVendorContractsStatusModelFromJson(
-        String str) =>
-    GetVendorContractsStatusModel.fromJson(json.decode(str));
+        String? str) =>
+    GetVendorContractsStatusModel.fromJson(json.decode(str!));
 
-String getVendorContractsStatusModelToJson(
+String? getVendorContractsStatusModelToJson(
         GetVendorContractsStatusModel data) =>
     json.encode(data.toJson());
 
@@ -20,12 +20,12 @@ class GetVendorContractsStatusModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  List<VendorContractStatus> contractStatus;
-  String message;
+  String? status;
+  String? statusCode;
+  List<VendorContractStatus>? contractStatus;
+  String? message;
 
-  factory GetVendorContractsStatusModel.fromJson(Map<String, dynamic> json) =>
+  factory GetVendorContractsStatusModel.fromJson(Map<String?, dynamic> json) =>
       GetVendorContractsStatusModel(
         status: json["status"],
         statusCode: json["statusCode"],
@@ -34,11 +34,11 @@ class GetVendorContractsStatusModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "contractStatus":
-            List<dynamic>.from(contractStatus.map((x) => x.toJson())),
+            List<dynamic>.from(contractStatus!.map((x) => x.toJson())),
         "message": message,
       };
 }
@@ -51,17 +51,17 @@ class VendorContractStatus {
   });
 
   dynamic serviceContractStatusId;
-  String statusName;
-  String statusNameAr;
+  String? statusName;
+  String? statusNameAr;
 
-  factory VendorContractStatus.fromJson(Map<String, dynamic> json) =>
+  factory VendorContractStatus.fromJson(Map<String?, dynamic> json) =>
       VendorContractStatus(
         serviceContractStatusId: json["serviceContractStatusID"],
         statusName: json["statusName"],
         statusNameAr: json["statusNameAr"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "serviceContractStatusID": serviceContractStatusId,
         "statusName": statusName,
         "statusNameAr": statusNameAr,
@@ -69,10 +69,10 @@ class VendorContractStatus {
 }
 
 class VendorContractFilterData {
-  final String propName;
+  final String? propName;
   final dynamic contractStatusId;
-  final String fromDate;
-  final String toDate;
+  final String? fromDate;
+  final String? toDate;
 
   VendorContractFilterData(
       {this.propName, this.contractStatusId, this.fromDate, this.toDate});

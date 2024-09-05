@@ -19,9 +19,9 @@ import '../../../../widgets/common_widgets/loading_indicator_blue.dart';
 import 'tenant_contracts_detail_controller.dart';
 
 class ContractsDetailsTabs extends StatefulWidget {
-  final String prevContractNo;
+  final String? prevContractNo;
   ContractsDetailsTabs({
-    Key key,
+    Key? key,
     this.prevContractNo,
   }) : super(key: key);
 
@@ -70,7 +70,7 @@ class _ContractsDetailsTabsState extends State<ContractsDetailsTabs> {
                                       const Spacer(),
                                       Text(
                                         getCDController.getContractsDetails
-                                            .value.contract.contractno,
+                                            .value.contract!.contractno??"",
                                         style: AppTextStyle.semiBoldBlack12,
                                       ),
                                     ],
@@ -99,7 +99,7 @@ class _ContractsDetailsTabsState extends State<ContractsDetailsTabs> {
                                     ),
                                     views: [
                                       MainInfo(
-                                        prevContractNo: widget.prevContractNo,
+                                        prevContractNo: widget.prevContractNo??'',
                                       ),
                                       UnitInfo(),
                                       PaymentsScreen(),

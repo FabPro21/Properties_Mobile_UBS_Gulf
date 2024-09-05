@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -16,13 +18,12 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../../../../data/models/tenant_models/service_request/doc_file.dart';
 
-
 class VendorCommunicationController extends GetxController {
   VendorCommunicationController({this.reqNo});
-  String reqNo;
+  String? reqNo;
   RxBool gettingReplies = false.obs;
   String errorGettingReplies = '';
-  GetTicketRepliesModel ticketReplies;
+  GetTicketRepliesModel? ticketReplies;
 
   RxBool typing = false.obs;
   RxBool addingReply = false.obs;
@@ -46,7 +47,7 @@ class VendorCommunicationController extends GetxController {
   void getTicketReplies() async {
     chatUpdate = true;
     gettingReplies.value = true;
-    var resp = await VendorRepository.getTicketReplies(reqNo);
+    var resp = await VendorRepository.getTicketReplies(reqNo!);
     if (resp is GetTicketRepliesModel) {
       ticketReplies = resp;
       updateChat();
@@ -57,7 +58,7 @@ class VendorCommunicationController extends GetxController {
   }
 
   Future updateChat() async {
-    var resp = await VendorRepository.getTicketReplies(reqNo);
+    var resp = await VendorRepository.getTicketReplies(reqNo!);
     if (resp is GetTicketRepliesModel) {
       ticketReplies = resp;
     }
@@ -70,7 +71,7 @@ class VendorCommunicationController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await VendorRepository.addTicketReply(
-        reqNo, message, fileToUpload.value.path);
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies.value = true;
@@ -80,9 +81,9 @@ class VendorCommunicationController extends GetxController {
       print(dateTime);
       print(fileToUpload.value.name);
       print(fileToUpload.value.path);
-      ticketReplies.ticketReply.add(TicketReply(
-          reply: message ?? "",
-          dateTime: dateTime ?? "",
+      ticketReplies!.ticketReply!.add(TicketReply(
+          reply: message,
+          dateTime: dateTime,
           userId: 123,
           fileName: fileToUpload.value.name ?? "",
           path: fileToUpload.value.path ?? ""));
@@ -104,38 +105,39 @@ class VendorCommunicationController extends GetxController {
   RxInt isLoadingSelectedIndex = (-1).obs;
   void downloadFile(int index) async {
     isLoadingDownload.value = true;
-    if (ticketReplies.ticketReply[index].path != null) {
-      OpenFile.open(ticketReplies.ticketReply[index].path);
+    if (ticketReplies!.ticketReply![index].path != null) {
+      OpenFile.open(ticketReplies!.ticketReply![index].path);
       isLoadingDownload.value = false;
     } else {
-      ticketReplies.ticketReply[index].downloadingFile.value = true;
+      ticketReplies!.ticketReply![index].downloadingFile!.value = true;
       var result = await VendorRepository.downloadTicketFile(
-          ticketReplies.ticketReply[index].ticketReplyId);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? 0);
 
-      ticketReplies.ticketReply[index].downloadingFile.value = false;
+      ticketReplies!.ticketReply![index].downloadingFile!.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          String path = await createFile(
-              result, ticketReplies.ticketReply[index].fileName);
-          try {
-            OpenResult result = await OpenFile.open(path);
-            isLoadingDownload.value = false;
-            if (result.message != 'done') {
-              SnakBarWidget.getSnackBarErrorBlue(
-                AppMetaLabels().error,
-                result.message,
-              );
-            }
-          } catch (e) {
-            print(e);
-            isLoadingDownload.value = false;
-
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        String path = await createFile(
+            result, ticketReplies!.ticketReply![index].fileName ?? "");
+        try {
+          final result = await OpenFile.open(path);
+          isLoadingDownload.value = false;
+          if (result.message != 'done') {
             SnakBarWidget.getSnackBarErrorBlue(
               AppMetaLabels().error,
-              e.toString(),
+              result.message,
             );
           }
+        } catch (e) {
+          print(e);
+          isLoadingDownload.value = false;
+
+          SnakBarWidget.getSnackBarErrorBlue(
+            AppMetaLabels().error,
+            e.toString(),
+          );
         }
+        // }
         isLoadingDownload.value = false;
       } else {
         isLoadingDownload.value = false;
@@ -149,16 +151,16 @@ class VendorCommunicationController extends GetxController {
   }
 
   pickFile() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles();
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-    if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+    if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       SnakBarWidget.getSnackBarErrorBlueWith5Sec(
           AppMetaLabels().error, AppMetaLabels().fileExtensionError);
       return;
     }
 
     if (result != null) {
-      File file = File(result.files.single.path);
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // checking file size Cheque

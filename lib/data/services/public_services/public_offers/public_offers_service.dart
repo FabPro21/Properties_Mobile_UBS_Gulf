@@ -9,7 +9,7 @@ class PublicOffersSerice {
   static Future<dynamic> getOffers() async {
     var url = AppConfig().getPublicOffers;
 
-    var response = await BaseClientClass.post(url, {},
+    var response = await BaseClientClass.post(url ?? "", {},
         token: SessionController().getPublicToken());
 
     if (response is http.Response) {

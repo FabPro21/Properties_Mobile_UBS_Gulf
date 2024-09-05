@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-TenantProfileModel tenantProfileModelFromJson(String str) =>
-    TenantProfileModel.fromJson(json.decode(str));
+TenantProfileModel tenantProfileModelFromJson(String? str) =>
+    TenantProfileModel.fromJson(json.decode(str!));
 
-String tenantProfileModelToJson(TenantProfileModel data) =>
+String? tenantProfileModelToJson(TenantProfileModel data) =>
     json.encode(data.toJson());
 
 class TenantProfileModel {
@@ -18,12 +18,12 @@ class TenantProfileModel {
     this.message,
   });
 
-  String status;
-  String statuCode;
-  Profile profile;
-  String message;
+  String? status;
+  String? statuCode;
+  Profile? profile;
+  String? message;
 
-  factory TenantProfileModel.fromJson(Map<String, dynamic> json) =>
+  factory TenantProfileModel.fromJson(Map<String?, dynamic> json) =>
       TenantProfileModel(
         status: json["status"],
         statuCode: json["statuCode"],
@@ -31,10 +31,10 @@ class TenantProfileModel {
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statuCode": statuCode,
-        "profile": profile.toJson(),
+        "profile": profile!.toJson(),
         "message": message,
       };
 }
@@ -55,21 +55,21 @@ class Profile {
     this.termsAndConditions,
   });
 
-  int tenantId;
-  String name;
-  String nameAr;
-  String addressAr;
-  String mobile;
-  String email;
-  String nationality;
-  String phone;
-  String address;
-  String photoUrl;
-  String fax;
-  String termsAndConditions;
+  int? tenantId;
+  String? name;
+  String? nameAr;
+  String? addressAr;
+  String? mobile;
+  String? email;
+  String? nationality;
+  String? phone;
+  String? address;
+  String? photoUrl;
+  String? fax;
+  String? termsAndConditions;
 
-  factory Profile.fromJson(Map<String, dynamic> json) {
-    String nameAr = json["nameAR"];
+  factory Profile.fromJson(Map<String?, dynamic> json) {
+    String? nameAr = json["nameAR"];
     if (nameAr == ' ') nameAr = 'اسم عربي';
     return Profile(
       tenantId: json["tenantId"],
@@ -87,7 +87,7 @@ class Profile {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "tenantId": tenantId,
         "name": name,
         "nameAR": nameAr,

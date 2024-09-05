@@ -15,8 +15,8 @@ class AddMpinModel {
     this.message,
   });
 
-  String status;
-  String message;
+  String? status;
+  String? message;
 
   factory AddMpinModel.fromJson(Map<String, dynamic> json) => AddMpinModel(
         status: json["status"],

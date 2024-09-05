@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -13,8 +15,8 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorOffersDetails extends StatefulWidget {
-  final String offerId;
-  const VendorOffersDetails({Key key, this.offerId}) : super(key: key);
+  final String? offerId;
+  const VendorOffersDetails({Key? key, this.offerId}) : super(key: key);
 
   @override
   _VendorOffersDetailsState createState() => _VendorOffersDetailsState();
@@ -26,7 +28,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.getOffersDetails(widget.offerId);
+      _controller.getOffersDetails(widget.offerId??"");
     });
     super.initState();
   }
@@ -57,7 +59,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                               errorText: _controller.errorDetails.value,
                             )
                           : _controller.offersDetails.value == null
-                              ? ''
+                              ? SizedBox()
                               : Column(
                                   children: [
                                     Padding(
@@ -109,7 +111,10 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                               : _controller.offersDetails.value
                                                       .record?.desriptionAr ??
                                                   "",
-                                          padding: EdgeInsets.zero,
+                                        style: {
+                                            'html': Style(
+                                              padding: HtmlPaddings.zero
+                                            ),}
                                         ),
                                       ),
                                     ),
@@ -148,7 +153,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                                     .offersDetails
                                                     .value
                                                     .offerProperties
-                                                    .length,
+                                                    ?.length,
                                                 itemBuilder: (context, index) {
                                                   return Padding(
                                                     padding: EdgeInsets.only(
@@ -173,15 +178,14 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                                                   ? _controller
                                                                           .offersDetails
                                                                           .value
-                                                                          .offerProperties[
+                                                                          .offerProperties![
                                                                               index]
-                                                                          .propertyName
-                                                                          .trim() ??
-                                                                      ""
+                                                                          .propertyName??""
+                                                                          .trim()
                                                                   : _controller
                                                                           .offersDetails
                                                                           .value
-                                                                          .offerProperties[
+                                                                          .offerProperties![
                                                                               index]
                                                                           .propertyNameAr ??
                                                                       "",

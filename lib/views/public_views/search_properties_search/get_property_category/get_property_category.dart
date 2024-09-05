@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import 'get_property_category_controller.dart';
 
 class GetPropertyCategory extends StatefulWidget {
-  GetPropertyCategory({Key key}) : super(key: key);
+  GetPropertyCategory({Key? key}) : super(key: key);
 
   @override
   State<GetPropertyCategory> createState() => _GetPropertyCategoryState();
@@ -148,20 +148,18 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                                           } else if ((gPCController
                                                           .getPropertyCategory
                                                           .value
-                                                          .propertyCategory[
+                                                          .propertyCategory![
                                                               index]
-                                                          .propertyCategory ??
-                                                      "")
+                                                          .propertyCategory! )
                                                   .toLowerCase()
                                                   .contains(
                                                       searchControler.text) ||
                                               (gPCController
                                                               .getPropertyCategory
                                                               .value
-                                                              .propertyCategory[
+                                                              .propertyCategory![
                                                                   index]
-                                                              .propertyCategory ??
-                                                          "")
+                                                              .propertyCategory! )
                                                       .toLowerCase()
                                                       .contains(searchControler
                                                           .text) &&
@@ -172,7 +170,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                                           } else if ((gPCController
                                                           .getPropertyCategory
                                                           .value
-                                                          .propertyCategory[
+                                                          .propertyCategory![
                                                               index]
                                                           .propertyCategoryAr ??
                                                       "")
@@ -182,7 +180,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                                               (gPCController
                                                               .getPropertyCategory
                                                               .value
-                                                              .propertyCategory[
+                                                              .propertyCategory![
                                                                   index]
                                                               .propertyCategoryAr ??
                                                           "")
@@ -215,16 +213,14 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
     return InkWell(
       onTap: () async {
         _controller.getData(SessionController().getLanguage() == 1
-            ? gPCController.getPropertyCategory.value.propertyCategory[index]
-                    .propertyCategory ??
-                ""
-            : gPCController.getPropertyCategory.value.propertyCategory[index]
-                        .propertyCategory +
-                    'AR' ??
-                "");
+            ? gPCController.getPropertyCategory.value.propertyCategory![index]
+                    .propertyCategory! 
+            : gPCController.getPropertyCategory.value.propertyCategory![index]
+                        .propertyCategory! +
+                    'AR' );
         // _controller.getData(
         //  gPCController.getPropertyCategory.value
-        //         .propertyCategory[index].propertyCategory ??
+        //         .propertyCategory![index].propertyCategory! ??
         //     "");
         // 112233 show area
         // SessionController().showArea.value =
@@ -232,31 +228,26 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
         print("-------- ${SessionController().showArea} ---------");
 
         SessionController().setPropCatId(gPCController.getPropertyCategory.value
-                .propertyCategory[index].propertyCategoryId
-                .toString() ??
-            "");
+                .propertyCategory![index].propertyCategoryId
+                .toString() );
         SessionController().setPropCatName(gPCController.getPropertyCategory
-                .value.propertyCategory[index].propertyCategory ??
-            "");
+                .value.propertyCategory![index].propertyCategory! );
         _controller.loadingData.value = true;
         _controller.loadingData.value = false;
 
         Get.back(result: [
           SessionController().getLanguage() == 1
-              ? gPCController.getPropertyCategory.value.propertyCategory[index]
-                      .propertyCategory ??
-                  ""
-              : gPCController.getPropertyCategory.value.propertyCategory[index]
+              ? gPCController.getPropertyCategory.value.propertyCategory![index]
+                      .propertyCategory! 
+              : gPCController.getPropertyCategory.value.propertyCategory![index]
                       .propertyCategoryAr ??
                   "",
-          gPCController.getPropertyCategory.value.propertyCategory[index]
+          gPCController.getPropertyCategory.value.propertyCategory![index]
                   .propertyCategoryId
-                  .toString() ??
-              "",
-          gPCController.getPropertyCategory.value.propertyCategory[index]
-                  .propertyCategory
-                  .toString() ??
-              "",
+                  .toString() ,
+          gPCController.getPropertyCategory.value.propertyCategory![index]
+                  .propertyCategory!
+                  .toString() ,
         ]);
       },
       child: Column(
@@ -267,10 +258,9 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
             child: Text(
               SessionController().getLanguage() == 1
                   ? gPCController.getPropertyCategory.value
-                          .propertyCategory[index].propertyCategory ??
-                      ""
+                          .propertyCategory![index].propertyCategory! 
                   : gPCController.getPropertyCategory.value
-                          .propertyCategory[index].propertyCategoryAr ??
+                          .propertyCategory![index].propertyCategoryAr ??
                       "",
               style: AppTextStyle.normalGrey10,
             ),

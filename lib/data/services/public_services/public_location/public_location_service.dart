@@ -9,7 +9,7 @@ class PublicLocationServices {
   static Future<dynamic> getLocation() async {
     var url = AppConfig().getPublicLocation;
     var data;
-    var response = await BaseClientClass.post(url, data,
+    var response = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getPublicToken());
     if (response is http.Response) {
       PublicLocationModel getModel = publicLocationModelFromJson(response.body);

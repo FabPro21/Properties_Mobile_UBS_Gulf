@@ -9,7 +9,7 @@ class ContractPaymentsServices {
     var url = AppConfig().getContractPayments;
     Map data = {"ContractId": SessionController().getContractID().toString()};
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       ContractPaymentModel paymentsModel =
           contractPaymentModelFromJson(response.body);

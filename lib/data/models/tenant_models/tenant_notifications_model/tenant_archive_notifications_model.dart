@@ -5,10 +5,10 @@
 import 'dart:convert';
 
 TenantArchiveNotificationsModel tenantArchiveNotificationsModelFromJson(
-        String str) =>
-    TenantArchiveNotificationsModel.fromJson(json.decode(str));
+        String? str) =>
+    TenantArchiveNotificationsModel.fromJson(json.decode(str!));
 
-String tenantArchiveNotificationsModelToJson(
+String? tenantArchiveNotificationsModelToJson(
         TenantArchiveNotificationsModel data) =>
     json.encode(data.toJson());
 
@@ -19,18 +19,18 @@ class TenantArchiveNotificationsModel {
     this.message,
   });
 
-  String status;
-  String statusCode;
-  String message;
+  String? status;
+  String? statusCode;
+  String? message;
 
-  factory TenantArchiveNotificationsModel.fromJson(Map<String, dynamic> json) =>
+  factory TenantArchiveNotificationsModel.fromJson(Map<String?, dynamic> json) =>
       TenantArchiveNotificationsModel(
         status: json["status"],
         statusCode: json["statusCode"],
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "statusCode": statusCode,
         "message": message,

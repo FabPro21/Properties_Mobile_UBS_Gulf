@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-VendorGetProfileModel vendorGetProfileModelFromJson(String str) =>
-    VendorGetProfileModel.fromJson(json.decode(str));
+VendorGetProfileModel vendorGetProfileModelFromJson(String? str) =>
+    VendorGetProfileModel.fromJson(json.decode(str!));
 
-String vendorGetProfileModelToJson(VendorGetProfileModel data) =>
+String? vendorGetProfileModelToJson(VendorGetProfileModel data) =>
     json.encode(data.toJson());
 
 class VendorGetProfileModel {
@@ -17,20 +17,20 @@ class VendorGetProfileModel {
     this.message,
   });
 
-  String status;
-  Profile profile;
-  String message;
+  String? status;
+  Profile? profile;
+  String? message;
 
-  factory VendorGetProfileModel.fromJson(Map<String, dynamic> json) =>
+  factory VendorGetProfileModel.fromJson(Map<String?, dynamic> json) =>
       VendorGetProfileModel(
         status: json["status"],
         profile: Profile.fromJson(json["profile"]),
         message: json["message"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
-        "profile": profile.toJson(),
+        "profile": profile!.toJson(),
         "message": message,
       };
 }
@@ -61,28 +61,28 @@ class Profile {
   });
 
   dynamic contactPersonId;
-  String name;
-  String position;
-  String tradeLicenseNo;
-  String supplierTrn;
-  String lpoStatusName;
-  String lpoStatusNameAr;
-  String countryName;
-  String mobileNo;
-  String phone;
-  String fax;
-  String email;
-  String remarks;
+  String? name;
+  String? position;
+  String? tradeLicenseNo;
+  String? supplierTrn;
+  String? lpoStatusName;
+  String? lpoStatusNameAr;
+  String? countryName;
+  String? mobileNo;
+  String? phone;
+  String? fax;
+  String? email;
+  String? remarks;
   dynamic suspend;
   dynamic contractorId;
   dynamic isAuthorizedSignatory;
-  String companyName;
-  String companyNameAR;
-  String address;
-  String addressAR;
-  String photoUrl;
+  String? companyName;
+  String? companyNameAR;
+  String? address;
+  String? addressAR;
+  String? photoUrl;
 
-  factory Profile.fromJson(Map<String, dynamic> json) => Profile(
+  factory Profile.fromJson(Map<String?, dynamic> json) => Profile(
         contactPersonId: json["contactPersonID"],
         name: json["name"],
         position: json["position"],
@@ -106,7 +106,7 @@ class Profile {
         photoUrl: json["photoUrl"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contactPersonID": contactPersonId,
         "name": name,
         "position": position,

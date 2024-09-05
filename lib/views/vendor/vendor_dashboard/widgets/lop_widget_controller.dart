@@ -30,7 +30,7 @@ class GetAllLpoWidgetController extends GetxController {
     var result = await VendorRepository.getAllLpos();
     if (result is GetAllLpoModel) {
       getAllLposModel.value = result;
-      print('Result :::::::::::::: ${result.lpos.length}');
+      print('Result :::::::::::::: ${result.lpos!.length}');
       print('Result :::::::::::::: ${getAllLposModel.value.status}');
       if (getAllLposModel.value.status != 'Ok') {
         print('Inside the IF::::::::');
@@ -40,10 +40,10 @@ class GetAllLpoWidgetController extends GetxController {
       } else {
         print('Inside the Else::::::::');
         getAllLposModel.value = result;
-        if (getAllLposModel.value.lpos.length > 3)
+        if (getAllLposModel.value.lpos!.length > 3)
           lpoWidgetListLength = 3;
         else
-          lpoWidgetListLength = getAllLposModel.value.lpos.length;
+          lpoWidgetListLength = getAllLposModel.value.lpos!.length;
         print(lpoWidgetListLength);
         loadingData.value = false;
       }
@@ -64,7 +64,7 @@ class GetAllLpoWidgetController extends GetxController {
     var result = await VendorRepository.getAllLposPagination(pageNo, '');
     if (result is GetAllLpoModel) {
       getAllLposModel.value = result;
-      print('Result :::::::::::::: ${result.lpos.length}');
+      print('Result :::::::::::::: ${result.lpos!.length}');
       print('Result :::::::::::::: ${getAllLposModel.value.status}');
       if (getAllLposModel.value.status != 'Ok') {
         print('Inside the IF::::::::');
@@ -74,10 +74,10 @@ class GetAllLpoWidgetController extends GetxController {
       } else {
         print('Inside the Else::::::::');
         getAllLposModel.value = result;
-        if (getAllLposModel.value.lpos.length > 3)
+        if (getAllLposModel.value.lpos!.length > 3)
           lpoWidgetListLength = 3;
         else
-          lpoWidgetListLength = getAllLposModel.value.lpos.length;
+          lpoWidgetListLength = getAllLposModel.value.lpos!.length;
         print(lpoWidgetListLength);
         loadingData.value = false;
       }

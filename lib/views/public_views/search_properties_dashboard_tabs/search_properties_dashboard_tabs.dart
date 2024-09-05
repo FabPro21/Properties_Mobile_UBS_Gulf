@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/views/widgets/custom_nav_bar.dart';
@@ -17,10 +19,10 @@ import '../search_properties_services_request/public_service_request_list.dart';
 
 class SearchPropertiesDashboardTabs extends StatefulWidget {
   const SearchPropertiesDashboardTabs({
-    Key key,
+    Key? key,
   }) : super(key: key);
 // class SearchPropertiesDashboardTabs extends StatefulWidget {
-//   const SearchPropertiesDashboardTabs({Key key}) : super(key: key);
+//   const SearchPropertiesDashboardTabs({Key? key}) : super(key: key);
 
   @override
   _SearchPropertiesDashboardTabsState createState() =>
@@ -37,7 +39,7 @@ class _SearchPropertiesDashboardTabsState
     super.initState();
   }
 
-  List<Widget> _buildScreens;
+  List<Widget>? _buildScreens;
   int _selectedIndex = 0;
 
   @override
@@ -52,7 +54,7 @@ class _SearchPropertiesDashboardTabsState
 
     return WillPopScope(
         onWillPop: () async =>
-            SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+            await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
         child: Directionality(
           textDirection: SessionController().getLanguage() == 1
               ? TextDirection.ltr
@@ -69,7 +71,7 @@ class _SearchPropertiesDashboardTabsState
                 body: Column(
                   children: [
                     Expanded(
-                      child: _buildScreens[_selectedIndex],
+                      child: _buildScreens![_selectedIndex],
                     ),
                     CustomNavBar(
                       items: [

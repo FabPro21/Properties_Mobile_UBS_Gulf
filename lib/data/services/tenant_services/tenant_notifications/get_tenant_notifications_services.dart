@@ -21,7 +21,7 @@ class GetTenantNotificationsServices {
     }
 
     var completeUrl = url;
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       log(response.body);
       GetTenantNotificationsModel data =
@@ -40,7 +40,7 @@ class GetTenantNotificationsServices {
       data = {"status": status, "pageNo": pageNoP, "pageSize": '20'};
     }
     var completeUrl = url;
-    var response = await BaseClientClass.post(completeUrl, data);
+    var response = await BaseClientClass.post(completeUrl??"", data);
     if (response is http.Response) {
       log(response.body);
       GetTenantNotificationsModel data =

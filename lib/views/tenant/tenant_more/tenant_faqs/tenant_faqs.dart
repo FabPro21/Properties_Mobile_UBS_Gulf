@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantFaqs extends StatefulWidget {
-  const TenantFaqs({Key key}) : super(key: key);
+  const TenantFaqs({Key? key}) : super(key: key);
 
   @override
   _TenantFaqsState createState() => _TenantFaqsState();
@@ -70,9 +70,9 @@ class _TenantFaqsState extends State<TenantFaqs> {
                                                   categoryId: _controller
                                                           .faqsCategories
                                                           .value
-                                                          .faqCategories[index]
+                                                          .faqCategories![index]
                                                           .categoryId ??
-                                                      "",
+                                                      0,
                                                 ));
                                           },
                                           child: Directionality(
@@ -94,14 +94,14 @@ class _TenantFaqsState extends State<TenantFaqs> {
                                                         ? _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .faqCategories[
+                                                                .faqCategories![
                                                                     index]
                                                                 .title ??
                                                             ""
                                                         : _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .faqCategories[
+                                                                .faqCategories![
                                                                     index]
                                                                 .titleAr ??
                                                             "",

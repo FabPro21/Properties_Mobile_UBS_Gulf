@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/views/tenant/tenant_contracts/legal_settlement/legal_settlement_controller.dart';
 import 'package:fap_properties/views/tenant/tenant_services_request/tenant_request_details/tenant_service_request_tab/tenant_service_request_tab.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +16,9 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class LegalSettlement extends GetView<LegalSettlementController> {
-  final String contractNo;
-  final int contractId;
-  LegalSettlement({Key key, this.contractId, this.contractNo})
+  final String? contractNo;
+  final int? contractId;
+  LegalSettlement({Key? key, this.contractId, this.contractNo})
       : super(key: key) {
     Get.put(LegalSettlementController());
   }
@@ -61,7 +63,7 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                     Text(
-                      contractNo,
+                      contractNo??'',
                       style: AppTextStyle.semiBoldBlack12,
                     )
                   ],
@@ -86,7 +88,7 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                   style: AppTextStyle.normalGrey12,
                   maxLines: 8,
                   validator: (value) {
-                    if (value.isEmpty)
+                    if (value!.isEmpty)
                       return AppMetaLabels().requiredField;
                     else
                       return null;
@@ -128,10 +130,10 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                           ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
                         ),
                         onPressed: () async {
-                          if (_formKey.currentState.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             FocusScope.of(context).unfocus();
                             String resp = await controller.submitRequest(
-                                contractId, _descTextController.text);
+                                contractId??0, _descTextController.text);
                             if (resp == 'ok')
                               showSuccessDialog(context);
                             else {

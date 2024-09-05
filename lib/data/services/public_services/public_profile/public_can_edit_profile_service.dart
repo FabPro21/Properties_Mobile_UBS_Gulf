@@ -8,7 +8,7 @@ import '../../../helpers/session_controller.dart';
 
 class PublicCanEditProfileService {
   static Future<dynamic> canEditProfile() async {
-    var resp = await BaseClientClass.post(AppConfig().publicCanEditProfile, {},
+    var resp = await BaseClientClass.post(AppConfig().publicCanEditProfile??"", {},
         token: SessionController().getPublicToken());
     if (resp is http.Response) {
       try {

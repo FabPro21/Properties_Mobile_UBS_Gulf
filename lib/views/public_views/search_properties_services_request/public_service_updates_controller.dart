@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -18,7 +20,7 @@ import '../../../utils/styles/colors.dart';
 class PublicServiceUpdatesController extends GetxController {
   RxBool gettingReplies = false.obs;
   String errorGettingReplies = '';
-  GetTicketRepliesModel ticketReplies;
+  GetTicketRepliesModel? ticketReplies;
 
   RxBool typing = false.obs;
   RxBool addingReply = false.obs;
@@ -66,13 +68,13 @@ class PublicServiceUpdatesController extends GetxController {
   Future<bool> addTicketReply(String reqNo, String message) async {
     addingReply.value = true;
     var resp = await PublicRepositoryDrop2.publicAddTicketReply(
-        reqNo, message, fileToUpload.value.path);
+        reqNo, message, fileToUpload.value.path ?? "");
     addingReply.value = false;
     if (resp == 'Ok') {
       gettingReplies.value = true;
       final format = DateFormat('dd-MM-yyyy HH:mm a');
       String dateTime = format.format(DateTime.now());
-      ticketReplies.ticketReply.add(TicketReply(
+      ticketReplies!.ticketReply!.add(TicketReply(
           reply: message,
           dateTime: dateTime,
           userId2: 123,
@@ -92,40 +94,42 @@ class PublicServiceUpdatesController extends GetxController {
   RxInt isLoadingSelectedIndex = (-1).obs;
   void downloadFile(int index) async {
     isLoadingDownload.value = true;
-    if (ticketReplies.ticketReply[index].path != null) {
-      OpenFile.open(ticketReplies.ticketReply[index].path);
+    if (ticketReplies!.ticketReply![index].path != null) {
+      OpenFile.open(ticketReplies!.ticketReply![index].path);
       isLoadingDownload.value = false;
     } else {
-      ticketReplies.ticketReply[index].downloadingFile.value = true;
+      ticketReplies!.ticketReply![index].downloadingFile!.value = true;
 
       var result = await PublicRepositoryDrop2.downloadTicketFile(
-          ticketReplies.ticketReply[index].ticketReplyId);
+          ticketReplies!.ticketReply![index].ticketReplyId ?? 0);
 
-      ticketReplies.ticketReply[index].downloadingFile.value = false;
+      ticketReplies!.ticketReply![index].downloadingFile!.value = false;
       if (result is Uint8List) {
-        if (await getStoragePermission()) {
-          String path = await createFile(
-              result, ticketReplies.ticketReply[index].fileName);
-          try {
-            OpenResult result = await OpenFile.open(path);
-            isLoadingDownload.value = false;
-            if (result.message != 'done') {
-              Get.snackbar(
-                AppMetaLabels().error,
-                result.message,
-                backgroundColor: AppColors.white54,
-              );
-            }
-          } catch (e) {
-            print(e);
-            isLoadingDownload.value = false;
+        // ###1 permission
+        // if (await getStoragePermission()) {
+        String path = await createFile(
+            result, ticketReplies!.ticketReply![index].fileName ?? "");
+        try {
+          final result = await OpenFile.open(path);
+          // OpenResult result = await OpenFile.open(path);
+          isLoadingDownload.value = false;
+          if (result.message != 'done') {
             Get.snackbar(
               AppMetaLabels().error,
-              e.toString(),
+              result.message,
               backgroundColor: AppColors.white54,
             );
           }
+        } catch (e) {
+          print(e);
+          isLoadingDownload.value = false;
+          Get.snackbar(
+            AppMetaLabels().error,
+            e.toString(),
+            backgroundColor: AppColors.white54,
+          );
         }
+        // }
         isLoadingDownload.value = false;
       } else {
         isLoadingDownload.value = false;
@@ -139,10 +143,10 @@ class PublicServiceUpdatesController extends GetxController {
   }
 
   pickFile() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles();
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     /// checking file extension cheque
-    if (!CheckFileExtenstion().checkFileExtFunc(result)) {
+    if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
           duration: Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
@@ -151,7 +155,7 @@ class PublicServiceUpdatesController extends GetxController {
     }
 
     if (result != null) {
-      File file = File(result.files.single.path);
+      File file = File(result.files.single.path ?? "");
       Uint8List bytesFile = await file.readAsBytes();
 
       // checking file size Cheque

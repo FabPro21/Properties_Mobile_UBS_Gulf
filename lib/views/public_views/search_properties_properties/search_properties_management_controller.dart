@@ -28,7 +28,7 @@ class PublicGetpropertyMangementController extends GetxController {
       loadingData.value = false;
       if (result is PublicGetPropertyManagementModel) {
         getdata.value = result;
-        length = getdata.value.record.length;
+        length = getdata.value.record!.length;
         loadingData.value = false;
       } else {
         error.value = result;

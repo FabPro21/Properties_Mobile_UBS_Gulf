@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -20,8 +22,9 @@ class BaseClientClass {
   static const int TIME_OUT_DURATION = 60;
   static String dumnyUrl = '';
   //////
-  static Future<dynamic> post(String url, data, {String token}) async {
+  static Future<dynamic> post(String url, data, {String? token}) async {
     if (token == null) token = SessionController().getToken();
+    var forTestingdata = data;
     var data1 = await encriptdata(data);
     data = {"requestBody": data1};
     print('Encripted Data Post $url :::: => $data');
@@ -41,16 +44,8 @@ class BaseClientClass {
             encoding: Encoding.getByName('utf-8'),
           )
           .timeout(Duration(seconds: TIME_OUT_DURATION));
-      if (foundation.kDebugMode) {
-        // print('Request: ${response.request}');
-        // print('Headers: ${response.request.headers}');
-        // print('End: $url');
-      }
-      print('URL:: $url');
-      print('response:: $response');
       print('response:: ${response.statusCode}');
-      print('response:: ${response.body}');
-      return _getResponse(response, url);
+      return _getResponse(response, url, forTestingdata);
     } on SocketException {
       print('Response :: BCC SocketException:: No internet connection');
       await Get.to(() => NoInternetScreen());
@@ -59,7 +54,6 @@ class BaseClientClass {
           ? 'No internet connection'
           : 'لا يوجد اتصال بالإنترنت';
     } on TimeoutException {
-      print(response);
       getx.Get.snackbar(
         AppMetaLabels().error,
         AppMetaLabels().connectionTimedOut,
@@ -74,10 +68,9 @@ class BaseClientClass {
 
 ////////
   static Future<dynamic> postwithheader(String url, data,
-      {String token}) async {
+      {String? token}) async {
     if (token == null) token = SessionController().getToken();
-    print('Url :::: => $url');
-    // print('Data :::: => $data');
+    var forTestingdata = data;
     data = {"requestBody": encriptdata(data)};
     print('Encripted Data PostWithHeader :::: => $data');
     // print('Token PostWithHeader :::: => $token');
@@ -101,11 +94,8 @@ class BaseClientClass {
         // print('Headers: ${response.request.headers}');
         print('End: $url');
       }
-      print('URL:: $url');
-      print('response:: $response');
       print('response:: ${response.statusCode}');
-      print('response:: ${response.body}');
-      return _getResponse(response, url);
+      return _getResponse(response, url, forTestingdata);
     } on SocketException {
       print('Response :: BCC SocketException:: No internet connection');
       await Get.to(() => NoInternetScreen());
@@ -121,7 +111,7 @@ class BaseClientClass {
       return '${AppMetaLabels().connectionTimedOut}';
     } catch (e) {
       print('Response ::Catch e.toString():: ${e.toString()}');
-      print('Response ::Catch:: $e : $response');
+      print('Response ::Catch:: $e');
       if (foundation.kDebugMode) print(e);
       return AppMetaLabels().anyError;
     }
@@ -133,8 +123,7 @@ class BaseClientClass {
     data,
   ) async {
     dumnyUrl = url;
-    print('Url :::: => $url');
-    // print('Data :::: => $data');
+    var forTestingdata = data;
     data = {"requestBody": encriptdata(data)};
     print('Encripted Data Postwithheaderwithouttoken :::: => $data');
 
@@ -158,11 +147,9 @@ class BaseClientClass {
         // print('Headers: ${response.request.headers}');
         print('End: $url');
       }
-      print('URL:: $url');
-      print('response:: $response');
+
       print('response:: ${response.statusCode}');
-      print('response:: ${response.body}');
-      return _getResponse(response, url);
+      return _getResponse(response, url, forTestingdata);
     } on SocketException {
       print('Response :: BCC SocketException:: No internet connection');
       await Get.to(() => NoInternetScreen());
@@ -185,20 +172,20 @@ class BaseClientClass {
 ///////
   static Future<dynamic> uploadFile(
       String url, Map<String, String> fields, String fileField, String filePath,
-      {String token}) async {
+      {String? token}) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
       await Get.offAll(NoInternetScreen());
       Get.offAll(() => SplashScreen());
       return;
     }
-    print('Url :::: => $url');
-    String bearerToken = token ?? SessionController().getToken();
-    // print(bearerToken);
+    String bearerToken = token ?? SessionController().getToken() ?? '';
     try {
       http.MultipartRequest request =
           new http.MultipartRequest("POST", Uri.parse(url));
-      if (filePath != null) {
+      // if (filePath != null) {
+      if (filePath != '') {
+        print('Inside ::::: ');
         http.MultipartFile multipartFile =
             await http.MultipartFile.fromPath(fileField, filePath);
         request.files.add(multipartFile);
@@ -210,7 +197,8 @@ class BaseClientClass {
       });
       print('Request :::::::: $request');
       http.StreamedResponse response = await request.send();
-
+      // var res = await http.Response.fromStream(response);
+      // print('Respone :11::22:: ${res.body}');
 
       if (response.statusCode == 404) {
         final respStr = await response.stream.bytesToString();
@@ -261,9 +249,10 @@ class BaseClientClass {
     return false;
   }
 
-  static dynamic _getResponse(http.Response response, String url) async {
-    // print('Response :::: inside getResponse::::: $response');
-    print('Response Body :::: inside getResponse::$url::: ${response.body}');
+  static dynamic _getResponse(
+      http.Response response, String url, dynamic data) async {
+    print(
+        'Response Body :::: inside getResponse:: $url ::: $data ${response.body}');
 
     if (response.statusCode == 404) {
       if (response.statusCode == 404 &&

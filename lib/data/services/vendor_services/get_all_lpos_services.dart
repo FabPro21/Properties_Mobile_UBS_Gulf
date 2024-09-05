@@ -12,7 +12,7 @@ class GetAllLpoServices {
       "pageSize": 100.toString(),
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       GetAllLpoModel getAllLpoModel = getAllLpoModelFromJson(response.body);
       return getAllLpoModel;
@@ -28,7 +28,7 @@ class GetAllLpoServices {
       "search": searchtext
     };
 
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       GetAllLpoModel getAllLpoModel = getAllLpoModelFromJson(response.body);
       return getAllLpoModel;

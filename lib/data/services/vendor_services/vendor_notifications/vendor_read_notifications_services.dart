@@ -10,7 +10,7 @@ class VendorReadNotificationsServices {
     var data = {
       "notificationId": SessionController().getNotificationId(),
     };
-    var response = await BaseClientClass.post(url, data);
+    var response = await BaseClientClass.post(url ?? "", data);
     if (response is http.Response) {
       var data = vendorNotificationReadModelFromJson(response.body);
       return data;

@@ -27,7 +27,7 @@ class PublicNotificationsController extends GetxController {
   RxString errorUnread = "".obs;
   RxBool editTap = false.obs;
   RxBool markasRead = false.obs;
-  List<bool> isChecked;
+  List<bool>? isChecked;
   RxInt currentIndex = 0.obs;
 
   int pageNo = 1;
@@ -40,9 +40,10 @@ class PublicNotificationsController extends GetxController {
     super.onInit();
   }
 
-  List<notif.Notification> notifications;
+  List<notif.Notification>? notifications;
   String pagaNoPAll = '1';
   getNotifications(String pageNo) async {
+    print('getNotificationsgetNotificationsgetNotifications:::::::');
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
@@ -60,7 +61,8 @@ class PublicNotificationsController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
           loadingData.value = false;
         } else {
-          allLength = notifications.length;
+          allLength = notifications?.length ?? 0;
+
           isChecked = List<bool>.filled(allLength, false);
           loadingData.value = false;
         }
@@ -96,11 +98,11 @@ class PublicNotificationsController extends GetxController {
           isLoadingAllNotification.value = false;
         } else {
           for (int i = 0;
-              i < getNotificationsdata.value.notifications.length;
+              i < getNotificationsdata.value.notifications!.length;
               i++) {
-            notifications.add(getNotificationsdata.value.notifications[i]);
+            notifications?.add(getNotificationsdata.value.notifications![i]);
           }
-          allLength = notifications.length;
+          allLength = notifications?.length ?? 0;
           isChecked = List<bool>.filled(allLength, false);
           isLoadingAllNotification.value = false;
         }
@@ -121,7 +123,7 @@ class PublicNotificationsController extends GetxController {
   }
 
   String pagaNoPURead = '1';
-  List<notif.Notification> notificationsUnRead;
+  List<notif.Notification>? notificationsUnRead;
   unReadNotifications(String pageNo) async {
     bool _isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!_isInternetConnected) {
@@ -137,11 +139,12 @@ class PublicNotificationsController extends GetxController {
       if (result is notif.PublicGetNotificationModel) {
         unreadNotifications.value = result;
         notificationsUnRead = unreadNotifications.value.notifications;
-        if (unreadNotifications.value.status == AppMetaLabels().notFound || unreadNotifications.value.statusCode.toString()=='404') {
+        if (unreadNotifications.value.status == AppMetaLabels().notFound ||
+            unreadNotifications.value.statusCode.toString() == '404') {
           errorUnread.value = AppMetaLabels().noDatafound;
           unreadNotificationsLoading.value = false;
         } else {
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead?.length ?? 0;
           unreadNotificationsLoading.value = false;
         }
       } else {
@@ -177,11 +180,12 @@ class PublicNotificationsController extends GetxController {
           isLoadingUnReadNotification.value = false;
         } else {
           for (int i = 0;
-              i < unreadNotifications.value.notifications.length;
+              i < unreadNotifications.value.notifications!.length;
               i++) {
-            notificationsUnRead.add(unreadNotifications.value.notifications[i]);
+            notificationsUnRead!
+                .add(unreadNotifications.value.notifications![i]);
           }
-          unreadLength = notificationsUnRead.length;
+          unreadLength = notificationsUnRead?.length ?? 0;
           isLoadingUnReadNotification.value = false;
         }
       } else {

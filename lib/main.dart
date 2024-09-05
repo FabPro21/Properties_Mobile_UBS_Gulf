@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:fap_properties/utils/push_notifications_service.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 // import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,8 +12,8 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sizer/sizer.dart';
-// import 'package:flutter/foundation.dart';
 
 /* -------------------------------------------------------------------------- */
 /*                     // bypass this Mir Iftikhar says                       */
@@ -22,11 +24,33 @@ import 'package:sizer/sizer.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext context) {
-    return super.createHttpClient(context)
+  HttpClient createHttpClient(SecurityContext? context) {
+    final client = super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
+
+    return client;
   }
+}
+
+firebaseMessaging() async {
+  print('Firebase Messaging Message received: func call');
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  // Request permission for iOS
+  _firebaseMessaging.requestPermission();
+  // Configure foreground message handler
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Message received: ${message.messageId}');
+    // Handle foreground message
+  });
+  // Configure background message handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('Handling a background message: ${message.messageId}');
+  // Handle background message
 }
 
 /* -------------------------------------------------------------------------- */
@@ -34,16 +58,14 @@ class MyHttpOverrides extends HttpOverrides {
 /* -------------------------------------------------------------------------- */
 
 Future<void> main() async {
+  HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-//****** */  Must Uncomment For Production FirebaseAppCheck
-  // await FirebaseAppCheck.instance.activate(
-  //   androidProvider:
-  //       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
-  //   appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
-  // );
-  //  Must Uncomment For Production******/
+  await FirebaseAppCheck.instance.activate(
+    androidProvider:
+        kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
+    appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
+  );
 
   // for download file
   await FlutterDownloader.initialize(
@@ -69,7 +91,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -80,6 +102,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // myCustomImplementation();
     // privacyScreen();
+    firebaseMessaging();
     super.initState();
   }
 
@@ -121,7 +144,7 @@ class _MyAppState extends State<MyApp> {
   //     ];
   //     Map<String, String> headerHttp;
   //     final secure = await HttpCertificatePinning.check(
-  //       serverURL: "https://uatlandlord.fabproperties.ae/",
+  //       serverURL: "https://uatlandlord.menaProperties.ae/",
   //       headerHttp: headerHttp,
   //       sha: SHA.SHA1,
   //       allowedSHAFingerprints: allowedShAFingerprintList,
@@ -162,15 +185,15 @@ class _MyAppState extends State<MyApp> {
             Locale('en', ''),
             Locale('ar', ''), // arabic, no country code
           ],
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             final MediaQueryData data = MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
+              textScaler: TextScaler.linear(1.0),
             );
             return MediaQuery(
               data: data.copyWith(
-                textScaleFactor: 1.0,
+                textScaler: TextScaler.linear(1.0),
               ),
-              child: child,
+              child: child!,
             );
           },
           // above lines for restrict the use of device dont
@@ -179,7 +202,6 @@ class _MyAppState extends State<MyApp> {
               appBarTheme: AppBarTheme(
                 backgroundColor: Colors.white,
               ),
-              backgroundColor: Colors.white,
               scaffoldBackgroundColor: Colors.grey,
               canvasColor: Colors.transparent,
               snackBarTheme:
@@ -268,7 +290,7 @@ class _MyAppState extends State<MyApp> {
 // }
 
 // class MyApp extends StatefulWidget {
-//   const MyApp({Key key}) : super(key: key);
+//   const MyApp({Key? key}) : super(key: key);
 
 //   @override
 //   State<MyApp> createState() => _MyAppState();
@@ -320,7 +342,7 @@ class _MyAppState extends State<MyApp> {
 //   //     ];
 //   //     Map<String, String> headerHttp;
 //   //     final secure = await HttpCertificatePinning.check(
-//   //       serverURL: "https://uatlandlord.fabproperties.ae/",
+//   //       serverURL: "https://uatlandlord.menaProperties.ae/",
 //   //       headerHttp: headerHttp,
 //   //       sha: SHA.SHA1,
 //   //       allowedSHAFingerprints: allowedShAFingerprintList,
@@ -457,7 +479,7 @@ class _MyAppState extends State<MyApp> {
 // }
 
 // class MyApp extends StatefulWidget {
-//   const MyApp({Key key}) : super(key: key);
+//   const MyApp({Key? key}) : super(key: key);
 
 //   @override
 //   State<MyApp> createState() => _MyAppState();
@@ -509,7 +531,7 @@ class _MyAppState extends State<MyApp> {
 //   //     ];
 //   //     Map<String, String> headerHttp;
 //   //     final secure = await HttpCertificatePinning.check(
-//   //       serverURL: "https://uatlandlord.fabproperties.ae/",
+//   //       serverURL: "https://uatlandlord.menaProperties.ae/",
 //   //       headerHttp: headerHttp,
 //   //       sha: SHA.SHA1,
 //   //       allowedSHAFingerprints: allowedShAFingerprintList,
@@ -647,7 +669,7 @@ class _MyAppState extends State<MyApp> {
 // // }
 
 // // class MyApp extends StatefulWidget {
-// //   const MyApp({Key key}) : super(key: key);
+// //   const MyApp({Key? key}) : super(key: key);
 
 // //   @override
 // //   State<MyApp> createState() => _MyAppState();
@@ -699,7 +721,7 @@ class _MyAppState extends State<MyApp> {
 // //   //     ];
 // //   //     Map<String, String> headerHttp;
 // //   //     final secure = await HttpCertificatePinning.check(
-// //   //       serverURL: "https://uatlandlord.fabproperties.ae/",
+// //   //       serverURL: "https://uatlandlord.menaProperties.ae/",
 // //   //       headerHttp: headerHttp,
 // //   //       sha: SHA.SHA1,
 // //   //       allowedSHAFingerprints: allowedShAFingerprintList,

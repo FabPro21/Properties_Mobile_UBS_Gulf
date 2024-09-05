@@ -13,7 +13,7 @@ class LandlordChargesReceiptsController extends GetxController {
     var resp = await LandlordRepository.getContractChargeReceipts(chargesTypeId);
     loading.value = false;
     if (resp is ContractChargeReceiptsModel) {
-      receipts = resp.receipts;
+      receipts = resp.receipts!;
     } else
       error = resp;
   }

@@ -22,7 +22,7 @@ class PublicLoginController extends GetxController {
 
   RxBool loadingProfile = false.obs;
   String errorLoadingProfile = '';
-  PublicGetProfileModel profileData;
+  PublicGetProfileModel? profileData;
   bool canSkip = true;
   RxBool updateEnabled = false.obs;
 
@@ -37,12 +37,12 @@ class PublicLoginController extends GetxController {
       var resp = await PublicRepositoryDrop2.getProfile();
       if (resp is PublicGetProfileModel) {
         profileData = resp;
-        nameTextController.text = resp.profileDetail.fullName;
-        emailTextController.text = resp.profileDetail.email;
-        profileData.profileDetail.mobile =
-            getPhone(profileData.profileDetail.mobile);
-        if (profileData.profileDetail.fullName == null &&
-            profileData.profileDetail.fullNameAr == null) {
+        nameTextController.text = resp.profileDetail!.fullName??"";
+        emailTextController.text = resp.profileDetail!.email??"";
+        profileData!.profileDetail!.mobile =
+            getPhone(profileData!.profileDetail!.mobile??"");
+        if (profileData!.profileDetail!.fullName == null &&
+            profileData!.profileDetail!.fullNameAr == null) {
           canSkip = false;
         }
       } else {

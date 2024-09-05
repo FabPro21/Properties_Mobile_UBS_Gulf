@@ -22,7 +22,7 @@ class CheckBoxController {
     else if (markedCount.value == 0)
       markAll.value = false;
     else
-      markAll.value = null;
+      markAll.value = false;
   }
 
   void toggleMarkAll() {

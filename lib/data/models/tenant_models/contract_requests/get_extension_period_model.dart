@@ -6,10 +6,10 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-GetExtensionPeriodModel getExtensionPeriodModelFromJson(String str) =>
-    GetExtensionPeriodModel.fromJson(json.decode(str));
+GetExtensionPeriodModel getExtensionPeriodModelFromJson(String? str) =>
+    GetExtensionPeriodModel.fromJson(json.decode(str!));
 
-String getExtensionPeriodModelToJson(GetExtensionPeriodModel data) =>
+String? getExtensionPeriodModelToJson(GetExtensionPeriodModel data) =>
     json.encode(data.toJson());
 
 class GetExtensionPeriodModel {
@@ -18,20 +18,20 @@ class GetExtensionPeriodModel {
     this.extensionPeriod,
   });
 
-  String status;
-  List<ExtensionPeriod> extensionPeriod;
+  String? status;
+  List<ExtensionPeriod>? extensionPeriod;
 
-  factory GetExtensionPeriodModel.fromJson(Map<String, dynamic> json) =>
+  factory GetExtensionPeriodModel.fromJson(Map<String?, dynamic> json) =>
       GetExtensionPeriodModel(
         status: json["status"],
         extensionPeriod: List<ExtensionPeriod>.from(
             json["extensionPeriod"].map((x) => ExtensionPeriod.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "status": status,
         "extensionPeriod":
-            List<dynamic>.from(extensionPeriod.map((x) => x.toJson())),
+            List<dynamic>.from(extensionPeriod!.map((x) => x.toJson())),
       };
 }
 
@@ -42,13 +42,13 @@ class ExtensionPeriod {
     this.extensionDetail,
   });
 
-  String duration;
-  String amount;
-  ExtensionDetail extensionDetail;
+  String? duration;
+  String? amount;
+  ExtensionDetail? extensionDetail;
 
-  factory ExtensionPeriod.fromJson(Map<String, dynamic> json) {
+  factory ExtensionPeriod.fromJson(Map<String?, dynamic> json) {
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    String amount = amountFormat.format(json["amount"] ?? 0);
+    String? amount = amountFormat.format(json["amount"] ?? 0);
     return ExtensionPeriod(
       duration: json["duration"],
       amount: amount,
@@ -56,10 +56,10 @@ class ExtensionPeriod {
     );
   }
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "duration": duration,
         "amount": amount,
-        "extensionDetail": extensionDetail.toJson(),
+        "extensionDetail": extensionDetail!.toJson(),
       };
 }
 
@@ -73,15 +73,15 @@ class ExtensionDetail {
       this.endNewDate,
       this.emirateName});
 
-  int contractId;
-  String contractno;
-  String fromDate;
-  String endDate;
-  String addNewDate;
-  String endNewDate;
-  String emirateName;
+  int? contractId;
+  String? contractno;
+  String? fromDate;
+  String? endDate;
+  String? addNewDate;
+  String? endNewDate;
+  String? emirateName;
 
-  factory ExtensionDetail.fromJson(Map<String, dynamic> json) =>
+  factory ExtensionDetail.fromJson(Map<String?, dynamic> json) =>
       ExtensionDetail(
           contractId: json["contractID"],
           contractno: json["contractno"],
@@ -91,7 +91,7 @@ class ExtensionDetail {
           endNewDate: json["endNewDate"],
           emirateName: json["emirateName"]);
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "contractID": contractId,
         "contractno": contractno,
         "fromDate": fromDate,

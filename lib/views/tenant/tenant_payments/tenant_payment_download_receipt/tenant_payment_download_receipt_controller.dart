@@ -32,27 +32,28 @@ class PaymentDownloadReceiptController extends GetxController {
     if (!_isInternetConnected) {
       await Get.to(NoInternetScreen());
     }
-    payment.downloadingReceipt.value = true;
+    payment.downloadingReceipt!.value = true;
     SessionController().setTransactionId(payment.transactionId.toString());
     var result = await TenantRepository.paymentsDownloadReceipt();
     print('Condition ::::====>>>>>:::::::=> ${(result is Uint8List)}');
     if (result is Uint8List) {
-      if (await getStoragePermission()) {
-        String path = await createPdf(result, payment.receiptNo);
-        print('path ::::====>>>>>:::::::=> $path');
-        try {
-          print('path ::TRY::====>>>>>:::::::=> $path');
-          OpenFile.open(path)
-              .then((value) => print('path ::TRY::====>>>>>:::::::=> Done'));
-        } catch (e) {
-          print(e);
-          print('path ::Catch::====>>>>>:::::::=> $e');
-          Get.snackbar(
-            AppMetaLabels().error,
-            e.toString(),
-            backgroundColor: AppColors.white54,
-          );
-        }
+      // ###1 permission
+      // if (await getStoragePermission()) {
+      String path = await createPdf(result, payment.receiptNo ?? "");
+      print('path ::::====>>>>>:::::::=> $path');
+      try {
+        print('path ::TRY::====>>>>>:::::::=> $path');
+        OpenFile.open(path)
+            .then((value) => print('path ::TRY::====>>>>>:::::::=> Done'));
+      } catch (e) {
+        print(e);
+        print('path ::Catch::====>>>>>:::::::=> $e');
+        Get.snackbar(
+          AppMetaLabels().error,
+          e.toString(),
+          backgroundColor: AppColors.white54,
+        );
+        // }
       }
     } else {
       Get.snackbar(
@@ -61,7 +62,7 @@ class PaymentDownloadReceiptController extends GetxController {
         backgroundColor: AppColors.white54,
       );
     }
-    payment.downloadingReceipt.value = false;
+    payment.downloadingReceipt!.value = false;
   }
 
   Future<bool> getStoragePermission() async {

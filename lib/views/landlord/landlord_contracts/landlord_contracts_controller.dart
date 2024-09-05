@@ -8,7 +8,7 @@ import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contra
 import 'package:get/get.dart';
 
 class LandlordContractsController extends GetxController {
-  LandlordContractsModel contractsModel;
+  late LandlordContractsModel contractsModel;
   RxBool loadingContracts = false.obs;
   RxBool loadingDataLoadMore = false.obs;
   RxString errorLoadingContracts = ''.obs;
@@ -28,7 +28,7 @@ class LandlordContractsController extends GetxController {
     if (response is LandlordContractsModel) {
       if (response.totalRecord != 0) {
         contractsModel = response;
-        contracts = contractsModel.data.toList();
+        contracts = contractsModel.data?.toList()?? [];
       } else {
         errorLoadingContracts.value = AppMetaLabels().notFound;
       }
@@ -47,8 +47,8 @@ class LandlordContractsController extends GetxController {
     if (response is LandlordContractsModel) {
       if (response.totalRecord != 0) {
         contractsModel = response;
-        for (int i = 0; i < contractsModel.data.length; i++) {
-          contracts.add(contractsModel.data[i]);
+        for (int i = 0; i < contractsModel.data!.length; i++) {
+          contracts.add(contractsModel.data![i]);
         }
       } else {
         errorLoadMore.value = AppMetaLabels().notFound;
@@ -59,7 +59,7 @@ class LandlordContractsController extends GetxController {
   }
 
   RxBool isFilter = false.obs;
-  FilterData filterData;
+  FilterData? filterData;
   applyFilter() async {
     filterData =
         await Get.to(() => LandLordFilterContract(clear: !isFilter.value));
@@ -79,12 +79,12 @@ class LandlordContractsController extends GetxController {
     errorLoadingContracts.value = '';
     loadingContracts.value = true;
     var result = await LandlordRepository.getContractsWithFilter(
-        filterData, pageNoFilter);
+        filterData!, pageNoFilter);
     loadingContracts.value = false;
     if (result is LandlordContractsModel) {
       if (result.totalRecord != 0) {
         contractsModel = result;
-        contracts = contractsModel.data.toList();
+        contracts = contractsModel.data!.toList();
       } else {
         errorLoadingContracts.value = AppMetaLabels().noDatafound;
       }
@@ -102,13 +102,13 @@ class LandlordContractsController extends GetxController {
     errorLoadMoreFilter.value = '';
     loadingDataLoadMore.value = true;
     var result =
-        await LandlordRepository.getContractsWithFilter(filterData, pageNoP);
+        await LandlordRepository.getContractsWithFilter(filterData!, pageNoP);
     loadingDataLoadMore.value = false;
     if (result is LandlordContractsModel) {
       contractsModel = result;
-      if (result.data.length != 0 || result.data.isNotEmpty) {
-        for (int i = 0; i < result.data.length; i++) {
-          contracts.add(result.data[i]);
+      if (result.data!.length != 0 || result.data!.isNotEmpty) {
+        for (int i = 0; i < result.data!.length; i++) {
+          contracts.add(result.data![i]);
         }
       } else {
         errorLoadMoreFilter.value = AppMetaLabels().notFound;
@@ -121,12 +121,12 @@ class LandlordContractsController extends GetxController {
   searchData(String qry) {
     loadingContracts.value = true;
     List<Data> _searchedCont = [];
-    for (int i = 0; i < contractsModel.data.length; i++) {
-      if (contractsModel.data[i].contractno.contains(qry) ||
-          contractsModel.data[i].contractStatus
+    for (int i = 0; i < contractsModel.data!.length; i++) {
+      if (contractsModel.data![i].contractno!.contains(qry) ||
+          contractsModel.data![i].contractStatus!
               .toLowerCase()
               .contains(qry.toLowerCase())) {
-        _searchedCont.add(contractsModel.data[i]);
+        _searchedCont.add(contractsModel.data![i]);
       }
     }
     contracts = _searchedCont.toList();
