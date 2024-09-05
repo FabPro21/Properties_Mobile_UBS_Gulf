@@ -88,10 +88,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // should uncomment the below lines
       if (updateInfo?.updateAvailability ==
           UpdateAvailability.updateAvailable) {
-        Get.off(() => AppUpdate(
-              appVersion: updateInfo!.availableVersionCode.toString(),
-              availableVersion: SessionController().storeAppVerison,
-            ));
+        Get.off(() => AppUpdate());
       } else {
         selectRoloesController.initialize();
       }
@@ -109,10 +106,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       if (isAppUpdateAvailabel == false) {
         selectRoloesController.initialize();
       } else {
-        Get.off(() => AppUpdate(
-              appVersion: appVersion,
-              availableVersion: SessionController().storeAppVerison,
-            ));
+        Get.off(() => AppUpdate());
       }
     }
   }
