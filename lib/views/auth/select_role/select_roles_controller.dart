@@ -314,6 +314,8 @@ class SelectRoloesController extends GetxController {
         SessionController().setLoginToken(resp.token);
         SessionController().setUserName(resp.user!.name);
         SessionController().setUserNameAr(resp.user!.fullNameAr);
+        SessionController().setUserID(resp.user!.userId.toString());
+        print('User ID ::::: ${SessionController().getUserId()}');
         update();
         loadingData.value = false;
       } else {

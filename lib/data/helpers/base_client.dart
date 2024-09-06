@@ -298,7 +298,7 @@ class BaseClientClass {
       case 404:
         return AppMetaLabels().noDatafound;
       case 500:
-        if (foundation.kDebugMode) print(response.body);
+        if (foundation.kDebugMode) print('hhhhhhhhhhh ${response.body}');
         // getx.Get.snackbar(
         //   AppMetaLabels().error,
         //   AppMetaLabels().anyError,

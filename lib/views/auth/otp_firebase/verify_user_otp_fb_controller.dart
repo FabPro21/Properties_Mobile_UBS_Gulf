@@ -137,6 +137,14 @@ class VerifyUserOtpControllerFB extends GetxController {
 
     print(
         'User ID from Data svaed Locally ::: ${model.value.user!.userId.toString()}');
+    GlobalPreferencesEncrypted.getString(
+      GlobalPreferencesLabels.userID,
+    );
+    SessionController().userID = GlobalPreferencesEncrypted.getString(
+      GlobalPreferencesLabels.userID,
+    );
+
+    print('User ID from Prefernece ::: ${SessionController().userID}');
 
     GlobalPreferences.setbool(
       GlobalPreferencesLabels.isLoginBool,
@@ -179,7 +187,7 @@ class VerifyUserOtpControllerFB extends GetxController {
         deviceToken = token;
         SessionController().setDeviceTokken(deviceToken);
         GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken??"");
+            GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
       },
     );
   }

@@ -269,6 +269,7 @@ class OnlinePaymentsController extends GetxController {
 
     if (resp is String) {
       print('>>>>>>>>>>>><<<<<<<<<<<<<<<<<Resp False < ${(resp is String)}');
+      print('>>>>>>>>>>>><<<<<<<<<<<<<<<<<Resp False < $resp');
       SnakBarWidget.getSnackBarErrorBlue(AppMetaLabels().error,
           AppMetaLabels().errorProcessingPayment.toString());
       registeringPayment.value = false;
