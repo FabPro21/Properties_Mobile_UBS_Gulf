@@ -5,6 +5,7 @@ class AppImagesPath {
 
   static const String commonRoot = 'assets/images/common_images';
   static const String appNewLogo = '$commonRoot/app_icon/new_app_logo.png';
+  static const String menaAppLogo = '$commonRoot/mena_real_estate.svg';
 
   static const String view360 = '$commonRoot/360.png';
   static const String thumbnail = '$commonRoot/thumbnail.jpg';

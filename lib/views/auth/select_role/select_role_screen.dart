@@ -413,9 +413,10 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 6.0.h),
-                        child: const AppLogo(),
-                      ),
+                          padding: EdgeInsets.only(top: 6.0.h),
+                          child: AppLogoMena()
+                          // const AppLogo(),
+                          ),
                       Obx(() {
                         return selectRoloesController.loadingData.value == true
                             ? Padding(

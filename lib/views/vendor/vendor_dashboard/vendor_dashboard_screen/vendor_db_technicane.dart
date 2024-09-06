@@ -75,7 +75,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                 padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                 child: Row(
                   children: [
-                    SizedBox(width: 45.0.w, child: AppLogo()),
+                    SizedBox(width: 45.0.w, child: AppLogoMena()),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(

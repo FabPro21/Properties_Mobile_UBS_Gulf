@@ -91,7 +91,8 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                 ? 2.0.h
                                 : 7.0.h,
                           ),
-                          const AppLogo(),
+                          const AppLogoMena(),
+                          // const AppLogo(),
                           SizedBox(
                             height: authController.textFieldTap.value == true
                                 ? 2.0.h

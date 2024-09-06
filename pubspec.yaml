@@ -107,6 +107,7 @@ dependencies:
   wakelock_plus: ^1.2.8
   system_proxy: ^0.1.0
   flutter_html: ^3.0.0-beta.2
+  flutter_svg: ^2.0.10+1
 
   flutter_localizations:
     sdk: flutter

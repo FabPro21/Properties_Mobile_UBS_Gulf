@@ -1,5 +1,6 @@
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 class AppLogo extends StatelessWidget {
@@ -15,5 +16,18 @@ class AppLogo extends StatelessWidget {
         fit: BoxFit.contain,
       ),
     );
+  }
+}
+
+class AppLogoMena extends StatelessWidget {
+  const AppLogoMena({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 70.0.w,
+        height: 10.0.h,
+        child: SvgPicture.asset(AppImagesPath.menaAppLogo,
+            semanticsLabel: 'Acme Logo'));
   }
 }
