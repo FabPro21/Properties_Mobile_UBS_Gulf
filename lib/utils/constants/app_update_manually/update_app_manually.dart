@@ -198,7 +198,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                 try {
                                   LaunchReview.launch(
                                     androidAppId:
-                                        "com.fab.menaPropertiesEnterprise",
+                                        "com.mena.realestate",
                                   );
 
                                   await Future.delayed(Duration(seconds: 2));

@@ -1,4 +1,4 @@
-package com.fab.menaPropertiesEnterprise
+package com.mena.realestate
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterFragmentActivity

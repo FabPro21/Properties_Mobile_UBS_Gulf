@@ -162,7 +162,7 @@ class _AppUpdateState extends State<AppUpdate> {
                                     print('Android');
                                     LaunchReview.launch(
                                       androidAppId:
-                                          "com.fab.menaPropertiesEnterprise",
+                                          "com.mena.realestate",
                                     );
                                   } catch (e) {
                                     print('Exception ::: $e');

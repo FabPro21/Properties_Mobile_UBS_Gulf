@@ -34,7 +34,7 @@ def keystoreProperties = new Properties()
    }
 
 android {
-    namespace = "com.fab.menaPropertiesEnterprise"
+    namespace = "com.mena.realestate"
     compileSdkVersion 34
     ndkVersion = "25.1.8937393"
     
@@ -71,7 +71,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.fab.menaPropertiesEnterprise"
+        applicationId "com.mena.realestate"
         minSdkVersion 21
         targetSdkVersion 34
         // targetSdkVersion 33

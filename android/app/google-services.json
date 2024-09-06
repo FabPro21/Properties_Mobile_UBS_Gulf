@@ -9,10 +9,47 @@
       "client_info": {
         "mobilesdk_app_id": "1:166669147827:android:a4d3ad590f0ce1b7a31ac6",
         "android_client_info": {
-          "package_name": "com.fab.menaPropertiesEnterprise"
+          "package_name": "com.fab.fabpropertiesEnterprise"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "166669147827-e4pnt7rk9522734d14lg61jm1pi1jpfo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fab.fabpropertiesEnterprise",
+            "certificate_hash": "34c88fb6f0392692a65262452cbc009ffcaba090"
+          }
+        },
+        {
+          "client_id": "166669147827-i3qde77o82dgak96uq7jjneqakbir4pe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fab.fabpropertiesEnterprise",
+            "certificate_hash": "e9714f5db4f4757aa34c6fa253ea3db493d2ef5b"
+          }
+        },
+        {
+          "client_id": "166669147827-kmd38c34be338uu35bqftq6sdlr2apk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fab.fabpropertiesEnterprise",
+            "certificate_hash": "8d5a59b2316e3fba669e70ebc9b111468252756c"
+          }
+        },
+        {
+          "client_id": "166669147827-s2esb0dcr1nlubid6b5draqnpuk0vc05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fab.fabpropertiesEnterprise",
+            "certificate_hash": "789e7bf773b13f646ea7ccaabf8a54f12e018c35"
+          }
+        },
+        {
+          "client_id": "166669147827-7elf8n18dq9ft4v7uskdpc9ib910lkea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBVz2MCCLT71kpgLkpPteTllOgJU2CW3gs"
@@ -23,7 +60,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166669147827-7elf8n18dq9ft4v7uskdpc9ib910lkea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mena.realestate"
+              }
+            }
+          ]
         }
       }
     },
@@ -34,7 +83,36 @@
           "package_name": "com.mena.realestate"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "166669147827-j8ga6gmcq2pv52l5u1vk6irhmrvi4gp3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mena.realestate",
+            "certificate_hash": "e52e08392289b830abb01eb03546f13717bdb06c"
+          }
+        },
+        {
+          "client_id": "166669147827-t5ebbpmj637k43m3j6nfmgliltm84q2t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mena.realestate",
+            "certificate_hash": "34c88fb6f0392692a65262452cbc009ffcaba090"
+          }
+        },
+        {
+          "client_id": "166669147827-uj2vat7301saouc66im5u6crji1nse68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mena.realestate",
+            "certificate_hash": "8d5a59b2316e3fba669e70ebc9b111468252756c"
+          }
+        },
+        {
+          "client_id": "166669147827-7elf8n18dq9ft4v7uskdpc9ib910lkea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBVz2MCCLT71kpgLkpPteTllOgJU2CW3gs"
@@ -45,7 +123,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166669147827-7elf8n18dq9ft4v7uskdpc9ib910lkea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mena.realestate"
+              }
+            }
+          ]
         }
       }
     }
