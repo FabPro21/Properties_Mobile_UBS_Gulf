@@ -49,7 +49,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 9.0.h),
-                        child: const AppLogo(),
+                        child: const AppLogoMena(),
                       ),
                       Obx(() {
                         return controller.loadingProfile.value

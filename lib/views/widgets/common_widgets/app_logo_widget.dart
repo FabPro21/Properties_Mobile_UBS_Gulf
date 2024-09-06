@@ -25,7 +25,7 @@ class AppLogoMena extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 70.0.w,
+        width: 75.0.w,
         height: 10.0.h,
         child: SvgPicture.asset(AppImagesPath.menaAppLogo,
             semanticsLabel: 'Acme Logo'));

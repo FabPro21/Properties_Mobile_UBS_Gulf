@@ -41,7 +41,7 @@ class _NoServiceScreenState extends State<NoServiceScreen> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(top: 9.0.h),
-                        child: const AppLogo(),
+                        child: const AppLogoMena(),
                       ),
                       Padding(
                           padding: EdgeInsets.only(top: 15.h),

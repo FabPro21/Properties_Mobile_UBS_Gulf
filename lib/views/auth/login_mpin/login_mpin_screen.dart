@@ -76,7 +76,7 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(top: 9.0.h),
-                                      child: const AppLogo(),
+                                      child: const AppLogoMena(),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 6.0.h),
