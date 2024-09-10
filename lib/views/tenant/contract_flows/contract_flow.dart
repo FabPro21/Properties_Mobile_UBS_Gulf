@@ -430,6 +430,8 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                               : Alignment.topLeft,
                                           child: Obx(() {
                                             // Tooltip Conditions
+                                            // for hidding tooltip i just change the seconds from 5 to -1
+                                            // if we want to show it we just need to udate seconds in ContractsWithActionsController
                                             // will show always but just for 10 or 5 seconds
                                             return controllerRenewalController
                                                             .loadingContracts
@@ -597,7 +599,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                             TextSpan(
                                                               text: AppMetaLabels()
                                                                       .clickabovebtnForContractNewTutorial +
-                                                                  "  ",
+                                                                  "  cc",
                                                               style: AppTextStyle
                                                                   .normalBlack9
                                                                   .copyWith(

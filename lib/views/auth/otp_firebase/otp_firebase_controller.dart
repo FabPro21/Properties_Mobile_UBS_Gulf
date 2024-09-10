@@ -20,6 +20,7 @@ import 'package:flutter/foundation.dart';
 
 class FirebaseAuthController extends GetxController {
   static String? verificationId;
+  bool otpManuallyVerified = false;
   RxBool isCodeSent = false.obs;
   RxBool verifying = false.obs;
   RxBool validOTP = true.obs;
@@ -181,14 +182,15 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId??"", smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
         }
+        otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
-        controller.verifyOtpBtn(code, verificationId??"", true);
+        controller.verifyOtpBtn(code, verificationId ?? "", true);
         // next logic
       } on FirebaseAuthException catch (e) {
         verifying.value = false;
@@ -224,9 +226,9 @@ class FirebaseAuthController extends GetxController {
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message??"";
+          error.value = e.message ?? "";
         }
-        controller.verifyOtpBtn(code, verificationId??"", false);
+        controller.verifyOtpBtn(code, verificationId ?? "", false);
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
@@ -243,11 +245,12 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId??"", smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
         }
+        otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
         Get.offAll(() => SetupMpinScreen());
@@ -282,7 +285,7 @@ class FirebaseAuthController extends GetxController {
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message??"";
+          error.value = e.message ?? "";
         }
       } catch (e) {
         loadingData.value = false;
@@ -334,8 +337,8 @@ class FirebaseAuthController extends GetxController {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
     } else {
-      error.value = exception.message??"";
-      errorValidateUser.value = exception.message??"";
+      error.value = exception.message ?? "";
+      errorValidateUser.value = exception.message ?? "";
     }
     verifying.value = false;
     resending.value = false;
@@ -359,7 +362,7 @@ class FirebaseAuthController extends GetxController {
     PhoneNoFieldFB.phoneController.clear();
 
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode??"",
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: false,
         ));
 
@@ -384,7 +387,7 @@ class FirebaseAuthController extends GetxController {
     resendProgressBarLoading.value = false;
     PhoneNoFieldFB.phoneController.clear();
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode??"",
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: true,
         ));
     SnakBarWidget.getSnackBarErrorBlue(
@@ -458,7 +461,7 @@ class FirebaseAuthController extends GetxController {
         model.value = result;
 
         await verifyPhone(
-          SessionController().getPhone()??"",
+          SessionController().getPhone() ?? "",
         );
         loadingData.value = false;
       } else {
@@ -475,7 +478,7 @@ class FirebaseAuthController extends GetxController {
   forgotMPin() async {
     isLoadingForForgotButton.value = true;
     await verifyPhoneForgotMpin(
-      SessionController().getPhone()??"",
+      SessionController().getPhone() ?? "",
     );
   }
 }

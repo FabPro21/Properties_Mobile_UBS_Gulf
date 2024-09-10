@@ -79,9 +79,11 @@ class ContractsWithActionsController extends GetxController {
     loadingContracts.value = false;
   }
 
+
+ // for hidding tooltip i just change the seconds from 5 to -1
   RxBool isShowCustomToolTip = true.obs;
   makingFalsForToolTip() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: -1));
     isShowCustomToolTip.value = false;
   }
 
