@@ -116,12 +116,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "colorfilter_generator",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/colorfilter_generator-0.0.8",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
       "name": "connectivity_plus",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/connectivity_plus-6.0.5",
       "packageUri": "lib/",
@@ -350,18 +344,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flex_color_picker",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/flex_color_picker-3.5.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "flex_seed_scheme",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/flex_seed_scheme-3.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "flutter",
       "rootUri": "file:///Users/mapmac/FlutterDev/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -554,12 +536,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "font_awesome_flutter",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "get",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/get-4.6.6",
       "packageUri": "lib/",
@@ -626,12 +602,6 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "hand_signature",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/hand_signature-3.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "html",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/html-0.15.4",
       "packageUri": "lib/",
@@ -696,12 +666,6 @@
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_cropper_platform_interface-7.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
-    },
-    {
-      "name": "image_editor_plus",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_editor_plus-1.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
     },
     {
       "name": "image_picker",
@@ -864,12 +828,6 @@
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "matrix2d",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/matrix2d-1.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "meta",
@@ -1088,12 +1046,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "reorderables",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/reorderables-0.6.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "rive",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/rive-0.13.12",
       "packageUri": "lib/",
@@ -1108,12 +1060,6 @@
     {
       "name": "sanitize_html",
       "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "screenshot",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/screenshot-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1496,7 +1442,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-09-05T05:53:17.911157Z",
+  "generated": "2024-09-11T05:06:06.173184Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///Users/mapmac/FlutterDev/flutter",
