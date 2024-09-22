@@ -13,6 +13,10 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class AppUpdate extends StatefulWidget {
+  const AppUpdate({
+    Key? key,
+  }) : super(key: key);
+
   @override
   State<AppUpdate> createState() => _AppUpdateState();
 }
@@ -129,12 +133,9 @@ class _AppUpdateState extends State<AppUpdate> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  PlatformCheck.isAndroid == true ? 1.h : 2.5.h,
-                            ),
-                            SizedBox(
                               height: 5.h,
                             ),
+
                             // update button
                             InkWell(
                               onTap: () async {

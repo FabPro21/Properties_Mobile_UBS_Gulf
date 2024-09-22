@@ -995,15 +995,28 @@ class SvcReqDocsController extends GetxController {
       final width = front.width > back.width ? front.width : back.width;
       final height = front.height + back.height;
       img.Image mergedImage = img.Image(width: width, height: height);
+      // Fill the background with a color if needed (e.g., white)
+      img.fill(mergedImage,
+          color: img.ColorRgb8(255, 255, 255)); // White background
       // merge both images
-      img.compositeImage(mergedImage, front, dstX: 0, dstY: 0);
-      img.compositeImage(mergedImage, back, dstX: 0, dstY: back.height);
+      img.compositeImage(
+        mergedImage,
+        front,
+        dstX: 0,
+      );
+      img.compositeImage(
+        mergedImage,
+        back,
+        dstY: back.height,
+      );
 
       final byteImage = img.encodePng(mergedImage);
       final resizedImage = await compressImage(byteImage);
 
       String path = await saveFile(DocFile(
-          name: 'emirateID ${DateTime.now()}', type: '.jpg', file: resizedImage));
+          name: 'emirateID ${DateTime.now()}',
+          type: '.jpg',
+          file: resizedImage));
 
       mergedId = new File(path);
     } catch (e) {

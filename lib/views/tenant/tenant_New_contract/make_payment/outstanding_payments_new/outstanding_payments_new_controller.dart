@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:image_cropper/image_cropper.dart' as LatestCropper;
 import 'package:fap_properties/data/models/tenant_models/contract_payable/outstanding_payments_model.dart';
 import 'package:fap_properties/data/models/tenant_models/download_cheque_model.dart';
 import 'package:fap_properties/utils/constants/check_file_extension.dart';
@@ -10,8 +11,6 @@ import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -219,6 +218,14 @@ class OutstandingPaymentsNewContractController extends GetxController {
         .format(rentalSum + additionalSum + vatRentSum + vatChargesSum);
   }
 
+  Future<Uint8List> convertCroppedFileToUint8List(
+      LatestCropper.CroppedFile croppedFile) async {
+    // Read the file as bytes
+    final File file = File(croppedFile.path);
+    final Uint8List bytes = await file.readAsBytes();
+    return bytes;
+  }
+
   void insertInPaymentsToShow() {
     paymentsToShow.clear();
     if (totalRentalPayment.value != '0.00') {
@@ -309,14 +316,40 @@ class OutstandingPaymentsNewContractController extends GetxController {
       update();
     }
     if (xfile != null) {
-      Uint8List photo = await xfile.readAsBytes();
-      print(
-          'Size of file Before Compress ::: ${CheckFileExtenstion().getFileSize(photo)}  Path:${xfile.path}');
-
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        Uint8List photo = await xfile.readAsBytes();
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        var editedImage;
+        if (crop == null) return;
+
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
+
         photo = editedImage;
 
         photo = await compressImage(photo);
@@ -374,9 +407,37 @@ class OutstandingPaymentsNewContractController extends GetxController {
       Uint8List photo = await xfile.readAsBytes();
 
       try {
-        final editedImage = await Get.to(() => ImageCropper(
-              image: photo,
-            ));
+        // final editedImage = await Get.to(() => ImageCropper(
+        //       image: photo,
+        //     ));
+
+        final crop = await LatestCropper.ImageCropper()
+            .cropImage(sourcePath: xfile.path, uiSettings: [
+          LatestCropper.AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: AppColors.blueColor,
+            toolbarWidgetColor: AppColors.whiteColor,
+            lockAspectRatio: false,
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          ),
+          LatestCropper.IOSUiSettings(
+            title: 'Cropper',
+            aspectRatioPresets: [
+              LatestCropper.CropAspectRatioPreset.original,
+              LatestCropper.CropAspectRatioPreset.square,
+            ],
+          )
+        ]);
+
+        var editedImage;
+        if (crop == null) return;
+
+        print('Edited Image :::::2  crop $crop');
+        editedImage = await convertCroppedFileToUint8List(crop);
+        print('Edited Image :::::2  ${(editedImage == null)}');
         photo = editedImage;
         print('editedImage Path ::::::::: before store $editedImage ');
         print(
