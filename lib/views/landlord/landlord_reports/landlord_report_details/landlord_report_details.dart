@@ -950,6 +950,24 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                   //     ThemeData(primarySwatch: Colors.deepPurple),
                                                   styleDatePicker:
                                                       MaterialRoundedDatePickerStyle(
+                                                    decorationDateSelected:
+                                                        BoxDecoration(
+                                                            color: AppColors
+                                                                .blueColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100)),
+                                                    textStyleButtonPositive:
+                                                        TextStyle(
+                                                      color:
+                                                          AppColors.blueColor,
+                                                    ),
+                                                    textStyleButtonNegative:
+                                                        TextStyle(
+                                                      color:
+                                                          AppColors.blueColor,
+                                                    ),
                                                     backgroundHeader:
                                                         Colors.grey.shade300,
                                                     // Appbar year like '2023' button
@@ -1363,6 +1381,24 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       //     ThemeData(primarySwatch: Colors.deepPurple),
                                                       styleDatePicker:
                                                           MaterialRoundedDatePickerStyle(
+                                                        decorationDateSelected:
+                                                            BoxDecoration(
+                                                                color: AppColors
+                                                                    .blueColor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            100)),
+                                                        textStyleButtonPositive:
+                                                            TextStyle(
+                                                          color: AppColors
+                                                              .blueColor,
+                                                        ),
+                                                        textStyleButtonNegative:
+                                                            TextStyle(
+                                                          color: AppColors
+                                                              .blueColor,
+                                                        ),
                                                         backgroundHeader: Colors
                                                             .grey.shade300,
                                                         // Appbar year like '2023' button
@@ -1545,6 +1581,24 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       //     ThemeData(primarySwatch: Colors.deepPurple),
                                                       styleDatePicker:
                                                           MaterialRoundedDatePickerStyle(
+                                                        decorationDateSelected:
+                                                            BoxDecoration(
+                                                                color: AppColors
+                                                                    .blueColor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            100)),
+                                                        textStyleButtonPositive:
+                                                            TextStyle(
+                                                          color: AppColors
+                                                              .blueColor,
+                                                        ),
+                                                        textStyleButtonNegative:
+                                                            TextStyle(
+                                                          color: AppColors
+                                                              .blueColor,
+                                                        ),
                                                         backgroundHeader: Colors
                                                             .grey.shade300,
                                                         // Appbar year like '2023' button

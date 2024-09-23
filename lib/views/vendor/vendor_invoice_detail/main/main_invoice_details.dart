@@ -1402,6 +1402,51 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 .subtract(Duration(days: 7300)),
                                             lastDate: DateTime.now(),
                                             borderRadius: 2.0.h,
+                                            styleDatePicker:
+                                                MaterialRoundedDatePickerStyle(
+                                              decorationDateSelected:
+                                                  BoxDecoration(
+                                                      color:
+                                                          AppColors.blueColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100)),
+                                              textStyleButtonPositive:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              textStyleButtonNegative:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              backgroundHeader:
+                                                  Colors.grey.shade300,
+                                              // Appbar year like '2023' button
+                                              textStyleYearButton: TextStyle(
+                                                fontSize: 30.sp,
+                                                color: Colors.blue,
+                                                fontWeight: FontWeight.bold,
+                                                backgroundColor:
+                                                    Colors.grey.shade100,
+                                                leadingDistribution:
+                                                    TextLeadingDistribution
+                                                        .even,
+                                              ),
+                                              // Appbar day like 'Thu, Mar 16' button
+                                              textStyleDayButton: TextStyle(
+                                                fontSize: 18.sp,
+                                                color: Colors.white,
+                                              ),
+
+                                              // Heading year like 'S M T W TH FR SA ' button
+                                              // textStyleDayHeader: TextStyle(
+                                              //   fontSize: 30.sp,
+                                              //   color: Colors.white,
+                                              //   backgroundColor: Colors.red,
+                                              //   decoration: TextDecoration.overline,
+                                              //   decorationColor: Colors.pink,
+                                              // ),
+                                            ),
                                           );
                                           if (expDate != null) {
                                             DateFormat dateFormat =
@@ -1712,6 +1757,51 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                   .subtract(Duration(days: 15)),
                                               lastDate: DateTime.now(),
                                               borderRadius: 2.0.h,
+                                              styleDatePicker:
+                                                  MaterialRoundedDatePickerStyle(
+                                                decorationDateSelected:
+                                                    BoxDecoration(
+                                                        color:
+                                                            AppColors.blueColor,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(100)),
+                                                textStyleButtonPositive:
+                                                    TextStyle(
+                                                  color: AppColors.blueColor,
+                                                ),
+                                                textStyleButtonNegative:
+                                                    TextStyle(
+                                                  color: AppColors.blueColor,
+                                                ),
+                                                backgroundHeader:
+                                                    Colors.grey.shade300,
+                                                // Appbar year like '2023' button
+                                                textStyleYearButton: TextStyle(
+                                                  fontSize: 30.sp,
+                                                  color: Colors.blue,
+                                                  fontWeight: FontWeight.bold,
+                                                  backgroundColor:
+                                                      Colors.grey.shade100,
+                                                  leadingDistribution:
+                                                      TextLeadingDistribution
+                                                          .even,
+                                                ),
+                                                // Appbar day like 'Thu, Mar 16' button
+                                                textStyleDayButton: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  color: Colors.white,
+                                                ),
+
+                                                // Heading year like 'S M T W TH FR SA ' button
+                                                // textStyleDayHeader: TextStyle(
+                                                //   fontSize: 30.sp,
+                                                //   color: Colors.white,
+                                                //   backgroundColor: Colors.red,
+                                                //   decoration: TextDecoration.overline,
+                                                //   decorationColor: Colors.pink,
+                                                // ),
+                                              ),
                                             );
                                             if (expDate != null) {
                                               DateFormat dateFormat =

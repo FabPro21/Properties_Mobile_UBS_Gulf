@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:fap_properties/utils/push_notifications_service.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 // import 'package:firebase_app_check/firebase_app_check.dart';
@@ -193,6 +194,7 @@ class _MyAppState extends State<MyApp> {
               appBarTheme: AppBarTheme(
                 backgroundColor: Colors.white,
               ),
+              primaryColor: AppColors.blueColor,
               scaffoldBackgroundColor: Colors.grey,
               canvasColor: Colors.transparent,
               snackBarTheme:

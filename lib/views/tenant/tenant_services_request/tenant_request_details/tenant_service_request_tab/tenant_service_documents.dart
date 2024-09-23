@@ -93,7 +93,6 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
     setState(() {
       _isSolving = false;
     });
-    
   }
 
   bool highLightExpiry = false;
@@ -746,6 +745,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             expDate = await showRoundedDatePicker(
                               theme:
                                   ThemeData(primaryColor: AppColors.blueColor),
+
                               height: 50.0.h,
                               context: context,
                               // locale: Locale('en'),
@@ -760,6 +760,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               // theme:
                               //     ThemeData(primarySwatch: Colors.deepPurple),
                               styleDatePicker: MaterialRoundedDatePickerStyle(
+                                decorationDateSelected: BoxDecoration(
+                                    color: AppColors.blueColor,
+                                    borderRadius: BorderRadius.circular(100)),
+                                textStyleButtonPositive: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
+                                textStyleButtonNegative: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
                                 backgroundHeader: Colors.grey.shade300,
                                 // Appbar year like '2023' button
                                 textStyleYearButton: TextStyle(
@@ -1144,7 +1153,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         onTap: () async {
                           // if (!await Permission.storage.request().isGranted) {
                           //   print('Else');
-                          //   await Permission.mediaLibrary .request();  
+                          //   await Permission.mediaLibrary .request();
                           //   // return;
                           // }
                           try {
@@ -1643,6 +1652,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
+                              decorationDateSelected: BoxDecoration(
+                                  color: AppColors.blueColor,
+                                  borderRadius: BorderRadius.circular(100)),
+                              textStyleButtonPositive: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
+                              textStyleButtonNegative: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
                               backgroundHeader: Colors.grey.shade300,
                               // Appbar year like '2023' button
                               textStyleYearButton: TextStyle(
@@ -1760,6 +1778,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
+                              decorationDateSelected: BoxDecoration(
+                                  color: AppColors.blueColor,
+                                  borderRadius: BorderRadius.circular(100)),
+                              textStyleButtonPositive: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
+                              textStyleButtonNegative: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
                               backgroundHeader: Colors.grey.shade300,
                               // Appbar year like '2023' button
                               textStyleYearButton: TextStyle(
@@ -1861,6 +1888,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {
                                 Navigator.of(context).pop();
@@ -1886,6 +1922,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 setState(() {});
                               }),
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
                                 if (controller.comparingUint8List(
@@ -2057,6 +2102,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                     : Row(
                         children: [
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
                                 if (controller.comparingUint8List(
@@ -2172,6 +2226,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 }
                               }),
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {
                                 Navigator.of(context).pop();
@@ -2625,7 +2688,6 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
         });
   }
 }
-
 
 // Before Compress Image Func and Add Croper
 // // ignore_for_file: unused_local_variable
@@ -3326,8 +3388,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                               height: 50.0.h,
 //                               context: context,
 //                               locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                               initialDate: DateTime.now(),
 //                               firstDate:
 //                                   DateTime.now().subtract(Duration(seconds: 1)),
@@ -4083,8 +4145,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                             height: 50.0.h,
 //                             context: context,
 //                                 locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                             initialDate: DateTime.now(),
 //                             firstDate:
 //                                 DateTime.now().subtract(Duration(seconds: 1)),
@@ -4199,8 +4261,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                             height: 50.0.h,
 //                             context: context,
 //                                locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                             initialDate: DateTime.now(),
 //                             firstDate: DateTime(DateTime.now().year - 100),
 //                             lastDate: DateTime.now(),
@@ -4330,7 +4392,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                 TextButton(
 //                     child: Text(AppMetaLabels().confirm),
 //                     onPressed: () async {
-                     
+
 //                       if (controller.comparingUint8List(
 //                           controller.cardScanModel.frontImage,
 //                           controller.cardScanModel.backImage)) {
@@ -5541,8 +5603,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                               height: 50.0.h,
 //                               context: context,
 //                                   locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                               initialDate: DateTime.now(),
 //                               firstDate:
 //                                   DateTime.now().subtract(Duration(seconds: 1)),
@@ -6233,8 +6295,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                             height: 50.0.h,
 //                             context: context,
 //                                 locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                             initialDate: DateTime.now(),
 //                             firstDate:
 //                                 DateTime.now().subtract(Duration(seconds: 1)),
@@ -6349,8 +6411,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //                             height: 50.0.h,
 //                             context: context,
 //                               locale: SessionController().getLanguage() == 1
-                                  // ? Locale('en', '')
-                                  // : Locale('ar', ''),
+// ? Locale('en', '')
+// : Locale('ar', ''),
 //                             initialDate: DateTime.now(),
 //                             firstDate: DateTime(DateTime.now().year - 100),
 //                             lastDate: DateTime.now(),
@@ -6979,5 +7041,3 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
 //         });
 //   }
 // }
-
-

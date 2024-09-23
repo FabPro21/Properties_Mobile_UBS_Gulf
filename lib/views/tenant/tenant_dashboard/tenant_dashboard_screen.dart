@@ -1451,6 +1451,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                             // pagination: SwiperPagination.fraction,
                             control: SwiperControl(
                               padding: EdgeInsets.only(left: 0.h, right: 0.h),
+                              color: AppColors.blueColor
                             ),
                             onIndexChanged: (index) {
                               SessionController().setNotificationId(
@@ -1552,7 +1553,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                 index]
                                                             .titleAr ??
                                                         // .titleAR ??
-                                                        "hello",
+                                                        "",
                                                 style: AppTextStyle
                                                     .semiBoldBlack13
                                                     .copyWith(

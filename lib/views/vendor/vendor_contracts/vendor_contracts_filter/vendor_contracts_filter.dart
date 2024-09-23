@@ -235,6 +235,16 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                           fontSize: 18.sp,
                                           color: Colors.white,
                                         ),
+                                        decorationDateSelected: BoxDecoration(
+                                            color: AppColors.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(100)),
+                                        textStyleButtonPositive: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
+                                        textStyleButtonNegative: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
 
                                         // Heading year like 'S M T W TH FR SA ' button
                                         // textStyleDayHeader: TextStyle(
@@ -341,6 +351,17 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                           color: Colors.white,
                                         ),
 
+                                        decorationDateSelected: BoxDecoration(
+                                            color: AppColors.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(100)),
+                                        textStyleButtonPositive: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
+                                        textStyleButtonNegative: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
+                                        
                                         // Heading year like 'S M T W TH FR SA ' button
                                         // textStyleDayHeader: TextStyle(
                                         //   fontSize: 30.sp,

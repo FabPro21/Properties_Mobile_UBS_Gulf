@@ -253,6 +253,10 @@ class BaseClientClass {
       http.Response response, String url, dynamic data) async {
     print(
         'Response Body :::: inside getResponse:: $url ::: $data Test:=> ${response.body}');
+    print('-----------------------------');
+    print('URL ::::: $url');
+    print('RESPONSE ::::: ${response.body}');
+    print('-----------------------------');
 
     if (response.statusCode == 404) {
       if (response.statusCode == 404 &&
