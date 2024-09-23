@@ -121,7 +121,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppMetaLabels().paymentMethod +'',
+                            AppMetaLabels().paymentMethod + '',
                             style: AppTextStyle.semiBoldBlack15,
                           ),
                           InkWell(
@@ -487,8 +487,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                               double.infinity,
                                                           child: Text(
                                                             AppMetaLabels()
-                                                                    .enterValidAddress +
-                                                                ' test',
+                                                                .enterValidAddress,
                                                             style: AppTextStyle
                                                                 .normalErrorText3,
                                                           ),
@@ -2501,16 +2500,18 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                     .digitsOnly
                                               ],
                                               decoration: InputDecoration(
-                                                enabledBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: payable
-                                                                .errorChequeNo
-                                                                .value
-                                                            ? Colors.red
-                                                            : AppColors.grey1)),
-                                                border: OutlineInputBorder(),
-                                                contentPadding: EdgeInsets.only(bottom: 5)
-                                              ),
+                                                  enabledBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: payable
+                                                                  .errorChequeNo
+                                                                  .value
+                                                              ? Colors.red
+                                                              : AppColors
+                                                                  .grey1)),
+                                                  border: OutlineInputBorder(),
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          bottom: 5)),
                                               onChanged: (value) {
                                                 // adding this
                                                 if (value.length == 6) {

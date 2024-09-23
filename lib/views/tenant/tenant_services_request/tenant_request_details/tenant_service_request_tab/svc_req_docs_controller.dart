@@ -1002,15 +1002,13 @@ class SvcReqDocsController extends GetxController {
       img.compositeImage(
         mergedImage,
         front,
+        dstX: 0,
       );
-      // dstX: 0, dstY: 0, blend: BlendMode.multiply
       img.compositeImage(
         mergedImage,
         back,
-        dstX: 0,
-        dstY: front.height,
+        dstY: back.height,
       );
-      // img.compositeImage(mergedImage, back, dstX: 0, dstY: back.height);
 
       final byteImage = img.encodePng(mergedImage);
       final resizedImage = await compressImage(byteImage);

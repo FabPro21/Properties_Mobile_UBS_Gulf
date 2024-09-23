@@ -420,6 +420,16 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       borderRadius: 2.0.h,
                                       styleDatePicker:
                                           MaterialRoundedDatePickerStyle(
+                                        decorationDateSelected: BoxDecoration(
+                                            color: AppColors.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(100)),
+                                        textStyleButtonPositive: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
+                                        textStyleButtonNegative: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
                                         backgroundHeader: Colors.grey.shade300,
                                         // Appbar year like '2023' button
                                         textStyleYearButton: TextStyle(
@@ -491,6 +501,16 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       borderRadius: 2.0.h,
                                       styleDatePicker:
                                           MaterialRoundedDatePickerStyle(
+                                        decorationDateSelected: BoxDecoration(
+                                            color: AppColors.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(100)),
+                                        textStyleButtonPositive: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
+                                        textStyleButtonNegative: TextStyle(
+                                          color: AppColors.blueColor,
+                                        ),
                                         backgroundHeader: Colors.grey.shade300,
                                         // Appbar year like '2023' button
                                         textStyleYearButton: TextStyle(
@@ -574,6 +594,14 @@ class _TenantRequestListState extends State<TenantRequestList> {
                     EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.w),
                 actions: [
                   TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          WidgetStateProperty.all(AppColors.blueColor),
+                      textStyle: WidgetStateProperty.all(TextStyle(
+                        fontSize: 10.sp, // Adjust as needed
+                        fontWeight: FontWeight.bold, // Adjust as needed
+                      )),
+                    ),
                     onPressed: () {
                       if (getTSRController.filterError.value != '') {
                         return;
@@ -634,6 +662,14 @@ class _TenantRequestListState extends State<TenantRequestList> {
                   //   child: Text(AppMetaLabels().clear),
                   // ),
                   TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          WidgetStateProperty.all(AppColors.blueColor),
+                      textStyle: WidgetStateProperty.all(TextStyle(
+                        fontSize: 10.sp, // Adjust as needed
+                        fontWeight: FontWeight.bold, // Adjust as needed
+                      )),
+                    ),
                     onPressed: () {
                       setState(() {
                         getTSRController.fromDate = null;

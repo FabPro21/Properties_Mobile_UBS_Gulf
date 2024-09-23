@@ -299,6 +299,16 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   borderRadius: 2.0.h,
                                   styleDatePicker:
                                       MaterialRoundedDatePickerStyle(
+                                    decorationDateSelected: BoxDecoration(
+                                        color: AppColors.blueColor,
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    textStyleButtonPositive: TextStyle(
+                                      color: AppColors.blueColor,
+                                    ),
+                                    textStyleButtonNegative: TextStyle(
+                                      color: AppColors.blueColor,
+                                    ),
                                     backgroundHeader: Colors.grey.shade300,
                                     // Appbar year like '2023' button
                                     textStyleYearButton: TextStyle(
@@ -404,6 +414,16 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   borderRadius: 16,
                                   styleDatePicker:
                                       MaterialRoundedDatePickerStyle(
+                                    decorationDateSelected: BoxDecoration(
+                                        color: AppColors.blueColor,
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    textStyleButtonPositive: TextStyle(
+                                      color: AppColors.blueColor,
+                                    ),
+                                    textStyleButtonNegative: TextStyle(
+                                      color: AppColors.blueColor,
+                                    ),
                                     backgroundHeader: Colors.grey.shade300,
                                     // Appbar year like '2023' button
                                     textStyleYearButton: TextStyle(

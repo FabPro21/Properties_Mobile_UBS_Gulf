@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:fap_properties/utils/push_notifications_service.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 // import 'package:firebase_app_check/firebase_app_check.dart';
@@ -199,6 +200,7 @@ class _MyAppState extends State<MyApp> {
           // above lines for restrict the use of device dont
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+              primaryColor: AppColors.blueColor,
               appBarTheme: AppBarTheme(
                 backgroundColor: Colors.white,
               ),

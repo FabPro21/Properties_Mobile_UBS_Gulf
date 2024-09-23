@@ -114,7 +114,10 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   },
                                   child: Row(
                                     children: [
-                                      Icon(Icons.attach_file),
+                                      Icon(
+                                        Icons.attach_file,
+                                        color: AppColors.blueColor,
+                                      ),
                                       Text(
                                         AppMetaLabels().addFile,
                                         style: AppTextStyle.normalBlack12,
@@ -126,12 +129,16 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   children: [
                                     TextButton(
                                       onPressed: () {
-                                        OpenFile.open(_controller
-                                            .fileToUpload.value.path);
+                                        OpenFile.open(
+                                          _controller.fileToUpload.value.path,
+                                        );
                                       },
                                       child: Row(
                                         children: [
-                                          Icon(Icons.file_open),
+                                          Icon(
+                                            Icons.file_open,
+                                            color: AppColors.blueColor,
+                                          ),
                                           SizedBox(
                                             width: 2.w,
                                           ),

@@ -759,6 +759,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               // theme:
                               //     ThemeData(primarySwatch: Colors.deepPurple),
                               styleDatePicker: MaterialRoundedDatePickerStyle(
+                                decorationDateSelected: BoxDecoration(
+                                    color: AppColors.blueColor,
+                                    borderRadius: BorderRadius.circular(100)),
+                                textStyleButtonPositive: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
+                                textStyleButtonNegative: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
                                 backgroundHeader: Colors.grey.shade300,
                                 // Appbar year like '2023' button
                                 textStyleYearButton: TextStyle(
@@ -1645,6 +1654,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
+                              decorationDateSelected: BoxDecoration(
+                                  color: AppColors.blueColor,
+                                  borderRadius: BorderRadius.circular(100)),
+                              textStyleButtonPositive: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
+                              textStyleButtonNegative: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
                               backgroundHeader: Colors.grey.shade300,
                               // Appbar year like '2023' button
                               textStyleYearButton: TextStyle(
@@ -1762,6 +1780,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
+                              decorationDateSelected: BoxDecoration(
+                                  color: AppColors.blueColor,
+                                  borderRadius: BorderRadius.circular(100)),
+                              textStyleButtonPositive: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
+                              textStyleButtonNegative: TextStyle(
+                                color: AppColors.blueColor,
+                              ),
                               backgroundHeader: Colors.grey.shade300,
                               // Appbar year like '2023' button
                               textStyleYearButton: TextStyle(
@@ -1863,6 +1890,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {
                                 Navigator.of(context).pop();
@@ -1888,6 +1924,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 setState(() {});
                               }),
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
                                 if (controller.comparingUint8List(
@@ -2059,6 +2104,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                     : Row(
                         children: [
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
                                 if (controller.comparingUint8List(
@@ -2174,6 +2228,15 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 }
                               }),
                           TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: WidgetStateProperty.all(
+                                    AppColors.blueColor),
+                                textStyle: WidgetStateProperty.all(TextStyle(
+                                  fontSize: 10.sp, // Adjust as needed
+                                  fontWeight:
+                                      FontWeight.bold, // Adjust as needed
+                                )),
+                              ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {
                                 Navigator.of(context).pop();
