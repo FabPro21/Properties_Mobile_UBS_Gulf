@@ -1014,7 +1014,7 @@ class SvcReqDocsController extends GetxController {
       final resizedImage = await compressImage(byteImage);
 
       String path = await saveFile(DocFile(
-          name: 'emirateID ${DateTime.now()}',
+          name: 'emirateID${DateTime.now().millisecondsSinceEpoch}',
           type: '.jpg',
           file: resizedImage));
 
@@ -1116,6 +1116,8 @@ class SvcReqDocsController extends GetxController {
       print('Inside the func ::::');
       // docsModel?.docs?[index].loading.value = true;
       docsModel?.docs?[index].errorLoading = false;
+      print(
+          'path of Emirate ID while Testing ::::::${docsModel?.docs?[index].path}');
       var resp = await TenantRepository.uploadDocWithEIDParameter(
         caseNo ?? "",
         docsModel?.docs?[index].path ?? "",
