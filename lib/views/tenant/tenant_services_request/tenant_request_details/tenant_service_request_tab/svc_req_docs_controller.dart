@@ -1014,7 +1014,7 @@ class SvcReqDocsController extends GetxController {
       final resizedImage = await compressImage(byteImage);
 
       String path = await saveFile(DocFile(
-          name: 'emirateID ${DateTime.now()}',
+          name: 'emirateID${DateTime.now().microsecondsSinceEpoch}',
           type: '.jpg',
           file: resizedImage));
 
