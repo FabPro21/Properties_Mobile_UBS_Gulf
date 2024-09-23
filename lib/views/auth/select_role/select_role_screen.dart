@@ -104,7 +104,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       var isAppUpdateAvailabel =
           selectRoloesController.isUpdateNeededFuncForIos(
               SessionController().storeAppVerison ?? "0.0.0", appVersion);
-      if (isAppUpdateAvailabel != false) {
+      if (isAppUpdateAvailabel == false) {
         selectRoloesController.initialize();
       } else {
         Get.off(() => AppUpdate());
