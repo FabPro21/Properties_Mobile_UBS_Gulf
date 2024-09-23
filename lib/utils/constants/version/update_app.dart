@@ -145,11 +145,13 @@ class _AppUpdateState extends State<AppUpdate> {
                                 if (PlatformCheck.isIOS) {
                                   print('iOS');
                                   try {
+                                    print('com.mena.realestate');
+                                    print('6630369244');
                                     LaunchReview.launch(
-                                      androidAppId: "com.fab.properties",
+                                      androidAppId: "com.mena.realestate",
                                       writeReview: false,
                                       isiOSBeta: false,
-                                      iOSAppId: '1588897544',
+                                      iOSAppId: '6630369244',
                                     );
                                   } catch (e) {
                                     print('Exception ::: $e');

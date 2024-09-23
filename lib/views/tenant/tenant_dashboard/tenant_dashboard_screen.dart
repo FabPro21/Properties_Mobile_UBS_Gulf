@@ -1552,7 +1552,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                 index]
                                                             .titleAr ??
                                                         // .titleAR ??
-                                                        "hello",
+                                                        "",
                                                 style: AppTextStyle
                                                     .semiBoldBlack13
                                                     .copyWith(
