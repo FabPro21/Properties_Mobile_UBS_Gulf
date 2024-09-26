@@ -658,7 +658,8 @@ class AppConfig {
         appConfigVendor! + 'Vendor/Contracts/GetContractsWithFilter';
     getVendorAccounts = appConfigVendor! + 'Vendor/Accounts/GetAccountInfo';
 
-    getVendorFaqsCatg = appConfigVendor! + 'Vendor/GeneralData/GetFaqCategories';
+    getVendorFaqsCatg =
+        appConfigVendor! + 'Vendor/GeneralData/GetFaqCategories';
     getVendorFaqsQuestionAndDescription =
         appConfigVendor! + 'Vendor/GeneralData/GetFaqs';
 
@@ -671,7 +672,8 @@ class AppConfig {
     getststs = appConfigVendor! + 'Vendor/Dashboard/GetData';
     getdashboardlpo = appConfigVendor! + 'Vendor/Dashboard/GetLpoProperties';
 
-    contactPerson = appConfigVendor! + 'Vendor/ContactPersons/GetContactPersons';
+    contactPerson =
+        appConfigVendor! + 'Vendor/ContactPersons/GetContactPersons';
     accountInfo = appConfigVendor! + 'Vendor/Accounts/GetAccountInfo';
     doc = appConfigVendor! + 'Vendor/Documents/GetDocuments';
     getVendorProfile = appConfigVendor! + 'Vendor/Profile/Get';
@@ -733,14 +735,16 @@ class AppConfig {
         'Vendor/ServiceRequests/DownloadServiceRequestDocuments';
     vendorGetTickets =
         appConfigVendor! + 'Vendor/ServiceRequests/GetTicketReplies';
-    vendorAddTicket = appConfigVendor! + 'Vendor/ServiceRequests/AddTicketReply';
+    vendorAddTicket =
+        appConfigVendor! + 'Vendor/ServiceRequests/AddTicketReply';
     vendorDownloadTicketFile =
         appConfigVendor! + 'Vendor/ServiceRequests/DownloadTicketFile';
     vendorGetSRReportDetail =
         appConfigVendor! + 'Vendor/ServiceRequests/GetSRReportDetail';
     getLpoDropdownForIvoice = appConfigVendor! + 'Vendor/Lpo/LpoDropdown';
     getAMCDropdownForInvoice = appConfigVendor! + 'Vendor/Lpo/AMCDropdown';
-    getAmcInstallmentForInvoice = appConfigVendor! + 'Vendor/Lpo/AmcInstallment';
+    getAmcInstallmentForInvoice =
+        appConfigVendor! + 'Vendor/Lpo/AmcInstallment';
     ////////////////////////
     ///DROP 2 APIs
     ///////////////////////
@@ -816,8 +820,8 @@ class AppConfig {
     //     tenantAppConfig! + 'Tenant/ServiceRequests/';
     uploadServiceRequestFiles =
         tenantAppConfig! + 'Tenant/ServiceRequests/UploadServiceRequestFiles';
-    uploadServiceRequestFilesNew =
-        tenantAppConfig! + 'Tenant/ServiceRequests/UploadServiceRequestFilesNew';
+    uploadServiceRequestFilesNew = tenantAppConfig! +
+        'Tenant/ServiceRequests/UploadServiceRequestFilesNew';
     // upload EMID Detail
     uploadEIDFilesDetail = tenantAppConfig! +
         'Tenant/ServiceRequests/UploadServiceRequestEmirateId';
@@ -867,7 +871,8 @@ class AppConfig {
     removeCheque = tenantAppConfig! + 'Tenant/Contracts/RemoveContractCheque';
     removeChequeNew =
         tenantAppConfig! + 'Tenant/Contracts/RemoveContractChequeNew';
-    registerPayment = tenantAppConfig! + 'Tenant/GatewayPayment/RegisterPayment';
+    registerPayment =
+        tenantAppConfig! + 'Tenant/GatewayPayment/RegisterPayment';
     registerPaymentNew =
         tenantAppConfig! + 'Tenant/GatewayPayment/RegisterPaymentNew';
     getPolicyData =
@@ -941,10 +946,12 @@ class AppConfig {
         publicAppConfig! + "api/public/BookingRequest/SaveBRFeedback";
     getPublicFeedback =
         publicAppConfig! + "api/public/BookingRequest/GetBRFeedback";
-    getPublicLocation = publicAppConfig! + "api/public/GeneralData/GetLocations";
+    getPublicLocation =
+        publicAppConfig! + "api/public/GeneralData/GetLocations";
     getPublicFeedback =
         publicAppConfig! + "api/public/BookingRequest/GetBRFeedback";
-    getPublicLocation = publicAppConfig! + "api/public/GeneralData/GetLocations";
+    getPublicLocation =
+        publicAppConfig! + "api/public/GeneralData/GetLocations";
     cancelPublicBookingreq =
         publicAppConfig! + "api/public/BookingRequest/CancelRequest";
     getBookingReqImages = publicAppConfig! + 'api/Public/Property/GetUnitImage';
@@ -967,7 +974,8 @@ class AppConfig {
     publicUpdateProfile =
         publicAppConfig! + "api/Public/Profile/UpdateProfileRequest";
     updatePublicProfile = commonAppConfig! + "Auth/UpdateUserProfile";
-    publicUpdateProfile2 = publicAppConfig! + "api/Public/Profile/UpdateProfile";
+    publicUpdateProfile2 =
+        publicAppConfig! + "api/Public/Profile/UpdateProfile";
     getPublicServicesCategoriesDetails =
         publicAppConfig! + "api/Public/GeneralData/GetServices";
     getPublicServiceCategories =
@@ -982,7 +990,8 @@ class AppConfig {
     getPublicNotification = publicAppConfig! + "api/Public/Notifications/Get";
     publicArchivedNotifications =
         publicAppConfig! + "api/Public/Notifications/Archived";
-    publicReadNotifications = publicAppConfig! + "api/Public/Notifications/Read";
+    publicReadNotifications =
+        publicAppConfig! + "api/Public/Notifications/Read";
     publicCountNotifications =
         publicAppConfig! + "api/Public/Notifications/GetCountNotification";
 
@@ -1014,7 +1023,8 @@ class AppConfig {
     getLandlordFaqs = landlordAppConfig! + "Faq/GetFaqs";
 
     // Contracts
-    getLandlordContracts = landlordAppConfig! + 'Landlord/Contract/GetContracts';
+    getLandlordContracts =
+        landlordAppConfig! + 'Landlord/Contract/GetContracts';
     getLandlordContractswithFilter =
         landlordAppConfig! + 'Landlord/Contract/GetContractsWithFilter';
     getLandlordContractStatus =
@@ -1038,7 +1048,8 @@ class AppConfig {
     // Dashboard GetData
     landlordDashboardGetData = landlordAppConfig! + 'Landlord/Property/GetData';
     // Properties
-    getLandlordProperties = landlordAppConfig! + 'Landlord/Property/GetProperty';
+    getLandlordProperties =
+        landlordAppConfig! + 'Landlord/Property/GetProperty';
     getLandlordPropertyUnits =
         landlordAppConfig! + 'Landlord/Property/GetPropertyUnits';
     getLandlordUitImages =
@@ -1074,7 +1085,8 @@ class AppConfig {
     // report
     getLandlordReportDropDownType =
         landlordAppConfig! + "Landlord/Report/GetDropdownByType";
-    downloadAMCReport = landlordAppConfig! + 'Landlord/Report/GenerateAMCReport';
+    downloadAMCReport =
+        landlordAppConfig! + 'Landlord/Report/GenerateAMCReport';
     getDropDownType = landlordAppConfig! + 'Landlord/Report/GetDropdownByType';
     generateAMCReportSummary =
         landlordAppConfig! + 'Landlord/Report/GenerateAMCReportSummary';
