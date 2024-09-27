@@ -189,10 +189,12 @@ class SearchPropertiesResultController extends GetxController {
   void sortList() {
     loadingData.value = true;
     if (sortedBy == 'asc') {
-      properties.sort((a, b) => a.rentPerAnnumMin!.compareTo(b.rentPerAnnumMin!));
+      properties
+          .sort((a, b) => a.rentPerAnnumMin!.compareTo(b.rentPerAnnumMin!));
       sortedBy = 'des';
     } else {
-      properties.sort((a, b) => b.rentPerAnnumMin!.compareTo(a.rentPerAnnumMin!));
+      properties
+          .sort((a, b) => b.rentPerAnnumMin!.compareTo(a.rentPerAnnumMin!));
       sortedBy = 'asc';
     }
     loadingData.value = false;
@@ -201,12 +203,14 @@ class SearchPropertiesResultController extends GetxController {
   Future sortListLoadMore() async {
     loadingData.value = true;
     if (sortedBy == 'asc') {
-      properties.sort((a, b) => a.rentPerAnnumMin!.compareTo(b.rentPerAnnumMin!));
+      properties
+          .sort((a, b) => a.rentPerAnnumMin!.compareTo(b.rentPerAnnumMin!));
       propertiesLoadMore
           .sort((a, b) => a.rentPerAnnumMin!.compareTo(b.rentPerAnnumMin!));
       sortedBy = 'des';
     } else {
-      properties.sort((a, b) => b.rentPerAnnumMin!.compareTo(a.rentPerAnnumMin!));
+      properties
+          .sort((a, b) => b.rentPerAnnumMin!.compareTo(a.rentPerAnnumMin!));
       propertiesLoadMore
           .sort((a, b) => b.rentPerAnnumMin!.compareTo(a.rentPerAnnumMin!));
       sortedBy = 'asc';
@@ -226,7 +230,7 @@ class SearchPropertiesResultController extends GetxController {
 
   Stream<Uint8List> getUnitImage(int index) async* {
     var resp = await PublicRepositoryDrop2.getBookingreqImages(
-        data.property![index].unitID??0);
+        data.property![index].unitID ?? 0);
     if (resp is Uint8List) {
       yield resp;
     } else {}
@@ -275,7 +279,8 @@ class SearchPropertiesResultController extends GetxController {
 
         yield resp;
       } else {
-        propertiesImages.add(PropertyImage(propertyId.toString(), Uint8List(0)));
+        propertiesImages
+            .add(PropertyImage(propertyId.toString(), Uint8List(0)));
       }
     } else {
       bool isApiCall = true;
@@ -297,7 +302,8 @@ class SearchPropertiesResultController extends GetxController {
           propertiesImages.add(PropertyImage(propertyId.toString(), resp));
           yield resp;
         } else {
-          propertiesImages.add(PropertyImage(propertyId.toString(), Uint8List(0)));
+          propertiesImages
+              .add(PropertyImage(propertyId.toString(), Uint8List(0)));
         }
       }
     }
@@ -311,8 +317,9 @@ class SearchPropertiesResultController extends GetxController {
         propertiesImages.add(PropertyImage(propertyId.toString(), resp));
         yield resp;
       } else {
-        propertiesImages.add(PropertyImage(propertyId.toString(), Uint8List(0)));
-        // propertiesImages.add(PropertyImage(propertyId.toString(), null));
+        // propertiesImages
+        // .add(PropertyImage(propertyId.toString(), Uint8List(0)));
+        propertiesImages.add(PropertyImage(propertyId.toString(), null));
       }
     } else {
       bool isApiCall = true;
@@ -334,7 +341,8 @@ class SearchPropertiesResultController extends GetxController {
           propertiesImages.add(PropertyImage(propertyId.toString(), resp));
           yield resp;
         } else {
-          propertiesImages.add(PropertyImage(propertyId.toString(), Uint8List(0)));
+          propertiesImages
+              .add(PropertyImage(propertyId.toString(), Uint8List(0)));
         }
       }
     }
@@ -348,5 +356,5 @@ class PropertyImage {
   );
 
   String propertyID;
-  Uint8List propertyImage;
+  Uint8List? propertyImage;
 }

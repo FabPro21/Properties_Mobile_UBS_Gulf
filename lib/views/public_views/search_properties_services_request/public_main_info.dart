@@ -430,7 +430,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
-                                                            .start,
+                                                            .center,
                                                     children: [
                                                       Text(
                                                         AppMetaLabels()
@@ -458,7 +458,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                   .rating ??
                                                               0,
                                                           // isReadOnly: true,
-                                                          size: 5.5.h,
+                                                          size: 4.0.h,
                                                           filledIconData:
                                                               Icons.star,
                                                           halfFilledIconData:
