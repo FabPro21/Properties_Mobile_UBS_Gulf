@@ -48,178 +48,149 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
               CustomAppBar2(
                 title: AppMetaLabels().promotions,
               ),
-              _controller.offersDetails.value.offerProperties == null
-                  ? SizedBox()
-                  : Expanded(
-                      child: Obx(() {
-                        return _controller.loadingDetails.value
-                            ? Center(
-                                child: LoadingIndicatorBlue(),
-                              )
-                            : _controller.offersDetails.value == null
-                                ? SizedBox()
-                                : Column(
-                                    children: [
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 4.0.w,
-                                              right: 4.0.w,
-                                              top: 3.0.h),
-                                          child: Align(
-                                            alignment: SessionController()
-                                                        .getLanguage() ==
-                                                    1
-                                                ? Alignment.centerLeft
-                                                : Alignment.centerRight,
-                                            child: Text(
-                                              SessionController()
-                                                          .getLanguage() ==
-                                                      1
-                                                  ? _controller
-                                                          .offersDetails
-                                                          .value
-                                                          .record
-                                                          ?.title ??
-                                                      ""
-                                                  : _controller
-                                                          .offersDetails
-                                                          .value
-                                                          .record
-                                                          ?.titleAr ??
-                                                      "",
-                                              style:
-                                                  AppTextStyle.semiBoldBlack14,
-                                            ),
-                                          )),
-                                      SizedBox(
-                                        height: 1.0.h,
+              Expanded(
+                child: Obx(() {
+                  return _controller.loadingDetails.value
+                      ? Center(
+                          child: LoadingIndicatorBlue(),
+                        )
+                      : _controller.offersDetails.value == null
+                          ? SizedBox()
+                          : Column(
+                              children: [
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 4.0.w, right: 4.0.w, top: 3.0.h),
+                                    child: Align(
+                                      alignment:
+                                          SessionController().getLanguage() == 1
+                                              ? Alignment.centerLeft
+                                              : Alignment.centerRight,
+                                      child: Text(
+                                        SessionController().getLanguage() == 1
+                                            ? _controller.offersDetails.value
+                                                    .record?.title ??
+                                                ""
+                                            : _controller.offersDetails.value
+                                                    .record?.titleAr ??
+                                                "",
+                                        style: AppTextStyle.semiBoldBlack14,
                                       ),
-                                      Align(
-                                        alignment:
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? Alignment.centerLeft
-                                                : Alignment.centerRight,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 4.0.w,
-                                              bottom: 2.0.h,
-                                              right: 4.0.w),
-                                          child: Html(
-                                            data:
-                                                SessionController()
-                                                            .getLanguage() ==
-                                                        1
-                                                    ? _controller
-                                                            .offersDetails
-                                                            .value
-                                                            .record
-                                                            ?.description ??
-                                                        ""
-                                                    : _controller
-                                                            .offersDetails
-                                                            .value
-                                                            .record
-                                                            ?.desriptionAr ??
-                                                        "_",
-                                          ),
-                                          //  Text(
-                                          //   SessionController().getLanguage() == 1
-                                          //       ? _controller.offersDetails.value.record!
-                                          //               .description ??
-                                          //           ""
-                                          //       : _controller.offersDetails.value.record!
-                                          //               .desriptionAr ??
-                                          //           "_",
-                                          //   style: AppTextStyle.normalBlack12,
-                                          // ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 4.0.h,
-                                            left: 4.0.w,
-                                            right: 4.0.h),
-                                        child: Align(
-                                            alignment: SessionController()
-                                                        .getLanguage() ==
-                                                    1
-                                                ? Alignment.centerLeft
-                                                : Alignment.centerRight,
-                                            child: Text(
-                                              AppMetaLabels().offerProperties,
-                                              style:
-                                                  AppTextStyle.semiBoldBlack14,
-                                            )),
-                                      ),
-                                      Expanded(
-                                        child:
-                                            _controller
-                                                        .offersDetails
-                                                        .value
-                                                        .offerProperties
-                                                        ?.length ==
-                                                    0
-                                                ? AppErrorWidget(
-                                                    errorText: AppMetaLabels()
-                                                        .noDatafound,
-                                                  )
-                                                : Container(
-                                                    child: ListView.builder(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 0.5.h),
-                                                        itemCount: _controller
-                                                            .offersDetails
-                                                            .value
-                                                            .offerProperties
-                                                            ?.length,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    left: 5.0.w,
-                                                                    top: 3.0.h,
-                                                                    right:
-                                                                        5.0.w),
-                                                            child: Column(
-                                                              children: [
-                                                                Row(children: [
-                                                                  Image.asset(
-                                                                    AppImagesPath
-                                                                        .home3,
-                                                                    width:
-                                                                        6.0.w,
-                                                                  ),
-                                                                  SizedBox(
-                                                                    width:
-                                                                        2.0.w,
-                                                                  ),
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      _controller.offersDetails.value.offerProperties ==
-                                                                              null
-                                                                          ? ''
-                                                                          : SessionController().getLanguage() == 1
-                                                                              ? _controller.offersDetails.value.offerProperties![index].propertyName ?? "".trim()
-                                                                              : _controller.offersDetails.value.offerProperties![index].propertyNameAr ?? "".trim(),
-                                                                      style: AppTextStyle
-                                                                          .normalBlack12,
-                                                                      maxLines:
-                                                                          2,
-                                                                    ),
-                                                                  ),
-                                                                ]),
-                                                              ],
+                                    )),
+                                SizedBox(
+                                  height: 1.0.h,
+                                ),
+                                Align(
+                                  alignment:
+                                      SessionController().getLanguage() == 1
+                                          ? Alignment.centerLeft
+                                          : Alignment.centerRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 4.0.w,
+                                        bottom: 2.0.h,
+                                        right: 4.0.w),
+                                    child: Html(
+                                      data:
+                                          SessionController().getLanguage() == 1
+                                              ? _controller.offersDetails.value
+                                                      .record?.description ??
+                                                  ""
+                                              : _controller.offersDetails.value
+                                                      .record?.desriptionAr ??
+                                                  "_",
+                                    ),
+                                    //  Text(
+                                    //   SessionController().getLanguage() == 1
+                                    //       ? _controller.offersDetails.value.record!
+                                    //               .description ??
+                                    //           ""
+                                    //       : _controller.offersDetails.value.record!
+                                    //               .desriptionAr ??
+                                    //           "_",
+                                    //   style: AppTextStyle.normalBlack12,
+                                    // ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 4.0.h, left: 4.0.w, right: 4.0.h),
+                                  child: Align(
+                                      alignment:
+                                          SessionController().getLanguage() == 1
+                                              ? Alignment.centerLeft
+                                              : Alignment.centerRight,
+                                      child: Text(
+                                        AppMetaLabels().offerProperties,
+                                        style: AppTextStyle.semiBoldBlack14,
+                                      )),
+                                ),
+                                Expanded(
+                                  child:
+                                      _controller.offersDetails.value
+                                                  .offerProperties?.length ==
+                                              0
+                                          ? AppErrorWidget(
+                                              errorText:
+                                                  AppMetaLabels().noDatafound,
+                                            )
+                                          : Container(
+                                              child: ListView.builder(
+                                                  padding: EdgeInsets.only(
+                                                      top: 0.5.h),
+                                                  itemCount: _controller
+                                                      .offersDetails
+                                                      .value
+                                                      .offerProperties
+                                                      ?.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 5.0.w,
+                                                          top: 3.0.h,
+                                                          right: 5.0.w),
+                                                      child: Column(
+                                                        children: [
+                                                          Row(children: [
+                                                            Image.asset(
+                                                              AppImagesPath
+                                                                  .home3,
+                                                              width: 6.0.w,
                                                             ),
-                                                          );
-                                                        })),
-                                      )
-                                    ],
-                                  );
-                      }),
-                    )
+                                                            SizedBox(
+                                                              width: 2.0.w,
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                _controller
+                                                                            .offersDetails
+                                                                            .value
+                                                                            .offerProperties ==
+                                                                        null
+                                                                    ? ''
+                                                                    : SessionController().getLanguage() ==
+                                                                            1
+                                                                        ? _controller.offersDetails.value.offerProperties![index].propertyName ??
+                                                                            ""
+                                                                                .trim()
+                                                                        : _controller.offersDetails.value.offerProperties![index].propertyNameAr ??
+                                                                            "".trim(),
+                                                                style: AppTextStyle
+                                                                    .normalBlack12,
+                                                                maxLines: 2,
+                                                              ),
+                                                            ),
+                                                          ]),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  })),
+                                )
+                              ],
+                            );
+                }),
+              )
             ],
           ),
         ));

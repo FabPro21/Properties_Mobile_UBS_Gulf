@@ -118,7 +118,7 @@ class _SearchPropertiesPropertiesState
                                                 : TextAlign.right,
                                         color: Colors.black,
                                         fontFamily: AppFonts.graphikRegular,
-                                        fontSize: FontSize(10.0),
+                                        fontSize: FontSize(13.0),
                                       ),
                                     },
                                     data: _controller.getdata.value.record ==
