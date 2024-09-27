@@ -2081,10 +2081,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               '',
                                               dOBText,
                                             );
-                                            setState(() {
-                                              controller.isLoadingForScanning
-                                                  .value = false;
-                                            });
+                                            // if (mounted) {
+                                            //   setState(() {
+                                            //     controller.isLoadingForScanning
+                                            //         .value = false;
+                                            //   });
+                                            // }
                                           } catch (e) {
                                             setState(() {
                                               controller.isLoadingForScanning
@@ -2209,10 +2211,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               '',
                                               dOBText,
                                             );
-                                            setState(() {
-                                              controller.isLoadingForScanning
-                                                  .value = false;
-                                            });
+                                            // if (mounted) {
+                                            //   setState(() {
+                                            //     controller.isLoadingForScanning
+                                            //         .value = false;
+                                            //   });
+                                            // }
                                           } catch (e) {
                                             setState(() {
                                               controller.isLoadingForScanning
