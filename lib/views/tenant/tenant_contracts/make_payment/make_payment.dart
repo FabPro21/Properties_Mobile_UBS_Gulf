@@ -42,8 +42,8 @@ class _MakePaymentState extends State<MakePayment> {
 
   @override
   void initState() {
-    print('Url ::::: ${widget.data!.url}');
-    print('Transaction ::::: ${widget.data!.transactionId}');
+    print('Url ::::: ${widget.data?.url}');
+    print('Transaction ::::: ${widget.data?.transactionId}');
     super.initState();
   }
 
@@ -104,7 +104,7 @@ class _MakePaymentState extends State<MakePayment> {
                 width: double.maxFinite,
                 height: double.maxFinite,
                 initialContent:
-                    """<body><form action=${widget.data!.url} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data!.transactionId}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
+                    """<body><form action=${widget.data?.url ?? ""} method="post" id="paymentForm"><input type="Hidden" name="TransactionID" value= "${widget.data?.transactionId ?? ""}"/><script>document.getElementById('paymentForm').submit();</script></body>""",
                 initialSourceType: SourceType.HTML,
                 onPageFinished: (url) {
                   if (url.contains('Finalize')) {

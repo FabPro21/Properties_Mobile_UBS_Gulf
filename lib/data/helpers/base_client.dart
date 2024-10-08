@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:fap_properties/data/helpers/encription.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -256,6 +257,7 @@ class BaseClientClass {
     print('-----------------------------');
     print('URL ::::: $url');
     print('RESPONSE ::::: ${response.body}');
+    log(response.body);
     print('-----------------------------');
 
     if (response.statusCode == 404) {
