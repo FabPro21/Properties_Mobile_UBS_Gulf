@@ -25,7 +25,8 @@ import 'online_payments_new/online_payments_new_controller.dart';
 class MakePaymentNewContract extends StatefulWidget {
   final RegisterPaymentResponse? data;
   final String? contractNo;
-  const MakePaymentNewContract({Key? key, this.data, this.contractNo}) : super(key: key);
+  const MakePaymentNewContract({Key? key, this.data, this.contractNo})
+      : super(key: key);
 
   @override
   State<MakePaymentNewContract> createState() => _MakePaymentNewContractState();
@@ -36,7 +37,8 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
 
   final outstandingPaymentsController =
       Get.put(OutstandingPaymentsNewContractController());
-  final onlinePaymentsController = Get.put(OnlinePaymentsNewContractController());
+  final onlinePaymentsController =
+      Get.put(OnlinePaymentsNewContractController());
   bool showBack = false;
   int? noOfPaymentsLeft;
 
@@ -56,7 +58,6 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
         }
         return false;
       },
-      
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -213,7 +214,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().menaStage5_12,
+                AppMetaLabels().collierStage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),

@@ -90,7 +90,7 @@ class _ValidateUserScreenState extends State<ValidateUserScreen> {
                                 ? 2.0.h
                                 : 7.0.h,
                           ),
-                          const AppLogoMena(),
+                          const AppLogoCollier(),
                           SizedBox(
                             height: vUController.textFieldTap.value == true
                                 ? 2.0.h

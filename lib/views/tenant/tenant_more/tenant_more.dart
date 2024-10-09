@@ -494,7 +494,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().menaEmail}"));
+                                                        "mailto:${AppMetaLabels().collierEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(

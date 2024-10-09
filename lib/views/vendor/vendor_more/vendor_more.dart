@@ -53,7 +53,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async =>
-         await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+          await SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Directionality(
@@ -176,7 +176,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                             child: Padding(
                               padding: EdgeInsets.all(3.0.h),
                               child: Text(
-                                name ,
+                                name,
                                 style: AppTextStyle.semiBoldWhite16
                                     .copyWith(fontSize: 24.sp),
                               ),
@@ -235,8 +235,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              SessionController().vendorUserType ==
-                                      'Technician'
+                              SessionController().vendorUserType == 'Technician'
                                   ? SizedBox()
                                   : ListTile(
                                       onTap: () {
@@ -267,8 +266,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              SessionController().vendorUserType ==
-                                      'Technician'
+                              SessionController().vendorUserType == 'Technician'
                                   ? SizedBox()
                                   : ListTile(
                                       onTap: () {
@@ -508,7 +506,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                 onTap: () {
                                                   Navigator.pop(context);
                                                   launchUrl(Uri.parse(
-                                                      "mailto:${AppMetaLabels().menaEmail}"));
+                                                      "mailto:${AppMetaLabels().collierEmail}"));
                                                 },
                                                 child: Padding(
                                                   padding: EdgeInsets.only(

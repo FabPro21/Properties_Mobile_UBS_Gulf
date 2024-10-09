@@ -886,7 +886,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().menaStage5_12,
+                                        AppMetaLabels().collierStage5_12,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack12
                                             .copyWith(
@@ -3770,7 +3770,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().menaStage5_12,
+                AppMetaLabels().collierStage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),

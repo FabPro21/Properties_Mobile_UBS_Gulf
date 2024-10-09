@@ -137,13 +137,15 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/common_images/app_icon/new_app_logo.png"
+  image_path: "assets/images/common_images/colliers/logo_type.png"
+  # image_path: "assets/images/common_images/app_icon/new_app_logo.png"
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/images/common_images/
+    - assets/images/common_images/colliers/logo_type.png
     - assets/images/tenant_images/
     - assets/images/landlord_images/
     - assets/images/tenant_images/tenant_dashboard/

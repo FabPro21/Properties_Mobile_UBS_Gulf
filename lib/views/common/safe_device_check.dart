@@ -40,7 +40,7 @@ class _SafeDeviceCheckState extends State<SafeDeviceCheck> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(top: 9.0.h),
-                        child: const AppLogoMena(),
+                        child: const AppLogoCollier(),
                       ),
                       Padding(
                           padding: EdgeInsets.only(top: 15.h),

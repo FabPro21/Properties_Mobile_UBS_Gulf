@@ -346,9 +346,9 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                           onTap: () {
                                             Navigator.pop(context);
                                             print(
-                                                'Email ::::: ++++> ${Uri.parse("mailto:${AppMetaLabels().menaEmail}")}');
+                                                'Email ::::: ++++> ${Uri.parse("mailto:${AppMetaLabels().collierEmail}")}');
                                             launchUrl(Uri.parse(
-                                                "mailto:${AppMetaLabels().menaEmail}"));
+                                                "mailto:${AppMetaLabels().collierEmail}"));
                                           },
                                           child: Padding(
                                             padding: EdgeInsets.only(
@@ -414,7 +414,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                       ),
                       Padding(
                           padding: EdgeInsets.only(top: 6.0.h),
-                          child: AppLogoMena()
+                          child: AppLogoCollier()
                           // const AppLogo(),
                           ),
                       Obx(() {

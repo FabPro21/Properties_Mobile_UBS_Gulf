@@ -41,7 +41,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
   @override
   void initState() {
     isDialogOpen = false;
-    controller.getContractRenewalInfo(widget.contractId??0);
+    controller.getContractRenewalInfo(widget.contractId ?? 0);
     super.initState();
   }
 
@@ -90,7 +90,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                             style: AppTextStyle.semiBoldBlack12,
                           ),
                           Text(
-                            widget.contractNo??'0',
+                            widget.contractNo ?? '0',
                             style: AppTextStyle.semiBoldBlack12,
                           )
                         ],
@@ -164,7 +164,9 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                   .renewelgreyclr)),
                                                   Text(
                                                       controller
-                                                              .renewalInfo?.record?.addNewDate ??
+                                                              .renewalInfo
+                                                              ?.record
+                                                              ?.addNewDate ??
                                                           '',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
@@ -189,7 +191,9 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                   .renewelgreyclr)),
                                                   Text(
                                                       controller
-                                                              .renewalInfo?.record?.endNewDate ??
+                                                              .renewalInfo
+                                                              ?.record
+                                                              ?.endNewDate ??
                                                           '',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
@@ -215,8 +219,12 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                               color: AppColors
                                                                   .renewelgreyclr)),
                                                   Text(
-                                                      controller.renewalInfo?.record?.installments
-                                                          .toString()??'',
+                                                      controller
+                                                              .renewalInfo
+                                                              ?.record
+                                                              ?.installments
+                                                              .toString() ??
+                                                          '',
                                                       style: AppTextStyle
                                                           .semiBoldGrey9
                                                           .copyWith(
@@ -227,17 +235,26 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                               SizedBox(
                                                 height: 1.h,
                                               ),
-                                              controller.renewalInfo?.record?.emirateName?.toLowerCase()
+                                              controller.renewalInfo?.record
+                                                          ?.emirateName
+                                                          ?.toLowerCase()
                                                           .trim() ==
                                                       'dubai'
                                                   ? SizedBox()
-                                                  : controller.renewalInfo?.record?.amount ==
+                                                  : controller
+                                                                  .renewalInfo
+                                                                  ?.record
+                                                                  ?.amount ==
                                                               '0' ||
                                                           controller
-                                                                  .renewalInfo?.record?.amount ==
+                                                                  .renewalInfo
+                                                                  ?.record
+                                                                  ?.amount ==
                                                               '0.00' ||
                                                           controller
-                                                                  .renewalInfo?.record?.amount ==
+                                                                  .renewalInfo
+                                                                  ?.record
+                                                                  ?.amount ==
                                                               null
                                                       ? SizedBox()
                                                       : Padding(
@@ -360,7 +377,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                         width: Get.width * 0.63,
                                                         child: Text(
                                                           AppMetaLabels()
-                                                              .menaPersonalDocUploadInfo,
+                                                              .collierPersonalDocUploadInfo,
                                                           textAlign:
                                                               TextAlign.justify,
                                                           style: AppTextStyle
@@ -437,9 +454,12 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                               false;
                                                                         });
                                                                         var resp = await controller.renewContract(
-                                                                            widget.contractId??0,
-                                                                            widget.caller??"",
-                                                                            widget.dueActionid??0);
+                                                                            widget.contractId ??
+                                                                                0,
+                                                                            widget.caller ??
+                                                                                "",
+                                                                            widget.dueActionid ??
+                                                                                0);
                                                                         if (resp ==
                                                                             'ok') {
                                                                           controller
@@ -563,7 +583,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                         Get.back();
                         Get.off(() => TenantServiceRequestTabs(
                               requestNo: controller.caseNo.toString(),
-                              caller: widget.caller??"!",
+                              caller: widget.caller ?? "!",
                               title: AppMetaLabels().renewalReq,
                               initialIndex: 1,
                             ));

@@ -493,7 +493,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().menaEmail}"));
+                                                        "mailto:${AppMetaLabels().collierEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(

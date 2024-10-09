@@ -27,16 +27,18 @@ class MunicipalApprovalNewContract extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<MunicipalApprovalNewContract> createState() => _MunicipalApprovalNewContractState();
+  State<MunicipalApprovalNewContract> createState() =>
+      _MunicipalApprovalNewContractState();
 }
 
-class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContract> {
+class _MunicipalApprovalNewContractState
+    extends State<MunicipalApprovalNewContract> {
   final MunicipalApprovalNewContractController controller =
       Get.put(MunicipalApprovalNewContractController());
 
   @override
   void initState() {
-    controller.getInstructions(widget.contractId??0);
+    controller.getInstructions(widget.contractId ?? 0);
     controller.isShowpopUp.value = false;
     super.initState();
   }
@@ -153,7 +155,7 @@ class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContr
                                                       .errorLoadingData,
                                                   onRetry: () {
                                                     controller.getInstructions(
-                                                        widget.contractId??0);
+                                                        widget.contractId ?? 0);
                                                   })
                                               : InkWell(
                                                   onTap: () {
@@ -336,34 +338,34 @@ class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContr
                                       : controller.updatingStage.value
                                           ? LoadingIndicatorBlue()
                                           : ElevatedButton(
-                                              onPressed: !controller
-                                                      .approved.value
-                                                  ? null
-                                                  : () async {
-                                                      print(controller
-                                                          .approved.value);
-                                                      if (controller
-                                                          .approved.value) {
-                                                        await controller
-                                                            .updateContractStage(
-                                                                widget
-                                                                    .dueActionId??-1,
+                                              onPressed:
+                                                  !controller.approved.value
+                                                      ? null
+                                                      : () async {
+                                                          print(controller
+                                                              .approved.value);
+                                                          if (controller
+                                                              .approved.value) {
+                                                            await controller.updateContractStage(
+                                                                widget.dueActionId ??
+                                                                    -1,
                                                                 9,
-                                                                widget.caller??"");
-                                                        controller.isShowpopUp
-                                                            .value = true;
-                                                      
-                                                      } else {
-                                                        Get.snackbar(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .pleaseConfirm,
-                                                            backgroundColor:
-                                                                AppColors
-                                                                    .white54);
-                                                      }
-                                                    },
+                                                                widget.caller ??
+                                                                    "");
+                                                            controller
+                                                                .isShowpopUp
+                                                                .value = true;
+                                                          } else {
+                                                            Get.snackbar(
+                                                                AppMetaLabels()
+                                                                    .error,
+                                                                AppMetaLabels()
+                                                                    .pleaseConfirm,
+                                                                backgroundColor:
+                                                                    AppColors
+                                                                        .white54);
+                                                          }
+                                                        },
                                               child: SizedBox(
                                                 width: 40.w,
                                                 child: Center(
@@ -382,20 +384,18 @@ class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContr
                                                 ),
                                               ),
                                               style: ButtonStyle(
-                                                  elevation:
-                                                      WidgetStateProperty.all<
-                                                          double>(0.0),
+                                                  elevation: WidgetStateProperty
+                                                      .all<double>(0.0),
                                                   backgroundColor: !controller
                                                           .approved.value
                                                       ? WidgetStateProperty.all<
                                                               Color>(
                                                           Colors.grey.shade400)
-                                                      : WidgetStateProperty
-                                                          .all<Color>(AppColors
-                                                              .blueColor),
-                                                  shape:
-                                                      WidgetStateProperty.all<
-                                                          RoundedRectangleBorder>(
+                                                      : WidgetStateProperty.all<
+                                                              Color>(
+                                                          AppColors.blueColor),
+                                                  shape: WidgetStateProperty.all<
+                                                      RoundedRectangleBorder>(
                                                     RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -465,7 +465,7 @@ class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContr
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().menaStage9,
+                                        AppMetaLabels().collierStage9,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack10
                                             .copyWith(
@@ -497,8 +497,9 @@ class _MunicipalApprovalNewContractState extends State<MunicipalApprovalNewContr
                                                               .all<double>(
                                                                   0.0.h),
                                                       backgroundColor:
-                                                          WidgetStateProperty
-                                                              .all<Color>(AppColors
+                                                          WidgetStateProperty.all<
+                                                                  Color>(
+                                                              AppColors
                                                                   .whiteColor),
                                                       shape: WidgetStateProperty
                                                           .all<

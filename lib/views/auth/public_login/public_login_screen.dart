@@ -49,7 +49,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 9.0.h),
-                        child: const AppLogoMena(),
+                        child: const AppLogoCollier(),
                       ),
                       Obx(() {
                         return controller.loadingProfile.value
@@ -76,8 +76,9 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                           padding: EdgeInsets.only(
                                               top: 6.0.h, bottom: 1.h),
                                           child: Text(
-                                            controller.profileData!.profileDetail!
-                                                .mobile??"",
+                                            controller.profileData!
+                                                    .profileDetail!.mobile ??
+                                                "",
                                             style: AppTextStyle.normalWhite12,
                                           ),
                                         ),
@@ -214,7 +215,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                     ? () {
                                                         FocusScope.of(context)
                                                             .unfocus();
-                                                        if (formKey.currentState!
+                                                        if (formKey
+                                                            .currentState!
                                                             .validate())
                                                           controller
                                                               .updateProfile();

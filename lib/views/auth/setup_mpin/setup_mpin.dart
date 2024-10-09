@@ -83,7 +83,7 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 8.0.h),
-                        child: const AppLogoMena(),
+                        child: const AppLogoCollier(),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -170,7 +170,8 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                     return FlutterSwitch(
                                       inactiveColor:
                                           Color.fromRGBO(188, 190, 192, 1),
-                                      activeColor: Colors.blue[600]??Colors.lightBlue,
+                                      activeColor:
+                                          Colors.blue[600] ?? Colors.lightBlue,
                                       activeToggleColor: Colors.white,
                                       inactiveToggleColor:
                                           Color.fromRGBO(76, 78, 84, 1),

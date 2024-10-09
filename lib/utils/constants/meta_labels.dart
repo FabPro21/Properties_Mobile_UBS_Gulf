@@ -145,15 +145,15 @@ class AppMetaLabels {
       ? "Consent Settings"
       : "إعدادات الموافقة";
 
-  String menaPropertiesPrivacyPolicy = SessionController().getLanguage() == 1
-      ? "MENA Real Estate - Privacy Policy"
+  String collierPropertiesPrivacyPolicy = SessionController().getLanguage() == 1
+      ? "Colliers Properties - Privacy Policy"
       : "شركة مينا العقارية - سياسة الخصوصية";
 
-  String menaPropertiesSource = SessionController().getLanguage() == 1
-      ? '"MENA Real Estate" Would Like to Access the '
+  String collierPropertiesSource = SessionController().getLanguage() == 1
+      ? '"Colliers Properties" Would Like to Access the '
       : "شركة الشرق الأوسط وشمال أفريقيا العقارية ترغب في الوصول إلى ";
 
-  String menaPropertiesPrivacyPolicyLink =
+  String collierPropertiesPrivacyPolicyLink =
       "https://www.menaProperties.ae/en/privacypolicy";
 
   String cont = SessionController().getLanguage() == 1 ? 'Continue' : 'متابعة';
@@ -309,8 +309,7 @@ class AppMetaLabels {
   //     ? "+971 2 681 1511 (outside UAE)"
   //     : "+971 2 681 1511 (من خارج الإمارات العربية المتحدة)	";
 
-  String menaEmail = 'FABProp.care@bankfab.com';
-  // String menaEmail = 'fabprop.care@bankfab.com';
+  String collierEmail = 'FABProp.care@bankfab.com';
 
   ///////////////////////////////////
   /// public login screen
@@ -335,8 +334,8 @@ class AppMetaLabels {
       ? "Properties Details"
       : "تفاصيل العقارات";
 
-  String menaProps = SessionController().getLanguage() == 1
-      ? "MENA Real Estate"
+  String collierProps = SessionController().getLanguage() == 1
+      ? "Colliers Properties"
       : "مينا العقارية";
 
   String propertyDetails = SessionController().getLanguage() == 1
@@ -828,8 +827,8 @@ class AppMetaLabels {
       ? 'A new version of app '
       : 'نسخة جديدة من التطبيق ';
 
-  String menaProperties = SessionController().getLanguage() == 1
-      ? "MENA Real Estate"
+  String collierProperties = SessionController().getLanguage() == 1
+      ? "Colliers Properties"
       : "مينا العقارية";
 
   String isAvailableAndFeatures =
@@ -2408,20 +2407,9 @@ class AppMetaLabels {
       ? 'You can use the communication tab to get more information after submitting.'
       : 'يمكنك استخدام علامة تبويب الاتصال للحصول على مزيد من المعلومات بعد الإرسال.';
 
-  String menaPersonalDocUploadInfo = SessionController().getLanguage() == 1
-      ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
+  String collierPersonalDocUploadInfo = SessionController().getLanguage() == 1
+      ? 'I understand that I need to share my Emirates ID, passport and any other related documents with Colliers Properties as this is necessary for the renewal of my Tenancy agreement with Colliers Properties.'
       : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
-
-  // String menaPersonalDocUploadInfo = SessionController().getLanguage() == 1
-  //     ? 'I agree to share my Emirates ID, passport, and any other related documents with FAB Properties for the renewal of my tenancy contract.'
-  //     : 'أوافق على مشاركة بطاقة الهوية الإماراتية الخاصة بي وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول من أجل تجديد عقد الإيجار الخاص بي.';
-
-  // String succesfullSubmissionRenewalRequest = SessionController()
-  //             .getLanguage() ==
-  //         1
-  // ? 'After “Submit”, you can use “Communication screen” for further Info or Clarification'
-  //     ? 'After Successfull Submission of your Renewal Request, you can communicate with FAB Propertie\'s Team for any further Inquiries/Information via Communication tab.'
-  //     : 'بعد التقديم الناجح لطلب التجديد الخاص بك ، يمكنك التواصل مع فريق بنك أبوظبي الأول لأية استفسارات / معلومات أخرى عبر علامة تبويب الاتصال.';
 
   String enterfeedback = SessionController().getLanguage() == 1
       ? "Please Enter feedback"
@@ -3072,35 +3060,24 @@ class AppMetaLabels {
       ? 'Please upload the required documents to proceed with your Renewal Request.'
       : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
 
-  String menaStage3 = SessionController().getLanguage() == 1
-      ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the MENA Real Estate team.'
+  String collierStage3 = SessionController().getLanguage() == 1
+      ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the Colliers Properties team.'
       : 'تم تقديم المستندات بنجاح. سيتم إخطارك خلال يومي عمل بمجرد اكتمال عملية التحقق من قبل فريق عقارات الشرق الأوسط وشمال إفريقيا';
 
-  String menaStage4 = SessionController().getLanguage() == 1
-      ? 'Your documents have been approved by MENA Real Estate and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
+  String collierStage4 = SessionController().getLanguage() == 1
+      ? 'Your documents have been approved by Colliers Properties and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
       : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
 
-  // String menaStage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
-  //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
-
-  String menaStage5 = SessionController().getLanguage() == 1
-      ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "MENA Real Estate") which can be submitted through the Aramex service (at no additional cost) initiated by MENA Real Estate.'
+  String collierStage5 = SessionController().getLanguage() == 1
+      ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "Colliers Properties") which can be submitted through the Aramex service (at no additional cost) initiated by Colliers Properties.'
       : "يجب دفع القسط الإيجاري الأول وجميع الرسوم الأخرى من خلال \"أون لاين\".\n\nيمكن دفع أقساط الإيجار المتبقية عن طريق الشيكات (المحررة لصالح \"شركة مينا العقارية\") والتي يمكن تقديمها من خلال خدمة أرامكس (بدون أي رسوم إضافية). التكلفة) بمبادرة من شركة مينا العقارية.";
 
-  // : 'يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى " ابوظبى الاول العقارية" من خلال خدمة " ارامكس" بدون تكلفة اضافية ';
-  // : 'يجب دفع قسط الإيجار الأول وجميع الرسوم الأخرى من خلال "عبر الإنترنت". \ n يمكن سداد أقساط الإيجار المتبقية عن طريق الشيكات (الصادرة إلى"ابوظبى الاولى العقارية") والتي يمكن تقديمها من خلال خدمة Aramex (بدون تكلفة إضافية) التي تم البدء فيها بواسطة FABP.';
-
-  String menaStage5_1 = SessionController().getLanguage() == 1
+  String collierStage5_1 = SessionController().getLanguage() == 1
       // ? 'Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract.'
       ? 'Thanks for making the Payment. Once online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
       : ' شكرًا على إجراء الدفع. بمجرد إقرار الدفع عبر الإنترنت أو استلام نسخ الشيكات الفعلية ، سيتم إخطارك بـ "توقيع عقد الإيجار';
-  // String menaStage5_1 = SessionController().getLanguage() == 1
-  //     // ? 'Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract.'
-  //     ? 'Thanks for making the Payment. Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract".'
-  //     : 'شكرًا على إجراء الدفع. بمجرد إقرار الدفع عبر الإنترنت واستلام نسخ الشيكات الفعلية (إن وجدت) ، سيتم إخطارك "بتوقيع عقد الإيجار.';
 
-  String menaStage5_12 = SessionController().getLanguage() == 1
+  String collierStage5_12 = SessionController().getLanguage() == 1
       ? 'Payment completed.\nOnce online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
       : ' اكتمل الدفع. \n بمجرد الإقرار بالدفع عبر الإنترنت أو استلام نسخ الشيك الفعلي ، سيتم إخطارك بـ "توقيع عقد الإيجار';
 
@@ -3123,38 +3100,7 @@ class AppMetaLabels {
       ? 'Please click on the Login To Tawtheeq link to complete the municipality process.'
       : 'الرجاء الضغط على رابط تسجيل الدخول إلى توثيق لإتمام إجراءات البلدية.';
 
-  String menaStage9 = SessionController().getLanguage() == 1
-      ? 'Dear Tenant, Thanks for choosing MENA Real Estate as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
+  String collierStage9 = SessionController().getLanguage() == 1
+      ? 'Dear Tenant, Thanks for choosing Colliers Properties as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
       : 'عزيزي المستأجر، شكرًا لاختيارك شركة مينا العقارية كمزود للخدمات العقارية، سيكون عقدك جاهزًا للتنزيل خلال يوم إلى يومي عمل.';
-
-  // String stage1 = SessionController().getLanguage() == 1
-  //     ? 'If you wish to renew your Tenancy Contract for less than one year please procced with \'Extend\' Option.'
-  //     : 'إذا كنت ترغب في تجديد عقد الإيجار الخاص بك لمدة تقل عن عام واحد ، يرجى المتابعة مع خيار \'تمديد \'.';
-  // String stage2 = SessionController().getLanguage() == 1
-  //     ? 'Please upload the required documents to proceed with your Renewal Request.'
-  //     : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
-  // String menaStage3 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents are under review with FAB Properties team, you will be notified once verification process is completed. This may take 1 to 2 working days.'
-  //     : 'المستندات المقدمة الخاصة بك قيد المراجعة مع فريق خصائص فاب ، وسيتم إخطارك بمجرد اكتمال عملية التحقق. قد يستغرق هذا من يوم إلى يومين عمل.';
-  // String menaStage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
-  //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
-  // String menaStage5 = SessionController().getLanguage() == 1
-  //     ? 'Please proceed to Make Payment.\n\n1- The first installment of your Rental Payment and Additional Charges including VAT must be made by Credit/Debit card.\n\n2- Remaining Rental Installments can be made either by Credit/Debit card OR Cheques\n\n3- Please prepare the Cheque(s) to the benefit of FAB PROPERTIES in order to upload the copies while making the payments.\n\n4- Kindly note that you can submit the cheque(s) free of charges via Aramex service initiated by our team'
-  //     : 'يرجى المتابعة لإجراء الدفع. \n \n1- يجب سداد الدفعة الأولى من مدفوعات الإيجار والرسوم الإضافية بما في ذلك ضريبة القيمة المضافة بواسطة بطاقة الائتمان / الخصم. \n \n2- يمكن سداد أقساط الإيجار المتبقية إما عن طريق بطاقة الائتمان / الخصم أو الشيكات \n \n3- يرجى تحضير الشيك (الشيكات) لصالح FAB PROPERTIES من أجل تحميل النسخ أثناء إجراء المدفوعات. \n \n4- يرجى ملاحظة أنه يمكنك إرسال الشيك (الشيكات) مجانًا عبر بادر فريقنا بخدمة أرامكس.';
-  // String menaStage5_1 = SessionController().getLanguage() == 1
-  //     ? 'If you have made the payment already, please wait for our verification & reconciliation prior to get back to you within 1 to 2 working days.'
-  //     : 'إذا كنت قد سددت الدفعة بالفعل ، فيرجى الانتظار حتى نرجع إليك التحقق والتسوية في غضون يوم إلى يومين عمل.';
-  // String stage6 = SessionController().getLanguage() == 1
-  //     ? 'Please sign the contract in order to proceed with further steps.\nYou can visit the contract\'s payment tab in order to view the receipts generated for your payments (if any).'
-  //     : 'الرجاء توقيع العقد من أجل متابعة الخطوات الأخرى. \n يمكنك زيارة علامة تبويب الدفع الخاصة بالعقد لعرض الإيصالات التي تم إنشاؤها لمدفوعاتك.';
-  // String stage7 = SessionController().getLanguage() == 1
-  //     ? 'Your signed contract is under review with our team for further proceedings and to notify you accordingly within 1 to 2 working days.'
-  //     : 'العقد الموقع الخاص بك قيد المراجعة مع فريقنا لمزيد من الإجراءات وإخطارك وفقًا لذلك في غضون يوم إلى يومي عمل.';
-  // String stage8 = SessionController().getLanguage() == 1
-  //     ? 'Your contract require municipality processing from your side, please click on the link on the municipality tab to complete the required process and confirm.'
-  //     : 'يتطلب عقدك معالجة البلدية من جانبك ، يرجى النقر على الرابط في علامة التبويب البلدية لإكمال العملية المطلوبة والتأكيد.';
-  // String menaStage9 = SessionController().getLanguage() == 1
-  //     ? 'You can download the Contract once the status turns to \'Active\' within 1 to 2 working days.'
-  //     : 'يمكن تنزيل عقدك بمجرد أن تتحول الحالة إلى "نشط" خلال يوم إلى يومين عمل.';
 }

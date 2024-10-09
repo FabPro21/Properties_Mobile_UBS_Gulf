@@ -111,7 +111,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                       .copyWith(height: 1.2),
                                 ),
                                 TextSpan(
-                                  text: AppMetaLabels().menaProperties,
+                                  text: AppMetaLabels().collierProperties,
                                   style: AppTextStyle.semiBoldBlack12
                                       .copyWith(height: 1.2),
                                 ),
@@ -121,7 +121,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                       .copyWith(height: 1.2),
                                 ),
                                 TextSpan(
-                                  text: AppMetaLabels().menaProps,
+                                  text: AppMetaLabels().collierProps,
                                   style: AppTextStyle.semiBoldBlack12
                                       .copyWith(height: 1.2),
                                 ),
@@ -197,8 +197,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                 print('Android');
                                 try {
                                   LaunchReview.launch(
-                                    androidAppId:
-                                        "com.mena.realestate",
+                                    androidAppId: "com.mena.realestate",
                                   );
 
                                   await Future.delayed(Duration(seconds: 2));

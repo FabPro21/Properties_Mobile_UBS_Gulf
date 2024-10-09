@@ -213,7 +213,7 @@ class _MakePaymentState extends State<MakePayment> {
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().menaStage5_12,
+                AppMetaLabels().collierStage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),

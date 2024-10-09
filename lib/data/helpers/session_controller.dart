@@ -7,7 +7,7 @@ class SessionController {
 
   // Companies
   // 1 Fab Properties
-  // 2 MENA Real Estate
+  // 2 Colliers FabProperties
   // Must Add iosAppID *******
   int? isFabApp = 2;
 
@@ -425,7 +425,7 @@ class SessionController {
   }
 
   Map<String?, dynamic> getNotificationData() {
-    return _notificationData??{};
+    return _notificationData ?? {};
   }
 
   void resetSession() {

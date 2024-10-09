@@ -71,7 +71,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                 padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                 child: Row(
                   children: [
-                    SizedBox(width: 45.0.w, child: AppLogoMena()),
+                    SizedBox(width: 45.0.w, child: AppLogoCollier()),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(
@@ -384,10 +384,12 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                   const Spacer(),
                                                   Text(
                                                     controller
-                                                        .getDataModel
-                                                        .value
-                                                        .dashboard?.lpoInProcess
-                                                        .toString()??"",
+                                                            .getDataModel
+                                                            .value
+                                                            .dashboard
+                                                            ?.lpoInProcess
+                                                            .toString() ??
+                                                        "",
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
@@ -422,10 +424,12 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                   const Spacer(),
                                                   Text(
                                                     controller
-                                                        .getDataModel
-                                                        .value
-                                                        .dashboard?.invoiceSubmitted
-                                                        .toString()??"",
+                                                            .getDataModel
+                                                            .value
+                                                            .dashboard
+                                                            ?.invoiceSubmitted
+                                                            .toString() ??
+                                                        "",
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),

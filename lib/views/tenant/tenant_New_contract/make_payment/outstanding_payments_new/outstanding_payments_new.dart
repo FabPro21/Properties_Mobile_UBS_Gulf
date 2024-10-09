@@ -195,7 +195,7 @@ class _OutstandingPaymentsNewContractState
                                                       .semiBoldBlack12,
                                                 ),
                                                 Text(
-                                                  widget.contractNo??"",
+                                                  widget.contractNo ?? "",
                                                   style: AppTextStyle
                                                       .semiBoldBlack12,
                                                 ),
@@ -322,7 +322,8 @@ class _OutstandingPaymentsNewContractState
                                                         groupValue: _controller
                                                             .chequeDeliveryOption
                                                             .value,
-                                                        onChanged: (int? value) {
+                                                        onChanged:
+                                                            (int? value) {
                                                           _controller
                                                               .errorPickupDelivery
                                                               .value = '';
@@ -361,7 +362,8 @@ class _OutstandingPaymentsNewContractState
                                                         groupValue: _controller
                                                             .chequeDeliveryOption
                                                             .value,
-                                                        onChanged: (int? value) {
+                                                        onChanged:
+                                                            (int? value) {
                                                           _controller
                                                               .errorPickupDelivery
                                                               .value = '';
@@ -500,8 +502,8 @@ class _OutstandingPaymentsNewContractState
                                       ''
                                   ? SizedBox()
                                   : !_controller.gotoOnlinePayments.value &&
-                                          _controller.outstandingPayments.record!
-                                                  .first.confirmed ==
+                                          _controller.outstandingPayments
+                                                  .record!.first.confirmed ==
                                               1
                                       ? SizedBox()
                                       : _controller
@@ -596,7 +598,7 @@ class _OutstandingPaymentsNewContractState
                                                                     });
                                                                     print(
                                                                         'inside IF ${_controller.showDeliveryOptionsTest.value}');
-                                                                 return;
+                                                                    return;
                                                                   } else {
                                                                     print(
                                                                         'inside Else');
@@ -610,7 +612,7 @@ class _OutstandingPaymentsNewContractState
                                                                 },
                                                                 child: Padding(
                                                                   padding: const EdgeInsets
-                                                                          .only(
+                                                                      .only(
                                                                       left:
                                                                           15.0,
                                                                       right:
@@ -690,7 +692,7 @@ class _OutstandingPaymentsNewContractState
                                                                             .alert,
                                                                         AppMetaLabels()
                                                                             .pleaseSelectAllPayments);
-                                                           return;
+                                                                    return;
                                                                   }
 
                                                                   //
@@ -757,7 +759,7 @@ class _OutstandingPaymentsNewContractState
                                                                 },
                                                                 child: Padding(
                                                                   padding: const EdgeInsets
-                                                                          .only(
+                                                                      .only(
                                                                       left:
                                                                           15.0,
                                                                       right:
@@ -853,7 +855,7 @@ class _OutstandingPaymentsNewContractState
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().menaStage5_12,
+                                        AppMetaLabels().collierStage5_12,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack12
                                             .copyWith(
@@ -1088,7 +1090,7 @@ class _OutstandingPaymentsNewContractState
                                                     .paymentConfirmed,
                                                 backgroundColor:
                                                     AppColors.white54);
-                                          return;
+                                            return;
                                           }
                                           setState(() {
                                             isEnableScreen = true;
@@ -1114,7 +1116,7 @@ class _OutstandingPaymentsNewContractState
                                                   .showDeliveryOptionsTest
                                                   .value = true;
                                             });
-                                       return;
+                                            return;
                                           } else {
                                             setState(() {
                                               _controller
@@ -1165,7 +1167,7 @@ class _OutstandingPaymentsNewContractState
                                                       .paymentConfirmed,
                                                   backgroundColor:
                                                       AppColors.white54);
-                                            return;
+                                              return;
                                             }
                                             setState(() {
                                               isEnableScreen = true;
@@ -1192,7 +1194,7 @@ class _OutstandingPaymentsNewContractState
                                                     .showDeliveryOptionsTest
                                                     .value = true;
                                               });
-                                           return;
+                                              return;
                                             } else {
                                               setState(() {
                                                 _controller
@@ -1439,8 +1441,10 @@ class _OutstandingPaymentsNewContractState
                                                 .first
                                                 .confirmed);
                                             print(value);
-                                            if (_controller.outstandingPayments
-                                                    .record![index1].confirmed ==
+                                            if (_controller
+                                                    .outstandingPayments
+                                                    .record![index1]
+                                                    .confirmed ==
                                                 0) {
                                               payable.defaultpaymentmethodtype!
                                                   .value = 2;
@@ -1565,7 +1569,7 @@ class _OutstandingPaymentsNewContractState
                                             child: SizedBox(
                                               width: 60.w,
                                               child: Text(
-                                                payable.cheque??"",
+                                                payable.cheque ?? "",
                                                 style: AppTextStyle.normalBlue12
                                                     .copyWith(
                                                         color: payable
@@ -1658,7 +1662,7 @@ class _OutstandingPaymentsNewContractState
                                             ),
                                             Spacer(),
                                             Text(
-                                              payable.chequeNo??"",
+                                              payable.chequeNo ?? "",
                                               style: AppTextStyle.normalGrey10,
                                             ),
                                           ],
@@ -1806,8 +1810,7 @@ class _OutstandingPaymentsNewContractState
                                                 maxLength: 6,
                                                 keyboardType:
                                                     TextInputType.number,
-                                                inputFormatters: <
-                                                    TextInputFormatter>[
+                                                inputFormatters: <TextInputFormatter>[
                                                   FilteringTextInputFormatter
                                                       .digitsOnly
                                                 ],
@@ -1866,7 +1869,8 @@ class _OutstandingPaymentsNewContractState
                                                 payable.chequeNo!.length < 6) {
                                               payable.errorChequeNo.value =
                                                   true;
-                                              if (payable.chequeNo!.length < 6) {
+                                              if (payable.chequeNo!.length <
+                                                  6) {
                                                 SnakBarWidget
                                                     .getSnackBarErrorBlue(
                                                   AppMetaLabels().alert,
@@ -1892,11 +1896,12 @@ class _OutstandingPaymentsNewContractState
                                               .copyWith(color: Colors.white),
                                         ),
                                         style: ButtonStyle(
-                                            elevation: WidgetStateProperty
-                                                .all<double>(0.0),
+                                            elevation:
+                                                WidgetStateProperty.all<double>(
+                                                    0.0),
                                             backgroundColor:
-                                                WidgetStateProperty.all<
-                                                    Color>(AppColors.blueColor),
+                                                WidgetStateProperty.all<Color>(
+                                                    AppColors.blueColor),
                                             shape: WidgetStateProperty.all<
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
@@ -2013,11 +2018,12 @@ class _OutstandingPaymentsNewContractState
                                 .copyWith(color: Colors.blue),
                           ),
                           style: ButtonStyle(
-                            shape: WidgetStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(2.0.w),
-                                    side: BorderSide(color: Colors.blue))),
+                            shape:
+                                WidgetStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.0.w),
+                                        side: BorderSide(color: Colors.blue))),
                             backgroundColor:
                                 WidgetStateProperty.all<Color>(Colors.white),
                           ),
@@ -2062,8 +2068,8 @@ class _OutstandingPaymentsNewContractState
                                             .updateDeliveryAddress(
                                                 _controller
                                                     .pickupDeliveryText.value,
-                                                widget.contractId??0,
-                                                widget.contractNo??'');
+                                                widget.contractId ?? 0,
+                                                widget.contractNo ?? '');
                                         print(
                                             'proceed ***************** $proceed');
                                       } else if (_controller
@@ -2074,8 +2080,8 @@ class _OutstandingPaymentsNewContractState
                                             .updateDeliveryAddress(
                                                 _controller
                                                     .pickupDeliveryText.value,
-                                                widget.contractId??0,
-                                                widget.contractNo??'');
+                                                widget.contractId ?? 0,
+                                                widget.contractNo ?? '');
                                         print(
                                             'proceed ***************** $proceed');
                                       }
@@ -2086,8 +2092,10 @@ class _OutstandingPaymentsNewContractState
                                             'gotoOnlinePayments After Condition ***************** ${_controller.gotoOnlinePayments.value}');
                                         if (_controller
                                             .gotoOnlinePayments.value) {
-                                          await Get.off(() => OnlinePaymentsNewContract(
-                                              contractNo: widget.contractNo));
+                                          await Get.off(() =>
+                                              OnlinePaymentsNewContract(
+                                                  contractNo:
+                                                      widget.contractNo));
                                         } else {
                                           _controller.isShowpopUp.value = true;
                                         }
@@ -2104,8 +2112,7 @@ class _OutstandingPaymentsNewContractState
                                   ),
                                   style: ButtonStyle(
                                       elevation:
-                                          WidgetStateProperty.all<double>(
-                                              0.0),
+                                          WidgetStateProperty.all<double>(0.0),
                                       backgroundColor:
                                           WidgetStateProperty.all<Color>(
                                               AppColors.blueColor),
@@ -2167,7 +2174,7 @@ class _OutstandingPaymentsNewContractState
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().menaStage5_12,
+                AppMetaLabels().collierStage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),

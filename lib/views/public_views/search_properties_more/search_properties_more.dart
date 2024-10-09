@@ -237,7 +237,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                   color: AppColors.blackColor,
                                 ),
                                 title: Text(
-                                  AppMetaLabels().menaProps,
+                                  AppMetaLabels().collierProps,
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
@@ -485,7 +485,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                     launchUrl(Uri.parse(
-                                                        "mailto:${AppMetaLabels().menaEmail}"));
+                                                        "mailto:${AppMetaLabels().collierEmail}"));
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
