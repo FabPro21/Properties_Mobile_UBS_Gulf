@@ -120,7 +120,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                           child: Row(
                             children: [
                               SizedBox(
-                                  width: 40.0.w,
+                                  width: 30.0.w,
                                   height: 5.h,
                                   child: AppLogoCollier()),
                               const Spacer(),
