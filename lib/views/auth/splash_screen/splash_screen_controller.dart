@@ -92,6 +92,8 @@ class SplashScreenController extends GetxController {
                 loggedIn: false,
               ));
         }
+        print("Is Login ::::: $isLoginBool");
+        print("Is phone.value ::::: ${phone.value}");
         if (isLoginBool) {
           print(phone.value);
           obj.compareToken(phone.value).then((value) {

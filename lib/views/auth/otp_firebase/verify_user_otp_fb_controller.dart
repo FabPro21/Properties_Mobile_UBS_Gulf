@@ -82,6 +82,8 @@ class VerifyUserOtpControllerFB extends GetxController {
       SessionController().setUser(model.value.user!);
       SessionController().setLoginToken(model.value.token);
       SessionController().setToken(model.value.token);
+      var phone = SessionController().getPhone();
+      SessionController().setPhone(phone);
       /////////////////////////////////////
       /// GlobalPreferencesEncrypted ///
       ////////////////////////////////////
@@ -113,6 +115,15 @@ class VerifyUserOtpControllerFB extends GetxController {
   }
 
   void saveDataLocally() async {
+    var phone = SessionController().getPhone();
+    GlobalPreferencesEncrypted.setString(
+      GlobalPreferencesLabels.phoneNumber,
+      phone ?? "",
+    );
+    var phone11 = await GlobalPreferencesEncrypted.getString(
+        GlobalPreferencesLabels.phoneNumber);
+    print("<Mobiel No in Saved Data ::::::::: 00 $phone>");
+    print("<Mobiel No in Saved Data ::::::::: 11 $phone11>");
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.loginToken,
       model.value.token ?? "",
@@ -177,7 +188,7 @@ class VerifyUserOtpControllerFB extends GetxController {
         deviceToken = token;
         SessionController().setDeviceTokken(deviceToken);
         GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken??"");
+            GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
       },
     );
   }

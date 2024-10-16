@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fap_properties/data/models/landlord_models/landlord_invoice_model.dart';
 import 'package:fap_properties/utils/constants/app_config.dart';
 import '../../helpers/base_client.dart';
@@ -24,6 +26,7 @@ class LandlordInvoiceServices {
     var response = await BaseClientClass.post(url ?? "", data);
     print('Condition ::::: ${(response is http.Response)}');
     if (response is http.Response) {
+      log(response.body);
       var allInvoices =
           landlordDashboardAllInvoicesModelFromJson(response.body);
       return allInvoices;
