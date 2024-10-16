@@ -18,6 +18,7 @@ import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/auth/setup_mpin/setup_mpin.dart';
 import 'package:fap_properties/views/public_views/search_properties_more/public_profile/update_public_profile.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -122,10 +123,19 @@ class VerifyUserOtpControllerFB extends GetxController {
       GlobalPreferencesLabels.phoneNumber,
       phone ?? "",
     );
+    GlobalPreferences.setbool(
+      GlobalPreferencesLabels.isLoginBool,
+      true,
+    );
     var phone11 = await GlobalPreferencesEncrypted.getString(
         GlobalPreferencesLabels.phoneNumber);
-    print("<Mobiel No in Saved Data ::::::::: 00 $phone>");
-    print("<Mobiel No in Saved Data ::::::::: 11 $phone11>");
+    var login11 =
+        await GlobalPreferences.getBool(GlobalPreferencesLabels.isLoginBool);
+    if (kDebugMode) {
+      print("<Mobiel No in Saved Data ::::::::: 00 $phone>");
+      print("<Mobiel No in Saved Data ::::::::: 11 $phone11>");
+      print("<login11 No in Saved Data ::::::::: 11 $login11>");
+    }
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.loginToken,
       model.value.token ?? "",
@@ -156,11 +166,6 @@ class VerifyUserOtpControllerFB extends GetxController {
     );
 
     print('User ID from Prefernece ::: ${SessionController().userID}');
-
-    GlobalPreferences.setbool(
-      GlobalPreferencesLabels.isLoginBool,
-      true,
-    );
   }
 
   Future<bool> updateDeviceInfo() async {
