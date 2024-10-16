@@ -120,10 +120,18 @@ class VerifyUserOtpControllerFB extends GetxController {
       GlobalPreferencesLabels.phoneNumber,
       phone ?? "",
     );
+
+    GlobalPreferences.setbool(
+      GlobalPreferencesLabels.isLoginBool,
+      true,
+    );
     var phone11 = await GlobalPreferencesEncrypted.getString(
         GlobalPreferencesLabels.phoneNumber);
+    var login11 =
+        await GlobalPreferences.getBool(GlobalPreferencesLabels.isLoginBool);
     print("<Mobiel No in Saved Data ::::::::: 00 $phone>");
     print("<Mobiel No in Saved Data ::::::::: 11 $phone11>");
+    print("<login11 in Saved Data ::::::::: 11 $login11>");
     GlobalPreferencesEncrypted.setString(
       GlobalPreferencesLabels.loginToken,
       model.value.token ?? "",
@@ -146,11 +154,6 @@ class VerifyUserOtpControllerFB extends GetxController {
 
     print(
         'User ID from Data svaed Locally ::: ${model.value.user!.userId.toString()}');
-
-    GlobalPreferences.setbool(
-      GlobalPreferencesLabels.isLoginBool,
-      true,
-    );
   }
 
   Future<bool> updateDeviceInfo() async {

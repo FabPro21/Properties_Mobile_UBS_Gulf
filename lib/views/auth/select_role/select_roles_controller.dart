@@ -220,11 +220,11 @@ class SelectRoloesController extends GetxController {
   }
 
   void resetApp() async {
-    Get.offAll(() => SplashScreen());
     await FirebaseAuth.instance.signOut();
     GlobalPreferences.setbool(GlobalPreferencesLabels.isLoginBool, false);
     bool isEnglish = SessionController().getLanguage() == 1;
     GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, isEnglish);
+    Get.offAll(() => SplashScreen());
   }
 
   void logout() async {
