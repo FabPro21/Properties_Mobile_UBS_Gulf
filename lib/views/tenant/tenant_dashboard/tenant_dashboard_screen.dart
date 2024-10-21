@@ -147,9 +147,9 @@ class _TenantDashboardState extends State<TenantDashboard>
                     child: Row(
                       children: [
                         SizedBox(
-                            width: 30.0.w,
-                            height: 5.h,
-                            child: AppLogoCollier()),
+                            width: 40.0.w,
+                            height: 5.0.h,
+                            child: AppLogoCollierDashboard()),
                         const Spacer(),
                         Container(
                           decoration: const BoxDecoration(

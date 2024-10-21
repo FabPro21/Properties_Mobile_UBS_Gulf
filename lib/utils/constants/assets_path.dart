@@ -11,6 +11,17 @@ class AppImagesPath {
   static const String view360 = '$commonRoot/360.png';
   static const String thumbnail = '$commonRoot/thumbnail.jpg';
 
+  // Colliers Provided Assets Start
+  static const String appLogo_Colliers =
+      '$commonRoot/colliers/App_Logo_Colliers.png';
+  static const String splash_Colliers =
+      '$commonRoot/colliers/SplashColliers.gif';
+  static const String appbar_Colliers =
+      '$commonRoot/colliers/AppBar_1_Colliers.png';
+  static const String backroud_Colliers =
+      '$commonRoot/colliers/Background_Colliers.png';
+  // Colliers Provided Assets End
+
   static const String playStore = '$commonRoot/app_icon/playStore.png';
   static const String appStore = '$commonRoot/app_icon/appStore.png';
 

@@ -20,7 +20,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final splashScreenController = Get.put(SplashScreenController());
 
- 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   @override
   void initState() {
@@ -34,13 +33,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-
   void _getFcmToken() async {
     // Get the FCM token
     String? token = await _firebaseMessaging.getToken();
     print('FCM Token: $token');
   }
-
 
   void _setupNotificationListeners() {
     // Handle incoming messages
@@ -71,7 +68,8 @@ class _SplashScreenState extends State<SplashScreen> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImagesPath.splashGif),
+            image: AssetImage(AppImagesPath.splash_Colliers),
+            // image: AssetImage(AppImagesPath.splashGif),
             fit: BoxFit.cover,
           ),
         ),

@@ -61,9 +61,10 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
             children: [
               SizedBox(
                 width: 100.0.w,
-                height: 35.0.h,
+                height: 38.0.h,
                 child: Image.asset(
-                  AppImagesPath.concave,
+                  // AppImagesPath.concave,
+                  AppImagesPath.appbar_Colliers,
                   fit: BoxFit.fill,
                 ),
               ),

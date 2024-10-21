@@ -24,10 +24,27 @@ class AppLogoCollier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 60.0.w,
-        height: 10.0.h,
+        width: 80.0.w,
+        height: 15.0.h,
         child: Image.asset(
-          AppImagesPath.colliersLogoType,
+          AppImagesPath.appLogo_Colliers,
+          // AppImagesPath.colliersLogoType,
+          fit: BoxFit.fill,
+        ));
+  }
+}
+
+class AppLogoCollierDashboard extends StatelessWidget {
+  const AppLogoCollierDashboard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 40.0.w,
+        height: 5.0.h,
+        child: Image.asset(
+          AppImagesPath.appLogo_Colliers,
+          // AppImagesPath.colliersLogoType,
           fit: BoxFit.fill,
         ));
   }

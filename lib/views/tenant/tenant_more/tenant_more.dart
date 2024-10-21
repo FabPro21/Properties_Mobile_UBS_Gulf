@@ -62,9 +62,10 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
           children: [
             SizedBox(
               width: 100.0.w,
-              height: 35.0.h,
+              height: 38.0.h,
               child: Image.asset(
-                AppImagesPath.concave,
+                AppImagesPath.appbar_Colliers,
+                // AppImagesPath.concave,
                 fit: BoxFit.fill,
               ),
             ),
@@ -148,7 +149,8 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                   ),
                   Container(
                     height: 16.h,
-                    padding: EdgeInsets.all(2.5.h),
+                    padding: EdgeInsets.only(
+                        top: 0.0.h, left: 2.5.h, right: 2.5.h, bottom: 2.5.h),
                     child: InkWell(
                       onTap: () {
                         Get.off(() => TenantProfile());
@@ -173,7 +175,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 3.h),
+                      padding: EdgeInsets.only(top: 2.h),
                       child: SingleChildScrollView(
                         child: Padding(
                           padding: EdgeInsets.only(left: 5.0.h),

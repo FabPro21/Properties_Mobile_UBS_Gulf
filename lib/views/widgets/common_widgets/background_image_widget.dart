@@ -10,7 +10,8 @@ class AppBackgroundImage extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Image.asset(
-        AppImagesPath.backgroundImage,
+        AppImagesPath.backroud_Colliers,
+        // AppImagesPath.backgroundImage,
         fit: BoxFit.fill,
       ),
     );

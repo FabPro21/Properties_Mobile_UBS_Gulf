@@ -137,7 +137,8 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/common_images/colliers/logo_type.png"
+  image_path: "assets/images/common_images/colliers/App_Logo_Colliers.png"
+  # image_path: "assets/images/common_images/colliers/logo_type.png"
   # image_path: "assets/images/common_images/app_icon/new_app_logo.png"
 
 flutter:
@@ -145,6 +146,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/common_images/
+    - assets/images/common_images/colliers/
     - assets/images/common_images/colliers/logo_type.png
     - assets/images/tenant_images/
     - assets/images/landlord_images/
@@ -167,3 +169,32 @@ flutter:
     - family: GraphikSemibold
       fonts:
         - asset: assets/fonts/GraphikSemibold.ttf
+    - family: MerriweatherBold
+      fonts:
+        - asset: assets/fonts/Merriweather/Merriweather-Bold.ttf
+    - family: MerriweatherLight
+      fonts:
+        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+    - family: MerriweatherRegular
+      fonts:
+        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
+    - family: OpenSansBold
+      fonts:
+        - asset: assets/fonts/Open_Sans/OpenSans-Bold.ttf
+    - family: OpenSansSemiBold
+      fonts:
+        - asset: assets/fonts/Open_Sans/OpenSans-SemiBold.ttf
+    - family: OpenSansLight
+      fonts:
+        - asset: assets/fonts/Open_Sans/OpenSans-Light.ttf
+    - family: OpenSansRegular
+      fonts:
+        - asset: assets/fonts/Open_Sans/OpenSans-Regular.ttf
+    - family: OpenSansCondensedBold
+      fonts:
+        - asset: assets/fonts/Open_Sans_Condensed/OpenSansCondensed Bold.ttf
+    - family: OpenSansCondensedLight
+      fonts:
+        - asset: assets/fonts/Open_Sans_Condensed/OpenSansCondensed Light.ttf
+
+   

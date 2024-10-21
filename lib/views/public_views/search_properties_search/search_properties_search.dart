@@ -119,10 +119,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                           padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                           child: Row(
                             children: [
-                              SizedBox(
-                                  width: 30.0.w,
-                                  height: 5.h,
-                                  child: AppLogoCollier()),
+                              AppLogoCollierDashboard(),
                               const Spacer(),
                               Padding(
                                 padding: EdgeInsets.symmetric(

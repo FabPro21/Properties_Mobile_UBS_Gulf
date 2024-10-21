@@ -318,6 +318,7 @@ class AppTextStyle {
     fontFamily: AppFonts.graphikSemibold,
     fontSize: 12.0.sp,
   );
+
   static TextStyle semiBoldWhite13 = TextStyle(
     color: AppColors.whiteColor,
     fontFamily: AppFonts.graphikSemibold,
@@ -482,4 +483,54 @@ class AppTextStyle {
   ////////////////
   ///new styles
   ////////////////
+  /// Merriweather
+  static TextStyle merriweatherBoldWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.merriweatherBold,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle merriweatherLightWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.merriweatherLight,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle merriweatherRegularWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.merriweatherRegular,
+    fontSize: 12.0.sp,
+  );
+
+  /// Open_Sans
+  static TextStyle openSansBoldWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansBold,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle openSansSemiBoldWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansSemiBold,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle openSansLightWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansLight,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle openSansRegularWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansRegular,
+    fontSize: 12.0.sp,
+  );
+
+  /// Open_Sans_Condensed
+  static TextStyle openSansCondensedBoldWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansCondensedBold,
+    fontSize: 12.0.sp,
+  );
+  static TextStyle openSansCondensedLightWhite12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontFamily: AppFonts.openSansCondensedLight,
+    fontSize: 12.0.sp,
+  );
 }

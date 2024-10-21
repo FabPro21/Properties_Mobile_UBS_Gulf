@@ -64,9 +64,10 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
             children: [
               SizedBox(
                 width: 100.0.w,
-                height: 35.0.h,
+                height: 38.0.h,
                 child: Image.asset(
-                  AppImagesPath.concave,
+                  // AppImagesPath.concave,
+                  AppImagesPath.appbar_Colliers,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -162,7 +163,8 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                     ),
                     Container(
                       height: 16.h,
-                      padding: EdgeInsets.all(2.8.h),
+                      // padding: EdgeInsets.all(2.8.h),
+                      padding: EdgeInsets.only(top: 0.0.h),
                       child: InkWell(
                         onTap: () {
                           Get.off(() => VendorProfile());
