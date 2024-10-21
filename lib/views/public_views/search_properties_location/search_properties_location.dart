@@ -167,11 +167,10 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                             child: Gm.GoogleMap(
                                               initialCameraPosition:
                                                   _locationController
-                                                          .data
-                                                          .value
-                                                          .locationVm![index]
-                                                          .cameraPosition!,
-                                                      
+                                                      .data
+                                                      .value
+                                                      .locationVm![index]
+                                                      .cameraPosition!,
                                               myLocationButtonEnabled: false,
                                               zoomControlsEnabled: false,
                                               onMapCreated:
