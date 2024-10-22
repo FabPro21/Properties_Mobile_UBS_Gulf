@@ -41,10 +41,16 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             flexibleSpace: Container(
+              // padding: EdgeInsets.only(left: 2),
+              padding: EdgeInsets.zero,
+              margin: EdgeInsets.zero,
+              width: double.infinity,
               decoration: BoxDecoration(
+                color: AppColors.colliersBlueColor,
                 image: DecorationImage(
                   image: AssetImage(AppImagesPath.appbarimg),
                   fit: BoxFit.fill,
+                  alignment: Alignment.centerLeft,
                 ),
               ),
             ),

@@ -407,10 +407,8 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 2.0.h),
-                        child: Text(
-                          AppMetaLabels().login,
-                          style: AppTextStyle.semiBoldWhite12,
-                        ),
+                        child: Text(AppMetaLabels().login,
+                            style: AppTextStyle.semiBoldWhite12),
                       ),
                       Padding(
                           padding: EdgeInsets.only(top: 6.0.h),

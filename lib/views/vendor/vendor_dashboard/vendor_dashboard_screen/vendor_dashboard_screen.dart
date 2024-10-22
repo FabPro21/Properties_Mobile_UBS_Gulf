@@ -71,7 +71,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                 padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                 child: Row(
                   children: [
-                    SizedBox(width: 45.0.w, child: AppLogoCollier()),
+                    AppLogoCollierDashboard(),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(

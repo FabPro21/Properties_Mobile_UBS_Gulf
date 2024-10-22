@@ -5,6 +5,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const Color colliersBackgroundColor = const Color(0x1c54f4);
+  static const Color colliersDeepBlueColor = const Color(0x000759);
+  static const Color colliersBlueColor = Color.fromRGBO(5, 66, 140, 1);
   static const Color greyColor = const Color(0xFF5F748A);
   static Color greyHeadingColor = const Color(0xFF4C4B5E);
   static Color darkGreyColor = const Color.fromRGBO(177, 185, 195, 1);
@@ -14,8 +17,8 @@ class AppColors {
   static Color blueColor2 = const Color.fromRGBO(0, 98, 255, 0.2);
   static Color blueColor3 = const Color.fromRGBO(0, 98, 255, 0.5);
 
-  static Color amber = Colors.amberAccent[700]??Colors.amberAccent;
-  static Color amber2 = Colors.amber[50]??Colors.amber;
+  static Color amber = Colors.amberAccent[700] ?? Colors.amberAccent;
+  static Color amber2 = Colors.amber[50] ?? Colors.amber;
   static Color blackColor = const Color(0xFF4C4B5E);
   static Color whiteColor = const Color(0xFFffffff);
   static Color white54 = Colors.white54;

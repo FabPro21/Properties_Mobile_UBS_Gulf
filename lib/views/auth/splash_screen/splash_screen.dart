@@ -2,6 +2,7 @@
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -62,14 +63,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     print(' isFab App :::::: ${SessionController().isFabApp}');
     return Scaffold(
-      backgroundColor: Color(0xFF001838),
+      backgroundColor: AppColors.colliersBackgroundColor,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(AppImagesPath.splash_Colliers),
-            // image: AssetImage(AppImagesPath.splashGif),
             fit: BoxFit.cover,
           ),
         ),

@@ -146,10 +146,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                     padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                     child: Row(
                       children: [
-                        SizedBox(
-                            width: 40.0.w,
-                            height: 5.0.h,
-                            child: AppLogoCollierDashboard()),
+                        AppLogoCollierDashboard(),
                         const Spacer(),
                         Container(
                           decoration: const BoxDecoration(

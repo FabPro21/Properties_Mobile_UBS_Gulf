@@ -1,4 +1,5 @@
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,8 @@ class SnakBarWidget {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: 5),
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.colliersBlueColor,
+        // backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
         icon: Icon(
@@ -143,16 +145,12 @@ class SnakBarWidget {
           text: TextSpan(
             text: '',
             children: <TextSpan>[
-              TextSpan(
-                  text: '',
-                  style: AppTextStyle.normalWhite11),
+              TextSpan(text: '', style: AppTextStyle.normalWhite11),
               TextSpan(
                   text: AppMetaLabels().dataISPreparingAR,
                   style: AppTextStyle.semiBoldWhite12
                       .copyWith(fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text: '',
-                  style: AppTextStyle.normalWhite11),
+              TextSpan(text: '', style: AppTextStyle.normalWhite11),
             ],
           ),
         ),
@@ -198,6 +196,7 @@ class SnakBarWidget {
           color: Colors.white,
         ));
   }
+
   static getSnackBarErrorRedWith5Sec(
     String title,
     String message,

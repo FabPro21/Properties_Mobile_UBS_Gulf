@@ -70,7 +70,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
     ];
 
     return WillPopScope(
-        onWillPop: ()async {
+        onWillPop: () async {
           settingModalBottomSheet(context);
           await Future.delayed(Duration(milliseconds: 100));
           return false;

@@ -32,7 +32,7 @@ class AppImagesPath {
   static const String convex = '$commonRoot/convex.png';
   static const String concave = '$commonRoot/concave.png';
   static const String fabIcon = '$commonRoot/fabIcon.png';
-  static const String appbarimg = '$commonRoot/colliers/AppBar_1_Colliers.png';
+  static const String appbarimg = '$commonRoot/colliers/colliers_appbar_1.png';
   // static const String appbarimg = '$commonRoot/appbarimg.png';
   static const String tenant = '$commonRoot/tenant.png';
   static const String vendor = '$commonRoot/vendor.png';

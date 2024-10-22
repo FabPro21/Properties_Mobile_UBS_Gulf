@@ -1098,7 +1098,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            Color.fromRGBO(5, 66, 140, 1),
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 6.0.h, vertical: 1.5.h),
                                       ),
