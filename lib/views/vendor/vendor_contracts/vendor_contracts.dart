@@ -230,16 +230,10 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                      text: AppMetaLabels()
-                                                                          .loadMoreData,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .blue,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                    ),
+                                                                        text: AppMetaLabels()
+                                                                            .loadMoreData,
+                                                                        style: AppTextStyle
+                                                                            .boldBlue),
                                                                     WidgetSpan(
                                                                       child:
                                                                           Icon(
@@ -298,16 +292,10 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                      text: AppMetaLabels()
-                                                                          .loadMoreData,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .blue,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                    ),
+                                                                        text: AppMetaLabels()
+                                                                            .loadMoreData,
+                                                                        style: AppTextStyle
+                                                                            .boldBlue),
                                                                     WidgetSpan(
                                                                       child:
                                                                           Icon(
@@ -499,28 +487,40 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Container(
-                                  width: 50.0.w,
+                                  width: 40.0.w,
                                   child: Text(
                                     SessionController().getLanguage() == 1
-                                        ? getContractsController.getContracts
-                                            .value.contracts![index].propertyName??""
+                                        ? getContractsController
+                                                .getContracts
+                                                .value
+                                                .contracts![index]
+                                                .propertyName ??
+                                            ""
                                         : getContractsController
-                                            .getContracts
-                                            .value
-                                            .contracts![index]
-                                            .propertyNameAR??"",
+                                                .getContracts
+                                                .value
+                                                .contracts![index]
+                                                .propertyNameAR ??
+                                            "",
                                     style: AppTextStyle.semiBoldBlack12,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                                 Spacer(),
-                                Text(
-                                  getContractsController
-                                          .contracts[index].contractNo
-                                          .toString() ,
-                                  style: AppTextStyle.semiBoldBlack12,
-                                  overflow: TextOverflow.ellipsis,
+                                SizedBox(
+                                  width: 25.w,
+                                  child: Text(
+                                    getContractsController
+                                        .contracts[index].contractNo
+                                        .toString(),
+                                    style: AppTextStyle.semiBoldBlack12,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign:
+                                        SessionController().getLanguage() == 1
+                                            ? TextAlign.end
+                                            : TextAlign.start,
+                                  ),
                                 ),
                               ],
                             ),
@@ -580,16 +580,24 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
                                 Spacer(),
-                                StatusWidgetVendor(
-                                  text: SessionController().getLanguage() == 1
-                                      ? getContractsController.contracts[index]
-                                              .contractStatus ??
-                                          ''
-                                      : getContractsController.contracts[index]
-                                              .contractStatusAr ??
-                                          '',
-                                  valueToCompare: getContractsController
-                                      .contracts[index].contractStatus,
+                                Container(
+                                  width: 35.w,
+                                  child: FittedBox(
+                                    child: StatusWidgetVendor(
+                                      text:
+                                          SessionController().getLanguage() == 1
+                                              ? getContractsController
+                                                      .contracts[index]
+                                                      .contractStatus ??
+                                                  ''
+                                              : getContractsController
+                                                      .contracts[index]
+                                                      .contractStatusAr ??
+                                                  '',
+                                      valueToCompare: getContractsController
+                                          .contracts[index].contractStatus,
+                                    ),
+                                  ),
                                 )
                               ],
                             ),

@@ -174,10 +174,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                           ''
                                       ? Text(
                                           AppMetaLabels().noMoreData,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ).copyWith(
-                                              fontWeight: FontWeight.bold),
+                                          style: AppTextStyle.boldBlue,
                                         )
                                       : getTNController
                                               .isLoadingUnReadNotification.value
@@ -213,19 +210,16 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                                         TextSpan(
                                                           text: AppMetaLabels()
                                                               .loadMoreData,
-                                                          style: TextStyle(
-                                                            color: Colors.blue,
-                                                          ).copyWith(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          style: AppTextStyle
+                                                              .boldBlue,
                                                         ),
                                                         WidgetSpan(
                                                           child: Icon(
                                                             Icons
                                                                 .arrow_forward_ios,
                                                             size: 15,
-                                                            color: Colors.blue,
+                                                            color: AppColors
+                                                                .blueColor,
                                                           ),
                                                         ),
                                                       ],
@@ -253,7 +247,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
         motion: const DrawerMotion(), // For the sliding effect
         children: [
           SlidableAction(
-            backgroundColor: Colors.grey[200]?? Colors.grey,
+            backgroundColor: Colors.grey[200] ?? Colors.grey,
             foregroundColor: Colors.black,
             icon: Icons.check_circle_outline,
             // color: Colors.blue,
@@ -300,6 +294,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
               await getTNController.archiveNotifications();
               getTNController.notificationsUnRead!.removeAt(index);
               getTNController.unreadLength = getTNController.unreadLength - 1;
+              setState(() {});
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

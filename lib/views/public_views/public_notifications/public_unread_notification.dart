@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
@@ -124,9 +125,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                               return _controller.noMoreDataUnRead.value != ''
                                   ? Text(
                                       AppMetaLabels().noMoreData,
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                      ).copyWith(fontWeight: FontWeight.bold),
+                                      style: AppTextStyle.boldBlue,
                                     )
                                   : _controller
                                           .isLoadingUnReadNotification.value
@@ -160,17 +159,15 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                                     TextSpan(
                                                       text: AppMetaLabels()
                                                           .loadMoreData,
-                                                      style: TextStyle(
-                                                        color: Colors.blue,
-                                                      ).copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style:
+                                                          AppTextStyle.boldBlue,
                                                     ),
                                                     WidgetSpan(
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
                                                         size: 15,
-                                                        color: Colors.blue,
+                                                        color:
+                                                            AppColors.blueColor,
                                                       ),
                                                     ),
                                                   ],

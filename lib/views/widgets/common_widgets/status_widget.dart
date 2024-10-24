@@ -56,9 +56,9 @@ class StatusWidget extends StatelessWidget {
       child: Padding(
         // padding: EdgeInsets.fromLTRB(2.0.h, 0.8.h, 2.0.h, 0.8.h),
         padding: EdgeInsets.fromLTRB(
-          valueToCompare!.contains('Under Approval') ? 1.h : 2.0.h,
+          valueToCompare!.contains('Under Approval') ? 0.4.h : 2.0.h,
           valueToCompare!.contains('Under Approval') ? 1.4.h : 0.8.h,
-          valueToCompare!.contains('Under Approval') ? 1.h : 2.0.h,
+          valueToCompare!.contains('Under Approval') ? 0.4.h : 2.0.h,
           valueToCompare!.contains('Under Approval') ? 1.4.h : 0.8.h,
         ),
         child: Text(

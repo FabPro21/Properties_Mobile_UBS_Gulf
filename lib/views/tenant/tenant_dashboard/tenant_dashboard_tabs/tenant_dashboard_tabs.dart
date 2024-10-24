@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
-import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/backbround_concave.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts.dart';
@@ -190,15 +189,9 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                   padding: EdgeInsets.only(top: 2.0.h, bottom: 0.0.h),
                   child: SizedBox(
                       child: Center(
-                          child: Text(
-                    AppMetaLabels().areYouSureCloseAPP,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColors.blackColor,
-                      fontFamily: AppFonts.graphikSemibold,
-                      fontSize: 12.0.sp,
-                    ),
-                  ))),
+                          child: Text(AppMetaLabels().areYouSureCloseAPP,
+                              textAlign: TextAlign.center,
+                              style: AppTextStyle.semiBoldBlack12))),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 4.0.h, bottom: 4.0.h),

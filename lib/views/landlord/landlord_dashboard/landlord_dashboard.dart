@@ -79,7 +79,8 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 2.0.h),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 2.0.h, vertical: 1.h),
                       child: Row(
                         children: [
                           AppLogoCollierDashboard(),
@@ -136,11 +137,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                 ),
                                 badgeContent: Text(
                                   '${landLordPropertiesController.lengthNotiification.value}',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10.0.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: AppTextStyle.semiBoldWhite10,
                                 ),
                                 child: Icon(
                                   Icons.notifications_outlined,
@@ -323,21 +320,20 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                                     ''
                                                                 ? ''
                                                                 : "${landLordPropertiesController.openCases.value.toString()} ",
-                                                            style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 10.0.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
+                                                            style: AppTextStyle
+                                                                .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Text(
-                                                          AppMetaLabels()
-                                                              .openCases,
-                                                          style: AppTextStyle
-                                                              .normalBlack10,
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 5),
+                                                          child: Text(
+                                                            AppMetaLabels()
+                                                                .openCases,
+                                                            style: AppTextStyle
+                                                                .normalBlack10,
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
@@ -353,27 +349,20 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                             width: Get.width *
                                                                 0.08,
                                                             child: Text(
-                                                              landLordPropertiesController
-                                                                          .closeCases
-                                                                          .value ==
-                                                                      ''
-                                                                  ? ''
-                                                                  : "${landLordPropertiesController.closeCases.value.toString()}",
-                                                              style: TextStyle(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize:
-                                                                    10.0.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
+                                                                landLordPropertiesController
+                                                                            .closeCases
+                                                                            .value ==
+                                                                        ''
+                                                                    ? ''
+                                                                    : "${landLordPropertiesController.closeCases.value.toString()}",
+                                                                style: AppTextStyle
+                                                                    .semiBoldBlack12),
                                                           ),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsets.only(
-                                                                    top: 0.1.h),
+                                                                    top: 0.1.h,
+                                                                    left: 5),
                                                             child: Text(
                                                               AppMetaLabels()
                                                                   .closeCases,
@@ -401,7 +390,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                           child: Row(
                                             children: [
                                               SizedBox(
-                                                width: 28.0.w,
+                                                width: 24.0.w,
                                                 height: 12.0.h,
                                                 child: SfCircularChart(
                                                     series: <CircularSeries>[

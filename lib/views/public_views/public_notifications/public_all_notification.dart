@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/custom_error_widget.dart';
@@ -79,17 +80,13 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                     Get.to(() => PublicNotificationDetails());
                                   },
                                   child: Row(
-                                    // getTNController.  editTap.value == true ? 80.0.w :
                                     children: [
                                       _controller.editTap.value == true
                                           ? Expanded(
                                               child: Container(
                                                 width: 10.0.w,
                                                 height: 5.0.h,
-                                                // color: Colors.red,
-                                                child:
-                                                    // Text("1"),
-                                                    CheckboxListTile(
+                                                child: CheckboxListTile(
                                                   selectedTileColor:
                                                       Color.fromRGBO(
                                                           0, 98, 255, 1),
@@ -120,9 +117,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                             return _controller.noMoreDataPageAll.value != ''
                                 ? Text(
                                     AppMetaLabels().noMoreData,
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                    ).copyWith(fontWeight: FontWeight.bold),
+                                    style: AppTextStyle.semiBoldBlue14,
                                   )
                                 : _controller.isLoadingAllNotification.value
                                     ? SizedBox(
@@ -154,17 +149,15 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                                   TextSpan(
                                                     text: AppMetaLabels()
                                                         .loadMoreData,
-                                                    style: TextStyle(
-                                                      color: Colors.blue,
-                                                    ).copyWith(
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style:
+                                                        AppTextStyle.boldBlue,
                                                   ),
                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 15,
-                                                      color: Colors.blue,
+                                                      color:
+                                                          AppColors.blueColor,
                                                     ),
                                                   ),
                                                 ],

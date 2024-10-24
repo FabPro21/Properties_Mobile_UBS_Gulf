@@ -97,7 +97,7 @@ class _TenantOffersState extends State<TenantOffers> {
                                                               .offers
                                                               .value
                                                               .record![index]
-                                                              .titleAr  ??
+                                                              .titleAr ??
                                                           "",
                                                   style: AppTextStyle
                                                       .semiBoldBlack13),
@@ -124,12 +124,8 @@ class _TenantOffersState extends State<TenantOffers> {
                 : Center(
                     child: Obx(() {
                       return _controller.errorDetailsMore.value != ''
-                          ? Text(
-                              AppMetaLabels().noMoreData,
-                              style: TextStyle(
-                                color: Colors.blue,
-                              ),
-                            )
+                          ? Text(AppMetaLabels().noMoreData,
+                              style: AppTextStyle.boldBlue)
                           : _controller.length < 20
                               ? SizedBox()
                               : _controller.loadingDetailsMore.value
@@ -159,17 +155,15 @@ class _TenantOffersState extends State<TenantOffers> {
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
-                                                  text: AppMetaLabels()
-                                                      .loadMoreData,
-                                                  style: TextStyle(
-                                                    color: Colors.blue,
-                                                  ),
-                                                ),
+                                                    text: AppMetaLabels()
+                                                        .loadMoreData,
+                                                    style:
+                                                        AppTextStyle.boldBlue),
                                                 WidgetSpan(
                                                   child: Icon(
                                                     Icons.arrow_forward_ios,
                                                     size: 15,
-                                                    color: Colors.blue,
+                                                    color: AppColors.blueColor,
                                                   ),
                                                 ),
                                               ],

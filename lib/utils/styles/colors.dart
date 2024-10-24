@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color colliersBackgroundColor = const Color(0x1c54f4);
   static const Color colliersDeepBlueColor = const Color(0x000759);
-  static const Color colliersBlueColor = Color.fromRGBO(5, 66, 140, 1);
+  static const Color colliersBlueColor =
+      Color.fromRGBO(5, 66, 140, 1); // buttons
   static const Color greyColor = const Color(0xFF5F748A);
   static Color greyHeadingColor = const Color(0xFF4C4B5E);
   static Color darkGreyColor = const Color.fromRGBO(177, 185, 195, 1);

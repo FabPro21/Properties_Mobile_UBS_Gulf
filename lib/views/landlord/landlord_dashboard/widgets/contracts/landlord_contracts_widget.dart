@@ -172,14 +172,21 @@ class _YourContractsState extends State<YourContracts> {
                                                 SizedBox(
                                                   height: 1.0.h,
                                                 ),
-                                                StatusWidget(
-                                                  text: isEng
-                                                      ? contract.contractStatus
-                                                      : contract
-                                                          .contractStatusAR,
-                                                  valueToCompare:
-                                                      contract.contractStatus ??
+                                                ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                      maxWidth: 22.w),
+                                                  child: FittedBox(
+                                                    child: StatusWidget(
+                                                      text: isEng
+                                                          ? contract
+                                                              .contractStatus
+                                                          : contract
+                                                              .contractStatusAR,
+                                                      valueToCompare: contract
+                                                              .contractStatus ??
                                                           "",
+                                                    ),
+                                                  ),
                                                 )
                                               ],
                                             ),

@@ -107,8 +107,8 @@ class LposWidget extends StatelessWidget {
                               return InkWell(
                                 onTap: () {
                                   SessionController().setLpoId(
-                                    getAllLpoWidgetController
-                                        .getAllLposModel.value.lpos![index].lpoId
+                                    getAllLpoWidgetController.getAllLposModel
+                                        .value.lpos![index].lpoId
                                         .toString(),
                                   );
                                   SessionController().setLpoRefNo(
@@ -137,10 +137,11 @@ class LposWidget extends StatelessWidget {
                                             child: rowList(
                                               AppMetaLabels().refNo,
                                               getAllLpoWidgetController
-                                                  .getAllLposModel
-                                                  .value
-                                                  .lpos![index]
-                                                  .lpoReference??"",
+                                                      .getAllLposModel
+                                                      .value
+                                                      .lpos![index]
+                                                      .lpoReference ??
+                                                  "",
                                             ),
                                           ),
                                           Padding(
@@ -193,10 +194,11 @@ class LposWidget extends StatelessWidget {
                                             child: rowList(
                                               AppMetaLabels().lpoDate,
                                               getAllLpoWidgetController
-                                                  .getAllLposModel
-                                                  .value
-                                                  .lpos![index]
-                                                  .lpoDate??"",
+                                                      .getAllLposModel
+                                                      .value
+                                                      .lpos![index]
+                                                      .lpoDate ??
+                                                  "",
                                             ),
                                           ),
                                           Padding(
@@ -236,29 +238,35 @@ class LposWidget extends StatelessWidget {
                                                       .normalBlack11,
                                                 ),
                                                 Spacer(),
-                                                StatusWidgetVendor(
-                                                  // text: 'Under Approval',
-                                                  text: SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? getAllLpoWidgetController
-                                                          .getAllLposModel
-                                                          .value
-                                                          .lpos![index]
-                                                          .lpoStatus
-                                                      : getAllLpoWidgetController
-                                                          .getAllLposModel
-                                                          .value
-                                                          .lpos![index]
-                                                          .lpoStatusAr,
-                                                  valueToCompare:
-                                                      // 'Under Approval'
-                                                      getAllLpoWidgetController
-                                                          .getAllLposModel
-                                                          .value
-                                                          .lpos![index]
-                                                          .lpoStatus,
-                                                ),
+                                                ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                      maxWidth: 40.w),
+                                                  child: FittedBox(
+                                                    child: StatusWidgetVendor(
+                                                      // text: 'Under Approval',
+                                                      text: SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getAllLpoWidgetController
+                                                              .getAllLposModel
+                                                              .value
+                                                              .lpos![index]
+                                                              .lpoStatus
+                                                          : getAllLpoWidgetController
+                                                              .getAllLposModel
+                                                              .value
+                                                              .lpos![index]
+                                                              .lpoStatusAr,
+                                                      valueToCompare:
+                                                          // 'Under Approval'
+                                                          getAllLpoWidgetController
+                                                              .getAllLposModel
+                                                              .value
+                                                              .lpos![index]
+                                                              .lpoStatus,
+                                                    ),
+                                                  ),
+                                                )
                                               ],
                                             ),
                                           ),
@@ -344,9 +352,13 @@ class LposWidget extends StatelessWidget {
           style: AppTextStyle.normalBlack11,
         ),
         Spacer(),
-        Text(
-          t2,
-          style: AppTextStyle.normalBlack11,
+        SizedBox(
+          width: 40.w,
+          child: Text(
+            t2,
+            style: AppTextStyle.normalBlack11,
+            textAlign: TextAlign.end,
+          ),
         ),
       ],
     );

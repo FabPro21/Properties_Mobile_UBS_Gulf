@@ -222,18 +222,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                                     textAlign: TextAlign.right,
                                                                                     text: TextSpan(
                                                                                       children: [
-                                                                                        TextSpan(
-                                                                                          text: AppMetaLabels().loadMoreData,
-                                                                                          style: TextStyle(
-                                                                                            color: Colors.blue,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
-                                                                                        ),
+                                                                                        TextSpan(text: AppMetaLabels().loadMoreData, style: AppTextStyle.boldBlue),
                                                                                         WidgetSpan(
                                                                                           child: Icon(
                                                                                             Icons.arrow_forward_ios,
                                                                                             size: 15,
-                                                                                            color: Colors.blue,
+                                                                                            color: AppColors.blueColor,
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -286,20 +280,14 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                           TextSpan(
                                                                         children: [
                                                                           TextSpan(
-                                                                            text:
-                                                                                AppMetaLabels().loadMoreData,
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: Colors.blue,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
+                                                                              text: AppMetaLabels().loadMoreData,
+                                                                              style: AppTextStyle.boldBlue),
                                                                           WidgetSpan(
                                                                             child:
                                                                                 Icon(
                                                                               Icons.arrow_forward_ios,
                                                                               size: 15,
-                                                                              color: Colors.blue,
+                                                                              color: AppColors.blueColor,
                                                                             ),
                                                                           ),
                                                                         ],

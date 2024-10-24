@@ -123,13 +123,8 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                             colorChangeAnimationCurve: Curves.easeInCubic,
                           ),
                           badgeContent: Text(
-                            '${controller.getDataModel.value.unreadNotification}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 10.0.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                              '${controller.getDataModel.value.unreadNotification}',
+                              style: AppTextStyle.semiBoldWhite10),
                           child: Icon(
                             Icons.notifications_outlined,
                             color: Colors.white,

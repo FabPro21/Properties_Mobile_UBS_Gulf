@@ -44,13 +44,14 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
           ? ui.TextDirection.ltr
           : ui.TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.whiteColor,
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
+              color: AppColors.whiteColor,
             ),
-            iconSize: 2.0.h,
+            iconSize: 3.0.h,
             onPressed: () {
               var reqListController =
                   Get.find<GetTenantServiceRequestsController>();
@@ -59,8 +60,8 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
             },
           ),
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
               image: DecorationImage(
                 image: AssetImage(
                   AppImagesPath.appbarimg,
@@ -69,7 +70,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
               ),
             ),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.whiteColor,
           title: Text(
             AppMetaLabels().newRequestSmall,
             style: AppTextStyle.semiBoldWhite14,
@@ -154,7 +155,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(1.3.h),
                     ),
-                    backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                    backgroundColor: AppColors.colliersBlueColor,
                   ),
                   onPressed: () {
                     Get.snackbar(
@@ -164,7 +165,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                     );
                     Get.off(() => TenantServiceRequestTabs(
                           caller: 'newReq',
-                          requestNo: widget.caseNo??"",
+                          requestNo: widget.caseNo ?? "",
                         ));
                   },
                   child: Text(

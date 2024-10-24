@@ -109,6 +109,7 @@ class _TenantDashboardState extends State<TenantDashboard>
 
   getDBData() async {
     await tDGDController.getDashboardData();
+    setState(() {});
   }
 
   @override
@@ -196,13 +197,8 @@ class _TenantDashboardState extends State<TenantDashboard>
                                 colorChangeAnimationCurve: Curves.easeInCubic,
                               ),
                               badgeContent: Text(
-                                '${tDGDController.lengthNotiification.value}',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10.0.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                                  '${tDGDController.lengthNotiification.value}',
+                                  style: AppTextStyle.semiBoldWhite10),
                               child: Icon(
                                 Icons.notifications_outlined,
                                 color: Colors.white,
@@ -314,13 +310,17 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                 EdgeInsets.only(top: 0.6.h),
                                             child: Row(
                                               children: [
-                                                Text(
+                                                SizedBox(
+                                                  width: 43.w,
+                                                  child: Text(
                                                     AppMetaLabels().aed +
                                                         " ${tDGDController.paymentCurrency}",
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: AppTextStyle
-                                                        .semiBoldBlack14),
+                                                        .semiBoldBlack14,
+                                                  ),
+                                                ),
                                                 const Spacer(),
                                                 Column(
                                                   crossAxisAlignment:
@@ -334,20 +334,20 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                         children: [
                                                           Text(
                                                             "${tDGDController.dashboardData.value.dashboard?.contractExpiringIn30Days.toString() ?? ""} ",
-                                                            style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 10.0.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
+                                                            style: AppTextStyle
+                                                                .semiBoldBlack12,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                           ),
                                                           Text(
                                                             AppMetaLabels()
                                                                 .contractsExpiring,
                                                             style: AppTextStyle
                                                                 .normalBlack10,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                           ),
                                                         ],
                                                       ),
@@ -364,15 +364,8 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                           children: [
                                                             Text(
                                                               "${tDGDController.dashboardData.value.dashboard?.checkDueIn30Days} ",
-                                                              style: TextStyle(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize:
-                                                                    10.0.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
+                                                              style: AppTextStyle
+                                                                  .semiBoldBlack12,
                                                             ),
                                                             Padding(
                                                               padding: EdgeInsets
@@ -409,7 +402,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         child: Row(
                                           children: [
                                             SizedBox(
-                                              width: 26.0.w,
+                                              width: 24.0.w,
                                               height: 12.0.h,
                                               child: SfCircularChart(
                                                   series: <CircularSeries>[
@@ -472,7 +465,9 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                             ),
                                                           ),
                                                           Spacer(),
-                                                          Text(
+                                                          SizedBox(
+                                                            width: 31.0.w,
+                                                            child: Text(
                                                               tDGDController
                                                                       .dashboardData
                                                                       .value
@@ -485,7 +480,11 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                   TextOverflow
                                                                       .ellipsis,
                                                               style: AppTextStyle
-                                                                  .semiBoldBlack10),
+                                                                  .semiBoldBlack10,
+                                                              textAlign:
+                                                                  TextAlign.end,
+                                                            ),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),
@@ -529,17 +528,20 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                             ),
                                                           ),
                                                           const Spacer(),
-                                                          FittedBox(
-                                                            child: Text(
-                                                              AppMetaLabels()
-                                                                      .aed +
-                                                                  " ${tDGDController.toBePaidCurrency}",
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: AppTextStyle
-                                                                  .semiBoldBlack10,
+                                                          SizedBox(
+                                                            width: 31.0.w,
+                                                            child: FittedBox(
+                                                              child: Text(
+                                                                AppMetaLabels()
+                                                                        .aed +
+                                                                    " ${tDGDController.toBePaidCurrency}",
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: AppTextStyle
+                                                                    .semiBoldBlack10,
+                                                              ),
                                                             ),
                                                           ),
                                                         ],
@@ -588,17 +590,20 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                             ),
                                                           ),
                                                           const Spacer(),
-                                                          FittedBox(
-                                                            child: Text(
-                                                              AppMetaLabels()
-                                                                      .aed +
-                                                                  " ${tDGDController.balanceCurrency}",
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: AppTextStyle
-                                                                  .semiBoldBlack10,
+                                                          SizedBox(
+                                                            width: 31.0.w,
+                                                            child: FittedBox(
+                                                              child: Text(
+                                                                AppMetaLabels()
+                                                                        .aed +
+                                                                    " ${tDGDController.balanceCurrency}",
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: AppTextStyle
+                                                                    .semiBoldBlack10,
+                                                              ),
                                                             ),
                                                           ),
                                                         ],

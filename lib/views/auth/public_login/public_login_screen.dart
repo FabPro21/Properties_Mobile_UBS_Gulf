@@ -147,8 +147,6 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().name,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
-                                                    errorStyle:
-                                                        TextStyle(fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),
@@ -195,8 +193,6 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().email,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
-                                                    errorStyle:
-                                                        TextStyle(fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),

@@ -8,7 +8,8 @@ class AppFonts {
 
   /// Merriweather
   static String merriweatherBold = 'MerriweatherBold';
-  static const String merriweatherLight = 'MerriweatherLight';
+  static String merriweatherSemiBold = 'MerriweatherLight';
+  static String merriweatherLight = 'MerriweatherLight';
   static String merriweatherRegular = 'MerriweatherRegular';
 
   /// Open_Sans

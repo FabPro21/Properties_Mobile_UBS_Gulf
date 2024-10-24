@@ -133,17 +133,19 @@ class _YourContractsState extends State<YourContracts> {
                                                                     .getLanguage() ==
                                                                 1
                                                             ? getContractsController
-                                                                .getContracts
-                                                                .value
-                                                                .contracts![
-                                                                    index]
-                                                                .propertyName??""
+                                                                    .getContracts
+                                                                    .value
+                                                                    .contracts![
+                                                                        index]
+                                                                    .propertyName ??
+                                                                ""
                                                             : getContractsController
-                                                                .getContracts
-                                                                .value
-                                                                .contracts![
-                                                                    index]
-                                                                .propertyNameAr??"",
+                                                                    .getContracts
+                                                                    .value
+                                                                    .contracts![
+                                                                        index]
+                                                                    .propertyNameAr ??
+                                                                "",
                                                         style: AppTextStyle
                                                             .semiBoldBlack12,
                                                         overflow: TextOverflow
@@ -285,27 +287,34 @@ class _YourContractsState extends State<YourContracts> {
                           );
               }),
             ),
-            getContractsController.listLength == 0
-                ? SizedBox(
-                    height: 9.0.h,
-                  )
-                : Padding(
-                    padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      onPressed: () {
-                        widget.manageContracts!(1);
-                      },
-                      child: Text(
-                        AppMetaLabels().viewAllContracts,
-                        style: AppTextStyle.semiBoldBlue9,
-                      ),
-                    ),
-                  ),
+            // getContractsController.listLength == 0
+            Obx(() {
+              return getContractsController.loadingContractsData.value == true
+                  ? SizedBox(
+                      height: 9.0.h,
+                    )
+                  : getContractsController.contractsLength.value == 0
+                      ? SizedBox(
+                          height: 9.0.h,
+                        )
+                      : Padding(
+                          padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            onPressed: () {
+                              widget.manageContracts!(1);
+                            },
+                            child: Text(
+                              AppMetaLabels().viewAllContracts,
+                              style: AppTextStyle.semiBoldBlue9,
+                            ),
+                          ),
+                        );
+            })
           ],
         ),
       ),

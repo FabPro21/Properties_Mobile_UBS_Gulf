@@ -1,5 +1,6 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
@@ -131,9 +132,7 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                               return _controller.noMoreDataPageAll.value != ''
                                   ? Text(
                                       AppMetaLabels().noMoreData,
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                      ).copyWith(fontWeight: FontWeight.bold),
+                                      style: AppTextStyle.boldBlue,
                                     )
                                   : _controller.isLoadingAllNotification.value
                                       ? SizedBox(
@@ -165,17 +164,15 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                                                     TextSpan(
                                                       text: AppMetaLabels()
                                                           .loadMoreData,
-                                                      style: TextStyle(
-                                                        color: Colors.blue,
-                                                      ).copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style:
+                                                          AppTextStyle.boldBlue,
                                                     ),
                                                     WidgetSpan(
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
                                                         size: 15,
-                                                        color: Colors.blue,
+                                                        color:
+                                                            AppColors.blueColor,
                                                       ),
                                                     ),
                                                   ],

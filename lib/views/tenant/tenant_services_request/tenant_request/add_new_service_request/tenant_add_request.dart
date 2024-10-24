@@ -1,5 +1,6 @@
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_field_style.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/utils/text_validator.dart';
@@ -70,15 +71,16 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
+                color: AppColors.whiteColor,
               ),
-              iconSize: 2.0.h,
+              iconSize: 3.0.h,
               onPressed: () {
                 Get.back();
               },
             ),
             flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color: AppColors.whiteColor,
                 image: DecorationImage(
                   image: AssetImage(
                     AppImagesPath.appbarimg,
@@ -87,7 +89,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                 ),
               ),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.whiteColor,
             centerTitle: true,
             title: Text(
               AppMetaLabels().newRequestSmall,
@@ -287,8 +289,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                             children: [
                                                               Text(
                                                                 tASRController
-                                                                        .caseCategoryName
-                                                                        .value ,
+                                                                    .caseCategoryName
+                                                                    .value,
                                                                 style: AppTextStyle
                                                                     .normalGrey10,
                                                               ),
@@ -313,7 +315,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
+                                                                .only(
                                                                 left: 8.0,
                                                                 top: 8),
                                                         child: Text(
@@ -414,8 +416,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                           0.67,
                                                                   child: Text(
                                                                     tASRController
-                                                                            .caseSubCategoryName
-                                                                            .value,
+                                                                        .caseSubCategoryName
+                                                                        .value,
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                     overflow:
@@ -444,7 +446,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         Padding(
                                                           padding:
                                                               const EdgeInsets
-                                                                      .only(
+                                                                  .only(
                                                                   left: 8.0,
                                                                   top: 8),
                                                           child: Text(
@@ -516,8 +518,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         children: [
                                                           Text(
                                                             tASRController
-                                                                    .contractUnitName
-                                                                    .value ,
+                                                                .contractUnitName
+                                                                .value,
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                           ),
@@ -630,7 +632,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         style: AppTextStyle
                                                             .normalGrey10,
                                                         maxLines: 1,
-                                                        validator: (String? value) {
+                                                        validator:
+                                                            (String? value) {
                                                           if (value!.isEmpty)
                                                             return AppMetaLabels()
                                                                 .requiredField;
@@ -675,7 +678,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         style: AppTextStyle
                                                             .normalGrey10,
                                                         maxLines: 1,
-                                                        validator: (String? value) {
+                                                        validator:
+                                                            (String? value) {
                                                           if (value!.isEmpty)
                                                             return AppMetaLabels()
                                                                 .requiredField;
@@ -768,8 +772,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   children: [
                                                                     Text(
                                                                       tASRController
-                                                                              .preferredTime
-                                                                              .value ,
+                                                                          .preferredTime
+                                                                          .value,
                                                                       style: AppTextStyle
                                                                           .normalGrey10,
                                                                     ),
@@ -796,7 +800,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                           Padding(
                                                             padding:
                                                                 const EdgeInsets
-                                                                        .only(
+                                                                    .only(
                                                                     left: 8.0,
                                                                     top: 8),
                                                             child: Text(
@@ -922,7 +926,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         1.3.h),
                                               ),
                                               backgroundColor:
-                                                  Color.fromRGBO(0, 61, 166, 1),
+                                                  AppColors.colliersBlueColor,
                                             ),
                                             onPressed: () {
                                               FocusScope.of(context).unfocus();
@@ -954,7 +958,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                       .validate()) {
                                                 tASRController.submitRequest();
                                               } else {
-                                                SnakBarWidget.getSnackBarErrorBlue(
+                                                SnakBarWidget
+                                                    .getSnackBarErrorBlue(
                                                   AppMetaLabels().error,
                                                   AppMetaLabels().fillAllFields,
                                                 );

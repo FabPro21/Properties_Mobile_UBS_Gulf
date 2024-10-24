@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:clippy_flutter/clippy_flutter.dart';
-import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/views/widgets/step_no_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -69,16 +68,10 @@ class DueActionListButton extends StatelessWidget {
                                   speed: Duration(milliseconds: 200)),
                             ],
                           )
-                        : Text(
-                            text ?? '',
+                        : Text(text ?? '',
                             // style: AppTextStyle.normalBlue11,
                             //  style: AppTextStyle.semiBoldGrey12.copyWith(color: AppColors.blueColor),
-                            style: TextStyle(
-                              color: AppColors.blueColor,
-                              fontFamily: AppFonts.graphikSemibold,
-                              fontSize: 12.0.sp,
-                            ),
-                          ),
+                            style: AppTextStyle.semiBoldBlue12),
                   ),
                 ),
               ),

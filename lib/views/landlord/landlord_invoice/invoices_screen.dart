@@ -253,11 +253,8 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                         .propertyNameLand,
                                                                     SessionController().getLanguage() ==
                                                                             1
-                                                                        ? _controller
-                                                                            .allInvoice[
-                                                                                index]
-                                                                            .propertyName
-                                                                            .toString()
+                                                                        ? _controller.allInvoice[index].propertyName.toString() +
+                                                                            ''
                                                                         : _controller
                                                                             .allInvoice[index]
                                                                             .propertyNameAR
@@ -311,16 +308,21 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                             .semiBoldBlack10,
                                                                       ),
                                                                       Spacer(),
-                                                                      StatusWidgetVendor(
-                                                                        text: SessionController().getLanguage() == 1
-                                                                            ? _controller.allInvoice[index].statusName ??
-                                                                                ""
-                                                                            : _controller.allInvoice[index].statusNameAR ??
-                                                                                "",
-                                                                        valueToCompare:
-                                                                            _controller.allInvoice[index].statusName ??
-                                                                                "",
-                                                                      ),
+                                                                      ConstrainedBox(
+                                                                        constraints:
+                                                                            BoxConstraints(maxWidth: 45.w),
+                                                                        child:
+                                                                            FittedBox(
+                                                                          child:
+                                                                              StatusWidgetVendor(
+                                                                            text: SessionController().getLanguage() == 1
+                                                                                ? _controller.allInvoice[index].statusName ?? ""
+                                                                                : _controller.allInvoice[index].statusNameAR ?? "",
+                                                                            valueToCompare:
+                                                                                _controller.allInvoice[index].statusName ?? "",
+                                                                          ),
+                                                                        ),
+                                                                      )
                                                                     ],
                                                                   ),
                                                                   SizedBox(
@@ -389,16 +391,13 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                                       children: [
                                                                                         TextSpan(
                                                                                           text: AppMetaLabels().loadMoreData,
-                                                                                          style: TextStyle(
-                                                                                            color: Colors.blue,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
+                                                                                          style: AppTextStyle.boldBlue,
                                                                                         ),
                                                                                         WidgetSpan(
                                                                                           child: Icon(
                                                                                             Icons.arrow_forward_ios,
                                                                                             size: 15,
-                                                                                            color: Colors.blue,
+                                                                                            color: AppColors.blueColor,
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -436,9 +435,14 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
           style: AppTextStyle.normalBlack10,
         ),
         Spacer(),
-        Text(
-          t2,
-          style: AppTextStyle.normalBlack10,
+        SizedBox(
+          width: 37.5.w,
+          child: Text(
+            t2,
+            style: AppTextStyle.normalBlack10,
+            textAlign: TextAlign.end,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

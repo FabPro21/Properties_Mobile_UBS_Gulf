@@ -1,5 +1,6 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/backbround_concave.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
@@ -56,16 +57,16 @@ class _TenantProfileState extends State<TenantProfile> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 1.0.h, top: 2.0.h),
+                      padding: EdgeInsets.only(left: 1.0.h, top: 1.0.h),
                       child: SizedBox(
-                        height: 8.h,
+                        height: 6.5.h,
                         child: Row(
                           children: [
                             IconButton(
                               padding: EdgeInsets.zero,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.arrow_back_ios,
-                                color: Colors.white,
+                                color: AppColors.whiteColor,
                               ),
                               onPressed: () {
                                 Get.back();

@@ -544,12 +544,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                       ? Text(
                                                           AppMetaLabels()
                                                               .noMoreData,
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.blue,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          style: AppTextStyle
+                                                              .boldBlue,
                                                         )
                                                       : InkWell(
                                                           onTap: () async {
@@ -597,11 +593,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                     TextSpan(
                                                                       text: AppMetaLabels()
                                                                           .loadMoreData,
-                                                                      style: TextStyle(
-                                                                          color: Colors
-                                                                              .blue,
-                                                                          fontWeight:
-                                                                              FontWeight.bold),
+                                                                      style: AppTextStyle
+                                                                          .boldBlue,
                                                                     ),
                                                                     WidgetSpan(
                                                                       child:
@@ -610,8 +603,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                             .arrow_forward_ios,
                                                                         size:
                                                                             15,
-                                                                        color: Colors
-                                                                            .blue,
+                                                                        color: AppColors
+                                                                            .blueColor,
                                                                       ),
                                                                     ),
                                                                   ],

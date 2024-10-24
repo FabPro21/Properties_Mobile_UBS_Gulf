@@ -759,40 +759,34 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               // theme:
                               //     ThemeData(primarySwatch: Colors.deepPurple),
                               styleDatePicker: MaterialRoundedDatePickerStyle(
-                                decorationDateSelected: BoxDecoration(
+                                  decorationDateSelected: BoxDecoration(
+                                      color: AppColors.blueColor,
+                                      borderRadius: BorderRadius.circular(100)),
+                                  textStyleButtonPositive: TextStyle(
                                     color: AppColors.blueColor,
-                                    borderRadius: BorderRadius.circular(100)),
-                                textStyleButtonPositive: TextStyle(
-                                  color: AppColors.blueColor,
-                                ),
-                                textStyleButtonNegative: TextStyle(
-                                  color: AppColors.blueColor,
-                                ),
-                                backgroundHeader: Colors.grey.shade300,
-                                // Appbar year like '2023' button
-                                textStyleYearButton: TextStyle(
-                                  fontSize: 30.sp,
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                  backgroundColor: Colors.grey.shade100,
-                                  leadingDistribution:
-                                      TextLeadingDistribution.even,
-                                ),
-                                // Appbar day like 'Thu, Mar 16' button
-                                textStyleDayButton: TextStyle(
-                                  fontSize: 18.sp,
-                                  color: Colors.white,
-                                ),
+                                  ),
+                                  textStyleButtonNegative: TextStyle(
+                                    color: AppColors.blueColor,
+                                  ),
+                                  backgroundHeader: Colors.grey.shade300,
+                                  // Appbar year like '2023' button
+                                  textStyleYearButton: AppTextStyle.boldBlue30
+                                      .copyWith(
+                                          backgroundColor: Colors.grey.shade100,
+                                          leadingDistribution:
+                                              TextLeadingDistribution.even),
+                                  // Appbar day like 'Thu, Mar 16' button
+                                  textStyleDayButton: AppTextStyle.normalWhite16
 
-                                // Heading year like 'S M T W TH FR SA ' button
-                                // textStyleDayHeader: TextStyle(
-                                //   fontSize: 30.sp,
-                                //   color: Colors.white,
-                                //   backgroundColor: Colors.red,
-                                //   decoration: TextDecoration.overline,
-                                //   decorationColor: Colors.pink,
-                                // ),
-                              ),
+                                  // Heading year like 'S M T W TH FR SA ' button
+                                  // textStyleDayHeader: TextStyle(
+                                  //   fontSize: 30.sp,
+                                  //   color: Colors.white,
+                                  //   backgroundColor: Colors.red,
+                                  //   decoration: TextDecoration.overline,
+                                  //   decorationColor: Colors.pink,
+                                  // ),
+                                  ),
                             );
                           } else {
                             if (controller.isDocUploaded.contains('true')) {
@@ -899,7 +893,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           child: Center(
                               child: Text(
                             AppMetaLabels().pleaseSelectExpiryDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(color: AppColors.blueColor),
                           )))
                       : SizedBox(
                           height: 10,
@@ -1654,31 +1648,24 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
-                              decorationDateSelected: BoxDecoration(
+                                decorationDateSelected: BoxDecoration(
+                                    color: AppColors.blueColor,
+                                    borderRadius: BorderRadius.circular(100)),
+                                textStyleButtonPositive: TextStyle(
                                   color: AppColors.blueColor,
-                                  borderRadius: BorderRadius.circular(100)),
-                              textStyleButtonPositive: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              textStyleButtonNegative: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
-                              ),
-                            ),
+                                ),
+                                textStyleButtonNegative: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
+                                backgroundHeader: Colors.grey.shade300,
+                                // Appbar year like '2023' button
+                                textStyleYearButton: AppTextStyle.boldBlue30
+                                    .copyWith(
+                                        backgroundColor: Colors.grey.shade100,
+                                        leadingDistribution:
+                                            TextLeadingDistribution.even),
+                                // Appbar day like 'Thu, Mar 16' button
+                                textStyleDayButton: AppTextStyle.normalWhite16),
                           );
 
                           if (expDate != null) {
@@ -1780,31 +1767,24 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             // theme:
                             //     ThemeData(primarySwatch: Colors.deepPurple),
                             styleDatePicker: MaterialRoundedDatePickerStyle(
-                              decorationDateSelected: BoxDecoration(
+                                decorationDateSelected: BoxDecoration(
+                                    color: AppColors.blueColor,
+                                    borderRadius: BorderRadius.circular(100)),
+                                textStyleButtonPositive: TextStyle(
                                   color: AppColors.blueColor,
-                                  borderRadius: BorderRadius.circular(100)),
-                              textStyleButtonPositive: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              textStyleButtonNegative: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
-                              ),
-                            ),
+                                ),
+                                textStyleButtonNegative: TextStyle(
+                                  color: AppColors.blueColor,
+                                ),
+                                backgroundHeader: Colors.grey.shade300,
+                                // Appbar year like '2023' button
+                                textStyleYearButton: AppTextStyle.boldBlue30
+                                    .copyWith(
+                                        backgroundColor: Colors.grey.shade100,
+                                        leadingDistribution:
+                                            TextLeadingDistribution.even),
+                                // Appbar day like 'Thu, Mar 16' button
+                                textStyleDayButton: AppTextStyle.normalWhite16),
                           );
 
                           if (expDate != null) {
@@ -1893,11 +1873,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               style: ButtonStyle(
                                 foregroundColor: WidgetStateProperty.all(
                                     AppColors.blueColor),
-                                textStyle: WidgetStateProperty.all(TextStyle(
-                                  fontSize: 10.sp, // Adjust as needed
-                                  fontWeight:
-                                      FontWeight.bold, // Adjust as needed
-                                )),
+                                textStyle: WidgetStateProperty.all(
+                                    AppTextStyle.boldBlack10),
                               ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {
@@ -1927,11 +1904,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               style: ButtonStyle(
                                 foregroundColor: WidgetStateProperty.all(
                                     AppColors.blueColor),
-                                textStyle: WidgetStateProperty.all(TextStyle(
-                                  fontSize: 10.sp, // Adjust as needed
-                                  fontWeight:
-                                      FontWeight.bold, // Adjust as needed
-                                )),
+                                textStyle: WidgetStateProperty.all(
+                                    AppTextStyle.boldBlack10),
                               ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
@@ -2109,11 +2083,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               style: ButtonStyle(
                                 foregroundColor: WidgetStateProperty.all(
                                     AppColors.blueColor),
-                                textStyle: WidgetStateProperty.all(TextStyle(
-                                  fontSize: 10.sp, // Adjust as needed
-                                  fontWeight:
-                                      FontWeight.bold, // Adjust as needed
-                                )),
+                                textStyle: WidgetStateProperty.all(
+                                    AppTextStyle.boldBlack10),
                               ),
                               child: Text(AppMetaLabels().confirm),
                               onPressed: () async {
@@ -2235,11 +2206,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               style: ButtonStyle(
                                 foregroundColor: WidgetStateProperty.all(
                                     AppColors.blueColor),
-                                textStyle: WidgetStateProperty.all(TextStyle(
-                                  fontSize: 10.sp, // Adjust as needed
-                                  fontWeight:
-                                      FontWeight.bold, // Adjust as needed
-                                )),
+                                textStyle: WidgetStateProperty.all(
+                                    AppTextStyle.boldBlack10),
                               ),
                               child: Text(AppMetaLabels().cancel),
                               onPressed: () async {

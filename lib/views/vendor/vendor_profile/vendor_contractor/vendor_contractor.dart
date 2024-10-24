@@ -68,11 +68,10 @@ class _VendorContractorState extends State<VendorContractor> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   rowList(
-                                    AppMetaLabels().emailAddress,
-                                    vendorProfileContrller.vendorProfile.value
-                                            .profile?.email ??
-                                        "",
-                                  ),
+                                      AppMetaLabels().emailAddress,
+                                      vendorProfileContrller.vendorProfile.value
+                                              .profile?.email ??
+                                          ""),
                                   SizedBox(
                                     height: 2.0.h,
                                   ),
@@ -105,12 +104,14 @@ class _VendorContractorState extends State<VendorContractor> {
                                                 ? vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile?.address ??
+                                                        .profile
+                                                        ?.address ??
                                                     ""
                                                 : vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile?.addressAR ??
+                                                        .profile
+                                                        ?.addressAR ??
                                                     "",
                                             style: AppTextStyle.semiBoldBlack9,
                                             textAlign: TextAlign.right,
@@ -154,17 +155,20 @@ class _VendorContractorState extends State<VendorContractor> {
                                                 ? vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile?.lpoStatusName ??
+                                                        .profile
+                                                        ?.lpoStatusName ??
                                                     ""
                                                 : vendorProfileContrller
                                                         .vendorProfile
                                                         .value
-                                                        .profile?.lpoStatusNameAr ??
+                                                        .profile
+                                                        ?.lpoStatusNameAr ??
                                                     "",
                                         valueToCompare: vendorProfileContrller
                                             .vendorProfile
                                             .value
-                                            .profile?.lpoStatusName,
+                                            .profile
+                                            ?.lpoStatusName,
                                       )
                                       // Container(
                                       //   decoration: BoxDecoration(
@@ -242,9 +246,13 @@ class _VendorContractorState extends State<VendorContractor> {
         ),
         Spacer(),
         Container(
+          width: Get.width * 0.5,
           child: Text(
             t2,
             style: AppTextStyle.semiBoldBlack9,
+            textAlign: SessionController().getLanguage() == 1
+                ? TextAlign.end
+                : TextAlign.start,
           ),
         ),
       ],

@@ -155,7 +155,9 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                         child: Row(
                           children: [
                             Obx(() {
-                              return Text(
+                              return SizedBox(
+                                width: 60.w,
+                                child: Text(
                                   lDFilterController.propType.value == null
                                       ? ''
                                       : SessionController().getLanguage() == 1
@@ -165,7 +167,10 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                           : lDFilterController.propType.value
                                                   .propertyTypeAR ??
                                               '',
-                                  style: AppTextStyle.normalBlack12);
+                                  style: AppTextStyle.normalBlack12,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              );
                             }),
                             Spacer(),
                             Padding(
@@ -211,7 +216,9 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                           child: Row(
                             children: [
                               Obx(() {
-                                return Text(
+                                return SizedBox(
+                                  width: 60.w,
+                                  child: Text(
                                     lDFilterController.contractStatus.value ==
                                             null
                                         ? ''
@@ -244,7 +251,10 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                                         .value
                                                         .contractTypeAR ??
                                                     '',
-                                    style: AppTextStyle.normalBlack12);
+                                    style: AppTextStyle.normalBlack12,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                );
                               }),
                               Spacer(),
                               Padding(
@@ -307,41 +317,31 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     //     ThemeData(primarySwatch: Colors.deepPurple),
                                     styleDatePicker:
                                         MaterialRoundedDatePickerStyle(
-                                      decorationDateSelected: BoxDecoration(
-                                          color: AppColors.blueColor,
-                                          borderRadius:
-                                              BorderRadius.circular(100)),
-                                      textStyleButtonPositive: TextStyle(
-                                        color: AppColors.blueColor,
-                                      ),
-                                      textStyleButtonNegative: TextStyle(
-                                        color: AppColors.blueColor,
-                                      ),
-                                      backgroundHeader: Colors.grey.shade300,
-                                      // Appbar year like '2023' button
-                                      textStyleYearButton: TextStyle(
-                                        fontSize: 30.sp,
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                        backgroundColor: Colors.grey.shade100,
-                                        leadingDistribution:
-                                            TextLeadingDistribution.even,
-                                      ),
-                                      // Appbar day like 'Thu, Mar 16' button
-                                      textStyleDayButton: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.white,
-                                      ),
-
-                                      // Heading year like 'S M T W TH FR SA ' button
-                                      // textStyleDayHeader: TextStyle(
-                                      //   fontSize: 30.sp,
-                                      //   color: Colors.white,
-                                      //   backgroundColor: Colors.red,
-                                      //   decoration: TextDecoration.overline,
-                                      //   decorationColor: Colors.pink,
-                                      // ),
-                                    ),
+                                            decorationDateSelected:
+                                                BoxDecoration(
+                                                    color: AppColors.blueColor,
+                                                    borderRadius: BorderRadius
+                                                        .circular(100)),
+                                            textStyleButtonPositive: TextStyle(
+                                              color: AppColors.blueColor,
+                                            ),
+                                            textStyleButtonNegative: TextStyle(
+                                              color: AppColors.blueColor,
+                                            ),
+                                            backgroundHeader:
+                                                Colors.grey.shade300,
+                                            // Appbar year like '2023' button
+                                            textStyleYearButton: AppTextStyle
+                                                .boldBlue30
+                                                .copyWith(
+                                                    backgroundColor:
+                                                        Colors.grey.shade100,
+                                                    leadingDistribution:
+                                                        TextLeadingDistribution
+                                                            .even),
+                                            // Appbar day like 'Thu, Mar 16' button
+                                            textStyleDayButton:
+                                                AppTextStyle.normalWhite16),
                                   );
                                   if (!lDFilterController.setFromDate(dT!)) {
                                     lDFilterController.filterError.value =
@@ -367,7 +367,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                         child: Text(
                                           lDFilterController.fromDateText.value,
                                           // lDFilterController.fromDate.value,
-                                          style: AppTextStyle.normalBlack12,
+                                          style: AppTextStyle.normalBlack11,
                                         ),
                                       );
                                     }),
@@ -437,28 +437,15 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                       ),
                                       backgroundHeader: Colors.grey.shade300,
                                       // Appbar year like '2023' button
-                                      textStyleYearButton: TextStyle(
-                                        fontSize: 30.sp,
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                        backgroundColor: Colors.grey.shade100,
-                                        leadingDistribution:
-                                            TextLeadingDistribution.even,
-                                      ),
+                                      textStyleYearButton:
+                                          AppTextStyle.boldBlue30.copyWith(
+                                              backgroundColor:
+                                                  Colors.grey.shade100,
+                                              leadingDistribution:
+                                                  TextLeadingDistribution.even),
                                       // Appbar day like 'Thu, Mar 16' button
-                                      textStyleDayButton: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.white,
-                                      ),
-
-                                      // Heading year like 'S M T W TH FR SA ' button
-                                      // textStyleDayHeader: TextStyle(
-                                      //   fontSize: 30.sp,
-                                      //   color: Colors.white,
-                                      //   backgroundColor: Colors.red,
-                                      //   decoration: TextDecoration.overline,
-                                      //   decorationColor: Colors.pink,
-                                      // ),
+                                      textStyleDayButton:
+                                          AppTextStyle.normalWhite16,
                                     ),
                                   );
                                   if (!lDFilterController.setToDate(dT!)) {
@@ -484,8 +471,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                             horizontal: 1.0.h),
                                         child: Text(
                                           lDFilterController.toDateText.value,
-                                          // lDFilterController.toDate.value,
-                                          style: AppTextStyle.normalBlack12,
+                                          style: AppTextStyle.normalBlack11,
                                         ),
                                       );
                                     }),

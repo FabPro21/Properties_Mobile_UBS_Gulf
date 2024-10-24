@@ -644,8 +644,8 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                             .center,
                                                                     style:
                                                                         TextStyle(
-                                                                      color: Colors
-                                                                          .black,
+                                                                      color: AppColors
+                                                                          .blackColor,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -904,8 +904,8 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                             .center,
                                                                     style:
                                                                         TextStyle(
-                                                                      color: Colors
-                                                                          .black,
+                                                                      color: AppColors
+                                                                          .blackColor,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1205,11 +1205,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .black,
-                                                                    ),
+                                                                    style: TextStyle(
+                                                                        color: AppColors
+                                                                            .blackColor),
                                                                   ),
                                                                 ),
                                                               ),
@@ -1404,49 +1402,50 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                             borderRadius: 2.0.h,
                                             styleDatePicker:
                                                 MaterialRoundedDatePickerStyle(
-                                              decorationDateSelected:
-                                                  BoxDecoration(
+                                                    decorationDateSelected:
+                                                        BoxDecoration(
+                                                            color: AppColors
+                                                                .blueColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100)),
+                                                    textStyleButtonPositive:
+                                                        TextStyle(
                                                       color:
                                                           AppColors.blueColor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              100)),
-                                              textStyleButtonPositive:
-                                                  TextStyle(
-                                                color: AppColors.blueColor,
-                                              ),
-                                              textStyleButtonNegative:
-                                                  TextStyle(
-                                                color: AppColors.blueColor,
-                                              ),
-                                              backgroundHeader:
-                                                  Colors.grey.shade300,
-                                              // Appbar year like '2023' button
-                                              textStyleYearButton: TextStyle(
-                                                fontSize: 30.sp,
-                                                color: Colors.blue,
-                                                fontWeight: FontWeight.bold,
-                                                backgroundColor:
-                                                    Colors.grey.shade100,
-                                                leadingDistribution:
-                                                    TextLeadingDistribution
-                                                        .even,
-                                              ),
-                                              // Appbar day like 'Thu, Mar 16' button
-                                              textStyleDayButton: TextStyle(
-                                                fontSize: 18.sp,
-                                                color: Colors.white,
-                                              ),
+                                                    ),
+                                                    textStyleButtonNegative:
+                                                        TextStyle(
+                                                      color:
+                                                          AppColors.blueColor,
+                                                    ),
+                                                    backgroundHeader:
+                                                        Colors.grey.shade300,
+                                                    // Appbar year like '2023' button
+                                                    textStyleYearButton: AppTextStyle
+                                                        .boldBlue30
+                                                        .copyWith(
+                                                            backgroundColor:
+                                                                Colors.grey
+                                                                    .shade100,
+                                                            leadingDistribution:
+                                                                TextLeadingDistribution
+                                                                    .even),
+                                                    // Appbar day like 'Thu, Mar 16' button
+                                                    textStyleDayButton:
+                                                        AppTextStyle
+                                                            .normalWhite16
 
-                                              // Heading year like 'S M T W TH FR SA ' button
-                                              // textStyleDayHeader: TextStyle(
-                                              //   fontSize: 30.sp,
-                                              //   color: Colors.white,
-                                              //   backgroundColor: Colors.red,
-                                              //   decoration: TextDecoration.overline,
-                                              //   decorationColor: Colors.pink,
-                                              // ),
-                                            ),
+                                                    // Heading year like 'S M T W TH FR SA ' button
+                                                    // textStyleDayHeader: TextStyle(
+                                                    //   fontSize: 30.sp,
+                                                    //   color: Colors.white,
+                                                    //   backgroundColor: Colors.red,
+                                                    //   decoration: TextDecoration.overline,
+                                                    //   decorationColor: Colors.pink,
+                                                    // ),
+                                                    ),
                                           );
                                           if (expDate != null) {
                                             DateFormat dateFormat =
@@ -1759,49 +1758,50 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                               borderRadius: 2.0.h,
                                               styleDatePicker:
                                                   MaterialRoundedDatePickerStyle(
-                                                decorationDateSelected:
-                                                    BoxDecoration(
+                                                      decorationDateSelected:
+                                                          BoxDecoration(
+                                                              color: AppColors
+                                                                  .blueColor,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          100)),
+                                                      textStyleButtonPositive:
+                                                          TextStyle(
                                                         color:
                                                             AppColors.blueColor,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100)),
-                                                textStyleButtonPositive:
-                                                    TextStyle(
-                                                  color: AppColors.blueColor,
-                                                ),
-                                                textStyleButtonNegative:
-                                                    TextStyle(
-                                                  color: AppColors.blueColor,
-                                                ),
-                                                backgroundHeader:
-                                                    Colors.grey.shade300,
-                                                // Appbar year like '2023' button
-                                                textStyleYearButton: TextStyle(
-                                                  fontSize: 30.sp,
-                                                  color: Colors.blue,
-                                                  fontWeight: FontWeight.bold,
-                                                  backgroundColor:
-                                                      Colors.grey.shade100,
-                                                  leadingDistribution:
-                                                      TextLeadingDistribution
-                                                          .even,
-                                                ),
-                                                // Appbar day like 'Thu, Mar 16' button
-                                                textStyleDayButton: TextStyle(
-                                                  fontSize: 18.sp,
-                                                  color: Colors.white,
-                                                ),
+                                                      ),
+                                                      textStyleButtonNegative:
+                                                          TextStyle(
+                                                        color:
+                                                            AppColors.blueColor,
+                                                      ),
+                                                      backgroundHeader:
+                                                          Colors.grey.shade300,
+                                                      // Appbar year like '2023' button
+                                                      textStyleYearButton: AppTextStyle
+                                                          .boldBlue30
+                                                          .copyWith(
+                                                              backgroundColor:
+                                                                  Colors.grey
+                                                                      .shade100,
+                                                              leadingDistribution:
+                                                                  TextLeadingDistribution
+                                                                      .even),
+                                                      // Appbar day like 'Thu, Mar 16' button
+                                                      textStyleDayButton:
+                                                          AppTextStyle
+                                                              .normalWhite16
 
-                                                // Heading year like 'S M T W TH FR SA ' button
-                                                // textStyleDayHeader: TextStyle(
-                                                //   fontSize: 30.sp,
-                                                //   color: Colors.white,
-                                                //   backgroundColor: Colors.red,
-                                                //   decoration: TextDecoration.overline,
-                                                //   decorationColor: Colors.pink,
-                                                // ),
-                                              ),
+                                                      // Heading year like 'S M T W TH FR SA ' button
+                                                      // textStyleDayHeader: TextStyle(
+                                                      //   fontSize: 30.sp,
+                                                      //   color: Colors.white,
+                                                      //   backgroundColor: Colors.red,
+                                                      //   decoration: TextDecoration.overline,
+                                                      //   decorationColor: Colors.pink,
+                                                      // ),
+                                                      ),
                                             );
                                             if (expDate != null) {
                                               DateFormat dateFormat =
@@ -2603,9 +2603,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                 TextSpan(
                   text: vendorController.errorMainInfo.value.toString() ==
                           'Bad Request'
-                      ? 'Incorrect Data'
+                      ? AppMetaLabels().incorrectData
                       : vendorController.errorMainInfo.value.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: AppTextStyle.boldBlack10,
                 ),
               ],
             ),

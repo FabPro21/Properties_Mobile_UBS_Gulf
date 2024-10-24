@@ -214,21 +214,20 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                             ),
                                                             Row(
                                                               children: [
-                                                                Text(
-                                                                  SessionController()
-                                                                              .getLanguage() ==
-                                                                          1
-                                                                      ? getVSRController
-                                                                              .svcReqs[
-                                                                                  index]
-                                                                              .category ??
-                                                                          ""
-                                                                      : getVSRController
-                                                                              .svcReqs[index]
-                                                                              .categoryAR ??
-                                                                          "",
-                                                                  style: AppTextStyle
-                                                                      .semiBoldGrey10,
+                                                                Container(
+                                                                  width:
+                                                                      Get.width *
+                                                                          0.60,
+                                                                  child: Text(
+                                                                    SessionController().getLanguage() ==
+                                                                            1
+                                                                        ? getVSRController.svcReqs[index].category ??
+                                                                            ""
+                                                                        : getVSRController.svcReqs[index].categoryAR ??
+                                                                            "",
+                                                                    style: AppTextStyle
+                                                                        .semiBoldGrey10,
+                                                                  ),
                                                                 ),
                                                                 Spacer(),
                                                                 Text(
@@ -239,6 +238,9 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                       .toString(),
                                                                   style: AppTextStyle
                                                                       .semiBoldGrey10,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
                                                                 ),
                                                               ],
                                                             ),
@@ -313,22 +315,30 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                             'Received' &&
                                                                         getVSRController.svcReqs[index].category!.trim() ==
                                                                             'Supplier Invoice'
-                                                                    ? StatusWidgetVendor(
-                                                                        text: AppMetaLabels()
-                                                                            .submitted,
-                                                                        valueToCompare: getVSRController
-                                                                            .svcReqs[index]
-                                                                            .status,
+                                                                    ? ConstrainedBox(
+                                                                        constraints:
+                                                                            BoxConstraints(maxWidth: 40.w),
+                                                                        child:
+                                                                            StatusWidgetVendor(
+                                                                          text:
+                                                                              AppMetaLabels().submitted,
+                                                                          valueToCompare: getVSRController
+                                                                              .svcReqs[index]
+                                                                              .status,
+                                                                        ),
                                                                       )
-                                                                    : StatusWidgetVendor(
-                                                                        text: SessionController().getLanguage() == 1
-                                                                            ? getVSRController.svcReqs[index].status ??
-                                                                                ""
-                                                                            : getVSRController.svcReqs[index].statusAR ??
-                                                                                "",
-                                                                        valueToCompare: getVSRController
-                                                                            .svcReqs[index]
-                                                                            .status,
+                                                                    : ConstrainedBox(
+                                                                        constraints:
+                                                                            BoxConstraints(maxWidth: 40.w),
+                                                                        child:
+                                                                            StatusWidgetVendor(
+                                                                          text: SessionController().getLanguage() == 1
+                                                                              ? getVSRController.svcReqs[index].status ?? ""
+                                                                              : getVSRController.svcReqs[index].statusAR ?? "",
+                                                                          valueToCompare: getVSRController
+                                                                              .svcReqs[index]
+                                                                              .status,
+                                                                        ),
                                                                       )
                                                               ],
                                                             ),
@@ -391,18 +401,12 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                               textAlign: TextAlign.right,
                                                                                               text: TextSpan(
                                                                                                 children: [
-                                                                                                  TextSpan(
-                                                                                                    text: AppMetaLabels().loadMoreData,
-                                                                                                    style: TextStyle(
-                                                                                                      color: Colors.blue,
-                                                                                                      fontWeight: FontWeight.bold,
-                                                                                                    ),
-                                                                                                  ),
+                                                                                                  TextSpan(text: AppMetaLabels().loadMoreData, style: AppTextStyle.boldBlue),
                                                                                                   WidgetSpan(
                                                                                                     child: Icon(
                                                                                                       Icons.arrow_forward_ios,
                                                                                                       size: 15,
-                                                                                                      color: Colors.blue,
+                                                                                                      color: AppColors.blueColor,
                                                                                                     ),
                                                                                                   ),
                                                                                                 ],
@@ -464,32 +468,31 @@ class _VendorRequestListState extends State<VendorRequestList> {
                   SafeArea(
                     child: Column(
                       children: [
-                         Padding(
-                                padding: EdgeInsets.only(
-                                    top: 3.0.h, left: 4.w, right: 4.w),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Get.back();
-                                      },
-                                      child: Icon(
-                                        Icons.arrow_back_ios,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Text(
-                                      AppMetaLabels().serviceRequests,
-                                      style: AppTextStyle.semiBoldWhite15,
-                                    ),
-                                    SizedBox(
-                                      width: 24,
-                                    )
-                                  ],
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 3.0.h, left: 4.w, right: 4.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_ios,
+                                  color: Colors.white,
                                 ),
                               ),
+                              Text(
+                                AppMetaLabels().serviceRequests,
+                                style: AppTextStyle.semiBoldWhite15,
+                              ),
+                              SizedBox(
+                                width: 24,
+                              )
+                            ],
+                          ),
+                        ),
                         Padding(
                           padding: EdgeInsets.only(
                               left: 2.0.h, right: 2.0.h, top: 6.0.h),
@@ -748,20 +751,28 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                               'Received' &&
                                                                           getVSRController.svcReqs[index].category!.trim() ==
                                                                               'Supplier Invoice'
-                                                                      ? StatusWidgetVendor(
-                                                                          text:
-                                                                              AppMetaLabels().submitted,
-                                                                          valueToCompare: getVSRController
-                                                                              .svcReqs[index]
-                                                                              .status,
+                                                                      ? ConstrainedBox(
+                                                                          constraints:
+                                                                              BoxConstraints(maxWidth: 40.w),
+                                                                          child:
+                                                                              StatusWidgetVendor(
+                                                                            text:
+                                                                                AppMetaLabels().submitted,
+                                                                            valueToCompare:
+                                                                                getVSRController.svcReqs[index].status,
+                                                                          ),
                                                                         )
-                                                                      : StatusWidgetVendor(
-                                                                          text: SessionController().getLanguage() == 1
-                                                                              ? getVSRController.svcReqs[index].status ?? ""
-                                                                              : getVSRController.svcReqs[index].statusAR ?? "",
-                                                                          valueToCompare: getVSRController
-                                                                              .svcReqs[index]
-                                                                              .status,
+                                                                      : ConstrainedBox(
+                                                                          constraints:
+                                                                              BoxConstraints(maxWidth: 40.w),
+                                                                          child:
+                                                                              StatusWidgetVendor(
+                                                                            text: SessionController().getLanguage() == 1
+                                                                                ? getVSRController.svcReqs[index].status ?? ""
+                                                                                : getVSRController.svcReqs[index].statusAR ?? "",
+                                                                            valueToCompare:
+                                                                                getVSRController.svcReqs[index].status,
+                                                                          ),
                                                                         )
                                                                 ],
                                                               ),
@@ -824,13 +835,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                                 textAlign: TextAlign.right,
                                                                                                 text: TextSpan(
                                                                                                   children: [
-                                                                                                    TextSpan(
-                                                                                                      text: AppMetaLabels().loadMoreData,
-                                                                                                      style: TextStyle(
-                                                                                                        color: Colors.blue,
-                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                      ),
-                                                                                                    ),
+                                                                                                    TextSpan(text: AppMetaLabels().loadMoreData, style: AppTextStyle.boldBlue),
                                                                                                     WidgetSpan(
                                                                                                       child: Icon(
                                                                                                         Icons.arrow_forward_ios,

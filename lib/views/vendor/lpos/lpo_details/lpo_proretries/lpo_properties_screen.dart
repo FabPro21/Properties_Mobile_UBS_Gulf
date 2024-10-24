@@ -421,9 +421,13 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
           style: AppTextStyle.normalGrey11,
         ),
         Spacer(),
-        Text(
-          t2,
-          style: AppTextStyle.normalGrey11,
+        SizedBox(
+          width: 42.w,
+          child: Text(
+            t2,
+            style: AppTextStyle.normalGrey11,
+            textAlign: TextAlign.end,
+          ),
         ),
       ],
     );

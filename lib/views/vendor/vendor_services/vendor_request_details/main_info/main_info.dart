@@ -139,7 +139,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                         Spacer(),
                                         ConstrainedBox(
                                             constraints:
-                                                BoxConstraints(maxWidth: 55.w),
+                                                BoxConstraints(maxWidth: 35.w),
                                             child: controller
                                                             .vendorRequestDetails
                                                             .value
@@ -153,39 +153,45 @@ class SvcReqMainInfo extends StatelessWidget {
                                                             .detail
                                                             ?.subCategory ==
                                                         'Supplier Invoice'
-                                                ? StatusWidgetVendor(
-                                                    text: AppMetaLabels()
-                                                        .submitted,
-                                                    valueToCompare: controller
-                                                            .vendorRequestDetails
-                                                            .value
-                                                            .detail
-                                                            ?.status ??
-                                                        "",
-                                                  )
-                                                : StatusWidgetVendor(
-                                                    text: SessionController()
-                                                                .getLanguage() ==
-                                                            1
-                                                        ? controller
-                                                                .vendorRequestDetails
-                                                                .value
-                                                                .detail
-                                                                ?.status ??
-                                                            ""
-                                                        : controller
-                                                                .vendorRequestDetails
-                                                                .value
-                                                                .detail
-                                                                ?.statusAR ??
-                                                            "",
-                                                    valueToCompare: controller
-                                                            .vendorRequestDetails
-                                                            .value
-                                                            .detail
-                                                            ?.status ??
-                                                        "",
-                                                  )),
+                                                ? ConstrainedBox(
+                                                    constraints: BoxConstraints(
+                                                        maxWidth: 35.w),
+                                                    child: StatusWidgetVendor(
+                                                      text: AppMetaLabels()
+                                                          .submitted,
+                                                      valueToCompare: controller
+                                                              .vendorRequestDetails
+                                                              .value
+                                                              .detail
+                                                              ?.status ??
+                                                          "",
+                                                    ))
+                                                : ConstrainedBox(
+                                                    constraints: BoxConstraints(
+                                                        maxWidth: 35.w),
+                                                    child: StatusWidgetVendor(
+                                                      text: SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? controller
+                                                                  .vendorRequestDetails
+                                                                  .value
+                                                                  .detail
+                                                                  ?.status ??
+                                                              ""
+                                                          : controller
+                                                                  .vendorRequestDetails
+                                                                  .value
+                                                                  .detail
+                                                                  ?.statusAR ??
+                                                              "",
+                                                      valueToCompare: controller
+                                                              .vendorRequestDetails
+                                                              .value
+                                                              .detail
+                                                              ?.status ??
+                                                          "",
+                                                    ))),
                                       ],
                                     ),
                                   ],
@@ -226,19 +232,27 @@ class SvcReqMainInfo extends StatelessWidget {
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                           Spacer(),
-                                          Text(
-                                            controller
-                                                    .vendorRequestDetails
-                                                    .value
-                                                    .detail
-                                                    ?.otherContactName ??
-                                                controller
-                                                    .vendorRequestDetails
-                                                    .value
-                                                    .detail
-                                                    ?.contactName ??
-                                                '',
-                                            style: AppTextStyle.normalGrey10,
+                                          SizedBox(
+                                            width: Get.width * 0.6,
+                                            child: Text(
+                                              controller
+                                                      .vendorRequestDetails
+                                                      .value
+                                                      .detail
+                                                      ?.otherContactName ??
+                                                  controller
+                                                      .vendorRequestDetails
+                                                      .value
+                                                      .detail
+                                                      ?.contactName ??
+                                                  '',
+                                              style: AppTextStyle.normalGrey10,
+                                              textAlign: SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? TextAlign.end
+                                                  : TextAlign.start,
+                                            ),
                                           )
                                         ],
                                       ),

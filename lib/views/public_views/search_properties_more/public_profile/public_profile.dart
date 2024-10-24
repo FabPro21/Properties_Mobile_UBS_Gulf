@@ -365,7 +365,7 @@ class _PublicProfileState extends State<PublicProfile> {
                                 child: Padding(
                                   padding: EdgeInsets.all(3.0.h),
                                   child: Text(
-                                    name ,
+                                    name,
                                     style: AppTextStyle.semiBoldWhite16
                                         .copyWith(fontSize: 24.sp),
                                   ),

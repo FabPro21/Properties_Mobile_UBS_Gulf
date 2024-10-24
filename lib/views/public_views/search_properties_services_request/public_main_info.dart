@@ -228,28 +228,35 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                           .normalGrey10,
                                                     ),
                                                     Spacer(),
-                                                    StatusWidget(
-                                                      text: SessionController()
-                                                                  .getLanguage() ==
-                                                              1
-                                                          ? _mainInfoController
+                                                    ConstrainedBox(
+                                                      constraints:
+                                                          BoxConstraints(
+                                                              maxWidth: 22.w),
+                                                      child: FittedBox(
+                                                        child: StatusWidget(
+                                                          text: SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? _mainInfoController
+                                                                      .publicMaininfoDetails
+                                                                      .value
+                                                                      .detail!
+                                                                      .status ??
+                                                                  ""
+                                                              : _mainInfoController
+                                                                      .publicMaininfoDetails
+                                                                      .value
+                                                                      .detail!
+                                                                      .statusAR ??
+                                                                  "",
+                                                          valueToCompare:
+                                                              _mainInfoController
                                                                   .publicMaininfoDetails
                                                                   .value
                                                                   .detail!
-                                                                  .status ??
-                                                              ""
-                                                          : _mainInfoController
-                                                                  .publicMaininfoDetails
-                                                                  .value
-                                                                  .detail!
-                                                                  .statusAR ??
-                                                              "",
-                                                      valueToCompare:
-                                                          _mainInfoController
-                                                              .publicMaininfoDetails
-                                                              .value
-                                                              .detail!
-                                                              .status,
+                                                                  .status,
+                                                        ),
+                                                      ),
                                                     )
                                                   ],
                                                 ),

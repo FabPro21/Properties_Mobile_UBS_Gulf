@@ -424,7 +424,7 @@ class _UploadDocsState extends State<UploadDocs> {
                               child: Text(
                             // 'Please select expiry date',
                             AppMetaLabels().pleaseSelectExpiryDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(color: AppColors.blueColor),
                           )))
                       : SizedBox(
                           height: 10,

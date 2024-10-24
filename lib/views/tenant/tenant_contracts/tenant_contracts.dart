@@ -458,7 +458,8 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
 
         Get.to(() => ContractsDetailsTabs(
               prevContractNo:
-                  getContractsController.contracts[index].previousContactNo??"",
+                  getContractsController.contracts[index].previousContactNo ??
+                      "",
             ));
       },
       child: Padding(
@@ -556,7 +557,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                             ),
                             Spacer(),
                             ConstrainedBox(
-                              constraints: BoxConstraints(maxWidth: 25.w),
+                              constraints: BoxConstraints(maxWidth: 22.w),
                               child: FittedBox(
                                 child: StatusWidget(
                                   text: SessionController().getLanguage() == 1

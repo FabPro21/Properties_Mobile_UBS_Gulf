@@ -420,41 +420,45 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       borderRadius: 2.0.h,
                                       styleDatePicker:
                                           MaterialRoundedDatePickerStyle(
-                                        decorationDateSelected: BoxDecoration(
-                                            color: AppColors.blueColor,
-                                            borderRadius:
-                                                BorderRadius.circular(100)),
-                                        textStyleButtonPositive: TextStyle(
-                                          color: AppColors.blueColor,
-                                        ),
-                                        textStyleButtonNegative: TextStyle(
-                                          color: AppColors.blueColor,
-                                        ),
-                                        backgroundHeader: Colors.grey.shade300,
-                                        // Appbar year like '2023' button
-                                        textStyleYearButton: TextStyle(
-                                          fontSize: 30.sp,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold,
-                                          backgroundColor: Colors.grey.shade100,
-                                          leadingDistribution:
-                                              TextLeadingDistribution.even,
-                                        ),
-                                        // Appbar day like 'Thu, Mar 16' button
-                                        textStyleDayButton: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.white,
-                                        ),
+                                              decorationDateSelected:
+                                                  BoxDecoration(
+                                                      color: AppColors
+                                                          .blueColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100)),
+                                              textStyleButtonPositive:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              textStyleButtonNegative:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              backgroundHeader:
+                                                  Colors.grey.shade300,
+                                              // Appbar year like '2023' button
+                                              textStyleYearButton: AppTextStyle
+                                                  .boldBlue30
+                                                  .copyWith(
+                                                      backgroundColor:
+                                                          Colors.grey.shade100,
+                                                      leadingDistribution:
+                                                          TextLeadingDistribution
+                                                              .even),
+                                              // Appbar day like 'Thu, Mar 16' button
+                                              textStyleDayButton:
+                                                  AppTextStyle.normalWhite16
 
-                                        // Heading year like 'S M T W TH FR SA ' button
-                                        // textStyleDayHeader: TextStyle(
-                                        //   fontSize: 30.sp,
-                                        //   color: Colors.white,
-                                        //   backgroundColor: Colors.red,
-                                        //   decoration: TextDecoration.overline,
-                                        //   decorationColor: Colors.pink,
-                                        // ),
-                                      ),
+                                              // Heading year like 'S M T W TH FR SA ' button
+                                              // textStyleDayHeader: TextStyle(
+                                              //   fontSize: 30.sp,
+                                              //   color: Colors.white,
+                                              //   backgroundColor: Colors.red,
+                                              //   decoration: TextDecoration.overline,
+                                              //   decorationColor: Colors.pink,
+                                              // ),
+                                              ),
                                     );
                                     if (!getTSRController.setFromDate(dT!)) {
                                       getTSRController.filterError.value =
@@ -501,41 +505,45 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       borderRadius: 2.0.h,
                                       styleDatePicker:
                                           MaterialRoundedDatePickerStyle(
-                                        decorationDateSelected: BoxDecoration(
-                                            color: AppColors.blueColor,
-                                            borderRadius:
-                                                BorderRadius.circular(100)),
-                                        textStyleButtonPositive: TextStyle(
-                                          color: AppColors.blueColor,
-                                        ),
-                                        textStyleButtonNegative: TextStyle(
-                                          color: AppColors.blueColor,
-                                        ),
-                                        backgroundHeader: Colors.grey.shade300,
-                                        // Appbar year like '2023' button
-                                        textStyleYearButton: TextStyle(
-                                          fontSize: 30.sp,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold,
-                                          backgroundColor: Colors.grey.shade100,
-                                          leadingDistribution:
-                                              TextLeadingDistribution.even,
-                                        ),
-                                        // Appbar day like 'Thu, Mar 16' button
-                                        textStyleDayButton: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.white,
-                                        ),
+                                              decorationDateSelected:
+                                                  BoxDecoration(
+                                                      color: AppColors
+                                                          .blueColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100)),
+                                              textStyleButtonPositive:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              textStyleButtonNegative:
+                                                  TextStyle(
+                                                color: AppColors.blueColor,
+                                              ),
+                                              backgroundHeader:
+                                                  Colors.grey.shade300,
+                                              // Appbar year like '2023' button
+                                              textStyleYearButton: AppTextStyle
+                                                  .boldBlue30
+                                                  .copyWith(
+                                                      backgroundColor:
+                                                          Colors.grey.shade100,
+                                                      leadingDistribution:
+                                                          TextLeadingDistribution
+                                                              .even),
+                                              // Appbar day like 'Thu, Mar 16' button
+                                              textStyleDayButton:
+                                                  AppTextStyle.normalWhite16
 
-                                        // Heading year like 'S M T W TH FR SA ' button
-                                        // textStyleDayHeader: TextStyle(
-                                        //   fontSize: 30.sp,
-                                        //   color: Colors.white,
-                                        //   backgroundColor: Colors.red,
-                                        //   decoration: TextDecoration.overline,
-                                        //   decorationColor: Colors.pink,
-                                        // ),
-                                      ),
+                                              // Heading year like 'S M T W TH FR SA ' button
+                                              // textStyleDayHeader: TextStyle(
+                                              //   fontSize: 30.sp,
+                                              //   color: Colors.white,
+                                              //   backgroundColor: Colors.red,
+                                              //   decoration: TextDecoration.overline,
+                                              //   decorationColor: Colors.pink,
+                                              // ),
+                                              ),
                                     );
 
                                     if (!getTSRController.setToDate(dT!)) {
@@ -597,10 +605,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
                     style: ButtonStyle(
                       foregroundColor:
                           WidgetStateProperty.all(AppColors.blueColor),
-                      textStyle: WidgetStateProperty.all(TextStyle(
-                        fontSize: 10.sp, // Adjust as needed
-                        fontWeight: FontWeight.bold, // Adjust as needed
-                      )),
+                      textStyle:
+                          WidgetStateProperty.all(AppTextStyle.boldBlack10),
                     ),
                     onPressed: () {
                       if (getTSRController.filterError.value != '') {
@@ -665,10 +671,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
                     style: ButtonStyle(
                       foregroundColor:
                           WidgetStateProperty.all(AppColors.blueColor),
-                      textStyle: WidgetStateProperty.all(TextStyle(
-                        fontSize: 10.sp, // Adjust as needed
-                        fontWeight: FontWeight.bold, // Adjust as needed
-                      )),
+                      textStyle:
+                          WidgetStateProperty.all(AppTextStyle.boldBlack10),
                     ),
                     onPressed: () {
                       setState(() {
@@ -1279,19 +1283,16 @@ class ServiceRequestsList extends StatelessWidget {
 //                                         MaterialRoundedDatePickerStyle(
 //                                       backgroundHeader: Colors.grey.shade300,
 //                                       // Appbar year like '2023' button
-//                                       textStyleYearButton: TextStyle(
-//                                         fontSize: 30.sp,
-//                                         color: Colors.blue,
-//                                         fontWeight: FontWeight.bold,
-//                                         backgroundColor: Colors.grey.shade100,
-//                                         leadingDistribution:
-//                                             TextLeadingDistribution.even,
-//                                       ),
+//                                       textStyleYearButton: AppTextStyle
+                                                  // .boldBlue30
+                                                  // .copyWith(
+                                                  //     backgroundColor:
+                                                  //         Colors.grey.shade100,
+                                                  //     leadingDistribution:
+                                                  //         TextLeadingDistribution
+                                                  //             .even),
 //                                       // Appbar day like 'Thu, Mar 16' button
-//                                       textStyleDayButton: TextStyle(
-//                                         fontSize: 18.sp,
-//                                         color: Colors.white,
-//                                       ),
+//                                       textStyleDayButton: AppTextStyle.normalWhite16
 
 //                                       // Heading year like 'S M T W TH FR SA ' button
 //                                       // textStyleDayHeader: TextStyle(
@@ -1348,19 +1349,16 @@ class ServiceRequestsList extends StatelessWidget {
 //                                         MaterialRoundedDatePickerStyle(
 //                                       backgroundHeader: Colors.grey.shade300,
 //                                       // Appbar year like '2023' button
-//                                       textStyleYearButton: TextStyle(
-//                                         fontSize: 30.sp,
-//                                         color: Colors.blue,
-//                                         fontWeight: FontWeight.bold,
-//                                         backgroundColor: Colors.grey.shade100,
-//                                         leadingDistribution:
-//                                             TextLeadingDistribution.even,
-//                                       ),
+//                                       textStyleYearButton: AppTextStyle
+                                                  // .boldBlue30
+                                                  // .copyWith(
+                                                  //     backgroundColor:
+                                                  //         Colors.grey.shade100,
+                                                  //     leadingDistribution:
+                                                  //         TextLeadingDistribution
+                                                  //             .even),
 //                                       // Appbar day like 'Thu, Mar 16' button
-//                                       textStyleDayButton: TextStyle(
-//                                         fontSize: 18.sp,
-//                                         color: Colors.white,
-//                                       ),
+//                                       textStyleDayButton: AppTextStyle.normalWhite16
 
 //                                       // Heading year like 'S M T W TH FR SA ' button
 //                                       // textStyleDayHeader: TextStyle(
@@ -1429,6 +1427,14 @@ class ServiceRequestsList extends StatelessWidget {
 //                     EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.w),
 //                 actions: [
 //                   TextButton(
+//  style: ButtonStyle(
+//                       foregroundColor:
+//                           WidgetStateProperty.all(AppColors.blueColor),
+//                       textStyle: WidgetStateProperty.all(
+//                           AppTextStyle.boldBlack10
+                         
+//                           ),
+//                     ),
 //                     onPressed: () {
 //                       if (getTSRController.fromDateN.value == '' &&
 //                           getTSRController.toDateN.value == '') {
@@ -1467,6 +1473,12 @@ class ServiceRequestsList extends StatelessWidget {
 //                   //   child: Text(AppMetaLabels().clear),
 //                   // ),
 //                   TextButton(
+// style: ButtonStyle(
+//                       foregroundColor:
+//                           WidgetStateProperty.all(AppColors.blueColor),
+//                       textStyle:
+//                           WidgetStateProperty.all(AppTextStyle.boldBlack10),
+//                     ),
 //                     onPressed: () {
 //                       setState(() {
 //                         getTSRController.fromDate = null;

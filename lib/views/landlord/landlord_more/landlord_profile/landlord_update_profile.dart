@@ -116,7 +116,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                           padding: EdgeInsets.only(
                               top: 2.0.h, left: 5.0.h, right: 5.0.h),
                           child: Text(
-                            name ,
+                            name,
                             style: AppTextStyle.semiBoldWhite15,
                             textAlign: TextAlign.center,
                           ),
@@ -175,7 +175,6 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().name,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -215,7 +214,6 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().email,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -259,7 +257,6 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                           hintText: AppMetaLabels().mobileNumber,
                           hintStyle: AppTextStyle.normalBlack10
                               .copyWith(color: AppColors.textFieldBGColor),
-                          errorStyle: TextStyle(fontSize: 0),
                           contentPadding: EdgeInsets.all(4.w),
                         ),
                       ),
@@ -301,7 +298,6 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().address,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -335,9 +331,9 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                                     _addressController.text != '') {
                                   if (await landLordProfileController
                                       .updateProfile(
-                                          _nameController.text ,
-                                          _phoneController.text ,
-                                          _emailController.text ,
+                                          _nameController.text,
+                                          _phoneController.text,
+                                          _emailController.text,
                                           _addressController.text))
                                     showDialog(
                                         context: context,

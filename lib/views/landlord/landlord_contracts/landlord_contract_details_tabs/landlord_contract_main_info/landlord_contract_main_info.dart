@@ -120,7 +120,8 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                           .toString() +
                                                                       '/' +
                                                                       controller
-                                                                          .contractDetails!.contract!
+                                                                          .contractDetails!
+                                                                          .contract!
                                                                           .noOfDays
                                                                           .toString(),
                                                                   style: AppTextStyle
@@ -253,7 +254,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                       ),
                                                                       ConstrainedBox(
                                                                         constraints:
-                                                                            BoxConstraints(maxWidth: 27.w),
+                                                                            BoxConstraints(maxWidth: 22.w),
                                                                         child:
                                                                             FittedBox(
                                                                           child:
@@ -276,7 +277,8 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                               if (widget.previousContactNo !=
                                                                       null &&
                                                                   controller
-                                                                          .contractDetails?.contract!
+                                                                          .contractDetails
+                                                                          ?.contract!
                                                                           .contractno !=
                                                                       widget
                                                                           .previousContactNo)
@@ -360,14 +362,10 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                   child: Text(
                                                                     SessionController().getLanguage() ==
                                                                             1
-                                                                        ? controller
-                                                                            .contractDetails?.contract!
-                                                                            .unitName
-                                                                            .toString()??""
-                                                                        : controller
-                                                                            .contractDetails?.contract!
-                                                                            .unitNameAr
-                                                                            .toString()??"",
+                                                                        ? controller.contractDetails?.contract!.unitName.toString() ??
+                                                                            ""
+                                                                        : controller.contractDetails?.contract!.unitNameAr.toString() ??
+                                                                            "",
                                                                     style: AppTextStyle
                                                                         .normalBlack10,
                                                                   ),
@@ -380,13 +378,12 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                   child:
                                                                       Container(
                                                                     child: Text(
-                                                                      SessionController().getLanguage() == 1
-                                                                          ? controller
-                                                                              .contractDetails?.contract?.address
-                                                                              .toString()??""
-                                                                          : controller
-                                                                              .contractDetails?.contract?.addressAr
-                                                                              .toString()??"",
+                                                                      SessionController().getLanguage() ==
+                                                                              1
+                                                                          ? controller.contractDetails?.contract?.address.toString() ??
+                                                                              ""
+                                                                          : controller.contractDetails?.contract?.addressAr.toString() ??
+                                                                              "",
                                                                       style: AppTextStyle
                                                                           .semiBoldBlack10,
                                                                     ),

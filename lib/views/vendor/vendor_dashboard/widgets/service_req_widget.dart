@@ -90,7 +90,8 @@ class ServiceReqWidget extends StatelessWidget {
                                   Get.to(
                                     () => VendorRequestDetails(
                                       caseNo: getSRoWidgetController
-                                          .svcReqs[index].requestNo??0,
+                                              .svcReqs[index].requestNo ??
+                                          0,
                                       status: getSRoWidgetController
                                                   .svcReqs[index].status!
                                                   .toLowerCase() ==
@@ -190,7 +191,8 @@ class ServiceReqWidget extends StatelessWidget {
                                             child: rowList(
                                               AppMetaLabels().date,
                                               getSRoWidgetController
-                                                  .svcReqs[index].date??"",
+                                                      .svcReqs[index].date ??
+                                                  "",
                                             ),
                                           ),
                                           Padding(
@@ -208,24 +210,32 @@ class ServiceReqWidget extends StatelessWidget {
                                                       .normalBlack11,
                                                 ),
                                                 Spacer(),
-                                                StatusWidgetVendor(
-                                                  // text: 'Under Approval',
-                                                  text: SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? getSRoWidgetController
+                                                ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                      maxWidth: 40.w),
+                                                  child: FittedBox(
+                                                    child: StatusWidgetVendor(
+                                                      // text: 'Under Approval',
+                                                      text: SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getSRoWidgetController
+                                                                  .svcReqs[
+                                                                      index]
+                                                                  .status ??
+                                                              ""
+                                                          : getSRoWidgetController
+                                                                  .svcReqs[
+                                                                      index]
+                                                                  .statusAR ??
+                                                              "",
+                                                      valueToCompare:
+                                                          getSRoWidgetController
                                                               .svcReqs[index]
-                                                              .status ??
-                                                          ""
-                                                      : getSRoWidgetController
-                                                              .svcReqs[index]
-                                                              .statusAR ??
-                                                          "",
-                                                  valueToCompare:
-                                                      getSRoWidgetController
-                                                          .svcReqs[index]
-                                                          .status,
-                                                ),
+                                                              .status,
+                                                    ),
+                                                  ),
+                                                )
                                               ],
                                             ),
                                           ),

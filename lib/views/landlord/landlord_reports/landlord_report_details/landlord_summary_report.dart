@@ -822,33 +822,34 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               style: AppTextStyle.normalGrey11,
                             ),
                             Spacer(),
-                            Container(
-                                alignment: Alignment.centerRight,
-                                width: 35.w,
-                                child: StatusWidgetVendor(
-                                  text: SessionController().getLanguage() == 1
-                                      ? widget
-                                              .lDReportController!
-                                              .lpoReportSummaryModel
-                                              .value
-                                              .serviceRequests![widget.index!]
-                                              .lpoStatus ??
-                                          ""
-                                      : widget
-                                              .lDReportController!
-                                              .lpoReportSummaryModel
-                                              .value
-                                              .serviceRequests![widget.index!]
-                                              .lpoStatusAR ??
-                                          "",
-                                  valueToCompare: widget
-                                          .lDReportController!
-                                          .lpoReportSummaryModel
-                                          .value
-                                          .serviceRequests![widget.index!]
-                                          .lpoStatus ??
-                                      "",
-                                )),
+                            ConstrainedBox(
+                              constraints: BoxConstraints(maxWidth: 35.w),
+                              child: FittedBox(
+                                  child: StatusWidgetVendor(
+                                text: SessionController().getLanguage() == 1
+                                    ? widget
+                                            .lDReportController!
+                                            .lpoReportSummaryModel
+                                            .value
+                                            .serviceRequests![widget.index!]
+                                            .lpoStatus ??
+                                        ""
+                                    : widget
+                                            .lDReportController!
+                                            .lpoReportSummaryModel
+                                            .value
+                                            .serviceRequests![widget.index!]
+                                            .lpoStatusAR ??
+                                        "",
+                                valueToCompare: widget
+                                        .lDReportController!
+                                        .lpoReportSummaryModel
+                                        .value
+                                        .serviceRequests![widget.index!]
+                                        .lpoStatus ??
+                                    "",
+                              )),
+                            )
                           ],
                         ),
                         SizedBox(
@@ -2782,7 +2783,7 @@ class _ContractReportSummaryWidgetState
                             Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
-                              width: 30.w,
+                              width: 22.w,
                               child: StatusWidget(
                                   text: SessionController().getLanguage() == 1
                                       ? widget
@@ -3487,7 +3488,7 @@ class _BuildingStatusReportSummaryWidgetState
                             Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
-                              width: 30.w,
+                              width: 22.w,
                               child: StatusWidget(
                                   text: SessionController().getLanguage() == 1
                                       ? widget

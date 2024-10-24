@@ -39,7 +39,7 @@ class CustomButton extends StatelessWidget {
                         color: enabled
                             ? AppColors.blueColor
                             : AppColors.blackColor,
-                        fontFamily: "NexaBold",
+                        fontFamily: "MerriweatherBold",
                         fontSize: 15.4.sp),
                   ),
                 )));

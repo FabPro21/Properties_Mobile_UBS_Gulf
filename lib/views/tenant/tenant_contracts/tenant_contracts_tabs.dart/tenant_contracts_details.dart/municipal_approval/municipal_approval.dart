@@ -207,14 +207,8 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                               textAlign:
                                                                   TextAlign
                                                                       .justify,
-                                                              style: TextStyle(
-                                                                  color: AppColors
-                                                                      .whiteColor,
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold))),
+                                                              style: AppTextStyle
+                                                                  .semiBoldWhite11)),
                                                     ),
                                                   ),
                                                 );

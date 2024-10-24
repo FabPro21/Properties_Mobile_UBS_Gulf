@@ -154,17 +154,20 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
                         child: Row(
                           children: [
                             Obx(() {
-                              return Text(
-                                  lDFilterController.propType.value == null
-                                      ? ''
-                                      : SessionController().getLanguage() == 1
-                                          ? lDFilterController.propType.value
-                                                  .propertyType ??
-                                              ''
-                                          : lDFilterController.propType.value
-                                                  .propertyTypeAR ??
-                                              '',
-                                  style: AppTextStyle.normalBlack12);
+                              return SizedBox(
+                                width: 60.w,
+                                child: Text(
+                                    lDFilterController.propType.value == null
+                                        ? ''
+                                        : SessionController().getLanguage() == 1
+                                            ? lDFilterController.propType.value
+                                                    .propertyType ??
+                                                ''
+                                            : lDFilterController.propType.value
+                                                    .propertyTypeAR ??
+                                                '',
+                                    style: AppTextStyle.normalBlack12),
+                              );
                             }),
                             Spacer(),
                             Padding(
@@ -212,15 +215,18 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
                           child: Row(
                             children: [
                               Obx(() {
-                                return Text(
-                                    SessionController().getLanguage() == 1
-                                        ? lDFilterController.emirateName.value
-                                                .emirateName ??
-                                            ''
-                                        : lDFilterController.emirateName.value
-                                                .emirateNameAR ??
-                                            '',
-                                    style: AppTextStyle.normalBlack12);
+                                return SizedBox(
+                                  width: 60.w,
+                                  child: Text(
+                                      SessionController().getLanguage() == 1
+                                          ? lDFilterController.emirateName.value
+                                                  .emirateName ??
+                                              ''
+                                          : lDFilterController.emirateName.value
+                                                  .emirateNameAR ??
+                                              '',
+                                      style: AppTextStyle.normalBlack12),
+                                );
                               }),
                               Spacer(),
                               Padding(
@@ -268,7 +274,9 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
                           child: Row(
                             children: [
                               Obx(() {
-                                return Text(
+                                return SizedBox(
+                                  width: 60.w,
+                                  child: Text(
                                     SessionController().getLanguage() == 1
                                         ? lDFilterController.propCategory.value
                                                 .propertyCategory ??
@@ -276,7 +284,10 @@ class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
                                         : lDFilterController.propCategory.value
                                                 .propertyCategoryAR ??
                                             '',
-                                    style: AppTextStyle.normalBlack12);
+                                    style: AppTextStyle.normalBlack12,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                );
                               }),
                               Spacer(),
                               Padding(

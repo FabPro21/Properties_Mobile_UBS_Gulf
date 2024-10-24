@@ -1731,6 +1731,9 @@ class AppMetaLabels {
   String validPhoneNo = SessionController().getLanguage() == 1
       ? 'Please Enter Valid Mobile Number'
       : 'يرجى إدخال رقم هاتف صحيح';
+  String incorrectData = SessionController().getLanguage() == 1
+      ? 'Incorrect Data'
+      : 'بيانات غير صحيحة';
 
   String incorrectCode = SessionController().getLanguage() == 1
       ? 'You\'ve entered an incorrect code.'

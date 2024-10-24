@@ -299,41 +299,39 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   borderRadius: 2.0.h,
                                   styleDatePicker:
                                       MaterialRoundedDatePickerStyle(
-                                    decorationDateSelected: BoxDecoration(
-                                        color: AppColors.blueColor,
-                                        borderRadius:
-                                            BorderRadius.circular(100)),
-                                    textStyleButtonPositive: TextStyle(
-                                      color: AppColors.blueColor,
-                                    ),
-                                    textStyleButtonNegative: TextStyle(
-                                      color: AppColors.blueColor,
-                                    ),
-                                    backgroundHeader: Colors.grey.shade300,
-                                    // Appbar year like '2023' button
-                                    textStyleYearButton: TextStyle(
-                                      fontSize: 30.sp,
-                                      color: AppColors.blueColor,
-                                      fontWeight: FontWeight.bold,
-                                      backgroundColor: Colors.grey.shade100,
-                                      leadingDistribution:
-                                          TextLeadingDistribution.even,
-                                    ),
-                                    // Appbar day like 'Thu, Mar 16' button
-                                    textStyleDayButton: TextStyle(
-                                      fontSize: 18.sp,
-                                      color: Colors.white,
-                                    ),
+                                          decorationDateSelected: BoxDecoration(
+                                              color: AppColors.blueColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(100)),
+                                          textStyleButtonPositive: TextStyle(
+                                            color: AppColors.blueColor,
+                                          ),
+                                          textStyleButtonNegative: TextStyle(
+                                            color: AppColors.blueColor,
+                                          ),
+                                          backgroundHeader:
+                                              Colors.grey.shade300,
+                                          // Appbar year like '2023' button
+                                          textStyleYearButton:
+                                              AppTextStyle.boldBlue30.copyWith(
+                                                  backgroundColor:
+                                                      Colors.grey.shade100,
+                                                  leadingDistribution:
+                                                      TextLeadingDistribution
+                                                          .even),
+                                          // Appbar day like 'Thu, Mar 16' button
+                                          textStyleDayButton:
+                                              AppTextStyle.normalWhite16
 
-                                    // Heading year like 'S M T W TH FR SA ' button
-                                    // textStyleDayHeader: TextStyle(
-                                    //   fontSize: 30.sp,
-                                    //   color: Colors.white,
-                                    //   backgroundColor: Colors.red,
-                                    //   decoration: TextDecoration.overline,
-                                    //   decorationColor: Colors.pink,
-                                    // ),
-                                  ),
+                                          // Heading year like 'S M T W TH FR SA ' button
+                                          // textStyleDayHeader: TextStyle(
+                                          //   fontSize: 30.sp,
+                                          //   color: Colors.white,
+                                          //   backgroundColor: Colors.red,
+                                          //   decoration: TextDecoration.overline,
+                                          //   decorationColor: Colors.pink,
+                                          // ),
+                                          ),
                                 );
                                 if (!tCFilterController.setFromDate(dT!)) {
                                   tCFilterController.filterError.value =
@@ -414,41 +412,39 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   borderRadius: 16,
                                   styleDatePicker:
                                       MaterialRoundedDatePickerStyle(
-                                    decorationDateSelected: BoxDecoration(
-                                        color: AppColors.blueColor,
-                                        borderRadius:
-                                            BorderRadius.circular(100)),
-                                    textStyleButtonPositive: TextStyle(
-                                      color: AppColors.blueColor,
-                                    ),
-                                    textStyleButtonNegative: TextStyle(
-                                      color: AppColors.blueColor,
-                                    ),
-                                    backgroundHeader: Colors.grey.shade300,
-                                    // Appbar year like '2023' button
-                                    textStyleYearButton: TextStyle(
-                                      fontSize: 30.sp,
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.bold,
-                                      backgroundColor: Colors.grey.shade100,
-                                      leadingDistribution:
-                                          TextLeadingDistribution.even,
-                                    ),
-                                    // Appbar day like 'Thu, Mar 16' button
-                                    textStyleDayButton: TextStyle(
-                                      fontSize: 18.sp,
-                                      color: Colors.white,
-                                    ),
+                                          decorationDateSelected: BoxDecoration(
+                                              color: AppColors.blueColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(100)),
+                                          textStyleButtonPositive: TextStyle(
+                                            color: AppColors.blueColor,
+                                          ),
+                                          textStyleButtonNegative: TextStyle(
+                                            color: AppColors.blueColor,
+                                          ),
+                                          backgroundHeader:
+                                              Colors.grey.shade300,
+                                          // Appbar year like '2023' button
+                                          textStyleYearButton:
+                                              AppTextStyle.boldBlue30.copyWith(
+                                                  backgroundColor:
+                                                      Colors.grey.shade100,
+                                                  leadingDistribution:
+                                                      TextLeadingDistribution
+                                                          .even),
+                                          // Appbar day like 'Thu, Mar 16' button
+                                          textStyleDayButton:
+                                              AppTextStyle.normalWhite16
 
-                                    // Heading year like 'S M T W TH FR SA ' button
-                                    // textStyleDayHeader: TextStyle(
-                                    //   fontSize: 30.sp,
-                                    //   color: Colors.white,
-                                    //   backgroundColor: Colors.red,
-                                    //   decoration: TextDecoration.overline,
-                                    //   decorationColor: Colors.pink,
-                                    // ),
-                                  ),
+                                          // Heading year like 'S M T W TH FR SA ' button
+                                          // textStyleDayHeader: TextStyle(
+                                          //   fontSize: 30.sp,
+                                          //   color: Colors.white,
+                                          //   backgroundColor: Colors.red,
+                                          //   decoration: TextDecoration.overline,
+                                          //   decorationColor: Colors.pink,
+                                          // ),
+                                          ),
                                 );
                                 if (!tCFilterController.setToDate(dT!)) {
                                   tCFilterController.filterError.value =

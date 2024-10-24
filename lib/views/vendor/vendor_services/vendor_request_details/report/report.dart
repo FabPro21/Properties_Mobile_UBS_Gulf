@@ -587,7 +587,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(1.3.h),
                     ),
-                    backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                    backgroundColor: AppColors.colliersBlueColor,
                   ),
                   onPressed: controller.canClose.value &&
                           (controller.report.value.id != null ||

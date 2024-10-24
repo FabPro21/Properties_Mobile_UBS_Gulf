@@ -250,7 +250,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                       rowList(
                           AppMetaLabels().contractNo,
                           paymentsController.payments[index].contractNo
-                                  .toString() ),
+                              .toString()),
                     ],
                   ),
                 ),
@@ -280,12 +280,8 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                           child: Obx(() {
                             return paymentsController.errorNoMoreData.value !=
                                     ''
-                                ? Text(
-                                    AppMetaLabels().noMoreData,
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                    ),
-                                  )
+                                ? Text(AppMetaLabels().noMoreData,
+                                    style: AppTextStyle.boldBlue)
                                 : paymentsController.loadingDataMore.value
                                     ? SizedBox(
                                         width: 75.w,
@@ -313,17 +309,16 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                                               text: TextSpan(
                                                 children: [
                                                   TextSpan(
-                                                    text: AppMetaLabels()
-                                                        .loadMoreData,
-                                                    style: TextStyle(
-                                                      color: Colors.blue,
-                                                    ),
-                                                  ),
+                                                      text: AppMetaLabels()
+                                                          .loadMoreData,
+                                                      style: AppTextStyle
+                                                          .boldBlue),
                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 15,
-                                                      color: Colors.blue,
+                                                      color:
+                                                          AppColors.blueColor,
                                                     ),
                                                   ),
                                                 ],

@@ -112,26 +112,37 @@ class _LpoTermsState extends State<LpoTerms> {
                                                                 .semiBoldBlack10,
                                                           ),
                                                           Spacer(),
-                                                          Text(
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? _controller
-                                                                        .getLpoTermsResp
-                                                                        .value
-                                                                        .lpoTerms![
-                                                                            index]
-                                                                        .termName ??
-                                                                    ""
-                                                                : _controller
-                                                                        .getLpoTermsResp
-                                                                        .value
-                                                                        .lpoTerms![
-                                                                            index]
-                                                                        .termNameAr ??
-                                                                    "",
-                                                            style: AppTextStyle
-                                                                .semiBoldBlack10,
+                                                          SizedBox(
+                                                            width:
+                                                                Get.width * 0.6,
+                                                            child: Text(
+                                                              SessionController()
+                                                                          .getLanguage() ==
+                                                                      1
+                                                                  ? _controller
+                                                                          .getLpoTermsResp
+                                                                          .value
+                                                                          .lpoTerms![
+                                                                              index]
+                                                                          .termName ??
+                                                                      ""
+                                                                  : _controller
+                                                                          .getLpoTermsResp
+                                                                          .value
+                                                                          .lpoTerms![
+                                                                              index]
+                                                                          .termNameAr ??
+                                                                      "",
+                                                              style: AppTextStyle
+                                                                  .semiBoldBlack10,
+                                                              textAlign: SessionController()
+                                                                          .getLanguage() ==
+                                                                      1
+                                                                  ? TextAlign
+                                                                      .end
+                                                                  : TextAlign
+                                                                      .start,
+                                                            ),
                                                           ),
                                                         ],
                                                       ),

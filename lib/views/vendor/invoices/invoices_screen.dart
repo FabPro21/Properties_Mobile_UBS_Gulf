@@ -272,9 +272,10 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                     Container(
                                                                   child: Text(
                                                                     _controller
-                                                                            .allInvoice[index]
-                                                                            .invoiceNumber
-                                                                            .toString() ,
+                                                                        .allInvoice[
+                                                                            index]
+                                                                        .invoiceNumber
+                                                                        .toString(),
                                                                     style: AppTextStyle
                                                                         .semiBoldBlack10,
                                                                     overflow:
@@ -306,10 +307,10 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                       null
                                                                   ? ''
                                                                   : _controller
-                                                                          .allInvoice[
-                                                                              index]
-                                                                          .invoiceDate
-                                                                          .toString() ),
+                                                                      .allInvoice[
+                                                                          index]
+                                                                      .invoiceDate
+                                                                      .toString()),
                                                           SizedBox(
                                                             height: 1.0.h,
                                                           ),
@@ -329,33 +330,40 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                     .semiBoldBlack10,
                                                               ),
                                                               Spacer(),
-                                                              StatusWidgetVendor(
-                                                                text: _controller
-                                                                        .allInvoice[
-                                                                            index]
-                                                                        .statusName!
-                                                                        .contains(
-                                                                            'Draft')
-                                                                    ? AppMetaLabels()
-                                                                        .submitted
-                                                                    : SessionController().getLanguage() ==
-                                                                            1
-                                                                        ? _controller.allInvoice[index].statusName ??
-                                                                            ""
-                                                                        : _controller.allInvoice[index].statusNameAR ??
-                                                                            "",
-                                                                valueToCompare: _controller
-                                                                        .allInvoice[
-                                                                            index]
-                                                                        .statusName!
-                                                                        .contains(
-                                                                            'Draft')
-                                                                    ? AppMetaLabels()
-                                                                        .submitted
-                                                                    : _controller
-                                                                        .allInvoice[
-                                                                            index]
-                                                                        .statusName,
+                                                              ConstrainedBox(
+                                                                constraints:
+                                                                    BoxConstraints(
+                                                                        maxWidth:
+                                                                            45.w),
+                                                                child:
+                                                                    StatusWidgetVendor(
+                                                                  text: _controller
+                                                                          .allInvoice[
+                                                                              index]
+                                                                          .statusName!
+                                                                          .contains(
+                                                                              'Draft')
+                                                                      ? AppMetaLabels()
+                                                                          .submitted
+                                                                      : SessionController().getLanguage() ==
+                                                                              1
+                                                                          ? _controller.allInvoice[index].statusName ??
+                                                                              ""
+                                                                          : _controller.allInvoice[index].statusNameAR ??
+                                                                              "",
+                                                                  valueToCompare: _controller
+                                                                          .allInvoice[
+                                                                              index]
+                                                                          .statusName!
+                                                                          .contains(
+                                                                              'Draft')
+                                                                      ? AppMetaLabels()
+                                                                          .submitted
+                                                                      : _controller
+                                                                          .allInvoice[
+                                                                              index]
+                                                                          .statusName,
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -434,18 +442,12 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                             text:
                                                                                 TextSpan(
                                                                               children: [
-                                                                                TextSpan(
-                                                                                  text: AppMetaLabels().loadMoreData,
-                                                                                  style: TextStyle(
-                                                                                    color: Colors.blue,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
+                                                                                TextSpan(text: AppMetaLabels().loadMoreData, style: AppTextStyle.boldBlue),
                                                                                 WidgetSpan(
                                                                                   child: Icon(
                                                                                     Icons.arrow_forward_ios,
                                                                                     size: 15,
-                                                                                    color: Colors.blue,
+                                                                                    color: AppColors.blueColor,
                                                                                   ),
                                                                                 ),
                                                                               ],

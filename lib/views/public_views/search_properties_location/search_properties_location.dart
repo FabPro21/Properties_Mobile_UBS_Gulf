@@ -308,15 +308,24 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
         ),
         Spacer(),
         SessionController().getLanguage() == 1
-            ? Text(
-                t2,
-                style: AppTextStyle.normalGrey10,
-              )
-            : Directionality(
-                textDirection: ui.TextDirection.ltr,
+            ? SizedBox(
+                width: 55.w,
                 child: Text(
                   t2,
                   style: AppTextStyle.normalGrey10,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.end,
+                ),
+              )
+            : Directionality(
+                textDirection: ui.TextDirection.ltr,
+                child: SizedBox(
+                  width: 55.w,
+                  child: Text(
+                    t2,
+                    style: AppTextStyle.normalGrey10,
+                    textAlign: TextAlign.end,
+                  ),
                 ),
               )
       ],

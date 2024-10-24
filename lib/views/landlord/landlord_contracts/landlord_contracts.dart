@@ -232,16 +232,13 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                                 children: [
                                                                                   TextSpan(
                                                                                     text: AppMetaLabels().loadMoreData,
-                                                                                    style: TextStyle(
-                                                                                      color: Colors.blue,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
+                                                                                    style: AppTextStyle.boldBlue,
                                                                                   ),
                                                                                   WidgetSpan(
                                                                                     child: Icon(
                                                                                       Icons.arrow_forward_ios,
                                                                                       size: 15,
-                                                                                      color: Colors.blue,
+                                                                                      color: AppColors.blueColor,
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -295,12 +292,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                           text:
                                                                               AppMetaLabels().loadMoreData,
                                                                           style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                Colors.blue,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          ),
+                                                                              AppTextStyle.boldBlue,
                                                                         ),
                                                                         WidgetSpan(
                                                                           child:
@@ -309,7 +301,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                             size:
                                                                                 15,
                                                                             color:
-                                                                                Colors.blue,
+                                                                                AppColors.blueColor,
                                                                           ),
                                                                         ),
                                                                       ],
@@ -439,8 +431,8 @@ class _LandLordContractsState extends State<LandLordContracts> {
         Get.to(() => LandlordContractDetailsTabs(
               contractId:
                   int.parse(controller.contracts[index].contractID.toString()),
-              contractNo: controller.contracts[index].contractno??'',
-              prevContractNo: controller.contracts[index].contractno??'',
+              contractNo: controller.contracts[index].contractno ?? '',
+              prevContractNo: controller.contracts[index].contractno ?? '',
             ));
       },
       child: Padding(
@@ -555,7 +547,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                     ? SizedBox()
                                     : ConstrainedBox(
                                         constraints:
-                                            BoxConstraints(maxWidth: 25.w),
+                                            BoxConstraints(maxWidth: 22.w),
                                         child: FittedBox(
                                           child: StatusWidget(
                                             text: SessionController()

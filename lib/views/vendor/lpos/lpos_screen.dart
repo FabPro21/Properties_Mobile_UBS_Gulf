@@ -241,16 +241,10 @@ class _LposScreenState extends State<LposScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                      text: AppMetaLabels()
-                                                                          .loadMoreData,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .blue,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                    ),
+                                                                        text: AppMetaLabels()
+                                                                            .loadMoreData,
+                                                                        style: AppTextStyle
+                                                                            .boldBlue),
                                                                     WidgetSpan(
                                                                       child:
                                                                           Icon(
@@ -258,8 +252,8 @@ class _LposScreenState extends State<LposScreen> {
                                                                             .arrow_forward_ios,
                                                                         size:
                                                                             15,
-                                                                        color: Colors
-                                                                            .blue,
+                                                                        color: AppColors
+                                                                            .blueColor,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -311,16 +305,10 @@ class _LposScreenState extends State<LposScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                      text: AppMetaLabels()
-                                                                          .loadMoreData,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .blue,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                    ),
+                                                                        text: AppMetaLabels()
+                                                                            .loadMoreData,
+                                                                        style: AppTextStyle
+                                                                            .boldBlue),
                                                                     WidgetSpan(
                                                                       child:
                                                                           Icon(
@@ -559,17 +547,25 @@ class _LposScreenState extends State<LposScreen> {
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
                                 Spacer(),
-                                StatusWidgetVendor(
-                                  text: SessionController().getLanguage() == 1
-                                      ? getAllLpoController
-                                              .lpos[index].lpoStatus ??
-                                          ''
-                                      : getAllLpoController
-                                              .lpos[index].lpoStatusAr ??
-                                          '',
-                                  valueToCompare:
-                                      getAllLpoController.lpos[index].lpoStatus,
-                                )
+                                ConstrainedBox(
+                                    constraints: BoxConstraints(maxWidth: 40.w),
+                                    child: FittedBox(
+                                      child: StatusWidgetVendor(
+                                        text:
+                                            SessionController().getLanguage() ==
+                                                    1
+                                                ? getAllLpoController
+                                                        .lpos[index]
+                                                        .lpoStatus ??
+                                                    ''
+                                                : getAllLpoController
+                                                        .lpos[index]
+                                                        .lpoStatusAr ??
+                                                    '',
+                                        valueToCompare: getAllLpoController
+                                            .lpos[index].lpoStatus,
+                                      ),
+                                    ))
                               ],
                             ),
                             SizedBox(

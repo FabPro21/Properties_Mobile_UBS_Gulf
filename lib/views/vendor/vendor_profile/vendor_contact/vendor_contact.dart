@@ -56,7 +56,11 @@ class _VendorContactState extends State<VendorContact> {
                               .vendorContact.value.contactPersons?.length,
                           itemBuilder: (BuildContext context, int index) {
                             String mystring = getContactPersonsController
-                                .vendorContact.value.contactPersons?[index].name??"";
+                                    .vendorContact
+                                    .value
+                                    .contactPersons?[index]
+                                    .name ??
+                                "";
 
                             name = mystring[0];
 
@@ -106,22 +110,23 @@ class _VendorContactState extends State<VendorContact> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                   SessionController()
+                                                  SessionController()
                                                               .getLanguage() ==
                                                           1
                                                       ? getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .name ??
-                                                      ""
+                                                              .vendorContact
+                                                              .value
+                                                              .contactPersons![
+                                                                  index]
+                                                              .name ??
+                                                          ""
                                                       : getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .nameAr ??
-                                                      "",
-                                                  
+                                                              .vendorContact
+                                                              .value
+                                                              .contactPersons![
+                                                                  index]
+                                                              .nameAr ??
+                                                          "",
                                                   style: AppTextStyle
                                                       .semiBoldBlack12,
                                                 ),
@@ -133,17 +138,19 @@ class _VendorContactState extends State<VendorContact> {
                                                               .getLanguage() ==
                                                           1
                                                       ? getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .positionAR ??
-                                                      ""
+                                                              .vendorContact
+                                                              .value
+                                                              .contactPersons![
+                                                                  index]
+                                                              .positionAR ??
+                                                          ""
                                                       : getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .positionAR ??
-                                                      "",
+                                                              .vendorContact
+                                                              .value
+                                                              .contactPersons![
+                                                                  index]
+                                                              .positionAR ??
+                                                          "",
                                                   style:
                                                       AppTextStyle.normalGrey10,
                                                 ),
@@ -205,21 +212,19 @@ class _VendorContactState extends State<VendorContact> {
                                       ),
                                       rowList(
                                         AppMetaLabels().isAuthorizedSignatory,
-                                        SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .isAuthorizedSignatory ??
-                                                      ""
-                                                      : getContactPersonsController
-                                                          .vendorContact
-                                                          .value
-                                                          .contactPersons![index]
-                                                          .isAuthorizedSignatoryAR ??
-                                                      "",
+                                        SessionController().getLanguage() == 1
+                                            ? getContactPersonsController
+                                                    .vendorContact
+                                                    .value
+                                                    .contactPersons![index]
+                                                    .isAuthorizedSignatory ??
+                                                ""
+                                            : getContactPersonsController
+                                                    .vendorContact
+                                                    .value
+                                                    .contactPersons![index]
+                                                    .isAuthorizedSignatoryAR ??
+                                                "",
                                       ),
                                     ],
                                   ),
@@ -243,9 +248,15 @@ class _VendorContactState extends State<VendorContact> {
           style: AppTextStyle.normalGrey10,
         ),
         Spacer(),
-        Text(
-          t2,
-          style: AppTextStyle.semiBoldBlack9,
+        SizedBox(
+          width: Get.width * 0.4,
+          child: Text(
+            t2,
+            style: AppTextStyle.semiBoldBlack9,
+            textAlign: SessionController().getLanguage() == 1
+                ? TextAlign.end
+                : TextAlign.start,
+          ),
         ),
       ],
     );

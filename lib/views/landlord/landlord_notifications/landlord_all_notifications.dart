@@ -147,9 +147,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                               ''
                                           ? Text(
                                               AppMetaLabels().noMoreData,
-                                              style: TextStyle(
-                                                color: Colors.blue,
-                                              ),
+                                              style: AppTextStyle.boldBlue,
                                             )
                                           : getLandLController
                                                   .isLoadingAllNotification
@@ -188,20 +186,17 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(
-                                                              text: AppMetaLabels()
-                                                                  .loadMoreData,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    Colors.blue,
-                                                              ),
-                                                            ),
+                                                                text: AppMetaLabels()
+                                                                    .loadMoreData,
+                                                                style: AppTextStyle
+                                                                    .boldBlue),
                                                             WidgetSpan(
                                                               child: Icon(
                                                                 Icons
                                                                     .arrow_forward_ios,
                                                                 size: 15,
-                                                                color:
-                                                                    Colors.blue,
+                                                                color: AppColors
+                                                                    .blueColor,
                                                               ),
                                                             ),
                                                           ],

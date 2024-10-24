@@ -209,14 +209,13 @@ class _MunicipalApprovalNewContractState
                                                               textAlign:
                                                                   TextAlign
                                                                       .justify,
-                                                              style: TextStyle(
-                                                                  color: AppColors
-                                                                      .whiteColor,
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold))),
+                                                              style: AppTextStyle
+                                                                  .semiBoldWhite11
+                                                                  .copyWith(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ))),
                                                     ),
                                                   ),
                                                 );

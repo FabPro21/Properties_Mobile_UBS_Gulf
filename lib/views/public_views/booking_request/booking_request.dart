@@ -1038,7 +1038,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(1.3.h),
                                 ),
-                                backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                backgroundColor: AppColors.colliersBlueColor,
                               ),
                               onPressed: () async {
                                 if (formKey.currentState?.validate() == false) {

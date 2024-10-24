@@ -788,9 +788,8 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               clipBehavior: Clip.hardEdge,
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      Color.fromRGBO(
-                                                          0, 61, 166, 1),
+                                                  backgroundColor: AppColors
+                                                      .colliersBlueColor,
                                                 ),
                                                 onPressed: () async {
                                                   Get.to(() => BookingRequest(

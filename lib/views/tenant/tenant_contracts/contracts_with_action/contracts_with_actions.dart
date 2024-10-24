@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison, deprecated_member_use
 
 import 'package:fap_properties/utils/screen_disable.dart';
-import 'package:fap_properties/utils/styles/fonts.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/contract_extension/contract_extend.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/contract_termination/contract_terminate.dart';
 import 'package:fap_properties/views/tenant/tenant_contracts/tenant_contracts_tabs.dart/tenant_contracts_details.dart/municipal_approval/municipal_approval.dart';
@@ -177,17 +176,17 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                                 initialIndex: 0,
                                                                               ));
                                                                         },
-                                                                        child: Text(
-                                                                            AppMetaLabels().requestno +
-                                                                                ' ' +
-                                                                                controller.contractsList[index].caseId.toString() +
-                                                                                ' ',
-                                                                            textAlign: TextAlign.left,
-                                                                            style: TextStyle(
-                                                                              fontWeight: FontWeight.normal,
-                                                                              color: AppColors.blueColor,
-                                                                              fontSize: 12.5.sp,
-                                                                            )),
+                                                                        child:
+                                                                            Text(
+                                                                          AppMetaLabels().requestno +
+                                                                              ' ' +
+                                                                              controller.contractsList[index].caseId.toString() +
+                                                                              ' ',
+                                                                          textAlign:
+                                                                              TextAlign.left,
+                                                                          style:
+                                                                              AppTextStyle.normalBlue12,
+                                                                        ),
                                                                       ),
                                                                       Icon(
                                                                         Icons
@@ -277,19 +276,10 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       Alignment
                                                                           .center,
                                                                   child: Text(
-                                                                    AppMetaLabels()
-                                                                        .uploadDocs,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: AppColors
-                                                                          .whiteColor,
-                                                                      fontFamily:
-                                                                          AppFonts
-                                                                              .graphikSemibold,
-                                                                      fontSize:
-                                                                          12.0.sp,
-                                                                    ),
-                                                                  ),
+                                                                      AppMetaLabels()
+                                                                          .uploadDocs,
+                                                                      style: AppTextStyle
+                                                                          .semiBoldWhite12),
                                                                 ),
                                                               ),
                                                             ),
@@ -357,19 +347,10 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       Alignment
                                                                           .center,
                                                                   child: Text(
-                                                                    AppMetaLabels()
-                                                                        .makePayment,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: AppColors
-                                                                          .whiteColor,
-                                                                      fontFamily:
-                                                                          AppFonts
-                                                                              .graphikSemibold,
-                                                                      fontSize:
-                                                                          12.0.sp,
-                                                                    ),
-                                                                  ),
+                                                                      AppMetaLabels()
+                                                                          .makePayment,
+                                                                      style: AppTextStyle
+                                                                          .semiBoldWhite12),
                                                                 ),
                                                               ),
                                                             ),
@@ -472,19 +453,10 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       Alignment
                                                                           .center,
                                                                   child: Text(
-                                                                    AppMetaLabels()
-                                                                        .signContract2,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: AppColors
-                                                                          .whiteColor,
-                                                                      fontFamily:
-                                                                          AppFonts
-                                                                              .graphikSemibold,
-                                                                      fontSize:
-                                                                          12.0.sp,
-                                                                    ),
-                                                                  ),
+                                                                      AppMetaLabels()
+                                                                          .signContract2,
+                                                                      style: AppTextStyle
+                                                                          .semiBoldWhite12),
                                                                 ),
                                                               ),
                                                             ),
@@ -545,19 +517,10 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                       Alignment
                                                                           .center,
                                                                   child: Text(
-                                                                    AppMetaLabels()
-                                                                        .approveMunicipal,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: AppColors
-                                                                          .whiteColor,
-                                                                      fontFamily:
-                                                                          AppFonts
-                                                                              .graphikSemibold,
-                                                                      fontSize:
-                                                                          12.0.sp,
-                                                                    ),
-                                                                  ),
+                                                                      AppMetaLabels()
+                                                                          .approveMunicipal,
+                                                                      style: AppTextStyle
+                                                                          .semiBoldWhite12),
                                                                 ),
                                                               ),
                                                             ),

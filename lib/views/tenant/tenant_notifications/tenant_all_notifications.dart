@@ -132,9 +132,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                         ''
                                     ? Text(
                                         AppMetaLabels().noMoreData,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                        ).copyWith(fontWeight: FontWeight.bold),
+                                        style: AppTextStyle.boldBlue,
                                       )
                                     : getTNController
                                             .isLoadingAllNotification.value
@@ -165,21 +163,17 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                                   text: TextSpan(
                                                     children: [
                                                       TextSpan(
-                                                        text: AppMetaLabels()
-                                                            .loadMoreData,
-                                                        style: TextStyle(
-                                                          color: Colors.blue,
-                                                        ).copyWith(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
+                                                          text: AppMetaLabels()
+                                                              .loadMoreData,
+                                                          style: AppTextStyle
+                                                              .boldBlue),
                                                       WidgetSpan(
                                                         child: Icon(
                                                           Icons
                                                               .arrow_forward_ios,
                                                           size: 15,
-                                                          color: Colors.blue,
+                                                          color: AppColors
+                                                              .blueColor,
                                                         ),
                                                       ),
                                                     ],
@@ -237,6 +231,9 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                   .toString());
 
               await getTNController.archiveNotifications();
+              getTNController.notifications!.removeAt(index);
+              getTNController.allLength = getTNController.allLength - 1;
+              setState(() {});
               // Use a callback or setState to update the UI if necessary
             },
             borderRadius: BorderRadius.circular(8.0),

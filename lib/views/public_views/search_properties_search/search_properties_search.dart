@@ -148,13 +148,8 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                     position: badge.BadgePosition.topEnd(
                                         top: -1.0.h, end: 0.0.h),
                                     badgeContent: Text(
-                                      "${_countController.countN.value}",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10.0.sp,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                                        "${_countController.countN.value}",
+                                        style: AppTextStyle.semiBoldWhite10),
                                     child: Icon(
                                       Icons.notifications_outlined,
                                       color: Colors.white,
@@ -302,14 +297,17 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                             border: Border.all(
-                                              color: Colors.blue,
+                                              color:
+                                                  AppColors.colliersBlueColor,
                                               width: 0.4.w,
                                             ),
                                           ),
                                           child: Text(
                                             AppMetaLabels().reset,
                                             style: AppTextStyle.semiBoldBlack11
-                                                .copyWith(color: Colors.blue),
+                                                .copyWith(
+                                                    color: AppColors
+                                                        .colliersBlueColor),
                                           ),
                                         ),
                                       ),

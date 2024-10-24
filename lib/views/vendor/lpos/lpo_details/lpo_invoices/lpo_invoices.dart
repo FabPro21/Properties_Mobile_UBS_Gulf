@@ -42,7 +42,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                         errorText: _controller.error.value,
                       )
                     : SingleChildScrollView(
-                      child: Column(
+                        child: Column(
                           children: [
                             SingleChildScrollView(
                               child: Padding(
@@ -55,10 +55,12 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(2.0.h),
+                                      borderRadius:
+                                          BorderRadius.circular(2.0.h),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey[200]??Colors.grey,
+                                          color:
+                                              Colors.grey[200] ?? Colors.grey,
                                           blurRadius: 0.4.h,
                                           spreadRadius: 0.8.h,
                                           offset: Offset(0.1.h, 0.1.h),
@@ -92,15 +94,17 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
-                                                          left: 2.h, right: 2.h),
+                                                          left: 2.h,
+                                                          right: 2.h),
                                                       child: SrNoWidget(
                                                           text: index + 1,
                                                           size: 4.h),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
-                                                        padding: EdgeInsets.only(
-                                                            left: 2.0.h),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 2.0.h),
                                                         child: Column(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -118,16 +122,27 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                       .semiBoldBlack11,
                                                                 ),
                                                                 Spacer(),
-                                                                Text(
-                                                                  _controller
-                                                                          .getLpoInvoices
-                                                                          .value
-                                                                          .invoice![
-                                                                              index]
-                                                                          .lpono
-                                                                          .toString() ,
-                                                                  style: AppTextStyle
-                                                                      .semiBoldBlack11,
+                                                                SizedBox(
+                                                                  width:
+                                                                      Get.width *
+                                                                          0.3,
+                                                                  child: Text(
+                                                                    _controller
+                                                                        .getLpoInvoices
+                                                                        .value
+                                                                        .invoice![
+                                                                            index]
+                                                                        .lpono
+                                                                        .toString(),
+                                                                    style: AppTextStyle
+                                                                        .semiBoldBlack11,
+                                                                    textAlign: SessionController().getLanguage() ==
+                                                                            1
+                                                                        ? TextAlign
+                                                                            .end
+                                                                        : TextAlign
+                                                                            .start,
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -154,12 +169,12 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                               AppMetaLabels()
                                                                   .invoiceDate,
                                                               _controller
-                                                                      .getLpoInvoices
-                                                                      .value
-                                                                      .invoice![
-                                                                          index]
-                                                                      .invoiceDate
-                                                                      .toString() ,
+                                                                  .getLpoInvoices
+                                                                  .value
+                                                                  .invoice![
+                                                                      index]
+                                                                  .invoiceDate
+                                                                  .toString(),
                                                             ),
                                                             SizedBox(
                                                               height: 1.0.h,
@@ -178,7 +193,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                 Text(
                                                                   AppMetaLabels()
                                                                       .status,
-                    
+
                                                                   // AppMetaLabels().name,
                                                                   style: AppTextStyle
                                                                       .semiBoldBlack10,
@@ -202,11 +217,12 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                               .statusNameAr ??
                                                                           "",
                                                                   valueToCompare: _controller
-                                                                      .getLpoInvoices
-                                                                      .value
-                                                                      .invoice![
-                                                                          index]
-                                                                      .statusName??"",
+                                                                          .getLpoInvoices
+                                                                          .value
+                                                                          .invoice![
+                                                                              index]
+                                                                          .statusName ??
+                                                                      "",
                                                                 ),
                                                               ],
                                                             ),
@@ -225,7 +241,8 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                         1
                                                                 ? Container()
                                                                 : SizedBox(
-                                                                    height: 1.0.h,
+                                                                    height:
+                                                                        1.0.h,
                                                                   ),
                                                           ],
                                                         ),
@@ -243,7 +260,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                             ),
                           ],
                         ),
-                    );
+                      );
           }),
         ],
       ),

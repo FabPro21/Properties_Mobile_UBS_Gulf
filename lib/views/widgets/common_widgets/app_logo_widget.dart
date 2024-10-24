@@ -24,8 +24,8 @@ class AppLogoCollier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 50.w,
-        height: 33.6.w,
+        width: 37.15.w,
+        height: 25.0.w,
         child: Image.asset(
           AppImagesPath.colliersLogoType,
           fit: BoxFit.fill,
@@ -39,7 +39,7 @@ class AppLogoCollierDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 18.75.w,
+        width: 17.83.w,
         height: 12.0.w,
         child: Image.asset(
           AppImagesPath.colliersLogoType,
