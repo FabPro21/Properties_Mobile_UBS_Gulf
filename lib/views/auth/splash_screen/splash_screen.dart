@@ -18,7 +18,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final splashScreenController = Get.put(SplashScreenController());
 
- 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   @override
   void initState() {
@@ -27,18 +26,17 @@ class _SplashScreenState extends State<SplashScreen> {
     SessionController().enableFireBaseOTP = true;
     splashScreenController.isSetupMpin();
 
+    // Changing here for notification issue
     _getFcmToken();
     _setupNotificationListeners();
     super.initState();
   }
-
 
   void _getFcmToken() async {
     // Get the FCM token
     String? token = await _firebaseMessaging.getToken();
     print('FCM Token: $token');
   }
-
 
   void _setupNotificationListeners() {
     // Handle incoming messages

@@ -237,6 +237,10 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                   .toString());
 
               await getTNController.archiveNotifications();
+              setState(() {
+                getTNController.notifications!.removeAt(index);
+                getTNController.allLength = getTNController.allLength - 1;
+              });
               // Use a callback or setState to update the UI if necessary
               setState(() {
                 getTNController.notifications!.removeAt(index);

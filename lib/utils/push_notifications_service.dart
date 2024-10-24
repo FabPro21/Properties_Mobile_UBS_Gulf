@@ -35,6 +35,17 @@ class PushNotificationService {
   }
 
   registerNotificationListeners() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    // Fetch the token
+    // Changing here for notification issue Start
+    try {
+      String? token = await messaging.getToken();
+      print('FCM Token: $token');
+    } catch (e) {
+      print('Error fetching token: $e');
+    }
+    // Changing here for notification issue End
     AndroidNotificationChannel channel = androidNotificationChannel();
     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
