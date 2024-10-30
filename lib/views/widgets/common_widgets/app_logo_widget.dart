@@ -42,6 +42,7 @@ class AppLogoCollierDashboard extends StatelessWidget {
         width: 17.83.w,
         height: 12.0.w,
         child: Image.asset(
+          // AppImagesPath.colliersLogoTypeDashboard,
           AppImagesPath.colliersLogoType,
           fit: BoxFit.fill,
         ));

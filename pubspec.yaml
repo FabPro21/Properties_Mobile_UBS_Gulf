@@ -196,5 +196,3 @@ flutter:
     - family: OpenSansCondensedLight
       fonts:
         - asset: assets/fonts/Open_Sans_Condensed/OpenSansCondensed Light.ttf
-
-   

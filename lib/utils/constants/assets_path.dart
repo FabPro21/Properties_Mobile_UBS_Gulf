@@ -7,6 +7,10 @@ class AppImagesPath {
   static const String appNewLogo = '$commonRoot/app_icon/new_app_logo.png';
   static const String menaAppLogo = '$commonRoot/mena_real_estate.svg';
   static const String colliersLogoType = '$commonRoot/colliers/logo_type.png';
+  static const String colliersLogoType11 =
+      '$commonRoot/colliers/Colliers_app_login.png';
+  static const String colliersLogoTypeDashboard =
+      '$commonRoot/colliers/Colliers_app_dashboard.png';
 
   static const String view360 = '$commonRoot/360.png';
   static const String thumbnail = '$commonRoot/thumbnail.jpg';

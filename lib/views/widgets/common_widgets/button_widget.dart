@@ -20,13 +20,14 @@ class ButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1.3.h),
-          ), backgroundColor: AppColors.whiteColor,
+          ),
+          backgroundColor: AppColors.whiteColor,
           padding: EdgeInsets.symmetric(horizontal: 6.0.h, vertical: 1.5.h),
           // textStyle: AppTextStyle.buttonTextStyle,
         ),
         onPressed: onPress,
         child: Text(
-          buttonText??"",
+          buttonText ?? "",
           style: AppTextStyle.buttonTextStyle,
         ),
       ),
@@ -49,13 +50,14 @@ class ButtonWidgetBlue extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1.3.h),
-          ), backgroundColor: AppColors.blueColor,
+          ),
+          backgroundColor: AppColors.blueColor,
           padding: EdgeInsets.symmetric(horizontal: 6.0.h, vertical: 1.5.h),
           // textStyle: AppTextStyle.buttonTextStyle,
         ),
         onPressed: onPress,
         child: Text(
-          buttonText??"",
+          buttonText ?? "",
           style: AppTextStyle.buttonTextStyle.copyWith(color: Colors.white),
         ),
       ),

@@ -97,7 +97,6 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                           Text(
                             AppMetaLabels().oneTimePassword,
                             textAlign: TextAlign.center,
-                            // style: AppTextStyle.semiBoldWhite10,
                             style: AppTextStyle.normalWhite10,
                           ),
                           Padding(
