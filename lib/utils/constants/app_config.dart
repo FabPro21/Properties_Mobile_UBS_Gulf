@@ -460,29 +460,30 @@ class AppConfig {
 ///////////////////////////////////////////////////////////////////////////
 
     // COL -> col (colauth01,colauth01,coltenant01,collandlord01)
-    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
-    // commonAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/colauth01/api/';
-    // publicAppConfig = 'https://provisuat.uaenorth.cloudapp.azure.com/colpublic01/';
-    // tenantAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/coltenant01/api/';
-    // appConfigVendor =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/colvendor01/api/';
-    // landlordAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
-
-    // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
     baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
     commonAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+        'https://provisuat.uaenorth.cloudapp.azure.com/colauth01/api/';
     publicAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+        'https://provisuat.uaenorth.cloudapp.azure.com/colpublic01/';
     tenantAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+        'https://provisuat.uaenorth.cloudapp.azure.com/coltenant01/api/';
     appConfigVendor =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+        'https://provisuat.uaenorth.cloudapp.azure.com/colvendor01/api/';
     landlordAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
+        'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
+
+    // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
+    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
+    // commonAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+    // publicAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+    // tenantAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+    // appConfigVendor =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+    // landlordAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
 
 ///////////////////////////////////////////////////////////////////////////
     // Production
