@@ -28,9 +28,9 @@ class LandlordContractsController extends GetxController {
     if (response is LandlordContractsModel) {
       if (response.totalRecord != 0) {
         contractsModel = response;
-        contracts = contractsModel.data?.toList()?? [];
+        contracts = contractsModel.data?.toList() ?? [];
       } else {
-        errorLoadingContracts.value = AppMetaLabels().notFound;
+        errorLoadingContracts.value = AppMetaLabels().notFound1;
       }
     } else
       errorLoadingContracts.value = response;
@@ -51,7 +51,7 @@ class LandlordContractsController extends GetxController {
           contracts.add(contractsModel.data![i]);
         }
       } else {
-        errorLoadMore.value = AppMetaLabels().notFound;
+        errorLoadMore.value = AppMetaLabels().notFound1;
       }
     } else
       errorLoadMore.value = response;
@@ -111,7 +111,7 @@ class LandlordContractsController extends GetxController {
           contracts.add(result.data![i]);
         }
       } else {
-        errorLoadMoreFilter.value = AppMetaLabels().notFound;
+        errorLoadMoreFilter.value = AppMetaLabels().notFound1;
       }
     } else
       errorLoadMoreFilter = result;
