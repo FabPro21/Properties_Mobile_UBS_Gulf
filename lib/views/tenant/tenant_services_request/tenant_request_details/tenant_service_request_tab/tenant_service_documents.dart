@@ -2286,7 +2286,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
               Padding(
                 padding: EdgeInsets.only(left: Get.width * 0.03),
                 child: Text(
-                  AppMetaLabels().collierStage3,
+                  AppMetaLabels().stage3,
                   style: AppTextStyle.normalBlack10
                       .copyWith(color: AppColors.renewelgreyclr1, height: 1.3),
                   maxLines: 5,

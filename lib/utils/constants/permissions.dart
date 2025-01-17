@@ -36,7 +36,7 @@ class PermissionHandlerClass {
                   children: [
                     Container(
                       child: Text(
-                          '${AppMetaLabels().collierPropertiesSource} $source',
+                          '${AppMetaLabels().colliersPropertiesSource} $source',
                           textAlign: TextAlign.center,
                           style: AppTextStyle.semiBoldBlack11),
                     ),

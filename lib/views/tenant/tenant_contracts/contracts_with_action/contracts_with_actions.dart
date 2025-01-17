@@ -598,20 +598,20 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                                                                                 2
                                                                             ? AppMetaLabels().stage2
                                                                             : controller.contractsList[index].stageId == 3
-                                                                                ? AppMetaLabels().collierStage3
+                                                                                ? AppMetaLabels().stage3
                                                                                 : controller.contractsList[index].stageId == 4
-                                                                                    ? AppMetaLabels().collierStage4
+                                                                                    ? AppMetaLabels().stage4
                                                                                     : controller.contractsList[index].stageId == 5
                                                                                         ? controller.contractsList[index].isAllPaid == 1
                                                                                             ? AppMetaLabels().collierStage5_1
-                                                                                            : AppMetaLabels().collierStage5
+                                                                                            : AppMetaLabels().stage5
                                                                                         : controller.contractsList[index].stageId == 6
                                                                                             ? AppMetaLabels().stage6
                                                                                             : controller.contractsList[index].stageId == 7
                                                                                                 ? AppMetaLabels().stage7
                                                                                                 : controller.contractsList[index].stageId == 8
                                                                                                     ? AppMetaLabels().stage8
-                                                                                                    : AppMetaLabels().collierStage9,
+                                                                                                    : AppMetaLabels().stage9,
                                                                     textAlign:
                                                                         TextAlign
                                                                             .justify,

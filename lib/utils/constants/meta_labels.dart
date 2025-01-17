@@ -145,15 +145,15 @@ class AppMetaLabels {
       ? "Consent Settings"
       : "إعدادات الموافقة";
 
-  String colliersPrivacyPolicy = SessionController().getLanguage() == 1
-      ? "Colliers - Privacy Policy"
-      : "كوليرز - سياسة الخصوصية  ";
+  String colliersPropertiesPrivacyPolicy =
+      SessionController().getLanguage() == 1
+          ? "Colliers - Privacy Policy "
+          : "كوليرز - سياسة الخصوصية";
 
-  String colliersSource = SessionController().getLanguage() == 1
-      ? 'Colliers would like to access the  '
+  String colliersPropertiesSource = SessionController().getLanguage() == 1
+      ? 'Colliers Would Like to access the '
       : "ترغب كوليرز في الوصول إلى ";
-
-  String colliersPrivacyPolicyLink =
+  String colliersPropertiesPrivacyPolicyLink =
       'https://www.colliers.com/en/privacy-policy';
 
   String cont = SessionController().getLanguage() == 1 ? 'Continue' : 'متابعة';
@@ -308,11 +308,10 @@ class AppMetaLabels {
   //     ? "+971 2 681 1511 (outside UAE)"
   //     : "+971 2 681 1511 (من خارج الإمارات العربية المتحدة)	";
 
-  String colliersEmail =
+  String collierEmail =
       SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
+  // String fabEmail = 'fabprop.care@bankfab.com';
 
-// String fabEmail =
-//       SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
   ///////////////////////////////////
   /// public login screen
   /// ///////////////////////
@@ -336,7 +335,7 @@ class AppMetaLabels {
       ? "Property Details"
       : "تفاصيل العقار";
 
-  String colliersProps = SessionController().getLanguage() == 1
+  String collierProps = SessionController().getLanguage() == 1
       ? "MENA Real Estate"
       : "مينا العقارية";
 
@@ -829,7 +828,7 @@ class AppMetaLabels {
       ? 'A new version of app '
       : 'نسخة جديدة من التطبيق ';
 
-  String colliersProperties = SessionController().getLanguage() == 1
+  String collierProperties = SessionController().getLanguage() == 1
       ? "MENA Real Estate"
       : "مينا العقارية";
 
@@ -2118,9 +2117,10 @@ class AppMetaLabels {
           ? ['Repair', 'Replace', 'Reset', 'Other']
           : ['تصليح', 'تغيير', ' إعادة ضبط', 'آخر'];
 
-  String pleaseSelectCorrectiveAction = SessionController().getLanguage() == 1
-      ? 'Please Select any MENA Real Estate Corrective Action'
-      : 'يرجى تحديد أي إجراء تصحيحي لبنك أبوظبي الأول';
+  String pleaseSelectColliersCorrectiveAction =
+      SessionController().getLanguage() == 1
+          ? 'Please Select any Colliers Corrective Action'
+          : 'يرجى تحديد أي إجراء تصحيحي لبنك أبوظبي الأول';
 
   String noSurveyFound = SessionController().getLanguage() == 1
       ? 'No Survey Found'
@@ -2412,7 +2412,7 @@ class AppMetaLabels {
       ? 'You can use the communication tab to get more information after submitting.'
       : 'يمكنك استخدام علامة تبويب الاتصال للحصول على مزيد من المعلومات بعد الإرسال.';
 
-  String personalDocUploadInfo = SessionController().getLanguage() == 1
+  String collierPersonalDocUploadInfo = SessionController().getLanguage() == 1
       ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
       : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
 
@@ -3056,10 +3056,6 @@ class AppMetaLabels {
   String stage1 = SessionController().getLanguage() == 1
       ? '-For annual contract renewal, press “Renew”'
       : '"لتجديد العقد السنوي ، اضغط على "تجديد ';
-
-  // String stage1 = SessionController().getLanguage() == 1
-  //     ? '-For annual contract renewal, press “Renew”\n-For short term renewal, press “Extend”'
-  //     : '- لتجديد العقد السنوي ، اضغط على "تجديد" \n - للتجديد قصير المدى ، اضغط على "تمديد"';
 
   String stage2 = SessionController().getLanguage() == 1
       ? 'Please upload the required documents to proceed with your Renewal Request.'

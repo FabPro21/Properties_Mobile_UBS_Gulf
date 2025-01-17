@@ -458,7 +458,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().collierStage9,
+                                        AppMetaLabels().stage9,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack10
                                             .copyWith(
