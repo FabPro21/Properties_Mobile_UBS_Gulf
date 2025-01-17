@@ -39,7 +39,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
   String erroFABCorrectiveList = '';
   String erroFreEntryText1 = '';
   String erroFreEntryText2 = '';
-  List<String> listvalues = AppMetaLabels().fABCorrectiveActionList;
+  List<String> listvalues = AppMetaLabels().colliersCorrectiveActionList;
 
   ///
   final controller = Get.put(SvcReqReportController());
@@ -594,10 +594,10 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               controller.tenantSignatureSaved.value)
                       ? () {
                           if (controller.listTitle ==
-                              AppMetaLabels().selectFABCorrectiveAction) {
+                              AppMetaLabels().selectColliersCorrectiveAction) {
                             setState(() {
-                              erroFABCorrectiveList = AppMetaLabels()
-                                  .pleaseSelectFABCorrectiveAction;
+                              erroFABCorrectiveList =
+                                  AppMetaLabels().pleaseSelectCorrectiveAction;
                             });
                           }
                           if (controller

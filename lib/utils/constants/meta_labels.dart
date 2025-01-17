@@ -7,18 +7,18 @@ class AppMetaLabels {
 
   String login =
       SessionController().getLanguage() == 1 ? "Login" : 'تسجيل الدخول';
-  String color = SessionController().getLanguage() == 1 ? "Color" : 'لون';
+  String color = SessionController().getLanguage() == 1 ? "Colour" : 'اللون';
   String rentPaidAmount = SessionController().getLanguage() == 1
-      ? 'Rent Paid Amount'
+      ? 'Amount of Rent Paid'
       : 'مبلغ الإيجار المدفوع';
   String lossofRent =
-      SessionController().getLanguage() == 1 ? 'Loss Of Rent' : 'خسارة الإيجار';
+      SessionController().getLanguage() == 1 ? 'Rent Loss' : 'خسارة الإيجار';
   String lossofRentDays = SessionController().getLanguage() == 1
-      ? 'Loss of Rent Days'
+      ? 'Days of Rent Loss'
       : 'خسارة أيام الإيجار';
   String prevRent = SessionController().getLanguage() == 1
-      ? 'Previous Rent'
-      : 'الإيجار السابق';
+      ? 'Previous Rental Amount'
+      : 'مبلغ الإيجار السابق ';
   String period = SessionController().getLanguage() == 1 ? 'Period' : 'فترة';
   String recoveryAmount = SessionController().getLanguage() == 1
       ? 'Recovery Amount'
@@ -27,12 +27,12 @@ class AppMetaLabels {
       ? 'LPO Title'
       : 'عنوان أمر الشراء المحلي';
   String vATPaidAmount = SessionController().getLanguage() == 1
-      ? 'VAT Paid Amount'
-      : 'لمبلغ المدفوع لضريبة القيمة المضافة';
+      ? 'Total VAT Paid'
+      : 'إجمالي ضريبة القيمة المضافة المدفوعة';
   String cardCharges =
       SessionController().getLanguage() == 1 ? 'Card Charges' : 'رسوم البطاقة';
   String modeofPayment = SessionController().getLanguage() == 1
-      ? 'Mode of Payment'
+      ? 'Method of Payment'
       : 'طريقة الدفع';
   String owner = SessionController().getLanguage() == 1 ? 'Owner' : 'مالك';
   String otpVerification = SessionController().getLanguage() == 1
@@ -44,20 +44,20 @@ class AppMetaLabels {
       : 'اكتمل التحقق';
 
   String sureToExit = SessionController().getLanguage() == 1
-      ? "Are you sure to exit the app?"
+      ? "Are you sure you want to exit the app?"
       : "هل أنت متأكد من الخروج من التطبيق؟";
 
   String oneTimePassword = SessionController().getLanguage() == 1
-      ? "We will send you a One Time Password on this\nMobile Number."
-      : "سنرسل لك كلمة مرور لمرة واحدة على هذا  الرقم للهاتف المحمول.";
+      ? "An OTP will be sent to your registered mobile number"
+      : "سيُرسل رمز التحقق لمرة واحدة إلى رقم هاتفك المتحرك المُسجل";
 
   String mobileNumber = SessionController().getLanguage() == 1
       ? "Mobile Number"
       : "رقم الهاتف المحمول";
 
   String getOTP = SessionController().getLanguage() == 1
-      ? "Get OTP"
-      : "احصل على الرقم السري ";
+      ? "Generate OTP"
+      : "إنشاء رمز التحقق لمرة واحدة ";
 
   String enableRooted = SessionController().getLanguage() == 1
       ? "Enable Rooted Device"
@@ -68,8 +68,8 @@ class AppMetaLabels {
       : 'تفعيل الخاصية الأمنية';
 
   String verifyingOtp = SessionController().getLanguage() == 1
-      ? "Verifying OTP code"
-      : 'التحقق من الرقم السري ';
+      ? "Verifying OTP"
+      : 'التحقق من رمز التحقق لمرة واحدة ';
 
   String cancel = SessionController().getLanguage() == 1 ? "Cancel" : "إلغاء";
 
@@ -82,8 +82,8 @@ class AppMetaLabels {
       : "بطاقة المسح الضوئي";
 
   String errorResending = SessionController().getLanguage() == 1
-      ? 'Error resending OTP'
-      : 'خطا  ارجو اعادة ارسال الرقم السرى';
+      ? 'Error in Resending OTP'
+      : 'خطأ في إعادة إرسال رمز التحقق لمرة واحدة';
 
   String error = SessionController().getLanguage() == 1 ? 'Error' : 'خطأ';
 
@@ -92,22 +92,22 @@ class AppMetaLabels {
       : 'خطأ في المعالجة';
 
   String pleaseEnterCompleteCardNo = SessionController().getLanguage() == 1
-      ? 'Please enter 6 digit Cheque Number'
+      ? 'Please enter a 6-digit cheque number'
       : 'الرجاء إدخال رقم الشيك المكون من 6 أرقام';
   String pleaseAttachCheque = SessionController().getLanguage() == 1
-      ? 'Please attach cheque copy first'
-      : "يرجى إرفاق نسخة الشيك أولا";
+      ? 'Attach the cheque copy first'
+      : "الرجاء إرفاق نسخة الشيك أولاً";
   String pleaseEnterCompleteCardNoRejection =
       SessionController().getLanguage() == 1
-          ? 'Please select cheque copy and enter 6 digit Cheque Number'
-          : 'يرجى تحديد نسخة الشيك وإدخال رقم التحقق المكون من 6 أرقام';
+          ? 'Select the cheque copy and enter a 6-digit cheque number'
+          : 'تحديد نسخة الشيك وإدخال رقم الشيك المكون من 6 أرقام';
 
   String fileExtensionError = SessionController().getLanguage() == 1
-      ? 'You can only upload  "pdf , jpg , png" files of maximum size 10 MB'
-      : 'يمكنك فقط تحميل ملفات "pdf، jpg، png" بحد أقصى 10 ميجا بايت';
+      ? 'You can only upload PDF, JPG, or PNG files with a maximum size of 10 MB'
+      : 'يمكنك فقط تحميل ملفات بصيغة PDF أو JPG أو PNG بحد أقصى 10 ميجا بايت';
 
   String fileSizenError = SessionController().getLanguage() == 1
-      ? 'You can only upload files of maximum size 10 MB'
+      ? 'You can only upload files with a maximum size of 10 MB'
       : 'يمكنك فقط تحميل ملفات بحد أقصى 10 ميجا بايت';
 
   ///////////////////////////////
@@ -119,15 +119,15 @@ class AppMetaLabels {
       : "أدخل الرمز الذي تم إرساله إلى";
 
   String didnotrecieve = SessionController().getLanguage() == 1
-      ? "Didn’t recieve the OTP code?"
-      : "لم تتلق الرقم السري المتغير";
+      ? "Didn't receive the OTP code?"
+      : "ألم تتلقّ رمز التحقق لمرة واحدة؟";
 
   String resentOtp = SessionController().getLanguage() == 1
       ? "Resend OTP"
       : "إعادة إرسال الرقم السري";
   String otpExpired = SessionController().getLanguage() == 1
-      ? "OTP Code Expired"
-      : "رمز التحقق من الهوية منتهي الصلاحية";
+      ? "OTP has expired"
+      : "انتهت صلاحية رمز التحقق لمرة واحدة";
 
   String verify = SessionController().getLanguage() == 1
       ? "Verify and Proceed"
@@ -145,16 +145,16 @@ class AppMetaLabels {
       ? "Consent Settings"
       : "إعدادات الموافقة";
 
-  String collierPropertiesPrivacyPolicy = SessionController().getLanguage() == 1
-      ? "Colliers Properties - Privacy Policy"
-      : "شركة مينا العقارية - سياسة الخصوصية";
+  String colliersPrivacyPolicy = SessionController().getLanguage() == 1
+      ? "Colliers - Privacy Policy"
+      : "كوليرز - سياسة الخصوصية  ";
 
-  String collierPropertiesSource = SessionController().getLanguage() == 1
-      ? '"Colliers Properties" Would Like to Access the '
-      : "شركة الشرق الأوسط وشمال أفريقيا العقارية ترغب في الوصول إلى ";
+  String colliersSource = SessionController().getLanguage() == 1
+      ? 'Colliers would like to access the  '
+      : "ترغب كوليرز في الوصول إلى ";
 
-  String collierPropertiesPrivacyPolicyLink =
-      "https://www.menaProperties.ae/en/privacypolicy";
+  String colliersPrivacyPolicyLink =
+      'https://www.colliers.com/en/privacy-policy';
 
   String cont = SessionController().getLanguage() == 1 ? 'Continue' : 'متابعة';
 
@@ -190,49 +190,47 @@ class AppMetaLabels {
   String name = SessionController().getLanguage() == 1 ? "Name" : "اسم";
 
   String nameStarick =
-      SessionController().getLanguage() == 1 ? 'Name *' : '* اسم';
+      SessionController().getLanguage() == 1 ? 'Name*' : 'الاسم*';
   String requireData =
-      SessionController().getLanguage() == 1 ? '* Required' : ' *مطلوب ';
+      SessionController().getLanguage() == 1 ? 'Required*' : 'مطلوب*';
   String invalidEmail = SessionController().getLanguage() == 1
       ? 'Invalid Email'
       : 'بريد إلكتروني خاطئ';
-  String emailWithStarick = SessionController().getLanguage() == 1
-      ? 'Email *'
-      : '* البريد الالكتروني';
+  String emailWithStarick =
+      SessionController().getLanguage() == 1 ? 'Email*' : 'البريد الإلكتروني*';
 
   String noofResidentialFlat = SessionController().getLanguage() == 1
-      ? 'No of Residential Flat'
-      : "عدد الشقق السكنية";
+      ? 'Number of Residential Flats (if referring to multiple flats)'
+      : "Number of Residential Flats (if referring to multiple flats)";
 
   String noofCommercialFlat = SessionController().getLanguage() == 1
-      ? 'No of Commercial Flat'
-      : "عدد الشقق التجارية";
+      ? 'Number of Commercial Flats (if referring to multiple flats)'
+      : "عدد الشقق التجارية (في حالة الإشارة إلى عدة شقق)";
 
   String setupMPIN = SessionController().getLanguage() == 1
-      ? "Setup your MPIN"
-      : "قم بإعداد رقم التعريف الشخصي الخاص بك";
+      ? "Set your MPIN"
+      : "إعداد رقم التعريف الشخصي الخاص بك";
 
   String enterMpin = SessionController().getLanguage() == 1
       ? "Enter a six digit MPIN"
-      : "أدخل رقم التعريف الشخصي المكون من ستة أرقام";
-
+      : "إدخال رقم تعريف شخصي مكون من ستة أرقام";
   String invoiceColudNotGenerated = SessionController().getLanguage() == 1
       ? "Invoice could not be generated due to "
       : "تعذر إنشاء الفاتورة بسبب";
 
   String reenterMpin = SessionController().getLanguage() == 1
-      ? "Re-enter a six digit MPIN"
-      : "إعادة ادخال الرقم التعريفى";
+      ? "Re-enter the six digit MPIN"
+      : "إعادة إدخال رقم التعريف الشخصي المكون من ستة أرقام";
   String enableFaceID = SessionController().getLanguage() == 1
-      ? "Enable Touch ID / Face ID"
-      : 'تفعيل بصمة الوجه';
+      ? "Enable Touch/Face ID"
+      : 'تمكين بصمة الوجه/التعريف باللمس';
   String personalDataShare = SessionController().getLanguage() == 1
       ? "Personal data sharing"
       : "مشاركة البيانات الشخصية";
 
   String personalDataDisclaimerShare = SessionController().getLanguage() == 1
-      ? "Disclaimer: Please do not enter any personal or sensitive data in any free text box which is not relevant to the purpose."
-      : " اخلاء المسئولية :يرجى عدم مشاركة الرقم التعريفى الخاص بك";
+      ? "Disclaimer: Please do not enter any personal or sensitive data in any free-text box unless it is relevant to the purpose."
+      : "بيان إخلاء المسؤولية: يرجى عدم إدخال أي بيانات شخصية أو حساسة في أي مربع مُخصص للنصوص الحرة ما لم تكن ذات صلة بالغرض المستهدف.";
   // : "إخلاء المسؤولية: يرجي عدم  مشاركة يرجى عدم مشاركة الكود الخاص بك مع اى شخص أخر    لها علاقة بالغرض";
   // : "إخلاء المسؤولية: يُرجى عدم إدخال أي بيانات شخصية أو حساسة في أي مربع نص حر لا علاقة له بالغرض.";
 
@@ -249,19 +247,19 @@ class AppMetaLabels {
       : "حدد دورك الرئيسي";
 
   String sureToReset = SessionController().getLanguage() == 1
-      ? "Are you sure to reset the app?"
-      : "هل انت متاكد من اعادة ضبط الاعدادات";
+      ? "Are you sure you want to reset the app?"
+      : "هل أنت متأكد من رغبتك في إعادة ضبط التطبيق؟";
 
   ///////////////////////////////
   /// Login Mpin Screen Labels
   ///////////////////////////////
 
   String mpinorfinger = SessionController().getLanguage() == 1
-      ? "Verify fingerprint or Enter your mPIN"
+      ? "Verify fingerprint or enter your MPIN"
       : "تحقق من بصمة الإصبع أو أدخل الرقم السري الخاص بك";
 
   String mpinorbiomatric = SessionController().getLanguage() == 1
-      ? "Verify biometric or Enter your mPIN"
+      ? "Verify biometric or enter your MPIN"
       : 'ادخل رقم التعريف الخاص بك';
 
   // : 'تحقق من البيومترية أو أدخل الرقم السري الخاص بك';
@@ -273,8 +271,9 @@ class AppMetaLabels {
       ? "Forgot MPIN?"
       : " هل نسيت رقم التعريف الشخصي ";
 
-  String needHelp =
-      SessionController().getLanguage() == 1 ? "Need Help" : "تحتاج مساعدة";
+  String needHelp = SessionController().getLanguage() == 1
+      ? "Need Help?"
+      : "هل أنت بحاجة للمساعدة؟";
 
   String help =
       SessionController().getLanguage() == 1 ? "Help" : "طلب المساعدة";
@@ -309,15 +308,18 @@ class AppMetaLabels {
   //     ? "+971 2 681 1511 (outside UAE)"
   //     : "+971 2 681 1511 (من خارج الإمارات العربية المتحدة)	";
 
-  String collierEmail = 'FABProp.care@bankfab.com';
+  String colliersEmail =
+      SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
 
+// String fabEmail =
+//       SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
   ///////////////////////////////////
   /// public login screen
   /// ///////////////////////
 
-  String welcomeToFab = SessionController().getLanguage() == 1
-      ? 'Welcome to the future of properties'
-      : 'أهلا بكم في مستقبل العقارات';
+  String welcomeToColliers = SessionController().getLanguage() == 1
+      ? 'Welcome to the Future of Real Estate'
+      : 'مرحبًا بك في مستقبل العقارات';
 
   ///////////////////////////////
   /// Tenant Dashboard Screen Labels
@@ -331,11 +333,11 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Properties" : "العقارات";
 
   String propertiesDetail = SessionController().getLanguage() == 1
-      ? "Properties Details"
-      : "تفاصيل العقارات";
+      ? "Property Details"
+      : "تفاصيل العقار";
 
-  String collierProps = SessionController().getLanguage() == 1
-      ? "Colliers Properties"
+  String colliersProps = SessionController().getLanguage() == 1
+      ? "MENA Real Estate"
       : "مينا العقارية";
 
   String propertyDetails = SessionController().getLanguage() == 1
@@ -343,15 +345,15 @@ class AppMetaLabels {
       : 'تفاصيل العقار';
 
   String paymentBalance = SessionController().getLanguage() == 1
-      ? "Outstanding incl. Charges"
-      : "المبالغ غير مدفوعة شاملة الرسوم ";
+      ? "Outstanding Amount (Including Charges)"
+      : "لمبلغ المستحق (شاملاً الرسوم)";
 
   String totalPayable = SessionController().getLanguage() == 1
       ? "Total Payable"
       : "إجمالي المبالغ المستحقة الدفع";
 
   String next30days =
-      SessionController().getLanguage() == 1 ? "NEXT 30 DAYS" : "بعد 30 يومًا";
+      SessionController().getLanguage() == 1 ? "Next 30 Days" : "بعد 30 يومًا";
 
   String contractsExpiring = SessionController().getLanguage() == 1
       ? "Contracts expiring"
@@ -378,9 +380,9 @@ class AppMetaLabels {
       : 'المدفوعات عبر الإنترنت';
 
   String dueActionsForContract = SessionController().getLanguage() == 1
-      ? 'Click here for Contract Renewal Process                  '
+      ? 'Click here for contract renewal process                  '
       // : 'اضغط هنا لتجديد العقد او الاخلاء                 ';
-      : ' اضغط هنا للتجديد العقد               ';
+      : ' انقر هنا لإجراءات تجديد العقود              ';
   // : 'انقر هنا لعملية تجديد العقد               ';
 
   // String dueActionsForContract = SessionController().getLanguage() == 1
@@ -388,30 +390,30 @@ class AppMetaLabels {
   //     : 'نقر هنا لتجديد العقد / إجازة / إنهاء العملية                ';
 
   String renewalTutorialForContract = SessionController().getLanguage() == 1
-      ? 'Contract renewal tutorial'
-      : 'برنامج تعليمي لتجديد العقد';
+      ? 'Contract renewal - tutorial'
+      : 'تجديد العقود - دليل إرشادي';
 
   String newTutorialForContract = SessionController().getLanguage() == 1
-      ? 'Contract new tutorial'
-      : 'عقد برنامج تعليمي جديد';
+      ? 'New contract - tutorial'
+      : 'عقد جديد - دليل إرشادي';
 
   String clickabovebtnForContractRenewalTutorial = SessionController()
               .getLanguage() ==
           1
-      ? 'Click above link for tutorial video of Contract renewal process or'
-      : 'انقر فوق الرابط أعلاه للحصول على فيديو تعليمي لعملية تجديد العقد أو';
+      ? 'Click the above link for tutorial video of the contract renewal process, or'
+      : 'انقر على الرابط أعلاه للاطلاع على فيديو إرشادي لإجراءات تجديد العقود، أو';
 
   String clickabovebtnForContractNewTutorial = SessionController()
               .getLanguage() ==
           1
-      ? 'Click above link for tutorial video of Contract new process or'
-      : 'انقر فوق الرابط أعلاه للحصول على فيديو تعليمي لعملية جديدة للعقد أو';
+      ? 'Click the above link for tutorial video of the new contract process, or'
+      : 'انقر على الرابط أعلاه للاطلاع على فيديو إرشادي لإجراءات العقود الجديدة، أو';
 
   // : 'انقر هنا لمعالجة العقد                  ';
 
   String clickHereFeedback = SessionController().getLanguage() == 1
-      ? 'Click here for your Feedback & Survey                 '
-      : 'انقر هنا للحصول على ملاحظاتك واستطلاعك     ';
+      ? 'Click here to provide your feedback                 '
+      : 'انقر هنا لتقديم الملاحظات الخاصة بك     ';
 
   String clickaboveButton = SessionController().getLanguage() == 1
       ? 'Click above button for contract'
@@ -827,8 +829,8 @@ class AppMetaLabels {
       ? 'A new version of app '
       : 'نسخة جديدة من التطبيق ';
 
-  String collierProperties = SessionController().getLanguage() == 1
-      ? "Colliers Properties"
+  String colliersProperties = SessionController().getLanguage() == 1
+      ? "MENA Real Estate"
       : "مينا العقارية";
 
   String isAvailableAndFeatures =
@@ -2107,18 +2109,18 @@ class AppMetaLabels {
   String requiredField =
       SessionController().getLanguage() == 1 ? 'Required' : 'مطلوب';
 
-  String selectFABCorrectiveAction = SessionController().getLanguage() == 1
+  String selectColliersCorrectiveAction = SessionController().getLanguage() == 1
       ? 'Select Corrective Action'
       : 'حدد الإجراء التصحيحي';
 
-  List<String> fABCorrectiveActionList = SessionController().getLanguage() == 1
-      ? ['Repair', 'Replace', 'Reset', 'Other']
-      : ['تصليح', 'تغيير', ' إعادة ضبط', 'آخر'];
-
-  String pleaseSelectFABCorrectiveAction =
+  List<String> colliersCorrectiveActionList =
       SessionController().getLanguage() == 1
-          ? 'Please Select any FAB Corrective Action'
-          : 'يرجى تحديد أي إجراء تصحيحي لبنك أبوظبي الأول';
+          ? ['Repair', 'Replace', 'Reset', 'Other']
+          : ['تصليح', 'تغيير', ' إعادة ضبط', 'آخر'];
+
+  String pleaseSelectCorrectiveAction = SessionController().getLanguage() == 1
+      ? 'Please Select any MENA Real Estate Corrective Action'
+      : 'يرجى تحديد أي إجراء تصحيحي لبنك أبوظبي الأول';
 
   String noSurveyFound = SessionController().getLanguage() == 1
       ? 'No Survey Found'
@@ -2410,8 +2412,8 @@ class AppMetaLabels {
       ? 'You can use the communication tab to get more information after submitting.'
       : 'يمكنك استخدام علامة تبويب الاتصال للحصول على مزيد من المعلومات بعد الإرسال.';
 
-  String collierPersonalDocUploadInfo = SessionController().getLanguage() == 1
-      ? 'I understand that I need to share my Emirates ID, passport and any other related documents with Colliers Properties as this is necessary for the renewal of my Tenancy agreement with Colliers Properties.'
+  String personalDocUploadInfo = SessionController().getLanguage() == 1
+      ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
       : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
 
   String enterfeedback = SessionController().getLanguage() == 1
@@ -3063,20 +3065,19 @@ class AppMetaLabels {
       ? 'Please upload the required documents to proceed with your Renewal Request.'
       : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
 
-  String collierStage3 = SessionController().getLanguage() == 1
-      ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the Colliers Properties team.'
+  String stage3 = SessionController().getLanguage() == 1
+      ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the MENA Real Estate team.'
       : 'تم تقديم المستندات بنجاح. سيتم إخطارك خلال يومي عمل بمجرد اكتمال عملية التحقق من قبل فريق عقارات الشرق الأوسط وشمال إفريقيا';
 
-  String collierStage4 = SessionController().getLanguage() == 1
-      ? 'Your documents have been approved by Colliers Properties and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
+  String stage4 = SessionController().getLanguage() == 1
+      ? 'Your documents have been approved by MENA Real Estate and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
       : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
 
-  String collierStage5 = SessionController().getLanguage() == 1
-      ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "Colliers Properties") which can be submitted through the Aramex service (at no additional cost) initiated by Colliers Properties.'
+  String stage5 = SessionController().getLanguage() == 1
+      ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "MENA Real Estate") which can be submitted through the Aramex service (at no additional cost) initiated by MENA Real Estate.'
       : "يجب دفع القسط الإيجاري الأول وجميع الرسوم الأخرى من خلال \"أون لاين\".\n\nيمكن دفع أقساط الإيجار المتبقية عن طريق الشيكات (المحررة لصالح \"شركة مينا العقارية\") والتي يمكن تقديمها من خلال خدمة أرامكس (بدون أي رسوم إضافية). التكلفة) بمبادرة من شركة مينا العقارية.";
 
   String collierStage5_1 = SessionController().getLanguage() == 1
-      // ? 'Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract.'
       ? 'Thanks for making the Payment. Once online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
       : ' شكرًا على إجراء الدفع. بمجرد إقرار الدفع عبر الإنترنت أو استلام نسخ الشيكات الفعلية ، سيتم إخطارك بـ "توقيع عقد الإيجار';
 
@@ -3087,9 +3088,6 @@ class AppMetaLabels {
   String stage6 = SessionController().getLanguage() == 1
       ? 'Your tenancy contract is available to sign.'
       : 'عقد الإيجار الخاص بك متاح للتوقيع.';
-  // String stage6 = SessionController().getLanguage() == 1
-  //     ? 'Your tenancy contract is generated, please proceed to sign.'
-  //     : 'تم إنشاء عقد الإيجار الخاص بك ، يرجى المتابعة للتوقيع.';
 
   String stage7 = SessionController().getLanguage() == 1
       ? 'Your signed contract is under review with our team. We will notify you of the next step within 1 to 2 working days.'
@@ -3103,7 +3101,7 @@ class AppMetaLabels {
       ? 'Please click on the Login To Tawtheeq link to complete the municipality process.'
       : 'الرجاء الضغط على رابط تسجيل الدخول إلى توثيق لإتمام إجراءات البلدية.';
 
-  String collierStage9 = SessionController().getLanguage() == 1
-      ? 'Dear Tenant, Thanks for choosing Colliers Properties as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
+  String stage9 = SessionController().getLanguage() == 1
+      ? 'Dear Tenant, Thanks for choosing MENA Real Estate as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
       : 'عزيزي المستأجر، شكرًا لاختيارك شركة مينا العقارية كمزود للخدمات العقارية، سيكون عقدك جاهزًا للتنزيل خلال يوم إلى يومي عمل.';
 }

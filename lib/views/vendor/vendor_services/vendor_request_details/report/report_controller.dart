@@ -270,7 +270,7 @@ class SvcReqReportController extends GetxController {
   }
 
   var getSRReportModel = SRReportDetailModel().obs;
-  String listTitle = AppMetaLabels().selectFABCorrectiveAction;
+  String listTitle = AppMetaLabels().selectColliersCorrectiveAction;
   TextEditingController textEditingControlerFET1 = TextEditingController();
   TextEditingController textEditingControlerFET2 = TextEditingController();
   Future<void> getReportTABData() async {
@@ -286,7 +286,7 @@ class SvcReqReportController extends GetxController {
       if (result is SRReportDetailModel) {
         getSRReportModel.value = result;
         if (getSRReportModel.value.status == "Data found successfully") {
-          listTitle = AppMetaLabels().fABCorrectiveActionList[
+          listTitle = AppMetaLabels().colliersCorrectiveActionList[
               getSRReportModel.value.data!.fgpCorrectionId!];
           textEditingControlerFET1.text =
               getSRReportModel.value.data!.proposedRemedy ?? "";
