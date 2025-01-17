@@ -52,7 +52,7 @@ class LandlordContractMainInfoController extends GetxController {
         daysPassed = 0;
         comPtg = 0;
       } else if (now.compareTo(endDate) >= 0) {
-        daysPassed = response.contract!.noOfDays??0;
+        daysPassed = response.contract!.noOfDays ?? 0;
         comPtg = 1;
       } else {
         daysPassed = now.difference(startDate).inDays + 1;
@@ -81,7 +81,7 @@ class LandlordContractMainInfoController extends GetxController {
     totalVatOnCharges.value = '0.00';
     try {
       var resp = await LandlordRepository.getContractPayable(
-          SessionController().getContractID()??0);
+          SessionController().getContractID() ?? 0);
 
       if (resp is LandLordContractPayableModel) {
         print('Response Status ::::: ${resp.status}');
