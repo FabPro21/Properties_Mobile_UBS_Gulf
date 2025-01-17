@@ -214,7 +214,7 @@ class _MakePaymentNewContractState extends State<MakePaymentNewContract> {
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().collierStage5_12,
+                AppMetaLabels().stage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),

@@ -855,7 +855,7 @@ class _OutstandingPaymentsNewContractState
                                       padding: EdgeInsets.only(
                                           left: Get.width * 0.03),
                                       child: Text(
-                                        AppMetaLabels().collierStage5_12,
+                                        AppMetaLabels().stage5_12,
                                         textAlign: TextAlign.center,
                                         style: AppTextStyle.normalBlack12
                                             .copyWith(
@@ -2174,7 +2174,7 @@ class _OutstandingPaymentsNewContractState
                 height: 3.0.h,
               ),
               Text(
-                AppMetaLabels().collierStage5_12,
+                AppMetaLabels().stage5_12,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBoldBlack13,
               ),
