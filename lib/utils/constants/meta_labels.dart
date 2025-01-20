@@ -173,9 +173,6 @@ class AppMetaLabels {
       ? "Search City"
       : 'البحث  بالمدينة';
 
-  // String searchEmirate = SessionController().getLanguage() == 1
-  //     ? "Search Emirate"
-  //     : 'البحث في الإمارة';
   String uae = "UAE (+971)";
 
   String ksa = "KSA (+966)";
@@ -232,8 +229,6 @@ class AppMetaLabels {
   String personalDataDisclaimerShare = SessionController().getLanguage() == 1
       ? "Disclaimer: Please do not enter any personal or sensitive data in any free-text box unless it is relevant to the purpose."
       : "بيان إخلاء المسؤولية: يرجى عدم إدخال أي بيانات شخصية أو حساسة في أي مربع مُخصص للنصوص الحرة ما لم تكن ذات صلة بالغرض المستهدف.";
-  // : "إخلاء المسؤولية: يرجي عدم  مشاركة يرجى عدم مشاركة الكود الخاص بك مع اى شخص أخر    لها علاقة بالغرض";
-  // : "إخلاء المسؤولية: يُرجى عدم إدخال أي بيانات شخصية أو حساسة في أي مربع نص حر لا علاقة له بالغرض.";
 
   String saveMPIN = SessionController().getLanguage() == 1
       ? "Save MPIN"
@@ -263,7 +258,6 @@ class AppMetaLabels {
       ? "Verify biometric or enter your MPIN"
       : 'ادخل رقم التعريف الخاص بك';
 
-  // : 'تحقق من البيومترية أو أدخل الرقم السري الخاص بك';
 
   String welcomeback =
       SessionController().getLanguage() == 1 ? "Welcome back" : "مرحبًا بعودتك";
@@ -289,9 +283,6 @@ class AppMetaLabels {
   String contactCenter =
       SessionController().getLanguage() == 1 ? "Contact Centre" : "مركز اتصال ";
 
-  // String contactCenter = SessionController().getLanguage() == 1
-  //     ? "24-hour Contact Centre"
-  //     : "مركز اتصال على مدار 24 ساعة";
 
   String within = SessionController().getLanguage() == 1
       ? "02 6354444 (within UAE)"
@@ -300,14 +291,6 @@ class AppMetaLabels {
   String outside = SessionController().getLanguage() == 1
       ? "+971 2 6354444 (outside UAE)"
       : "+971 2 6354444 (من خارج الإمارات العربية المتحدة)	";
-
-  // String within = SessionController().getLanguage() == 1
-  //     ? "600 52 5500 (within UAE)"
-  //     : "600 52 5500 (من داخل الإمارات العربية المتحدة)";
-
-  // String outside = SessionController().getLanguage() == 1
-  //     ? "+971 2 681 1511 (outside UAE)"
-  //     : "+971 2 681 1511 (من خارج الإمارات العربية المتحدة)	";
 
   String fabEmail =
       SessionController().isFabApp == 1 ? 'FABProp.care@bankfab.com' : '';
@@ -385,13 +368,7 @@ class AppMetaLabels {
 
   String dueActionsForContract = SessionController().getLanguage() == 1
       ? 'Click here for contract renewal process                  '
-      // : 'اضغط هنا لتجديد العقد او الاخلاء                 ';
       : ' انقر هنا لإجراءات تجديد العقود              ';
-  // : 'انقر هنا لعملية تجديد العقد               ';
-
-  // String dueActionsForContract = SessionController().getLanguage() == 1
-  //     ? 'Click here for Contract Renewal/Vacating/End Process                  '
-  //     : 'نقر هنا لتجديد العقد / إجازة / إنهاء العملية                ';
 
   String renewalTutorialForContract = SessionController().getLanguage() == 1
       ? 'Contract renewal - tutorial'
@@ -413,23 +390,18 @@ class AppMetaLabels {
       ? 'Click the above link for tutorial video of the new contract process, or'
       : 'انقر على الرابط أعلاه للاطلاع على فيديو إرشادي لإجراءات العقود الجديدة، أو';
 
-  // : 'انقر هنا لمعالجة العقد                  ';
 
   String clickHereFeedback = SessionController().getLanguage() == 1
       ? 'Click here to provide your feedback                 '
       : 'انقر هنا لتقديم الملاحظات الخاصة بك     ';
 
   String clickaboveButton = SessionController().getLanguage() == 1
-      ? 'Click above button for contract'
-      : 'اضغط فوق الزر أعلاه للعقد';
-  // : 'انقر فوق الزر أعلاه للتعاقد';
+      ? 'Click the above button for contract'
+      : 'انقر على الزر أعلاه للاطلاع على العقد';
 
   String renwal =
       SessionController().getLanguage() == 1 ? ' Renewal ' : ' تجديد ';
 
-  // String renwalOrVacating = SessionController().getLanguage() == 1
-  //     ? ' Renewal/Vacating '
-  //     : ' تجديد / إجازة ';
 
   String processOr =
       SessionController().getLanguage() == 1 ? 'process or ' : 'عملية أو ';
@@ -447,8 +419,8 @@ class AppMetaLabels {
       : 'الرسوم غير مدفوعة';
 
   String rentOutstanding = SessionController().getLanguage() == 1
-      ? 'Rent Outstanding'
-      : 'المبالغ المستحقة';
+      ? 'Outstanding Rental Amount'
+      : 'مبلغ الإيجار المتبقي';
 
   String rentalVal = SessionController().getLanguage() == 1
       ? 'Rental Values'
@@ -463,13 +435,14 @@ class AppMetaLabels {
       : 'الوحدات الشاغرة';
 
   String noOfOccupancy = SessionController().getLanguage() == 1
-      ? 'No of Occupancy'
-      : 'عدد الإشغال';
+      ? 'No. of Occupied Units'
+      : 'عدد الوحدات المشغولة';
 
   String occupancy =
       SessionController().getLanguage() == 1 ? 'Occupancy' : 'الإشغال';
-  String noOfVacancy =
-      SessionController().getLanguage() == 1 ? 'No of Vacancy' : 'عدد الشواغر';
+  String noOfVacancy = SessionController().getLanguage() == 1
+      ? 'No. of Vacant Units'
+      : 'عدد الوحدات الشاغرة';
   String vacancy = SessionController().getLanguage() == 1 ? 'Vacancy' : 'خالي';
 
   String activeContracts = SessionController().getLanguage() == 1
@@ -501,8 +474,8 @@ class AppMetaLabels {
 
   String unit = SessionController().getLanguage() == 1 ? 'Unit' : 'الوحدة';
   String totalUnits = SessionController().getLanguage() == 1
-      ? 'Total Unit'
-      : 'الوحدة الإجمالية';
+      ? 'Total Units'
+      : 'إجمالي عدد الوحدات';
 
   String dashboard =
       SessionController().getLanguage() == 1 ? 'Dashboard' : 'لوحة التحكم';
@@ -542,15 +515,15 @@ class AppMetaLabels {
       : 'القيام بالدفع';
 
   String enterValidAddress = SessionController().getLanguage() == 1
-      ? 'Please Enter Valid Address'
+      ? 'Please Enter a Valid Address'
       : 'الرجاء إدخال عنوان صالح';
   String makePaymentThrough = SessionController().getLanguage() == 1
       ? 'I want to make this payment through'
       : 'أريد أن أقوم بالدفع من خلال';
 
   String pleaseUploadCheque = SessionController().getLanguage() == 1
-      ? 'Please Upload Cheque'
-      : 'يرجى تحميل الشيك';
+      ? 'Please Upload Cheque Copy'
+      : 'الرجاء تحميل نسخة الشيك';
 
   String onlineOrCard = SessionController().getLanguage() == 1
       ? 'Online/Card Payment'
@@ -591,8 +564,8 @@ class AppMetaLabels {
       : 'النقل المجاني عن طريق البريد';
 
   String howToDeliverCheque = SessionController().getLanguage() == 1
-      ? 'How would you like to deliver cheque?'
-      : 'كيف تريد ان تسلم الشيك ';
+      ? 'How would you like to deliver the cheque?'
+      : 'كيف ترغب في تسليم الشيك؟ ';
 
   String selfDelivery =
       SessionController().getLanguage() == 1 ? 'Self Delivery' : 'توصيل ذاتي';
@@ -614,16 +587,16 @@ class AppMetaLabels {
       ? 'Code Sent Successfully'
       : 'تم إرسال الرمز بنجاح';
   String codeAutoRetrievalTimeout = SessionController().getLanguage() == 1
-      ? 'Auto-retrieval of verification code timed out'
-      : 'انتهت مهلة استرجاع الرمز التحقق تلقائيًا';
+      ? 'The auto-retrieval of the verification code has timed out'
+      : 'انتهت مهلة استرجاع رمز التحقق تلقائيًا';
 
   String pleaseSelectAllPayments = SessionController().getLanguage() == 1
-      ? 'Please select appropriate payment method'
-      : 'الرجاء تحديد طريقة الدفع المناسبة';
+      ? 'Please select your desired payment method'
+      : 'الرجاء تحديد طريقة السداد المُفضّلة لك';
 
   String yourRequestCancelled = SessionController().getLanguage() == 1
-      ? 'The request has been canceled/closed, and you cannot continue with it.'
-      : 'تم إلغاء الطلب ولا يمكنك الاستمرار فيه.';
+      ? 'The request has been cancelled/closed and can no longer be continued.'
+      : 'تم إلغاء/إغلاق الطلب ولا يمكن استكماله بعد الآن.';
 
   String pleaseScan =
       SessionController().getLanguage() == 1 ? 'Please scan ' : 'يرجى المسح';
@@ -631,7 +604,6 @@ class AppMetaLabels {
   String pleasetakeOtherSide = SessionController().getLanguage() == 1
       ? 'Please take a photo of the other side '
       : 'يرجى تصوير الجانب الاخر من الهوية الإماراتية سارية المفعول ';
-  // يرجى تصوير الجانب الخلفى من'
 
   String frontSide =
       SessionController().getLanguage() == 1 ? 'Front Side' : 'الجانب الامامي';
@@ -657,7 +629,7 @@ class AppMetaLabels {
       ? 'Please wait while your '
       : 'من فضلك انتظر ريثما';
 
-  String data = SessionController().getLanguage() == 1 ? 'Data ' : 'بيانات';
+  String data = SessionController().getLanguage() == 1 ? 'data ' : 'البيانات';
 
   String dataISPreparing = SessionController().getLanguage() == 1
       ? 'is being processed.'
@@ -674,8 +646,8 @@ class AppMetaLabels {
       : 'يرجى الانتظار أثناء التحميل...';
 
   String paymentConfirmed = SessionController().getLanguage() == 1
-      ? 'Payment method already selected. You cannot change now.'
-      : 'تم تحديد طريقة الدفع . لا يمكنك التغيير الآن.';
+      ? 'The payment method has already been selected and cannot be changed now..'
+      : 'تم تحديد طريقة السداد بالفعل ولا يمكن تغييرها الآن.';
 
   String renatalpayments = SessionController().getLanguage() == 1
       ? 'Rental Payments'
@@ -830,8 +802,8 @@ class AppMetaLabels {
       : 'نسخة التطبيق:';
 
   String aNewVersion = SessionController().getLanguage() == 1
-      ? 'A new version of app '
-      : 'نسخة جديدة من التطبيق ';
+      ? 'A new version of the app'
+      : 'إصدار جديد من التطبيق ';
 
   String fabProperties = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
@@ -849,8 +821,8 @@ class AppMetaLabels {
       : 'نوصي بشدة بتحديث التطبيق إلى أحدث إصدار ، من أجل الاستفادة من أي تصحيحات أمنية وتحسينات في الأداء تم تنفيذها.';
 
   String paymentConfirmation = SessionController().getLanguage() == 1
-      ? 'Please ensure that you have selected the correct payment method as it cannot be changed after confirmation.\nDo you want to proceed?'
-      : 'الرجاء التأكد من طريقة الدفع حيث لا يمكن تغييرها بعد ذلك';
+      ? 'Please ensure that you have selected the correct payment method as it cannot be changed after confirmation. Do you want to proceed?'
+      : 'يرجى التأكد من اختيار طريقة السداد الصحيحة حيث لا يمكن تغييرها بعد التأكيد. هل تريد الاستمرار؟';
 
   // : 'الرجاء التأكد من تحديد طريقة الدفع الصحيحة حيث لا يمكن تغييرها بعد التأكيد. \ n هل تريد المتابعة؟';
   // String paymentConfirmation = SessionController().getLanguage() == 1
@@ -870,28 +842,28 @@ class AppMetaLabels {
       : 'إعادة تعيين التطبيق';
 
   String thisIsTemporaryFeature = SessionController().getLanguage() == 1
-      ? 'This is the temporary feature'
-      : 'هذه هي الميزة المؤقتة';
+      ? 'This is a temporary feature'
+      : 'هذه ميزة مؤقتة';
 
   String pleaseScanFrontSide = SessionController().getLanguage() == 1
-      ? 'Please scan Front Side of your valid Emirate ID'
-      : 'يرجى مسح الواجهة الأمامية لبطاقة الهوية الإمارتية الخاصة بك';
+      ? 'Please scan the front side of your valid Emirate ID'
+      : 'يرجى مسح الجانب الأمامي من بطاقة الهوية الإماراتية السارية الخاصة بك';
 
   String pleaseScanBackSide = SessionController().getLanguage() == 1
-      ? 'Please scan Back Side of your valid Emirate ID'
-      : 'يرجى مسح  الواجهة الخلفية لبطاقة الهوية الإمارتية الخاصة بك';
+      ? 'Please scan the back side of your valid Emirate ID'
+      : 'يرجى مسح الجانب الخلفي من بطاقة الهوية الإماراتية السارية الخاصة بك';
 
   String cardScanningFailed = SessionController().getLanguage() == 1
       ? 'Card Scanning Failed'
       : 'فشل مسح البطاقة';
 
   String scanningFailed = SessionController().getLanguage() == 1
-      ? 'Scanning could not be successfull, please try again'
-      : ' المسح غير ناجحً ، يرجى إعادة  المحاولة';
+      ? 'Scanning was not successful, please try again'
+      : 'المسح غير ناجح، يرجى المحاولة مرة أخرى';
 
   String pleaseTryValidCardScanning = SessionController().getLanguage() == 1
-      ? 'Please try with a clear and valid Emirate ID image'
-      : 'يرجى المحاولة مع صورة هوية إمارتية  واضحة و فعالة';
+      ? 'Please try again with a clear and valid Emirate ID image'
+      : 'يرجى المحاولة مرة أخرى باستخدام صورة هوية إمارتية واضحة وسارية';
 
   ///////////////////////////////
   /// Tenant Contracts Screen Labels
@@ -947,8 +919,8 @@ class AppMetaLabels {
       : 'خدمات البحث';
 
   String searchServicesby = SessionController().getLanguage() == 1
-      ? 'Search by Request No/Category'
-      : 'خدمات البحث عن طريق عدد الطلبات أو الفئة';
+      ? 'Search by Request No./Category'
+      : 'البحث باستخدام رقم الطلب/الفئة';
 
   String searchInvoices = SessionController().getLanguage() == 1
       ? 'Search Invoices'
@@ -959,7 +931,7 @@ class AppMetaLabels {
       : 'بحث عن أوامر الشراء ';
 
   String purposedRemedy = SessionController().getLanguage() == 1
-      ? "Purposed Remedy"
+      ? "Proposed Remedy"
       : 'الحل المقترح';
 
   String descriptionn =
@@ -969,10 +941,10 @@ class AppMetaLabels {
       ? "Contract Total Amount"
       : 'المبلغ الإجمالي للعقد';
   String contractValueUnPaid = SessionController().getLanguage() == 1
-      ? "Contract Value UnPaid"
+      ? "Contract Value Unpaid"
       : 'قيمة العقد غير مدفوعة';
   String contractAnnualAmount = SessionController().getLanguage() == 1
-      ? "Contract Annual Amount"
+      ? "Annual Contract Amount"
       : 'مبلغ العقد السنوي';
   String contractor =
       SessionController().getLanguage() == 1 ? "CONTRACTOR" : 'مقاول';
@@ -990,7 +962,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Contract Title" : 'عنوان العقد';
 
   String authorizedSignatory = SessionController().getLanguage() == 1
-      ? "Authorized Signatory"
+      ? "Authorised Signatory"
       : 'المُفوَّض بالتوقيع';
 
   String noofInstalments = SessionController().getLanguage() == 1
@@ -998,21 +970,21 @@ class AppMetaLabels {
       : 'عدد الاقساط';
 
   String instalmentNo =
-      SessionController().getLanguage() == 1 ? "Installment No:" : 'رقم القسط';
+      SessionController().getLanguage() == 1 ? "Installment No." : 'رقم القسط';
 
   String instalmentNoWithoutColon =
-      SessionController().getLanguage() == 1 ? "Installment No" : 'رقم القسط';
+      SessionController().getLanguage() == 1 ? "Installment No." : 'رقم القسط';
 
   String paymentType =
       SessionController().getLanguage() == 1 ? "Payment Type" : 'نوع الدفعة';
 
   String noofStaffwithAcc = SessionController().getLanguage() == 1
-      ? "No. of Staffs with Accomodation"
-      : 'عدد الموظفين مع السكن';
+      ? "No. of Staff with Accomodation"
+      : 'عدد الموظفين ممن لديهم سكن';
 
   String noofStaffwithoutAcc = SessionController().getLanguage() == 1
-      ? "No. of Staffs without Accomodation"
-      : 'عدد الموظفين دون السكن';
+      ? "No. of Staff without Accomodation"
+      : 'عدد الموظفين ممن ليس لديهم سكن';
 
   String contractStatus =
       SessionController().getLanguage() == 1 ? "Contract Status" : 'حالة العقد';
@@ -1051,16 +1023,16 @@ class AppMetaLabels {
 
   String from = SessionController().getLanguage() == 1 ? "From" : 'من';
   String aSonoDate = SessionController().getLanguage() == 1
-      ? "Amortization Calculation Date"
-      : 'تاريخ حساب الإطفاء';
+      ? "Amortisation Calculation Date"
+      : 'تاريخ حساب استهلاك الدين';
 
   String to = SessionController().getLanguage() == 1 ? "To" : 'الى';
 
   String filter = SessionController().getLanguage() == 1 ? "Filter" : 'صنف';
 
   String chqDetailsUpdatedWithin = SessionController().getLanguage() == 1
-      ? 'Note: Cheque details updated with in 7-10 days from Bank statement. '
-      : 'ملاحظة: تحقق من التفاصيل المحدثة خلال 7-10 أيام من كشف الحساب المصرفي.';
+      ? 'Note: Cheque details updated within 7-10 days from Bank statement. '
+      : 'ملاحظة:تحديث تفاصيل الشيك في غضون 7-10 أيام من كشف الحساب المصرفي.';
 
   String receiptNo =
       SessionController().getLanguage() == 1 ? "Receipt No." : 'رقم الإيصال';
@@ -1077,12 +1049,12 @@ class AppMetaLabels {
   String amount = SessionController().getLanguage() == 1 ? "Amount" : 'مبلغ';
 
   String paymentFor =
-      SessionController().getLanguage() == 1 ? "Payment For" : 'الدفع';
+      SessionController().getLanguage() == 1 ? "Payment for" : 'الدفع لـ';
 
   String date = SessionController().getLanguage() == 1 ? "Date" : 'تاريخ';
 
   String dateOFBirth = SessionController().getLanguage() == 1
-      ? 'Date Of Birth'
+      ? 'Date of Birth'
       : 'تاريخ الميلاد';
 
   String chequeDetails = SessionController().getLanguage() == 1
@@ -1096,11 +1068,12 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Cheque Number" : 'رقم الشيك';
 
   String chqIssuerBank = SessionController().getLanguage() == 1
-      ? "Chq Issuer Bank"
-      : 'بنك مصدر الشيك';
+      ? "Cheque Issuer Bank"
+      : 'المصرف المُصدر للشيك';
 
-  String chqStatus =
-      SessionController().getLanguage() == 1 ? 'Status of Chq' : 'حالة الشيك';
+  String chqStatus = SessionController().getLanguage() == 1
+      ? 'Status of Cheque'
+      : 'حالة الشيك';
 
   String status = SessionController().getLanguage() == 1 ? "Status" : 'الحالة';
 
@@ -1139,15 +1112,15 @@ class AppMetaLabels {
   String contractAmount =
       SessionController().getLanguage() == 1 ? "Contract Amount" : 'قيمة العقد';
   String lastContractAmount = SessionController().getLanguage() == 1
-      ? "Last Contract Amount"
-      : 'مبلغ العقد الأخير';
+      ? "Previous Contract Amount"
+      : 'مبلغ العقد السابق';
 
   String contractDocument = SessionController().getLanguage() == 1
-      ? "Contract Documnets"
-      : 'وثائق العقد';
+      ? "Contract Documents"
+      : 'مستندات العقد';
 
   String prevContractNo = SessionController().getLanguage() == 1
-      ? "Previous Contract No"
+      ? "Previous Contract No."
       : 'رقم العقد السابق';
 
   String unitCategory =
@@ -1182,13 +1155,13 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Residential" : "سكني";
 
   String bedRooms =
-      SessionController().getLanguage() == 1 ? "Bed Rooms" : 'غرف نوم';
+      SessionController().getLanguage() == 1 ? "Bedrooms" : 'غرف النوم';
 
   String kitchens =
       SessionController().getLanguage() == 1 ? "Kitchens" : 'مطابخ';
 
   String maidRooms =
-      SessionController().getLanguage() == 1 ? "Maid Rooms" : 'غرف الخادمة';
+      SessionController().getLanguage() == 1 ? "Maids Rooms" : 'غرف الخادمات';
 
   String livingRooms =
       SessionController().getLanguage() == 1 ? "Living Rooms" : 'غرف المعيشة';
@@ -1200,16 +1173,17 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Washrooms" : 'حمام';
 
   String driverRooms =
-      SessionController().getLanguage() == 1 ? "Driver Rooms" : 'غرف السائقين';
+      SessionController().getLanguage() == 1 ? "Drivers Rooms" : 'غرف السائقين';
 
-  String unitRefNo =
-      SessionController().getLanguage() == 1 ? "Unit Ref No" : 'رقم الوحدة';
+  String unitRefNo = SessionController().getLanguage() == 1
+      ? "Unit Ref. No."
+      : 'الرقم المرجعي للوحدة';
 
   String unitNo =
-      SessionController().getLanguage() == 1 ? "Unit No" : 'رقم الوحدة';
+      SessionController().getLanguage() == 1 ? "Unit No." : 'رقم الوحدة';
 
   String noofUnits =
-      SessionController().getLanguage() == 1 ? "No of Units" : 'عدد الوحدات';
+      SessionController().getLanguage() == 1 ? "No. of Units" : 'عدد الوحدات';
 
   String rent =
       SessionController().getLanguage() == 1 ? "Rent" : 'القيمة الايجارية';
@@ -1217,7 +1191,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Annual Rent" : 'الإيجار السنوي';
 
   String noofRooms =
-      SessionController().getLanguage() == 1 ? "No of Rooms" : 'عدد الغرف';
+      SessionController().getLanguage() == 1 ? "No. of Rooms" : 'عدد الغرف';
 
   String clear = SessionController().getLanguage() == 1 ? "Clear" : 'امسح';
 
@@ -1279,27 +1253,28 @@ class AppMetaLabels {
   String vendor = SessionController().getLanguage() == 1 ? 'Vendor' : 'المقاول';
 
   String pleaseFillDataInMainInfoFirst = SessionController().getLanguage() == 1
-      ? 'Please enter the data in Main Info First'
-      : 'الرجاء إدخال البيانات في المعلومات الرئيسية أولاً';
+      ? 'Please enter the data in Main Info first'
+      : 'يرجى إدخال البيانات في قسم المعلومات الرئيسية أولاً';
 
   String pleaseSelectServiceType = SessionController().getLanguage() == 1
       ? 'Please Select Service Type'
       : 'الرجاء تحديد نوع الخدمة';
 
   String pleaseEnterInvoiceAmountVal = SessionController().getLanguage() == 1
-      ? 'Please Enter Invoice Amount Value'
-      : 'الرجاء إدخال قيمة مبلغ الفاتورة';
+      ? 'Please Enter Invoice Value Amount'
+      : 'يرجى إدخال مبلغ قيمة الفاتورة';
 
   String pleaseEnterInvoiceNOVal = SessionController().getLanguage() == 1
-      ? 'Please Enter Invoice No'
-      : 'الرجاء إدخال رقم الفاتورة';
+      ? 'Please Enter Invoice No.'
+      : 'يرجى إدخال رقم الفاتورة';
+
   String pleaseEnterValidChequeNO = SessionController().getLanguage() == 1
-      ? 'Please enter valid Cheque Number'
-      : 'الرجاء إدخال رقم الشيك الصحيح';
+      ? 'Please enter valid cheque number'
+      : 'يرجى إدخال رقم شيك صحيح';
 
   String pleaseEnterInstallmentVal = SessionController().getLanguage() == 1
-      ? 'Please Select Installment No'
-      : 'الرجاء تحديد رقم القسط';
+      ? 'Please Select Installment No.'
+      : 'يرجى تحديد رقم القسط';
 
   String pleaseEnterInvoiceTRNVal = SessionController().getLanguage() == 1
       ? 'Please Enter Value Of TRN '
@@ -1322,26 +1297,29 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "LPOs" : 'أوامر الشراء ';
 
   String lpo = SessionController().getLanguage() == 1 ? "LPO" : 'أوامر الشراء ';
-  String lpoNo = SessionController().getLanguage() == 1 ? 'LPO No' : 'Lpo رقم';
+  String lpoNo =
+      SessionController().getLanguage() == 1 ? 'LPO No.' : 'رقم أمر الشراء';
   String nolpoNosFounf = SessionController().getLanguage() == 1
       ? 'No LPOs Found'
       : 'لم يتم العثور على LPOs';
-  String aMCNo = SessionController().getLanguage() == 1 ? 'AMC No' : 'Amc رقم';
+  String aMCNo = SessionController().getLanguage() == 1
+      ? 'AMC No.'
+      : 'رقم عقد الصيانة السنوي';
   String noAMCNosFound = SessionController().getLanguage() == 1
       ? 'No AMCs Found'
       : 'لم يتم العثور على AMCs';
   String yourBalanceAMount = SessionController().getLanguage() == 1
-      ? 'Your Balance amount is '
-      : 'مبلغ رصيدك هو ';
+      ? 'Your balance amount is'
+      : 'مبلغ الرصيد الخاص بك هو ';
   String pleaseEnterValidAMount = SessionController().getLanguage() == 1
-      ? ' ,Please enter valid amount'
-      : ' الرجاء إدخال مبلغ صالح ';
+      ? ', please enter valid amount'
+      : 'يرجى إدخال مبلغ صحيح ';
   String pleaseEnterValidAMountSeparate = SessionController().getLanguage() == 1
       ? 'Please enter valid amount'
       : ' الرجاء إدخال مبلغ صالح ';
   String yourBalanceAmount = SessionController().getLanguage() == 1
-      ? 'Your Balance amount is '
-      : ' مبلغ رصيدك هو ';
+      ? 'Your balance amount is'
+      : 'مبلغ الرصيد الخاص بك هو';
   String pleaseEnterValidName = SessionController().getLanguage() == 1
       ? 'Please enter valid name'
       : ' الرجاء إدخال اسم صحيح ';
@@ -1359,14 +1337,14 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? 'Invoices' : 'الفواتير';
 
   String specialCharNotAllowed = SessionController().getLanguage() == 1
-      ? '(Special character not allowed)'
+      ? '(Special characters not allowed)'
       : '(الأحرف الخاصة غير مسموح بها)';
 
   String invoice =
       SessionController().getLanguage() == 1 ? 'Invoice' : 'الفواتير';
 
   String invoicesNo =
-      SessionController().getLanguage() == 1 ? 'Invoice No' : 'رقم الفاتورة';
+      SessionController().getLanguage() == 1 ? 'Invoice No.' : 'رقم الفاتورة';
 
   String invoiceDate = SessionController().getLanguage() == 1
       ? "Invoice Date"
@@ -1498,26 +1476,26 @@ class AppMetaLabels {
       : 'يرجى تحديد ...';
 
   String pleaseSelectFromDate = SessionController().getLanguage() == 1
-      ? 'Please select From date'
-      : 'الرجاء تحديد من التاريخ';
+      ? 'Please select \'from\' date'
+      : 'يرجى تحديد تاريخ البدء';
 
   String pleaseSelectAsNODate = SessionController().getLanguage() == 1
-      ? 'Please select Amorization Calculation Date'
-      : 'الرجاء تحديد Amoriztiyan Kalkalathiyan Date';
+      ? 'Please select Amorisation Calculation Date'
+      : 'الرجاء تحديد تاريخ حساب استهلاك الدين';
 
   String dateRangeOfReport = SessionController().getLanguage() == 1
       ? 'Only 1 years data can be downloaded at one time'
       : 'يمكن تنزيل بيانات 3 سنوات فقط في وقت واحد';
 
   String pleaseSelectToDate = SessionController().getLanguage() == 1
-      ? 'Please select To date'
-      : 'الرجاء تحديد  التاريخ';
+      ? 'Please select \'to\' date'
+      : 'يرجى تحديد تاريخ الانتهاء';
 
   String first = SessionController().getLanguage() == 1 ? ' first' : 'أولاً';
 
   String pleaseSelectFileFirst = SessionController().getLanguage() == 1
-      ? 'Please select document at first'
-      : 'الرجاء تحديد الوثيقة في البداية';
+      ? 'Please select document first'
+      : 'يرجى تحديد المستندات أولاً';
 
   String pleaseSelectAgent = SessionController().getLanguage() == 1
       ? 'Please select agent'
@@ -1530,10 +1508,10 @@ class AppMetaLabels {
   String sRNO = SessionController().getLanguage() == 1 ? 'SR No. ' : 'SR No. ';
 
   String serviceNO =
-      SessionController().getLanguage() == 1 ? 'Service No' : 'رقم الخدمة';
+      SessionController().getLanguage() == 1 ? 'Service No.' : 'رقم الخدمة';
 
   String instNo =
-      SessionController().getLanguage() == 1 ? 'Inst.No	' : 'رقم القسط';
+      SessionController().getLanguage() == 1 ? 'Inst. No.	' : 'رقم القسط';
 
   String tRNofLandlord = SessionController().getLanguage() == 1
       ? 'TRN of Landlord	'
@@ -1544,8 +1522,8 @@ class AppMetaLabels {
       : 'لم يتم العثور على أمر الشراء  ';
 
   String docRefNo = SessionController().getLanguage() == 1
-      ? 'Doc Ref No'
-      : 'رقم مرجع المستند';
+      ? 'Doc Ref. No.'
+      : 'الرقم المرجعي للمستندات';
 
   String lPOType =
       SessionController().getLanguage() == 1 ? 'LPO Type' : 'نوع أمر الشراء ';
@@ -1555,8 +1533,8 @@ class AppMetaLabels {
   String offers = SessionController().getLanguage() == 1 ? 'Offers' : 'العروض';
 
   String offerProperties = SessionController().getLanguage() == 1
-      ? 'Offer Properties '
-      : 'عروض العقارات ';
+      ? 'Properties on Offer'
+      : 'العقارات المعروضة ';
 
   String accountTitle =
       SessionController().getLanguage() == 1 ? 'Account Title: ' : 'إسم الحساب';
@@ -1589,7 +1567,7 @@ class AppMetaLabels {
       : 'عنوان البريد الكتروني';
 
   String isAuthorizedSignatory = SessionController().getLanguage() == 1
-      ? 'Is Authorized Signatory'
+      ? 'Is Authorised Signatory'
       : 'هو المُفوَّض بالتوقيع';
 
   String supplierTRN = SessionController().getLanguage() == 1
@@ -1597,7 +1575,7 @@ class AppMetaLabels {
       : 'رقم تسجيل دافع ضرائب المورد';
 
   String tradeLicenseNo = SessionController().getLanguage() == 1
-      ? 'Trade License No'
+      ? 'Trade License No.'
       : 'رقم الرخصة التجارية';
 
   String contacts =
@@ -1615,8 +1593,8 @@ class AppMetaLabels {
       : 'تحميل المستندات';
 
   String stayOnPage = SessionController().getLanguage() == 1
-      ? 'Stay On Page'
-      : 'للبقاء فى الصفحة';
+      ? 'Stay on Page'
+      : 'الاستمرار في الصفحة';
 
   String goToDashoboard =
       SessionController().getLanguage() == 1 ? 'Dashboard' : 'لوحة البداية';
@@ -1645,8 +1623,8 @@ class AppMetaLabels {
       : 'اعتماد العقد فى البلدية';
 
   String confirmMunicipality = SessionController().getLanguage() == 1
-      ? "I confirm that I've completed the municipality approval procedure."
-      : 'أؤكد أنني أكملت إجراءات موافقة البلدية';
+      ? "I confirm that I've completed the municipality approval procedure.."
+      : 'أقر بأنني أكملت إجراءات موافقة البلدية.';
 
   String uploadVendorDocs = SessionController().getLanguage() == 1
       ? 'Upload Vendor Documents'
@@ -1661,8 +1639,8 @@ class AppMetaLabels {
       : 'المستندات الخاصة بك';
 
   String docsLike = SessionController().getLanguage() == 1
-      ? 'Trade License, Certificates, Insurance, VAT Certificate etc...'
-      : 'الرخصة التجارية ، الشهادات ، التأمين ، شهادة ضريبة القيمة المضافة ، إلخ ...';
+      ? 'Trade License, Certificates, Insurance, VAT Certificate, etc...'
+      : 'الرخصة التجارية، الشهادات، التأمين، شهادة ضريبة القيمة المضافة، وغيرها.';
 
   String uploadYourDoc = SessionController().getLanguage() == 1
       ? 'Upload Your Document'
@@ -1675,12 +1653,13 @@ class AppMetaLabels {
   String expDate =
       SessionController().getLanguage() == 1 ? 'Expiry Date' : 'تاريخ الانتهاء';
 
-  String dateFormat = SessionController().getLanguage() == 1
-      ? 'dd-MM-yyyy'
-      : 'اليوم-الشهر-السنة';
+  String dateFormat =
+      SessionController().getLanguage() == 1 ? 'dd-mm-yyyy' : 'يوم- شهر- سنة';
 
   String dateFormatForShowRoundedDatePicker =
-      SessionController().getLanguage() == 1 ? 'dd-MM-yyyy' : 'dd-MM-yyyy';
+      SessionController().getLanguage() == 1
+          ? 'dd-mm-yyyy'
+          : 'dd-mm-yyyy'; // يوم- شهر- سنة
 
   String selectFuturedate = SessionController().getLanguage() == 1
       ? 'Please select future date'
@@ -1697,7 +1676,7 @@ class AppMetaLabels {
   ///////////////////////////////
 
   String landlord =
-      SessionController().getLanguage() == 1 ? 'LandLord' : 'المالك';
+      SessionController().getLanguage() == 1 ? 'Landlord' : 'المالك';
 
   ///////////////////////////////
   /// Public Labels
@@ -1708,11 +1687,9 @@ class AppMetaLabels {
   // String public = SessionController().getLanguage() == 1 ? 'Public' : 'عام';
   /////////////////// Changed by kamran ////////////////////////////
 
-  String sqf =
-      SessionController().getLanguage() == 1 ? 'SQF' : 'المساحة بالقدم المربع';
+  String sqf = SessionController().getLanguage() == 1 ? 'Sq. Ft.' : 'قدم مربع';
 
-  String sqm =
-      SessionController().getLanguage() == 1 ? 'SQF' : 'المساحة بالمتر المربع';
+  String sqm = SessionController().getLanguage() == 1 ? 'Sq. Ft.' : 'قدم مربع';
 
   ///////////////////////////////////////////////////////////////////
   ///////////////////////////////
@@ -1739,19 +1716,19 @@ class AppMetaLabels {
   ///////////////////////////////
 
   String validPhoneNo = SessionController().getLanguage() == 1
-      ? 'Please Enter Valid Mobile Number'
-      : 'يرجى إدخال رقم هاتف صحيح';
+      ? 'Please Enter a Valid Mobile Number'
+      : 'يرجى إدخال رقم هاتف متحرك صحيح';
 
   String incorrectCode = SessionController().getLanguage() == 1
       ? 'You\'ve entered an incorrect code.'
-      : 'لقد أدخلت رمزًا غير صحيح.';
+      : 'لقد أدخلت كودًا غير صحيح.';
 
   String incorrectMpin = SessionController().getLanguage() == 1
-      ? 'You\'ve entered an incorrect MPIN.'
-      : 'لقد قمت بإدخال رقم تعريف شخصي غير صحيح.';
+      ? 'You\'ve entered an incorrect MPIN..'
+      : 'لقد أدخلت رقم تعريف شخصي غير صحيح.';
   String tooManyReqtryLater = SessionController().getLanguage() == 1
-      ? "Too Many Requests,Try Later "
-      : 'الكثير من الطلبات، جرب لاحقًا';
+      ? "Too Many Requests, Please Try Again Later"
+      : 'عدد الطلبات زائد عن الحد، يرجى المحاولة لاحقًا';
 
   String tooltipName =
       SessionController().getLanguage() == 1 ? 'User Name' : 'اسم االمستخدم';
@@ -1761,24 +1738,24 @@ class AppMetaLabels {
       : 'رقم هاتف المستخدم';
 
   String mpinNotLess = SessionController().getLanguage() == 1
-      ? 'MPIN must not less then 6'
-      : 'رقم التعريف الشخصي يجب أن لا يقل عن 6 ارقام';
+      ? 'MPIN must not be less than 6 digits'
+      : 'ينبغي أن يكون رقم التعريف الشخصي أقل من 6 أرقام';
 
   String mpinDidNotMatch = SessionController().getLanguage() == 1
-      ? 'MPIN didn\'t Match'
-      : 'رقم التعريف الشخصي  غير متطابق';
+      ? 'PIN didn\'t match'
+      : 'رقم التعريف الشخصي غير مطابق';
 
   String selectAtleastOne = SessionController().getLanguage() == 1
-      ? 'Please select atleast one'
+      ? 'Please select at least one'
       : 'يرجى تحديد واحد على الأقل';
 
   String selectFromDate = SessionController().getLanguage() == 1
-      ? 'Please select From Date'
-      : 'يرجى التحديد من التاريخ';
+      ? 'Please select \'from\' date'
+      : 'يرجى تحديد تاريخ البدء';
 
   String selectToDate = SessionController().getLanguage() == 1
-      ? 'Please select To Date'
-      : 'يرجى تحديد تاريخ';
+      ? 'Please select \'to\' date'
+      : 'يرجى تحديد تاريخ الانتهاء';
 
   String noContractsFound = SessionController().getLanguage() == 1
       ? 'No Contracts Found'
@@ -1854,14 +1831,14 @@ class AppMetaLabels {
       : 'تم الانتهاء من الاستبيان';
 
   String surveyCompMsg = SessionController().getLanguage() == 1
-      ? 'Thanks for giving your precious time to complete the survey.'
-      : 'نشكرك على إكمال الاستبيان.';
+      ? 'Thank you for participating in the survey.'
+      : 'شكرًا لك على المشاركة في الاستبيان.';
 
   String added = SessionController().getLanguage() == 1 ? 'Added' : 'مُضاف';
 
   String whyDoYou = SessionController().getLanguage() == 1
-      ? 'Why do you want to reopen request?'
-      : 'لماذا تريد إعادة فتح الطلب';
+      ? 'Reason for reopening request'
+      : 'سبب إعادة فتح الطلب';
 
   String enterRemarks = SessionController().getLanguage() == 1
       ? 'Enter remarks'
@@ -1872,13 +1849,12 @@ class AppMetaLabels {
       : 'إعادة فتح الطلب';
 
   String areYouSure = SessionController().getLanguage() == 1
-      ? 'Are you sure you want to cancel request?'
-      : 'هل أنت متأكد أنك تريد إلغاء الطلب';
+      ? 'Are you sure you want to cancel this request?'
+      : 'هل أنت متأكد من رغبتك في إلغاء هذا الطلب؟';
 
   String areYouSureToClose = SessionController().getLanguage() == 1
-      ? 'Are you sure you want to close request?'
-      : 'هل أنت متأكد من إغلاق الطلب';
-
+      ? 'Are you sure you want to close this request?'
+      : 'هل أنت متأكد من رغبتك في إغلاق هذا الطلب؟';
   String tenantSignature = SessionController().getLanguage() == 1
       ? 'Tenant Signature'
       : 'توقيع المستأجر';
@@ -1950,8 +1926,8 @@ class AppMetaLabels {
       : 'قيم تجربتك';
 
   String areYouSatisfied = SessionController().getLanguage() == 1
-      ? 'Are you satisfied with the Service?'
-      : 'هل أنت راض عن الخدمة';
+      ? 'Are you satisfied with the service?'
+      : 'هل أنت راضٍ عن الخدمة؟';
 
   String tellUs = SessionController().getLanguage() == 1
       ? 'Tell us how can we improve'
@@ -1989,8 +1965,8 @@ class AppMetaLabels {
       : 'يجب ألا يتجاوز الملف 10 ميجابايت (بتنسيقات JPG و PDF,PNG فقط)';
 
   String cannotAddSvcReq = SessionController().getLanguage() == 1
-      ? 'You do not have any active contract. So you cannot add a service request.'
-      : 'ليس لديك أي عقد فعال. لذلك لا يمكنك إضافة طلب خدمة.';
+      ? 'You do not have any active contract. A service request cannot be added.'
+      : 'ليس لديك أي عقد نشط. لا يمكن إضافة طلب خدمة.';
 
   ///////////////////////////////
   /// Baseclient Messages Labels
@@ -2009,18 +1985,18 @@ class AppMetaLabels {
       : 'لا يمكن الاتصال باالحاسوب الرئيسي';
 
   String unauthorized =
-      SessionController().getLanguage() == 1 ? 'Unauthorized' : 'غير مصرح به';
+      SessionController().getLanguage() == 1 ? 'Unauthorised' : 'غير مُصرّح به';
 
   String noDatafound = SessionController().getLanguage() == 1
       ? 'No data found'
       : 'لاتوجد بيانات';
 
   String noInstallmentfound = SessionController().getLanguage() == 1
-      ? 'No Installment found'
-      : 'کوئی قسط نہیں ملی';
+      ? 'No installment found'
+      : 'لم يُعثر على أي قسط';
   String noOptionsfound = SessionController().getLanguage() == 1
-      ? 'No Options found'
-      : 'لم يتم العثور على خيارات';
+      ? 'No options found'
+      : 'لم يُعثر على أي خيارات';
 
   String pleaseEnterMobileNoWithoutZero = SessionController().getLanguage() == 1
       ? 'Please do not start your phone number with zero'
@@ -2031,11 +2007,11 @@ class AppMetaLabels {
       : 'يرجى إدخال رقم الهاتف الخاص بك';
 
   String badRequest =
-      SessionController().getLanguage() == 1 ? 'Bad Request' : 'طلب خاطئ';
+      SessionController().getLanguage() == 1 ? 'Request Error' : 'خطأ في الطلب';
 
   String invalidName = SessionController().getLanguage() == 1
-      ? 'Only alphabets and spaces allowed'
-      : 'فقط حروف وفراغات مسموحة';
+      ? 'Only alphabet and spaces allowed'
+      : 'لا يُسمح إلا بالحروف الأبجدية والفراغات';
 
   String invalidPhone = SessionController().getLanguage() == 1
       ? 'Only numbers and + allowed'
@@ -2046,12 +2022,12 @@ class AppMetaLabels {
       : 'فقط حروف ارقام وفراغات واشارات مسموحة';
 
   String fillAllFields = SessionController().getLanguage() == 1
-      ? 'Please fill all fields'
-      : 'يرجى تعبئة كل الخانات ';
+      ? 'Please fill in all fields'
+      : 'يرجى ملء جميع الخانات ';
 
   String selectRating = SessionController().getLanguage() == 1
-      ? 'Please select some rating'
-      : 'يرجى تحديد التصنيف';
+      ? 'Please select a rating'
+      : 'يرجى تحديد تصنيف';
 
   String enterSomeRemarks = SessionController().getLanguage() == 1
       ? 'Please enter remarks'
@@ -2059,6 +2035,9 @@ class AppMetaLabels {
 
   String notFound =
       SessionController().getLanguage() == 1 ? 'NotFound' : 'لا يوجد';
+
+  String notFound1 =
+      SessionController().getLanguage() == 1 ? 'Not Found' : 'غير موجود';
 
   String noSvcFound = SessionController().getLanguage() == 1
       ? 'No Services Found'
@@ -2091,25 +2070,22 @@ class AppMetaLabels {
       : 'إرسال الملاحظات بنجاح';
 
   String fileDownloadedSuccessfully = SessionController().getLanguage() == 1
-      ? 'File downloaded successfully inside your device'
-      : 'تم تنزيل الملف بنجاح داخل جهازك';
-
+      ? 'File downloaded successfully to your device'
+      : 'تم تنزيل الملف بنجاح على جهازك';
   String reqBooking =
       SessionController().getLanguage() == 1 ? 'Request Booking' : 'طلب الحجز';
 
   String pleaseSelectPayment = SessionController().getLanguage() == 1
-      ? 'Please Select Some Payment'
-      : 'الرجاء تحديد بعض المدفوعات';
+      ? 'Please Select a Paymentt'
+      : 'يرجى تحديد مبلغ السداد';
 
   String successfullyPaid = SessionController().getLanguage() == 1
       ? 'Payments are completed.'
       : 'اكتملت الدفعات';
-  // ? 'Card Payments / Bank Transfers are completed.'
-  // : 'تم الدفع لبطاقة / التحويلات المصرفية';
 
   String errorProcessingPayment = SessionController().getLanguage() == 1
-      ? 'Error processing payment. Please try later.'
-      : 'خطأ في معالجة الدفع. الرجاء المحاولة لاحقا.';
+      ? 'Error processing payment. Please try again later.'
+      : 'خطأ في معالجة مبلغ السداد. يرجى المحاولة لاحقًا.';
 
   String requiredField =
       SessionController().getLanguage() == 1 ? 'Required' : 'مطلوب';
@@ -2181,8 +2157,8 @@ class AppMetaLabels {
       : 'تم إرسال طلب تسجيل الدخول';
 
   String checkinReqMsg = SessionController().getLanguage() == 1
-      ? 'Are you sure you want to check-in contract?'
-      : 'هل أنت متأكد أنك تريد أن توقع العقد ';
+      ? 'Are you sure you want to check-in the contract?'
+      : 'هل أنت متأكد من رغبتك في تسجيل الدخول في العقد؟';
 
   String yourCheckinAgainst = SessionController().getLanguage() == 1
       ? "Your Check-in Request against Contract "
@@ -2209,8 +2185,9 @@ class AppMetaLabels {
       ? 'Renewal Request'
       : 'طلب التجديد';
 
-  String vacateReq =
-      SessionController().getLanguage() == 1 ? 'Vacate Request' : 'طلب الإخلاء';
+  String vacateReq = SessionController().getLanguage() == 1
+      ? 'Request to Vacate'
+      : 'طلب إخلاء';
 
   String legalReq = SessionController().getLanguage() == 1
       ? 'Legal Settlement Request'
@@ -2221,12 +2198,12 @@ class AppMetaLabels {
       : 'تمديد العقود';
 
   String whyTerminate = SessionController().getLanguage() == 1
-      ? 'Why do you want to terminate contract?'
-      : 'لماذا تريد إنهاء العقد';
+      ? 'Reason for contract termination'
+      : 'سبب إنهاء العقد';
 
   String chooseReason = SessionController().getLanguage() == 1
-      ? 'Please select some reason to terminate contract.'
-      : 'يرجى تحديد سبب لإنهاء العقد.';
+      ? 'Please select a reason for contract termination'
+      : 'يرجى تحديد سبب إنهاء العقد';
 
   String terminationDate = SessionController().getLanguage() == 1
       ? 'Termination Date'
@@ -2266,11 +2243,11 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? 'Extend Period' : 'تمديد الفترة';
 
   String slelctextendperiod = SessionController().getLanguage() == 1
-      ? 'Select Extend Period'
-      : 'حدد تمديد الفترة';
+      ? 'Select Extended Period'
+      : 'تحديد فترة التمديد';
 
   String renweldatelbl =
-      SessionController().getLanguage() == 1 ? 'Renewel Date' : 'تاريخ التجديد';
+      SessionController().getLanguage() == 1 ? 'Renewal Date' : 'تاريخ التجديد';
 
   String viewDetails =
       SessionController().getLanguage() == 1 ? 'View Details' : 'عرض التفاصيل';
@@ -2324,8 +2301,8 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? 'Owner Name' : 'اسم المالك';
 
   String emirateid = SessionController().getLanguage() == 1
-      ? 'Emirate ID'
-      : 'الهوية الاماراتية';
+      ? 'Emirates ID'
+      : 'رقم الهوية الإماراتية';
 
   String attachChequeCopy = SessionController().getLanguage() == 1
       ? 'Attach Cheque Copy'
@@ -2334,12 +2311,12 @@ class AppMetaLabels {
   String attach = SessionController().getLanguage() == 1 ? 'Attach' : 'يربط';
 
   String pleaseFillTheCheque = SessionController().getLanguage() == 1
-      ? 'Please fill your cheque as filled in the image below.'
-      : 'يرجى ملء الشيك كما هو مملوء  بالصورة التالية';
+      ? 'Please fill in your cheque as outlined in the image below.'
+      : 'يرجى استيفاء بيانات الشيك على النحو الموضح في الصورة أدناه.';
 
   String uploadYourEmirateID = SessionController().getLanguage() == 1
-      ? 'Upload Your Emirate ID'
-      : 'قم بتحميل بطاقة الهوية الخاصة بك';
+      ? 'Upload Your Emirates ID'
+      : 'تحميل بطاقة الهوية الإماراتية الخاصة بك';
 
   String denied =
       SessionController().getLanguage() == 1 ? 'Denied' : 'تم الحظر';
@@ -2383,8 +2360,8 @@ class AppMetaLabels {
       : 'قيم تجربتك';
 
   String areyouSatisfied = SessionController().getLanguage() == 1
-      ? 'Are you satisfied with the experience ?'
-      : 'هل أنت راض عن التجربة';
+      ? 'Are you satisfied with the experience?'
+      : 'هل أنت راضٍ عن التجربة؟';
 
   String requestDetails = SessionController().getLanguage() == 1
       ? 'Request Details'
@@ -2417,28 +2394,13 @@ class AppMetaLabels {
       ? 'You can use the communication tab to get more information after submitting.'
       : 'يمكنك استخدام علامة تبويب الاتصال للحصول على مزيد من المعلومات بعد الإرسال.';
 
-  String personalDocUploadInfo = SessionController().isFabApp == 1
-      ? SessionController().getLanguage() == 1
+  String personalDocUploadInfo = 
+       SessionController().getLanguage() == 1
           ? 'I understand that I need to share my Emirates ID, passport and any other related documents with FAB Properties as this is necessary for the renewal of my Tenancy agreement with FAB Properties.'
-          : 'أدرك أنني بحاجة إلى مشاركة هوية الإمارات وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول لأن هذا ضروري لتجديد عقد الإيجار الخاص بي مع بنك أبوظبي الأول.'
-      : SessionController().getLanguage() == 1
-          ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
-          : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
-
-  // String personalDocUploadInfo = SessionController().getLanguage() == 1
-  //     ? 'I agree to share my Emirates ID, passport, and any other related documents with FAB Properties for the renewal of my tenancy contract.'
-  //     : 'أوافق على مشاركة بطاقة الهوية الإماراتية الخاصة بي وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول من أجل تجديد عقد الإيجار الخاص بي.';
-
-  // String succesfullSubmissionRenewalRequest = SessionController()
-  //             .getLanguage() ==
-  //         1
-  // ? 'After “Submit”, you can use “Communication screen” for further Info or Clarification'
-  //     ? 'After Successfull Submission of your Renewal Request, you can communicate with FAB Propertie\'s Team for any further Inquiries/Information via Communication tab.'
-  //     : 'بعد التقديم الناجح لطلب التجديد الخاص بك ، يمكنك التواصل مع فريق بنك أبوظبي الأول لأية استفسارات / معلومات أخرى عبر علامة تبويب الاتصال.';
-
+          : 'أدرك أنني بحاجة إلى مشاركة هوية الإمارات وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول لأن هذا ضروري لتجديد عقد الإيجار الخاص بي مع بنك أبوظبي الأول.';  
   String enterfeedback = SessionController().getLanguage() == 1
-      ? "Please Enter feedback"
-      : 'يرجى إدخال الملاحظات';
+      ? "Please enter feedback"
+      : 'يرجى إدخال أي ملاحظات';
 
   String agentDetails = SessionController().getLanguage() == 1
       ? "Agent Details"
@@ -2508,14 +2470,15 @@ class AppMetaLabels {
 
   String ok = SessionController().getLanguage() == 1 ? 'OK' : 'موافق';
 
-  String minAmount =
-      SessionController().getLanguage() == 1 ? "Min Amount" : 'المبلغ الأدنى';
+  String minAmount = SessionController().getLanguage() == 1
+      ? "Min. Amount"
+      : 'الحد الأدنى للمبلغ';
 
-  String min = SessionController().getLanguage() == 1 ? "Min" : 'الأدنى';
+  String min = SessionController().getLanguage() == 1 ? "Min." : 'الحد الأدنى';
 
   String serviceReqNotUpdated = SessionController().getLanguage() == 1
-      ? "Please change some fields to send your request"
-      : 'يرجى تغيير بعض الحقول لإرسال طلبك';
+      ? "Some changes are required to proceed with your request"
+      : 'بعض التغييرات مطلوبة للاستمرار في الطلب الخاص بك';
 
   String pleaseWriteMsg = SessionController().getLanguage() == 1
       ? 'Please write a message'
@@ -2526,10 +2489,6 @@ class AppMetaLabels {
   String selectCity =
       SessionController().getLanguage() == 1 ? "Select City" : ' حدد المدينة';
 
-  // String selcetEmirate = SessionController().getLanguage() == 1
-  //     ? "Select Emirate"
-  //     : 'حدّد الإمارة';
-
   String bookingRequest =
       SessionController().getLanguage() == 1 ? "Booking Request" : 'طلب حجز';
 
@@ -2537,11 +2496,9 @@ class AppMetaLabels {
 
   String bath = SessionController().getLanguage() == 1 ? "Bath" : 'حمام';
 
-  String sqFt =
-      SessionController().getLanguage() == 1 ? "SQF" : 'المساحة بالقدم المربع';
+  String sqFt = SessionController().getLanguage() == 1 ? "Sq. Ft." : 'قدم مربع';
 
-  String sqMt =
-      SessionController().getLanguage() == 1 ? "SQM" : 'المساحة بالمتر المربع';
+  String sqMt = SessionController().getLanguage() == 1 ? "Sq. M." : 'متر مربع';
 
   String minRent =
       SessionController().getLanguage() == 1 ? "Min. Rent" : 'مِلكِي. ينظف';
@@ -2552,7 +2509,7 @@ class AppMetaLabels {
   String fullName =
       SessionController().getLanguage() == 1 ? 'Full Name ' : ' الاسم الكامل';
   String fullNameWithStaric =
-      SessionController().getLanguage() == 1 ? 'Full Name *' : '*الاسم الكامل';
+      SessionController().getLanguage() == 1 ? 'Full Name*' : 'الاسم كاملاً*';
 
   String pleaseEnter = SessionController().getLanguage() == 1
       ? 'Please Enter...'
@@ -2567,16 +2524,12 @@ class AppMetaLabels {
       : 'يرجى إدخال الاسم';
 
   String pleaseEnterFullName = SessionController().getLanguage() == 1
-      ? 'Please enter full Name'
-      : 'الرجاء إدخال الاسم الكامل';
-
-  String pleaseEnterEmail = SessionController().getLanguage() == 1
-      ? 'Please enter your Email'
-      : 'الرجاء إدخال البريد الإلكتروني الخاص بك';
+      ? 'Please enter full name'
+      : 'يرجى إدخال الاسم كاملاً';
 
   String pleaseEnterCorrectID = SessionController().getLanguage() == 1
-      ? 'Please enter correct ID Number'
-      : "الرجاء إدخال رقم التعريف الصحيح";
+      ? 'Please enter correct ID number'
+      : "يرجى إدخال رقم هوية صحيح";
 
   String pleaseSelectCorrectExpDate = SessionController().getLanguage() == 1
       ? 'Please select correct Expiry Date'
@@ -2599,10 +2552,8 @@ class AppMetaLabels {
       : 'يرجى إدخال تفاصيل الطلب';
 
   String cellNo = SessionController().getLanguage() == 1
-      ? "Call Center No."
+      ? "Call Centre No."
       : 'رقم مركز الاتصال';
-  // ? "Cell No."
-  // : 'رقم الهاتف المحمول';
 
   String officeTiming =
       SessionController().getLanguage() == 1 ? "Office Timing" : 'ساعات العمل';
@@ -2624,12 +2575,12 @@ class AppMetaLabels {
       : 'تم إرسال طلب تحديث الملف الشخصي بالفعل. القضية رقم.';
 
   String renewelCharges = SessionController().getLanguage() == 1
-      ? 'Renewel Charges'
+      ? 'Renewal Charges'
       : 'رسوم التجديد';
 
   String acceptRenewel = SessionController().getLanguage() == 1
-      ? "Accept Renewel"
-      : 'أقبل التجديد';
+      ? "Accept Renewal"
+      : 'الموافقة على التجديد';
 
   String openSR = SessionController().getLanguage() == 1
       ? "Open Service Request"
@@ -2672,7 +2623,7 @@ class AppMetaLabels {
   String back = SessionController().getLanguage() == 1 ? "Back" : 'رجوع';
 
   String declineRenewel = SessionController().getLanguage() == 1
-      ? "Decline Renewel"
+      ? "Decline Renewal"
       : 'رفض التجديد';
 
   String submitted =
@@ -2681,9 +2632,8 @@ class AppMetaLabels {
   String caseNo =
       SessionController().getLanguage() == 1 ? ' Case No. ' : 'رقم الطلب';
 
-  String inoviceNumber = SessionController().getLanguage() == 1
-      ? "Invoice Number"
-      : 'رقم الفاتورة';
+  String inoviceNumber =
+      SessionController().getLanguage() == 1 ? "Invoice No." : 'رقم الفاتورة';
 
   String inoviceNo =
       SessionController().getLanguage() == 1 ? "Invoice No" : 'رقم الفاتورة';
@@ -2693,29 +2643,26 @@ class AppMetaLabels {
       : 'الرجاء تحديد تاريخ انتهاء الصلاحية';
 
   String pleaseScaneFrontSideOfEID = SessionController().getLanguage() == 1
-      ? "Please scan FRONT & BACK side of your's Emirate ID SEPARATELY as shown below"
-      : 'يرجى إجراء مسح ضوئي للجانبين الأمامي والخلفي من الهوية الاماراتية  بشكل منفصل كما هو موضح أدناه';
+      ? "Please scan front & back side of your Emirates ID SEPARATELY as shown below"
+      : 'يرجى مسح الجانب الأمامي والجانب الخلفي لبطاقة الهوية الإماراتية الخاصة بك كلٌّ على حدة على النحو الموضح أدناه';
 
   String pleaseScaneFrontSideOfEIDAgain = SessionController().getLanguage() == 1
-      ? "Please scan FRONT & BACK side of your's Emirate ID again "
-      : 'يرجى مسح الوجه الأمامي والخلفي لبطاقة الهوية الخاصة بك بشكل صحيح';
+      ? "Please scan the front & back sides of your Emirates ID again "
+      : 'يرجى مسح الجانب الأمامي والجانب الخلفي لبطاقة الهوية الإماراتية الخاصة بك مرة أخرى';
 
   String areYouSureCloseAPP = SessionController().getLanguage() == 1
-      ? "Are you sure,\nyou want to exit the App?"
-      : 'هل أنت متأكد؟ \n تريد الخروج من التطبيق؟';
+      ? "Are you sure, you want to exit the App?"
+      : 'هل أنت متأكد من رغبتك في الخروج من التطبيق؟';
 
   String pleaseScanebackSideOfEID = SessionController().getLanguage() == 1
-      ? "Please scanne back side of your's Emirate ID as shown"
-      : 'يرجى مسح الجانب الخلفي من معرف الإمارة الخاص بك كما هو موضح';
+      ? "Please scan the back side of your Emirates ID as shown"
+      : 'يرجى مسح الجانب الخلفي لبطاقة الهوية الإماراتية الخاصة بك على النحو الموضح';
 
   String reScane =
       SessionController().getLanguage() == 1 ? "Rescan" : 'إعادة المسح';
 
   ///////////////////////Landlords////////////////////
-  ///
-  ///
-  ///
-  ///
+
 
   String issueDateLand =
       SessionController().getLanguage() == 1 ? "Issue Date" : 'تاريخ الإصدار';
@@ -2735,8 +2682,9 @@ class AppMetaLabels {
   String propertiessLand =
       SessionController().getLanguage() == 1 ? "Properties" : 'العقارات';
 
-  String unitRefLand =
-      SessionController().getLanguage() == 1 ? "Unit Ref" : 'مرجع الوحدة';
+  String unitRefLand = SessionController().getLanguage() == 1
+      ? "Unit Ref."
+      : 'الرقم المرجعي للوحدة';
 
   String unitTypeLand =
       SessionController().getLanguage() == 1 ? "Unit Type" : 'نوع الوحدة';
@@ -2752,7 +2700,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Reports" : 'التقارير';
 
   String landLord =
-      SessionController().getLanguage() == 1 ? "LandLord" : 'المالك';
+      SessionController().getLanguage() == 1 ? "Landlord" : 'مالك الأرض';
 
   String reportsTitleLand =
       SessionController().getLanguage() == 1 ? "Report Title" : 'عنوان التقرير';
@@ -2799,7 +2747,7 @@ class AppMetaLabels {
   String bathLand = SessionController().getLanguage() == 1 ? "Bath" : 'حمام';
 
   String sqftLand =
-      SessionController().getLanguage() == 1 ? "Sq Ft" : 'قدم مربع';
+      SessionController().getLanguage() == 1 ? "Sq. Ft." : 'قدم مربع';
 
   String amountLand =
       SessionController().getLanguage() == 1 ? 'amount' : 'مبلغ';
@@ -2823,7 +2771,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Unit Category" : 'فئة الوحدة';
 
   String bedRoomsLand =
-      SessionController().getLanguage() == 1 ? "Bed Rooms" : 'غرف نوم';
+      SessionController().getLanguage() == 1 ? "Bedrooms" : 'غرف النوم';
 
   String washRoomsLand =
       SessionController().getLanguage() == 1 ? "Washrooms" : 'حمام';
@@ -2835,7 +2783,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Living Rooms" : 'غرف المعيشة';
 
   String maidRoomsLand =
-      SessionController().getLanguage() == 1 ? "Maid Rooms" : 'غرف الخادمة';
+      SessionController().getLanguage() == 1 ? "Maids Rooms" : 'غرف الخادمات';
 
   String kitchenLand =
       SessionController().getLanguage() == 1 ? "Kitchens" : 'مطابخ';
@@ -2865,12 +2813,12 @@ class AppMetaLabels {
       : "الرجاء استخدام بصمة الإصبع لتسجيل الدخول";
 
   String fingerPrintNotset = SessionController().getLanguage() == 1
-      ? 'Finger print is not set'
+      ? 'Fingerprint is not set'
       : "لم يتم تعيين بصمة الإصبع";
 
   String easyMpin = SessionController().getLanguage() == 1
-      ? 'Too Easy Mpin'
-      : " رقم التعريف الشخصي سهل للغاية";
+      ? 'PIN is not complex enough'
+      : "رقم التعريف الشخصي ليس معقدًا بما فيه الكفاية";
 
   String noMoreData = SessionController().getLanguage() == 1
       ? 'No More Data'
@@ -2942,10 +2890,8 @@ class AppMetaLabels {
       : 'تم التوقيع بنجاح';
 
   String signatureSavedTenantEIDOne = SessionController().getLanguage() == 1
-      ? 'Contract signed successfully, however please note that your contract will be generated after completion of Tawtheeq Process.'
-      : 'تم توقيع العقد بنجاح، وللعلم سيتم انشاء العقد بعد الانتهاء من توثيقه';
-  // : 'تم توقيع العقد بنجاح، ووللعلم سيتم انشاء العقد بعد الانتهاء من توثيقة';
-  // : 'تم توقيع العقد بنجاح ، ولكن يرجى للعلم أنه سيتم إنشاء عقدك بعد الانتهاء من عملية توثيق';
+      ? 'Contract signed successfully, however, please note that your contract will be generated after completion of Tawtheeq Process.'
+      : 'جرى توقيع العقد بنجاح، ولكن يرجى العلم أنه سيجري إنشاء العقد الخاص بك بعد الانتهاء من إجراءات التوثيق.';
 
   String noFileReceived = SessionController().getLanguage() == 1
       ? "No file received"
@@ -2968,8 +2914,8 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Search Category" : "بحث";
 
   String pleaseAdd = SessionController().getLanguage() == 1
-      ? 'Please add some message'
-      : "الرجاء إضافة رسالة";
+      ? 'Please add a message'
+      : "يرجى إضافة رسالة";
 
   String photoLibrary =
       SessionController().getLanguage() == 1 ? 'Photo Library' : "مكتبة الصور";
@@ -3003,7 +2949,7 @@ class AppMetaLabels {
       : "إنشاء طلب خدمة جديد";
 
   String vacatingReason = SessionController().getLanguage() == 1
-      ? 'Vacating Reason: '
+      ? 'Reason for vacating'
       : "سبب الإخلاء";
 
   String vacatingDate = SessionController().getLanguage() == 1
@@ -3080,11 +3026,6 @@ class AppMetaLabels {
   String stage1 = SessionController().getLanguage() == 1
       ? '-For annual contract renewal, press “Renew”'
       : '"لتجديد العقد السنوي ، اضغط على "تجديد ';
-
-  // String stage1 = SessionController().getLanguage() == 1
-  //     ? '-For annual contract renewal, press “Renew”\n-For short term renewal, press “Extend”'
-  //     : '- لتجديد العقد السنوي ، اضغط على "تجديد" \n - للتجديد قصير المدى ، اضغط على "تمديد"';
-
   String stage2 = SessionController().getLanguage() == 1
       ? 'Please upload the required documents to proceed with your Renewal Request.'
       : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
@@ -3097,48 +3038,24 @@ class AppMetaLabels {
           ? 'The documents have been successfully submitted. You will be notified within 2 working days once the verification is completed by the MENA Real Estate team.'
           : 'تم تقديم المستندات بنجاح. سيتم إخطارك خلال يومي عمل بمجرد اكتمال عملية التحقق من قبل فريق عقارات الشرق الأوسط وشمال إفريقيا';
 
-  String stage4 = SessionController().isFabApp == 1
-      ? SessionController().getLanguage() == 1
+  String stage4 = SessionController().getLanguage() == 1
           ? 'Your documents have been approved by FAB Properties and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
-          : 'تمت الموافقة على مستنداتك من قبل ابوظبى الاولى العقارية  وبدأت عملية التجديد.يمكنك توقع مشاركة تفاصيل العقد الجديد في غضون يوم إلى يومي عمل.'
-      : SessionController().getLanguage() == 1
-          ? 'Your documents have been approved by MENA Real Estate and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
-          : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
-
-  // String stage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
-  //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
-
-  String stage5 = SessionController().isFabApp == 1
-      ? SessionController().getLanguage() == 1
-          ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "FAB Properties") which can be submitted through the Aramex service (at no additional cost) initiated by FABP.'
-          : "يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى \"ابوظبى الاول العقارية\" من خلال خدمة \"ارامكس\" بدون تكلفة اضافية . "
-      : SessionController().getLanguage() == 1
-          ? 'The first rental installment and all other charges must be paid through “Online”.\n\nThe remaining rental installments can be paid by cheques (made out to "MENA Real Estate") which can be submitted through the Aramex service (at no additional cost) initiated by MENA Real Estate.'
-          : "يجب دفع القسط الإيجاري الأول وجميع الرسوم الأخرى من خلال \"أون لاين\".\n\nيمكن دفع أقساط الإيجار المتبقية عن طريق الشيكات (المحررة لصالح \"شركة مينا العقارية\") والتي يمكن تقديمها من خلال خدمة أرامكس (بدون أي رسوم إضافية). التكلفة) بمبادرة من شركة مينا العقارية.";
-
-  // : 'يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى " ابوظبى الاول العقارية" من خلال خدمة " ارامكس" بدون تكلفة اضافية ';
-  // : 'يجب دفع قسط الإيجار الأول وجميع الرسوم الأخرى من خلال "عبر الإنترنت". \ n يمكن سداد أقساط الإيجار المتبقية عن طريق الشيكات (الصادرة إلى"ابوظبى الاولى العقارية") والتي يمكن تقديمها من خلال خدمة Aramex (بدون تكلفة إضافية) التي تم البدء فيها بواسطة FABP.';
-
+          : 'تمت الموافقة على مستنداتك من قبل ابوظبى الاولى العقارية  وبدأت عملية التجديد.يمكنك توقع مشاركة تفاصيل العقد الجديد في غضون يوم إلى يومي عمل.';
+  String stage5 =
+       SessionController().getLanguage() == 1
+          ? 'The first rental installment and all other charges must be paid through “Online”. The remaining rental installments can be paid by cheques (made out to FAB Properties) which can be submitted through the Aramex service (at no additional cost) initiated by FABP.'
+          : "يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى \"ابوظبى الاول العقارية\" من خلال خدمة \"ارامكس\" بدون تكلفة اضافية . ";
   String stage5_1 = SessionController().getLanguage() == 1
-      // ? 'Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract.'
-      ? 'Thanks for making the Payment. Once online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
+  ? 'Thanks for making the Payment. Once online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
       : ' شكرًا على إجراء الدفع. بمجرد إقرار الدفع عبر الإنترنت أو استلام نسخ الشيكات الفعلية ، سيتم إخطارك بـ "توقيع عقد الإيجار';
-  // String stage5_1 = SessionController().getLanguage() == 1
-  //     // ? 'Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract.'
-  //     ? 'Thanks for making the Payment. Once online payment is acknowledged and physical cheque copies are received (if any), you will be notified to “sign tenancy contract".'
-  //     : 'شكرًا على إجراء الدفع. بمجرد إقرار الدفع عبر الإنترنت واستلام نسخ الشيكات الفعلية (إن وجدت) ، سيتم إخطارك "بتوقيع عقد الإيجار.';
 
   String stage5_12 = SessionController().getLanguage() == 1
-      ? 'Payment completed.\nOnce online payment is acknowledged or physical cheque copies are received, you will be notified to “Sign Tenancy Contract".'
-      : ' اكتمل الدفع. \n بمجرد الإقرار بالدفع عبر الإنترنت أو استلام نسخ الشيك الفعلي ، سيتم إخطارك بـ "توقيع عقد الإيجار';
+      ? 'Payment completed. Once online payment is acknowledged or physical cheque copies are received, you will be notified to \'Sign Tenancy Contract\'.'
+      : 'تم استكمال عملية الدفع. بمجرد الإقرار بالدفع عبر الإنترنت أو استلام نسخ الشيكات الورقية، سيتم إخطارك لـ "توقيع عقد الإيجار".';
 
   String stage6 = SessionController().getLanguage() == 1
       ? 'Your tenancy contract is available to sign.'
       : 'عقد الإيجار الخاص بك متاح للتوقيع.';
-  // String stage6 = SessionController().getLanguage() == 1
-  //     ? 'Your tenancy contract is generated, please proceed to sign.'
-  //     : 'تم إنشاء عقد الإيجار الخاص بك ، يرجى المتابعة للتوقيع.';
 
   String stage7 = SessionController().getLanguage() == 1
       ? 'Your signed contract is under review with our team. We will notify you of the next step within 1 to 2 working days.'
@@ -3152,42 +3069,7 @@ class AppMetaLabels {
       ? 'Please click on the Login To Tawtheeq link to complete the municipality process.'
       : 'الرجاء الضغط على رابط تسجيل الدخول إلى توثيق لإتمام إجراءات البلدية.';
 
-  String stage9 = SessionController().isFabApp == 1
-      ? SessionController().getLanguage() == 1
+  String stage9 = SessionController().getLanguage() == 1
           ? 'Dear Tenant, Thanks for choosing FABP as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
-          : 'عزيزي المستأجر ، شكرًا لاختيارك ابوظبي الاول العقارية كمزود خدمة عقارية لك ، سيكون عقدك جاهزًا للتنزيل في غضون يوم إلى يومين عمل.'
-      : SessionController().getLanguage() == 1
-          ? 'Dear Tenant, Thanks for choosing MENA Real Estate as your real estate service provider, your contract will be ready to download within 1 to 2 working days.'
-          : 'عزيزي المستأجر، شكرًا لاختيارك شركة مينا العقارية كمزود للخدمات العقارية، سيكون عقدك جاهزًا للتنزيل خلال يوم إلى يومي عمل.';
-
-  // String stage1 = SessionController().getLanguage() == 1
-  //     ? 'If you wish to renew your Tenancy Contract for less than one year please procced with \'Extend\' Option.'
-  //     : 'إذا كنت ترغب في تجديد عقد الإيجار الخاص بك لمدة تقل عن عام واحد ، يرجى المتابعة مع خيار \'تمديد \'.';
-  // String stage2 = SessionController().getLanguage() == 1
-  //     ? 'Please upload the required documents to proceed with your Renewal Request.'
-  //     : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
-  // String stage3 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents are under review with FAB Properties team, you will be notified once verification process is completed. This may take 1 to 2 working days.'
-  //     : 'المستندات المقدمة الخاصة بك قيد المراجعة مع فريق خصائص فاب ، وسيتم إخطارك بمجرد اكتمال عملية التحقق. قد يستغرق هذا من يوم إلى يومين عمل.';
-  // String stage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
-  //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
-  // String stage5 = SessionController().getLanguage() == 1
-  //     ? 'Please proceed to Make Payment.\n\n1- The first installment of your Rental Payment and Additional Charges including VAT must be made by Credit/Debit card.\n\n2- Remaining Rental Installments can be made either by Credit/Debit card OR Cheques\n\n3- Please prepare the Cheque(s) to the benefit of FAB PROPERTIES in order to upload the copies while making the payments.\n\n4- Kindly note that you can submit the cheque(s) free of charges via Aramex service initiated by our team'
-  //     : 'يرجى المتابعة لإجراء الدفع. \n \n1- يجب سداد الدفعة الأولى من مدفوعات الإيجار والرسوم الإضافية بما في ذلك ضريبة القيمة المضافة بواسطة بطاقة الائتمان / الخصم. \n \n2- يمكن سداد أقساط الإيجار المتبقية إما عن طريق بطاقة الائتمان / الخصم أو الشيكات \n \n3- يرجى تحضير الشيك (الشيكات) لصالح FAB PROPERTIES من أجل تحميل النسخ أثناء إجراء المدفوعات. \n \n4- يرجى ملاحظة أنه يمكنك إرسال الشيك (الشيكات) مجانًا عبر بادر فريقنا بخدمة أرامكس.';
-  // String stage5_1 = SessionController().getLanguage() == 1
-  //     ? 'If you have made the payment already, please wait for our verification & reconciliation prior to get back to you within 1 to 2 working days.'
-  //     : 'إذا كنت قد سددت الدفعة بالفعل ، فيرجى الانتظار حتى نرجع إليك التحقق والتسوية في غضون يوم إلى يومين عمل.';
-  // String stage6 = SessionController().getLanguage() == 1
-  //     ? 'Please sign the contract in order to proceed with further steps.\nYou can visit the contract\'s payment tab in order to view the receipts generated for your payments (if any).'
-  //     : 'الرجاء توقيع العقد من أجل متابعة الخطوات الأخرى. \n يمكنك زيارة علامة تبويب الدفع الخاصة بالعقد لعرض الإيصالات التي تم إنشاؤها لمدفوعاتك.';
-  // String stage7 = SessionController().getLanguage() == 1
-  //     ? 'Your signed contract is under review with our team for further proceedings and to notify you accordingly within 1 to 2 working days.'
-  //     : 'العقد الموقع الخاص بك قيد المراجعة مع فريقنا لمزيد من الإجراءات وإخطارك وفقًا لذلك في غضون يوم إلى يومي عمل.';
-  // String stage8 = SessionController().getLanguage() == 1
-  //     ? 'Your contract require municipality processing from your side, please click on the link on the municipality tab to complete the required process and confirm.'
-  //     : 'يتطلب عقدك معالجة البلدية من جانبك ، يرجى النقر على الرابط في علامة التبويب البلدية لإكمال العملية المطلوبة والتأكيد.';
-  // String stage9 = SessionController().getLanguage() == 1
-  //     ? 'You can download the Contract once the status turns to \'Active\' within 1 to 2 working days.'
-  //     : 'يمكن تنزيل عقدك بمجرد أن تتحول الحالة إلى "نشط" خلال يوم إلى يومين عمل.';
+          : 'عزيزي المستأجر ، شكرًا لاختيارك ابوظبي الاول العقارية كمزود خدمة عقارية لك ، سيكون عقدك جاهزًا للتنزيل في غضون يوم إلى يومين عمل.';
 }
