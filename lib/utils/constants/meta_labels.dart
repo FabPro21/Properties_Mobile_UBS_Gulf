@@ -8,7 +8,7 @@ class AppMetaLabels {
   String login =
       SessionController().getLanguage() == 1 ? "Login" : 'تسجيل الدخول';
   String color = SessionController().getLanguage() == 1 ? "Colour" : 'اللون';
-  String pleaseEnterEmail = SessionController().getLanguage() == 1 ? "Please enter email" : 'اللون';
+  String pleaseEnterEmail = SessionController().getLanguage() == 1 ? "Please enter email" : 'الرجاء إدخال البريد الإلكتروني';
   String rentPaidAmount = SessionController().getLanguage() == 1
       ? 'Amount of Rent Paid'
       : 'مبلغ الإيجار المدفوع';
