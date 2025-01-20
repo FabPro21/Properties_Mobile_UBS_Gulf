@@ -14,6 +14,7 @@ class BlockedDeviceScreen extends StatelessWidget {
   BlockedDeviceScreen({Key? key}) : super(key: key);
 
   final btController = Get.put(BlockedDeviceController());
+  // Testing purpose
   @override
   Widget build(BuildContext context) {
     return Scaffold(
