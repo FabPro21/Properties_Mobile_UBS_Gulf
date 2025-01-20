@@ -3,7 +3,6 @@ import 'package:fap_properties/utils/push_notifications_service.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
-// import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
