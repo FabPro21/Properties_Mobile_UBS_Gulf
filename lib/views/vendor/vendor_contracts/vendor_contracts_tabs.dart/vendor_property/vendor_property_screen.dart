@@ -143,11 +143,8 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                                     height: 36.0.h,
                                                     width: 100.0.w,
                                                     child: Shimmer.fromColors(
-                                                      baseColor: Colors.grey
-                                                          .withOpacity(0.1),
-                                                      highlightColor: Colors
-                                                          .grey
-                                                          .withOpacity(0.5),
+                                                      baseColor:  const Color.fromRGBO(158, 158, 158, 0.1),
+                                                      highlightColor:  const Color.fromRGBO(158, 158, 158, 0.5),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius.only(

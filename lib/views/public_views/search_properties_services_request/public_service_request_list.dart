@@ -87,7 +87,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                               },
                               decoration: InputDecoration(
                                 filled: true,
-                                fillColor: Colors.grey.withOpacity(0.1),
+                                fillColor:  const Color.fromRGBO(158, 158, 158, 0.1),
                                 prefixIcon: Icon(
                                   Icons.search,
                                   size: 2.0.h,

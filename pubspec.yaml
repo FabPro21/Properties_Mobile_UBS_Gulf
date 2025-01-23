@@ -52,7 +52,11 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   google_maps_flutter: ^2.9.0 # creating issue while creating build
-  apple_maps_flutter: ^1.3.0 # creating issue //
+  # apple_maps_flutter: ^1.3.0 # creating issue //
+  apple_maps_flutter:
+       git:
+         url: https://github.com/Anjula/apple_maps_flutter.git
+         ref: cb853b3f3b86b3453559bf35f632696bb0357234
   google_mlkit_text_recognition: ^0.13.0
   http_proxy: ^1.2.2
   image: ^4.2.0 # if create any issue the will use 4.0.7
@@ -121,12 +125,14 @@ dependency_overrides:
   url_launcher_web: any
   fading_edge_scrollview: ^4.1.1
 
+
   # not available on pub dev that is why i put in override
   # syncfusion_flutter_charts:
   #   git:
   #     url: https://github.com/Luvti/flutter-widgets
   #     path: packages/syncfusion_flutter_charts
   #     ref: 15e3c4a95e3cf2e2393755bf5aa11c0206ed6dea
+
 
 dev_dependencies:
   flutter_test:
@@ -137,7 +143,7 @@ flutter_icons:
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/common_images/app_icon/new_app_logo.png"
-
+    
 flutter:
   uses-material-design: true
   assets:
@@ -164,3 +170,5 @@ flutter:
     - family: GraphikSemibold
       fonts:
         - asset: assets/fonts/GraphikSemibold.ttf
+
+

@@ -14,15 +14,18 @@ class AppColors {
   static Color blueColor2 = const Color.fromRGBO(0, 98, 255, 0.2);
   static Color blueColor3 = const Color.fromRGBO(0, 98, 255, 0.5);
 
+  static Color amberWithOpacity035 = const Color.fromRGBO(255, 171, 0, 0.35);
   static Color amber = Colors.amberAccent[700]??Colors.amberAccent;
   static Color amber2 = Colors.amber[50]??Colors.amber;
   static Color blackColor = const Color(0xFF4C4B5E);
+  static Color whiteColorWithOpacity04 = const Color.fromRGBO(255, 255, 255, 0.4);
   static Color whiteColor = const Color(0xFFffffff);
   static Color white54 = Colors.white54;
   static Color appBarColor = const Color(0xFF273647);
   static Color redColor = Color.fromRGBO(255, 36, 27, 1);
   static Color redColor2 = Colors.red.shade300;
   static const Color errorColor = Color.fromRGBO(255, 36, 27, 1);
+  static Color greenColorWithOpacity035 = const Color.fromRGBO(0, 150, 0, 0.35);
   static Color greenColor = const Color.fromRGBO(0, 150, 0, 1);
   static Color greenColor2 = const Color.fromRGBO(63, 218, 120, 0.1);
   static Color textFieldBGColor = const Color.fromRGBO(70, 82, 95, 0.2);

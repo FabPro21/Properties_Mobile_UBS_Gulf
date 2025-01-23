@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:typed_data';
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';

@@ -1,3 +1,10 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'  // Correct Kotlin plugin
+    // id 'flutter'  // Flutter plugin
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -21,10 +28,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+// apply plugin: 'com.android.application'
+// apply plugin: 'com.google.gms.google-services'
+// apply plugin: 'kotlin-android'
+// // apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+
 
 
 def keystoreProperties = new Properties()
@@ -98,9 +107,9 @@ android {
    }
 }
 
-flutter {
-    source '../..'
-}
+// flutter {
+//     source '../..'
+// }
 
 dependencies {
     // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -114,4 +123,122 @@ dependencies {
 
 }
 
+
+// def localProperties = new Properties()
+// def localPropertiesFile = rootProject.file('local.properties')
+// if (localPropertiesFile.exists()) {
+//     localPropertiesFile.withReader('UTF-8') { reader ->
+//         localProperties.load(reader)
+//     }
+// }
+
+// def flutterRoot = localProperties.getProperty('flutter.sdk')
+// if (flutterRoot == null) {
+//     throw  GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+// }
+
+// def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+// if (flutterVersionCode == null) {
+//     flutterVersionCode = '1'
+// }
+
+// def flutterVersionName = localProperties.getProperty('flutter.versionName')
+// if (flutterVersionName == null) {
+//     flutterVersionName = '1.0'
+// }
+
+//  apply plugin: 'com.android.application'
+//  apply plugin: 'com.google.gms.google-services'
+//  apply plugin: 'kotlin-android'
+//  apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+
+
+
+// def keystoreProperties = new Properties()
+//    def keystorePropertiesFile = rootProject.file('key.properties')
+//    if (keystorePropertiesFile.exists()) {
+//        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//    }
+
+// android {
+//     namespace = "com.fab.fabpropertiesEnterprise"
+//     compileSdkVersion 34
+//     ndkVersion = "25.1.8937393"
+    
+   
+//     lintOptions {
+//         disable 'InvalidPackage'
+//         disable "Instantiatable"
+//         checkReleaseBuilds false
+        
+//         abortOnError false
+//     }
+    
+//     // compileSdkVersion 33
+//     //  compileOptions {
+//     //     sourceCompatibility JavaVersion.VERSION_1_8
+//     //     targetCompatibility JavaVersion.VERSION_1_8
+//     // }
+//     // kotlinOptions {
+//     //     jvmTarget = '1.8'
+//     // }
+
+//      compileOptions {
+//         sourceCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
+//         targetCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
+//     }
+
+//     kotlinOptions {
+//         jvmTarget = '17' // Align this with Java
+//     }
+
+//     sourceSets {
+//         main.java.srcDirs += 'src/main/kotlin'
+//     }
+
+//     defaultConfig {
+//         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//         applicationId "com.fab.fabpropertiesEnterprise"
+//         minSdkVersion 21
+//         targetSdkVersion 34
+//         // targetSdkVersion 33
+//         // targetSdkVersion 31
+//         // targetSdkVersion 30
+//         versionCode flutterVersionCode.toInteger()
+//         versionName flutterVersionName
+//         multiDexEnabled true
+       
+//     }
+
+//     signingConfigs {
+//        release {
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+//            storePassword keystoreProperties['storePassword']
+//        }
+//    }
+//    buildTypes {
+//        release {
+//            signingConfig signingConfigs.release
+//        }
+//    }
+// }
+
+// flutter {
+//    source '../..'
+//  }
+
+// dependencies {
+//     // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+//     implementation platform('com.google.firebase:firebase-bom:28.4.2')
+//     implementation 'com.google.firebase:firebase-analytics'
+//     implementation 'com.android.support:multidex:1.0.3'
+//     implementation "androidx.browser:browser:1.3.0"
+//     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.2'
+//     implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
+
+// }
 

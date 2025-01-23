@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';

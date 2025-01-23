@@ -190,7 +190,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       },
                                       decoration: InputDecoration(
                                         filled: true,
-                                        fillColor: Colors.grey.withOpacity(0.1),
+                                        fillColor:  const Color.fromRGBO(158, 158, 158, 0.1),
                                         prefixIcon: Icon(
                                           Icons.search,
                                           size: 2.0.h,
@@ -558,8 +558,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               borderRadius:
                                                   BorderRadius.circular(0.5.h),
                                               borderSide: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1),
+                                                  color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                   width: 0.1.h),
                                             ),
                                             enabledBorder: OutlineInputBorder(
@@ -568,8 +567,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                 0.5.h,
                                               ),
                                               borderSide: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1),
+                                                  color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                   width: 0.1.h),
                                             ),
                                             hintText: AppMetaLabels().min,
@@ -609,8 +607,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               borderRadius:
                                                   BorderRadius.circular(0.5.h),
                                               borderSide: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1),
+                                                  color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                   width: 0.1.h),
                                             ),
                                             enabledBorder: OutlineInputBorder(
@@ -619,8 +616,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                 0.5.h,
                                               ),
                                               borderSide: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1),
+                                                  color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                   width: 0.1.h),
                                             ),
                                             hintText: AppMetaLabels().max,
@@ -705,10 +701,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     .circular(
                                                                         0.5.h),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           enabledBorder:
@@ -719,10 +712,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                               0.5.h,
                                                             ),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           hintText:
@@ -782,10 +772,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     .circular(
                                                                         0.5.h),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           enabledBorder:
@@ -796,10 +783,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                               0.5.h,
                                                             ),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           hintText:
@@ -970,10 +954,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     .circular(
                                                                         0.5.h),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           enabledBorder:
@@ -984,10 +965,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                               0.5.h,
                                                             ),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           hintText:
@@ -1047,10 +1025,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     .circular(
                                                                         0.5.h),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           enabledBorder:
@@ -1061,10 +1036,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                               0.5.h,
                                                             ),
                                                             borderSide: BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.1),
+                                                                color:  const Color.fromRGBO(158, 158, 158, 0.1),
                                                                 width: 0.1.h),
                                                           ),
                                                           hintText:

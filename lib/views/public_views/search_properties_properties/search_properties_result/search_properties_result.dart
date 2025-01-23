@@ -308,14 +308,9 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                               height: 11.0.h,
                                                               child: Shimmer
                                                                   .fromColors(
-                                                                baseColor: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.2),
+                                                                baseColor:  const Color.fromRGBO(158, 158, 158, 0.2),
                                                                 highlightColor:
-                                                                    Colors.grey
-                                                                        .withOpacity(
-                                                                            0.5),
+                                                                     const Color.fromRGBO(158, 158, 158, 0.5),
                                                                 child:
                                                                     ClipRRect(
                                                                   borderRadius:
