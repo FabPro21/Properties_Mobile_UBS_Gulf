@@ -3102,8 +3102,8 @@ class AppMetaLabels {
       : 'عقدك الموقع قيد المراجعة مع فريقنا. سنخطرك بالخطوة التالية في غضون يوم إلى يومين عمل';
 
   String stage8 = SessionController().getLanguage() == 1
-      ? 'Your contract requires municipality processing from your side, please click on the link on the municipality tab to complete the required process and confirm.'
-      : 'العقد الخاص بك يتطلب قيامك بمعالجته لدى البلدية، يرجى النقر على الرابط في علامة تبويب البلدية لإكمال إجراءات المعالجة المطلوبة والتأكيد.';
+      ? 'Your contract requires municipality processing from your side, please click on the link on the municipality tab to complete the required process and confirm.':
+ 'العقد الخاص بك يتطلب قيامك بمعالجته لدى البلدية، يرجى النقر على الرابط في علامة تبويب البلدية لإكمال إجراءات المعالجة المطلوبة والتأكيد.';
 
   String stage8_1 = SessionController().getLanguage() == 1
       ? 'Please click on the Login To Tawtheeq link to complete the municipality process.'

@@ -25,18 +25,18 @@ class StatusWidget extends StatelessWidget {
             // valueToCompare!.contains('Posted') ||
             //         valueToCompare!.contains('Active') ||
             //         valueToCompare!.contains("Closed")
-            ? AppColors.greenColor.withOpacity(0.35)
+            ? AppColors.greenColorWithOpacity035
             : valueToCompare!.contains("Cancelled") ||
                     valueToCompare!.contains("Rejected")
-                ? Colors.red.withOpacity(0.35)
+                ? const Color.fromRGBO(244, 67, 54, 0.35)
                 : valueToCompare!.contains('Ended') ||
                         valueToCompare!.contains('Terminated') ||
                         valueToCompare!.contains('Closed')
-                    ? Colors.grey.withOpacity(0.35)
+                    ? const Color.fromRGBO(158, 158, 158, 0.35)
                     : valueToCompare!.contains('Draft') ||
                             valueToCompare!.contains('Received')
-                        ? AppColors.amber.withOpacity(0.35)
-                        : AppColors.amber.withOpacity(0.35),
+                        ? AppColors.amberWithOpacity035
+                        : AppColors.amberWithOpacity035,
         // color: valueToCompare!.contains('Posted') ||
         //         valueToCompare!.contains('Active') ||
         //         valueToCompare!.contains("Closed")
@@ -128,18 +128,18 @@ class StatusWidgetVendor extends StatelessWidget {
             // valueToCompare!.contains('Posted') ||
             //         valueToCompare!.contains('Active') ||
             //         valueToCompare!.contains("Closed")
-            ? AppColors.greenColor.withOpacity(0.35)
+            ? AppColors.greenColorWithOpacity035
             : valueToCompare!.contains("Cancelled") ||
                     valueToCompare!.contains("Rejected")
-                ? Colors.red.withOpacity(0.35)
+                ? const Color.fromRGBO(244, 67, 54, 0.35)
                 : valueToCompare!.contains('Ended') ||
                         valueToCompare!.contains('Terminated') ||
                         valueToCompare!.contains('Closed')
-                    ? Colors.grey.withOpacity(0.35)
+                    ? const Color.fromRGBO(158, 158, 158, 0.35)
                     : valueToCompare!.contains('Draft') ||
                             valueToCompare!.contains('Received')
-                        ? AppColors.amber.withOpacity(0.35)
-                        : AppColors.amber.withOpacity(0.35),
+                        ? AppColors.amberWithOpacity035
+                        : AppColors.amberWithOpacity035,
         // color: valueToCompare!.contains('Posted') ||
         //         valueToCompare!.contains('Active') ||
         //         valueToCompare!.contains("Closed")

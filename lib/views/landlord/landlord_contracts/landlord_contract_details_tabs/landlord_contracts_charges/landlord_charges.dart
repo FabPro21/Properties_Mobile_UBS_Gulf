@@ -47,7 +47,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
           }
           List<ChartData> chartData = [
             ChartData(AppMetaLabels().outstanding, outStandingAmount,
-                AppColors.amber.withOpacity(0.2)),
+                AppColors.amberWithOpacity035),
             ChartData(AppMetaLabels().paidCharges, paidCharges,
                 AppColors.chartlightBlueColorCharges),
           ];
@@ -96,7 +96,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                 getCCController.paidChargesCurrency.toString(),
                               ),
                               columnList(
-                                  AppColors.amber.withOpacity(0.5),
+                                  AppColors.amberWithOpacity035,
                                   AppMetaLabels().outstanding,
                                   getCCController.outstandingChargesCurrency
                                       .toString()),

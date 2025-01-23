@@ -56,8 +56,12 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   google_maps_flutter: ^2.9.0 # creating issue while creating build
-  apple_maps_flutter: ^1.3.0 # creating issue //
-  google_mlkit_text_recognition: ^0.14.0 # google_mlkit_text_recognition: ^0.14.0
+  # apple_maps_flutter: ^1.3.0 # creating issue //
+  apple_maps_flutter:
+       git:
+         url: https://github.com/Anjula/apple_maps_flutter.git
+         ref: cb853b3f3b86b3453559bf35f632696bb0357234
+  google_mlkit_text_recognition: ^0.13.0
   http_proxy: ^1.2.2
   image: ^4.2.0 # if create any issue the will use 4.0.7
   image_collage: ^0.0.4
@@ -126,12 +130,14 @@ dependency_overrides:
   url_launcher_web: any
   fading_edge_scrollview: ^4.1.1
 
+
   # not available on pub dev that is why i put in override
   # syncfusion_flutter_charts:
   #   git:
   #     url: https://github.com/Luvti/flutter-widgets
   #     path: packages/syncfusion_flutter_charts
   #     ref: 15e3c4a95e3cf2e2393755bf5aa11c0206ed6dea
+
 
 dev_dependencies:
   flutter_test:
@@ -141,10 +147,8 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/common_images/colliers/App_Logo_Colliers.png"
-  # image_path: "assets/images/common_images/colliers/logo_type.png"
-  # image_path: "assets/images/common_images/app_icon/new_app_logo.png"
-
+  image_path: "assets/images/common_images/app_icon/new_app_logo.png"
+    
 flutter:
   uses-material-design: true
   assets:
@@ -173,30 +177,5 @@ flutter:
     - family: GraphikSemibold
       fonts:
         - asset: assets/fonts/GraphikSemibold.ttf
-    - family: MerriweatherBold
-      fonts:
-        - asset: assets/fonts/Merriweather/Merriweather-Bold.ttf
-    - family: MerriweatherLight
-      fonts:
-        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
-    - family: MerriweatherRegular
-      fonts:
-        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
-    - family: OpenSansBold
-      fonts:
-        - asset: assets/fonts/Open_Sans/OpenSans-Bold.ttf
-    - family: OpenSansSemiBold
-      fonts:
-        - asset: assets/fonts/Open_Sans/OpenSans-SemiBold.ttf
-    - family: OpenSansLight
-      fonts:
-        - asset: assets/fonts/Open_Sans/OpenSans-Light.ttf
-    - family: OpenSansRegular
-      fonts:
-        - asset: assets/fonts/Open_Sans/OpenSans-Regular.ttf
-    - family: OpenSansCondensedBold
-      fonts:
-        - asset: assets/fonts/Open_Sans_Condensed/OpenSansCondensed Bold.ttf
-    - family: OpenSansCondensedLight
-      fonts:
-        - asset: assets/fonts/Open_Sans_Condensed/OpenSansCondensed Light.ttf
+
+

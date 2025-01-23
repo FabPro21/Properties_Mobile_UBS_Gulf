@@ -671,9 +671,9 @@ class _BookingRequestState extends State<BookingRequest> {
                                         width: 100.0.w,
                                         child: Shimmer.fromColors(
                                           baseColor:
-                                              Colors.grey.withOpacity(0.1),
+                                              const Color.fromRGBO(158, 158, 158, 0.1),
                                           highlightColor:
-                                              Colors.grey.withOpacity(0.5),
+                                             const Color.fromRGBO(158, 158, 158, 0.5),
                                           child: ClipRRect(
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(2.0.h),

@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.49",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.50",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -15,7 +15,7 @@
     },
     {
       "name": "apple_maps_flutter",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/apple_maps_flutter-1.3.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/git/apple_maps_flutter-cb853b3f3b86b3453559bf35f632696bb0357234/",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -111,9 +111,9 @@
     },
     {
       "name": "collection",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/collection-1.18.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/collection-1.19.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "connectivity_plus",
@@ -273,43 +273,43 @@
     },
     {
       "name": "firebase_app_check",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check-0.3.2",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check-0.3.2+1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_app_check_platform_interface",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check_platform_interface-0.1.1",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check_platform_interface-0.1.1+1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_app_check_web",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check_web-0.2.0+4",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check_web-0.2.0+5",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "firebase_auth",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth-5.4.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth-5.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_auth_platform_interface",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.5.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.5.1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_auth_web",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth_web-5.13.6",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_auth_web-5.13.7",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_core-3.10.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_core-3.10.1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -327,19 +327,19 @@
     },
     {
       "name": "firebase_messaging",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-15.2.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-15.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_messaging_platform_interface",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.6.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.6.1",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_messaging_web",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.10.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.10.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -465,9 +465,9 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "flutter_rating_bar",
@@ -561,9 +561,9 @@
     },
     {
       "name": "google_maps_flutter_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.7",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.12",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "google_maps_flutter_ios",
@@ -585,13 +585,13 @@
     },
     {
       "name": "google_mlkit_commons",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.9.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.8.1",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
     {
       "name": "google_mlkit_text_recognition",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.14.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.13.1",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -609,9 +609,9 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/http-1.2.2",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/http-1.3.0",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "http_certificate_pinning",
@@ -627,9 +627,9 @@
     },
     {
       "name": "http_parser",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "http_proxy",
@@ -675,9 +675,9 @@
     },
     {
       "name": "image_picker_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+20",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "image_picker_for_web",
@@ -753,13 +753,13 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/leak_tracker-10.0.7",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -789,9 +789,9 @@
     },
     {
       "name": "local_auth_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/local_auth_android-1.0.46",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "local_auth_darwin",
@@ -813,9 +813,9 @@
     },
     {
       "name": "marquee",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/marquee-2.2.3",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/marquee-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.5"
     },
     {
       "name": "matcher",
@@ -825,13 +825,13 @@
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/meta-1.12.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/meta-1.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -927,9 +927,9 @@
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "path_provider_foundation",
@@ -1083,15 +1083,15 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/shared_preferences-2.3.3",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/shared_preferences-2.3.5",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "shared_preferences_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/shared_preferences_android-2.3.2",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.2",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "shared_preferences_foundation",
@@ -1161,9 +1161,9 @@
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/stack_trace-1.11.1",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/stack_trace-1.12.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "stream_channel",
@@ -1179,25 +1179,25 @@
     },
     {
       "name": "string_scanner",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/string_scanner-1.2.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/string_scanner-1.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.1"
     },
     {
       "name": "syncfusion_flutter_charts",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-28.1.39",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-28.1.41",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "syncfusion_flutter_core",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-28.1.39",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-28.1.41",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "syncfusion_flutter_datepicker",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_datepicker-28.1.39",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/syncfusion_flutter_datepicker-28.1.41",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -1215,9 +1215,9 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/test_api-0.7.0",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/test_api-0.7.3",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.4"
     },
     {
       "name": "timezone",
@@ -1233,9 +1233,9 @@
     },
     {
       "name": "typed_data",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.5"
     },
     {
       "name": "universal_io",
@@ -1251,9 +1251,9 @@
     },
     {
       "name": "url_launcher_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.14",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "url_launcher_ios",
@@ -1329,9 +1329,9 @@
     },
     {
       "name": "video_player_android",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/video_player_android-2.7.1",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/video_player_android-2.7.17",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.6"
     },
     {
       "name": "video_player_avfoundation",
@@ -1359,7 +1359,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/vm_service-14.2.1",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/vm_service-14.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -1413,9 +1413,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/win32-5.5.4",
+      "rootUri": "file:///Users/mapmac/.pub-cache/hosted/pub.dev/win32-5.10.0",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "xdg_directories",
@@ -1448,10 +1448,10 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2025-01-20T08:34:28.379174Z",
+  "generated": "2025-01-23T07:43:07.794074Z",
   "generator": "pub",
-  "generatorVersion": "3.4.4",
+  "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/mapmac/FlutterDev/flutter",
-  "flutterVersion": "3.22.3",
+  "flutterVersion": "3.27.0",
   "pubCache": "file:///Users/mapmac/.pub-cache"
 }
