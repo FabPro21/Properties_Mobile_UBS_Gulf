@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/vendor_models/get_lpo_properties_response.dart';
 import 'package:fap_properties/data/models/vendor_models/vendor_get_data_model.dart';

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
 
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/chart_data.dart';

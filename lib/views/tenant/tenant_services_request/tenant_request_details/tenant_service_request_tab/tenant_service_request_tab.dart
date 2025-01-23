@@ -58,7 +58,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
       child: Obx(() {
         return Scaffold(
             backgroundColor: !tenantRDController.isEnableBackButton.value
-                ? Colors.white.withOpacity(0.7)
+                ? const Color.fromRGBO(255, 255, 255, 0.7)
                 : Colors.white,
             body: Column(
               mainAxisSize: MainAxisSize.max,
@@ -161,7 +161,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                                   !tenantRDController.isEnableBackButton.value
                                       ? Container(
                                           height: 10.h,
-                                          color: Colors.white.withOpacity(0.1),
+                                          color: const Color.fromRGBO(255, 255, 255, 1)
                                         )
                                       : SizedBox()
                                 ],

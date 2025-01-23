@@ -10,7 +10,7 @@ class ScreenDisableWidget extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.009),
+            color: const Color.fromRGBO(0, 0, 0, 0.009),
             borderRadius: BorderRadius.circular(20)),
       );
   }

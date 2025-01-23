@@ -139,8 +139,7 @@ class _CountryPickerState extends State<CountryPicker> {
                                   hintText: AppMetaLabels().search,
                                   hintStyle: AppTextStyle.normalBlack14
                                       .copyWith(
-                                          color: AppColors.whiteColor
-                                              .withOpacity(0.4)),
+                                          color: AppColors.whiteColorWithOpacity04),
                                 ),
                               ),
                             );

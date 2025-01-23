@@ -72,7 +72,7 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
       child: Obx(() {
         return Scaffold(
             backgroundColor: !controller.isEnableBackButton.value
-                ? Colors.white.withOpacity(0.7)
+                ? const Color.fromRGBO(255, 255, 255, 0.7)
                 : Colors.white,
             body: Column(
               mainAxisSize: MainAxisSize.max,
