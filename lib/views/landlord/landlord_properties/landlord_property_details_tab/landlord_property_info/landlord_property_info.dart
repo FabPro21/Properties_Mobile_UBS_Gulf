@@ -249,7 +249,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                 .sectorAR ??
                                                             '',
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .semiBoldBlack11,
                                                   ),
                                                 ),
                                               ],
@@ -274,12 +274,13 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                       : Alignment.centerLeft,
                                                   width: 40.w,
                                                   child: Text(
-                                                    controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
-                                                            .noofResidentialFlat
-                                                            .toString()??"",
+                                                    "10"
+                                                    // "${ controller
+                                                    //         .propertyDetailInfo?.propertyDetails?.first
+                                                    //         .noofResidentialFlat}"
+                                                            ,
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .semiBoldBlack11,
                                                   ),
                                                 ),
                                               ],
@@ -304,12 +305,13 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                       : Alignment.centerLeft,
                                                   width: 40.w,
                                                   child: Text(
-                                                    controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
-                                                            .noofCommercialFlat
-                                                            .toString()??"",
+                                                      ""
+                                                    //  "${ controller
+                                                    //         .propertyDetailInfo?.propertyDetails?.first
+                                                    //         .noofCommercialFlat}"
+                                                    ,
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .semiBoldBlack11,
                                                   ),
                                                 ),
                                               ],
