@@ -18,6 +18,7 @@ import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/auth/setup_mpin/setup_mpin.dart';
 import 'package:fap_properties/views/public_views/search_properties_more/public_profile/update_public_profile.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -182,15 +183,38 @@ class VerifyUserOtpControllerFB extends GetxController {
 
   Future<void> _getDeviceTokken() async {
     FirebaseMessaging.instance.requestPermission();
-    await FirebaseMessaging.instance.getToken().then(
-      (String? token) {
-        assert(token != null);
-        deviceToken = token;
-        SessionController().setDeviceTokken(deviceToken);
-        GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
-      },
-    );
+    // await FirebaseMessaging.instance.getToken().then(
+    //   (String? token) {
+    //     assert(token != null);
+    //     deviceToken = token;
+    //     SessionController().setDeviceTokken(deviceToken);
+    //     GlobalPreferencesEncrypted.setString(
+    //         GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+    //   },
+    // );
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      if (kDebugMode == true) {
+        await FirebaseMessaging.instance.getAPNSToken().then(
+          (String? token) {
+            assert(token != null);
+            deviceToken = token;
+            SessionController().setDeviceTokken(deviceToken);
+            GlobalPreferencesEncrypted.setString(
+                GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+          },
+        );
+      } else {
+        await FirebaseMessaging.instance.getToken().then(
+          (String? token) {
+            assert(token != null);
+            deviceToken = token;
+            SessionController().setDeviceTokken(deviceToken);
+            GlobalPreferencesEncrypted.setString(
+                GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+          },
+        );
+      }
+    }
   }
 
   void validatePublicRole() async {
