@@ -124,7 +124,7 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                     Icons
                                                         .arrow_forward_ios_rounded,
                                                     size: 2.0.h,
-                                                    color: AppColors.grey1,
+                                                    color: AppColors.blackColor,
                                                   )
                                                 ]),
                                               ),

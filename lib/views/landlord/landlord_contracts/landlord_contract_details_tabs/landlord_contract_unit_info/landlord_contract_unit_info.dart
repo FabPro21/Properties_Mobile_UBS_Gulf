@@ -176,7 +176,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                     Text(
                                                       "${unit.unitRefNo}",
                                                       style: AppTextStyle
-                                                          .normalGrey11,
+                                                          .semiBoldBlack11,
                                                     ),
                                                   ],
                                                 ),
@@ -197,7 +197,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                           : unit.unitTypeAr ??
                                                               '',
                                                       style: AppTextStyle
-                                                          .normalGrey11,
+                                                          .normalGrey10,
                                                     ),
                                                   ],
                                                 ),
@@ -213,7 +213,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                     Text(
                                                       '${AppMetaLabels().aed} $amount',
                                                       style: AppTextStyle
-                                                          .normalGrey11,
+                                                          .normalGrey10,
                                                     ),
                                                   ],
                                                 ),
@@ -233,7 +233,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                               width: 0.15.w,
                                               child: Icon(
                                                 Icons.arrow_forward_ios_rounded,
-                                                color: AppColors.grey1,
+                                                color: AppColors.blackColor,
                                                 size: 20,
                                               ),
                                             ),

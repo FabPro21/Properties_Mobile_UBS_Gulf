@@ -129,6 +129,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                 ),
                                                               ),
                                                               LinearProgressIndicator(
+                                                                  color: AppColors.blueColor,
                                                                 value:
                                                                     controller
                                                                         .comPtg,

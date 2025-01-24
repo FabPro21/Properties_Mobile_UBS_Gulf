@@ -250,9 +250,9 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                   .black12,
                                                               blurRadius: 0.5.h,
                                                               spreadRadius:
-                                                                  0.3.h,
+                                                                  0.1.h,
                                                               offset: Offset(
-                                                                  0.0.h, 0.7.h),
+                                                                  0.0.h, 0.0.h),
                                                             ),
                                                           ],
                                                         ),
@@ -310,7 +310,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.only(top: 1.2.h),
+                                                                              EdgeInsets.only(top: 0.5.h),
                                                                           child:
                                                                               Row(
                                                                             mainAxisAlignment:
@@ -346,10 +346,6 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                             ],
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        height:
-                                                                            2.0.h,
                                                                       ),
                                                                       if (controller
                                                                               .propertyUnitDetailModel
@@ -405,7 +401,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                         ),
                                                                       SizedBox(
                                                                           height: controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryName != 'Residential'
-                                                                              ? 2.h
+                                                                              ? 1.h
                                                                               : 0),
                                                                       if (controller
                                                                               .propertyUnitDetailModel
@@ -422,7 +418,9 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                     width: 18.w,
                                                                                     child: columnList(
                                                                                         AppMetaLabels().areaSize,
-                                                                                        "${controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType!.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
+                                                                                        controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize == null
+                                                                                            ? ""
+                                                                                            : "${controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType!.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
                                                                                   ),
                                                                                 ),
                                                                               ],

@@ -488,7 +488,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                               width: 16.0.w,
                               child: Text(
                                 AppMetaLabels().unitNo,
-                                style: AppTextStyle.semiBoldBlack12,
+                                style: AppTextStyle.normalGrey10,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -498,7 +498,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                               alignment: Alignment.centerRight,
                               child: Text(
                                 "${controller.contracts[index].unitRefNo}",
-                                style: AppTextStyle.semiBoldBlack12,
+                                style: AppTextStyle.normalGrey10,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -580,7 +580,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                     width: 0.15.w,
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
-                      color: AppColors.grey1,
+                      color: AppColors.blackColor,
                       size: 20,
                     ),
                   ),

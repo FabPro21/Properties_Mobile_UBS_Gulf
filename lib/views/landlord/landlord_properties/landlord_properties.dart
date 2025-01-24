@@ -101,7 +101,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                           borderSide: BorderSide(
                               color: AppColors.whiteColor, width: 0.1.h),
                         ),
-                        hintText: AppMetaLabels().search,
+                        hintText: AppMetaLabels().search+' '+AppMetaLabels().properties,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: Colors.grey),
                       ),
@@ -568,7 +568,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                         width: 0.15.w,
                         child: Icon(
                           Icons.arrow_forward_ios_rounded,
-                          color: AppColors.grey1,
+                          color: AppColors.blackColor,
                           size: 20,
                         ),
                       ),

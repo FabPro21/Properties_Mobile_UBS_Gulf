@@ -176,23 +176,24 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
           ],
         ),
         bottomNavigationBar: BottomAppBar(
+          color: AppColors.whiteColor,
           child: Obx(() {
             return lDReportController.errorSummaryReport.value != ''
                 ? SizedBox()
                 : Container(
-                    height: 8.h, //set your height here
+                    height: 10.h, //set your height here
                     width: double.maxFinite, //set your width here
-                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                    decoration: BoxDecoration(color:  Colors.transparent, boxShadow: [
                       BoxShadow(
-                        color: Colors.black12,
+                        color: Colors.transparent,
                         blurRadius: 0.9.h,
                         spreadRadius: 0.1.h,
-                        offset: Offset(0.0.h, 0.1.h),
+                        offset: Offset(0.0.h, 0.0.h),
                       ),
                     ]),
                     child: Padding(
                         padding: EdgeInsets.only(
-                            left: 5.0.w, right: 5.0.w, top: 0.5.h, bottom: 0.5),
+                            left: 3.0.w, right: 3.0.w, top: 0.0.h, bottom: 0.5),
                         child: Center(
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -202,7 +203,6 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      height: 5.5.h,
                                       width: 80.0.w,
                                       child: isLoading
                                           ? LoadingIndicatorBlue()

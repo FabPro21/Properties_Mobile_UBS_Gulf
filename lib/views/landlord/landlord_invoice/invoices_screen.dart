@@ -248,7 +248,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                     height:
                                                                         1.0.h,
                                                                   ),
-                                                                  rowList(
+                                                                  rowList1(
                                                                     AppMetaLabels()
                                                                         .propertyNameLand,
                                                                     SessionController().getLanguage() ==
@@ -427,6 +427,21 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
     );
   }
 
+  Row rowList1(String t1, String t2) {
+    return Row(
+      children: [
+        Text(
+          t1,
+          style: AppTextStyle.normalBlack10,
+        ),
+        Spacer(),
+        Text(
+          t2,
+          style: AppTextStyle.semiBoldBlack10,
+        ),
+      ],
+    );
+  }
   Row rowList(String t1, String t2) {
     return Row(
       children: [

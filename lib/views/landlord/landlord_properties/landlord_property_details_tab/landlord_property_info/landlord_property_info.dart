@@ -28,7 +28,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
   );
   @override
   void initState() {
-    controller.getPropertyDetail(widget.propertID??"");
+    controller.getPropertyDetail(widget.propertID ?? "");
     super.initState();
   }
 
@@ -69,7 +69,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                 children: [
                                   // Property Name and address
                                   Padding(
-                                    padding: EdgeInsets.only(top: 3.0.h),
+                                    padding: EdgeInsets.only(top: 2.5.h),
                                     child: Container(
                                       width: 94.0.w,
                                       decoration: BoxDecoration(
@@ -86,62 +86,45 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(2.5.h),
+                                        padding: EdgeInsets.all(2.0.h),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              AppMetaLabels().propertyInfoLand,
-                                              style: AppTextStyle
-                                                  .semiBoldBlack12
-                                                  .copyWith(
-                                                fontWeight: FontWeight.bold,
+                                          
+                                            Container(
+                                              alignment: SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? Alignment.centerLeft
+                                                  : Alignment.centerRight,
+                                              child: Text(
+                                                SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? controller
+                                                            .propertyDetailInfo
+                                                            ?.propertyDetails
+                                                            ?.first
+                                                            .propertyName ??
+                                                        ''
+                                                    : controller
+                                                            .propertyDetailInfo
+                                                            ?.propertyDetails
+                                                            ?.first
+                                                            .propertyNameAR ??
+                                                        '',
+                                                maxLines: 1,
+                                                style: AppTextStyle
+                                                    .semiBoldBlack11,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
+
                                             SizedBox(
-                                              height: 2.h,
-                                            ),
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  AppMetaLabels().name,
-                                                  style:
-                                                      AppTextStyle.normalGrey11,
-                                                ),
-                                                Spacer(),
-                                                Container(
-                                                  alignment: SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? Alignment.centerRight
-                                                      : Alignment.centerLeft,
-                                                  width: 58.w,
-                                                  child: Text(
-                                                    SessionController()
-                                                                .getLanguage() ==
-                                                            1
-                                                        ? controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
-                                                                .propertyName ??
-                                                            ''
-                                                        : controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
-                                                                .propertyNameAR ??
-                                                            '',
-                                                    maxLines: 1,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack11,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 1.5.h,
+                                              height: 0.5.h,
                                             ),
                                             Row(
                                               children: [
@@ -163,11 +146,15 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                 .getLanguage() ==
                                                             1
                                                         ? controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
+                                                                .propertyDetailInfo
+                                                                ?.propertyDetails
+                                                                ?.first
                                                                 .emirateName ??
                                                             ''
                                                         : controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
+                                                                .propertyDetailInfo
+                                                                ?.propertyDetails
+                                                                ?.first
                                                                 .emirateNameAR ??
                                                             '-',
                                                     maxLines: 1,
@@ -180,7 +167,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 1.5.h,
+                                              height: 0.5.h,
                                             ),
                                             // road name
                                             // Row(
@@ -235,35 +222,42 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                           1
                                                       ? Alignment.centerRight
                                                       : Alignment.centerLeft,
-                                                  width: 58.w,
+                                                  width: 50.w,
                                                   child: Text(
                                                     SessionController()
                                                                 .getLanguage() ==
                                                             1
                                                         ? controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
+                                                                .propertyDetailInfo
+                                                                ?.propertyDetails
+                                                                ?.first
                                                                 .sector ??
                                                             ''
                                                         : controller
-                                                                .propertyDetailInfo?.propertyDetails?.first
+                                                                .propertyDetailInfo
+                                                                ?.propertyDetails
+                                                                ?.first
                                                                 .sectorAR ??
                                                             '',
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .normalGrey11,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 1.5.h,
+                                              height: 0.5.h,
                                             ),
                                             Row(
                                               children: [
-                                                Text(
-                                                  AppMetaLabels()
-                                                      .noofResidentialFlat,
-                                                  style:
-                                                      AppTextStyle.normalGrey11,
+                                                SizedBox(
+                                                  width: 50.w,
+                                                  child: Text(
+                                                    AppMetaLabels()
+                                                        .noofResidentialFlat,
+                                                    style: AppTextStyle
+                                                        .normalGrey11,
+                                                  ),
                                                 ),
                                                 Spacer(),
                                                 Container(
@@ -272,28 +266,27 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                           1
                                                       ? Alignment.centerRight
                                                       : Alignment.centerLeft,
-                                                  width: 40.w,
                                                   child: Text(
-                                                    controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
-                                                            .noofResidentialFlat
-                                                            .toString()??"",
+                                                    "${controller.propertyDetailInfo?.propertyDetails?.first.noofResidentialFlat}",
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .normalGrey11,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                             SizedBox(
-                                              height: 1.5.h,
+                                              height: 0.5.h,
                                             ),
                                             Row(
                                               children: [
-                                                Text(
-                                                  AppMetaLabels()
-                                                      .noofCommercialFlat,
-                                                  style:
-                                                      AppTextStyle.normalGrey11,
+                                                SizedBox(
+                                                  width: 50.w,
+                                                  child: Text(
+                                                    AppMetaLabels()
+                                                        .noofCommercialFlat,
+                                                    style: AppTextStyle
+                                                        .normalGrey11,
+                                                  ),
                                                 ),
                                                 Spacer(),
                                                 Container(
@@ -302,18 +295,15 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                           1
                                                       ? Alignment.centerRight
                                                       : Alignment.centerLeft,
-                                                  width: 40.w,
                                                   child: Text(
-                                                    controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
-                                                            .noofCommercialFlat
-                                                            .toString()??"",
+                                                    "${controller.propertyDetailInfo?.propertyDetails?.first.noofCommercialFlat}",
                                                     style: AppTextStyle
-                                                        .normalBlack10,
+                                                        .normalGrey11,
                                                   ),
                                                 ),
                                               ],
                                             ),
+
                                             // // Plot No
                                             // SizedBox(
                                             //   height: 1.5.h,
@@ -377,11 +367,15 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                               height: 1.h,
                                             ),
                                             controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
+                                                            .propertyDetailInfo
+                                                            ?.propertyDetails
+                                                            ?.first
                                                             .propertyAddress ==
                                                         '' ||
                                                     controller
-                                                            .propertyDetailInfo?.propertyDetails?.first
+                                                            .propertyDetailInfo
+                                                            ?.propertyDetails
+                                                            ?.first
                                                             .propertyAddressAR ==
                                                         ''
                                                 ? SizedBox()
@@ -402,11 +396,15 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                                       .getLanguage() ==
                                                                   1
                                                               ? controller
-                                                                      .propertyDetailInfo?.propertyDetails?.first
+                                                                      .propertyDetailInfo
+                                                                      ?.propertyDetails
+                                                                      ?.first
                                                                       .propertyAddress ??
                                                                   ''
                                                               : controller
-                                                                      .propertyDetailInfo?.propertyDetails?.first
+                                                                      .propertyDetailInfo
+                                                                      ?.propertyDetails
+                                                                      ?.first
                                                                       .propertyAddressAR ??
                                                                   '',
                                                           style: AppTextStyle

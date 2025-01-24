@@ -386,30 +386,27 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     left: 1.5.h, right: 1.5.h),
                                                 child: Row(
                                                   children: [
-                                                    SizedBox(
-                                                      width: Get.width * 0.6,
-                                                      child: Text(
-                                                        lDReportController
-                                                                    .selectedChequeStatus
-                                                                    .value ==
-                                                                null
-                                                            ? ''
-                                                            : SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? lDReportController
-                                                                        .selectedChequeStatus
-                                                                        .value
-                                                                        .name ??
-                                                                    ''
-                                                                : lDReportController
-                                                                        .selectedChequeStatus
-                                                                        .value
-                                                                        .nameAr ??
-                                                                    '',
-                                                        style: AppTextStyle
-                                                            .normalBlack12,
-                                                      ),
+                                                    Text(
+                                                      lDReportController
+                                                                  .selectedChequeStatus
+                                                                  .value ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? lDReportController
+                                                                      .selectedChequeStatus
+                                                                      .value
+                                                                      .name ??
+                                                                  ''
+                                                              : lDReportController
+                                                                      .selectedChequeStatus
+                                                                      .value
+                                                                      .nameAr ??
+                                                                  '',
+                                                      style: AppTextStyle
+                                                          .normalBlack12,
                                                     ),
                                                     Spacer(),
                                                     Padding(
@@ -492,30 +489,27 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     left: 1.5.h, right: 1.5.h),
                                                 child: Row(
                                                   children: [
-                                                    SizedBox(
-                                                      width: Get.width * 0.6,
-                                                      child: Text(
-                                                        lDReportController
-                                                                    .selectedUnitStatus
-                                                                    .value ==
-                                                                null
-                                                            ? ''
-                                                            : SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? lDReportController
-                                                                        .selectedUnitStatus
-                                                                        .value
-                                                                        .name ??
-                                                                    ''
-                                                                : lDReportController
-                                                                        .selectedUnitStatus
-                                                                        .value
-                                                                        .nameAr ??
-                                                                    '',
-                                                        style: AppTextStyle
-                                                            .normalBlack12,
-                                                      ),
+                                                    Text(
+                                                      lDReportController
+                                                                  .selectedUnitStatus
+                                                                  .value ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? lDReportController
+                                                                      .selectedUnitStatus
+                                                                      .value
+                                                                      .name ??
+                                                                  ''
+                                                              : lDReportController
+                                                                      .selectedUnitStatus
+                                                                      .value
+                                                                      .nameAr ??
+                                                                  '',
+                                                      style: AppTextStyle
+                                                          .normalBlack12,
                                                     ),
                                                     Spacer(),
                                                     Padding(
@@ -613,30 +607,27 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     left: 1.5.h, right: 1.5.h),
                                                 child: Row(
                                                   children: [
-                                                    SizedBox(
-                                                      width: Get.width * 0.6,
-                                                      child: Text(
-                                                        lDReportController
-                                                                    .selectedcontractorType
-                                                                    .value ==
-                                                                null
-                                                            ? ''
-                                                            : SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? lDReportController
-                                                                        .selectedcontractorType
-                                                                        .value
-                                                                        .name ??
-                                                                    ''
-                                                                : lDReportController
-                                                                        .selectedcontractorType
-                                                                        .value
-                                                                        .nameAr ??
-                                                                    '',
-                                                        style: AppTextStyle
-                                                            .normalBlack12,
-                                                      ),
+                                                    Text(
+                                                      lDReportController
+                                                                  .selectedcontractorType
+                                                                  .value ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? lDReportController
+                                                                      .selectedcontractorType
+                                                                      .value
+                                                                      .name ??
+                                                                  ''
+                                                              : lDReportController
+                                                                      .selectedcontractorType
+                                                                      .value
+                                                                      .nameAr ??
+                                                                  '',
+                                                      style: AppTextStyle
+                                                          .normalBlack12,
                                                     ),
                                                     Spacer(),
                                                     Padding(
@@ -743,30 +734,27 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     left: 1.5.h, right: 1.5.h),
                                                 child: Row(
                                                   children: [
-                                                    SizedBox(
-                                                      width: Get.width * 0.6,
-                                                      child: Text(
-                                                        lDReportController
-                                                                    .selectedcontractCategoryType
-                                                                    .value ==
-                                                                null
-                                                            ? ''
-                                                            : SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? lDReportController
-                                                                        .selectedcontractCategoryType
-                                                                        .value
-                                                                        .name ??
-                                                                    ''
-                                                                : lDReportController
-                                                                        .selectedcontractCategoryType
-                                                                        .value
-                                                                        .nameAr ??
-                                                                    '',
-                                                        style: AppTextStyle
-                                                            .normalBlack12,
-                                                      ),
+                                                    Text(
+                                                      lDReportController
+                                                                  .selectedcontractCategoryType
+                                                                  .value ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? lDReportController
+                                                                      .selectedcontractCategoryType
+                                                                      .value
+                                                                      .name ??
+                                                                  ''
+                                                              : lDReportController
+                                                                      .selectedcontractCategoryType
+                                                                      .value
+                                                                      .nameAr ??
+                                                                  '',
+                                                      style: AppTextStyle
+                                                          .normalBlack12,
                                                     ),
                                                     Spacer(),
                                                     Padding(
@@ -870,30 +858,27 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     left: 1.5.h, right: 1.5.h),
                                                 child: Row(
                                                   children: [
-                                                    SizedBox(
-                                                      width: Get.width * 0.6,
-                                                      child: Text(
-                                                        lDReportController
-                                                                    .selectedserviceContractStatusType
-                                                                    .value ==
-                                                                null
-                                                            ? ''
-                                                            : SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? lDReportController
-                                                                        .selectedserviceContractStatusType
-                                                                        .value
-                                                                        .name ??
-                                                                    ''
-                                                                : lDReportController
-                                                                        .selectedserviceContractStatusType
-                                                                        .value
-                                                                        .nameAr ??
-                                                                    '',
-                                                        style: AppTextStyle
-                                                            .normalBlack12,
-                                                      ),
+                                                    Text(
+                                                      lDReportController
+                                                                  .selectedserviceContractStatusType
+                                                                  .value ==
+                                                              null
+                                                          ? ''
+                                                          : SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? lDReportController
+                                                                      .selectedserviceContractStatusType
+                                                                      .value
+                                                                      .name ??
+                                                                  ''
+                                                              : lDReportController
+                                                                      .selectedserviceContractStatusType
+                                                                      .value
+                                                                      .nameAr ??
+                                                                  '',
+                                                      style: AppTextStyle
+                                                          .normalBlack12,
                                                     ),
                                                     Spacer(),
                                                     Padding(
@@ -965,50 +950,37 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                   //     ThemeData(primarySwatch: Colors.deepPurple),
                                                   styleDatePicker:
                                                       MaterialRoundedDatePickerStyle(
-                                                          decorationDateSelected:
-                                                              BoxDecoration(
-                                                                  color: AppColors
-                                                                      .blueColor,
-                                                                  borderRadius:
-                                                                      BorderRadius.circular(
-                                                                          100)),
-                                                          textStyleButtonPositive:
-                                                              TextStyle(
-                                                            color: AppColors
-                                                                .blueColor,
-                                                          ),
-                                                          textStyleButtonNegative:
-                                                              TextStyle(
-                                                            color: AppColors
-                                                                .blueColor,
-                                                          ),
-                                                          backgroundHeader: Colors
-                                                              .grey.shade300,
-                                                          // Appbar year like '2023' button
-                                                          textStyleYearButton: AppTextStyle
-                                                              .boldBlue30
-                                                              .copyWith(
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .grey
-                                                                          .shade100,
-                                                                  leadingDistribution:
-                                                                      TextLeadingDistribution
-                                                                          .even),
-                                                          // Appbar day like 'Thu, Mar 16' button
-                                                          textStyleDayButton:
-                                                              AppTextStyle
-                                                                  .normalWhite16
+                                                    backgroundHeader:
+                                                        Colors.grey.shade300,
+                                                    // Appbar year like '2023' button
+                                                    textStyleYearButton:
+                                                        TextStyle(
+                                                      fontSize: 30.sp,
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      backgroundColor:
+                                                          Colors.grey.shade100,
+                                                      leadingDistribution:
+                                                          TextLeadingDistribution
+                                                              .even,
+                                                    ),
+                                                    // Appbar day like 'Thu, Mar 16' button
+                                                    textStyleDayButton:
+                                                        TextStyle(
+                                                      fontSize: 18.sp,
+                                                      color: Colors.white,
+                                                    ),
 
-                                                          // Heading year like 'S M T W TH FR SA ' button
-                                                          // textStyleDayHeader: TextStyle(
-                                                          //   fontSize: 30.sp,
-                                                          //   color: Colors.white,
-                                                          //   backgroundColor: Colors.red,
-                                                          //   decoration: TextDecoration.overline,
-                                                          //   decorationColor: Colors.pink,
-                                                          // ),
-                                                          ),
+                                                    // Heading year like 'S M T W TH FR SA ' button
+                                                    // textStyleDayHeader: TextStyle(
+                                                    //   fontSize: 30.sp,
+                                                    //   color: Colors.white,
+                                                    //   backgroundColor: Colors.red,
+                                                    //   decoration: TextDecoration.overline,
+                                                    //   decorationColor: Colors.pink,
+                                                    // ),
+                                                  ),
                                                 );
                                                 setState(() {
                                                   lDReportController
@@ -1354,7 +1326,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                AppMetaLabels().from + ' *',
+                                                AppMetaLabels().from + '*',
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
@@ -1367,9 +1339,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     var dT =
                                                         await showRoundedDatePicker(
                                                       theme: ThemeData(
-                                                          primaryColor:
-                                                              AppColors
-                                                                  .blueColor),
+                                                          primarySwatch: Colors
+                                                              .red),
+
                                                       height: 50.0.h,
                                                       context: context,
                                                       // locale: Locale('en'),
@@ -1387,54 +1359,41 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           DateTime.now().year +
                                                               10),
                                                       borderRadius: 2.0.h,
-                                                      // theme:
-                                                      //     ThemeData(primarySwatch: Colors.deepPurple),
                                                       styleDatePicker:
                                                           MaterialRoundedDatePickerStyle(
-                                                              decorationDateSelected: BoxDecoration(
-                                                                  color: AppColors
-                                                                      .blueColor,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100)),
-                                                              textStyleButtonPositive:
-                                                                  TextStyle(
-                                                                color: AppColors
-                                                                    .blueColor,
-                                                              ),
-                                                              textStyleButtonNegative:
-                                                                  TextStyle(
-                                                                color: AppColors
-                                                                    .blueColor,
-                                                              ),
-                                                              backgroundHeader:
-                                                                  Colors.grey
-                                                                      .shade300,
-                                                              // Appbar year like '2023' button
-                                                              textStyleYearButton: AppTextStyle
-                                                                  .boldBlue30
-                                                                  .copyWith(
-                                                                      backgroundColor: Colors
-                                                                          .grey
-                                                                          .shade100,
-                                                                      leadingDistribution:
-                                                                          TextLeadingDistribution
-                                                                              .even),
-                                                              // Appbar day like 'Thu, Mar 16' button
-                                                              textStyleDayButton:
-                                                                  AppTextStyle
-                                                                      .normalWhite16
+                                                        backgroundHeader: Colors
+                                                            .grey.shade300,
+                                                        // Appbar year like '2023' button
+                                                        textStyleYearButton:
+                                                            TextStyle(
+                                                          fontSize: 30.sp,
+                                                          color: AppColors
+                                                              .blueColor,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          backgroundColor:
+                                                              Colors.grey
+                                                                  .shade100,
+                                                          leadingDistribution:
+                                                              TextLeadingDistribution
+                                                                  .even,
+                                                        ),
+                                                        // Appbar day like 'Thu, Mar 16' button
+                                                        textStyleDayButton:
+                                                            TextStyle(
+                                                          fontSize: 18.sp,
+                                                          color: Colors.white,
+                                                        ),
 
-                                                              // Heading year like 'S M T W TH FR SA ' button
-                                                              // textStyleDayHeader: TextStyle(
-                                                              //   fontSize: 30.sp,
-                                                              //   color: Colors.white,
-                                                              //   backgroundColor: Colors.red,
-                                                              //   decoration: TextDecoration.overline,
-                                                              //   decorationColor: Colors.pink,
-                                                              // ),
-                                                              ),
+                                                        // Heading year like 'S M T W TH FR SA ' button
+                                                        // textStyleDayHeader: TextStyle(
+                                                        //   fontSize: 30.sp,
+                                                        //   color: Colors.white,
+                                                        //   backgroundColor: Colors.red,
+                                                        //   decoration: TextDecoration.overline,
+                                                        //   decorationColor: Colors.pink,
+                                                        // ),
+                                                      ),
                                                     );
                                                     setState(() {
                                                       lDReportController
@@ -1585,50 +1544,38 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       //     ThemeData(primarySwatch: Colors.deepPurple),
                                                       styleDatePicker:
                                                           MaterialRoundedDatePickerStyle(
-                                                              decorationDateSelected: BoxDecoration(
-                                                                  color: AppColors
-                                                                      .blueColor,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100)),
-                                                              textStyleButtonPositive:
-                                                                  TextStyle(
-                                                                color: AppColors
-                                                                    .blueColor,
-                                                              ),
-                                                              textStyleButtonNegative:
-                                                                  TextStyle(
-                                                                color: AppColors
-                                                                    .blueColor,
-                                                              ),
-                                                              backgroundHeader:
-                                                                  Colors.grey
-                                                                      .shade300,
-                                                              // Appbar year like '2023' button
-                                                              textStyleYearButton: AppTextStyle
-                                                                  .boldBlue30
-                                                                  .copyWith(
-                                                                      backgroundColor: Colors
-                                                                          .grey
-                                                                          .shade100,
-                                                                      leadingDistribution:
-                                                                          TextLeadingDistribution
-                                                                              .even),
-                                                              // Appbar day like 'Thu, Mar 16' button
-                                                              textStyleDayButton:
-                                                                  AppTextStyle
-                                                                      .normalWhite16
+                                                        backgroundHeader: Colors
+                                                            .grey.shade300,
+                                                        // Appbar year like '2023' button
+                                                        textStyleYearButton:
+                                                            TextStyle(
+                                                          fontSize: 30.sp,
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          backgroundColor:
+                                                              Colors.grey
+                                                                  .shade100,
+                                                          leadingDistribution:
+                                                              TextLeadingDistribution
+                                                                  .even,
+                                                        ),
+                                                        // Appbar day like 'Thu, Mar 16' button
+                                                        textStyleDayButton:
+                                                            TextStyle(
+                                                          fontSize: 18.sp,
+                                                          color: Colors.white,
+                                                        ),
 
-                                                              // Heading year like 'S M T W TH FR SA ' button
-                                                              // textStyleDayHeader: TextStyle(
-                                                              //   fontSize: 30.sp,
-                                                              //   color: Colors.white,
-                                                              //   backgroundColor: Colors.red,
-                                                              //   decoration: TextDecoration.overline,
-                                                              //   decorationColor: Colors.pink,
-                                                              // ),
-                                                              ),
+                                                        // Heading year like 'S M T W TH FR SA ' button
+                                                        // textStyleDayHeader: TextStyle(
+                                                        //   fontSize: 30.sp,
+                                                        //   color: Colors.white,
+                                                        //   backgroundColor: Colors.red,
+                                                        //   decoration: TextDecoration.overline,
+                                                        //   decorationColor: Colors.pink,
+                                                        // ),
+                                                      ),
                                                     );
                                                     setState(() {
                                                       lDReportController
@@ -1825,12 +1772,14 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
             ],
           ),
           bottomNavigationBar: BottomAppBar(
+              color: Colors.white,
               child: Container(
-                  height: 8.h, //set your height here
+                  height: 10.h, //set your height here
                   width: double.maxFinite, //set your width here
-                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                  decoration:
+                      BoxDecoration(color: Colors.transparent, boxShadow: [
                     BoxShadow(
-                      color: Colors.black12,
+                      color: Colors.transparent,
                       blurRadius: 0.9.h,
                       spreadRadius: 0.1.h,
                       offset: Offset(0.0.h, 0.1.h),
@@ -1838,9 +1787,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                   ]),
                   child: Center(
                     child: Container(
-                      height: 5.5.h,
+                      // height: 5.5.h,
                       width: 86.0.w,
-                      margin: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
+                      margin: EdgeInsets.only(top: 0.0.h, bottom: 0.5.h),
                       child: lDReportController.isLoading.value
                           ? LoadingIndicatorBlue()
                           : ElevatedButton(
@@ -1909,7 +1858,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           return;
                                         }
                                       }
-
                                       dynamic propertyID;
                                       if (lDReportController
                                               .selectedPropType.value ==
