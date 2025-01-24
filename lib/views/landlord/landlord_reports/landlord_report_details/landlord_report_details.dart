@@ -20,7 +20,6 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
 import 'package:fap_properties/data/models/landlord_models/report/get_dropdown_model.dart'
     as dropDownModel;
 
