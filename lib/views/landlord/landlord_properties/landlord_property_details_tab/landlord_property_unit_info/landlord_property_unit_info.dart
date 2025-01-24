@@ -76,7 +76,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                             );
                           },
                           child: Padding(
-                            padding: EdgeInsets.all(1.5.h),
+                            padding: EdgeInsets.only(left: 1.5.h,right: 1.5.h,bottom: 1.5.h,top: 0.5.h),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -224,7 +224,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                   ),
                                                   Spacer(),
                                                   Container(
-                                                    width: 60.w,
+                                                    width: 57.w,
                                                     alignment: SessionController()
                                                                 .getLanguage() ==
                                                             1
@@ -237,7 +237,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                               .unitRefNo ??
                                                           '',
                                                       style: AppTextStyle
-                                                          .normalGrey11,
+                                                          .semiBoldBlack11,
                                                       maxLines: 1,
                                                     ),
                                                   ),
@@ -253,7 +253,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                   ),
                                                   Spacer(),
                                                   Container(
-                                                    width: 60.w,
+                                                    width: 57.w,
                                                     alignment: SessionController()
                                                                 .getLanguage() ==
                                                             1
@@ -330,7 +330,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                       width: 0.13.w,
                                       child: Icon(
                                         Icons.arrow_forward_ios_rounded,
-                                        color: AppColors.grey1,
+                                        color: AppColors.blackColor,
                                         size: 20,
                                       ),
                                     ),

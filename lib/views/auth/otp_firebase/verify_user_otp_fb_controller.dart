@@ -197,15 +197,38 @@ class VerifyUserOtpControllerFB extends GetxController {
 
   Future<void> _getDeviceTokken() async {
     FirebaseMessaging.instance.requestPermission();
-    await FirebaseMessaging.instance.getToken().then(
-      (String? token) {
-        assert(token != null);
-        deviceToken = token;
-        SessionController().setDeviceTokken(deviceToken);
-        GlobalPreferencesEncrypted.setString(
-            GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
-      },
-    );
+    // await FirebaseMessaging.instance.getToken().then(
+    //   (String? token) {
+    //     assert(token != null);
+    //     deviceToken = token;
+    //     SessionController().setDeviceTokken(deviceToken);
+    //     GlobalPreferencesEncrypted.setString(
+    //         GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+    //   },
+    // );
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      if (kDebugMode == true) {
+        await FirebaseMessaging.instance.getAPNSToken().then(
+          (String? token) {
+            assert(token != null);
+            deviceToken = token;
+            SessionController().setDeviceTokken(deviceToken);
+            GlobalPreferencesEncrypted.setString(
+                GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+          },
+        );
+      } else {
+        await FirebaseMessaging.instance.getToken().then(
+          (String? token) {
+            assert(token != null);
+            deviceToken = token;
+            SessionController().setDeviceTokken(deviceToken);
+            GlobalPreferencesEncrypted.setString(
+                GlobalPreferencesLabels.deviceToken, deviceToken ?? "");
+          },
+        );
+      }
+    }
   }
 
   void validatePublicRole() async {

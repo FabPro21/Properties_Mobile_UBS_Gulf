@@ -5,6 +5,7 @@ import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +35,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _getFcmToken() async {
     // Get the FCM token
-    String? token = await _firebaseMessaging.getToken();
-    print('FCM Token: $token');
+    // String? token = await _firebaseMessaging.getToken();
+    // print('FCM Token: $token');
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      if (kDebugMode == true) {
+        String? token = await _firebaseMessaging.getAPNSToken();
+        print('FCM Token: $token');
+      } else {
+        String? token = await _firebaseMessaging.getToken();
+        print('FCM Token: $token');
+      }
+    }
   }
 
   void _setupNotificationListeners() {
