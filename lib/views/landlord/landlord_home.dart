@@ -120,7 +120,7 @@ class _LandlordHomeState extends State<LandlordHome> {
                         icon: AppImagesPath.menu,
                         title: AppMetaLabels().more,
                         onTap: (pos) async {
-                          int _res = await Get.to(() => LandLordMore());
+                          int? _res = await Get.to(() => LandLordMore());
                           if (_res != null)
                             setState(() {
                               _selectedIndex = _res;

@@ -314,7 +314,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                   child: Icon(
                                                     Icons
                                                         .arrow_forward_ios_rounded,
-                                                    color: AppColors.grey1,
+                                                    color: AppColors.blackColor,
                                                     size: 20,
                                                   ),
                                                 ),

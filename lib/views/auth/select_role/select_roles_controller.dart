@@ -16,6 +16,7 @@ import 'package:fap_properties/views/auth/validate_user/validate_user_screen.dar
 import 'package:fap_properties/views/public_views/search_properties_dashboard_tabs/search_properties_dashboard_tabs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../../data/models/auth_models/getNew_token_model.dart';
 import '../../../utils/constants/app_config.dart';
@@ -215,13 +216,31 @@ class SelectRoloesController extends GetxController {
   }
 
   Future<void> _getDeviceTokken() async {
+    
     FirebaseMessaging.instance.requestPermission();
-    await FirebaseMessaging.instance.getToken().then(
-      (String? token) {
-        assert(token != null);
-        devToken = token ?? "";
-      },
-    );
+    // await FirebaseMessaging.instance.getToken().then(
+    //   (String? token) {
+    //     assert(token != null);
+    //     devToken = token ?? "";
+    //   },
+    // );
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      if (kDebugMode == true) {
+        await FirebaseMessaging.instance.getAPNSToken().then(
+          (String? token) {
+            assert(token != null);
+            devToken = token ?? "";
+          },
+        );
+      } else {
+        await FirebaseMessaging.instance.getToken().then(
+          (String? token) {
+            assert(token != null);
+            devToken = token ?? "";
+          },
+        );
+      }
+    }
   }
 
   void resetApp() async {
