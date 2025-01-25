@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">https://provisuat.uaenorth.cloudapp.azure.com</domain>
+        <domain includeSubdomains="true">https://landlord.fabproperties.ae</domain>
+    </domain-config>
+</network-security-config>

@@ -21,9 +21,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  connectivity_plus: ^6.1.2
-  # connectivity_plus: ^6.0.5
+  # connectivity_plus: any
+  connectivity_plus: ^6.0.5
   animated_text_kit: ^4.2.2
+  # connectivity_plus: ^6.0.0
   awesome_dialog: ^3.2.1
   badges: ^3.1.2
   carousel_slider: ^5.0.0
@@ -38,7 +39,7 @@ dependencies:
   firebase_messaging: ^14.0.0 # firebase_messaging: any #^15.1.0 # firebase_messaging: ^14.0.0
   firebase_app_check: ^0.2.1+8 # firebase_app_check: ^0.2.1+8
   flutter_image_compress: ^2.3.0
-  flutter_jailbreak_detection: ^1.10.0
+  flutter_jailbreak_detection: any #^1.10.0
   flutter_launcher_icons: ^0.13.1
   flutter_local_notifications: ^17.2.2
   flutter_pdfview: ^1.3.2

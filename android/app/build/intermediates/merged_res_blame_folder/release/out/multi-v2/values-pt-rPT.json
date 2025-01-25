@@ -1,0 +1,145 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.fab.flutterjailbreakdetection.app-mergeReleaseResources-97:/values-pt-rPT/values-pt-rPT.xml",
+            "map": [
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/a6febdc4864add1bd3677a8bd15d04f7/transformed/appcompat-1.6.1/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,213,319,426,515,616,734,819,899,991,1085,1182,1276,1375,1469,1565,1660,1752,1844,1929,2036,2147,2249,2357,2465,2572,2737,2836",
+                        "endColumns": "107,105,106,88,100,117,84,79,91,93,96,93,98,93,95,94,91,91,84,106,110,101,107,107,106,164,98,85",
+                        "endOffsets": "208,314,421,510,611,729,814,894,986,1080,1177,1271,1370,1464,1560,1655,1747,1839,1924,2031,2142,2244,2352,2460,2567,2732,2831,2917"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,83",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,213,319,426,515,616,734,819,899,991,1085,1182,1276,1375,1469,1565,1660,1752,1844,1929,2036,2147,2249,2357,2465,2572,2737,8978",
+                        "endColumns": "107,105,106,88,100,117,84,79,91,93,96,93,98,93,95,94,91,91,84,106,110,101,107,107,106,164,98,85",
+                        "endOffsets": "208,314,421,510,611,729,814,894,986,1080,1177,1271,1370,1464,1560,1655,1747,1839,1924,2031,2142,2244,2352,2460,2567,2732,2831,9059"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,353,453,560,666,787",
+                        "endColumns": "96,101,98,99,106,105,120,100",
+                        "endOffsets": "147,249,348,448,555,661,782,883"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,84",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "2836,2933,3035,3134,3234,3341,3447,9064",
+                        "endColumns": "96,101,98,99,106,105,120,100",
+                        "endOffsets": "2928,3030,3129,3229,3336,3442,3563,9160"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/359d48d07d27f0f512b1d6557d53d48f/transformed/biometric-1.1.0/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,171,266,395,534,681,816,945,1092,1194,1334,1483",
+                        "endColumns": "115,94,128,138,146,134,128,146,101,139,148,125",
+                        "endOffsets": "166,261,390,529,676,811,940,1087,1189,1329,1478,1604"
+                    },
+                    "to": {
+                        "startLines": "54,57,71,72,73,74,75,76,77,78,79,80",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "5902,6204,7405,7534,7673,7820,7955,8084,8231,8333,8473,8622",
+                        "endColumns": "115,94,128,138,146,134,128,146,101,139,148,125",
+                        "endOffsets": "6013,6294,7529,7668,7815,7950,8079,8226,8328,8468,8617,8743"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/c50b07b5677a28b1ab0c84ff682245d6/transformed/preference-1.2.1/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "105,175,263,342,493,662,749",
+                        "endColumns": "69,87,78,150,168,86,80",
+                        "endOffsets": "170,258,337,488,657,744,825"
+                    },
+                    "to": {
+                        "startLines": "55,67,81,82,85,86,87",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "6018,7003,8748,8827,9165,9334,9421",
+                        "endColumns": "69,87,78,150,168,86,80",
+                        "endOffsets": "6083,7086,8822,8973,9329,9416,9497"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/res/values-pt-rPT/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "197,298,457,581,685,849,973,1091,1196,1380,1484,1650,1777,1932,2106,2170,2235",
+                        "endColumns": "100,158,123,103,163,123,117,104,183,103,165,126,154,173,63,64,82",
+                        "endOffsets": "297,456,580,684,848,972,1090,1195,1379,1483,1649,1776,1931,2105,2169,2234,2317"
+                    },
+                    "to": {
+                        "startLines": "36,37,38,39,40,41,42,43,45,46,47,48,49,50,51,52,53",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3568,3673,3836,3964,4072,4240,4368,4490,4744,4932,5040,5210,5341,5500,5678,5746,5815",
+                        "endColumns": "104,162,127,107,167,127,121,108,187,107,169,130,158,177,67,68,86",
+                        "endOffsets": "3668,3831,3959,4067,4235,4363,4485,4594,4927,5035,5205,5336,5495,5673,5741,5810,5897"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/b0dcab1ac29510afec045b7c09664b7f/transformed/jetified-media3-exoplayer-1.4.0/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,130,194,261,332,414,496,591,680",
+                        "endColumns": "74,63,66,70,81,81,94,88,78",
+                        "endOffsets": "125,189,256,327,409,491,586,675,754"
+                    },
+                    "to": {
+                        "startLines": "58,59,60,61,62,63,64,65,66",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6299,6374,6438,6505,6576,6658,6740,6835,6924",
+                        "endColumns": "74,63,66,70,81,81,94,88,78",
+                        "endOffsets": "6369,6433,6500,6571,6653,6735,6830,6919,6998"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/res/values-pt-rPT/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "199",
+                        "endColumns": "140",
+                        "endOffsets": "339"
+                    },
+                    "to": {
+                        "startLines": "44",
+                        "startColumns": "4",
+                        "startOffsets": "4599",
+                        "endColumns": "144",
+                        "endOffsets": "4739"
+                    }
+                },
+                {
+                    "source": "/Users/mapmac/.gradle/caches/transforms-3/678ba801371483343c7ba7ba4daff04d/transformed/browser-1.8.0/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,171,270,382",
+                        "endColumns": "115,98,111,102",
+                        "endOffsets": "166,265,377,480"
+                    },
+                    "to": {
+                        "startLines": "56,68,69,70",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "6088,7091,7190,7302",
+                        "endColumns": "115,98,111,102",
+                        "endOffsets": "6199,7185,7297,7400"
+                    }
+                }
+            ]
+        }
+    ]
+}
