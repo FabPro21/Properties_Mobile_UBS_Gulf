@@ -4,31 +4,65 @@ allprojects {
         google()
         mavenCentral()
     }
-    // dependencies {
-    //     classpath 'com.android.tools.build:gradle:8.0.0'  // Make sure you're using a compatible version
-    // }
-//    dependencies {
-//        classpath 'com.google.gms:google-services:4.3.5' // Use the latest version
-//    }
 }
 
 
+// rootProject.buildDir = "../build"
+// // // Add this part -------------->
+//     subprojects {
+//         afterEvaluate { project ->
+//             if (project.hasProperty('android')) {
+//                 project.android {
+//                     if (namespace == null) {
+//                         namespace project.group
+//                     }
+//                 }
+//             }
+//             if (project.plugins.hasPlugin("com.android.application") ||
+//                 project.plugins.hasPlugin("com.android.library")) {
+//                 project.android {
+//                 compileSdkVersion 34
+//                 buildToolsVersion "34.0.0"
+//             }
+//         }
+//         }
+//     }
+// subprojects {
+//     project.evaluationDependsOn(":app")
+    
+// }
+
 rootProject.buildDir = "../build"
-// // Add this part -------------->
-    subprojects {
-        afterEvaluate { project ->
-            if (project.hasProperty('android')) {
+subprojects {
+  //  fix for verifyReleaseResources
+  // ============
+  afterEvaluate { project ->
+    if (project.plugins.hasPlugin("com.android.application") ||
+      project.plugins.hasPlugin("com.android.library")) {
+      project.android {
+        compileSdkVersion 35
+        buildToolsVersion "35.0.0"
+      }
+    }
+    if (project.hasProperty("android")) {
+      project.android {
+        if (namespace == null) {
+          namespace project.group
+        }
+      }
+    }
+    if (project.name == "flutter_downloader") {
+            if (project.plugins.hasPlugin("com.android.application") ||
+                    project.plugins.hasPlugin("com.android.library")) {
                 project.android {
-                    if (namespace == null) {
-                        namespace project.group
-                    }
+                    compileSdkVersion 34
                 }
             }
-        }
     }
-subprojects {
-    project.evaluationDependsOn(":app")
-    
+  }
+  // ============
+  project.buildDir = "${rootProject.buildDir}/${project.name}"
+  project.evaluationDependsOn(":app")
 }
 
 tasks.register("clean", Delete) {
@@ -36,8 +70,7 @@ tasks.register("clean", Delete) {
 }
 
 buildscript {
- ext.kotlin_version = '1.8.22' 
-
+ ext.kotlin_version = '1.8.0' 
 }
 
 

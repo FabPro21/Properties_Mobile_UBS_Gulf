@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fab.flutterjailbreakdetection.app-mergeReleaseResources-97:/values-ml/values-ml.xml",
+            "outputFile": "com.fab.fabpropertiesEnterprise.app-mergeReleaseResources-96:/values-ml/values-ml.xml",
             "map": [
                 {
                     "source": "/Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/res/values-ml/values-ml.xml",

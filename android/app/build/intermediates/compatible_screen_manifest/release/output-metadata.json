@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.fab.fabpropertiesEnterprise",
+  "applicationId": "com.fab.flutterjailbreakdetection",
   "variantName": "release",
   "elements": []
 }

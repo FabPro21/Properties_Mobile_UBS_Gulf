@@ -50,7 +50,7 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   flutter_switch: ^0.3.2
   flutter_tab_indicator_styler: ^2.0.0
-  flutter_windowmanager: ^0.2.0
+  # flutter_windowmanager: ^0.2.0
   get: ^4.6.6
   google_fonts: ^6.2.1
   google_maps_flutter: ^2.9.0 # creating issue while creating build

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fab.flutterjailbreakdetection.app-mergeReleaseResources-97:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "com.fab.fabpropertiesEnterprise.app-mergeReleaseResources-96:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
                     "source": "/Users/mapmac/.gradle/caches/transforms-3/a6febdc4864add1bd3677a8bd15d04f7/transformed/appcompat-1.6.1/res/values-watch-v21/values-watch-v21.xml",

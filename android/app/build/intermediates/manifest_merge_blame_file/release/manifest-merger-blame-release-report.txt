@@ -5,7 +5,7 @@
 5  package="com.fab.fabpropertiesEnterprise">
 6-->
 7<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-8    package="com.fab.fabpropertiesEnterprise"
+8    package="com.fab.flutterjailbreakdetection"
 9    android:versionCode="40"
 10    android:versionName="1.0.19" >
 11
@@ -101,12 +101,12 @@
 57
 58    <permission
 58-->[androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
-59        android:name="com.fab.fabpropertiesEnterprise.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+59        android:name="com.fab.flutterjailbreakdetection.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 59-->[androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 60        android:protectionLevel="signature" />
 60-->[androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 61
-62    <uses-permission android:name="com.fab.fabpropertiesEnterprise.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+62    <uses-permission android:name="com.fab.flutterjailbreakdetection.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
 62-->[androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 62-->[androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 63    <application
@@ -130,7 +130,7 @@
 72        <provider
 73            android:name="vn.hunghd.flutterdownloader.DownloadedFileProvider"
 73-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:28:7-72
-74            android:authorities="com.fab.fabpropertiesEnterprise.flutter_downloader.provider"
+74            android:authorities="com.fab.flutterjailbreakdetection.flutter_downloader.provider"
 74-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:29:7-73
 75            android:exported="false"
 75-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:30:7-31
@@ -148,7 +148,7 @@
 86        <provider
 87            android:name="androidx.startup.InitializationProvider"
 87-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:39:7-61
-88            android:authorities="com.fab.fabpropertiesEnterprise.androidx-startup"
+88            android:authorities="com.fab.flutterjailbreakdetection.androidx-startup"
 88-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:40:7-62
 89            android:exported="false" >
 89-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:41:7-31
@@ -176,7 +176,7 @@
 102        <provider
 103            android:name="vn.hunghd.flutterdownloader.FlutterDownloaderInitializer"
 103-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:51:7-78
-104            android:authorities="com.fab.fabpropertiesEnterprise.flutter-downloader-init"
+104            android:authorities="com.fab.flutterjailbreakdetection.flutter-downloader-init"
 104-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:52:7-69
 105            android:exported="false" >
 105-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:53:7-31
@@ -194,7 +194,7 @@
 114        <provider
 115            android:name="androidx.core.content.FileProvider"
 115-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:62:7-56
-116            android:authorities="com.fab.fabpropertiesEnterprise.fileProvider"
+116            android:authorities="com.fab.flutterjailbreakdetection.fileProvider"
 116-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:63:7-58
 117            android:exported="false"
 117-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:64:7-31
@@ -226,7 +226,7 @@
 132
 133        <activity
 133-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:77:5-108:16
-134            android:name="com.fab.flutterjailbreakdetection.MainActivity"
+134            android:name="com.fab.fabpropertiesEnterprise.MainActivity"
 134-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:78:7-35
 135            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 135-->/Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:81:7-157
@@ -305,7 +305,7 @@
 183            android:directBootAware="true"
 183-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:32:13-43
 184            android:exported="false" >
-184-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:68:13-37
+184-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:24:13-37
 185            <meta-data
 185-->[:firebase_app_check] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_app_check-0.2.2+7/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-11:85
 186                android:name="com.google.firebase.components:io.flutter.plugins.firebase.appcheck.FlutterFirebaseAppRegistrar"
@@ -331,41 +331,41 @@
 196                android:value="com.google.firebase.components.ComponentRegistrar" />
 196-->[:firebase_core] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:17-82
 197            <meta-data
-197-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:69:13-71:85
-198                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-198-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:70:17-109
+197-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:25:13-27:85
+198                android:name="com.google.firebase.components:com.google.firebase.appcheck.debug.FirebaseAppCheckDebugRegistrar"
+198-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:26:17-128
 199                android:value="com.google.firebase.components.ComponentRegistrar" />
-199-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:71:17-82
+199-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:27:17-82
 200            <meta-data
-200-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:27:13-29:85
-201                android:name="com.google.firebase.components:com.google.firebase.appcheck.safetynet.FirebaseAppCheckSafetyNetRegistrar"
-201-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:28:17-136
+200-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:25:13-27:85
+201                android:name="com.google.firebase.components:com.google.firebase.appcheck.playintegrity.FirebaseAppCheckPlayIntegrityRegistrar"
+201-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:26:17-144
 202                android:value="com.google.firebase.components.ComponentRegistrar" />
-202-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:29:17-82
+202-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:27:17-82
 203            <meta-data
-203-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:25:13-27:85
-204                android:name="com.google.firebase.components:com.google.firebase.appcheck.debug.FirebaseAppCheckDebugRegistrar"
-204-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:26:17-128
+203-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:69:13-71:85
+204                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+204-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:70:17-109
 205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:27:17-82
+205-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:71:17-82
 206            <meta-data
-206-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:25:13-27:85
-207                android:name="com.google.firebase.components:com.google.firebase.appcheck.playintegrity.FirebaseAppCheckPlayIntegrityRegistrar"
-207-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:26:17-144
+206-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
+207                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+207-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
 208                android:value="com.google.firebase.components.ComponentRegistrar" />
-208-->[com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:27:17-82
+208-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
 209            <meta-data
-209-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
-210                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-210-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
+209-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
+210                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+210-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
 211                android:value="com.google.firebase.components.ComponentRegistrar" />
-211-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
+211-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
 212            <meta-data
-212-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
-213                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-213-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
+212-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:27:13-29:85
+213                android:name="com.google.firebase.components:com.google.firebase.appcheck.safetynet.FirebaseAppCheckSafetyNetRegistrar"
+213-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:28:17-136
 214                android:value="com.google.firebase.components.ComponentRegistrar" />
-214-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
+214-->[com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:29:17-82
 215            <meta-data
 215-->[com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:25:13-27:85
 216                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
@@ -457,7 +457,7 @@
 261-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:41:9-45:38
 262            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
 262-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:42:13-102
-263            android:authorities="com.fab.fabpropertiesEnterprise.flutterfirebasemessaginginitprovider"
+263            android:authorities="com.fab.flutterjailbreakdetection.flutterfirebasemessaginginitprovider"
 263-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:43:13-88
 264            android:exported="false"
 264-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:44:13-37
@@ -467,7 +467,7 @@
 266-->[:image_picker_android] /Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:9-17:20
 267            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
 267-->[:image_picker_android] /Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-82
-268            android:authorities="com.fab.fabpropertiesEnterprise.flutter.image_provider"
+268            android:authorities="com.fab.flutterjailbreakdetection.flutter.image_provider"
 268-->[:image_picker_android] /Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-74
 269            android:exported="false"
 269-->[:image_picker_android] /Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
@@ -507,7 +507,7 @@
 288-->[:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_file_android-1.0.6/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:9-19:20
 289            android:name="com.crazecoder.openfile.FileProvider"
 289-->[:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_file_android-1.0.6/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-64
-290            android:authorities="com.fab.fabpropertiesEnterprise.fileProvider.com.crazecoder.openfile"
+290            android:authorities="com.fab.flutterjailbreakdetection.fileProvider.com.crazecoder.openfile"
 290-->[:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_file_android-1.0.6/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-88
 291            android:exported="false"
 291-->[:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_file_android-1.0.6/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
@@ -531,509 +531,506 @@
 301-->[:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-37
 302            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 302-->[:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-71
-303
-304        <service
-304-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:9:9-15:19
-305            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-305-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:10:13-91
-306            android:directBootAware="true"
-306-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:17:13-43
-307            android:exported="false" >
-307-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:11:13-37
-308            <meta-data
-308-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:12:13-14:85
-309                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
-309-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:13:17-114
-310                android:value="com.google.firebase.components.ComponentRegistrar" />
-310-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:14:17-82
-311            <meta-data
-311-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
-312                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-312-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
-313                android:value="com.google.firebase.components.ComponentRegistrar" />
-313-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
-314            <meta-data
-314-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:20:13-22:85
-315                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-315-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:21:17-120
-316                android:value="com.google.firebase.components.ComponentRegistrar" />
-316-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:22:17-82
-317        </service>
-318
-319        <provider
-319-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:9:9-13:38
-320            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-320-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:10:13-78
-321            android:authorities="com.fab.fabpropertiesEnterprise.mlkitinitprovider"
-321-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:11:13-69
-322            android:exported="false"
-322-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:12:13-37
-323            android:initOrder="99" />
-323-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:13:13-35
-324
-325        <activity
-325-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20
-326            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-326-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:30:13-80
-327            android:excludeFromRecents="true"
-327-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:31:13-46
-328            android:exported="true"
-328-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:32:13-36
-329            android:launchMode="singleTask"
-329-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:33:13-44
-330            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-330-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:34:13-72
-331            <intent-filter>
-331-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:35:13-45:29
-332                <action android:name="android.intent.action.VIEW" />
-332-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-65
-332-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:21-62
-333
-334                <category android:name="android.intent.category.DEFAULT" />
-334-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
-334-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
-335                <category android:name="android.intent.category.BROWSABLE" />
-335-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
-335-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
-336
-337                <data
-337-->[:file_picker] /Users/mapmac/.pub-cache/hosted/pub.dev/file_picker-8.1.7/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-44
-338                    android:host="firebase.auth"
-339                    android:path="/"
-340                    android:scheme="genericidp" />
-341            </intent-filter>
-342        </activity>
-343        <activity
-343-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:47:9-64:20
-344            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-344-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:48:13-79
-345            android:excludeFromRecents="true"
-345-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:49:13-46
-346            android:exported="true"
-346-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:50:13-36
-347            android:launchMode="singleTask"
-347-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:51:13-44
-348            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-348-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:52:13-72
-349            <intent-filter>
-349-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:53:13-63:29
-350                <action android:name="android.intent.action.VIEW" />
-350-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-65
-350-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:21-62
-351
-352                <category android:name="android.intent.category.DEFAULT" />
-352-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
-352-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
-353                <category android:name="android.intent.category.BROWSABLE" />
-353-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
-353-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
-354
-355                <data
-355-->[:file_picker] /Users/mapmac/.pub-cache/hosted/pub.dev/file_picker-8.1.7/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-44
-356                    android:host="firebase.auth"
-357                    android:path="/"
-358                    android:scheme="recaptcha" />
-359            </intent-filter>
-360        </activity>
-361
-362        <receiver
-362-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
-363            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-363-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
-364            android:exported="true"
-364-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
-365            android:permission="com.google.android.c2dm.permission.SEND" >
-365-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
-366            <intent-filter>
-366-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:29
-367                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-367-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-81
-367-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:31:25-78
-368            </intent-filter>
-369
-370            <meta-data
-370-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
-371                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-371-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
-372                android:value="true" />
-372-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
-373        </receiver>
-374        <!--
-375             FirebaseMessagingService performs security checks at runtime,
-376             but set to not exported to explicitly avoid allowing another app to call it.
-377        -->
-378        <service
-378-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
-379            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-379-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
-380            android:directBootAware="true"
-380-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
-381            android:exported="false" >
-381-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
-382            <intent-filter android:priority="-500" >
-382-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:21:13-23:29
-383                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-383-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-78
-383-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-75
-384            </intent-filter>
-385        </service>
-386
-387        <property
-387-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:30:9-32:61
-388            android:name="android.adservices.AD_SERVICES_CONFIG"
-388-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:31:13-65
-389            android:resource="@xml/ga_ad_services_config" />
-389-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:32:13-58
-390
-391        <provider
-391-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
-392            android:name="com.google.firebase.provider.FirebaseInitProvider"
-392-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
-393            android:authorities="com.fab.fabpropertiesEnterprise.firebaseinitprovider"
-393-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
-394            android:directBootAware="true"
-394-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
-395            android:exported="false"
-395-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
-396            android:initOrder="100" />
-396-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
-397
-398        <service
-398-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
-399            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-399-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
-400            android:directBootAware="false"
-400-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
-401            android:enabled="@bool/enable_system_alarm_service_default"
-401-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
-402            android:exported="false" />
-402-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
-403        <service
-403-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
-404            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-404-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
-405            android:directBootAware="false"
-405-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
-406            android:enabled="@bool/enable_system_job_service_default"
-406-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
-407            android:exported="true"
-407-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
-408            android:permission="android.permission.BIND_JOB_SERVICE" />
-408-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
-409        <service
-409-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
-410            android:name="androidx.work.impl.foreground.SystemForegroundService"
-410-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
-411            android:directBootAware="false"
-411-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
-412            android:enabled="@bool/enable_system_foreground_service_default"
-412-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
-413            android:exported="false" />
-413-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
-414
-415        <receiver
-415-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
-416            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-416-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
-417            android:directBootAware="false"
-417-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
-418            android:enabled="true"
-418-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
-419            android:exported="false" />
-419-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
-420        <receiver
-420-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
-421            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-421-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
-422            android:directBootAware="false"
-422-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
-423            android:enabled="false"
-423-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
-424            android:exported="false" >
-424-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
-425            <intent-filter>
-425-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
-426                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-426-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
-426-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
-427                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-427-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
-427-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+303        <activity
+303-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20
+304            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+304-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:30:13-80
+305            android:excludeFromRecents="true"
+305-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:31:13-46
+306            android:exported="true"
+306-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:32:13-36
+307            android:launchMode="singleTask"
+307-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:33:13-44
+308            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+308-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:34:13-72
+309            <intent-filter>
+309-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:35:13-45:29
+310                <action android:name="android.intent.action.VIEW" />
+310-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-65
+310-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:21-62
+311
+312                <category android:name="android.intent.category.DEFAULT" />
+312-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
+312-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
+313                <category android:name="android.intent.category.BROWSABLE" />
+313-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
+313-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
+314
+315                <data
+315-->[:file_picker] /Users/mapmac/.pub-cache/hosted/pub.dev/file_picker-8.1.7/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-44
+316                    android:host="firebase.auth"
+317                    android:path="/"
+318                    android:scheme="genericidp" />
+319            </intent-filter>
+320        </activity>
+321        <activity
+321-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:47:9-64:20
+322            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+322-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:48:13-79
+323            android:excludeFromRecents="true"
+323-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:49:13-46
+324            android:exported="true"
+324-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:50:13-36
+325            android:launchMode="singleTask"
+325-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:51:13-44
+326            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+326-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:52:13-72
+327            <intent-filter>
+327-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:53:13-63:29
+328                <action android:name="android.intent.action.VIEW" />
+328-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-65
+328-->[:flutter_downloader] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_downloader-1.11.8/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:21-62
+329
+330                <category android:name="android.intent.category.DEFAULT" />
+330-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
+330-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
+331                <category android:name="android.intent.category.BROWSABLE" />
+331-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
+331-->[com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
+332
+333                <data
+333-->[:file_picker] /Users/mapmac/.pub-cache/hosted/pub.dev/file_picker-8.1.7/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-44
+334                    android:host="firebase.auth"
+335                    android:path="/"
+336                    android:scheme="recaptcha" />
+337            </intent-filter>
+338        </activity>
+339
+340        <receiver
+340-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
+341            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+341-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
+342            android:exported="true"
+342-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
+343            android:permission="com.google.android.c2dm.permission.SEND" >
+343-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
+344            <intent-filter>
+344-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:29
+345                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+345-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-81
+345-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:31:25-78
+346            </intent-filter>
+347
+348            <meta-data
+348-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
+349                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+349-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
+350                android:value="true" />
+350-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
+351        </receiver>
+352        <!--
+353             FirebaseMessagingService performs security checks at runtime,
+354             but set to not exported to explicitly avoid allowing another app to call it.
+355        -->
+356        <service
+356-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
+357            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+357-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
+358            android:directBootAware="true"
+358-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
+359            android:exported="false" >
+359-->[com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
+360            <intent-filter android:priority="-500" >
+360-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:21:13-23:29
+361                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+361-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-78
+361-->[:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-75
+362            </intent-filter>
+363        </service>
+364
+365        <property
+365-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:30:9-32:61
+366            android:name="android.adservices.AD_SERVICES_CONFIG"
+366-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:31:13-65
+367            android:resource="@xml/ga_ad_services_config" />
+367-->[com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:32:13-58
+368
+369        <service
+369-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
+370            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+370-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
+371            android:directBootAware="false"
+371-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
+372            android:enabled="@bool/enable_system_alarm_service_default"
+372-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
+373            android:exported="false" />
+373-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
+374        <service
+374-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
+375            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+375-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
+376            android:directBootAware="false"
+376-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
+377            android:enabled="@bool/enable_system_job_service_default"
+377-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
+378            android:exported="true"
+378-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
+379            android:permission="android.permission.BIND_JOB_SERVICE" />
+379-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
+380        <service
+380-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
+381            android:name="androidx.work.impl.foreground.SystemForegroundService"
+381-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
+382            android:directBootAware="false"
+382-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
+383            android:enabled="@bool/enable_system_foreground_service_default"
+383-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
+384            android:exported="false" />
+384-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
+385
+386        <receiver
+386-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
+387            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+387-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
+388            android:directBootAware="false"
+388-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
+389            android:enabled="true"
+389-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
+390            android:exported="false" />
+390-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
+391        <receiver
+391-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
+392            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+392-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
+393            android:directBootAware="false"
+393-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
+394            android:enabled="false"
+394-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
+395            android:exported="false" >
+395-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
+396            <intent-filter>
+396-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
+397                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+397-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
+397-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
+398                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+398-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
+398-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+399            </intent-filter>
+400        </receiver>
+401        <receiver
+401-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
+402            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+402-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+403            android:directBootAware="false"
+403-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+404            android:enabled="false"
+404-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+405            android:exported="false" >
+405-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+406            <intent-filter>
+406-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
+407                <action android:name="android.intent.action.BATTERY_OKAY" />
+407-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
+407-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
+408                <action android:name="android.intent.action.BATTERY_LOW" />
+408-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
+408-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
+409            </intent-filter>
+410        </receiver>
+411        <receiver
+411-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
+412            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+412-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
+413            android:directBootAware="false"
+413-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
+414            android:enabled="false"
+414-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
+415            android:exported="false" >
+415-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
+416            <intent-filter>
+416-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
+417                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+417-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
+417-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
+418                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+418-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
+418-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+419            </intent-filter>
+420        </receiver>
+421        <receiver
+421-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
+422            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+422-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+423            android:directBootAware="false"
+423-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
+424            android:enabled="false"
+424-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
+425            android:exported="false" >
+425-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
+426            <intent-filter>
+426-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
+427                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+427-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
+427-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
 428            </intent-filter>
 429        </receiver>
 430        <receiver
-430-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
-431            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-431-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+430-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
+431            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+431-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
 432            android:directBootAware="false"
-432-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+432-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
 433            android:enabled="false"
-433-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+433-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
 434            android:exported="false" >
-434-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+434-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
 435            <intent-filter>
-435-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
-436                <action android:name="android.intent.action.BATTERY_OKAY" />
-436-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
-436-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
-437                <action android:name="android.intent.action.BATTERY_LOW" />
-437-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
-437-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
-438            </intent-filter>
-439        </receiver>
-440        <receiver
-440-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
-441            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-441-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
-442            android:directBootAware="false"
-442-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
-443            android:enabled="false"
-443-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
-444            android:exported="false" >
-444-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
-445            <intent-filter>
-445-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
-446                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-446-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
-446-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
-447                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-447-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
-447-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+435-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
+436                <action android:name="android.intent.action.BOOT_COMPLETED" />
+436-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:17-79
+436-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:25-76
+437                <action android:name="android.intent.action.TIME_SET" />
+437-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
+437-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
+438                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+438-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
+438-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
+439            </intent-filter>
+440        </receiver>
+441        <receiver
+441-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
+442            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+442-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
+443            android:directBootAware="false"
+443-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
+444            android:enabled="@bool/enable_system_alarm_service_default"
+444-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
+445            android:exported="false" >
+445-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
+446            <intent-filter>
+446-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
+447                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+447-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
+447-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
 448            </intent-filter>
 449        </receiver>
 450        <receiver
-450-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
-451            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-451-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+450-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
+451            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+451-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
 452            android:directBootAware="false"
-452-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
-453            android:enabled="false"
-453-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
-454            android:exported="false" >
-454-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
-455            <intent-filter>
-455-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
-456                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-456-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
-456-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
-457            </intent-filter>
-458        </receiver>
-459        <receiver
-459-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
-460            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-460-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
-461            android:directBootAware="false"
-461-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
-462            android:enabled="false"
-462-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
-463            android:exported="false" >
-463-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
-464            <intent-filter>
-464-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
-465                <action android:name="android.intent.action.BOOT_COMPLETED" />
-465-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:17-79
-465-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:25-76
-466                <action android:name="android.intent.action.TIME_SET" />
-466-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
-466-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
-467                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-467-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
-467-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
-468            </intent-filter>
-469        </receiver>
-470        <receiver
-470-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
-471            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-471-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
-472            android:directBootAware="false"
-472-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
-473            android:enabled="@bool/enable_system_alarm_service_default"
-473-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
-474            android:exported="false" >
-474-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
-475            <intent-filter>
-475-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
-476                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-476-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
-476-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
-477            </intent-filter>
-478        </receiver>
-479        <receiver
-479-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
-480            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
-480-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
-481            android:directBootAware="false"
-481-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
-482            android:enabled="true"
-482-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
-483            android:exported="true"
-483-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
-484            android:permission="android.permission.DUMP" >
-484-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
-485            <intent-filter>
-485-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
-486                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
-486-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
-486-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
-487            </intent-filter>
-488        </receiver> <!-- Needs to be explicitly declared on P+ -->
-489        <uses-library
-489-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
-490            android:name="org.apache.http.legacy"
-490-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
-491            android:required="false" />
-491-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
-492
-493        <activity
-493-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:9-173
-494            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-494-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:19-85
-495            android:exported="false"
-495-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:146-170
-496            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-496-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:86-145
-497
-498        <receiver
-498-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:29:9-33:20
-499            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-499-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:30:13-85
-500            android:enabled="true"
-500-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:31:13-35
-501            android:exported="false" >
-501-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:32:13-37
-502        </receiver>
-503
-504        <service
-504-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:35:9-38:40
-505            android:name="com.google.android.gms.measurement.AppMeasurementService"
-505-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:36:13-84
-506            android:enabled="true"
-506-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:37:13-35
-507            android:exported="false" />
-507-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:38:13-37
-508        <service
-508-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:39:9-43:72
-509            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-509-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:40:13-87
-510            android:enabled="true"
-510-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:41:13-35
-511            android:exported="false"
-511-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:42:13-37
-512            android:permission="android.permission.BIND_JOB_SERVICE" />
-512-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:43:13-69
-513
-514        <uses-library
-514-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
-515            android:name="androidx.window.extensions"
-515-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
-516            android:required="false" />
-516-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
-517        <uses-library
-517-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
-518            android:name="androidx.window.sidecar"
-518-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
-519            android:required="false" />
-519-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
-520        <uses-library
-520-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
-521            android:name="android.ext.adservices"
-521-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
-522            android:required="false" />
-522-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
-523
-524        <meta-data
-524-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
-525            android:name="com.google.android.gms.version"
-525-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
-526            android:value="@integer/google_play_services_version" />
-526-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
-527
-528        <service
-528-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
-529            android:name="androidx.room.MultiInstanceInvalidationService"
-529-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
-530            android:directBootAware="true"
-530-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
-531            android:exported="false" />
-531-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
-532
-533        <receiver
-533-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
-534            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-534-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
-535            android:directBootAware="false"
-535-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
-536            android:enabled="true"
-536-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
-537            android:exported="true"
-537-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
-538            android:permission="android.permission.DUMP" >
-538-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
-539            <intent-filter>
-539-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
-540                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-540-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-540-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
-541            </intent-filter>
-542            <intent-filter>
-542-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
-543                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-543-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-543-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
-544            </intent-filter>
-545            <intent-filter>
-545-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
-546                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-546-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-546-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
-547            </intent-filter>
-548            <intent-filter>
-548-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
-549                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-549-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-549-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
-550            </intent-filter>
-551        </receiver>
-552
-553        <service
-553-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
-554            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-554-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
-555            android:exported="false" >
-555-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
-556            <meta-data
-556-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
-557                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-557-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
-558                android:value="cct" />
-558-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
-559        </service>
-560        <service
-560-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
-561            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-561-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
-562            android:exported="false"
-562-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
-563            android:permission="android.permission.BIND_JOB_SERVICE" >
-563-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
-564        </service>
-565
-566        <receiver
-566-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
-567            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-567-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
-568            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-568-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
-569        <activity
-569-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:14:9-18:65
-570            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-570-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:15:13-93
-571            android:exported="false"
-571-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:16:13-37
-572            android:stateNotNeeded="true"
-572-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:17:13-42
-573            android:theme="@style/Theme.PlayCore.Transparent" />
-573-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:18:13-62
-574    </application>
-575
-576</manifest>
+452-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
+453            android:enabled="true"
+453-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
+454            android:exported="true"
+454-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
+455            android:permission="android.permission.DUMP" >
+455-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
+456            <intent-filter>
+456-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
+457                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+457-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
+457-->[androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+458            </intent-filter>
+459        </receiver>
+460
+461        <service
+461-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:9:9-15:19
+462            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+462-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:10:13-91
+463            android:directBootAware="true"
+463-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:17:13-43
+464            android:exported="false" >
+464-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:11:13-37
+465            <meta-data
+465-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:12:13-14:85
+466                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
+466-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:13:17-114
+467                android:value="com.google.firebase.components.ComponentRegistrar" />
+467-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:14:17-82
+468            <meta-data
+468-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+469                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+469-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+470                android:value="com.google.firebase.components.ComponentRegistrar" />
+470-->[com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+471            <meta-data
+471-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:20:13-22:85
+472                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+472-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:21:17-120
+473                android:value="com.google.firebase.components.ComponentRegistrar" />
+473-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:22:17-82
+474        </service>
+475
+476        <provider
+476-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:9:9-13:38
+477            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+477-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:10:13-78
+478            android:authorities="com.fab.flutterjailbreakdetection.mlkitinitprovider"
+478-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:11:13-69
+479            android:exported="false"
+479-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:12:13-37
+480            android:initOrder="99" /> <!-- Needs to be explicitly declared on P+ -->
+480-->[com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:13:13-35
+481        <uses-library
+481-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+482            android:name="org.apache.http.legacy"
+482-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+483            android:required="false" />
+483-->[com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
+484
+485        <activity
+485-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+486            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+486-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+487            android:exported="false"
+487-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+488            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+488-->[com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+489
+490        <provider
+490-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
+491            android:name="com.google.firebase.provider.FirebaseInitProvider"
+491-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
+492            android:authorities="com.fab.flutterjailbreakdetection.firebaseinitprovider"
+492-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
+493            android:directBootAware="true"
+493-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
+494            android:exported="false"
+494-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
+495            android:initOrder="100" />
+495-->[com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
+496
+497        <receiver
+497-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:29:9-33:20
+498            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+498-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:30:13-85
+499            android:enabled="true"
+499-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:31:13-35
+500            android:exported="false" >
+500-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:32:13-37
+501        </receiver>
+502
+503        <service
+503-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:35:9-38:40
+504            android:name="com.google.android.gms.measurement.AppMeasurementService"
+504-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:36:13-84
+505            android:enabled="true"
+505-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:37:13-35
+506            android:exported="false" />
+506-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:38:13-37
+507        <service
+507-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:39:9-43:72
+508            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+508-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:40:13-87
+509            android:enabled="true"
+509-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:41:13-35
+510            android:exported="false"
+510-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:42:13-37
+511            android:permission="android.permission.BIND_JOB_SERVICE" />
+511-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:43:13-69
+512
+513        <uses-library
+513-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+514            android:name="androidx.window.extensions"
+514-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+515            android:required="false" />
+515-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+516        <uses-library
+516-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+517            android:name="androidx.window.sidecar"
+517-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+518            android:required="false" />
+518-->[androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+519        <uses-library
+519-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
+520            android:name="android.ext.adservices"
+520-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+521            android:required="false" />
+521-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
+522
+523        <meta-data
+523-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
+524            android:name="com.google.android.gms.version"
+524-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
+525            android:value="@integer/google_play_services_version" />
+525-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
+526
+527        <service
+527-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
+528            android:name="androidx.room.MultiInstanceInvalidationService"
+528-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
+529            android:directBootAware="true"
+529-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
+530            android:exported="false" />
+530-->[androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
+531        <service
+531-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+532            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+532-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+533            android:exported="false" >
+533-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+534            <meta-data
+534-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+535                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+535-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+536                android:value="cct" />
+536-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+537        </service>
+538        <service
+538-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+539            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+539-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+540            android:exported="false"
+540-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+541            android:permission="android.permission.BIND_JOB_SERVICE" >
+541-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+542        </service>
+543
+544        <receiver
+544-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+545            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+545-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+546            android:exported="false" />
+546-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+547        <receiver
+547-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+548            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+548-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+549            android:directBootAware="false"
+549-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+550            android:enabled="true"
+550-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+551            android:exported="true"
+551-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+552            android:permission="android.permission.DUMP" >
+552-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+553            <intent-filter>
+553-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+554                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+554-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+554-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+555            </intent-filter>
+556            <intent-filter>
+556-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+557                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+557-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+557-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+558            </intent-filter>
+559            <intent-filter>
+559-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+560                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+560-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+560-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+561            </intent-filter>
+562            <intent-filter>
+562-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+563                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+563-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+563-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+564            </intent-filter>
+565        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+566        <activity
+566-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:14:9-18:65
+567            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+567-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:15:13-93
+568            android:exported="false"
+568-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:16:13-37
+569            android:stateNotNeeded="true"
+569-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:17:13-42
+570            android:theme="@style/Theme.PlayCore.Transparent" />
+570-->[com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:18:13-62
+571    </application>
+572
+573</manifest>

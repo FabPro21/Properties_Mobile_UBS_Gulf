@@ -71,7 +71,6 @@ MERGED from [:google_maps_flutter_android] /Users/mapmac/.pub-cache/hosted/pub.d
 MERGED from [:image_picker_android] /Users/mapmac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-34:12
 MERGED from [:local_auth_android] /Users/mapmac/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_plugin_android_lifecycle] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_windowmanager] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_windowmanager-0.2.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
 MERGED from [:fluttertoast] /Users/mapmac/.pub-cache/hosted/pub.dev/fluttertoast-8.2.10/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
 MERGED from [:google_mlkit_text_recognition] /Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.13.1/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
 MERGED from [:google_mlkit_commons] /Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.8.1/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
@@ -91,6 +90,18 @@ MERGED from [:system_proxy] /Users/mapmac/.pub-cache/hosted/pub.dev/system_proxy
 MERGED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-14:12
 MERGED from [:video_player_android] /Users/mapmac/.pub-cache/hosted/pub.dev/video_player_android-2.7.1/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter_android] /Users/mapmac/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:15:1-31:12
+MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:15:1-31:12
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:17:1-75:12
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:17:1-66:12
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:15:1-33:12
+MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:17:1-43:12
+MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:2:1-18:12
+MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:17:1-145:12
+MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.yalantis:ucrop:2.2.10] /Users/mapmac/.gradle/caches/transforms-3/608f1b2993dc5ba6479aeefaa9a5f9af/transformed/jetified-ucrop-2.2.10/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.preference:preference:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/c50b07b5677a28b1ab0c84ff682245d6/transformed/preference-1.2.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/359d48d07d27f0f512b1d6557d53d48f/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
@@ -102,27 +113,13 @@ MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/mapmac/.gradle/caches/transforms-3/a6febdc4864add1bd3677a8bd15d04f7/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:17:1-75:12
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:15:1-33:12
-MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:15:1-31:12
-MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:15:1-31:12
-MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:17:1-66:12
-MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:15:1-34:12
-MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:17:1-43:12
-MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:2:1-24:12
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:15:1-41:12
-MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:17:1-145:12
-MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:17:1-44:12
-MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-safetynet:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/d09051fd0d8914f4300f1ae86f8f5641/transformed/jetified-play-services-safetynet-18.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/mapmac/.gradle/caches/transforms-3/37e838df12aa17bb174154a0ef4f8abb/transformed/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /Users/mapmac/.gradle/caches/transforms-3/96c035dcc8e40af2726bfafc87797c32/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.play:app-update:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/49e69fcb2a63a162955ba7d7ffeb2143/transformed/jetified-app-update-2.1.0/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2911ae2a4387bd35448ead11c0c670ea/transformed/jetified-play-services-measurement-sdk-21.6.1/AndroidManifest.xml:17:1-25:12
@@ -136,32 +133,29 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/m
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/dba743094d76aad978dadf3f5a027d5f/transformed/jetified-play-services-ads-identifier-18.0.0/AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/a228f6069c5ef0724effa9ab1b69be8f/transformed/jetified-play-services-measurement-sdk-api-21.6.1/AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/ff6b37705d0bd5fa43c21828ef63f30e/transformed/jetified-play-services-measurement-base-21.6.1/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:17:1-21:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b42cf980d92b1e27d82d9e30be10c1e9/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/mapmac/.gradle/caches/transforms-3/6fd5390b80929431029a41ccb02bb576/transformed/jetified-fragment-ktx-1.7.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.activity:activity-ktx:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/750390504bf2e204c65a89e207b4d930/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/c4b881e1acb6e695f051cb3896ed761c/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/a67f2e73d4cf650e31fa6f96f8e35506/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/1f9171efd4fb4b19fd62cbcf4e691d93/transformed/jetified-lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/efb185b3f3e010a6159580e6a7f1abe6/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f7feedaa9fcf670e3366c88bccd122b7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/693890354a75caa9304a62f42d9acff8/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/1d794d87bf2b3e7c6e88f366f6e62a9e/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/bd24438be9ee3941f7768960803dcfa9/transformed/jetified-lifecycle-service-2.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/8ccc71ff0682078ddb16f2acc4491a5b/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:17:1-35:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:17:1-21:12
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/ffba691e1bdc6a8e673a4119245d81e1/transformed/jetified-ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:17:1-28:12
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] /Users/mapmac/.gradle/caches/transforms-3/dda520e9f04f56fa51063c70bc986168/transformed/jetified-firebase-installations-interop-17.1.1/AndroidManifest.xml:15:1-19:12
@@ -169,7 +163,9 @@ MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/mapmac/.gradle/ca
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/681f4a079598c96b0104e7f86a604d2f/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:2:1-5:12
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/mapmac/.gradle/caches/transforms-3/0d4a756f8aa818776382fc3c0ecb0c12/transformed/fragment-1.7.1/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.browser:browser:1.8.0] /Users/mapmac/.gradle/caches/transforms-3/678ba801371483343c7ba7ba4daff04d/transformed/browser-1.8.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.media3:media3-extractor:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/0b1805e29e7cd4e8189cbbaea9e1dc15/transformed/jetified-media3-extractor-1.4.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-container:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/1142bccad3ef3f95201b8b01fbd2fe96/transformed/jetified-media3-container-1.4.0/AndroidManifest.xml:17:1-22:12
@@ -193,10 +189,16 @@ MERGED from [androidx.customview:customview:1.1.0] /Users/mapmac/.gradle/caches/
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/2b669919aee2ec63d02974e0554065e1/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0b6adc4e66718ed2df2fe4a7ddfe0272/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
-MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/mapmac/.gradle/caches/transforms-3/62d0f531f6c32e4d0ce5747cfa5c6b6e/transformed/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:15:1-33:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:15:1-37:12
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/d4ed9442440b009dad5692464fb94ad1/transformed/localbroadcastmanager-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.heifwriter:heifwriter:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fcf48881fc30dea706af06980cc26395/transformed/heifwriter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/mapmac/.gradle/caches/transforms-3/6474a90607f0c4ef76c965155bb0d982/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
@@ -205,11 +207,8 @@ MERGED from [com.google.firebase:firebase-components:17.1.5] /Users/mapmac/.grad
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/54893059c3501f275a906212960296d3/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:15:1-33:12
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:15:1-37:12
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /Users/mapmac/.gradle/caches/transforms-3/56354680aadee3b1ae636bc2abea2a36/transformed/jetified-transport-api-3.1.0/AndroidManifest.xml:15:1-20:12
-MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0f285fdba255badc7d894433b181c7b1/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/2f3caabb5fde56cd99c09247e2f7818d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/mapmac/.gradle/caches/transforms-3/3829fb2562b66714e18dbc57beecba86/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
@@ -217,9 +216,9 @@ MERGED from [androidx.sqlite:sqlite:2.3.0] /Users/mapmac/.gradle/caches/transfor
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/d123567e1f46dce94e1af3f9f24a9980/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0be7e557afb257644a468166550ffc51/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window.extensions.core:core:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/2711269ee8e896598bedc6c18e4a93d9/transformed/jetified-core-1.0.0/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/mapmac/.gradle/caches/transforms-3/43a1d764e7c35e5dfe1114c48a8e352f/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.scottyab:rootbeer:0.1.0] /Users/mapmac/.gradle/caches/transforms-3/480942fa564126a331313fe58bd98fcd/transformed/jetified-rootbeer-0.1.0/AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.maps.android:android-maps-utils:3.6.0] /Users/mapmac/.gradle/caches/transforms-3/a0dc9979120248d4f5c2fae70864291b/transformed/jetified-android-maps-utils-3.6.0/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/mapmac/.gradle/caches/transforms-3/b67fae4b0a61ac29ab2cd58bd1db7acb/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.mhiew:pdfium-android:1.9.2] /Users/mapmac/.gradle/caches/transforms-3/62feb86e04d7ed8e87eca1ffe408422f/transformed/jetified-pdfium-android-1.9.2/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/mapmac/.gradle/caches/transforms-3/71bfaa148c5fcf986fa67cd638cdc47b/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
@@ -346,22 +345,16 @@ MERGED from [:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_fi
 MERGED from [:open_file_android] /Users/mapmac/.pub-cache/hosted/pub.dev/open_file_android-1.0.6/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-20:19
 MERGED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-12:19
-MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:28:5-73:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:28:5-73:19
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:23:5-31:19
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:21:5-29:19
 MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:21:5-29:19
 MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:21:5-29:19
 MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:21:5-29:19
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:28:5-73:19
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:28:5-64:19
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:28:5-64:19
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:23:5-31:19
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:21:5-32:19
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:21:5-32:19
 MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:7:5-20
@@ -372,22 +365,28 @@ MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.g
 MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:11:5-22:19
 MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:22:5-39:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:22:5-39:19
 MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:28:5-143:19
 MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:28:5-143:19
-MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:36:5-42:19
-MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:11:5-12:19
 MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:11:5-12:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.android.gms:play-services-safetynet:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/d09051fd0d8914f4300f1ae86f8f5641/transformed/jetified-play-services-safetynet-18.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-safetynet:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/d09051fd0d8914f4300f1ae86f8f5641/transformed/jetified-play-services-safetynet-18.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /Users/mapmac/.gradle/caches/transforms-3/96c035dcc8e40af2726bfafc87797c32/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:21:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /Users/mapmac/.gradle/caches/transforms-3/96c035dcc8e40af2726bfafc87797c32/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:21:5-20
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:22:5-39:19
+MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:22:5-39:19
 MERGED from [com.google.android.play:app-update:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/49e69fcb2a63a162955ba7d7ffeb2143/transformed/jetified-app-update-2.1.0/AndroidManifest.xml:11:5-12:19
 MERGED from [com.google.android.play:app-update:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/49e69fcb2a63a162955ba7d7ffeb2143/transformed/jetified-app-update-2.1.0/AndroidManifest.xml:11:5-12:19
 MERGED from [com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:28:5-44:19
@@ -408,12 +407,12 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] /Users/
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/dba743094d76aad978dadf3f5a027d5f/transformed/jetified-play-services-ads-identifier-18.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/ff6b37705d0bd5fa43c21828ef63f30e/transformed/jetified-play-services-measurement-base-21.6.1/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/ff6b37705d0bd5fa43c21828ef63f30e/transformed/jetified-play-services-measurement-base-21.6.1/AndroidManifest.xml:7:5-20
+MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
-MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/681f4a079598c96b0104e7f86a604d2f/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:4:5-20
@@ -424,16 +423,16 @@ MERGED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-
 MERGED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:23:5-29:19
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:27:5-35:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:27:5-35:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:25:5-39:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:25:5-39:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/2f3caabb5fde56cd99c09247e2f7818d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/2f3caabb5fde56cd99c09247e2f7818d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.github.scottyab:rootbeer:0.1.0] /Users/mapmac/.gradle/caches/transforms-3/480942fa564126a331313fe58bd98fcd/transformed/jetified-rootbeer-0.1.0/AndroidManifest.xml:11:5-20
@@ -468,7 +467,7 @@ ADDED from /Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main
 		ADDED from /Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:76:7-62
 	android:name
 		ADDED from /Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:75:16-61
-activity#com.fab.flutterjailbreakdetection.MainActivity
+activity#com.fab.fabpropertiesEnterprise.MainActivity
 ADDED from /Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:77:5-108:16
 	android:launchMode
 		ADDED from /Users/mapmac/Project/properties_mobile_ubs_gulf/android/app/src/main/AndroidManifest.xml:79:7-37
@@ -583,8 +582,6 @@ MERGED from [:local_auth_android] /Users/mapmac/.pub-cache/hosted/pub.dev/local_
 MERGED from [:local_auth_android] /Users/mapmac/.pub-cache/hosted/pub.dev/local_auth_android-1.0.43/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_windowmanager] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_windowmanager-0.2.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_windowmanager] /Users/mapmac/.pub-cache/hosted/pub.dev/flutter_windowmanager-0.2.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] /Users/mapmac/.pub-cache/hosted/pub.dev/fluttertoast-8.2.10/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] /Users/mapmac/.pub-cache/hosted/pub.dev/fluttertoast-8.2.10/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:google_mlkit_text_recognition] /Users/mapmac/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.13.1/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
@@ -623,6 +620,30 @@ MERGED from [:video_player_android] /Users/mapmac/.pub-cache/hosted/pub.dev/vide
 MERGED from [:video_player_android] /Users/mapmac/.pub-cache/hosted/pub.dev/video_player_android-2.7.1/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] /Users/mapmac/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] /Users/mapmac/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:21:5-23:64
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:21:5-23:64
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.yalantis:ucrop:2.2.10] /Users/mapmac/.gradle/caches/transforms-3/608f1b2993dc5ba6479aeefaa9a5f9af/transformed/jetified-ucrop-2.2.10/AndroidManifest.xml:5:5-44
 MERGED from [com.github.yalantis:ucrop:2.2.10] /Users/mapmac/.gradle/caches/transforms-3/608f1b2993dc5ba6479aeefaa9a5f9af/transformed/jetified-ucrop-2.2.10/AndroidManifest.xml:5:5-44
 MERGED from [androidx.preference:preference:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/c50b07b5677a28b1ab0c84ff682245d6/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
@@ -645,40 +666,8 @@ MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/trans
 MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:6:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/mapmac/.gradle/caches/transforms-3/a6febdc4864add1bd3677a8bd15d04f7/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/mapmac/.gradle/caches/transforms-3/a6febdc4864add1bd3677a8bd15d04f7/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:21:5-23:64
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:21:5-23:64
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-analytics:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/8cecb50f2f977d167e67be3706d064e2/transformed/jetified-firebase-analytics-21.6.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-installations:17.2.0] /Users/mapmac/.gradle/caches/transforms-3/1dd5132884fc538d5a2645207419d6dd/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:19:5-44
-MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:19:5-44
-MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.android.play:app-update-ktx:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/c0d08bf6ac3ea82d43b98e629d5118ca/transformed/jetified-app-update-ktx-2.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-safetynet:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/d09051fd0d8914f4300f1ae86f8f5641/transformed/jetified-play-services-safetynet-18.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/d09051fd0d8914f4300f1ae86f8f5641/transformed/jetified-play-services-safetynet-18.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/mapmac/.gradle/caches/transforms-3/37e838df12aa17bb174154a0ef4f8abb/transformed/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
@@ -687,6 +676,10 @@ MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /Users/mapmac
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /Users/mapmac/.gradle/caches/transforms-3/96c035dcc8e40af2726bfafc87797c32/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:3:5-44
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/mapmac/.gradle/caches/transforms-3/5c1d385fae7948fbcc8b44c61df14430/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:19:5-44
+MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:19:5-44
 MERGED from [com.google.android.play:app-update:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/49e69fcb2a63a162955ba7d7ffeb2143/transformed/jetified-app-update-2.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.play:app-update:2.1.0] /Users/mapmac/.gradle/caches/transforms-3/49e69fcb2a63a162955ba7d7ffeb2143/transformed/jetified-app-update-2.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:20:5-44
@@ -713,6 +706,20 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.6.1] /U
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/a228f6069c5ef0724effa9ab1b69be8f/transformed/jetified-play-services-measurement-sdk-api-21.6.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/ff6b37705d0bd5fa43c21828ef63f30e/transformed/jetified-play-services-measurement-base-21.6.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/ff6b37705d0bd5fa43c21828ef63f30e/transformed/jetified-play-services-measurement-base-21.6.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:19:5-44
+MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:19:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b42cf980d92b1e27d82d9e30be10c1e9/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b42cf980d92b1e27d82d9e30be10c1e9/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
@@ -721,6 +728,8 @@ MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/mapmac/.gradle/caches/
 MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/mapmac/.gradle/caches/transforms-3/6fd5390b80929431029a41ccb02bb576/transformed/jetified-fragment-ktx-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-ktx:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/750390504bf2e204c65a89e207b4d930/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-ktx:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/750390504bf2e204c65a89e207b4d930/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/c4b881e1acb6e695f051cb3896ed761c/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/c4b881e1acb6e695f051cb3896ed761c/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/a67f2e73d4cf650e31fa6f96f8e35506/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
@@ -729,10 +738,6 @@ MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/mapmac/.grad
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/1f9171efd4fb4b19fd62cbcf4e691d93/transformed/jetified-lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/efb185b3f3e010a6159580e6a7f1abe6/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/efb185b3f3e010a6159580e6a7f1abe6/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/673762f546b4e1fb6aed74e3e47a6fe9/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/ad257fab80b89d4ff968ebf946d76a09/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f7feedaa9fcf670e3366c88bccd122b7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f7feedaa9fcf670e3366c88bccd122b7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/693890354a75caa9304a62f42d9acff8/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
@@ -743,28 +748,10 @@ MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /Users/mapmac/.gradle/c
 MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/bd24438be9ee3941f7768960803dcfa9/transformed/jetified-lifecycle-service-2.7.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/8ccc71ff0682078ddb16f2acc4491a5b/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/8ccc71ff0682078ddb16f2acc4491a5b/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:19:5-44
-MERGED from [androidx.window:window-java:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/e571334a16f4f5c75a0c2948386d87eb/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:19:5-44
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/b2499933c92cbf5f8af5c90e01795492/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fc076b1d627cae28ad3d2f9943660adf/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/f6574679daad52926071404c81267b99/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/4a35342777213ea3ffc63edba4a9b1da/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/ffba691e1bdc6a8e673a4119245d81e1/transformed/jetified-ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
 MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/ffba691e1bdc6a8e673a4119245d81e1/transformed/jetified-ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:20:5-44
@@ -779,8 +766,12 @@ MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/7abe49e0dc7a7f08b98867b373ba5d73/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:3:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/mapmac/.gradle/caches/transforms-3/0d4a756f8aa818776382fc3c0ecb0c12/transformed/fragment-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/mapmac/.gradle/caches/transforms-3/0d4a756f8aa818776382fc3c0ecb0c12/transformed/fragment-1.7.1/AndroidManifest.xml:5:5-44
-MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.9.1] /Users/mapmac/.gradle/caches/transforms-3/633a421f40bd56c383c4f6ff41e9322a/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/a8083943f0132018b8174e1105efc042/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.mhiew:android-pdf-viewer:3.2.0-beta.3] /Users/mapmac/.gradle/caches/transforms-3/5ab5adda5b8e652dc30b3591324a1304/transformed/jetified-android-pdf-viewer-3.2.0-beta.3/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.browser:browser:1.8.0] /Users/mapmac/.gradle/caches/transforms-3/678ba801371483343c7ba7ba4daff04d/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.browser:browser:1.8.0] /Users/mapmac/.gradle/caches/transforms-3/678ba801371483343c7ba7ba4daff04d/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.media3:media3-extractor:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/0b1805e29e7cd4e8189cbbaea9e1dc15/transformed/jetified-media3-extractor-1.4.0/AndroidManifest.xml:20:5-44
@@ -827,14 +818,26 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mapm
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0b6adc4e66718ed2df2fe4a7ddfe0272/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
-MERGED from [androidx.core:core-ktx:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/0a5365f60e41924b1c761d40d883174c/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/5488a126c64d27bc82f1f124360771d3/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/277912af6b13e0b3f976331167b81324/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/mapmac/.gradle/caches/transforms-3/19ce7b600201451ee4b5813cce27daed/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/b839f8fec5293d3fc496a94a939a7c24/transformed/jetified-room-ktx-2.5.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/mapmac/.gradle/caches/transforms-3/62d0f531f6c32e4d0ce5747cfa5c6b6e/transformed/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/mapmac/.gradle/caches/transforms-3/62d0f531f6c32e4d0ce5747cfa5c6b6e/transformed/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/d4ed9442440b009dad5692464fb94ad1/transformed/localbroadcastmanager-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] /Users/mapmac/.gradle/caches/transforms-3/d4ed9442440b009dad5692464fb94ad1/transformed/localbroadcastmanager-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.heifwriter:heifwriter:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/fcf48881fc30dea706af06980cc26395/transformed/heifwriter-1.0.0/AndroidManifest.xml:20:5-44
@@ -851,16 +854,10 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/cache
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/4403667926898e76ae235c846722fe76/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/54893059c3501f275a906212960296d3/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/54893059c3501f275a906212960296d3/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /Users/mapmac/.gradle/caches/transforms-3/56354680aadee3b1ae636bc2abea2a36/transformed/jetified-transport-api-3.1.0/AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /Users/mapmac/.gradle/caches/transforms-3/56354680aadee3b1ae636bc2abea2a36/transformed/jetified-transport-api-3.1.0/AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/mapmac/.gradle/caches/transforms-3/012017235fe448f6271002a5e8c4a87c/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /Users/mapmac/.gradle/caches/transforms-3/3bc0effe52c4170f761ec3055a111d0b/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0f285fdba255badc7d894433b181c7b1/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0f285fdba255badc7d894433b181c7b1/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mapmac/.gradle/caches/transforms-3/2f3caabb5fde56cd99c09247e2f7818d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
@@ -875,12 +872,12 @@ MERGED from [androidx.print:print:1.0.0] /Users/mapmac/.gradle/caches/transforms
 MERGED from [androidx.print:print:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/0be7e557afb257644a468166550ffc51/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/2711269ee8e896598bedc6c18e4a93d9/transformed/jetified-core-1.0.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] /Users/mapmac/.gradle/caches/transforms-3/2711269ee8e896598bedc6c18e4a93d9/transformed/jetified-core-1.0.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/mapmac/.gradle/caches/transforms-3/43a1d764e7c35e5dfe1114c48a8e352f/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.1] /Users/mapmac/.gradle/caches/transforms-3/43a1d764e7c35e5dfe1114c48a8e352f/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.github.scottyab:rootbeer:0.1.0] /Users/mapmac/.gradle/caches/transforms-3/480942fa564126a331313fe58bd98fcd/transformed/jetified-rootbeer-0.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.scottyab:rootbeer:0.1.0] /Users/mapmac/.gradle/caches/transforms-3/480942fa564126a331313fe58bd98fcd/transformed/jetified-rootbeer-0.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.maps.android:android-maps-utils:3.6.0] /Users/mapmac/.gradle/caches/transforms-3/a0dc9979120248d4f5c2fae70864291b/transformed/jetified-android-maps-utils-3.6.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.maps.android:android-maps-utils:3.6.0] /Users/mapmac/.gradle/caches/transforms-3/a0dc9979120248d4f5c2fae70864291b/transformed/jetified-android-maps-utils-3.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/mapmac/.gradle/caches/transforms-3/8d8c2b80a39f2c12997df834dcfd4349/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/mapmac/.gradle/caches/transforms-3/b67fae4b0a61ac29ab2cd58bd1db7acb/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/mapmac/.gradle/caches/transforms-3/b67fae4b0a61ac29ab2cd58bd1db7acb/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
 MERGED from [com.github.mhiew:pdfium-android:1.9.2] /Users/mapmac/.gradle/caches/transforms-3/62feb86e04d7ed8e87eca1ffe408422f/transformed/jetified-pdfium-android-1.9.2/AndroidManifest.xml:5:5-7:41
@@ -919,16 +916,16 @@ MERGED from [:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/fireba
 MERGED from [:firebase_messaging] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:35:9-39:19
 MERGED from [:firebase_core] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /Users/mapmac/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-12:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:66:9-72:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:66:9-72:19
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:24:9-30:19
-MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:24:9-30:19
 MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:22:9-28:19
 MERGED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:22:9-28:19
 MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:22:9-28:19
 MERGED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:22:9-28:19
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:66:9-72:19
+MERGED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:66:9-72:19
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:54:9-63:19
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:54:9-63:19
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:24:9-30:19
+MERGED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:24:9-30:19
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:22:9-31:19
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:22:9-31:19
 MERGED from [com.google.android.gms:play-services-measurement-api:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/2bd65ab8251d36e9ccbf07ce594f6515/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:34:9-40:19
@@ -942,7 +939,7 @@ MERGED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/c
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:24:9-30:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:24:9-30:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:68:13-37
+		ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:24:13-37
 	tools:targetApi
 		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:34:13-32
 	android:directBootAware
@@ -1115,48 +1112,18 @@ ADDED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_l
 		ADDED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher_android] /Users/mapmac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-74
-service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
-ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
-MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
-	android:exported
-		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:11:13-37
-	tools:targetApi
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:19:13-32
-	android:directBootAware
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:17:13-43
-	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:10:13-91
-meta-data#com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar
-ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:12:13-14:85
+meta-data#com.google.firebase.components:com.google.firebase.appcheck.debug.FirebaseAppCheckDebugRegistrar
+ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:25:13-27:85
 	android:value
-		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:14:17-82
+		ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:27:17-82
 	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:13:17-114
-meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
-ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+		ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:26:17-128
+meta-data#com.google.firebase.components:com.google.firebase.appcheck.playintegrity.FirebaseAppCheckPlayIntegrityRegistrar
+ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:25:13-27:85
 	android:value
-		ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+		ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:27:17-82
 	android:name
-		ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
-provider#com.google.mlkit.common.internal.MlKitInitProvider
-ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:9:9-13:38
-	android:authorities
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:11:13-69
-	android:exported
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:12:13-37
-	android:initOrder
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:13:13-35
-	android:name
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:10:13-78
-meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
-ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:20:13-22:85
-	android:value
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:22:17-82
-	android:name
-		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:21:17-120
+		ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:26:17-144
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20
 	android:excludeFromRecents
@@ -1199,24 +1166,6 @@ ADDED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/cach
 		ADDED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:71:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:22.3.1] /Users/mapmac/.gradle/caches/transforms-3/209050479e504b1c67d2ded3442e7fed/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:70:17-109
-meta-data#com.google.firebase.components:com.google.firebase.appcheck.safetynet.FirebaseAppCheckSafetyNetRegistrar
-ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:27:13-29:85
-	android:value
-		ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:29:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:28:17-136
-meta-data#com.google.firebase.components:com.google.firebase.appcheck.debug.FirebaseAppCheckDebugRegistrar
-ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:25:13-27:85
-	android:value
-		ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:27:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-appcheck-debug:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/b8041b4a509e49d9cbbb52dfc40d2ecb/transformed/jetified-firebase-appcheck-debug-17.1.2/AndroidManifest.xml:26:17-128
-meta-data#com.google.firebase.components:com.google.firebase.appcheck.playintegrity.FirebaseAppCheckPlayIntegrityRegistrar
-ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:25:13-27:85
-	android:value
-		ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:27:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-appcheck-playintegrity:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/d3c96f2652fd4218781e6a95b2b536bb/transformed/jetified-firebase-appcheck-playintegrity-17.1.2/AndroidManifest.xml:26:17-144
 uses-permission#com.google.android.c2dm.permission.RECEIVE
 ADDED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:26:5-82
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.1.0] /Users/mapmac/.gradle/caches/transforms-3/b18de43e13a0d8a5350bc89ba72dc20b/transformed/jetified-play-services-cloud-messaging-17.1.0/AndroidManifest.xml:11:5-82
@@ -1257,6 +1206,12 @@ ADDED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle
 		ADDED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-messaging:23.4.1] /Users/mapmac/.gradle/caches/transforms-3/4142019a8c785dceba8fd57816b05aba/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
+meta-data#com.google.firebase.components:com.google.firebase.appcheck.safetynet.FirebaseAppCheckSafetyNetRegistrar
+ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:27:13-29:85
+	android:value
+		ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:29:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-appcheck-safetynet:16.1.2] /Users/mapmac/.gradle/caches/transforms-3/88779a2fc7052433e5b79f15bae95ad5/transformed/jetified-firebase-appcheck-safetynet-16.1.2/AndroidManifest.xml:28:17-136
 meta-data#com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar
 ADDED from [com.google.firebase:firebase-appcheck:17.1.2] /Users/mapmac/.gradle/caches/transforms-3/eeeae700f0c1c8d99e50372b19ab9607/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:25:13-27:85
 	android:value
@@ -1311,24 +1266,6 @@ ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradl
 		ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:14:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/5a6b7a0e590d7cd6ffc4aea8d1ed52fc/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:13:17-116
-provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
-	android:authorities
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
-	android:exported
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
-	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
-	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
-meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
-ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:35:13-37:85
-	android:value
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:37:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:36:17-109
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:25:5-81
 	android:name
@@ -1535,6 +1472,48 @@ action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
 ADDED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
 	android:name
 		ADDED from [androidx.work:work-runtime:2.9.0] /Users/mapmac/.gradle/caches/transforms-3/fe08f708d86c49278a1ab7152e91f7fe/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
+ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
+	android:exported
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:11:13-37
+	tools:targetApi
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:19:13-32
+	android:directBootAware
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:17:13-43
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:10:13-91
+meta-data#com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar
+ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] /Users/mapmac/.gradle/caches/transforms-3/48ed3394bd059de13e060649c6a880f3/transformed/jetified-play-services-mlkit-text-recognition-common-19.1.0/AndroidManifest.xml:13:17-114
+meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
+ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/mapmac/.gradle/caches/transforms-3/c47a1782bfa31d37e1c1f54efe5adb1a/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+provider#com.google.mlkit.common.internal.MlKitInitProvider
+ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:9:9-13:38
+	android:authorities
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:11:13-69
+	android:exported
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:12:13-37
+	android:initOrder
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:13:13-35
+	android:name
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:10:13-78
+meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
+ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/mapmac/.gradle/caches/transforms-3/e1d6b66d8dd053e72344706d4dfe295c/transformed/jetified-common-18.11.0/AndroidManifest.xml:21:17-120
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:18.2.0] /Users/mapmac/.gradle/caches/transforms-3/86676d2a38a5621ba9c2de3fc85dfc66/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
@@ -1559,6 +1538,24 @@ ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gra
 		ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:86-145
 	android:name
 		ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/mapmac/.gradle/caches/transforms-3/e678aa5f1974ab5a3b0f568bc4bbc8c2/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
+meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
+ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:35:13-37:85
+	android:value
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:37:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.4.3] /Users/mapmac/.gradle/caches/transforms-3/16fa20c7793b7356f2344343f0efde9b/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:36:17-109
 uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
 ADDED from [com.google.android.gms:play-services-measurement:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/fa67c0d1d1f2d245c132a6de9090c69f/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:26:5-110
 MERGED from [com.google.android.gms:play-services-measurement-impl:21.6.1] /Users/mapmac/.gradle/caches/transforms-3/816c4aaac000c1d095fddc65f51429b6/transformed/jetified-play-services-measurement-impl-21.6.1/AndroidManifest.xml:26:5-110
@@ -1595,18 +1592,6 @@ uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
 ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/eeeb2c4c0fba13b9ece3bbf9794a26c1/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
 	android:name
 		ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/mapmac/.gradle/caches/transforms-3/eeeb2c4c0fba13b9ece3bbf9794a26c1/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
-meta-data#androidx.emoji2.text.EmojiCompatInitializer
-ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-	android:value
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-	android:name
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-meta-data#androidx.lifecycle.ProcessLifecycleInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
-	android:value
-		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
-	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
 	android:required
@@ -1619,6 +1604,18 @@ ADDED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transform
 		ADDED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
 	android:name
 		ADDED from [androidx.window:window:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/494db2b74214d87670fc48433dea17d8/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/mapmac/.gradle/caches/transforms-3/0d6d13ec1d3e42a5b6e1f8b4e7c3ff92/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/mapmac/.gradle/caches/transforms-3/ff8aac23499dd66215a0abee2da0cf71/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
 uses-library#android.ext.adservices
 ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/mapmac/.gradle/caches/transforms-3/2d269c2645f1477ec37578b69d31d45c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
 	android:required
@@ -1639,7 +1636,7 @@ ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3
 		ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
-permission#com.fab.fabpropertiesEnterprise.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.fab.flutterjailbreakdetection.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
@@ -1649,7 +1646,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
-uses-permission#com.fab.fabpropertiesEnterprise.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.fab.flutterjailbreakdetection.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.13.1] /Users/mapmac/.gradle/caches/transforms-3/29f19db065a208aefbbe3c8549a7fb59/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
@@ -1663,6 +1660,40 @@ ADDED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/trans
 		ADDED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
 	android:name
 		ADDED from [androidx.room:room-runtime:2.5.0] /Users/mapmac/.gradle/caches/transforms-3/6519060ff1fcb3280111da02dd1977fa/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
 meta-data#androidx.profileinstaller.ProfileInstallerInitializer
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
 	android:value
@@ -1705,40 +1736,6 @@ action#androidx.profileinstaller.action.BENCHMARK_OPERATION
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
 	android:name
 		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/mapmac/.gradle/caches/transforms-3/c7bda729f5c6230d111bfed3a8461e0f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
-meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
-ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
-	android:value
-		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /Users/mapmac/.gradle/caches/transforms-3/dbae719c41be5cd4120447b111ff8e3d/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
-service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
-ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:36:9-38:40
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:36:9-38:40
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
-	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
-meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
-ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
-	android:value
-		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
-	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/b76b29c41e21aa94052c762853337f33/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
-service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
-ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
-	android:permission
-		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
-	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
-receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
-ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
-	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /Users/mapmac/.gradle/caches/transforms-3/49dff053b84110e76ea47e2c424731a0/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
 activity#com.google.android.play.core.common.PlayCoreDialogWrapperActivity
 ADDED from [com.google.android.play:core-common:2.0.3] /Users/mapmac/.gradle/caches/transforms-3/104c1c8d4a9eb81d14c6208a2b972e28/transformed/jetified-core-common-2.0.3/AndroidManifest.xml:14:9-18:65
 	android:stateNotNeeded

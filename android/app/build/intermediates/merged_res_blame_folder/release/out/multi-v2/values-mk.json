@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fab.flutterjailbreakdetection.app-mergeReleaseResources-97:/values-mk/values-mk.xml",
+            "outputFile": "com.fab.fabpropertiesEnterprise.app-mergeReleaseResources-96:/values-mk/values-mk.xml",
             "map": [
                 {
                     "source": "/Users/mapmac/.gradle/caches/transforms-3/359d48d07d27f0f512b1d6557d53d48f/transformed/biometric-1.1.0/res/values-mk/values-mk.xml",

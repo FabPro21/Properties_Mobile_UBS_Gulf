@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/drawable_app_icon.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/drawable/app_icon.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/drawable-v21_splash.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/drawable-v21/splash.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/xml_file_paths.xml.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/xml_network_security_config.xml.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/drawable-v21_launch_background.xml.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.fab.flutterjailbreakdetection.app-merged_res-99:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.fab.flutterjailbreakdetection.app-main-101:/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]
