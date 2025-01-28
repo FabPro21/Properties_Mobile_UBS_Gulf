@@ -11,3 +11,24 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/app/build/
+/android/build/
+/android/app/build/intermediates/
+/android/app/build/kotlin/
+/android/app/build/outputs/
+/android/app/build/outputs/apk/debug/app-debug.apk
+/android/app/build/outputs/apk/release/app-release.apk
+.dart_tool/package_config.json
+.flutter-plugins-dependencies
+.DS_Store
+.dart_tool/package_config.json
+android/app/build/
+
+# Flutter specific
+.dart_tool/package_config.json
+.flutter-plugins-dependencies

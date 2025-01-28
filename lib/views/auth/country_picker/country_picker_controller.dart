@@ -38,13 +38,13 @@ class CountryPickerController extends GetxController {
         countryPicker.value = result;
         // remove +92
         // adding this
-        // countryPicker.value.countries!.add(Country(
-        //   countryId: 1,
-        //   countryName: 'pk',
-        //   countryCode: '+92',
-        //   dialingCode: '+92',
-        //   flag: '',
-        // ));
+        countryPicker.value.countries!.add(Country(
+          countryId: 1,
+          countryName: 'pk',
+          countryCode: '+92',
+          dialingCode: '+92',
+          flag: '',
+        ));
         length = countryPicker.value.countries!.length;
         Country selectedCountry =
             countryPicker.value.countries!.firstWhere((country) {
