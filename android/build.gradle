@@ -1,32 +1,104 @@
-buildscript {
-    ext.kotlin_version = '1.8.0'
-    // ext.kotlin_version = '1.7.10'
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.0'
-        // classpath 'com.android.tools.build:gradle:7.0.4'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.14'
-    }
-}
-
 allprojects {
     repositories {
+        maven { url 'https://repo.maven.apache.org/maven2' }
         google()
         mavenCentral()
     }
 }
 
-rootProject.buildDir = '../build'
+rootProject.buildDir = "../build"
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-    project.evaluationDependsOn(':app')
+  //  fix for verifyReleaseResources
+  // ============
+  afterEvaluate { project ->
+    if (project.plugins.hasPlugin("com.android.application") ||
+      project.plugins.hasPlugin("com.android.library")) {
+      project.android {
+        compileSdkVersion 35
+        buildToolsVersion "35.0.0"
+      }
+    }
+    if (project.hasProperty("android")) {
+      project.android {
+        if (namespace == null) {
+          namespace project.group
+        }
+      }
+    }
+    if (project.name == "flutter_downloader") {
+            if (project.plugins.hasPlugin("com.android.application") ||
+                    project.plugins.hasPlugin("com.android.library")) {
+                project.android {
+                    compileSdkVersion 34
+                }
+            }
+    }
+  }
+  // ============
+  project.buildDir = "${rootProject.buildDir}/${project.name}"
+  project.evaluationDependsOn(":app")
 }
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+buildscript {
+ ext.kotlin_version = '1.8.0' 
+  repositories {
+        google()  // Make sure this is included
+        mavenCentral()
+    }
+}
+
+
+
+
+// BEFORE UPDATE WITH NABEEL BHAI
+// buildscript {
+//     ext.kotlin_version = '1.8.0'
+//     // ext.kotlin_version = '1.7.10'
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:7.4.1'
+//         // classpath 'com.android.tools.build:gradle:8.1.0'
+//         // classpath 'com.android.tools.build:gradle:7.0.4'
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//         classpath 'com.google.gms:google-services:4.3.15'
+//     }
+// }
+
+// allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+// }
+
+// // Add this part -------------->
+//     subprojects {
+//         afterEvaluate { project ->
+//             if (project.hasProperty('android')) {
+//                 project.android {
+//                     if (namespace == null) {
+//                         namespace project.group
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// // until here
+
+// rootProject.buildDir = '../build'
+// subprojects {
+//     project.buildDir = "${rootProject.buildDir}/${project.name}"
+//     project.evaluationDependsOn(':app')
+// }
+
+// tasks.register("clean", Delete) {
+//     delete rootProject.buildDir
+// }

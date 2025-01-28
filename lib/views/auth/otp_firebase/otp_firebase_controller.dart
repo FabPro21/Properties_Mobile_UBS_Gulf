@@ -336,9 +336,15 @@ class FirebaseAuthController extends GetxController {
         'An internal error has occurred, print and inspect the error details for more information.') {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
-    } else {
-      error.value = exception.message ?? "";
-      errorValidateUser.value = exception.message ?? "";
+    
+    } else if (exception.message!.contains('This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.')|| exception.message ==
+        'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') {
+      error.value = AppMetaLabels().someThingWentWrong;
+      errorValidateUser.value = AppMetaLabels().someThingWentWrong;
+    } 
+    else {
+      error.value = exception.message??"";
+      errorValidateUser.value = exception.message??"";
     }
     verifying.value = false;
     resending.value = false;

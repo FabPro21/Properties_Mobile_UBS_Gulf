@@ -2,7 +2,7 @@ import '../../data/helpers/session_controller.dart';
 
 class AppMetaLabels {
   ///////////////////////////////
-  /// Get Otp Screen Labels
+  /// Get Otp Screen Labels Testing
   ///////////////////////////////
 
   String login =
@@ -1145,6 +1145,8 @@ class AppMetaLabels {
 
   String unitCategory =
       SessionController().getLanguage() == 1 ? "Unit Category" : 'فئة الوحدة';
+  String unitDetail =
+      SessionController().getLanguage() == 1 ? "Unit Details" : 'تفاصيل الوحدة';
 
   String unitType =
       SessionController().getLanguage() == 1 ? "Unit Type" : 'نوع الوحدة';

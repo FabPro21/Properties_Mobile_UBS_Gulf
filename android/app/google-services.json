@@ -2,8 +2,10 @@
   "project_info": {
     "project_number": "166669147827",
     "project_id": "project-platinum-6019d",
-    "storage_bucket": "project-platinum-6019d.appspot.com"
-  },
+    "firebase_url": "https://my-project-id.firebaseio.com",
+    "storage_bucket": "project-platinum-6019d.firebasestorage.app",
+    "google_app_id": "1:166669147827:android:a4d3ad590f0ce1b7a31ac6"
+},
   "client": [
     {
       "client_info": {

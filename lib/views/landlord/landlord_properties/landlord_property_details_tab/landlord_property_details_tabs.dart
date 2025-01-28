@@ -35,7 +35,7 @@ class _LandlordPropertDetailsTabsState
             mainAxisSize: MainAxisSize.max,
             children: [
               CustomAppBar2(
-                title: AppMetaLabels().propertiessLand,
+                title: AppMetaLabels().propertiesDetail,
               ),
               Padding(
                 padding: EdgeInsets.all(2.0.h),
