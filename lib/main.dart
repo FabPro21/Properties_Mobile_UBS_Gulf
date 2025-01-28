@@ -106,18 +106,18 @@ Future<void> main() async {
           iosBundleId: 'com.fab',
         ));
   } else {
-    // await Firebase.initializeApp(
-    //   options: DefaultFirebaseOptions.currentPlatform,
-    // );
     await Firebase.initializeApp(
-        name: "SecondaryApp1",
-        options: FirebaseOptions(
-          apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
-          appId: '1:437162741952:ios:824ccdd9fff2c81a2c5d25',
-          messagingSenderId: '437162741952',
-          projectId: 'fab-properties',
-          storageBucket: 'fab-properties.appspot.com',
-        ));
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    // await Firebase.initializeApp(
+    //     name: "SecondaryApp1",
+    //     options: FirebaseOptions(
+    //       apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
+    //       appId: '1:437162741952:ios:824ccdd9fff2c81a2c5d25',
+    //       messagingSenderId: '437162741952',
+    //       projectId: 'fab-properties',
+    //       storageBucket: 'fab-properties.appspot.com',
+    //     ));
   }
   // initializeFirebase();
   // if (defaultTargetPlatform == TargetPlatform.iOS) {
