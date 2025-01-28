@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
     appId: '1:437162741952:android:c4f606634e6e28442c5d25',
     messagingSenderId: '437162741952',
-    projectId: 'fab-properties',
+    projectId: 'fab-propertiesfab-propertiesfab-properties',
     storageBucket: 'fab-properties.appspot.com',
   );
 

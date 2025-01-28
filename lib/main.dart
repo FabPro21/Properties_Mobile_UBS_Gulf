@@ -94,21 +94,30 @@ Future<void> main() async {
 
   if (defaultTargetPlatform == TargetPlatform.iOS) {
     await Firebase.initializeApp(
-      name: "SecondaryApp",
+        name: "SecondaryApp",
         options: FirebaseOptions(
-      apiKey: 'AIzaSyCCTd7ZT_TpIeAhGBW-nWmkap94cNetiPg',
-      appId: '1:437162741952:ios:824ccdd9fff2c81a2c5d25',
-      messagingSenderId: '437162741952',
-      projectId: 'fab-properties',
-      storageBucket: 'fab-properties.appspot.com',
-      iosClientId:
-          '437162741952-odcqv6729gammingrlehl3unumkmrnsj.apps.googleusercontent.com',
-      iosBundleId: 'com.fab',
-    ));
+          apiKey: 'AIzaSyCCTd7ZT_TpIeAhGBW-nWmkap94cNetiPg',
+          appId: '1:437162741952:ios:824ccdd9fff2c81a2c5d25',
+          messagingSenderId: '437162741952',
+          projectId: 'fab-properties',
+          storageBucket: 'fab-properties.appspot.com',
+          iosClientId:
+              '437162741952-odcqv6729gammingrlehl3unumkmrnsj.apps.googleusercontent.com',
+          iosBundleId: 'com.fab',
+        ));
   } else {
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+        name: "SecondaryApp1",
+        options: FirebaseOptions(
+          apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
+          appId: '1:437162741952:ios:824ccdd9fff2c81a2c5d25',
+          messagingSenderId: '437162741952',
+          projectId: 'fab-properties',
+          storageBucket: 'fab-properties.appspot.com',
+        ));
   }
   // initializeFirebase();
   // if (defaultTargetPlatform == TargetPlatform.iOS) {

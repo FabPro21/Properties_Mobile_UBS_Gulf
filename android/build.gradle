@@ -6,32 +6,6 @@ allprojects {
     }
 }
 
-
-// rootProject.buildDir = "../build"
-// // // Add this part -------------->
-//     subprojects {
-//         afterEvaluate { project ->
-//             if (project.hasProperty('android')) {
-//                 project.android {
-//                     if (namespace == null) {
-//                         namespace project.group
-//                     }
-//                 }
-//             }
-//             if (project.plugins.hasPlugin("com.android.application") ||
-//                 project.plugins.hasPlugin("com.android.library")) {
-//                 project.android {
-//                 compileSdkVersion 34
-//                 buildToolsVersion "34.0.0"
-//             }
-//         }
-//         }
-//     }
-// subprojects {
-//     project.evaluationDependsOn(":app")
-    
-// }
-
 rootProject.buildDir = "../build"
 subprojects {
   //  fix for verifyReleaseResources
@@ -71,6 +45,10 @@ tasks.register("clean", Delete) {
 
 buildscript {
  ext.kotlin_version = '1.8.0' 
+  repositories {
+        google()  // Make sure this is included
+        mavenCentral()
+    }
 }
 
 
