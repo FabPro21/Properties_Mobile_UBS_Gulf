@@ -241,6 +241,8 @@ dependencies {
     implementation "androidx.browser:browser:1.3.0"
     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.2'
     implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
+    implementation "com.google.firebase:firebase-bom:33.8.0"
+    implementation "com.google.firebase:firebase-appcheck-debug"
     // implementation 'com.google.firebase:firebase-auth:21.1.0'  // Add Firebase Auth
     // implementation 'com.google.firebase:firebase-core:21.0.0'   // Add Firebase Core
     implementation 'androidx.appcompat:appcompat:1.6.1'

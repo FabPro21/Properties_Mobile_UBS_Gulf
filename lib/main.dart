@@ -107,6 +107,7 @@ Future<void> main() async {
         ));
   } else {
     await Firebase.initializeApp(
+      //  name: "SecondaryApp2",
       options: DefaultFirebaseOptions.currentPlatform,
     );
     // await Firebase.initializeApp(

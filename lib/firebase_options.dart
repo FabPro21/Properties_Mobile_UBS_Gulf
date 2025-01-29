@@ -46,13 +46,21 @@ class DefaultFirebaseOptions {
     measurementId: 'G-XS3222XDCK',
   );
 
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
     appId: '1:437162741952:android:c4f606634e6e28442c5d25',
     messagingSenderId: '437162741952',
-    projectId: 'fab-propertiesfab-propertiesfab-properties',
+    projectId: 'fab-properties',
     storageBucket: 'fab-properties.appspot.com',
   );
+  // static const FirebaseOptions android = FirebaseOptions(
+  //   apiKey: 'AIzaSyCLBm86W5MY_ZVZ0Ts8qPOmn7ioXOfCfvE',
+  //   appId: '1:437162741952:android:c4f606634e6e28442c5d25',
+  //   messagingSenderId: '437162741952',
+  //   projectId: 'fab-propertiesfab-propertiesfab-properties',
+  //   storageBucket: 'fab-properties.appspot.com',
+  // );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCCTd7ZT_TpIeAhGBW-nWmkap94cNetiPg',
