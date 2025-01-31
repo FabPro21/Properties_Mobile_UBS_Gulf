@@ -212,6 +212,9 @@ android {
         exclude 'res/values-v35/values-v35.xml' 
    }
    buildTypes {
+    debug {
+                  signingConfig signingConfigs.debug
+        }
        release {
            signingConfig signingConfigs.release
            minifyEnabled false  // Disable minification
@@ -247,7 +250,7 @@ dependencies {
     // implementation 'com.google.firebase:firebase-auth:21.1.0'  // Add Firebase Auth
     // implementation 'com.google.firebase:firebase-core:21.0.0'   // Add Firebase Core
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
 }
 

@@ -12,6 +12,7 @@ import 'package:fap_properties/views/auth/setup_mpin/setup_mpin.dart';
 import 'package:fap_properties/views/auth/validate_user/phone_no_field.dart';
 import 'package:fap_properties/views/common/no_internet_screen.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
@@ -80,7 +81,8 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       verifying.value = true;
       isCodeSent.value = false;
-
+      // for disabling the appcheck
+      FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(false);
       FirebaseAuth.instance.verifyPhoneNumber(
         timeout: const Duration(seconds: 120),
         phoneNumber: phone,
@@ -164,14 +166,14 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId??"", smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
         }
         error.value = '';
         isCodeSent.value = false;
-        controller.verifyOtpBtn(code, verificationId??"", true);
+        controller.verifyOtpBtn(code, verificationId ?? "", true);
         // next logic
       } on FirebaseAuthException catch (e) {
         verifying.value = false;
@@ -207,9 +209,9 @@ class FirebaseAuthController extends GetxController {
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message??"";
+          error.value = e.message ?? "";
         }
-        controller.verifyOtpBtn(code, verificationId??"", false);
+        controller.verifyOtpBtn(code, verificationId ?? "", false);
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
@@ -226,7 +228,7 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId??"", smsCode: code);
+            verificationId: verificationId ?? "", smsCode: code);
         await FirebaseAuth.instance.signInWithCredential(credential);
         if (kDebugMode) {
           print('otp verified');
@@ -265,7 +267,7 @@ class FirebaseAuthController extends GetxController {
             .contains("We have blocked all requests from this device")) {
           error.value = AppMetaLabels().tooManyReqtryLater;
         } else {
-          error.value = e.message??"";
+          error.value = e.message ?? "";
         }
       } catch (e) {
         loadingData.value = false;
@@ -316,15 +318,15 @@ class FirebaseAuthController extends GetxController {
         'An internal error has occurred, print and inspect the error details for more information.') {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
-    
-    } else if (exception.message!.contains('This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.')|| exception.message ==
-        'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') {
+    } else if (exception.message!.contains(
+            'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') ||
+        exception.message ==
+            'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
-    } 
-    else {
-      error.value = exception.message??"";
-      errorValidateUser.value = exception.message??"";
+    } else {
+      error.value = exception.message ?? "";
+      errorValidateUser.value = exception.message ?? "";
     }
     verifying.value = false;
     resending.value = false;
@@ -348,7 +350,7 @@ class FirebaseAuthController extends GetxController {
     PhoneNoFieldFB.phoneController.clear();
 
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode??"",
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: false,
         ));
 
@@ -373,7 +375,7 @@ class FirebaseAuthController extends GetxController {
     resendProgressBarLoading.value = false;
     PhoneNoFieldFB.phoneController.clear();
     Get.to(() => VerifyUserOtpScreenFB(
-          otpCodeForVerifyOTP: model.value.otpCode??"",
+          otpCodeForVerifyOTP: model.value.otpCode ?? "",
           isForgotMpin: true,
         ));
     SnakBarWidget.getSnackBarErrorBlue(
@@ -447,7 +449,7 @@ class FirebaseAuthController extends GetxController {
         model.value = result;
 
         await verifyPhone(
-          SessionController().getPhone()??"",
+          SessionController().getPhone() ?? "",
         );
         loadingData.value = false;
       } else {
@@ -464,7 +466,7 @@ class FirebaseAuthController extends GetxController {
   forgotMPin() async {
     isLoadingForForgotButton.value = true;
     await verifyPhoneForgotMpin(
-      SessionController().getPhone()??"",
+      SessionController().getPhone() ?? "",
     );
   }
 }
