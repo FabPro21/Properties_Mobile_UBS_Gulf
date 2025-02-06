@@ -26,6 +26,8 @@ class UpdatePublicProfile extends StatefulWidget {
 class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
   PublicProfileController _controller = Get.put(PublicProfileController());
   final formKey = GlobalKey<FormState>();
+  var nameError = "";
+  var emailError = "";
   final nameTextEditingController = TextEditingController();
   final emailTextEditingController = TextEditingController();
   bool emailValidation(String emailStr) {
@@ -108,144 +110,284 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                         Padding(
                           padding:
                               EdgeInsets.only(left: 2.h, right: 2.h, top: 3.h),
-                          child: Form(
-                            key: formKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CustomeTextField(
-                                  validator: (value) {
-                                    {
-                                      if (value.isEmpty)
-                                        return AppMetaLabels().requireData;
-                                      else if (!nameValidator.hasMatch(value)) {
-                                        return AppMetaLabels().invalidName;
-                                      } else if (nameTextEditingController
-                                              .text.length <
-                                          6) {
-                                        return AppMetaLabels()
-                                            .pleaseEnterValidName;
-                                      } else
-                                        return '';
-                                    }
-                                  },
-                                  label: AppMetaLabels().fullNameWithStaric,
-                                  controller: nameTextEditingController,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // CustomeTextField(
+                              //   validator: (value) {
+                              //     {
+                              //       if (value.isEmpty)
+                              //         return AppMetaLabels().requireData;
+                              //       else if (!nameValidator.hasMatch(value)) {
+                              //         return AppMetaLabels().invalidName;
+                              //       } else if (nameTextEditingController
+                              //               .text.length <
+                              //           6) {
+                              //         return AppMetaLabels()
+                              //             .pleaseEnterValidName;
+                              //       } else
+                              //         return '';
+                              //     }
+                              //   },
+                              //   label: AppMetaLabels().fullNameWithStaric,
+                              //   controller: nameTextEditingController,
+                              // ),
+                              TextFormField(
+                                // validator: (value) {
+                                //   return validator!(value ?? "");
+                                // },
+                                controller: nameTextEditingController,
+                                maxLines: 1,
+                                style: AppTextStyle.normalBlack14,
+                                decoration: InputDecoration(
+                                  labelText: AppMetaLabels().fullNameWithStaric,
+                                  labelStyle: AppTextStyle.normalBlack14,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.bgBlue1, width: 1.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.errorColor,
+                                        width: 1.0),
+                                  ),
                                 ),
-                                SizedBox(
-                                  height: 4.h,
+                              ),
+                              SizedBox(
+                                height: 0.1.h,
+                              ),
+                              nameError == ""
+                                  ? SizedBox()
+                                  : Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        nameError,
+                                        style: TextStyle(
+                                          color: AppColors.errorColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                              SizedBox(
+                                height: 4.h,
+                              ),
+                              // CustomeTextField(
+                              //   label: AppMetaLabels().emailWithStarick,
+                              //   controller: emailTextEditingController,
+                              //   validator: (value) {
+                              //     {
+                              //       if (value.isEmpty)
+                              //         return AppMetaLabels().requireData;
+                              //       else if (!emailValidation(value)) {
+                              //         return AppMetaLabels().invalidEmail;
+                              //       } else
+                              //         return '';
+                              //     }
+                              //   },
+                              // ),
+                              TextFormField(
+                                // validator: (value) {
+                                //   return validator!(value ?? "");
+                                // },
+                                controller: emailTextEditingController,
+                                maxLines: 1,
+                                style: AppTextStyle.normalBlack14,
+                                decoration: InputDecoration(
+                                  labelText: AppMetaLabels().emailWithStarick,
+                                  labelStyle: AppTextStyle.normalBlack14,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.bgBlue1, width: 1.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.errorColor,
+                                        width: 1.0),
+                                  ),
                                 ),
-                                CustomeTextField(
-                                  label: AppMetaLabels().emailWithStarick,
-                                  controller: emailTextEditingController,
-                                  validator: (value) {
-                                    {
-                                      if (value.isEmpty)
-                                        return AppMetaLabels().requireData;
-                                      else if (!emailValidation(value)) {
-                                        return AppMetaLabels().invalidEmail;
-                                      } else
-                                        return '';
-                                    }
-                                  },
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 1, top: 24, right: 1),
-                                  child: Obx(() {
-                                    return Padding(
-                                      padding: EdgeInsets.all(3.5.h),
-                                      child: _controller
-                                              .loadingUpdatePublicProfile.value
-                                          ? LoadingIndicatorBlue()
-                                          : _controller.errorUpdatePublicProfile
-                                                      .value !=
-                                                  ''
-                                              ? IconButton(
-                                                  icon: Icon(
-                                                    Icons.refresh,
-                                                    color: AppColors.redColor,
-                                                    size: 4.h,
+                              ),
+                              SizedBox(
+                                height: 0.1.h,
+                              ),
+                              emailError == ""
+                                  ? SizedBox()
+                                  : Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        emailError,
+                                        style: TextStyle(
+                                          color: AppColors.errorColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: 1, top: 24, right: 1),
+                                child: Obx(() {
+                                  return Padding(
+                                    padding: EdgeInsets.all(3.5.h),
+                                    child: _controller
+                                            .loadingUpdatePublicProfile.value
+                                        ? LoadingIndicatorBlue()
+                                        : _controller.errorUpdatePublicProfile
+                                                    .value !=
+                                                ''
+                                            ? IconButton(
+                                                icon: Icon(
+                                                  Icons.refresh,
+                                                  color: AppColors.redColor,
+                                                  size: 4.h,
+                                                ),
+                                                onPressed: () {
+                                                  print('Retry');
+                                                  // if (!formKey.currentState!
+                                                  //     .validate()) {
+                                                  //   return;
+                                                  // }
+                                                  _controller.updatePublicProfile(
+                                                      nameTextEditingController
+                                                          .text,
+                                                      widget.model!.user!.userId
+                                                          .toString(),
+                                                      emailTextEditingController
+                                                          .text);
+                                                },
+                                              )
+                                            : ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            1.3.h),
                                                   ),
-                                                  onPressed: () {
-                                                    print('Retry');
-                                                    if (!formKey.currentState!
-                                                        .validate()) {
-                                                      return;
-                                                    }
-                                                    _controller.updatePublicProfile(
-                                                        nameTextEditingController
-                                                            .text,
-                                                        widget.model!.user!.userId
-                                                            .toString(),
-                                                        emailTextEditingController
-                                                            .text);
-                                                  },
-                                                )
-                                              : ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              1.3.h),
-                                                    ),
-                                                    backgroundColor:
-                                                        Color.fromRGBO(
-                                                            0, 61, 166, 1),
-                                                  ),
-                                                  onPressed: () async {
-                                                    if (!formKey.currentState!
-                                                        .validate()) {
-                                                      return;
-                                                    }
-                                                    FocusScope.of(context)
-                                                        .unfocus();
-                                                    print(
-                                                        'Email:${emailTextEditingController.text}');
-                                                    print(
-                                                        'Name:${nameTextEditingController.text}');
-                                                    print(
-                                                        'UserID:${widget.model!.user!.userId}');
-                                                    var result = await _controller
-                                                        .updatePublicProfile(
-                                                            nameTextEditingController
-                                                                .text,
-                                                            widget.model!.user!
-                                                                .userId
-                                                                .toString(),
-                                                            emailTextEditingController
-                                                                .text);
-                                                    if (result is User) {
-                                                      Get.back(result: result);
-                                                    } else {
-                                                      SnakBarWidget
-                                                          .getSnackBarErrorBlue(
-                                                              AppMetaLabels()
-                                                                  .alert,
-                                                              AppMetaLabels()
-                                                                  .someThingWentWrong);
-                                                    }
-                                                  },
-                                                  child: SizedBox(
-                                                    width: 80.w,
-                                                    height: 6.h,
-                                                    child: Center(
-                                                      child: Text(
-                                                        AppMetaLabels().update,
-                                                        style: AppTextStyle
-                                                            .semiBoldWhite12,
-                                                      ),
+                                                  backgroundColor:
+                                                      Color.fromRGBO(
+                                                          0, 61, 166, 1),
+                                                ),
+                                                onPressed: () async {
+                                                  // if (!formKey.currentState!
+                                                  //     .validate()) {
+                                                  //   return;
+                                                  // }
+                                                  // FocusScope.of(context)
+                                                  //     .unfocus();
+                                                  nameTextEditingController.text
+                                                      .trim();
+                                                  emailTextEditingController
+                                                      .text
+                                                      .trim();
+                                                  if (nameTextEditingController
+                                                          .text.isEmpty ||
+                                                      nameTextEditingController
+                                                              .text ==
+                                                          "") {
+                                                    nameError = AppMetaLabels()
+                                                        .requireData;
+                                                    return;
+                                                  } else if (!nameValidator
+                                                      .hasMatch(
+                                                          nameTextEditingController
+                                                              .text)) {
+                                                    nameError = AppMetaLabels()
+                                                        .invalidName;
+                                                    return;
+                                                  } else if (nameTextEditingController
+                                                          .text.length <
+                                                      6) {
+                                                    nameError = AppMetaLabels()
+                                                        .pleaseEnterValidName;
+                                                    return;
+                                                  } else {
+                                                    setState(() {
+                                                      nameError = "";
+                                                    });
+                                                  }
+
+                                                  // email
+                                                  if (emailTextEditingController
+                                                          .text.isEmpty ||
+                                                      emailTextEditingController
+                                                              .text ==
+                                                          "") {
+                                                    emailError = AppMetaLabels()
+                                                        .requireData;
+                                                    return;
+                                                  } else if (!emailValidation(
+                                                      emailTextEditingController
+                                                          .text)) {
+                                                    emailError = AppMetaLabels()
+                                                        .invalidEmail;
+                                                    return;
+                                                  } else {
+                                                    setState(() {
+                                                      emailError = "";
+                                                    });
+                                                  }
+
+                                                  print(
+                                                      'Email:${emailTextEditingController.text}');
+                                                  print(
+                                                      'Name:${nameTextEditingController.text}');
+                                                  print(
+                                                      'UserID:${widget.model!.user!.userId}');
+                                                  var result = await _controller
+                                                      .updatePublicProfile(
+                                                          nameTextEditingController
+                                                              .text,
+                                                          widget.model!.user!
+                                                              .userId
+                                                              .toString(),
+                                                          emailTextEditingController
+                                                              .text);
+                                                  if (result is User) {
+                                                    Get.back(result: result);
+                                                  } else {
+                                                    SnakBarWidget
+                                                        .getSnackBarErrorBlue(
+                                                            AppMetaLabels()
+                                                                .alert,
+                                                            AppMetaLabels()
+                                                                .someThingWentWrong);
+                                                  }
+                                                },
+                                                child: SizedBox(
+                                                  width: 80.w,
+                                                  height: 6.h,
+                                                  child: Center(
+                                                    child: Text(
+                                                      AppMetaLabels().update,
+                                                      style: AppTextStyle
+                                                          .semiBoldWhite12,
                                                     ),
                                                   ),
                                                 ),
-                                    );
-                                  }),
-                                ),
-                              ],
-                            ),
+                                              ),
+                                  );
+                                }),
+                              ),
+                            ],
                           ),
                         ),
                       ],

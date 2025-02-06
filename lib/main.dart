@@ -126,6 +126,7 @@ Future<void> main() async {
   //       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity,
   //   appleProvider: kDebugMode ? AppleProvider.debug : AppleProvider.appAttest,
   // );
+  
   if (!kDebugMode) {
     await FirebaseAppCheck.instance.activate(
       androidProvider: AndroidProvider.playIntegrity,

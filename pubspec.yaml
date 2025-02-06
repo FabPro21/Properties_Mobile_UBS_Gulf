@@ -34,6 +34,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   encrypted_shared_preferences: ^3.0.1
   extended_image: ^8.2.1
+  # firebase_core: any # firebase_core: ^2.15.0
+  # firebase_auth: any # firebase_auth: ^4.1.0
+  # firebase_messaging: any # firebase_messaging: any #^15.1.0 # firebase_messaging: ^14.0.0
+  # firebase_app_check: any # firebase_app_check: ^0.2.1+8
   firebase_core: ^2.15.0 # firebase_core: ^2.15.0
   firebase_auth: ^4.1.0 # firebase_auth: ^4.1.0
   firebase_messaging: ^14.0.0 # firebase_messaging: any #^15.1.0 # firebase_messaging: ^14.0.0
