@@ -211,7 +211,6 @@ class SelectRoloesController extends GetxController {
   }
 
   Future<void> _getDeviceTokken() async {
-    
     FirebaseMessaging.instance.requestPermission();
     // await FirebaseMessaging.instance.getToken().then(
     //   (String? token) {
@@ -235,6 +234,11 @@ class SelectRoloesController extends GetxController {
           },
         );
       }
+    } else {
+      FirebaseMessaging.instance.getToken().then((String? token) {
+        print("FCM Token: $token");
+        // Use the token (e.g., send it to your server)
+      });
     }
   }
 

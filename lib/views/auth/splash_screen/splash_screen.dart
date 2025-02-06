@@ -47,8 +47,27 @@ class _SplashScreenState extends State<SplashScreen> {
         String? token = await _firebaseMessaging.getToken();
         print('FCM Token: $token');
       }
+    }else{
+      FirebaseMessaging.instance.getToken().then((String? token) {
+      print("FCM Token: $token");
+      // Use the token (e.g., send it to your server)
+    });
     }
   }
+  // void _getFcmToken() async {
+  //   // Get the FCM token
+  //   // String? token = await _firebaseMessaging.getToken();
+  //   // print('FCM Token: $token');
+  //   if (defaultTargetPlatform == TargetPlatform.iOS) {
+  //     if (kDebugMode == true) {
+  //       String? token = await _firebaseMessaging.getAPNSToken();
+  //       print('FCM Token: $token');
+  //     } else {
+  //       String? token = await _firebaseMessaging.getToken();
+  //       print('FCM Token: $token');
+  //     }
+  //   }
+  // }
 
   void _setupNotificationListeners() {
     // Handle incoming messages
