@@ -2444,7 +2444,7 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? "Reset " : 'اعادة ضبط البرنامج ';
 
   String someThingWentWrong = SessionController().getLanguage() == 1
-      ? "Some thing went wrong"
+      ? "Something went wrong"
       : 'حدث خطأ ما ';
 
   String requestNotCancelled = SessionController().getLanguage() == 1

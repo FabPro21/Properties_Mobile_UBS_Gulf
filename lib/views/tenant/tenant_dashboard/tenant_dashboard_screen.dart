@@ -288,18 +288,22 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         children: [
                                           //Outstanding incl. Charges  NEXT 30 DAYS
                                           Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                AppMetaLabels()
-                                                    .paymentBalance
-                                                    .toUpperCase(),
-                                                style:
-                                                    AppTextStyle.normalBlack8,
+                                              SizedBox(
+                                                width: 50.w,
+                                                child: Text(
+                                                  AppMetaLabels()
+                                                      .paymentBalance
+                                                      .toUpperCase(),
+                                                  style:
+                                                      AppTextStyle.normalBlack8,
+                                                ),
                                               ),
                                               const Spacer(),
                                               Padding(
                                                 padding: EdgeInsets.only(
-                                                    right: 13.0.w, left: 0.w),
+                                                    right: 0.0.w, left: 0.w),
                                                 child: Text(
                                                   AppMetaLabels().next30days,
                                                   style:
@@ -409,7 +413,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         child: Row(
                                           children: [
                                             SizedBox(
-                                              width: 26.0.w,
+                                              width: 22.0.w,
                                               height: 12.0.h,
                                               child: SfCircularChart(
                                                   series: <CircularSeries>[
@@ -433,7 +437,6 @@ class _TenantDashboardState extends State<TenantDashboard>
                                             ),
                                             Container(
                                               width: 62.0.w,
-                                              // height: 10.0.h,
                                               child: Column(
                                                 children: [
                                                   Padding(
@@ -461,7 +464,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                             padding: EdgeInsets
                                                                 .symmetric(
                                                                     horizontal:
-                                                                        1.0.h,
+                                                                        0.5.h,
                                                                     vertical:
                                                                         0.0.h),
                                                             child: Text(
@@ -515,7 +518,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                             padding: EdgeInsets
                                                                 .symmetric(
                                                                     horizontal:
-                                                                        1.0.h,
+                                                                        0.5.h,
                                                                     vertical:
                                                                         0.0.h),
                                                             child: Text(
@@ -550,55 +553,65 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                     padding: EdgeInsets.only(
                                                         top: 0.7.h),
                                                     child: SizedBox(
-                                                      width: 62.0.w,
-                                                      child: Row(
+                                                      // width: 62.0.w,
+                                                      child: Column(
                                                         children: [
-                                                          Container(
-                                                            width: 2.w,
-                                                            height: 1.h,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: AppColors
-                                                                  .amber
-                                                                  .withOpacity(
-                                                                      0.75),
-                                                              // color: AppColors
-                                                              //     .chartBlueColor,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                100,
+                                                          Row(
+                                                            children: [
+                                                              Container(
+                                                                width: 2.w,
+                                                                height: 1.h,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: AppColors
+                                                                      .amber
+                                                                      .withOpacity(
+                                                                          0.75),
+                                                                  // color: AppColors
+                                                                  //     .chartBlueColor,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    100,
+                                                                  ),
+                                                                ),
                                                               ),
-                                                            ),
+                                                              Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            0.5
+                                                                                .h,
+                                                                        vertical:
+                                                                            0.0.h),
+                                                                child:
+                                                                    FittedBox(
+                                                                  child: Text(
+                                                                    AppMetaLabels()
+                                                                        .rentOutstanding,
+                                                                    style: AppTextStyle
+                                                                        .normalBlack8,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              const Spacer(),
+                                                              SizedBox(),
+                                                            ],
                                                           ),
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        1.0.h,
-                                                                    vertical:
-                                                                        0.0.h),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
                                                             child: FittedBox(
                                                               child: Text(
                                                                 AppMetaLabels()
-                                                                    .rentOutstanding,
+                                                                        .aed +
+                                                                    " ${tDGDController.balanceCurrency}",
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 style: AppTextStyle
-                                                                    .normalBlack8,
+                                                                    .semiBoldBlack10,
                                                               ),
-                                                            ),
-                                                          ),
-                                                          const Spacer(),
-                                                          FittedBox(
-                                                            child: Text(
-                                                              AppMetaLabels()
-                                                                      .aed +
-                                                                  " ${tDGDController.balanceCurrency}",
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: AppTextStyle
-                                                                  .semiBoldBlack10,
                                                             ),
                                                           ),
                                                         ],

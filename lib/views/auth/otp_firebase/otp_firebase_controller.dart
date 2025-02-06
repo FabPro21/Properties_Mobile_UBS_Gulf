@@ -13,6 +13,7 @@ import 'package:fap_properties/views/auth/validate_user/phone_no_field.dart';
 import 'package:fap_properties/views/common/no_internet_screen.dart';
 import 'package:fap_properties/views/common/safe_device_check.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 import 'package:get/get.dart';
@@ -100,7 +101,8 @@ class FirebaseAuthController extends GetxController {
       loadingData.value = true;
       verifying.value = true;
       isCodeSent.value = false;
-
+      // for disabling the appcheck
+      FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(false);
       FirebaseAuth.instance.verifyPhoneNumber(
         timeout: const Duration(seconds: 120),
         phoneNumber: phone,
@@ -338,15 +340,15 @@ class FirebaseAuthController extends GetxController {
         'An internal error has occurred, print and inspect the error details for more information.') {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
-    
-    } else if (exception.message!.contains('This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.')|| exception.message ==
-        'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') {
+    } else if (exception.message!.contains(
+            'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') ||
+        exception.message ==
+            'This operation is not allowed. This may be because the given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.') {
       error.value = AppMetaLabels().someThingWentWrong;
       errorValidateUser.value = AppMetaLabels().someThingWentWrong;
-    } 
-    else {
-      error.value = exception.message??"";
-      errorValidateUser.value = exception.message??"";
+    } else {
+      error.value = exception.message ?? "";
+      errorValidateUser.value = exception.message ?? "";
     }
     verifying.value = false;
     resending.value = false;

@@ -5,10 +5,10 @@ import 'package:fap_properties/data/models/auth_models/verify_user_otp_model.dar
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
+import 'package:fap_properties/utils/text_validator.dart';
 import 'package:fap_properties/views/widgets/common_widgets/backbround_concave.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
 import 'package:fap_properties/views/public_views/search_properties_more/public_profile/public_profile_controller.dart';
-import 'package:fap_properties/views/widgets/custom_text1.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,9 @@ class UpdatePublicProfile extends StatefulWidget {
 
 class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
   PublicProfileController _controller = Get.put(PublicProfileController());
-  // final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+  var nameError = "";
+  var emailError = "";
   final nameTextEditingController = TextEditingController();
   final emailTextEditingController = TextEditingController();
   bool emailValidation(String emailStr) {
@@ -111,42 +113,134 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              CustomeTextField(
+                              // CustomeTextField(
+                              //   validator: (value) {
+                              //     {
+                              //       if (value.isEmpty)
+                              //         return AppMetaLabels().requireData;
+                              //       else if (!nameValidator.hasMatch(value)) {
+                              //         return AppMetaLabels().invalidName;
+                              //       } else if (nameTextEditingController
+                              //               .text.length <
+                              //           6) {
+                              //         return AppMetaLabels()
+                              //             .pleaseEnterValidName;
+                              //       } else
+                              //         return '';
+                              //     }
+                              //   },
+                              //   label: AppMetaLabels().fullNameWithStaric,
+                              //   controller: nameTextEditingController,
+                              // ),
+                              TextFormField(
                                 // validator: (value) {
-                                //   {
-                                //     if (value.isEmpty)
-                                //       return AppMetaLabels().requireData;
-                                //     else if (!nameValidator.hasMatch(value)) {
-                                //       return AppMetaLabels().invalidName;
-                                //     } else if (nameTextEditingController
-                                //             .text.length <
-                                //         3) {
-                                //       return AppMetaLabels()
-                                //           .pleaseEnterValidName;
-                                //     } else
-                                //       return null.toString();
-                                //   }
+                                //   return validator!(value ?? "");
                                 // },
-                                label: AppMetaLabels().fullNameWithStaric,
                                 controller: nameTextEditingController,
+                                maxLines: 1,
+                                style: AppTextStyle.normalBlack14,
+                                decoration: InputDecoration(
+                                  labelText: AppMetaLabels().fullNameWithStaric,
+                                  labelStyle: AppTextStyle.normalBlack14,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.bgBlue1, width: 1.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.errorColor,
+                                        width: 1.0),
+                                  ),
+                                ),
                               ),
+                              SizedBox(
+                                height: 0.1.h,
+                              ),
+                              nameError == ""
+                                  ? SizedBox()
+                                  : Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        nameError,
+                                        style: TextStyle(
+                                          color: AppColors.errorColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
                               SizedBox(
                                 height: 4.h,
                               ),
-                              CustomeTextField(
-                                label: AppMetaLabels().emailWithStarick,
-                                controller: emailTextEditingController,
-                                // validator: (String? value) {
-                                //   {
-                                //     if (value!.isEmpty)
-                                //       return AppMetaLabels().requireData;
-                                //     else if (!emailValidation(value)) {
-                                //       return AppMetaLabels().invalidEmail;
-                                //     } else
-                                //       return '';
-                                //   }
+                              // CustomeTextField(
+                              //   label: AppMetaLabels().emailWithStarick,
+                              //   controller: emailTextEditingController,
+                              //   validator: (value) {
+                              //     {
+                              //       if (value.isEmpty)
+                              //         return AppMetaLabels().requireData;
+                              //       else if (!emailValidation(value)) {
+                              //         return AppMetaLabels().invalidEmail;
+                              //       } else
+                              //         return '';
+                              //     }
+                              //   },
+                              // ),
+                              TextFormField(
+                                // validator: (value) {
+                                //   return validator!(value ?? "");
                                 // },
+                                controller: emailTextEditingController,
+                                maxLines: 1,
+                                style: AppTextStyle.normalBlack14,
+                                decoration: InputDecoration(
+                                  labelText: AppMetaLabels().emailWithStarick,
+                                  labelStyle: AppTextStyle.normalBlack14,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.borderGrey,
+                                        width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.bgBlue1, width: 1.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.errorColor,
+                                        width: 1.0),
+                                  ),
+                                ),
                               ),
+                              SizedBox(
+                                height: 0.1.h,
+                              ),
+                              emailError == ""
+                                  ? SizedBox()
+                                  : Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        emailError,
+                                        style: TextStyle(
+                                          color: AppColors.errorColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
                               Padding(
                                 padding:
                                     EdgeInsets.only(left: 1, top: 24, right: 1),
@@ -166,53 +260,16 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                   size: 4.h,
                                                 ),
                                                 onPressed: () {
-                                                  // if (formKey.currentState!
-                                                  //         .validate() ==
-                                                  //     false) {
-                                                  //   print('Retry');
+                                                  print('Retry');
+                                                  // if (!formKey.currentState!
+                                                  //     .validate()) {
                                                   //   return;
                                                   // }
-                                                  if (nameTextEditingController
-                                                          .text
-                                                          .trim() ==
-                                                      '') {
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .pleaseEnterFullName);
-                                                    return;
-                                                  }
-                                                  if (emailTextEditingController
-                                                          .text
-                                                          .trim() ==
-                                                      '') {
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .pleaseEnterEmail);
-                                                    return;
-                                                  }
-                                                  if (!emailValidation(
-                                                      emailTextEditingController
-                                                          .text)) {
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .invalidEmail);
-                                                    return;
-                                                  }
                                                   _controller.updatePublicProfile(
                                                       nameTextEditingController
                                                           .text,
-                                                      widget.model?.user?.userId
-                                                              .toString() ??
-                                                          "",
+                                                      widget.model!.user!.userId
+                                                          .toString(),
                                                       emailTextEditingController
                                                           .text);
                                                 },
@@ -229,69 +286,78 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                           0, 61, 166, 1),
                                                 ),
                                                 onPressed: () async {
-                                                  // if (formKey.currentState!
-                                                  //         .validate() ==
-                                                  //     false) {
-                                                  //   print('Ok');
-                                                  //   print(
-                                                  //       'Validation result: ${formKey.currentState?.validate()}');
+                                                  // if (!formKey.currentState!
+                                                  //     .validate()) {
                                                   //   return;
                                                   // }
                                                   // FocusScope.of(context)
                                                   //     .unfocus();
-
-                                                  print(
-                                                      'Ok ${(nameTextEditingController.text.trim() == '')}');
+                                                  nameTextEditingController.text
+                                                      .trim();
+                                                  emailTextEditingController
+                                                      .text
+                                                      .trim();
                                                   if (nameTextEditingController
-                                                          .text
-                                                          .trim() ==
-                                                      '') {
-                                                    print('Ok IF');
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .pleaseEnterFullName);
+                                                          .text.isEmpty ||
+                                                      nameTextEditingController
+                                                              .text ==
+                                                          "") {
+                                                    nameError = AppMetaLabels()
+                                                        .requireData;
                                                     return;
+                                                  } else if (!nameValidator
+                                                      .hasMatch(
+                                                          nameTextEditingController
+                                                              .text)) {
+                                                    nameError = AppMetaLabels()
+                                                        .invalidName;
+                                                    return;
+                                                  } else if (nameTextEditingController
+                                                          .text.length <
+                                                      6) {
+                                                    nameError = AppMetaLabels()
+                                                        .pleaseEnterValidName;
+                                                    return;
+                                                  } else {
+                                                    setState(() {
+                                                      nameError = "";
+                                                    });
                                                   }
+
+                                                  // email
                                                   if (emailTextEditingController
-                                                          .text
-                                                          .trim() ==
-                                                      '') {
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .pleaseEnterEmail);
+                                                          .text.isEmpty ||
+                                                      emailTextEditingController
+                                                              .text ==
+                                                          "") {
+                                                    emailError = AppMetaLabels()
+                                                        .requireData;
                                                     return;
-                                                  }
-                                                  if (!emailValidation(
+                                                  } else if (!emailValidation(
                                                       emailTextEditingController
                                                           .text)) {
-                                                    SnakBarWidget
-                                                        .getSnackBarErrorBlue(
-                                                            AppMetaLabels()
-                                                                .error,
-                                                            AppMetaLabels()
-                                                                .invalidEmail);
+                                                    emailError = AppMetaLabels()
+                                                        .invalidEmail;
                                                     return;
+                                                  } else {
+                                                    setState(() {
+                                                      emailError = "";
+                                                    });
                                                   }
+
                                                   print(
                                                       'Email:${emailTextEditingController.text}');
                                                   print(
                                                       'Name:${nameTextEditingController.text}');
                                                   print(
-                                                      'UserID:${widget.model?.user?.userId}');
+                                                      'UserID:${widget.model!.user!.userId}');
                                                   var result = await _controller
                                                       .updatePublicProfile(
                                                           nameTextEditingController
                                                               .text,
-                                                          widget.model?.user
-                                                                  ?.userId
-                                                                  .toString() ??
-                                                              "",
+                                                          widget.model!.user!
+                                                              .userId
+                                                              .toString(),
                                                           emailTextEditingController
                                                               .text);
                                                   if (result is User) {

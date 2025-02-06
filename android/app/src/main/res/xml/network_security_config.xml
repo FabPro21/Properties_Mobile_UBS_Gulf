@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="false">
+<<<<<<< HEAD
         <domain includeSubdomains="true">provisuat.uaenorth.cloudapp.azure.com</domain>
         <domain includeSubdomains="true">landlord.fabproperties.ae</domain>
+=======
+        <certificates src="system" />   <!-- for Firebase -->
+        <domain includeSubdomains="true">https://provisuat.uaenorth.cloudapp.azure.com</domain>
+        <domain includeSubdomains="true">https://landlord.fabproperties.ae</domain>
+>>>>>>> 0b8b46c2c1a141db5037c4cf435a2a78c9e3d1f5
     </domain-config>
 </network-security-config>
