@@ -9,7 +9,6 @@ import 'package:fap_properties/utils/text_validator.dart';
 import 'package:fap_properties/views/widgets/common_widgets/backbround_concave.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
 import 'package:fap_properties/views/public_views/search_properties_more/public_profile/public_profile_controller.dart';
-import 'package:fap_properties/views/widgets/custom_text1.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
