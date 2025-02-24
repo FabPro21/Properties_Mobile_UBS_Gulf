@@ -1,5 +1,5 @@
 # # Uncomment this line to define a global platform for your project
-# platform :ios, '15.6'
+# platform :ios, '15.5'
 
 # # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 # ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -31,10 +31,21 @@
 #   use_frameworks!
 #   use_modular_headers!
 # # Pods for Runner
+
 #   pod 'firebase_app_check', :path => '.symlinks/plugins/firebase_app_check/ios'
-#   pod 'firebase_core', :path => '.symlinks/plugins/firebase_core/ios'
+#   pod 'google_mlkit_commons', :path => '.symlinks/plugins/google_mlkit_commons/ios'
 #   pod 'google_mlkit_text_recognition', :path => '.symlinks/plugins/google_mlkit_text_recognition/ios'
-#   # Specify Firebase SDK version explicitly
+  
+#   # Force specific MLKitCommon version
+#   pod 'MLKitCommon', '~> 12.0.0'
+
+#   # Specific MLKitVision version that requires MLKitCommon
+#   pod 'MLKitVision', '~> 7.0'
+
+#   # Other dependencies
+#   pod 'GoogleDataTransport', 
+
+  
 #   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
 # end
@@ -45,11 +56,13 @@
 # #   end
 # # end
 
+
 # post_install do |installer|
 #   installer.generated_projects.each do |project|
 #         project.targets.each do |target|
 #             target.build_configurations.each do |config|
-#                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13'
+#                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.5'
+#                 # config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
 #              end
 #         end
 #  end
@@ -57,6 +70,8 @@
 #     flutter_additional_ios_build_settings(target)
 #   end
 # end
+
+
 
 
 # Uncomment this line to define a global platform for your project
@@ -91,30 +106,29 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-# Pods for Runner
+
+  # Pods for Runner
   pod 'firebase_app_check', :path => '.symlinks/plugins/firebase_app_check/ios'
-  pod 'firebase_core', :path => '.symlinks/plugins/firebase_core/ios'
+  pod 'google_mlkit_commons', :path => '.symlinks/plugins/google_mlkit_commons/ios'
   pod 'google_mlkit_text_recognition', :path => '.symlinks/plugins/google_mlkit_text_recognition/ios'
-  # Specify Firebase SDK version explicitly
+  pod 'firebase_messaging', :path => '.symlinks/plugins/firebase_messaging/ios'
+
+  # Specific MLKitVision version that requires MLKitCommon
+  pod 'MLKitVision', '~> 7.0'
+
+
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
 end
-
-# post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#     flutter_additional_ios_build_settings(target)
-#   end
-# end
 
 post_install do |installer|
   installer.generated_projects.each do |project|
-        project.targets.each do |target|
-            target.build_configurations.each do |config|
-                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13'
-             end
-        end
- end
-    installer.pods_project.targets.each do |target|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      end
+    end
+  end
+  installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
   end
 end
