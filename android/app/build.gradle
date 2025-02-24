@@ -1,135 +1,8 @@
-// // BEFORE UPDATE WITH NABEEL BHAI
-// // plugins {
-// //     id 'com.android.application'
-// //     id 'com.google.gms.google-services'
-// //     id 'kotlin.android'
-// // }
-// plugins {
-//     id "com.android.application"
-//     id "kotlin-android"
-//     id "dev.flutter.flutter-gradle-plugin"
-// }
-// def localProperties = new Properties()
-// def localPropertiesFile = rootProject.file('local.properties')
-// if (localPropertiesFile.exists()) {
-//     localPropertiesFile.withReader('UTF-8') { reader ->
-//         localProperties.load(reader)
-//     }
-// }
-
-// def flutterRoot = localProperties.getProperty('flutter.sdk')
-// if (flutterRoot == null) {
-//     throw  GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-// }
-
-// def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-// if (flutterVersionCode == null) {
-//     flutterVersionCode = '1'
-// }
-
-// def flutterVersionName = localProperties.getProperty('flutter.versionName')
-// if (flutterVersionName == null) {
-//     flutterVersionName = '1.0'
-// }
-
-// def keystoreProperties = new Properties()
-//    def keystorePropertiesFile = rootProject.file('key.properties')
-//    if (keystorePropertiesFile.exists()) {
-//        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-//    }
-
-// android {// namespace   "com.fab.flutterjailbreakdetection"
-//     namespace  "com.fab.fabpropertiesEnterprise"
-//     namespace  "com.fab.flutterjailbreakdetection"
-//     compileSdkVersion 35
-//     ndkVersion flutter.ndkVersion
-//     // BEFORE UPDATE WITH NABEEL BHAI
-//     // compileSdkVersion 33
-//     // ndkVersion = "25.1.8937393"
-    
-//     lintOptions {
-//         disable 'InvalidPackage'
-//         disable "Instantiatable"
-//         checkReleaseBuilds false
-//         abortOnError false
-//     }
-    
-//      compileOptions {
-//         // sourceCompatibility JavaVersion.VERSION_18
-//         // targetCompatibility JavaVersion.VERSION_18
-//         sourceCompatibility JavaVersion.VERSION_17
-//         targetCompatibility JavaVersion.VERSION_17
-//     }
-//     // BEFORE UPDATE WITH NABEEL BHAI
-//     //  compileOptions {
-//     //     sourceCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
-//     //     targetCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
-//     // }
-
-//     kotlinOptions {
-//         jvmTarget = JavaVersion.VERSION_1_8 // '17' // Align this with Java
-//         // jvmTarget = '1.8' // '17' // Align this with Java
-        
-//     }
-
-//     sourceSets {
-//         main.java.srcDirs += 'src/main/kotlin'
-//     }
-
-//     defaultConfig {
-//         applicationId "com.fab.fabpropertiesEnterprise"
-//         minSdkVersion 23
-//         targetSdkVersion 34
-//         // BEFORE UPDATE WITH NABEEL BHAI
-//         // minSdkVersion 21
-//         // targetSdkVersion 33
-//         versionCode flutterVersionCode.toInteger()
-//         versionName flutterVersionName
-//         multiDexEnabled true
-       
-//     }
-
-//     signingConfigs {
-//        release {
-//            keyAlias keystoreProperties['keyAlias']
-//            keyPassword keystoreProperties['keyPassword']
-//            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-//            storePassword keystoreProperties['storePassword']
-//        }
-//    }
-//    buildTypes {
-//        release {
-//            signingConfig signingConfigs.release
-//        }
-//    }
-// }
-// // BEFORE UPDATE WITH NABEEL BHAI
-// flutter {
-//     source '../..'
-// }
-
-// dependencies {
-//     modules {
-//         module("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
-//             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
-//         }
-//         module("org.jetbrains.kotlin:kotlin-stdlib-jdk8") {
-//             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk8 is now part of kotlin-stdlib")
-//         }
-//     }
-//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-//     implementation platform('com.google.firebase:firebase-bom:28.4.2')
-//     implementation 'com.google.firebase:firebase-analytics'
-//     implementation 'com.android.support:multidex:2.0.1'
-//     implementation 'com.android.support:multidex:1.0.3'
-//       // BEFORE UPDATE WITH NABEEL BHAI
-//     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.2'
-//     implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
-//     implementation 'androidx.appcompat:appcompat:1.6.1'
-// }
 
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -191,7 +64,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.fab.fabpropertiesEnterprise"
-        applicationId "com.fab.flutterjailbreakdetection"
+        // applicationId "com.fab.flutterjailbreakdetection"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
@@ -228,7 +101,6 @@ flutter {
  }
 
 dependencies {
-    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     modules {
         module("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
@@ -238,19 +110,14 @@ dependencies {
         }
     }
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    // implementation platform('com.google.firebase:firebase-bom:28.4.2')
-    // implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.android.support:multidex:1.0.3'
     implementation "androidx.browser:browser:1.3.0"
-    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.2'
-    implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
-    implementation "com.google.firebase:firebase-bom:33.8.0"
-    implementation "com.google.firebase:firebase-auth"
-    implementation "com.google.firebase:firebase-appcheck-debug"
-    // implementation 'com.google.firebase:firebase-auth:21.1.0'  // Add Firebase Auth
-    // implementation 'com.google.firebase:firebase-core:21.0.0'   // Add Firebase Core
+    implementation platform('com.google.firebase:firebase-bom:33.8.0')  // Use latest BOM version
+    implementation 'com.google.firebase:firebase-auth'  // Authentication SDK
+    implementation 'com.google.firebase:firebase-messaging'  // Messaging SDK
+    implementation 'com.google.firebase:firebase-appcheck-safetynet'  // AppCheck SDK
+    implementation 'com.google.firebase:firebase-appcheck-debug'  // Debug AppCheck SDK
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'com.google.firebase:firebase-messaging:20.1.0'
 }
 
