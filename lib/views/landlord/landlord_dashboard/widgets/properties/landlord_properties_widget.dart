@@ -57,7 +57,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
               padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.5.w),
               child: Text(
                 AppMetaLabels().propertiessLand +
-                    "  (${controller.propsModel?.serviceRequests?.length})",
+                    "  (${controller.propsModel?.serviceRequests?.length == 0 ? "0" : controller.propsModel?.serviceRequests?.length})",
                 style: AppTextStyle.semiBoldBlack13,
               ),
             ),
