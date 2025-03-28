@@ -53,12 +53,27 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.5.w),
-              child: Text(
-                AppMetaLabels().propertiessLand + "  (${controller.length})",
-                style: AppTextStyle.semiBoldBlack13,
-              ),
+            Obx(
+              () => controller.loadingProperties.value == true
+                  ? SizedBox(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 2.h, horizontal: 3.5.w),
+                      child: Text(
+                        AppMetaLabels().propertiessLand,
+                        style: AppTextStyle.semiBoldBlack13,
+                      ),
+                    ),
+                  )
+                  : Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 2.h, horizontal: 3.5.w),
+                      child: Text(
+                        AppMetaLabels().propertiessLand +
+                            "  (${controller.length})",
+                        style: AppTextStyle.semiBoldBlack13,
+                      ),
+                    ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),

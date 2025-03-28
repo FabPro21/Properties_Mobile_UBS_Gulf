@@ -42,7 +42,7 @@ class LandlordPropsWidgetController extends GetxController {
   var activeContract = 0.0.obs;
   var occupiedUnits = 0.0.obs;
   var vacantUnit = 0.0.obs;
-  int toBePaidIn30DaysLength = 0;
+  int toBePaidIn30Dayslength = 0;
   RxString totalUnits = "0.0".obs;
   RxString paidCurrency = "0.0".obs;
   RxInt lengthNotiification = 0.obs;
