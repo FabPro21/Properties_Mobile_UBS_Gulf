@@ -100,23 +100,31 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
               children: [
                 CustomAppBar2(title: AppMetaLabels().newRequestSmall),
                 propertiesController.loadingData.value
-                    ? LoadingIndicatorBlue()
+                    ? Padding(
+                        padding: EdgeInsets.only(top: 30.h),
+                        child: Center(
+                          child: LoadingIndicatorBlue(),
+                        ),
+                      )
                     : propertiesController.error.value != ''
-                        ? AppErrorWidget(
-                            errorText: propertiesController.error.value,
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 20.h),
+                            child: AppErrorWidget(
+                              errorText: propertiesController.error.value,
+                            ),
                           )
                         : propertiesController.getTenantProperties.value
                                     .properties!.length ==
                                 0
                             ? Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                 padding: EdgeInsets.only(top: 20.h),
                                 child: CustomErrorWidget(
                                   errorText: AppMetaLabels().cannotAddSvcReq,
                                 ),
                               )
                             : Container(
-                              height: 88.h,
-                              child: Form(
+                                height: 88.h,
+                                child: Form(
                                   key: formKey,
                                   child: Column(
                                     children: [
@@ -139,8 +147,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         color: Colors.black12,
                                                         blurRadius: 0.5.h,
                                                         spreadRadius: 0.1.h,
-                                                        offset:
-                                                            Offset(0.1.h, 0.1.h),
+                                                        offset: Offset(
+                                                            0.1.h, 0.1.h),
                                                       ),
                                                     ],
                                                   ),
@@ -176,14 +184,14 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 height: 1.h,
                                                               ),
                                                               Container(
-                                                                  width: 100.0.w,
+                                                                  width:
+                                                                      100.0.w,
                                                                   height: 5.0.h,
-                                                                  padding: EdgeInsets
-                                                                      .only(
-                                                                          left: 1.5
-                                                                              .h,
-                                                                          right: 1.5
-                                                                              .h),
+                                                                  padding: EdgeInsets.only(
+                                                                      left:
+                                                                          1.5.h,
+                                                                      right: 1.5
+                                                                          .h),
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: Color
@@ -192,9 +200,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                             248,
                                                                             249,
                                                                             1),
-                                                                    border: tASRController
-                                                                                .invalidInput
-                                                                                .value &&
+                                                                    border: tASRController.invalidInput.value &&
                                                                             tASRController.caseCategoryId.value ==
                                                                                 ''
                                                                         ? Border.all(
@@ -202,9 +208,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                                 Colors.red)
                                                                         : null,
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                0.5.h),
+                                                                        BorderRadius.circular(
+                                                                            0.5.h),
                                                                   ),
                                                                   child: Row(
                                                                     children: [
@@ -241,8 +246,9 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                             InkWell(
                                                               onTap: () async {
                                                                 var caseCategoryResult =
-                                                                    await Get.to(() =>
-                                                                        TenantCaseCategory());
+                                                                    await Get.to(
+                                                                        () =>
+                                                                            TenantCaseCategory());
                                                                 if (caseCategoryResult !=
                                                                     null) {
                                                                   tASRController
@@ -287,8 +293,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                           tASRController.caseCategoryId.value ==
                                                                               ''
                                                                       ? Border.all(
-                                                                          color: Colors
-                                                                              .red)
+                                                                          color:
+                                                                              Colors.red)
                                                                       : null,
                                                                   borderRadius:
                                                                       BorderRadius
@@ -296,12 +302,11 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                               0.5.h),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsets
-                                                                      .only(
-                                                                          left: 1.5
-                                                                              .h,
-                                                                          right: 1.5
-                                                                              .h),
+                                                                  padding: EdgeInsets.only(
+                                                                      left:
+                                                                          1.5.h,
+                                                                      right: 1.5
+                                                                          .h),
                                                                   child: Row(
                                                                     children: [
                                                                       Text(
@@ -315,8 +320,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                       Icon(
                                                                         Icons
                                                                             .arrow_drop_down,
-                                                                        size:
-                                                                            3.0.h,
+                                                                        size: 3.0
+                                                                            .h,
                                                                       )
                                                                     ],
                                                                   ),
@@ -334,7 +339,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .only(
-                                                                        left: 8.0,
+                                                                        left:
+                                                                            8.0,
                                                                         top: 8),
                                                                 child: Text(
                                                                     AppMetaLabels()
@@ -373,7 +379,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 height: 1.0.h,
                                                               ),
                                                               InkWell(
-                                                                onTap: () async {
+                                                                onTap:
+                                                                    () async {
                                                                   var caseSubCategoryResult =
                                                                       await Get.to(
                                                                           () =>
@@ -396,8 +403,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                             .pleaseSelect;
                                                                   }
                                                                 },
-                                                                child: Container(
-                                                                  width: 100.0.w,
+                                                                child:
+                                                                    Container(
+                                                                  width:
+                                                                      100.0.w,
                                                                   height: 5.0.h,
                                                                   decoration:
                                                                       BoxDecoration(
@@ -408,12 +417,9 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                             249,
                                                                             1),
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                0.5.h),
-                                                                    border: tASRController
-                                                                                .invalidInput
-                                                                                .value &&
+                                                                        BorderRadius.circular(
+                                                                            0.5.h),
+                                                                    border: tASRController.invalidInput.value &&
                                                                             tASRController.caseSubCategoryId.value ==
                                                                                 ''
                                                                         ? Border.all(
@@ -421,22 +427,21 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                                 Colors.red)
                                                                         : null,
                                                                   ),
-                                                                  child: Padding(
+                                                                  child:
+                                                                      Padding(
                                                                     padding: EdgeInsets.only(
-                                                                        left:
-                                                                            1.5.h,
+                                                                        left: 1.5
+                                                                            .h,
                                                                         right: 1.5
                                                                             .h),
                                                                     child: Row(
                                                                       children: [
                                                                         Container(
-                                                                          width: Get.width *
-                                                                              0.67,
+                                                                          width:
+                                                                              Get.width * 0.67,
                                                                           child:
                                                                               Text(
-                                                                            tASRController
-                                                                                .caseSubCategoryName
-                                                                                .value,
+                                                                            tASRController.caseSubCategoryName.value,
                                                                             style:
                                                                                 AppTextStyle.normalGrey10,
                                                                             overflow:
@@ -447,8 +452,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                         Icon(
                                                                           Icons
                                                                               .arrow_drop_down,
-                                                                          size: 3.0
-                                                                              .h,
+                                                                          size:
+                                                                              3.0.h,
                                                                         )
                                                                       ],
                                                                     ),
@@ -468,7 +473,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                           .only(
                                                                           left:
                                                                               8.0,
-                                                                          top: 8),
+                                                                          top:
+                                                                              8),
                                                                   child: Text(
                                                                       AppMetaLabels()
                                                                           .requiredField,
@@ -477,7 +483,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 ),
                                                             ],
                                                           ),
-                              
+
                                                         SizedBox(
                                                           height: 2.0.h,
                                                         ),
@@ -499,13 +505,16 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                             var result =
                                                                 await Get.to(() =>
                                                                     GetTenantProperties());
-                                                            if (result != null) {
+                                                            if (result !=
+                                                                null) {
                                                               tASRController
-                                                                  .contractUnitName
-                                                                  .value = result[0];
+                                                                      .contractUnitName
+                                                                      .value =
+                                                                  result[0];
                                                               tASRController
-                                                                  .contractUnitId
-                                                                  .value = result[1];
+                                                                      .contractUnitId
+                                                                      .value =
+                                                                  result[1];
                                                             } else {
                                                               result =
                                                                   AppMetaLabels()
@@ -517,8 +526,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                             height: 5.0.h,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color:
-                                                                  Color.fromRGBO(
+                                                              color: Color
+                                                                  .fromRGBO(
                                                                       246,
                                                                       248,
                                                                       249,
@@ -540,11 +549,12 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   : null,
                                                             ),
                                                             child: Padding(
-                                                              padding:
-                                                                  EdgeInsets.only(
-                                                                      left: 1.5.h,
-                                                                      right:
-                                                                          1.5.h),
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left:
+                                                                          1.5.h,
+                                                                      right: 1.5
+                                                                          .h),
                                                               child: Row(
                                                                 children: [
                                                                   Text(
@@ -590,7 +600,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                 ),
                                               ),
                                               Padding(
-                                                  padding: EdgeInsets.all(2.0.h),
+                                                  padding:
+                                                      EdgeInsets.all(2.0.h),
                                                   child: Container(
                                                     width: 100.0.w,
                                                     padding:
@@ -624,8 +635,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         Row(
                                                           children: [
                                                             Checkbox(
-                                                              onChanged:
-                                                                  (bool? value) {
+                                                              onChanged: (bool?
+                                                                  value) {
                                                                 tASRController
                                                                     .otherThanTenant
                                                                     .value = value!;
@@ -665,8 +676,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 decoration: textFieldDecoration
                                                                     .copyWith(
                                                                         hintText:
-                                                                            AppMetaLabels()
-                                                                                .pleaseEnterName),
+                                                                            AppMetaLabels().pleaseEnterName),
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .name,
@@ -716,8 +726,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 decoration: textFieldDecoration
                                                                     .copyWith(
                                                                         hintText:
-                                                                            AppMetaLabels()
-                                                                                .pleaseEnterPhoneno),
+                                                                            AppMetaLabels().pleaseEnterPhoneno),
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .phone,
@@ -774,7 +783,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                       .only(
                                                                           top: 1
                                                                               .h),
-                                                                  child: InkWell(
+                                                                  child:
+                                                                      InkWell(
                                                                     onTap:
                                                                         () async {
                                                                       var contactTime =
@@ -783,21 +793,18 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                       if (contactTime !=
                                                                           null) {
                                                                         tASRController
-                                                                                .preferredTime
-                                                                                .value =
-                                                                            contactTime[
-                                                                                0];
+                                                                            .preferredTime
+                                                                            .value = contactTime[0];
                                                                         tASRController
-                                                                                .preferredTimeId
-                                                                                .value =
-                                                                            contactTime[
-                                                                                1];
+                                                                            .preferredTimeId
+                                                                            .value = contactTime[1];
                                                                       }
                                                                     },
                                                                     child:
                                                                         Container(
                                                                       width:
-                                                                          100.0.w,
+                                                                          100.0
+                                                                              .w,
                                                                       height:
                                                                           5.0.h,
                                                                       decoration: BoxDecoration(
@@ -806,33 +813,28 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                               248,
                                                                               249,
                                                                               1),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(0.5
-                                                                                  .h),
-                                                                          border: tASRController.invalidInput.value &&
-                                                                                  tASRController.preferredTimeId.value == ''
+                                                                          borderRadius: BorderRadius.circular(0.5
+                                                                              .h),
+                                                                          border: tASRController.invalidInput.value && tASRController.preferredTimeId.value == ''
                                                                               ? Border.all(color: Colors.red)
                                                                               : null),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsets.only(
-                                                                            left: 1.5
-                                                                                .h,
-                                                                            right:
-                                                                                1.5.h),
+                                                                            left:
+                                                                                1.5.h,
+                                                                            right: 1.5.h),
                                                                         child:
                                                                             Row(
                                                                           children: [
                                                                             Text(
                                                                               tASRController.preferredTime.value,
-                                                                              style:
-                                                                                  AppTextStyle.normalGrey10,
+                                                                              style: AppTextStyle.normalGrey10,
                                                                             ),
                                                                             Spacer(),
                                                                             Icon(
                                                                               Icons.arrow_drop_down,
-                                                                              size:
-                                                                                  3.0.h,
+                                                                              size: 3.0.h,
                                                                             )
                                                                           ],
                                                                         ),
@@ -848,13 +850,11 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                         .value
                                                                         .isEmpty)
                                                                   Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                            .only(
-                                                                            left:
-                                                                                8.0,
-                                                                            top:
-                                                                                8),
+                                                                    padding: const EdgeInsets
+                                                                        .only(
+                                                                        left:
+                                                                            8.0,
+                                                                        top: 8),
                                                                     child: Text(
                                                                         AppMetaLabels()
                                                                             .requiredField,
@@ -881,8 +881,8 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                         color: Colors.black12,
                                                         blurRadius: 0.5.h,
                                                         spreadRadius: 0.1.h,
-                                                        offset:
-                                                            Offset(0.1.h, 0.1.h),
+                                                        offset: Offset(
+                                                            0.1.h, 0.1.h),
                                                       ),
                                                     ],
                                                   ),
@@ -980,13 +980,14 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                     .loadingData.value
                                                 ? LoadingIndicatorBlue()
                                                 : ElevatedButton(
-                                                    style:
-                                                        ElevatedButton.styleFrom(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                1.3.h),
+                                                            BorderRadius
+                                                                .circular(
+                                                                    1.3.h),
                                                       ),
                                                       backgroundColor:
                                                           Color.fromRGBO(
@@ -995,15 +996,14 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                     onPressed: () {
                                                       FocusScope.of(context)
                                                           .unfocus();
-                                                      tASRController.invalidInput
+                                                      tASRController
+                                                          .invalidInput
                                                           .value = false;
                                                       bool enableButton = false;
-                                                      if (tASRController
-                                                                  .caseCategoryId
-                                                                  .value !=
-                                                              '' &&
+                                                      if (tASRController.caseCategoryId.value != '' &&
                                                           tASRController
-                                                                  .caseSubCategoryId.value !=
+                                                                  .caseSubCategoryId
+                                                                  .value !=
                                                               '' &&
                                                           tASRController
                                                                   .contractUnitId
@@ -1050,7 +1050,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                     ],
                                   ),
                                 ),
-                            ),
+                              ),
               ],
             ));
       }),

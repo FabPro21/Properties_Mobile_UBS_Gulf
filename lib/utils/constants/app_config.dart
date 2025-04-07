@@ -472,17 +472,17 @@ class AppConfig {
     //     'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
 
     // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
-    baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
-    commonAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
-    publicAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
-    tenantAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
-    appConfigVendor =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
-    landlordAppConfig =
-        'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
+    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
+    // commonAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+    // publicAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+    // tenantAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+    // appConfigVendor =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+    // landlordAppConfig =
+    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
 
 ///////////////////////////////////////////////////////////////////////////
     //  Production // For url
@@ -502,6 +502,12 @@ class AppConfig {
     // tenantAppConfig = 'https://20.174.25.44/Tenant/Api/';
     // appConfigVendor = 'https://20.174.25.44/Vendor/Api/';
     // landlordAppConfig = 'https://20.174.25.44/Landlord/Api/';
+
+    commonAppConfig = 'https://auth.api.ubspropt.com/api/';
+    tenantAppConfig = 'https://tenant.api.ubspropt.com/api/';
+    publicAppConfig = 'https://public.api.ubspropt.com/';
+    appConfigVendor = 'https://vendor.api.ubspropt.com/api/';
+    landlordAppConfig = 'https://landlord.api.ubspropt.com/api/';
 
     // 43 Server
     ///////////////////////////////////////////////////////////////////////////
@@ -531,7 +537,8 @@ class AppConfig {
     getcountries = commonAppConfig! + 'Data/getcountries';
     updateDeviceInfo = commonAppConfig! + 'Account/UpdateDeviceInfo';
     saveMpin = commonAppConfig! + 'Account/SaveMpin';
-    getUserRoles = commonAppConfig! + 'Account/GetUserRoles';
+    getUserRoles = commonAppConfig! + 'Account/GetRoleForWeb';
+    // getUserRoles = commonAppConfig! + 'Account/GetUserRoles';
     proceedToLogin = commonAppConfig! + 'Account/ProceedToLogin';
     login = commonAppConfig! + 'Account/Login';
     updateLang = commonAppConfig! + 'Account/UpdateCurrentLanguage';
