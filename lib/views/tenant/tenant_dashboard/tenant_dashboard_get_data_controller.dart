@@ -105,9 +105,12 @@ class TenantDashboardGetDataController extends GetxController {
         error.value = AppMetaLabels().noDatafound;
       } else {
         dashboardData.value = result;
+
         contractExpiringIn30Days.value =
             dashboardData.value.dashboard!.contractExpiringIn30Days.toString();
+
         rentalVal.value = dashboardData.value.dashboard!.rentalVal.toDouble();
+        
         rentOutstanding.value =
             dashboardData.value.dashboard!.rentOutstanding.toDouble();
 

@@ -11,7 +11,7 @@ GetTicketRepliesModel getTicketRepliesModelFromJson(String? str) =>
 
 String? getTicketRepliesModelToJson(GetTicketRepliesModel data) =>
     json.encode(data.toJson());
-
+//
 class GetTicketRepliesModel {
   GetTicketRepliesModel({
     this.status,
