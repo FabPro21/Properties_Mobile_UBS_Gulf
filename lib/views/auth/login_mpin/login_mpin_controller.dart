@@ -47,6 +47,13 @@ class LoginMpinController extends GetxController {
   //     validateRoleByFP();
   //   }
   // }
+  // getPrefsData() async {
+  //   fingerprint.value =
+  //       await GlobalPreferences.getBool(GlobalPreferencesLabels.fingerPrint);
+  //   if (fingerprint.value == true) {
+  //     validateRoleByFP();
+  //   }
+  // }
 
   @override
   void onInit() {

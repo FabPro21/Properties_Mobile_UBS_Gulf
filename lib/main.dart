@@ -41,7 +41,6 @@ firebaseMessaging() async {
     print('Message received: ${message.messageId}');
     // Handle foreground message
   });
-  // Configure background message handler
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 }
 
@@ -946,8 +945,6 @@ class _MyAppState extends State<MyApp> {
 // //   //     return false;
 // //   //   }
 // //   // }
-// // // 112233
-// // // sending dumny req no for testing
 
 // //   @override
 // //   Widget build(BuildContext context) {
@@ -968,7 +965,6 @@ class _MyAppState extends State<MyApp> {
 // //               child: child,
 // //             );
 // //           },
-// //           // above lines for restrict the use of device dont
 // //           debugShowCheckedModeBanner: false,
 // //           theme: ThemeData(
 // //               appBarTheme: AppBarTheme(
