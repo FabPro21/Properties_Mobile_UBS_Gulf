@@ -16,9 +16,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sizer/sizer.dart';
 
-/* -------------------------------------------------------------------------- */
-/*                     // bypass this Mir Iftikhar says                       */
-/* -------------------------------------------------------------------------- */
 
 // Enable Firebase
 // by using Enable Firebase we can find the place where we can enable/disable firebase
@@ -40,7 +37,6 @@ firebaseMessaging() async {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   // Request permission for iOS
   _firebaseMessaging.requestPermission();
-  // Configure foreground message handler
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print('Message received: ${message.messageId}');
     // Handle foreground message
@@ -51,12 +47,7 @@ firebaseMessaging() async {
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('Handling a background message: ${message.messageId}');
-  // Handle background message
 }
-
-/* -------------------------------------------------------------------------- */
-/*                     // bypass this Mir Iftikhar says                     */
-/* -------------------------------------------------------------------------- */
 
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -78,7 +69,7 @@ Future<void> main() async {
   // for download file
   await FlutterDownloader.initialize(
     debug:
-        true, // optional: set to false to disable printing logs to console (default: true)
+        true,
   );
 
   await dotenv.load(fileName: ".env");
