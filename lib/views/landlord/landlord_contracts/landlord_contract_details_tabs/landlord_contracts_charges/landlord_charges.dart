@@ -18,7 +18,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class LandlordChargesScreen extends StatefulWidget {
-  const LandlordChargesScreen({Key? key}) : super(key: key);
+  const LandlordChargesScreen({super.key});
 
   @override
   _LandlordChargesScreenState createState() => _LandlordChargesScreenState();
@@ -58,7 +58,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
           //       AppColors.chartlightBlueColor),
           // ];
           return getCCController.loadingData.value == true
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : getCCController.error.value != ''
                   ? AppErrorWidget(
                       errorText: getCCController.error.value,
@@ -183,7 +183,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                     children: [
                                                       rowList(
                                                           AppMetaLabels().date,
-                                                          "${getCCController.getCharges.value.contractCharges?[index].createdOn ?? ""}"),
+                                                          getCCController.getCharges.value.contractCharges?[index].createdOn ?? ""),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
@@ -233,7 +233,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10,
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Text(
                                                             "${AppMetaLabels().aed} ${tAmount.toString()}",
                                                             style: AppTextStyle
@@ -246,7 +246,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets.only(
                                                                 right: 8.0),
                                                         child: InkWell(
                                                           onTap: () {
@@ -281,7 +281,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                                           ),
                                           index == getCCController.length - 1
                                               ? Container()
-                                              : AppDivider(),
+                                              : const AppDivider(),
                                         ],
                                       );
                                     }),
@@ -292,7 +292,7 @@ class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
                       ),
                     );
         }),
-        BottomShadow(),
+        const BottomShadow(),
       ],
     );
   }

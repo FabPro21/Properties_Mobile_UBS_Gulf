@@ -8,12 +8,11 @@ class SrNoWidget extends StatelessWidget {
   final double? size;
   final Color? textColor;
   const SrNoWidget(
-      {Key? key,
+      {super.key,
       this.text = '',
       this.background = AppColors.chartlightBlueColor,
       this.size,
-      this.textColor})
-      : super(key: key);
+      this.textColor});
 
   @override
   Widget build(BuildContext context) {

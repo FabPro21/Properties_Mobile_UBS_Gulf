@@ -13,10 +13,10 @@ class DownloadChequeModel {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    data['cheque'] = this.cheque;
-    data['chequeName'] = this.chequeName;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    data['cheque'] = cheque;
+    data['chequeName'] = chequeName;
     return data;
   }
 }

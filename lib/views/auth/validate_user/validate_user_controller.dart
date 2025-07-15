@@ -38,9 +38,9 @@ class ValidateUserController extends GetxController {
   // loadingData is using for loader
   // validNo if number length is less than 6
   Future<void> getOtpBtn() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     isUpdating.value = true;
     loadingData.value = true;
@@ -52,8 +52,7 @@ class ValidateUserController extends GetxController {
       validNo.value = false;
 
       // making a complete mobile no after geting the Dailing Code
-      final String phone = SessionController().getDialingCode()??"" +
-          PhoneNoField.phoneController.text;
+      final String phone = SessionController().getDialingCode()??PhoneNoField.phoneController.text;
 
       // after completion of mobile no save in prefernece and Session controller
       SessionController().setPhone(phone);
@@ -73,9 +72,10 @@ class ValidateUserController extends GetxController {
         HttpOverrides.global = httpProxy;
       }
       if (checkRooted.value && (jailbroken.value || developerMode.value)) {
-        Get.to(() => SafeDeviceCheck());
-      } else
+        Get.to(() => const SafeDeviceCheck());
+      } else {
         onCodeSent();
+      }
     }
   }
 
@@ -86,7 +86,7 @@ class ValidateUserController extends GetxController {
     } catch (e) {
       isUpdating.value = false;
       loadingData.value = false;
-      Get.to(() => SafeDeviceCheck());
+      Get.to(() => const SafeDeviceCheck());
     }
   }
 
@@ -113,9 +113,9 @@ class ValidateUserController extends GetxController {
 
   Future<void> onCodeSent() async {
     isUpdating.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     error.value = '';
     try {

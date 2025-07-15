@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProperties extends StatefulWidget {
-  const LandLordProperties({Key? key}) : super(key: key);
+  const LandLordProperties({super.key});
 
   @override
   _LandLordPropertiesState createState() => _LandLordPropertiesState();
@@ -101,7 +101,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                           borderSide: BorderSide(
                               color: AppColors.whiteColor, width: 0.1.h),
                         ),
-                        hintText: AppMetaLabels().search+' '+AppMetaLabels().properties,
+                        hintText: '${AppMetaLabels().search} ${AppMetaLabels().properties}',
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: Colors.grey),
                       ),
@@ -121,7 +121,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                       setState(() {});
                       setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.refresh,
                     ),
                   )
@@ -157,7 +157,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     ),
                     child: Obx(() {
                       return controller.loadingProperties.value == true
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : controller.errorLoadingProperties.value != ''
                               ? CustomErrorWidget(
                                   errorText:
@@ -168,7 +168,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                   child: ListView.builder(
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     itemCount: controller.props.length,
                                     itemBuilder: (context, index) {
                                       return Column(
@@ -176,11 +176,11 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                           inkWell(index),
                                           index == controller.props.length - 1
                                               ? Container()
-                                              : AppDivider(),
+                                              : const AppDivider(),
                                           index != controller.props.length - 1
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : controller.props.length < 19
-                                                  ? SizedBox()
+                                                  ? const SizedBox()
                                                   : controller.isFilter.value ==
                                                           false
                                                       ? controller.errorLoadMore
@@ -189,16 +189,16 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                           ? Container(
                                                               height: 1.h,
                                                             )
-                                                          : Container(
+                                                          : SizedBox(
                                                               height: 5.h,
                                                               width: 87.w,
                                                               child: Row(
                                                                 children: [
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   Obx(() {
                                                                     return controller.errorLoadMore.value !=
                                                                             ''
-                                                                        ? SizedBox()
+                                                                        ? const SizedBox()
                                                                         : InkWell(
                                                                             onTap:
                                                                                 () async {
@@ -224,12 +224,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                                       children: [
                                                                                         TextSpan(
                                                                                           text: AppMetaLabels().loadMoreData,
-                                                                                          style: TextStyle(
+                                                                                          style: const TextStyle(
                                                                                             color: Colors.blue,
                                                                                             fontWeight: FontWeight.bold,
                                                                                           ),
                                                                                         ),
-                                                                                        WidgetSpan(
+                                                                                        const WidgetSpan(
                                                                                           child: Icon(
                                                                                             Icons.arrow_forward_ios,
                                                                                             size: 15,
@@ -272,12 +272,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                 setState(() {});
                                                                 setState(() {});
                                                               },
-                                                              child: Container(
+                                                              child: SizedBox(
                                                                 height: 5.h,
                                                                 width: 95.w,
                                                                 child: Row(
                                                                   children: [
-                                                                    Spacer(),
+                                                                    const Spacer(),
                                                                     RichText(
                                                                       textAlign:
                                                                           TextAlign
@@ -289,12 +289,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                             text:
                                                                                 AppMetaLabels().loadMoreData,
                                                                             style:
-                                                                                TextStyle(
+                                                                                const TextStyle(
                                                                               color: Colors.blue,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
                                                                           ),
-                                                                          WidgetSpan(
+                                                                          const WidgetSpan(
                                                                             child:
                                                                                 Icon(
                                                                               Icons.arrow_forward_ios,
@@ -326,11 +326,11 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
         padding: EdgeInsets.only(bottom: 2.0.h),
         child: Align(
           alignment: Alignment.bottomCenter,
-          child: Container(
+          child: SizedBox(
             width: 100.0.w,
             height: 4.0.h,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
+              SizedBox(
                 height: 4.0.h,
                 width: 30.0.w,
                 child: ElevatedButton(
@@ -370,7 +370,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     ? Container()
                     : Padding(
                         padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                        child: Container(
+                        child: SizedBox(
                           height: 4.0.h,
                           width: SessionController().getLanguage() == 1
                               ? 30.0.w
@@ -416,12 +416,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
       ),
       Obx(() {
         return controller.loadingDataLoadMore.value
-            ? Container(
+            ? const SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: Center(child: LoadingIndicatorBlue()),
               )
-            : SizedBox();
+            : const SizedBox();
       })
     ]);
   }
@@ -458,7 +458,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     SizedBox(
                       width: 4.w,
                     ),
-                    Container(
+                    SizedBox(
                       width: 78.0.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -486,7 +486,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().emirate,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,
@@ -532,7 +532,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().type,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,
@@ -555,7 +555,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().category,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,

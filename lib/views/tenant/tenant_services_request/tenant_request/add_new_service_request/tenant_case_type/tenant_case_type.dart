@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCaseType extends StatefulWidget {
-  TenantCaseType({Key? key}) : super(key: key);
+  const TenantCaseType({super.key});
 
   @override
   State<TenantCaseType> createState() => _TenantCaseTypeState();
@@ -40,7 +40,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                       AppMetaLabels().caseType,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -54,7 +54,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Padding(
                 padding: EdgeInsets.all(2.0.h),
                 child: Container(
@@ -124,7 +124,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                                   true
                               ? Padding(
                                   padding: EdgeInsets.only(top: 10.0.h),
-                                  child: LoadingIndicatorBlue(),
+                                  child: const LoadingIndicatorBlue(),
                                 )
                               : getCaseTypesController.error.value != ''
                                   ? AppErrorWidget(
@@ -134,7 +134,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
                                   : ListView.builder(
                                       shrinkWrap: true,
                                       itemCount: getCaseTypesController.length,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
                                       itemBuilder: (context, index) {
                                         if (searchControler.text.isEmpty) {
@@ -203,7 +203,7 @@ class _TenantCaseTypeState extends State<TenantCaseType> {
           ),
           index == getCaseTypesController.length - 1
               ? Container()
-              : AppDivider(),
+              : const AppDivider(),
         ],
       ),
     );

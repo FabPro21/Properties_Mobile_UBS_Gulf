@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 class AlertWidget extends StatelessWidget {
   final String t1;
   final String t2;
-  AlertWidget(this.t1, this.t2, {Key? key}) : super(key: key);
+  const AlertWidget(this.t1, this.t2, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class AlertWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(2.0.h),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(255, 36, 27, 0.1),
                   shape: BoxShape.circle,
                 ),
@@ -61,15 +61,15 @@ class AlertWidget extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(1.3.h),
                   ),
-                  backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                  backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                   padding:
                       EdgeInsets.symmetric(horizontal: 11.0.h, vertical: 1.8.h),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
                   Get.offAll(() => SessionController().enableFireBaseOTP
-                      ? ValidateUserScreenFB()
-                      : ValidateUserScreen());
+                      ? const ValidateUserScreenFB()
+                      : const ValidateUserScreen());
                   // vUOController.otpAttemptsCounter.value = 0;
                 },
                 child: Text(

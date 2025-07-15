@@ -15,8 +15,7 @@ import '../../../../data/helpers/session_controller.dart';
 
 class VendorFaqsQuestionsAndDescription extends StatefulWidget {
   final int? categoryId;
-  const VendorFaqsQuestionsAndDescription({Key? key, this.categoryId})
-      : super(key: key);
+  const VendorFaqsQuestionsAndDescription({super.key, this.categoryId});
 
   @override
   _VendorFaqsQuestionsAndDescriptionState createState() =>
@@ -25,7 +24,7 @@ class VendorFaqsQuestionsAndDescription extends StatefulWidget {
 
 class _VendorFaqsQuestionsAndDescriptionState
     extends State<VendorFaqsQuestionsAndDescription> {
-  VendorFaqsController _controller = Get.put(VendorFaqsController());
+  final VendorFaqsController _controller = Get.put(VendorFaqsController());
   bool isShowDivider = true;
   @override
   void initState() {
@@ -46,7 +45,7 @@ class _VendorFaqsQuestionsAndDescriptionState
             Expanded(
               child: Obx(() {
                 return _controller.loadingQuestions.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.errorQuestions.value != '' ||
                             _controller.questionLength == 0
                         ? CustomErrorWidget(
@@ -122,8 +121,8 @@ class _VendorFaqsQuestionsAndDescriptionState
                                     ),
                                     _controller.questionLength - 1 == index ||
                                             !isShowDivider
-                                        ? SizedBox()
-                                        : AppDivider(),
+                                        ? const SizedBox()
+                                        : const AppDivider(),
                                   ],
                                 ),
                               );

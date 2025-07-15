@@ -96,9 +96,7 @@ class VendorLpoFilterController extends GetxController {
     } else {
       filterError.value = '';
 
-      if (lpoStatus.value.lpoStatusId == null) {
-        lpoStatus.value.lpoStatusId = "-1";
-      }
+      lpoStatus.value.lpoStatusId ??= "-1";
 
       Get.back(
           result: LpoFilterData(

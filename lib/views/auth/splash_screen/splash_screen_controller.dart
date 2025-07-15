@@ -87,7 +87,7 @@ class SplashScreenController extends GetxController {
         Get.to(() => BlockedDeviceScreen());
       } else {
         if (!setLanguage) {
-          await Get.to(() => ChooseLanguage(
+          await Get.to(() => const ChooseLanguage(
                 cont: true,
                 loggedIn: false,
               ));
@@ -102,8 +102,8 @@ class SplashScreenController extends GetxController {
           // Get.to(() => SelectRoleScreen());
         } else {
           Get.to(() => SessionController().enableFireBaseOTP
-              ? ValidateUserScreenFB()
-              : ValidateUserScreen());
+              ? const ValidateUserScreenFB()
+              : const ValidateUserScreen());
         }
 
         // isLoginBool.value == true

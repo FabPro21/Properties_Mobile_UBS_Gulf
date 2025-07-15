@@ -12,15 +12,14 @@ import 'package:sizer/sizer.dart';
 
 class LandlordChargesReceipts extends StatefulWidget {
   final int chargesTypeId;
-   LandlordChargesReceipts({ Key? key, required this.chargesTypeId})
-      : super(key: key);
+   const LandlordChargesReceipts({ super.key, required this.chargesTypeId});
   @override
   State<LandlordChargesReceipts> createState() =>
       _LandlordChargesReceiptsState();
 }
 
 class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
-  LandlordChargesReceiptsController _controller = Get.put(LandlordChargesReceiptsController());
+  final LandlordChargesReceiptsController _controller = Get.put(LandlordChargesReceiptsController());
   String amountCurrency = "";
 
   @override
@@ -45,9 +44,9 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyle.semiBoldBlack16,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Color.fromRGBO(241, 241, 245, 1),
                         shape: BoxShape.circle),
                     child: Padding(
@@ -57,7 +56,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                           Get.back();
                         },
                         child: Icon(Icons.close,
-                            size: 2.5.h, color: Color.fromRGBO(70, 82, 95, 1)),
+                            size: 2.5.h, color: const Color.fromRGBO(70, 82, 95, 1)),
                       ),
                     ),
                   ),
@@ -66,7 +65,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 1.0.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Expanded(
                 child: Padding(
@@ -89,7 +88,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                   padding: EdgeInsets.all(2.0.h),
                   child: Obx(() {
                     return _controller.loading.value == true
-                        ? Center(child: LoadingIndicatorBlue())
+                        ? const Center(child: LoadingIndicatorBlue())
                         : _controller.error != ''
                             ? Center(
                                 child: AppErrorWidget(
@@ -135,7 +134,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                                 .receiptNo,
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Text(
                                                           _controller
                                                                   .receipts[
@@ -147,7 +146,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                         )
                                                       ],
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     rowList(
@@ -155,7 +154,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                         _controller
                                                             .receipts[index]
                                                             .transactionDate??""),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     rowList(
@@ -164,7 +163,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                         _controller
                                                             .receipts[index]
                                                             .paymentType??""),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Row(
@@ -175,7 +174,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                           style: AppTextStyle
                                                               .normalBlack10,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Text(
                                                           '${AppMetaLabels().aed} $amountCurrency',
                                                           style: AppTextStyle
@@ -189,7 +188,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
                                                                     .length -
                                                                 1
                                                         ? Container()
-                                                        : AppDivider(),
+                                                        : const AppDivider(),
                                                     SizedBox(height: 1.0.h),
                                                   ],
                                                 ),
@@ -217,7 +216,7 @@ class _LandlordChargesReceiptsState extends State<LandlordChargesReceipts> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

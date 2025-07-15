@@ -23,12 +23,14 @@ class LandlordContractsWidgetController extends GetxController {
         await LandlordRepository.getContracts(controller.pageNo, '');
     if (response is LandlordContractsModel) {
       contractsModel = response;
-      if (contractsModel!.data!.length <= 3)
+      if (contractsModel!.data!.length <= 3) {
         length = contractsModel!.data!.length;
-      else
+      } else {
         length = 3;
-    } else
+      }
+    } else {
       errorLoadingContracts = response;
+    }
     loadingContracts.value = false;
   }
 }

@@ -3,8 +3,8 @@ import 'package:sizer/sizer.dart';
 
 class BottomShadow extends StatelessWidget {
   const BottomShadow({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override 
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class BottomShadow extends StatelessWidget {
           spreadRadius: 0.8.h,
           offset: Offset(0.1.h, 0.1.h),
         ),
-        BoxShadow(),
-        BoxShadow(),
-        BoxShadow()
+        const BoxShadow(),
+        const BoxShadow(),
+        const BoxShadow()
       ]),
     );
   }

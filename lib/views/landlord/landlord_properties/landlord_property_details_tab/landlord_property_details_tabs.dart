@@ -13,8 +13,7 @@ import 'landlord_property_unit_info/landlord_property_unit_info.dart';
 class LandlordPropertDetailsTabs extends StatefulWidget {
   final String? propertyId;
   final String? propertyNo;
-  const LandlordPropertDetailsTabs({Key? key, this.propertyId, this.propertyNo})
-      : super(key: key);
+  const LandlordPropertDetailsTabs({super.key, this.propertyId, this.propertyNo});
 
   @override
   _LandlordPropertDetailsTabsState createState() =>
@@ -45,7 +44,7 @@ class _LandlordPropertDetailsTabsState
                       AppMetaLabels().property,
                       style: AppTextStyle.semiBoldBlack12,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       widget.propertyNo == 'null'
                           ? ''
@@ -55,7 +54,7 @@ class _LandlordPropertDetailsTabsState
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Expanded(
                 child: ContainedTabBarView(
                   tabs: [

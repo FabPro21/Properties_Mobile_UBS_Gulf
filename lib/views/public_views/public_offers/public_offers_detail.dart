@@ -16,14 +16,14 @@ import 'public_offers_controller.dart';
 
 class PublicOfferDetails extends StatefulWidget {
   final String? offerId;
-  const PublicOfferDetails({Key? key, this.offerId}) : super(key: key);
+  const PublicOfferDetails({super.key, this.offerId});
 
   @override
   _PublicOfferDetailsState createState() => _PublicOfferDetailsState();
 }
 
 class _PublicOfferDetailsState extends State<PublicOfferDetails> {
-  var _controller = Get.put(PublicOffersController());
+  final _controller = Get.put(PublicOffersController());
 
   @override
   void initState() {
@@ -49,15 +49,15 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                 title: AppMetaLabels().promotions,
               ),
               _controller.offersDetails.value.offerProperties == null
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Expanded(
                       child: Obx(() {
                         return _controller.loadingDetails.value
-                            ? Center(
+                            ? const Center(
                                 child: LoadingIndicatorBlue(),
                               )
                             : _controller.offersDetails.value == null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
                                       Padding(

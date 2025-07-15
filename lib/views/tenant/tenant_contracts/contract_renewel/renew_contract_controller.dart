@@ -12,10 +12,6 @@ class RenewContractController extends GetxController {
   RxBool submitting = false.obs;
   int? caseNo;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getContractRenewalInfo(int contractId) async {
     loadingRenewalInfo.value = true;
@@ -23,8 +19,9 @@ class RenewContractController extends GetxController {
     var resp = await TenantRepository.getContractRenewalInfo(contractId);
     if (resp is ContractRenewalInfo) {
       renewalInfo = resp;
-    } else
+    } else {
       errorLoadingInfo = resp;
+    }
     loadingRenewalInfo.value = false;
   }
 

@@ -28,9 +28,9 @@ class PaymentDownloadReceiptController extends GetxController {
   // SessionController().setUrl(paymentDownloadReceipt.value.path);
 
   void downloadReceipt(Payment payment) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     payment.downloadingReceipt!.value = true;
     SessionController().setTransactionId(payment.transactionId.toString());

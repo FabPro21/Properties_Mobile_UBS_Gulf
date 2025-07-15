@@ -16,14 +16,14 @@ import 'package:sizer/sizer.dart';
 
 class UpdatePublicProfile extends StatefulWidget {
   final VerifyUserOtpModel? model;
-  const UpdatePublicProfile({Key? key, this.model}) : super(key: key);
+  const UpdatePublicProfile({super.key, this.model});
 
   @override
   _UpdatePublicProfileState createState() => _UpdatePublicProfileState();
 }
 
 class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
-  PublicProfileController _controller = Get.put(PublicProfileController());
+  final PublicProfileController _controller = Get.put(PublicProfileController());
   final formKey = GlobalKey<FormState>();
   var nameError = "";
   var emailError = "";
@@ -142,21 +142,21 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                 decoration: InputDecoration(
                                   labelText: AppMetaLabels().fullNameWithStaric,
                                   labelStyle: AppTextStyle.normalBlack14,
-                                  border: OutlineInputBorder(
+                                  border: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.borderGrey,
                                         width: 1.0),
                                   ),
-                                  enabledBorder: OutlineInputBorder(
+                                  enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.borderGrey,
                                         width: 1.0),
                                   ),
-                                  focusedBorder: OutlineInputBorder(
+                                  focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.bgBlue1, width: 1.0),
                                   ),
-                                  errorBorder: OutlineInputBorder(
+                                  errorBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.errorColor,
                                         width: 1.0),
@@ -167,12 +167,12 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                 height: 0.1.h,
                               ),
                               nameError == ""
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         nameError,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: AppColors.errorColor,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -205,21 +205,21 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                 decoration: InputDecoration(
                                   labelText: AppMetaLabels().emailWithStarick,
                                   labelStyle: AppTextStyle.normalBlack14,
-                                  border: OutlineInputBorder(
+                                  border: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.borderGrey,
                                         width: 1.0),
                                   ),
-                                  enabledBorder: OutlineInputBorder(
+                                  enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.borderGrey,
                                         width: 1.0),
                                   ),
-                                  focusedBorder: OutlineInputBorder(
+                                  focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.bgBlue1, width: 1.0),
                                   ),
-                                  errorBorder: OutlineInputBorder(
+                                  errorBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: AppColors.errorColor,
                                         width: 1.0),
@@ -230,12 +230,12 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                 height: 0.1.h,
                               ),
                               emailError == ""
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         emailError,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: AppColors.errorColor,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -243,13 +243,13 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                     ),
                               Padding(
                                 padding:
-                                    EdgeInsets.only(left: 1, top: 24, right: 1),
+                                    const EdgeInsets.only(left: 1, top: 24, right: 1),
                                 child: Obx(() {
                                   return Padding(
                                     padding: EdgeInsets.all(3.5.h),
                                     child: _controller
                                             .loadingUpdatePublicProfile.value
-                                        ? LoadingIndicatorBlue()
+                                        ? const LoadingIndicatorBlue()
                                         : _controller.errorUpdatePublicProfile
                                                     .value !=
                                                 ''
@@ -282,7 +282,7 @@ class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
                                                             1.3.h),
                                                   ),
                                                   backgroundColor:
-                                                      Color.fromRGBO(
+                                                      const Color.fromRGBO(
                                                           0, 61, 166, 1),
                                                 ),
                                                 onPressed: () async {

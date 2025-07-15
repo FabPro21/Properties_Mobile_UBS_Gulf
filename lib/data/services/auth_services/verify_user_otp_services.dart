@@ -13,7 +13,7 @@ class VerifyUserOtpServices {
     var data = {
       "mobile": SessionController().getPhone(),
       "otp": otpCode,
-      "otpCode": otpCodeForVerifyOTP == null ? otpCode : otpCodeForVerifyOTP
+      "otpCode": otpCodeForVerifyOTP ?? otpCode
     };
     var url = AppConfig().verifyUserOtp;
     var response = await BaseClientClass.postwithheader(url??"", data,

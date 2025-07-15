@@ -23,9 +23,9 @@ class GetLpoServicesController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -40,9 +40,9 @@ class GetLpoServicesController extends GetxController {
         length = lpoServices.value.lpoServices!.length;
 
         totalAmountSum.value = 0.0;
-        lpoServices.value.lpoServices!.forEach((element) {
+        for (var element in lpoServices.value.lpoServices!) {
           totalAmountSum.value = totalAmountSum.value + element.totalAmount;
-        });
+        }
         var ta = totalAmountSum.value;
         final tFormatter = NumberFormat('#,##0.00', 'AR');
         totalAmount.value = tFormatter.format(ta);

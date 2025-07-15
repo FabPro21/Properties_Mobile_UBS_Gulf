@@ -25,7 +25,7 @@ import '../../vendor_request_list/vendor_request_list_controller.dart';
 class SvcReqReport extends StatefulWidget {
   final int? caseNo;
   final bool? status;
-  SvcReqReport({Key? key, this.caseNo, this.status}) : super(key: key);
+  const SvcReqReport({super.key, this.caseNo, this.status});
 
   @override
   State<SvcReqReport> createState() => _SvcReqReportState();
@@ -79,10 +79,10 @@ class _SvcReqReportState extends State<SvcReqReport> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return controller.loadingDataReportTAB.value == true
-              ? Expanded(
+              ? const Expanded(
                   child: Center(child: LoadingIndicatorBlue()),
                 )
               : Expanded(
@@ -149,7 +149,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                       controller.listTitle,
                                       style: AppTextStyle.normalGrey10,
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Icon(
                                       isShowList != true
                                           ? Icons.arrow_drop_down
@@ -161,7 +161,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               ),
                             ),
                             isShowList != true
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Container(
                                     padding: EdgeInsets.all(2.0.h),
                                     margin:
@@ -214,13 +214,13 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               height: erroFABCorrectiveList == '' ? 0 : 5,
                             ),
                             erroFABCorrectiveList == ''
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Text(
                                     erroFABCorrectiveList,
                                     style: AppTextStyle.normalErrorText1,
                                   ),
 
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             // Free Entry Text 1
@@ -284,12 +284,12 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               height: erroFreEntryText1 == '' ? 0 : 5,
                             ),
                             erroFreEntryText1 == ''
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Text(
                                     erroFreEntryText1,
                                     style: AppTextStyle.normalErrorText1,
                                   ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             // Free Entry Text 2
@@ -353,7 +353,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                               height: erroFreEntryText2 == '' ? 0 : 5,
                             ),
                             erroFreEntryText2 == ''
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Text(
                                     erroFreEntryText2,
                                     style: AppTextStyle.normalErrorText1,
@@ -392,7 +392,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                           height: 9.h,
                                           alignment: Alignment.center,
                                           margin: EdgeInsets.all(0.5.h),
-                                          child: LoadingIndicatorBlue(),
+                                          child: const LoadingIndicatorBlue(),
                                         )
                                       : controller.errorLoadingReport != ''
                                           ? Center(
@@ -412,7 +412,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                                         onPressed: () {
                                                           controller.getFiles();
                                                         },
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons.refresh,
                                                         ))
                                                   ],
@@ -465,7 +465,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                         height: 9.h,
                                         alignment: Alignment.center,
                                         margin: EdgeInsets.all(0.5.h),
-                                        child: LoadingIndicatorBlue(),
+                                        child: const LoadingIndicatorBlue(),
                                       )
                                     : controller.errorGettingPhotos != ''
                                         ? Center(
@@ -485,16 +485,16 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                                       onPressed: () {
                                                         controller.getPhotos();
                                                       },
-                                                      icon: Icon(Icons.refresh))
+                                                      icon: const Icon(Icons.refresh))
                                                 ],
                                               ),
                                             ),
                                           )
-                                        : controller.photos.length > 0
+                                        : controller.photos.isNotEmpty
                                             ? GridView.builder(
                                                 shrinkWrap: true,
                                                 physics:
-                                                    NeverScrollableScrollPhysics(),
+                                                    const NeverScrollableScrollPhysics(),
                                                 padding:
                                                     EdgeInsets.only(top: 1.h),
                                                 gridDelegate:
@@ -531,12 +531,12 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                           side: BorderSide(
                                             width: 0.2.w,
                                             color:
-                                                Color.fromRGBO(0, 61, 166, 1),
+                                                const Color.fromRGBO(0, 61, 166, 1),
                                             style: BorderStyle.solid,
                                           ),
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(
+                                                BorderRadius.circular(
                                                     1.3.h),
                                           ),
                                         ),
@@ -548,13 +548,13 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                             style: AppTextStyle.semiBoldWhite12
                                                 .copyWith(
                                               color:
-                                                  Color.fromRGBO(0, 61, 166, 1),
+                                                  const Color.fromRGBO(0, 61, 166, 1),
                                             ),
                                           ),
                                         ),
                                       ),
                                     )
-                                  : SizedBox();
+                                  : const SizedBox();
                             })
                           ],
                         ),
@@ -587,7 +587,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(1.3.h),
                     ),
-                    backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                    backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                   onPressed: controller.canClose.value &&
                           (controller.report.value.id != null ||
@@ -654,7 +654,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                    width: 3.h, height: 3.h, child: LoadingIndicatorBlue()),
+                    width: 3.h, height: 3.h, child: const LoadingIndicatorBlue()),
               )
             : controller.errorEditingReport
                 ? IconButton(
@@ -727,19 +727,19 @@ class _SvcReqReportState extends State<SvcReqReport> {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Obx(() {
             return controller.editingReport.value
                 ? SizedBox(
-                    width: 3.2.h, height: 3.2.h, child: LoadingIndicatorBlue())
+                    width: 3.2.h, height: 3.2.h, child: const LoadingIndicatorBlue())
                 : !controller.canClose.value
-                    ? SizedBox()
+                    ? const SizedBox()
                     : InkWell(
                         onTap: () {
                           controller.removeReport();
                         },
                         child: controller.errorEditingReport
-                            ? Icon(Icons.refresh, color: Colors.red)
+                            ? const Icon(Icons.refresh, color: Colors.red)
                             : Image.asset(
                                 AppImagesPath.deleteimg,
                                 width: 3.2.h,
@@ -764,18 +764,18 @@ class _SvcReqReportState extends State<SvcReqReport> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () {
                           controller.pickPhoto(ImageSource.gallery);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () {
                         controller.pickPhoto(ImageSource.camera);
                         Navigator.of(context).pop();
@@ -791,7 +791,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
 
   Widget showImage(BuildContext context, int index) {
     return !controller.canClose.value && controller.photos[index] == null
-        ? SizedBox()
+        ? const SizedBox()
         : InkWell(
             onTap: controller.photos[index] == null
                 ? () {
@@ -803,7 +803,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
               child: Container(
                 width: 20.0.w,
                 height: 9.0.h,
-                color: Color.fromRGBO(246, 248, 249, 1),
+                color: const Color.fromRGBO(246, 248, 249, 1),
                 child: controller.photos[index] != null
                     ? Stack(
                         children: [
@@ -825,11 +825,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                 ? Container(
                                     width: 20.0.w,
                                     height: 9.0.h,
-                                    color: Color.fromRGBO(255, 255, 255, 0.5),
+                                    color: const Color.fromRGBO(255, 255, 255, 0.5),
                                     alignment: Alignment.center,
                                     child: controller
                                             .photos[index]!.uploading.value
-                                        ? LoadingIndicatorBlue(
+                                        ? const LoadingIndicatorBlue(
                                             size: 20,
                                           )
                                         : controller
@@ -838,14 +838,14 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                                 onPressed: () {
                                                   controller.uploadPhoto(index);
                                                 },
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons.refresh_outlined,
                                                   color: Colors.red,
                                                 ),
                                               )
                                             : null)
                                 : !controller.canClose.value
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : InkWell(
                                         onTap: () {
                                           controller.removePhoto(index);
@@ -854,14 +854,14 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                           width: 28,
                                           height: 28,
                                           decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   255, 255, 255, 0.5),
                                               borderRadius:
                                                   BorderRadius.circular(24)),
-                                          padding: EdgeInsets.all(2),
+                                          padding: const EdgeInsets.all(2),
                                           child: controller
                                                   .photos[index]!.removing.value
-                                              ? LoadingIndicatorBlue(
+                                              ? const LoadingIndicatorBlue(
                                                   size: 20,
                                                 )
                                               : Icon(
@@ -879,7 +879,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                         child: Text(
                           "+",
                           style: AppTextStyle.semiBoldWhite16.copyWith(
-                              color: Color.fromRGBO(184, 184, 184, 1)),
+                              color: const Color.fromRGBO(184, 184, 184, 1)),
                         ),
                       ),
               ),
@@ -904,7 +904,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.cancel))
+                      icon: const Icon(Icons.cancel))
                 ],
               ),
             ),
@@ -963,7 +963,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                        backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                       ),
                       onPressed: () async {
                         if (signatureController1.isEmpty) {
@@ -1016,11 +1016,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
             style: OutlinedButton.styleFrom(
               side: BorderSide(
                 width: 0.2.w,
-                color: Color.fromRGBO(0, 61, 166, 1),
+                color: const Color.fromRGBO(0, 61, 166, 1),
                 style: BorderStyle.solid,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(1.3.h),
+                borderRadius: BorderRadius.circular(1.3.h),
               ),
             ),
             child: SizedBox(
@@ -1029,7 +1029,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                 child: Text(
                   AppMetaLabels().cancel,
                   style: AppTextStyle.semiBoldWhite12.copyWith(
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                 ),
               ),
@@ -1104,8 +1104,9 @@ class _SvcReqReportState extends State<SvcReqReport> {
                           );
                         } else {
                           if (await controller.saveTenantSignature(
-                              await signatureController2.toPngBytes()))
+                              await signatureController2.toPngBytes())) {
                             Navigator.pop(context);
+                          }
                         }
                       },
                       child: SizedBox(
@@ -1127,11 +1128,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
             style: OutlinedButton.styleFrom(
               side: BorderSide(
                 width: 0.2.w,
-                color: Color.fromRGBO(0, 61, 166, 1),
+                color: const Color.fromRGBO(0, 61, 166, 1),
                 style: BorderStyle.solid,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(1.3.h),
+                borderRadius: BorderRadius.circular(1.3.h),
               ),
             ),
             child: SizedBox(
@@ -1140,7 +1141,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                 child: Text(
                   AppMetaLabels().cancel,
                   style: AppTextStyle.semiBoldWhite12.copyWith(
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                 ),
               ),

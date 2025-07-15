@@ -47,8 +47,7 @@ class TenantDashboard extends StatefulWidget {
   final Function(int)? managePayments;
   final Function(int)? manageContracts;
   const TenantDashboard(
-      {Key? key, this.managePayments, this.manageContracts, this.parentContext})
-      : super(key: key);
+      {super.key, this.managePayments, this.manageContracts, this.parentContext});
 
   @override
   State<TenantDashboard> createState() => _TenantDashboardState();
@@ -91,11 +90,11 @@ class _TenantDashboardState extends State<TenantDashboard>
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     // int userID = SessionController().getUserID();
     // print('User ID ::::: $userID');
-    animateController = new AnimationController(
+    animateController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 5),
+      duration: const Duration(seconds: 5),
     );
-    this.animate = Tween(begin: 0.8, end: 1.0).animate(CurvedAnimation(
+    animate = Tween(begin: 0.8, end: 1.0).animate(CurvedAnimation(
       parent: animateController!,
       curve: Curves.easeIn,
     ));
@@ -133,8 +132,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                 if (tDGDController.notificationdata.value.notifications !=
                         null &&
                     tDGDController
-                            .notificationdata.value.notifications!.length >
-                        0) {
+                            .notificationdata.value.notifications!.isNotEmpty) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showNotificationPopup();
                   });
@@ -146,7 +144,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                     padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                     child: Row(
                       children: [
-                        SizedBox(width: 45.0.w, child: AppLogo()),
+                        SizedBox(width: 45.0.w, child: const AppLogo()),
                         const Spacer(),
                         Container(
                           decoration: const BoxDecoration(
@@ -155,7 +153,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                           ),
                           child: TextButton(
                             onPressed: () async {
-                              await Get.to(() => TenantProfile());
+                              await Get.to(() => const TenantProfile());
                               tDGDController.getDashboardData();
                               // showNotificationPopup();
                             },
@@ -170,7 +168,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                               horizontal: 2.0.w, vertical: 0.0.h),
                           child: InkWell(
                             onTap: () async {
-                              await Get.to(() => TenantNotifications());
+                              await Get.to(() => const TenantNotifications());
                               tDGDController.getDashboardData();
                             },
                             child: badge.Badge(
@@ -187,7 +185,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                               ),
                               position: badge.BadgePosition.topEnd(
                                   top: -1.0.h, end: 0.0.h),
-                              badgeAnimation: badge.BadgeAnimation.rotation(
+                              badgeAnimation: const badge.BadgeAnimation.rotation(
                                 animationDuration: Duration(seconds: 300),
                                 colorChangeAnimationDuration:
                                     Duration(seconds: 1),
@@ -233,7 +231,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                 ),
                               ],
                             ),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           ),
                         )
                       : tDGDController.error.value != ''
@@ -319,8 +317,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                             child: Row(
                                               children: [
                                                 Text(
-                                                    AppMetaLabels().aed +
-                                                        " ${tDGDController.paymentCurrency}",
+                                                    "${AppMetaLabels().aed} ${tDGDController.paymentCurrency}",
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: AppTextStyle
@@ -402,7 +399,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         ],
                                       ),
                                     ),
-                                    AppDivider(),
+                                    const AppDivider(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h, vertical: 0.0.h),
@@ -435,7 +432,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                     ),
                                                   ]),
                                             ),
-                                            Container(
+                                            SizedBox(
                                               width: 62.0.w,
                                               child: Column(
                                                 children: [
@@ -474,7 +471,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                   .normalBlack8,
                                                             ),
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Text(
                                                               tDGDController
                                                                       .dashboardData
@@ -534,9 +531,8 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                           const Spacer(),
                                                           FittedBox(
                                                             child: Text(
-                                                              AppMetaLabels()
-                                                                      .aed +
-                                                                  " ${tDGDController.toBePaidCurrency}",
+                                                              "${AppMetaLabels()
+                                                                      .aed} ${tDGDController.toBePaidCurrency}",
                                                               maxLines: 1,
                                                               overflow:
                                                                   TextOverflow
@@ -595,16 +591,15 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                 ),
                                                               ),
                                                               const Spacer(),
-                                                              SizedBox(),
+                                                              const SizedBox(),
                                                             ],
                                                           ),
                                                           Align(
                                                             alignment: Alignment.centerRight,
                                                             child: FittedBox(
                                                               child: Text(
-                                                                AppMetaLabels()
-                                                                        .aed +
-                                                                    " ${tDGDController.balanceCurrency}",
+                                                                "${AppMetaLabels()
+                                                                        .aed} ${tDGDController.balanceCurrency}",
                                                                 maxLines: 1,
                                                                 overflow:
                                                                     TextOverflow
@@ -632,20 +627,20 @@ class _TenantDashboardState extends State<TenantDashboard>
                   // Due Action Contract for Renewable
                   Obx(() {
                     return tDGDController.loadingData.value == true
-                        ? SizedBox()
+                        ? const SizedBox()
                         : tDGDController.showRenewalButton.value
                             ? Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 2.h, vertical: 1.h),
                                 child: InkWell(
                                     onTap: () async {
-                                      await Get.to(() => ContractsFLowTabs());
+                                      await Get.to(() => const ContractsFLowTabs());
                                       // await Get.to(() => ContractsWithAction());
                                       tDGDController.getDashboardData();
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       decoration: BoxDecoration(
                                           color: AppColors.blueColor,
                                           borderRadius:
@@ -654,14 +649,14 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8.0,
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.info,
                                             color: Colors.white,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8.0,
                                           ),
                                           Expanded(
@@ -682,7 +677,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         ],
                                       ),
                                     )))
-                            : SizedBox();
+                            : const SizedBox();
                   }),
                   // Obx(() {
                   //   // Tooltip Conditions
@@ -1040,7 +1035,7 @@ class _TenantDashboardState extends State<TenantDashboard>
         backgroundColor: Colors.white,
         isDismissible: false,
         enableDrag: false,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         builder: (BuildContext context) {
           return Directionality(
@@ -1053,7 +1048,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                 padding: EdgeInsets.all(2.0.h),
                 child: Obx(() {
                   return tDGDController.loadingContractsExpiring.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -1070,7 +1065,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                     Get.back();
                                   },
                                   child: Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color:
                                           Color.fromRGBO(118, 118, 128, 0.12),
@@ -1080,7 +1075,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                       child: Icon(Icons.close,
                                           size: 2.0.h,
                                           color:
-                                              Color.fromRGBO(158, 158, 158, 1)),
+                                              const Color.fromRGBO(158, 158, 158, 1)),
                                     ),
                                   ),
                                 ),
@@ -1089,7 +1084,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                             SizedBox(
                               height: 0.7.h,
                             ),
-                            AppDivider(),
+                            const AppDivider(),
                             Expanded(
                               child:
                                   tDGDController
@@ -1125,7 +1120,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                 print(
                                                     'Heloo ::::]]]]]]]]\\\\\\');
                                                 await Get.to(
-                                                    () => ContractsDetailsTabs(
+                                                    () => const ContractsDetailsTabs(
                                                           prevContractNo: null,
                                                         ));
                                                 // tDGDController.getDashboardData();
@@ -1155,7 +1150,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                     CrossAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  Container(
+                                                                  SizedBox(
                                                                     width:
                                                                         50.0.w,
                                                                     child: Text(
@@ -1172,7 +1167,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                               .ellipsis,
                                                                     ),
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   Text(
                                                                     '${tDGDController.contractsExpiring!.record![index].contractNo}',
                                                                     style: AppTextStyle
@@ -1221,7 +1216,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   StatusWidget(
                                                                     text: SessionController().getLanguage() ==
                                                                             1
@@ -1256,7 +1251,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                       padding: EdgeInsets.only(
                                                           left: 1.0.h,
                                                           right: 1.0.h),
-                                                      child: AppDivider(),
+                                                      child: const AppDivider(),
                                                     ),
                                                 ],
                                               ),
@@ -1280,7 +1275,7 @@ class _TenantDashboardState extends State<TenantDashboard>
       backgroundColor: Colors.white,
       isDismissible: false,
       enableDrag: false,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       context: widget.parentContext!,
       builder: (BuildContext context) {
@@ -1294,7 +1289,7 @@ class _TenantDashboardState extends State<TenantDashboard>
               padding: EdgeInsets.all(2.0.h),
               child: Obx(() {
                 return tDGDController.loadingBottomSheetData.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1325,7 +1320,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                   Get.back();
                                 },
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color.fromRGBO(118, 118, 128, 0.12),
                                   ),
@@ -1334,7 +1329,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                     child: Icon(Icons.close,
                                         size: 2.0.h,
                                         color:
-                                            Color.fromRGBO(158, 158, 158, 1)),
+                                            const Color.fromRGBO(158, 158, 158, 1)),
                                   ),
                                 ),
                               ),
@@ -1343,7 +1338,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                           SizedBox(
                             height: 0.7.h,
                           ),
-                          AppDivider(),
+                          const AppDivider(),
                           SizedBox(
                             height: 1.0.h,
                           ),
@@ -1383,7 +1378,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                 style:
                                                     AppTextStyle.semiBoldGrey12,
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               Text(
                                                   '${AppMetaLabels().aed} ${tDGDController.bottomSheetData.value.data![index].amount}',
                                                   style: AppTextStyle
@@ -1393,7 +1388,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                           Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 1.h),
-                                            child: AppDivider(),
+                                            child: const AppDivider(),
                                           )
                                         ],
                                       );
@@ -1416,7 +1411,7 @@ class _TenantDashboardState extends State<TenantDashboard>
           text1,
           style: AppTextStyle.normalGrey12,
         ),
-        Spacer(),
+        const Spacer(),
         Text(text2, style: AppTextStyle.normalGrey12)
       ],
     );
@@ -1504,7 +1499,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                         true;
                                                   },
                                                   child: Container(
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       color: Color.fromRGBO(
                                                           118, 118, 128, 0.12),
@@ -1514,7 +1509,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                                           EdgeInsets.all(0.5.h),
                                                       child: Icon(Icons.close,
                                                           size: 2.5.h,
-                                                          color: Color.fromRGBO(
+                                                          color: const Color.fromRGBO(
                                                               158,
                                                               158,
                                                               158,
@@ -1717,7 +1712,9 @@ class _TenantDashboardState extends State<TenantDashboard>
         tDGDController.notificationdata.value.notifications![index].stageId! <
             2 ||
         tDGDController.notificationdata.value.notifications![index].stageId! >
-            9) return SizedBox();
+            9) {
+      return const SizedBox();
+    }
     final ItemScrollController itemScrollController = ItemScrollController();
     int dueActionIndex = 0;
     switch (
@@ -1874,7 +1871,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                                         .notifications![index].contractno ??
                                     '',
                                 false);
-                        if (path != null)
+                        if (path != null) {
                           Get.to(() => AuthenticateContract(
                               contractNo: tDGDController.notificationdata.value
                                   .notifications![index].contractno,
@@ -1888,6 +1885,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                               caller: 'contracts_with_actions',
                               caseId: tDGDController.notificationdata.value
                                   .notifications![index].caseId));
+                        }
                       });
                 })
               : StepNoWidget(
@@ -1933,7 +1931,7 @@ class _TenantDashboardState extends State<TenantDashboard>
                   onPressed: () {
                     SessionController().setContractID(tDGDController
                         .notificationdata.value.notifications![index].recordId);
-                    Get.to(() => ContractsDetailsTabs());
+                    Get.to(() => const ContractsDetailsTabs());
                   })
               : StepNoWidget(
                   label: '8', tooltip: AppMetaLabels().downloadContract)),
@@ -1947,11 +1945,12 @@ class _TenantDashboardState extends State<TenantDashboard>
         itemCount: 8,
         itemBuilder: (context, index2) {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            if (itemScrollController.isAttached)
+            if (itemScrollController.isAttached) {
               itemScrollController.scrollTo(
                   index: dueActionIndex,
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   curve: Curves.easeIn);
+            }
           });
           return actionList[index2];
         },

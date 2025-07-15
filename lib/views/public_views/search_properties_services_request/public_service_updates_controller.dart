@@ -30,10 +30,6 @@ class PublicServiceUpdatesController extends GetxController {
 
   bool chatUpdate = true;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   InternalFinalCallback<void> get onDelete {
@@ -61,7 +57,7 @@ class PublicServiceUpdatesController extends GetxController {
     }
     gettingReplies.value = true;
     gettingReplies.value = false;
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     if (chatUpdate) updateChat(reqNo);
   }
 
@@ -148,7 +144,7 @@ class PublicServiceUpdatesController extends GetxController {
     /// checking file extension cheque
     if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       return;
@@ -167,7 +163,7 @@ class PublicServiceUpdatesController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           return;

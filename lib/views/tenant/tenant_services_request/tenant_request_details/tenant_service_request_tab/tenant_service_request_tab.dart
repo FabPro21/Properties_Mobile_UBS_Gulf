@@ -24,13 +24,13 @@ class TenantServiceRequestTabs extends StatefulWidget {
   final int? initialIndex;
   String? title;
   TenantServiceRequestTabs({
-    Key? key,
+    super.key,
     this.requestNo,
     this.caller,
     this.title,
     this.initialIndex = 0,
-  }) : super(key: key) {
-    this.title = AppMetaLabels().serviceRequest;
+  }) {
+    title = AppMetaLabels().serviceRequest;
   }
 
   @override
@@ -98,7 +98,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                 Expanded(
                   child: Obx(() {
                     return tenantRDController.loadingData.value == true
-                        ? LoadingIndicatorBlue()
+                        ? const LoadingIndicatorBlue()
                         : tenantRDController.error.value != ''
                             ? AppErrorWidget(
                                 errorText: tenantRDController.error.value,
@@ -106,7 +106,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                             : Stack(
                                 children: [
                                   ContainedTabBarView(
-                                    tabBarViewProperties: TabBarViewProperties(
+                                    tabBarViewProperties: const TabBarViewProperties(
                                       physics: NeverScrollableScrollPhysics(),
                                     ),
                                     initialIndex: widget.initialIndex??0,
@@ -163,7 +163,7 @@ class _TenantServiceRequestTabsState extends State<TenantServiceRequestTabs> {
                                           height: 10.h,
                                           color: const Color.fromRGBO(255, 255, 255, 1)
                                         )
-                                      : SizedBox()
+                                      : const SizedBox()
                                 ],
                               );
                   }),

@@ -17,7 +17,7 @@ import 'dart:io' as io;
 import 'search_properties_location_controller.dart';
 
 class SearchPropertiesLocation extends StatefulWidget {
-  const SearchPropertiesLocation({Key? key}) : super(key: key);
+  const SearchPropertiesLocation({super.key});
 
   @override
   SearchPropertiesLocationState createState() =>
@@ -26,7 +26,7 @@ class SearchPropertiesLocation extends StatefulWidget {
 
 class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
   // Completer<GoogleMapController> _mapsController = Completer();
-  var _locationController = Get.put(PublicLocationController());
+  final _locationController = Get.put(PublicLocationController());
 
   @override
   void initState() {
@@ -104,7 +104,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
       child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            leading: SizedBox(),
+            leading: const SizedBox(),
             flexibleSpace: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -125,14 +125,14 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
           ),
           body: Obx(() {
             return _locationController.loading.value
-                ? LoadingIndicatorBlue()
+                ? const LoadingIndicatorBlue()
                 : _locationController.error.value != "" ||
                         _locationController.length.value == 0
                     ? CustomErrorWidget(
                         errorImage: AppImagesPath.noServicesFound,
                         errorText: _locationController.error.value,
                       )
-                    : Container(
+                    : SizedBox(
                         width: 100.0.w,
                         height: 100.0.h,
                         child: ListView.builder(
@@ -161,7 +161,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     io.Platform.isAndroid
-                                        ? Container(
+                                        ? SizedBox(
                                             width: 100.0.w,
                                             height: 25.0.h,
                                             child: Gm.GoogleMap(
@@ -188,7 +188,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                               },
                                             ),
                                           )
-                                        : Container(
+                                        : SizedBox(
                                             width: 100.0.w,
                                             height: 25.0.h,
                                             child: AppleMap(
@@ -265,7 +265,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
                                           SizedBox(
                                             height: 1.0.h,
                                           ),
-                                          AppDivider(),
+                                          const AppDivider(),
                                           SizedBox(
                                             height: 1.0.h,
                                           ),
@@ -307,7 +307,7 @@ class SearchPropertiesLocationState extends State<SearchPropertiesLocation> {
           t1,
           style: AppTextStyle.normalGrey10,
         ),
-        Spacer(),
+        const Spacer(),
         SessionController().getLanguage() == 1
             ? Text(
                 t2,

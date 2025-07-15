@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:in_app_update/in_app_update.dart';
 
 class InAppUpdateClass extends StatefulWidget {
+  const InAppUpdateClass({super.key});
+
   @override
   _InAppUpdateClassState createState() => _InAppUpdateClassState();
 }
@@ -12,7 +14,7 @@ class InAppUpdateClass extends StatefulWidget {
 class _InAppUpdateClassState extends State<InAppUpdateClass> {
   AppUpdateInfo? _updateInfo;
 
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   bool _flexibleUpdateAvailable = false;
 
@@ -50,23 +52,22 @@ class _InAppUpdateClassState extends State<InAppUpdateClass> {
                 child: Text('Update info: $_updateInfo'),
               ),
               ElevatedButton(
-                child: Text('Check for Update'),
+                child: const Text('Check for Update'),
                 onPressed: () => checkForUpdate(),
               ),
               ElevatedButton(
-                child: Text('Perform immediate update'),
                 onPressed: _updateInfo?.updateAvailability ==
                         UpdateAvailability.updateAvailable
                     ? () {
                         InAppUpdate.performImmediateUpdate()
                             // ignore: invalid_return_type_for_catch_error
                             .catchError((e) => showSnack(e.toString()));
-                        Get.to(()=>SplashScreen());
+                        Get.to(()=>const SplashScreen());
                       }
                     : null,
+                child: const Text('Perform immediate update'),
               ),
               ElevatedButton(
-                child: Text('Start flexible update'),
                 onPressed: _updateInfo?.updateAvailability ==
                         UpdateAvailability.updateAvailable
                     ? () {
@@ -79,9 +80,9 @@ class _InAppUpdateClassState extends State<InAppUpdateClass> {
                         });
                       }
                     : null,
+                child: const Text('Start flexible update'),
               ),
               ElevatedButton(
-                child: Text('Complete flexible update'),
                 onPressed: !_flexibleUpdateAvailable
                     ? null
                     : () {
@@ -91,6 +92,7 @@ class _InAppUpdateClassState extends State<InAppUpdateClass> {
                           showSnack(e.toString());
                         });
                       },
+                child: const Text('Complete flexible update'),
               )
             ],
           ),

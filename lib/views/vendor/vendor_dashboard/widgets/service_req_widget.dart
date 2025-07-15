@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 // ignore: must_be_immutable
 class ServiceReqWidget extends StatelessWidget {
   final Function(int)? manageServiceReqs;
-  ServiceReqWidget({Key? key, this.manageServiceReqs}) : super(key: key);
+  ServiceReqWidget({super.key, this.manageServiceReqs});
   final getSRoWidgetController = Get.put(GetVendorServiceRequestsController());
 
   String gAmount = "";
@@ -54,15 +54,15 @@ class ServiceReqWidget extends StatelessWidget {
                 ],
               ),
             ),
-            AppDivider(),
-            Container(
+            const AppDivider(),
+            SizedBox(
               width: getSRoWidgetController.error.value != '' ? 90.w : 86.w,
               child: Obx(() {
                 return getSRoWidgetController.loadingData.value == true
                     ? Padding(
                         padding:
                             EdgeInsets.only(left: 4.h, top: 4.w, bottom: 4.w),
-                        child: Center(child: LoadingIndicatorBlue()),
+                        child: const Center(child: LoadingIndicatorBlue()),
                       )
                     : getSRoWidgetController.error.value != ''
                         ? Padding(
@@ -72,7 +72,7 @@ class ServiceReqWidget extends StatelessWidget {
                             ),
                           )
                         : ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             padding: EdgeInsets.zero,
                             itemCount: getSRoWidgetController.svcReqs.length > 2
@@ -102,7 +102,7 @@ class ServiceReqWidget extends StatelessWidget {
                                 },
                                 child: Row(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 84.w,
                                       child: Column(
                                         children: [
@@ -207,7 +207,7 @@ class ServiceReqWidget extends StatelessWidget {
                                                   style: AppTextStyle
                                                       .normalBlack11,
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 StatusWidgetVendor(
                                                   // text: 'Under Approval',
                                                   text: SessionController()
@@ -229,7 +229,7 @@ class ServiceReqWidget extends StatelessWidget {
                                               ],
                                             ),
                                           ),
-                                          AppDivider(),
+                                          const AppDivider(),
                                         ],
                                       ),
                                     ),
@@ -252,9 +252,9 @@ class ServiceReqWidget extends StatelessWidget {
               }),
             ),
             SizedBox(
-              height: getSRoWidgetController.svcReqs.length > 0 ? 2.0.h : 0,
+              height: getSRoWidgetController.svcReqs.isNotEmpty ? 2.0.h : 0,
             ),
-            getSRoWidgetController.svcReqs.length > 0
+            getSRoWidgetController.svcReqs.isNotEmpty
                 ? TextButton(
                     style: TextButton.styleFrom(
                       minimumSize: Size.zero,
@@ -269,9 +269,9 @@ class ServiceReqWidget extends StatelessWidget {
                       style: AppTextStyle.semiBoldBlue10,
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             SizedBox(
-              height: getSRoWidgetController.svcReqs.length > 0 ? 2.0.h : 0,
+              height: getSRoWidgetController.svcReqs.isNotEmpty ? 2.0.h : 0,
             ),
           ],
         ),
@@ -286,7 +286,7 @@ class ServiceReqWidget extends StatelessWidget {
           t1,
           style: AppTextStyle.normalBlack11,
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           alignment: Alignment.centerRight,
           width: Get.width * 0.5,

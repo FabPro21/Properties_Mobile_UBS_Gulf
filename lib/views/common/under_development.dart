@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class UnderDevelopment extends StatefulWidget {
   final String? title;
-  UnderDevelopment({Key? key, @required this.title}) : super(key: key);
+  const UnderDevelopment({super.key, @required this.title});
 
   @override
   State<UnderDevelopment> createState() => _UnderDevelopmentState();
@@ -29,11 +29,11 @@ class _UnderDevelopmentState extends State<UnderDevelopment> {
             CustomAppBar2(
               title: widget.title??"",
             ),
-            Spacer(),
-            AppErrorWidget(
+            const Spacer(),
+            const AppErrorWidget(
               errorText: 'Coming Soon',
             ),
-            Spacer()
+            const Spacer()
           ],
         ));
   }

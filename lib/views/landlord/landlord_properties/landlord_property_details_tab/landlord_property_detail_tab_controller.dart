@@ -21,10 +21,6 @@ class LandlordPropertiesTabDetailController extends GetxController {
   String errorLoadingPropertiesDetail = '';
   List<ServiceRequests> props = [];
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getPropertiesUnitInfo(String propertyID) async {
     loadingPropertiesInfo.value = true;
@@ -33,7 +29,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print('Response ::: $response');
     if (response is LandlordPropertyUnitsModel) {
       if (response.status == 'Ok') {
-        if (response.cities!.length >= 1) {
+        if (response.cities!.isNotEmpty) {
           propertyUnitInfo = response;
         } else {
           errorLoadingPropertiesInfo = AppMetaLabels().noDatafound;
@@ -57,7 +53,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print('******');
     if (response is LandLordUnitDetailModel) {
       if (response.status == 'Ok') {
-        if (response.propertyUnitDetails!.length >= 1) {
+        if (response.propertyUnitDetails!.isNotEmpty) {
           propertyUnitDetailModel = response;
           print(
               'latitude  :::: ${propertyUnitDetailModel.propertyUnitDetails!.first.latitude}');
@@ -84,11 +80,11 @@ class LandlordPropertiesTabDetailController extends GetxController {
               zoom: 5.0,
             );
           } else {
-            kGooglePlex = Gm.CameraPosition(
+            kGooglePlex = const Gm.CameraPosition(
               target: Gm.LatLng(0.0, 0.0),
               zoom: 5.0,
             );
-            kApplePlex = Am.CameraPosition(
+            kApplePlex = const Am.CameraPosition(
               target: Am.LatLng(0.0, 0.0),
               zoom: 5.0,
             );
@@ -115,7 +111,7 @@ class LandlordPropertiesTabDetailController extends GetxController {
     print(response);
     if (response is LandlordPropertiesDetailsModel) {
       if (response.status == 'Ok') {
-        if (response.propertyDetails!.length >= 1) {
+        if (response.propertyDetails!.isNotEmpty) {
           propertyDetailInfo = response;
         } else {
           errorLoadingPropertiesDetail = AppMetaLabels().noDatafound;

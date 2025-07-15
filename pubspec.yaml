@@ -118,6 +118,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  shared_preferences_web: any
+  url_launcher_web: any
+  video_player_web: any
+  flutter_web_plugins: any
 dependency_overrides:
   # ssl_pinning_plugin: any
   # ssl_pinning_plugin: ^2.0.0

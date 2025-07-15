@@ -16,14 +16,14 @@ import 'public_unread_notification.dart';
 import 'dart:ui' as ui;
 
 class PublicNotification extends StatefulWidget {
-  const PublicNotification({Key? key}) : super(key: key);
+  const PublicNotification({super.key});
 
   @override
   _PublicNotificationState createState() => _PublicNotificationState();
 }
 
 class _PublicNotificationState extends State<PublicNotification> {
-  var _controller = Get.put(PublicNotificationsController());
+  final _controller = Get.put(PublicNotificationsController());
 
   final _countController = Get.put(PublicCountNotificationsController());
 
@@ -73,7 +73,7 @@ class _PublicNotificationState extends State<PublicNotification> {
                             minWidth: 25.0.w,
                             minHeight: 3.0.h,
                             cornerRadius: 3.0.h,
-                            activeBgColors: [
+                            activeBgColors: const [
                               [Colors.white],
                               [Colors.white]
                             ],
@@ -129,7 +129,7 @@ class _PublicNotificationState extends State<PublicNotification> {
                           AppMetaLabels().notifications,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
                           onPressed: () {
                             Get.back();
@@ -150,14 +150,14 @@ class _PublicNotificationState extends State<PublicNotification> {
                       ],
                     ),
                   ),
-                  AppDivider(),
+                  const AppDivider(),
                   Expanded(
                     child: Obx(() {
                       return _controller.loadingData.value == true
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : _controller.currentIndex.value == 0
-                              ? PublicAllNotifications()
-                              : PublicUnreadNotification();
+                              ? const PublicAllNotifications()
+                              : const PublicUnreadNotification();
                     }),
                   ),
                 ],

@@ -16,7 +16,7 @@ import 'lpo_details/lpo_details.dart';
 import 'lpos_screen_controller.dart';
 
 class LposScreen extends StatefulWidget {
-  const LposScreen({Key? key}) : super(key: key);
+  const LposScreen({super.key});
 
   @override
   _LposScreenState createState() => _LposScreenState();
@@ -122,7 +122,7 @@ class _LposScreenState extends State<LposScreen> {
                             getAllLpoController.getDataPagination(
                                 getAllLpoController.pageNo, '');
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.refresh,
                           ),
                         )
@@ -158,11 +158,11 @@ class _LposScreenState extends State<LposScreen> {
                         ),
                         child: Obx(() {
                           return getAllLpoController.loadingData.value == true
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : getAllLpoController.error.value != ''
                                   ? CustomErrorWidget(
                                       errorText:
-                                          AppMetaLabels().noLPOFound + '',
+                                          AppMetaLabels().noLPOFound,
                                       errorImage: AppImagesPath.nolpos,
                                     )
                                   : Column(
@@ -171,7 +171,7 @@ class _LposScreenState extends State<LposScreen> {
                                           shrinkWrap: true,
                                           padding: EdgeInsets.zero,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           itemCount:
                                               getAllLpoController.lpos.length,
                                           itemBuilder: (context, index) {
@@ -199,7 +199,7 @@ class _LposScreenState extends State<LposScreen> {
                                           },
                                         ),
                                         getAllLpoController.lpos.length < 20
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : getAllLpoController
                                                         .isFilter.value ==
                                                     false
@@ -207,7 +207,7 @@ class _LposScreenState extends State<LposScreen> {
                                                             .errorLoadMore
                                                             .value !=
                                                         ''
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : InkWell(
                                                         onTap: () async {
                                                           int pageSize = int.parse(
@@ -228,12 +228,12 @@ class _LposScreenState extends State<LposScreen> {
 
                                                           setState(() {});
                                                         },
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           height: 5.h,
                                                           width: 88.w,
                                                           child: Row(
                                                             children: [
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               RichText(
                                                                 textAlign:
                                                                     TextAlign
@@ -244,14 +244,14 @@ class _LposScreenState extends State<LposScreen> {
                                                                       text: AppMetaLabels()
                                                                           .loadMoreData,
                                                                       style:
-                                                                          TextStyle(
+                                                                          const TextStyle(
                                                                         color: Colors
                                                                             .blue,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                       ),
                                                                     ),
-                                                                    WidgetSpan(
+                                                                    const WidgetSpan(
                                                                       child:
                                                                           Icon(
                                                                         Icons
@@ -276,7 +276,7 @@ class _LposScreenState extends State<LposScreen> {
                                                             .errorLoadMoreFilter
                                                             .value !=
                                                         ''
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : InkWell(
                                                         onTap: () async {
                                                           int pageSize = int.parse(
@@ -298,12 +298,12 @@ class _LposScreenState extends State<LposScreen> {
 
                                                           setState(() {});
                                                         },
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           height: 5.h,
                                                           width: 95.w,
                                                           child: Row(
                                                             children: [
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               RichText(
                                                                 textAlign:
                                                                     TextAlign
@@ -314,14 +314,14 @@ class _LposScreenState extends State<LposScreen> {
                                                                       text: AppMetaLabels()
                                                                           .loadMoreData,
                                                                       style:
-                                                                          TextStyle(
+                                                                          const TextStyle(
                                                                         color: Colors
                                                                             .blue,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                       ),
                                                                     ),
-                                                                    WidgetSpan(
+                                                                    const WidgetSpan(
                                                                       child:
                                                                           Icon(
                                                                         Icons
@@ -357,13 +357,13 @@ class _LposScreenState extends State<LposScreen> {
               padding: EdgeInsets.only(bottom: 2.0.h),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
+                child: SizedBox(
                   width: 100.0.w,
                   height: 4.0.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 4.0.h,
                         width: 28.0.w,
                         child: ElevatedButton(
@@ -397,7 +397,7 @@ class _LposScreenState extends State<LposScreen> {
                           ? Container()
                           : Padding(
                               padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                              child: Container(
+                              child: SizedBox(
                                 height: 4.0.h,
                                 width: 28.0.w,
                                 child: ElevatedButton(
@@ -439,16 +439,16 @@ class _LposScreenState extends State<LposScreen> {
           }),
           Obx(() {
             return getAllLpoController.loadingDataLoadMore.value
-                ? Container(
+                ? const SizedBox(
                     height: double.infinity,
                     width: double.infinity,
                     child: Center(
                         child: Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                      padding: EdgeInsets.only(top: 20),
                       child: LoadingIndicatorBlue(),
                     )),
                   )
-                : SizedBox();
+                : const SizedBox();
           })
         ],
       ),
@@ -484,7 +484,7 @@ class _LposScreenState extends State<LposScreen> {
                 SrNoWidget(text: index + 1, size: 4.h),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 70.w,
                       child: Padding(
                         padding: EdgeInsets.only(left: 2.0.h, right: 0.5.h),
@@ -496,7 +496,7 @@ class _LposScreenState extends State<LposScreen> {
                                   AppMetaLabels().lpoRefNo,
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   getAllLpoController.lpos[index].lpoReference
                                       .toString(),
@@ -558,7 +558,7 @@ class _LposScreenState extends State<LposScreen> {
                                   AppMetaLabels().lPOStatus,
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 StatusWidgetVendor(
                                   text: SessionController().getLanguage() == 1
                                       ? getAllLpoController
@@ -597,7 +597,7 @@ class _LposScreenState extends State<LposScreen> {
           ),
           index == getAllLpoController.lpos.length - 1
               ? Container()
-              : AppDivider(),
+              : const AppDivider(),
         ],
       ),
     );
@@ -610,7 +610,7 @@ class _LposScreenState extends State<LposScreen> {
           t1,
           style: AppTextStyle.normalGrey11,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalGrey11,

@@ -22,19 +22,19 @@ class GetPropertyDetailController extends GetxController {
     super.onInit();
   }
 
-  Gm.CameraPosition cameraPosition = Gm.CameraPosition(
+  Gm.CameraPosition cameraPosition = const Gm.CameraPosition(
     target: Gm.LatLng(0.0,0.0),
     // target: Gm.LatLng(23.4241, 53.8478),
     zoom: 8.0,
   );
-  Am.CameraPosition kApplePlex = Am.CameraPosition(
+  Am.CameraPosition kApplePlex = const Am.CameraPosition(
     target: Am.LatLng(0.0,0.0),
     zoom: 8.0,
   );
   Future<void> getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;

@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCaseCategory extends StatefulWidget {
-  TenantCaseCategory({Key? key}) : super(key: key);
+  const TenantCaseCategory({super.key});
 
   @override
   State<TenantCaseCategory> createState() => _TenantCaseCategoryState();
@@ -49,7 +49,7 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                         AppMetaLabels().category,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -63,7 +63,7 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -133,7 +133,7 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                     true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : caseCategoryController.error.value != ''
                                     ? AppErrorWidget(
@@ -144,7 +144,7 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
                                         shrinkWrap: true,
                                         itemCount:
                                             caseCategoryController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -226,7 +226,7 @@ class _TenantCaseCategoryState extends State<TenantCaseCategory> {
           ),
           index == caseCategoryController.length - 1
               ? Container()
-              : AppDivider(),
+              : const AppDivider(),
         ],
       ),
     );

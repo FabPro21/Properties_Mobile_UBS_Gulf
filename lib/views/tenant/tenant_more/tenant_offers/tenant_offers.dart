@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantOffers extends StatefulWidget {
-  const TenantOffers({Key? key}) : super(key: key);
+  const TenantOffers({super.key});
 
   @override
   _TenantOffersState createState() => _TenantOffersState();
@@ -50,7 +50,7 @@ class _TenantOffersState extends State<TenantOffers> {
             Expanded(
               child: Obx(() {
                 return _controller.loadingOffers.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.length == 0
                         ? CustomErrorWidget(
                             errorText: _controller.errorOffers.value,
@@ -101,7 +101,7 @@ class _TenantOffersState extends State<TenantOffers> {
                                                           "",
                                                   style: AppTextStyle
                                                       .semiBoldBlack13),
-                                              Spacer(),
+                                              const Spacer(),
                                               Icon(
                                                 Icons.arrow_forward_ios_rounded,
                                                 size: 2.0.h,
@@ -120,23 +120,23 @@ class _TenantOffersState extends State<TenantOffers> {
               height: 1.0.h,
             ),
             _controller.length < 20
-                ? SizedBox()
+                ? const SizedBox()
                 : Center(
                     child: Obx(() {
                       return _controller.errorDetailsMore.value != ''
                           ? Text(
                               AppMetaLabels().noMoreData,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.blue,
                               ),
                             )
                           : _controller.length < 20
-                              ? SizedBox()
+                              ? const SizedBox()
                               : _controller.loadingDetailsMore.value
                                   ? SizedBox(
                                       width: 75.w,
                                       height: 5.h,
-                                      child: Center(
+                                      child: const Center(
                                         child: LoadingIndicatorBlue(),
                                       ),
                                     )
@@ -161,11 +161,11 @@ class _TenantOffersState extends State<TenantOffers> {
                                                 TextSpan(
                                                   text: AppMetaLabels()
                                                       .loadMoreData,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     color: Colors.blue,
                                                   ),
                                                 ),
-                                                WidgetSpan(
+                                                const WidgetSpan(
                                                   child: Icon(
                                                     Icons.arrow_forward_ios,
                                                     size: 15,
@@ -179,7 +179,7 @@ class _TenantOffersState extends State<TenantOffers> {
                     }),
                   ),
             _controller.length == 0
-                ? SizedBox()
+                ? const SizedBox()
                 : SizedBox(
                     height: 2.0.h,
                   ),

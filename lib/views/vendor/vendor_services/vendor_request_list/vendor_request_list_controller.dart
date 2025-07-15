@@ -28,16 +28,16 @@ class GetVendorServiceRequestsController extends GetxController {
   RxInt close = 0.obs;
   List<ChartData>? chartData;
   Future<void> getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
     var result = await VendorRepository.getVendorServiceRequestsServices();
     loadingData.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests!.length == 0) {
+      if (result.serviceRequests!.isEmpty) {
         error.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
@@ -71,9 +71,9 @@ class GetVendorServiceRequestsController extends GetxController {
 
   String pageNo = '1';
   Future<void> getDataPagination(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -82,7 +82,7 @@ class GetVendorServiceRequestsController extends GetxController {
             pageNoP, searchtext);
     loadingData.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests!.length == 0) {
+      if (result.serviceRequests!.isEmpty) {
         error.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
@@ -96,9 +96,9 @@ class GetVendorServiceRequestsController extends GetxController {
   RxString errorLoadMore = ''.obs;
   var loadingDataLoadMore = true.obs;
   Future<void> getDataPaginationLoadMore(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingDataLoadMore.value = true;
@@ -108,7 +108,7 @@ class GetVendorServiceRequestsController extends GetxController {
             pageNoP, searchtext);
     loadingDataLoadMore.value = false;
     if (result is GetVendorServiceRequests) {
-      if (result.serviceRequests!.length == 0) {
+      if (result.serviceRequests!.isEmpty) {
         errorLoadMore.value = AppMetaLabels().noServiceRequestsFound;
       } else {
         getVendorServicesRequest.value = result;
@@ -128,7 +128,7 @@ class GetVendorServiceRequestsController extends GetxController {
     if (getVendorServicesRequest.value.serviceRequests! != null) {
       qry = qry.toLowerCase();
       loadingData.value = true;
-      List<ServiceRequest> _searchedSvc = [];
+      List<ServiceRequest> searchedSvc = [];
       for (int i = 0;
           i < getVendorServicesRequest.value.serviceRequests!.length;
           i++) {
@@ -143,14 +143,15 @@ class GetVendorServiceRequestsController extends GetxController {
             getVendorServicesRequest.value.serviceRequests![i].requestNo!
                 .toString()
                 .contains(qry)) {
-          _searchedSvc.add(getVendorServicesRequest.value.serviceRequests![i]);
+          searchedSvc.add(getVendorServicesRequest.value.serviceRequests![i]);
         }
       }
-      svcReqs = _searchedSvc.toList();
-      if (svcReqs.length == 0)
+      svcReqs = searchedSvc.toList();
+      if (svcReqs.isEmpty) {
         error.value = AppMetaLabels().noServiceRequestsFound;
-      else
+      } else {
         error.value = '';
+      }
 
       loadingData.value = false;
     }

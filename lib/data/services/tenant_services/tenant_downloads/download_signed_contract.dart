@@ -16,8 +16,9 @@ class DownloadSignedContract {
         String doc = jsonResp['path'];
         if (doc.isNotEmpty) {
           return base64Decode(doc.replaceAll('\n', ''));
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordFilterProperties extends StatefulWidget {
-  const LandlordFilterProperties({Key? key}) : super(key: key);
+  const LandlordFilterProperties({super.key});
 
   @override
   _LandlordFilterPropertiesState createState() =>
@@ -50,13 +50,13 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                       AppMetaLabels().propertyType,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -64,7 +64,7 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -73,7 +73,7 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -83,7 +83,7 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                 Expanded(
                   child: Obx(() {
                     return _filterPropertyController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterPropertyController.error.value != ''
@@ -129,7 +129,7 @@ class _LandlordFilterPropertiesState extends State<LandlordFilterProperties> {
                                                         .proppertyTypesLength -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         SizedBox(height: 1.0.h),
                                       ],
                                     ),

@@ -51,8 +51,9 @@ class UpdatePaymentMethodService {
       print(response.statusCode);
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());
-      } else
+      } else {
         return response.statusCode;
+      }
     } else {
       return response;
     }
@@ -105,8 +106,9 @@ class UpdatePaymentMethodServiceNew {
       // print('Response:::: $res');
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());
-      } else
+      } else {
         return response.statusCode;
+      }
     } else {
       return response;
     }

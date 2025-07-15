@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import 'get_property_category_controller.dart';
 
 class GetPropertyCategory extends StatefulWidget {
-  GetPropertyCategory({Key? key}) : super(key: key);
+  const GetPropertyCategory({super.key});
 
   @override
   State<GetPropertyCategory> createState() => _GetPropertyCategoryState();
@@ -21,7 +21,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
   final TextEditingController searchControler = TextEditingController();
 
   var gPCController = Get.put(GetPropertyCategoryController());
-  var _controller = Get.put(GetUnitTypeController());
+  final _controller = Get.put(GetUnitTypeController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                         AppMetaLabels().category,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -61,7 +61,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -131,7 +131,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                             return gPCController.loadingData.value == true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : gPCController.error.value != ''
                                     ? AppErrorWidget(
@@ -140,7 +140,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: gPCController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -215,9 +215,8 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
         _controller.getData(SessionController().getLanguage() == 1
             ? gPCController.getPropertyCategory.value.propertyCategory![index]
                     .propertyCategory! 
-            : gPCController.getPropertyCategory.value.propertyCategory![index]
-                        .propertyCategory! +
-                    'AR' );
+            : '${gPCController.getPropertyCategory.value.propertyCategory![index]
+                        .propertyCategory!}AR' );
         // _controller.getData(
         //  gPCController.getPropertyCategory.value
         //         .propertyCategory![index].propertyCategory! ??
@@ -265,7 +264,7 @@ class _GetPropertyCategoryState extends State<GetPropertyCategory> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == gPCController.length - 1 ? Container() : AppDivider(),
+          index == gPCController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

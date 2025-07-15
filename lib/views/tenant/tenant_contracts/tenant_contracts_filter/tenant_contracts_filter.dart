@@ -18,7 +18,7 @@ import 'filter_property/filter_property.dart';
 
 class TenantContracrsFilter extends StatefulWidget {
   final bool? clear;
-  const TenantContracrsFilter({Key? key, this.clear}) : super(key: key);
+  const TenantContracrsFilter({super.key, this.clear});
 
   @override
   _TenantContracrsFilterState createState() => _TenantContracrsFilterState();
@@ -62,14 +62,14 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                           AppMetaLabels().filter,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         InkWell(
                           onTap: () {
                             tCFilterController.filterError.value = '';
                             Get.back();
                           },
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromRGBO(118, 118, 128, 0.12),
                             ),
@@ -77,13 +77,13 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                               padding: EdgeInsets.all(0.5.h),
                               child: Icon(Icons.close,
                                   size: 2.0.h,
-                                  color: Color.fromRGBO(158, 158, 158, 1)),
+                                  color: const Color.fromRGBO(158, 158, 158, 1)),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     ////////////////////////////////////
                     ////   Property
                     ////////////////////////////////////
@@ -100,7 +100,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                     Container(
                       width: 100.0.w,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 249, 1),
+                        color: const Color.fromRGBO(246, 248, 249, 1),
                         borderRadius: BorderRadius.circular(1.0.h),
                       ),
                       child: Row(
@@ -137,16 +137,17 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                     InkWell(
                       onTap: () async {
                         var propType =
-                            await Get.to(() => ContracrsPropertyFilter());
-                        if (propType != null)
+                            await Get.to(() => const ContracrsPropertyFilter());
+                        if (propType != null) {
                           tCFilterController.propType.value = propType;
+                        }
                       },
                       child: Container(
                         width: 100.0.w,
                         height: 5.5.h,
                         padding: EdgeInsets.only(left: 3.w),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(246, 248, 249, 1),
+                          color: const Color.fromRGBO(246, 248, 249, 1),
                           borderRadius: BorderRadius.circular(1.0.h),
                         ),
                         alignment: Alignment.centerLeft,
@@ -165,7 +166,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                               '',
                                   style: AppTextStyle.normalBlack12);
                             }),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                               child: ClearButton(
@@ -192,17 +193,18 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                     InkWell(
                       onTap: () async {
                         var contractStatus =
-                            await Get.to(() => ContractsStatusFilter());
-                        if (contractStatus != null)
+                            await Get.to(() => const ContractsStatusFilter());
+                        if (contractStatus != null) {
                           tCFilterController.contractStatus.value =
                               contractStatus;
+                        }
                       },
                       child: Container(
                           width: 100.0.w,
                           height: 5.5.h,
                           padding: EdgeInsets.only(left: 3.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                           ),
                           alignment: Alignment.centerLeft,
@@ -223,12 +225,12 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                                         .contractStatus
                                                         .value
                                                         .contractType ??
-                                                    "" + ' / Expired'
+                                                    "" ' / Expired'
                                                 : tCFilterController
                                                         .contractStatus
                                                         .value
                                                         .contractTypeAr ??
-                                                    "" + ' / منتهي الصلاحية'
+                                                    "" ' / منتهي الصلاحية'
                                             : SessionController()
                                                         .getLanguage() ==
                                                     1
@@ -244,7 +246,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                                     '',
                                     style: AppTextStyle.normalBlack12);
                               }),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 2.0.h),
@@ -291,8 +293,8 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   context: context,
                                   // locale: Locale('en'),
                                   locale: SessionController().getLanguage() == 1
-                                      ? Locale('en', '')
-                                      : Locale('ar', ''),
+                                      ? const Locale('en', '')
+                                      : const Locale('ar', ''),
                                   initialDate: DateTime.now(),
                                   firstDate: DateTime(DateTime.now().year - 10),
                                   lastDate: DateTime(DateTime.now().year + 10),
@@ -338,7 +340,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -356,7 +358,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -396,8 +398,8 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                   context: context,
                                   // locale: Locale('en'),
                                   locale: SessionController().getLanguage() == 1
-                                      ? Locale('en', '')
-                                      : Locale('ar', ''),
+                                      ? const Locale('en', '')
+                                      : const Locale('ar', ''),
                                   initialDate: DateTime.now(),
                                   firstDate: DateTime(DateTime.now().year - 10),
                                   lastDate: DateTime(DateTime.now().year + 10),
@@ -443,7 +445,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -461,7 +463,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -491,10 +493,10 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                               child: Container(
                                 width: 85.0.w,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 59, 48, 0.6),
+                                  color: const Color.fromRGBO(255, 59, 48, 0.6),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                   border: Border.all(
-                                    color: Color.fromRGBO(255, 59, 48, 1),
+                                    color: const Color.fromRGBO(255, 59, 48, 1),
                                   ),
                                 ),
                                 child: Padding(
@@ -525,12 +527,12 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
                   padding: EdgeInsets.only(bottom: 2.0.h),
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
+                    child: SizedBox(
                       height: 5.0.h,
                       width: 28.0.w,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(0, 98, 255, 1),
+                          backgroundColor: const Color.fromRGBO(0, 98, 255, 1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(3.0.h),
                           ),
@@ -571,12 +573,12 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color.fromRGBO(246, 248, 249, 1),
+        fillColor: const Color.fromRGBO(246, 248, 249, 1),
         focusColor: Colors.red,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
         border: OutlineInputBorder(
@@ -589,7 +591,7 @@ class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
 
 class ClearButton extends StatelessWidget {
   final Function? clear;
-  const ClearButton({Key? key, this.clear}) : super(key: key);
+  const ClearButton({super.key, this.clear});
 
   @override
   Widget build(BuildContext context) {
@@ -598,14 +600,14 @@ class ClearButton extends StatelessWidget {
         clear!();
       },
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Color.fromRGBO(118, 118, 128, 0.12),
         ),
         child: Padding(
           padding: EdgeInsets.all(0.5.h),
           child: Icon(Icons.close,
-              size: 2.0.h, color: Color.fromRGBO(158, 158, 158, 1)),
+              size: 2.0.h, color: const Color.fromRGBO(158, 158, 158, 1)),
         ),
       ),
     );

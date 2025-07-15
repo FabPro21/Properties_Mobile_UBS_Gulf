@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class TenantFeedback extends StatelessWidget {
-  const TenantFeedback({Key? key}) : super(key: key);
+  const TenantFeedback({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class TenantFeedback extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
           iconSize: 2.0.h,
@@ -121,7 +121,7 @@ class TenantFeedback extends StatelessWidget {
                       width: 100.0.w,
                       height: 10.0.h,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 249, 1),
+                        color: const Color.fromRGBO(246, 248, 249, 1),
                         borderRadius: BorderRadius.circular(1.0.h),
                       ),
                       child: Padding(
@@ -145,13 +145,13 @@ class TenantFeedback extends StatelessWidget {
                       height: 12.0.h,
                     ),
                     Center(
-                      child: Container(
+                      child: SizedBox(
                         width: 100.0.w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(1.3.h),
-                            ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                            ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                             padding: EdgeInsets.symmetric(
                                 horizontal: 2.0.h, vertical: 1.8.h),
                           ),

@@ -19,14 +19,14 @@ import 'dart:ui' as ui;
 
 class OnlinePayments extends StatefulWidget {
   final String? contractNo;
-  const OnlinePayments({Key? key, this.contractNo}) : super(key: key);
+  const OnlinePayments({super.key, this.contractNo});
 
   @override
   _OnlinePaymentsState createState() => _OnlinePaymentsState();
 }
 
 class _OnlinePaymentsState extends State<OnlinePayments> {
-  var _controller = Get.put(OnlinePaymentsController());
+  final _controller = Get.put(OnlinePaymentsController());
   bool value = false;
 
   @override
@@ -60,7 +60,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                     InkWell(
                       onTap: () => Get.back(),
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -68,7 +68,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.5.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -78,13 +78,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
               // Divider
               Padding(
                 padding: EdgeInsets.only(top: 4.0.h, bottom: 2.0.w),
-                child: AppDivider(),
+                child: const AppDivider(),
               ),
               // Payments
               Padding(
                   padding: EdgeInsets.only(top: 7.0.h, bottom: 4.0.h),
                   child: _controller.loadingPayable.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : _controller.errorPayable.value != ''
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +104,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                       // 'View Contract'
                                       ),
                                   onPressed: () {
-                                    Get.off(() => ContractsDetailsTabs());
+                                    Get.off(() => const ContractsDetailsTabs());
                                   },
                                 )
                               ],
@@ -118,7 +118,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                           //     },
                           //   )
                           : _controller.contractPayableData.record == null
-                              ? SizedBox()
+                              ? const SizedBox()
                               : Center(
                                   child: Container(
                                       width: 92.0.w,
@@ -170,7 +170,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                             SizedBox(
                                               height: 1.h,
                                             ),
-                                            AppDivider(),
+                                            const AppDivider(),
                                             SizedBox(
                                               height: 1.w,
                                             ),
@@ -540,10 +540,8 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                 .value ==
                                                             1
                                                         ? _controller
-                                                                    .cardPaymentListLength
-                                                                    .length ==
-                                                                0
-                                                            ? Container(
+                                                                    .cardPaymentListLength.isEmpty
+                                                            ? SizedBox(
                                                                 height: 50.h,
                                                                 child: Column(
                                                                   crossAxisAlignment:
@@ -608,7 +606,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                               4.0.w),
                                                                       child:
                                                                           Text(
-                                                                        "${AppMetaLabels().renatalpayments}",
+                                                                        AppMetaLabels().renatalpayments,
                                                                         style: AppTextStyle
                                                                             .semiBoldBlack11,
                                                                       ),
@@ -624,7 +622,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record?.length,
@@ -632,11 +630,12 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type ==
-                                                                            'Contract Payable')
+                                                                            'Contract Payable') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData.record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -671,7 +670,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData.record!
                                                                           .length,
@@ -679,11 +678,12 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type ==
-                                                                            'Additional Charges')
+                                                                            'Additional Charges') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData.record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -718,7 +718,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -727,12 +727,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
-                                                                            'VAT On Rent'.toLowerCase())
+                                                                            'VAT On Rent'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -767,7 +768,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -776,17 +777,18 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
-                                                                            'Vat On Charges'.toLowerCase())
+                                                                            'Vat On Charges'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                 ],
                                                               )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
 
                                                     // This Condition for "paymentsListItem" ListViewBuilder
                                                     // _controller.isPayemntValue.value == 3
@@ -797,10 +799,8 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                 .value ==
                                                             3
                                                         ? _controller
-                                                                    .bankTransferListLength
-                                                                    .length ==
-                                                                0
-                                                            ? Container(
+                                                                    .bankTransferListLength.isEmpty
+                                                            ? SizedBox(
                                                                 height: 50.h,
                                                                 child: Column(
                                                                   crossAxisAlignment:
@@ -865,7 +865,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                               4.0.w),
                                                                       child:
                                                                           Text(
-                                                                        "${AppMetaLabels().renatalpayments}",
+                                                                        AppMetaLabels().renatalpayments,
                                                                         style: AppTextStyle
                                                                             .semiBoldBlack11,
                                                                       ),
@@ -881,7 +881,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -890,12 +890,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type ==
-                                                                            'Contract Payable')
+                                                                            'Contract Payable') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -930,7 +931,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -939,12 +940,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type ==
-                                                                            'Additional Charges')
+                                                                            'Additional Charges') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -979,7 +981,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -988,12 +990,13 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
-                                                                            'VAT On Rent'.toLowerCase())
+                                                                            'VAT On Rent'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -1028,7 +1031,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -1037,17 +1040,18 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record?[index].type!.toLowerCase() ==
-                                                                            'Vat On Charges'.toLowerCase())
+                                                                            'Vat On Charges'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                 ],
                                                               )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
 
                                                     // This Condition for "Procced Button" and  Amount etc
                                                     // _controller.isPayemntValue.value == 1
@@ -1058,10 +1062,8 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                 .value ==
                                                             1
                                                         ? _controller
-                                                                    .cardPaymentListLength
-                                                                    .length ==
-                                                                0
-                                                            ? SizedBox()
+                                                                    .cardPaymentListLength.isEmpty
+                                                            ? const SizedBox()
                                                             : Column(
                                                                 children: [
                                                                   Padding(
@@ -1081,7 +1083,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                             style:
                                                                                 AppTextStyle.semiBoldBlack11,
                                                                           ),
-                                                                          Spacer(),
+                                                                          const Spacer(),
                                                                           Obx(() {
                                                                             return Text(
                                                                               '${AppMetaLabels().aed} ${_controller.sumOfSelectedPayments.value}',
@@ -1181,7 +1183,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                       child: Obx(
                                                                           () {
                                                                         return _controller.registeringPayment.value
-                                                                            ? LoadingIndicatorBlue()
+                                                                            ? const LoadingIndicatorBlue()
                                                                             : ElevatedButton(
                                                                                 onPressed: () {
                                                                                   if (_controller.sumOfSelectedPayments.value == '0.00') {
@@ -1190,10 +1192,6 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                                     _controller.registerPayment(widget.contractNo??"");
                                                                                   }
                                                                                 },
-                                                                                child: Text(
-                                                                                  AppMetaLabels().proceedTopayL,
-                                                                                  style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
-                                                                                ),
                                                                                 style: ButtonStyle(
                                                                                     elevation: WidgetStateProperty.all<double>(0.0),
                                                                                     backgroundColor: WidgetStateProperty.all<Color>(AppColors.blueColor),
@@ -1202,6 +1200,10 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                                         borderRadius: BorderRadius.circular(2.0.w),
                                                                                       ),
                                                                                     )),
+                                                                                child: Text(
+                                                                                  AppMetaLabels().proceedTopayL,
+                                                                                  style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
+                                                                                ),
                                                                               );
                                                                       }),
                                                                     ),
@@ -1219,10 +1221,8 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                     .value ==
                                                                 3
                                                             ? _controller
-                                                                        .bankTransferListLength
-                                                                        .length ==
-                                                                    0
-                                                                ? SizedBox()
+                                                                        .bankTransferListLength.isEmpty
+                                                                ? const SizedBox()
                                                                 : Column(
                                                                     children: [
                                                                       Padding(
@@ -1239,7 +1239,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                                 AppMetaLabels().amount,
                                                                                 style: AppTextStyle.semiBoldBlack11,
                                                                               ),
-                                                                              Spacer(),
+                                                                              const Spacer(),
                                                                               Obx(() {
                                                                                 return Text(
                                                                                   '${AppMetaLabels().aed} ${_controller.sumOfSelectedPayments1.value}',
@@ -1331,7 +1331,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                           child:
                                                                               Obx(() {
                                                                             return _controller.registeringPayment.value
-                                                                                ? LoadingIndicatorBlue()
+                                                                                ? const LoadingIndicatorBlue()
                                                                                 : ElevatedButton(
                                                                                     onPressed: () {
                                                                                       if (_controller.sumOfSelectedPayments1.value == '0.00') {
@@ -1340,10 +1340,6 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                                         _controller.registerPayment(widget.contractNo??"");
                                                                                       }
                                                                                     },
-                                                                                    child: Text(
-                                                                                      AppMetaLabels().proceedTopayL,
-                                                                                      style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
-                                                                                    ),
                                                                                     style: ButtonStyle(
                                                                                         elevation: WidgetStateProperty.all<double>(0.0),
                                                                                         backgroundColor: WidgetStateProperty.all<Color>(AppColors.blueColor),
@@ -1352,13 +1348,17 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                                                                             borderRadius: BorderRadius.circular(2.0.w),
                                                                                           ),
                                                                                         )),
+                                                                                    child: Text(
+                                                                                      AppMetaLabels().proceedTopayL,
+                                                                                      style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
+                                                                                    ),
                                                                                   );
                                                                           }),
                                                                         ),
                                                                       ),
                                                                     ],
                                                                   )
-                                                            : SizedBox(),
+                                                            : const SizedBox(),
                                                     // Padding(
                                                     //   padding: EdgeInsets.only(
                                                     //       top: 4.0.h,
@@ -1517,7 +1517,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (_controller.cardPaymentListLength.length == 0 &&
+        if (_controller.cardPaymentListLength.isEmpty &&
             _controller.isPayemntValue.value == 1)
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -1542,7 +1542,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
               ),
             ],
           ),
-        if (_controller.bankTransferListLength.length == 0 &&
+        if (_controller.bankTransferListLength.isEmpty &&
             _controller.isPayemntValue.value == 3)
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -1612,7 +1612,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                             Expanded(
                               child: SessionController().getLanguage() == 1
                                   ? Padding(
-                                    padding:  EdgeInsets.only(right:8.0),
+                                    padding:  const EdgeInsets.only(right:8.0),
                                     child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -1624,7 +1624,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                               style: AppTextStyle.normalBlack10,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8,
                                           ),
                                           // AED 25,99,0008
@@ -1651,7 +1651,7 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                                               textAlign: TextAlign.end,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8,
                                           ),
                                           // Instalment No etc
@@ -1695,12 +1695,12 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
                     ],
                   ),
                 )
-              : SizedBox();
+              : const SizedBox();
         }),
         payable.defaultpaymentmethodtype!.value ==
                 _controller.isPayemntValue.value
-            ? AppDivider()
-            : SizedBox(),
+            ? const AppDivider()
+            : const SizedBox(),
       ],
     );
   }

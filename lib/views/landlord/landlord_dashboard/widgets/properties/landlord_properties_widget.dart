@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class PropertiesWidget extends StatefulWidget {
   final Function(int)? manageProperties;
-  const PropertiesWidget({Key? key, this.manageProperties}) : super(key: key);
+  const PropertiesWidget({super.key, this.manageProperties});
 
   @override
   _PropertiesWidgetState createState() => _PropertiesWidgetState();
@@ -56,19 +56,18 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.5.w),
               child: Text(
-                AppMetaLabels().propertiessLand +
-                    "  (${controller.propsModel?.serviceRequests?.length})",
+                "${AppMetaLabels().propertiessLand}  (${controller.propsModel?.serviceRequests?.length})",
                 style: AppTextStyle.semiBoldBlack13,
               ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Container(
               child: Obx(() {
                 return controller.loadingProperties.value == true
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : controller.errorLoadingProperties != ''
                         ? AppErrorWidget(
                             errorImage: AppImagesPath.noContractsFound,
@@ -76,7 +75,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                           )
                         : ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: controller.length,
                             itemBuilder: (context, index) {
                               final property = controller
@@ -133,7 +132,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                               right: 1.0.h),
                                           child: Row(
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: 78.0.w,
                                                 child: Column(
                                                   crossAxisAlignment:
@@ -176,7 +175,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                           style: AppTextStyle
                                                               .normalGrey11,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Container(
                                                           alignment: Alignment
                                                               .centerRight,
@@ -241,7 +240,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                           style: AppTextStyle
                                                               .normalGrey11,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Container(
                                                           alignment: Alignment
                                                               .centerRight,
@@ -274,7 +273,7 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                                           style: AppTextStyle
                                                               .normalGrey11,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Container(
                                                           alignment: Alignment
                                                               .centerRight,
@@ -325,8 +324,8 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
                                       ],
                                     ),
                                     index == controller.length - 1
-                                        ? SizedBox()
-                                        : AppDivider(),
+                                        ? const SizedBox()
+                                        : const AppDivider(),
                                   ],
                                 ),
                               );

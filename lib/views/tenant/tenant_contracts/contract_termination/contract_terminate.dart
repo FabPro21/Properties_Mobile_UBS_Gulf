@@ -24,12 +24,11 @@ class ContractTerminate extends StatefulWidget {
   final String? caller;
   final int? dueActionid;
   const ContractTerminate(
-      {Key? key,
+      {super.key,
       this.contractNo,
       this.contractId,
       this.caller,
-      this.dueActionid = 0})
-      : super(key: key);
+      this.dueActionid = 0});
 
   @override
   _ContractTerminateState createState() => _ContractTerminateState();
@@ -110,7 +109,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                 Expanded(
                   child: controller.gettingReasons.value ||
                           controller.gettingPublicToken.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : controller.errorGettingReasons != ''
                           ? AppErrorWidget(
                               errorText: controller.errorGettingReasons,
@@ -154,7 +153,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                               ListView.builder(
                                                 shrinkWrap: true,
                                                 physics:
-                                                    NeverScrollableScrollPhysics(),
+                                                    const NeverScrollableScrollPhysics(),
                                                 itemCount: controller
                                                     .reasons?.record?.length,
                                                 itemBuilder:
@@ -259,11 +258,12 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                         maxLines: 1,
                                                         validator: (value) {
                                                           if (value == null ||
-                                                              value.length < 3)
+                                                              value.length < 3) {
                                                             return AppMetaLabels()
                                                                 .requiredField;
-                                                          else
+                                                          } else {
                                                             return null;
+                                                          }
                                                         },
                                                         style: AppTextStyle
                                                             .normalBlack12,
@@ -276,7 +276,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     .circular(
                                                                         5.0),
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: AppColors
                                                                   .greyColor,
                                                             ),
@@ -288,7 +288,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     .circular(
                                                                         5.0),
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: AppColors
                                                                   .greyColor,
                                                             ),
@@ -387,9 +387,9 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                             locale: SessionController()
                                                                         .getLanguage() ==
                                                                     1
-                                                                ? Locale(
+                                                                ? const Locale(
                                                                     'en', '')
-                                                                : Locale(
+                                                                : const Locale(
                                                                     'ar', ''),
                                                             initialDate:
                                                                 DateTime.now(),
@@ -414,7 +414,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                             } else {
                                                               DateFormat
                                                                   dateFormat =
-                                                                  new DateFormat(
+                                                                  DateFormat(
                                                                       AppMetaLabels()
                                                                           .dateFormatForShowRoundedDatePicker);
                                                               // DateFormat
@@ -437,7 +437,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                           decoration:
                                                               BoxDecoration(
                                                             color:
-                                                                Color.fromRGBO(
+                                                                const Color.fromRGBO(
                                                                     246,
                                                                     248,
                                                                     249,
@@ -467,7 +467,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                   );
                                                                 }),
                                                               ),
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               Padding(
                                                                 padding: EdgeInsets
                                                                     .symmetric(
@@ -496,7 +496,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                   width: 79.0.w,
                                                   child: controller
                                                           .terminating.value
-                                                      ? LoadingIndicatorBlue()
+                                                      ? const LoadingIndicatorBlue()
                                                       : Obx(() {
                                                           return ElevatedButton(
                                                             style:
@@ -510,7 +510,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                             1.3.h),
                                                               ),
                                                               backgroundColor:
-                                                                  Color
+                                                                  const Color
                                                                       .fromRGBO(
                                                                           0,
                                                                           61,
@@ -541,9 +541,10 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                             desc =
                                                                             descTextController.text;
                                                                         if (controller.addDesc.value ==
-                                                                            1)
+                                                                            1) {
                                                                           desc =
                                                                               AppMetaLabels().otherUnitInfo + desc;
+                                                                        }
                                                                         resp = await controller.terminateContract(
                                                                             widget.contractId ??
                                                                                 0,
@@ -553,7 +554,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                             widget.dueActionid ??
                                                                                 0);
                                                                       }
-                                                                    } else
+                                                                    } else {
                                                                       resp = await controller.terminateContract(
                                                                           widget.contractId ??
                                                                               0,
@@ -562,6 +563,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                               '',
                                                                           widget.dueActionid ??
                                                                               0);
+                                                                    }
                                                                     if (resp ==
                                                                         'ok') {
                                                                       if (controller
@@ -571,7 +573,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                           3) {
                                                                         controller
                                                                             .selectNewUnit();
-                                                                      } else
+                                                                      } else {
                                                                         showDialog(
                                                                             context:
                                                                                 context,
@@ -581,6 +583,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                                 (BuildContext context) {
                                                                               return AlertDialog(contentPadding: EdgeInsets.zero, backgroundColor: Colors.transparent, content: showDialogData());
                                                                             });
+                                                                      }
                                                                     }
                                                                   },
                                                             child: Text(
@@ -595,7 +598,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                           ),
                                         ),
                                       )))
-                              : SizedBox(),
+                              : const SizedBox(),
                 ),
               ]);
             })),
@@ -662,7 +665,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         SessionController()

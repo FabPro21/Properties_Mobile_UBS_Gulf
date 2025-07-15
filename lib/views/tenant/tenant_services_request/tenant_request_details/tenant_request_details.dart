@@ -31,10 +31,10 @@ class TenantRequestDetails extends StatefulWidget {
   // here adding for the VACATING AND FROM CONTACT DETAIL
   final String? caseNo;
   TenantRequestDetails({
-    Key? key,
+    super.key,
     this.caller,
     this.caseNo,
-  }) : super(key: key) {
+  }) {
     Get.put(TenantRequestDetailsController());
   }
 
@@ -110,7 +110,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               return tenantRDController.loadingData.value == true
                   ? Padding(
                       padding: EdgeInsets.only(top: 10.0.h),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     )
                   : tenantRDController.error.value != ''
                       ? AppErrorWidget(
@@ -249,7 +249,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                     AppTextStyle.normalGrey10,
                                               ),
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ConstrainedBox(
                                                 constraints: BoxConstraints(
                                                     maxWidth: 55.w),
@@ -292,7 +292,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               SizedBox(
                                                 height: 1.0.h,
                                               ),
-                                              AppDivider(),
+                                              const AppDivider(),
                                               SizedBox(
                                                 height: 1.0.h,
                                               ),
@@ -321,7 +321,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                               .contractInfo!
                                                               .contractno);
                                                   Get.to(() =>
-                                                      ContractsDetailsTabs(
+                                                      const ContractsDetailsTabs(
                                                           prevContractNo:
                                                               null));
                                                 },
@@ -329,7 +329,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       width: 47.0.w,
                                                       child: Text(
                                                         SessionController()
@@ -353,7 +353,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                             .ellipsis,
                                                       ),
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       "${tenantRDController.tenantRequestDetails.value.contractInfo!.contractno}",
                                                       style: AppTextStyle
@@ -407,7 +407,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               Text(
                                                 tenantRDController
                                                         .tenantRequestDetails
@@ -430,7 +430,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               Directionality(
                                                 textDirection:
                                                     ui.TextDirection.ltr,
@@ -463,7 +463,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                     style: AppTextStyle
                                                         .normalGrey10,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Directionality(
                                                     textDirection:
                                                         ui.TextDirection.ltr,
@@ -491,7 +491,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 // 112233 showing upload document in tenant
                                 // upload service request
                                 tenantRDController.report.value.id == null
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : Container(
                                         padding: EdgeInsets.all(2.0.h),
                                         width: 100.0.w,
@@ -536,7 +536,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                       margin:
                                                           EdgeInsets.all(0.5.h),
                                                       child:
-                                                          LoadingIndicatorBlue(),
+                                                          const LoadingIndicatorBlue(),
                                                     )
                                                   : tenantRDController.report
                                                               .value.id ==
@@ -570,7 +570,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                                           tenantRDController
                                                                               .getFiles();
                                                                         },
-                                                                        icon: Icon(
+                                                                        icon: const Icon(
                                                                             Icons.refresh))
                                                                   ],
                                                                 ),
@@ -713,7 +713,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                     margin:
                                                         EdgeInsets.all(0.5.h),
                                                     child:
-                                                        LoadingIndicatorBlue(),
+                                                        const LoadingIndicatorBlue(),
                                                   )
                                                 : tenantRDController
                                                             .errorGettingPhotos !=
@@ -738,7 +738,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                                     tenantRDController
                                                                         .getPhotos();
                                                                   },
-                                                                  icon: Icon(Icons
+                                                                  icon: const Icon(Icons
                                                                       .refresh))
                                                             ],
                                                           ),
@@ -747,7 +747,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                     : GridView.builder(
                                                         shrinkWrap: true,
                                                         physics:
-                                                            NeverScrollableScrollPhysics(),
+                                                            const NeverScrollableScrollPhysics(),
                                                         padding:
                                                             EdgeInsets
                                                                 .only(top: 1.h),
@@ -779,7 +779,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                 Obx(() {
                                   return tenantRDController
                                           .gettingFeedback.value
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : tenantRDController
                                                   .errorGettingFeedback !=
                                               ''
@@ -802,7 +802,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                               .getFeedback();
                                                         },
                                                         icon:
-                                                            Icon(Icons.refresh))
+                                                            const Icon(Icons.refresh))
                                                   ],
                                                 ),
                                               ),
@@ -895,7 +895,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                         ),
                                                       ]),
                                                 )
-                                              : SizedBox();
+                                              : const SizedBox();
                                 }),
                                 if (tenantRDController.tenantRequestDetails
                                         .value.statusInfo!.canCancel! &&
@@ -913,7 +913,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   BorderRadius.circular(1.3.h),
                                             ),
                                             backgroundColor:
-                                                Color.fromRGBO(255, 36, 27, 1),
+                                                const Color.fromRGBO(255, 36, 27, 1),
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 6.0.h,
                                                 vertical: 1.8.h),
@@ -970,10 +970,6 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           );
                                           setState(() {});
                                         },
-                                        child: Text(
-                                          AppMetaLabels().addFeedback,
-                                          style: AppTextStyle.semiBoldWhite12,
-                                        ),
                                         style: ButtonStyle(
                                             elevation: MaterialStateProperty
                                                 .all<double>(0.0),
@@ -987,6 +983,10 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                       BorderRadius.circular(
                                                           2.0.w)),
                                             )),
+                                        child: Text(
+                                          AppMetaLabels().addFeedback,
+                                          style: AppTextStyle.semiBoldWhite12,
+                                        ),
                                       ),
                                     ),
 
@@ -1072,10 +1072,6 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                           );
                                           setState(() {});
                                         },
-                                        child: Text(
-                                          AppMetaLabels().addFeedback,
-                                          style: AppTextStyle.semiBoldWhite12,
-                                        ),
                                         style: ButtonStyle(
                                             elevation: MaterialStateProperty
                                                 .all<double>(0.0),
@@ -1089,6 +1085,10 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                       BorderRadius.circular(
                                                           2.0.w)),
                                             )),
+                                        child: Text(
+                                          AppMetaLabels().addFeedback,
+                                          style: AppTextStyle.semiBoldWhite12,
+                                        ),
                                       ),
                                     ),
 
@@ -1204,10 +1204,6 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                   .caseCategouryId,
                                             ));
                                       },
-                                      child: Text(
-                                        AppMetaLabels().takeSurvey,
-                                        style: AppTextStyle.semiBoldWhite12,
-                                      ),
                                       style: ButtonStyle(
                                           elevation:
                                               MaterialStateProperty.all<double>(
@@ -1226,6 +1222,10 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                               // )
                                             ),
                                           )),
+                                      child: Text(
+                                        AppMetaLabels().takeSurvey,
+                                        style: AppTextStyle.semiBoldWhite12,
+                                      ),
                                     ),
                                   ),
 
@@ -1238,7 +1238,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         );
             }),
           ),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -1279,7 +1279,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
@@ -1296,7 +1296,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             Padding(
               padding: EdgeInsets.all(2.0.h),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(255, 36, 27, 0.1),
                   shape: BoxShape.circle,
                 ),
@@ -1329,13 +1329,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               padding: EdgeInsets.all(1.0.h),
               child: Obx(() {
                 return tenantRDController.cancellingRequest.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
                           ),
-                          backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                          backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                           padding: EdgeInsets.symmetric(
                               horizontal: 11.0.h, vertical: 1.8.h),
                         ),
@@ -1372,11 +1372,11 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(
                     width: 0.2.w,
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                     style: BorderStyle.solid,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(1.3.h),
+                    borderRadius: BorderRadius.circular(1.3.h),
                   ),
                 ),
                 child: Padding(
@@ -1385,7 +1385,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                   child: Text(
                     AppMetaLabels().no,
                     style: AppTextStyle.semiBoldWhite12.copyWith(
-                      color: Color.fromRGBO(0, 61, 166, 1),
+                      color: const Color.fromRGBO(0, 61, 166, 1),
                     ),
                   ),
                 ),
@@ -1407,7 +1407,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(1.h),
         child: Container(
-          color: Color.fromRGBO(246, 248, 249, 1),
+          color: const Color.fromRGBO(246, 248, 249, 1),
           child: tenantRDController.photos[index] != null
               ? Stack(
                   children: [
@@ -1427,7 +1427,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                   height: 10.0.h,
                                   color: Colors.red[100],
                                   alignment: Alignment.center,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.error,
                                     color: Colors.red,
                                   ),
@@ -1464,11 +1464,11 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                   .photos[index]!.uploading.value ||
                               tenantRDController.photos[index]!.errorUploading
                           ? Container(
-                              color: Color.fromRGBO(255, 255, 255, 0.5),
+                              color: const Color.fromRGBO(255, 255, 255, 0.5),
                               alignment: Alignment.center,
                               child: tenantRDController
                                       .photos[index]!.uploading.value
-                                  ? LoadingIndicatorBlue(
+                                  ? const LoadingIndicatorBlue(
                                       size: 20,
                                     )
                                   : tenantRDController
@@ -1478,7 +1478,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             tenantRDController
                                                 .uploadPhoto(index);
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.refresh_outlined,
                                             color: Colors.red,
                                           ),
@@ -1495,13 +1495,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                     height: 28,
                                     decoration: BoxDecoration(
                                         color:
-                                            Color.fromRGBO(255, 255, 255, 0.5),
+                                            const Color.fromRGBO(255, 255, 255, 0.5),
                                         borderRadius:
                                             BorderRadius.circular(24)),
-                                    padding: EdgeInsets.all(2),
+                                    padding: const EdgeInsets.all(2),
                                     child: tenantRDController
                                             .photos[index]!.removing.value
-                                        ? LoadingIndicatorBlue(
+                                        ? const LoadingIndicatorBlue(
                                             size: 20,
                                           )
                                         : Icon(
@@ -1512,7 +1512,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             color: Colors.red),
                                   ),
                                 )
-                              : SizedBox();
+                              : const SizedBox();
                     }),
                   ],
                 )
@@ -1520,7 +1520,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                   child: Text(
                     "+",
                     style: AppTextStyle.semiBoldWhite16
-                        .copyWith(color: Color.fromRGBO(180, 180, 180, 1)),
+                        .copyWith(color: const Color.fromRGBO(180, 180, 180, 1)),
                   ),
                 ),
         ),
@@ -1539,19 +1539,19 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () {
                           print(':::::::::::""""""""":::::::::::::::::');
                           tenantRDController.pickPhoto(ImageSource.gallery);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () {
                         tenantRDController.pickPhoto(ImageSource.camera);
                         Navigator.of(context).pop();
@@ -1576,7 +1576,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Wrap(
                   children: <Widget>[
                     Text(
@@ -1596,7 +1596,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(1.3.h),
                               ),
-                              backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                              backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                             ),
                             onPressed: () {
                               tenantRDController.removePhoto(index);
@@ -1646,7 +1646,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                    width: 5.h, height: 5.h, child: LoadingIndicatorBlue()),
+                    width: 5.h, height: 5.h, child: const LoadingIndicatorBlue()),
               )
             : tenantRDController.errorEditingReport
                 ? IconButton(
@@ -1686,8 +1686,9 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
   }
 
   showBigPhoto(BuildContext context, int index) {
-    if (tenantRDController.photos[index]!.file == null)
+    if (tenantRDController.photos[index]!.file == null) {
       tenantRDController.downloadDoc(index);
+    }
     showDialog(
         context: context,
         builder: (context) {
@@ -1706,7 +1707,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           twoTouchOnly: true, // Defaults to false
                           child: tenantRDController
                                   .photos[index]!.downloading.value
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : tenantRDController
                                       .photos[index]!.errorDownloading
                                   ? AppErrorWidget(
@@ -1730,7 +1731,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         onPressed: () {
                           Get.back();
                         },
-                        icon: Icon(Icons.cancel)),
+                        icon: const Icon(Icons.cancel)),
                   )
                 ],
               ),
@@ -1895,7 +1896,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                             textAlign: TextAlign.start,
                             controller: widget.feedbackDescController,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
+                              contentPadding: const EdgeInsets.all(8),
                               hintText: AppMetaLabels().enterRemarks,
                               hintStyle: AppTextStyle.normalGrey9,
                               border: OutlineInputBorder(
@@ -1935,7 +1936,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                           child: Obx(() {
                             return widget
                                     .tenantRDController.addingFeedback.value
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
@@ -1943,7 +1944,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                             BorderRadius.circular(1.3.h),
                                       ),
                                       backgroundColor:
-                                          Color.fromRGBO(0, 61, 166, 1),
+                                          const Color.fromRGBO(0, 61, 166, 1),
                                     ),
                                     onPressed: () async {
                                       if (widget.tenantRDController.rating ==
@@ -1956,7 +1957,9 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                         if (await widget.tenantRDController
                                             .addFeedback(widget
                                                 .feedbackDescController
-                                                .text)) Navigator.pop(context);
+                                                .text)) {
+                                          Navigator.pop(context);
+                                        }
                                       }
                                     },
                                     child: Text(

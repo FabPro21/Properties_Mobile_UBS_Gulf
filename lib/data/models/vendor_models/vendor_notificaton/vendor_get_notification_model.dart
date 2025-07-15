@@ -83,7 +83,7 @@ class Notification {
         currentStatus: currentStatusValues.map![json["currentStatus"]],
         notificationTypeId: json["notificationTypeId"],
         isRead: json["isRead"],
-        readOn: json["readOn"] == null ? null : json["readOn"],
+        readOn: json["readOn"],
         sent: json["sent"],
         sentOn: json["sentOn"],
         batch: json["batch"],
@@ -104,7 +104,7 @@ class Notification {
         "currentStatus": currentStatusValues.reverse[currentStatus],
         "notificationTypeId": notificationTypeId,
         "isRead": isRead,
-        "readOn": readOn == null ? null : readOn,
+        "readOn": readOn,
         "sent": sent,
         "sentOn": sentOn,
         "batch": batch,
@@ -145,9 +145,7 @@ class EnumValues<T> {
     EnumValues(this.map);
 
     Map<T, String?> get reverse {
-        if (reverseMap == null) {
-            reverseMap = map!.map((k, v) => new MapEntry(v, k));
-        }
+        reverseMap ??= map!.map((k, v) => MapEntry(v, k));
         return reverseMap!;
     }
 }

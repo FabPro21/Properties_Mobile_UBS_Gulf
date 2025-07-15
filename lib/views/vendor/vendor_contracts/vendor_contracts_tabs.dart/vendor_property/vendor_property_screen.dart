@@ -15,7 +15,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorPropertyScreen extends StatefulWidget {
-  const VendorPropertyScreen({Key? key}) : super(key: key);
+  const VendorPropertyScreen({super.key});
 
   @override
   _UnitInfoState createState() => _UnitInfoState();
@@ -35,12 +35,12 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return vendorPropertiesController.loadingData.value == true
               ? Padding(
                   padding: EdgeInsets.only(top: 0.0.h),
-                  child: LoadingIndicatorBlue(),
+                  child: const LoadingIndicatorBlue(),
                 )
               : vendorPropertiesController.error.value != ''
                   ? Padding(
@@ -199,7 +199,7 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: 50.0.w,
                                                 // color: Colors.green,
                                                 child: Text(

@@ -14,14 +14,14 @@ import 'public_faqs_controller.dart';
 import 'public_faqs_question_and_description.dart';
 
 class PublicFaqsCategories extends StatefulWidget {
-  const PublicFaqsCategories({Key? key}) : super(key: key);
+  const PublicFaqsCategories({super.key});
 
   @override
   _PublicFaqsCategoriesState createState() => _PublicFaqsCategoriesState();
 }
 
 class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
-  PublicFaqsController _controller = Get.put(PublicFaqsController());
+  final PublicFaqsController _controller = Get.put(PublicFaqsController());
   @override
   void initState() {
     _controller.getFaqsCatgData();
@@ -43,7 +43,7 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
             Expanded(
               child: Obx(() {
                 return _controller.loadingFaqsCatg.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.length == 0
                         ? CustomErrorWidget(
                             errorImage: AppImagesPath.noServicesFound,
@@ -77,10 +77,10 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
                                                     1
                                                 ? TextDirection.ltr
                                                 : TextDirection.rtl,
-                                            child: Container(
+                                            child: SizedBox(
                                               width: 90.w,
                                               child: Row(children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 84.w,
                                                   child: Text(
                                                     _controller
@@ -115,7 +115,7 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
                                                         TextAlign.justify,
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Icon(
                                                   Icons
                                                       .arrow_forward_ios_rounded,

@@ -16,7 +16,7 @@ import 'tenant_payment_details_controller.dart';
 class TenantPaymentDetails extends StatefulWidget {
   final Payment? payment;
 
-  const TenantPaymentDetails({Key? key, this.payment}) : super(key: key);
+  const TenantPaymentDetails({super.key, this.payment});
   @override
   State<TenantPaymentDetails> createState() => _TenantPaymentDetailsState();
 }
@@ -55,7 +55,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
                         padding: EdgeInsets.only(right: 2.0.h, left: 2.h),
                         child: Text(widget.payment!.receiptNo??"",
@@ -63,7 +63,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                             style: AppTextStyle.semiBoldBlack16),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color.fromRGBO(241, 241, 245, 1),
                             shape: BoxShape.circle),
                         child: Padding(
@@ -74,7 +74,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                             },
                             child: Icon(Icons.close,
                                 size: 2.5.h,
-                                color: Color.fromRGBO(70, 82, 95, 1)),
+                                color: const Color.fromRGBO(70, 82, 95, 1)),
                           ),
                         ),
                       ),
@@ -83,7 +83,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 1.0.h, bottom: 1.0.h),
-                  child: AppDivider(),
+                  child: const AppDivider(),
                 ),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
@@ -112,7 +112,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                               Container(
                                 width: 100.0.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(247, 247, 247, 1),
+                                  color: const Color.fromRGBO(247, 247, 247, 1),
                                   borderRadius:
                                       widget.payment!.paymentType == 'Cheque'
                                           ? BorderRadius.only(
@@ -132,8 +132,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                         style: AppTextStyle.normalBlack10,
                                       ),
                                       Text(
-                                        AppMetaLabels().aed +
-                                            " ${widget.payment!.amount.toString()}",
+                                        "${AppMetaLabels().aed} ${widget.payment!.amount.toString()}",
                                         style: AppTextStyle.semiBoldBlack11,
                                       ),
                                       SizedBox(
@@ -200,7 +199,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                             return paymentDetailsController
                                                         .loadingData.value ==
                                                     true
-                                                ? LoadingIndicatorBlue()
+                                                ? const LoadingIndicatorBlue()
                                                 : paymentDetailsController
                                                             .error.value !=
                                                         ''
@@ -215,7 +214,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                                                 EdgeInsets.zero,
                                                             shrinkWrap: true,
                                                             physics:
-                                                                NeverScrollableScrollPhysics(),
+                                                                const NeverScrollableScrollPhysics(),
                                                             itemCount:
                                                                 paymentDetailsController
                                                                     .length,
@@ -252,7 +251,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                                                           style:
                                                                               AppTextStyle.semiBoldBlack11,
                                                                         ),
-                                                                        Spacer(),
+                                                                        const Spacer(),
                                                                         Text(
                                                                           "${AppMetaLabels().aed} $amount",
                                                                           style:
@@ -290,7 +289,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                                                             paymentDetailsController.length -
                                                                                 1
                                                                         ? Container()
-                                                                        : AppDivider(),
+                                                                        : const AppDivider(),
                                                                     SizedBox(
                                                                         height:
                                                                             1.0.h),
@@ -303,7 +302,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                         ),
                                       ],
                                     )
-                                  : SizedBox()
+                                  : const SizedBox()
                             ],
                           ),
                         ],
@@ -332,7 +331,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                       child: Padding(
                         padding: EdgeInsets.all(2.0.h),
                         child: widget.payment!.downloadingReceipt!.value == true
-                            ? LoadingIndicatorBlue()
+                            ? const LoadingIndicatorBlue()
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -367,7 +366,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
                                             style: AppTextStyle.normalBlue12,
                                           ),
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         Icon(
                                           Icons.download,
                                           size: 3.0.h,
@@ -396,7 +395,7 @@ class _TenantPaymentDetailsState extends State<TenantPaymentDetails> {
           t1??"",
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2??"",
           style: AppTextStyle.normalBlack10,

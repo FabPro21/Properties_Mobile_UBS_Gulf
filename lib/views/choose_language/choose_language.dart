@@ -16,8 +16,7 @@ import 'update_user_language_controller.dart';
 class ChooseLanguage extends StatefulWidget {
   final bool? cont;
   final bool? loggedIn;
-  ChooseLanguage({Key? key, this.cont = false, this.loggedIn})
-      : super(key: key);
+  const ChooseLanguage({super.key, this.cont = false, this.loggedIn});
 
   @override
   State<ChooseLanguage> createState() => _ChooseLanguageState();
@@ -81,7 +80,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                               onPressed: () {
                                 Get.back();
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.cancel_outlined,
                                 color: Colors.white,
                               ),
@@ -91,7 +90,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                     ),
                     Expanded(
                       child: gLController.loadingData.value
-                          ? LoadingIndicatorWhite()
+                          ? const LoadingIndicatorWhite()
                           : gLController.error.value != ''
                               ? AppErrorWidget(
                                   errorText: gLController.error.value,
@@ -127,7 +126,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                     widget.cont ?? false);
                                                 setState(() {});
                                               },
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: 90.0.w,
                                                 child: Row(
                                                   children: [
@@ -150,7 +149,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                       style: AppTextStyle
                                                           .normalWhite15,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
                                                       padding: EdgeInsets.only(
                                                           right: 3.0.h),
@@ -170,7 +169,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                                   Colors.white,
                                                               size: 2.5.h,
                                                             )
-                                                          : SizedBox(),
+                                                          : const SizedBox(),
                                                     )
                                                   ],
                                                 ),
@@ -181,8 +180,8 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                                                   gLController.model.value
                                                           .language!.length -
                                                       1
-                                              ? SizedBox()
-                                              : AppDivider(),
+                                              ? const SizedBox()
+                                              : const AppDivider(),
                                         ],
                                       );
                                     },
@@ -199,9 +198,9 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: uULController.loadingData.value
-                      ? LoadingIndicatorWhite()
+                      ? const LoadingIndicatorWhite()
                       : gLController.error.value != ''
-                          ? SizedBox()
+                          ? const SizedBox()
                           : ButtonWidget(
                               buttonText: AppMetaLabels().cont,
                               onPress: () async {

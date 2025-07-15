@@ -12,9 +12,9 @@ class PublicLocationController extends GetxController {
 
   Future<void> getLocation() async {
     loading.value = true;
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var resp = await PublicRepositoryDrop2.getPublicLocation();
     print(resp);

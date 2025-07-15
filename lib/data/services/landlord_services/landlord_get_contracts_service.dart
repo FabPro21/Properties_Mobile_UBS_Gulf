@@ -30,8 +30,9 @@ class LandlordGetContractsServices {
       if (response is Response) {
         log(response.body);
         return landlordContractsModelFromJson(response.body);
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;
@@ -56,8 +57,9 @@ class LandlordGetContractsServices {
       try {
         if (response is Response) {
           return landlordContractsModelFromJson(response.body);
-        } else
+        } else {
           return response;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

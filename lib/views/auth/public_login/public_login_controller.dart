@@ -29,9 +29,9 @@ class PublicLoginController extends GetxController {
   getPublicProfile() async {
     loadingProfile.value = true;
     errorLoadingProfile = '';
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       var resp = await PublicRepositoryDrop2.getProfile();
@@ -57,9 +57,9 @@ class PublicLoginController extends GetxController {
 
   // 112233 updateProfile with updateProfile2 api
   Future<void> updateProfile() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       updatingProfile.value = true;
@@ -74,7 +74,7 @@ class PublicLoginController extends GetxController {
             AppMetaLabels().success, AppMetaLabels().updatedSuccessfully,
             backgroundColor: AppColors.white54);
         SessionController().setUserName(nameTextController.text);
-        Get.offAll(() => SearchPropertiesDashboardTabs());
+        Get.offAll(() => const SearchPropertiesDashboardTabs());
       } else {
         Get.snackbar(AppMetaLabels().error, result);
       }
@@ -85,6 +85,6 @@ class PublicLoginController extends GetxController {
     var length = phone.length;
     var first = phone.substring(0, 5);
     var last = phone.substring(length - 3, length);
-    return first + "****" + last;
+    return "$first****$last";
   }
 }

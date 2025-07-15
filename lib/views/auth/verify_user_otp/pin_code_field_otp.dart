@@ -11,7 +11,7 @@ class PinCodeField extends StatelessWidget {
   final TextEditingController smsController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final String? otpCodeForVerifyOTP;
-  PinCodeField({Key? key, this.otpCodeForVerifyOTP}) : super(key: key);
+  PinCodeField({super.key, this.otpCodeForVerifyOTP});
   final VerifyUserOtpController vUOController =
       Get.find<VerifyUserOtpController>();
 
@@ -65,7 +65,7 @@ class PinCodeField extends StatelessWidget {
               // errorAnimationController: errorController,
               controller: smsController,
               keyboardType:
-                  TextInputType.numberWithOptions(signed: true, decimal: true),
+                  const TextInputType.numberWithOptions(signed: true, decimal: true),
               onCompleted: (v) async {
                 FocusScope.of(context).unfocus();
                 vUOController.validOTP.value = true;
@@ -90,8 +90,7 @@ class PinCodeFieldFB extends StatefulWidget {
   final bool? isForgotMpin;
   FirebaseAuthController? controller;
   PinCodeFieldFB(
-      {Key? key, this.otpCodeForVerifyOTP, this.controller, this.isForgotMpin})
-      : super(key: key);
+      {super.key, this.otpCodeForVerifyOTP, this.controller, this.isForgotMpin});
 
   @override
   State<PinCodeFieldFB> createState() => _PinCodeFieldFBState();
@@ -152,7 +151,7 @@ class _PinCodeFieldFBState extends State<PinCodeFieldFB> {
               // errorAnimationController: errorController,
               controller: smsController,
               keyboardType:
-                  TextInputType.numberWithOptions(signed: true, decimal: true),
+                  const TextInputType.numberWithOptions(signed: true, decimal: true),
               onCompleted: (v) async {
                 FocusScope.of(context).unfocus();
                 setState(() {

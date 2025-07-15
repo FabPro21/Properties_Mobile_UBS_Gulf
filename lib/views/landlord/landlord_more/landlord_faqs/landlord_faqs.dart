@@ -13,14 +13,14 @@ import 'package:sizer/sizer.dart';
 import 'landlord_faqs_details.dart';
 
 class LandLordFaqs extends StatefulWidget {
-  const LandLordFaqs({Key? key}) : super(key: key);
+  const LandLordFaqs({super.key});
 
   @override
   _LandLordFaqsState createState() => _LandLordFaqsState();
 }
 
 class _LandLordFaqsState extends State<LandLordFaqs> {
-  LandLordFaqsController _controller = Get.put(LandLordFaqsController());
+  final LandLordFaqsController _controller = Get.put(LandLordFaqsController());
   @override
   void initState() {
     _controller.getfaqsData();
@@ -41,7 +41,7 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
             ),
             Obx(() {
               return _controller.loadingFaqsCatg.value
-                  ? Expanded(
+                  ? const Expanded(
                       child: Center(
                         child: LoadingIndicatorBlue(),
                       ),
@@ -85,10 +85,10 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                       1
                                                   ? TextDirection.ltr
                                                   : TextDirection.rtl,
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: 90.w,
                                                 child: Row(children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width: 84.w,
                                                     child: Text(
                                                       _controller.faqsCategories
@@ -119,7 +119,7 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                                                           TextAlign.justify,
                                                     ),
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Icon(
                                                     Icons
                                                         .arrow_forward_ios_rounded,

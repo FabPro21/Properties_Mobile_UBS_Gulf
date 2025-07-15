@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class AppBackgroundConcave extends StatelessWidget {
-  const AppBackgroundConcave({Key? key}) : super(key: key);
+  const AppBackgroundConcave({super.key});
 
   @override
   Widget build(BuildContext context) {

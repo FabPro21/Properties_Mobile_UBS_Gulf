@@ -15,21 +15,21 @@ class FileView extends StatelessWidget {
   final Function? onDelete;
   final bool? canDelete;
   const FileView(
-      {Key? key,
+      {super.key,
       this.file,
       this.onPressed,
       this.onDelete,
-      this.canDelete = true})
-      : super(key: key);
+      this.canDelete = true});
 
   @override
   Widget build(BuildContext context) {
     String details = '';
     if (file!.size != null) details += '${file!.size}';
     if (file!.size != null && file!.expiry != null) details += ', ';
-    if (file!.expiry != null)
+    if (file!.expiry != null) {
       details +=
           '${SessionController().getLanguage() == 1 ? 'Expiry Date:' : 'تاريخ الانتهاء: '}  ${file!.expiry}';
+    }
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 1.h),
       child: Row(
@@ -56,7 +56,7 @@ class FileView extends StatelessWidget {
                         ? AnimatedTextKit(
                             isRepeatingAnimation: true,
                             repeatForever: true,
-                            pause: Duration(milliseconds: 10),
+                            pause: const Duration(milliseconds: 10),
                             animatedTexts: [
                               ColorizeAnimatedText(
                                   SessionController().getLanguage() == 1
@@ -68,7 +68,7 @@ class FileView extends StatelessWidget {
                                     AppColors.blueColor2,
                                     AppColors.blueColor
                                   ],
-                                  speed: Duration(milliseconds: 200)),
+                                  speed: const Duration(milliseconds: 200)),
                             ],
                           )
                         : Text(
@@ -89,18 +89,18 @@ class FileView extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           if (canDelete!)
             Obx(() {
               return file!.removing.value
-                  ? SizedBox(
+                  ? const SizedBox(
                       height: 24, width: 24, child: LoadingIndicatorBlue())
                   : file!.errorRemoving
                       ? InkWell(
                           onTap: () {
                             onDelete!();
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.refresh,
                             color: Colors.red,
                           ))

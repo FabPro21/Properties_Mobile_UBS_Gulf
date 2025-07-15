@@ -6,8 +6,7 @@ class CustomDropDown extends StatelessWidget {
   final VoidCallback? onPressed;
   final String? icon;
   final String? selectedValue;
-  const CustomDropDown({Key? key, this.onPressed, this.icon, this.selectedValue})
-      : super(key: key);
+  const CustomDropDown({super.key, this.onPressed, this.icon, this.selectedValue});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +36,8 @@ class CustomDropDown extends StatelessWidget {
                     fontFamily: "NexaLight",
                     fontWeight: FontWeight.normal),
               ),
-              Spacer(),
-              Icon(
+              const Spacer(),
+              const Icon(
                 Icons.keyboard_arrow_down_outlined,
                 size: 20,
               )

@@ -19,20 +19,20 @@ class LandlordPropertiesDetailsModel {
     if (json['propertyDetails'] != null) {
       propertyDetails = <PropertyDetails>[];
       json['propertyDetails'].forEach((v) {
-        propertyDetails!.add(new PropertyDetails.fromJson(v));
+        propertyDetails!.add(PropertyDetails.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    if (this.propertyDetails != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    if (propertyDetails != null) {
       data['propertyDetails'] =
-          this.propertyDetails!.map((v) => v.toJson()).toList();
+          propertyDetails!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -252,76 +252,76 @@ class PropertyDetails {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['propertyID'] = this.propertyID;
-    data['buildingRefNo'] = this.buildingRefNo;
-    data['propertyName'] = this.propertyName;
-    data['propertyNameAR'] = this.propertyNameAR;
-    data['landlordID'] = this.landlordID;
-    data['plotNumber'] = this.plotNumber;
-    data['roadName'] = this.roadName;
-    data['roadNameAR'] = this.roadNameAR;
-    data['sector'] = this.sector;
-    data['sectorAR'] = this.sectorAR;
-    data['propertyLocation'] = this.propertyLocation;
-    data['propertyLocationAR'] = this.propertyLocationAR;
-    data['landmark'] = this.landmark;
-    data['propertyAddress'] = this.propertyAddress;
-    data['propertyAddressAR'] = this.propertyAddressAR;
-    data['plotSize'] = this.plotSize;
-    data['areaSize'] = this.areaSize;
-    data['cost'] = this.cost;
-    data['ratePerSqft'] = this.ratePerSqft;
-    data['constructionDate'] = this.constructionDate;
-    data['age'] = this.age;
-    data['purchasedDate'] = this.purchasedDate;
-    data['purchasedPrice'] = this.purchasedPrice;
-    data['valuationPrice'] = this.valuationPrice;
-    data['valuationDate'] = this.valuationDate;
-    data['propertyStatusID'] = this.propertyStatusID;
-    data['managementFee'] = this.managementFee;
-    data['baID'] = this.baID;
-    data['engineerIncharge'] = this.engineerIncharge;
-    data['engineerInchargeAR'] = this.engineerInchargeAR;
-    data['contactPerson'] = this.contactPerson;
-    data['contactPhone'] = this.contactPhone;
-    data['contactMobile'] = this.contactMobile;
-    data['geoCode'] = this.geoCode;
-    data['noofBlocks'] = this.noofBlocks;
-    data['noofFloors'] = this.noofFloors;
-    data['isMizanFloor'] = this.isMizanFloor;
-    data['noofStores'] = this.noofStores;
-    data['noofResidentialFlat'] = this.noofResidentialFlat;
-    data['noofCommercialFlat'] = this.noofCommercialFlat;
-    data['noofParkinglot'] = this.noofParkinglot;
-    data['parkinglotAvailability'] = this.parkinglotAvailability;
-    data['ratePerParkinglot'] = this.ratePerParkinglot;
-    data['propertyImage'] = this.propertyImage;
-    data['features'] = this.features;
-    data['description'] = this.description;
-    data['lastviewedBy'] = this.lastviewedBy;
-    data['lastViewedDate'] = this.lastViewedDate;
-    data['soldStatus'] = this.soldStatus;
-    data['renewalRentPercent'] = this.renewalRentPercent;
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
-    data['electricityMeter'] = this.electricityMeter;
-    data['dewA_ADWEA'] = this.dewAADWEA;
-    data['waterMeter'] = this.waterMeter;
-    data['handOverDate'] = this.handOverDate;
-    data['relationshipOfProperty'] = this.relationshipOfProperty;
-    data['document'] = this.document;
-    data['securityPhoneNo'] = this.securityPhoneNo;
-    data['isOnHold'] = this.isOnHold;
-    data['totalUnits'] = this.totalUnits;
-    data['engineerCharge'] = this.engineerCharge;
-    data['isDIPProperty'] = this.isDIPProperty;
-    data['isInterCompany'] = this.isInterCompany;
-    data['cashUploadType'] = this.cashUploadType;
-    data['templateId'] = this.templateId;
-    data['approvedForCardPayment'] = this.approvedForCardPayment;
-    data['emirateName'] = this.emirateName;
-    data['emirateNameAR'] = this.emirateNameAR;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['propertyID'] = propertyID;
+    data['buildingRefNo'] = buildingRefNo;
+    data['propertyName'] = propertyName;
+    data['propertyNameAR'] = propertyNameAR;
+    data['landlordID'] = landlordID;
+    data['plotNumber'] = plotNumber;
+    data['roadName'] = roadName;
+    data['roadNameAR'] = roadNameAR;
+    data['sector'] = sector;
+    data['sectorAR'] = sectorAR;
+    data['propertyLocation'] = propertyLocation;
+    data['propertyLocationAR'] = propertyLocationAR;
+    data['landmark'] = landmark;
+    data['propertyAddress'] = propertyAddress;
+    data['propertyAddressAR'] = propertyAddressAR;
+    data['plotSize'] = plotSize;
+    data['areaSize'] = areaSize;
+    data['cost'] = cost;
+    data['ratePerSqft'] = ratePerSqft;
+    data['constructionDate'] = constructionDate;
+    data['age'] = age;
+    data['purchasedDate'] = purchasedDate;
+    data['purchasedPrice'] = purchasedPrice;
+    data['valuationPrice'] = valuationPrice;
+    data['valuationDate'] = valuationDate;
+    data['propertyStatusID'] = propertyStatusID;
+    data['managementFee'] = managementFee;
+    data['baID'] = baID;
+    data['engineerIncharge'] = engineerIncharge;
+    data['engineerInchargeAR'] = engineerInchargeAR;
+    data['contactPerson'] = contactPerson;
+    data['contactPhone'] = contactPhone;
+    data['contactMobile'] = contactMobile;
+    data['geoCode'] = geoCode;
+    data['noofBlocks'] = noofBlocks;
+    data['noofFloors'] = noofFloors;
+    data['isMizanFloor'] = isMizanFloor;
+    data['noofStores'] = noofStores;
+    data['noofResidentialFlat'] = noofResidentialFlat;
+    data['noofCommercialFlat'] = noofCommercialFlat;
+    data['noofParkinglot'] = noofParkinglot;
+    data['parkinglotAvailability'] = parkinglotAvailability;
+    data['ratePerParkinglot'] = ratePerParkinglot;
+    data['propertyImage'] = propertyImage;
+    data['features'] = features;
+    data['description'] = description;
+    data['lastviewedBy'] = lastviewedBy;
+    data['lastViewedDate'] = lastViewedDate;
+    data['soldStatus'] = soldStatus;
+    data['renewalRentPercent'] = renewalRentPercent;
+    data['latitude'] = latitude;
+    data['longitude'] = longitude;
+    data['electricityMeter'] = electricityMeter;
+    data['dewA_ADWEA'] = dewAADWEA;
+    data['waterMeter'] = waterMeter;
+    data['handOverDate'] = handOverDate;
+    data['relationshipOfProperty'] = relationshipOfProperty;
+    data['document'] = document;
+    data['securityPhoneNo'] = securityPhoneNo;
+    data['isOnHold'] = isOnHold;
+    data['totalUnits'] = totalUnits;
+    data['engineerCharge'] = engineerCharge;
+    data['isDIPProperty'] = isDIPProperty;
+    data['isInterCompany'] = isInterCompany;
+    data['cashUploadType'] = cashUploadType;
+    data['templateId'] = templateId;
+    data['approvedForCardPayment'] = approvedForCardPayment;
+    data['emirateName'] = emirateName;
+    data['emirateNameAR'] = emirateNameAR;
     return data;
   }
 }

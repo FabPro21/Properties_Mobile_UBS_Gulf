@@ -88,29 +88,30 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                   style: AppTextStyle.normalGrey12,
                   maxLines: 8,
                   validator: (value) {
-                    if (value!.isEmpty)
+                    if (value!.isEmpty) {
                       return AppMetaLabels().requiredField;
-                    else
+                    } else {
                       return null;
+                    }
                   },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0.w),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.white,
                         width: 1.0,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0.w),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.white,
                         width: 1.0,
                       ),
                     ),
                     fillColor: AppColors.greyBG,
                     filled: true,
-                    errorStyle: TextStyle(fontSize: 0),
+                    errorStyle: const TextStyle(fontSize: 0),
                     contentPadding: EdgeInsets.only(top: 4.w, left: 4.0.w),
                   ),
                 ),
@@ -122,21 +123,21 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                 height: 6.5.h,
                 width: 79.0.w,
                 child: controller.submitting.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
-                          ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                          ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                         ),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             FocusScope.of(context).unfocus();
                             String resp = await controller.submitRequest(
                                 contractId??0, _descTextController.text);
-                            if (resp == 'ok')
+                            if (resp == 'ok') {
                               showSuccessDialog(context);
-                            else {
+                            } else {
                               Get.snackbar(AppMetaLabels().error, resp,
                                   backgroundColor: Colors.white54);
                             }
@@ -218,7 +219,7 @@ class LegalSettlement extends GetView<LegalSettlementController> {
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(1.3.h),
-                                  ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                  ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                                 ),
                                 onPressed: () {
                                   SessionController()

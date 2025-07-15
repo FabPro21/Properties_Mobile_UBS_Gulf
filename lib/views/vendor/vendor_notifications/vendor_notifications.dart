@@ -15,14 +15,14 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'dart:ui' as ui;
 
 class VendorNotification extends StatefulWidget {
-  VendorNotification({Key? key}) : super(key: key);
+  const VendorNotification({super.key});
 
   @override
   State<VendorNotification> createState() => _VendorNotificationState();
 }
 
 class _VendorNotificationState extends State<VendorNotification> {
-  var _controller = Get.put(VendorNotificationsController());
+  final _controller = Get.put(VendorNotificationsController());
 
   final VendorDashboardController controller = Get.find();
 
@@ -77,7 +77,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                               minWidth: 25.0.w,
                               minHeight: 3.0.h,
                               cornerRadius: 3.0.h,
-                              activeBgColors: [
+                              activeBgColors: const [
                                 [Colors.white],
                                 [Colors.white]
                               ],
@@ -119,7 +119,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                             AppMetaLabels().notifications,
                             style: AppTextStyle.semiBoldBlack16,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           IconButton(
                             onPressed: () {
                               Get.back();
@@ -140,13 +140,13 @@ class _VendorNotificationState extends State<VendorNotification> {
                         ],
                       ),
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     Obx(() {
                       return _controller.currentIndex.value == 0
-                          ? Expanded(
+                          ? const Expanded(
                               child: VendorAllNotification(),
                             )
-                          : Expanded(
+                          : const Expanded(
                               child: VendorUnreadNotification(),
                             );
                     }),

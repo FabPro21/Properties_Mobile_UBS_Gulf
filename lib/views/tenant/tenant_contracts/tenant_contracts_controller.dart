@@ -32,7 +32,7 @@ class GetContractsController extends GetxController {
     if (getContracts.value.contracts! != null) {
       qry.toLowerCase();
       loadingData.value = true;
-      List<Contract> _searchedCont = [];
+      List<Contract> searchedCont = [];
       for (int i = 0; i < getContracts.value.contracts!.length; i++) {
         if (getContracts.value.contracts![i].contractno!.contains(qry) ||
             getContracts.value.contracts![i].contractStatus!
@@ -43,14 +43,15 @@ class GetContractsController extends GetxController {
                 .toLowerCase()
                 .contains(qry) ||
             getContracts.value.contracts![i].propertyNameAr!.contains(qry)) {
-          _searchedCont.add(getContracts.value.contracts![i]);
+          searchedCont.add(getContracts.value.contracts![i]);
         }
       }
-      contracts = _searchedCont;
-      if (contracts.length == 0)
+      contracts = searchedCont;
+      if (contracts.isEmpty) {
         error.value = AppMetaLabels().noContractsFound;
-      else
+      } else {
         error.value = '';
+      }
 
       loadingData.value = false;
     }
@@ -58,9 +59,9 @@ class GetContractsController extends GetxController {
 
   getData() async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     try {
@@ -88,9 +89,9 @@ class GetContractsController extends GetxController {
   String pageNo = '1';
   getDataPagination(String pageNoP, String search) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     try {
@@ -118,9 +119,9 @@ class GetContractsController extends GetxController {
   RxBool loadingDataMoreData = false.obs;
   getDataPaginationLoadMore(String pageNoP, String search) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMore.value = '';
     try {
@@ -162,9 +163,9 @@ class GetContractsController extends GetxController {
 
   getFilteredData() async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -188,9 +189,9 @@ class GetContractsController extends GetxController {
   RxString errorLoadMoreFilter = ''.obs;
   getFilteredDataPagination(String pageNo, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -213,9 +214,9 @@ class GetContractsController extends GetxController {
 
   getFilteredDataLoadMore(String pageNo, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMoreFilter.value = '';
     loadingDataMoreData.value = true;
@@ -242,9 +243,9 @@ class GetContractsController extends GetxController {
     qry.toLowerCase();
     loadingData.value = true;
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     try {
@@ -272,9 +273,9 @@ class GetContractsController extends GetxController {
     searchText.toLowerCase();
     loadingData.value = true;
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     try {

@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProfile extends StatefulWidget {
-  const LandLordProfile({Key? key}) : super(key: key);
+  const LandLordProfile({super.key});
 
   @override
   _LandLordProfileState createState() => _LandLordProfileState();
@@ -87,7 +87,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                     return landlordProfileController.loadingData.value == true
                         ? Padding(
                             padding: EdgeInsets.only(top: 50.0.h),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           )
                         : Column(
                             children: [
@@ -225,7 +225,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                                           .data?[0]
                                                           .email ==
                                                       null
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : Padding(
                                                   padding: EdgeInsets.only(
                                                       top: 2.0.h),
@@ -247,7 +247,7 @@ class _LandLordProfileState extends State<LandLordProfile> {
                                                           .data?[0]
                                                           .email ==
                                                       null
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : Padding(
                                                   padding: EdgeInsets.only(
                                                       top: 0.5.h),

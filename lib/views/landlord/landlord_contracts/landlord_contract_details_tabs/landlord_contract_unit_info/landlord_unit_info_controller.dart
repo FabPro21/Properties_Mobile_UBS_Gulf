@@ -11,10 +11,11 @@ class LandlordUnitInfoController extends GetxController {
     errorLoadingUnits = '';
     loadingUnits.value = true;
     final response = await LandlordRepository.getContractUnits(contractId);
-    if (response is LandlordContractUnitsModel)
+    if (response is LandlordContractUnitsModel) {
       contractUnits = response;
-    else
+    } else {
       errorLoadingUnits = response;
+    }
     loadingUnits.value = false;
   }
 }

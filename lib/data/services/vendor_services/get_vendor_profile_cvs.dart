@@ -17,7 +17,8 @@ class GetVendorProfileSvc {
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
-    } else
+    } else {
       return response;
+    }
   }
 }

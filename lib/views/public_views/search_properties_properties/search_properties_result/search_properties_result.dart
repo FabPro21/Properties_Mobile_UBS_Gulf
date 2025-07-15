@@ -29,7 +29,7 @@ class SearchPropertiesResult extends StatefulWidget {
   final String? maxRoom;
   final String? areaType;
   const SearchPropertiesResult(
-      {Key? key,
+      {super.key,
       this.propName,
       this.minRent,
       this.maxRent,
@@ -37,8 +37,7 @@ class SearchPropertiesResult extends StatefulWidget {
       this.maxArea,
       this.areaType,
       this.minRoom,
-      this.maxRoom})
-      : super(key: key);
+      this.maxRoom});
 
   @override
   _SearchPropertiesResultState createState() => _SearchPropertiesResultState();
@@ -102,7 +101,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
           backgroundColor: Colors.white,
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
                 size: 20,
@@ -133,20 +132,21 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
               Obx(
                 () {
                   return sPRController.error.value != ''
-                      ? SizedBox()
+                      ? const SizedBox()
                       : IconButton(
                           tooltip: 'Sort by rent',
                           onPressed: () {
-                            if (sPRController.sortedBy == 'asc')
+                            if (sPRController.sortedBy == 'asc') {
                               _controller!.forward();
-                            else
+                            } else {
                               _controller!.reverse();
+                            }
                             sPRController.sortList();
                           },
                           icon: RotationTransition(
                             turns: Tween(begin: 0.0, end: 0.5)
                                 .animate(_controller!),
-                            child: Icon(
+                            child: const Icon(
                               Icons.sort,
                               color: Colors.white,
                             ),
@@ -176,7 +176,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           ),
                         ],
                       ),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     ),
                   ),
                 )
@@ -232,7 +232,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                 children: [
                                   ListView.builder(
                                     shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     itemCount: sPRController.properties.length,
                                     padding: EdgeInsets.zero,
                                     itemBuilder: (context, index) {
@@ -333,7 +333,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                 fit: BoxFit
                                                                     .cover);
                                                           } else {
-                                                            return Center(
+                                                            return const Center(
                                                                 child: Icon(Icons
                                                                     .ac_unit));
                                                           }
@@ -348,7 +348,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                         right: 1.0.h),
                                                     child: Row(
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           // color: Colors.red,
                                                           width: 59.0.w,
                                                           child: Column(
@@ -401,7 +401,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                         .greyColor,
                                                                     size: 2.5.h,
                                                                   ),
-                                                                  Container(
+                                                                  SizedBox(
                                                                     width:
                                                                         50.0.w,
                                                                     child: Text(
@@ -439,7 +439,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                             child:
                                                                                 columnList(AppMetaLabels().beds, "${sPRController.properties[index].bedRooms ?? ""}"),
                                                                           )
-                                                                        : SizedBox(),
+                                                                        : const SizedBox(),
                                                                     sPRController.properties[index].bath.toString() !=
                                                                             0.toString()
                                                                         ? SizedBox(
@@ -448,7 +448,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                             child:
                                                                                 columnList(AppMetaLabels().bath, "${sPRController.properties[index].bath ?? ""}"),
                                                                           )
-                                                                        : SizedBox(),
+                                                                        : const SizedBox(),
                                                                     sPRController.properties[index].areaSize !=
                                                                             0.00
                                                                         ? SizedBox(
@@ -457,7 +457,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                             child:
                                                                                 columnList(sPRController.properties[index].uom, "${sPRController.properties[index].areaSize}"),
                                                                           )
-                                                                        : SizedBox(),
+                                                                        : const SizedBox(),
                                                                   ],
                                                                 ),
                                                               ),
@@ -510,8 +510,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                       sPRController.properties
                                                               .length -
                                                           1
-                                                  ? SizedBox()
-                                                  : AppDivider(),
+                                                  ? const SizedBox()
+                                                  : const AppDivider(),
                                             ],
                                           ),
                                         ),
@@ -519,8 +519,8 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                     },
                                   ),
                                   sPRController.properties.length < 6
-                                      ? SizedBox()
-                                      : Container(
+                                      ? const SizedBox()
+                                      : SizedBox(
                                           width: 90.w,
                                           height: 5.h,
                                           child: Center(
@@ -530,7 +530,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
                                               children: [
-                                                Spacer(),
+                                                const Spacer(),
                                                 Obx(() {
                                                   return sPRController
                                                               .noMoreDataError
@@ -539,7 +539,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                       ? Text(
                                                           AppMetaLabels()
                                                               .noMoreData,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               color:
                                                                   Colors.blue,
                                                               fontWeight:
@@ -592,13 +592,13 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                     TextSpan(
                                                                       text: AppMetaLabels()
                                                                           .loadMoreData,
-                                                                      style: TextStyle(
+                                                                      style: const TextStyle(
                                                                           color: Colors
                                                                               .blue,
                                                                           fontWeight:
                                                                               FontWeight.bold),
                                                                     ),
-                                                                    WidgetSpan(
+                                                                    const WidgetSpan(
                                                                       child:
                                                                           Icon(
                                                                         Icons
@@ -614,7 +614,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                               )),
                                                         );
                                                 }),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 5,
                                                 )
                                               ],
@@ -634,7 +634,7 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: 6.0.h,
                                   width: 30.0.w,
                                   child: ElevatedButton(
@@ -700,15 +700,15 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                           ),
                         ),
                         sPRController.isLoadingMore.value
-                            ? Container(
+                            ? const SizedBox(
                                 height: double.infinity,
                                 width: double.infinity,
                                 child: Center(child: LoadingIndicatorBlue()),
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                         sPRController.isLoadingMore.value
-                            ? ScreenDisableWidget()
-                            : SizedBox()
+                            ? const ScreenDisableWidget()
+                            : const SizedBox()
                       ],
                     ),
         ),

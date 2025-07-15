@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordNotificationDetails extends StatefulWidget {
-  const LandlordNotificationDetails({Key? key}) : super(key: key);
+  const LandlordNotificationDetails({super.key});
 
   @override
   State<LandlordNotificationDetails> createState() =>
@@ -50,7 +50,7 @@ class _LandlordNotificationDetailsState
                     AppMetaLabels().notifications,
                     style: AppTextStyle.semiBoldBlack16,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {
                       Get.back();
@@ -64,7 +64,7 @@ class _LandlordNotificationDetailsState
                 ],
               ),
             ),
-            AppDivider(),
+            const AppDivider(),
             Directionality(
               textDirection: SessionController().getLanguage() == 1
                   ? ui.TextDirection.ltr
@@ -78,7 +78,7 @@ class _LandlordNotificationDetailsState
                             true
                         ? Padding(
                             padding: EdgeInsets.only(top: 40.0.h),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           )
                         : getLandLController.error.value != ''
                             ? Padding(
@@ -129,7 +129,7 @@ class _LandlordNotificationDetailsState
                                             style: AppTextStyle.semiBoldBlack13,
                                           ),
                                         ),
-                                        AppDivider(),
+                                        const AppDivider(),
                                         Padding(
                                           padding: EdgeInsets.only(
                                               left: 2.0.h,
@@ -219,7 +219,7 @@ class _LandlordNotificationDetailsState
                                           ListView.builder(
                                               shrinkWrap: true,
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               itemCount: getLandLController
                                                   .files!.record!.length,
                                               itemBuilder: (context, index) {
@@ -249,7 +249,7 @@ class _LandlordNotificationDetailsState
                                                                         index]
                                                                     .downloading!
                                                                     .value
-                                                                ? LoadingIndicatorBlue(
+                                                                ? const LoadingIndicatorBlue(
                                                                     strokeWidth:
                                                                         2,
                                                                     size: 24,
@@ -263,7 +263,7 @@ class _LandlordNotificationDetailsState
                                                                             .downloadFile(index);
                                                                       },
                                                                       icon:
-                                                                          Icon(
+                                                                          const Icon(
                                                                         Icons
                                                                             .download,
                                                                         color: Colors
@@ -279,7 +279,7 @@ class _LandlordNotificationDetailsState
                                                         getLandLController.files!
                                                                 .record!.length -
                                                             1)
-                                                      AppDivider()
+                                                      const AppDivider()
                                                   ],
                                                 );
                                               })

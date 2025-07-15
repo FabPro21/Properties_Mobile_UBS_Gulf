@@ -14,11 +14,11 @@ class LandlordDownloadReportModel {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['base64'] = this.base64;
-    data['extension'] = this.extension;
-    data['name'] = this.name;
-    data['message'] = this.message;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['base64'] = base64;
+    data['extension'] = extension;
+    data['name'] = name;
+    data['message'] = message;
     return data;
   }
 }

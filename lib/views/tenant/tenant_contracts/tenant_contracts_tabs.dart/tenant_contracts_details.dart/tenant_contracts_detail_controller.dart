@@ -42,9 +42,9 @@ class GetContractsDetailsController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     // try {
     errorLoadingContract.value = '';
@@ -85,8 +85,9 @@ class GetContractsDetailsController extends GetxController {
         // ************************
         // for real FEEDBACK Start
         if (result.caseStageInfo!.stageId != null &&
-            result.caseStageInfo!.stageId! > 7)
+            result.caseStageInfo!.stageId! > 7) {
           canDownloadSignedContract(result.contract!.contractId);
+        }
         // for testing FEEDBACK End
       }
     } else {
@@ -96,9 +97,9 @@ class GetContractsDetailsController extends GetxController {
   }
 
   void getContractPayables() async {
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     loadingContractPayables.value = true;
     contractPayables = TenantContractPayableModel();
@@ -120,8 +121,9 @@ class GetContractsDetailsController extends GetxController {
           removeZeroBalance();
           sumPayments();
           if (kDebugMode) print('Sum Val ::::: ${sumOfAllPayments.value}');
-          if (sumOfAllPayments.value == '0.00')
+          if (sumOfAllPayments.value == '0.00') {
             errorLoadingContractPayables.value = AppMetaLabels().noDatafound;
+          }
         }
       } else {
         errorLoadingContractPayables.value = resp;
@@ -134,22 +136,26 @@ class GetContractsDetailsController extends GetxController {
   }
 
   void removeZeroBalance() {
-    contractPayables.contractPayable!.forEach((element) {
-      if (element.balance == 0)
+    for (var element in contractPayables.contractPayable!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.additionalCharges!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.additionalCharges!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.vatCharges!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.vatCharges!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.vatOnRent!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.vatOnRent!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
+      }
+    }
   }
 
   void sumPayments() {
@@ -157,24 +163,24 @@ class GetContractsDetailsController extends GetxController {
     double additionalSum = 0;
     double vatRentSum = 0;
     double vatChargesSum = 0;
-    contractPayables.contractPayable!.forEach((element) {
+    for (var element in contractPayables.contractPayable!) {
       rentalSum = rentalSum + element.balance!;
-    });
-    contractPayables.additionalCharges!.forEach((element) {
+    }
+    for (var element in contractPayables.additionalCharges!) {
       additionalSum = additionalSum + element.balance!;
-    });
-    contractPayables.vatCharges!.forEach((element) {
+    }
+    for (var element in contractPayables.vatCharges!) {
       vatChargesSum = vatChargesSum + element.balance!;
-    });
-    contractPayables.vatOnRent!.forEach((element) {
+    }
+    for (var element in contractPayables.vatOnRent!) {
       vatRentSum = vatRentSum + element.balance!;
-    });
+    }
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    this.totalRentalPayment.value = amountFormat.format(rentalSum);
-    this.totalAdditionalCharges.value = amountFormat.format(additionalSum);
-    this.totalVatOnRent.value = amountFormat.format(vatRentSum);
-    this.totalVatOnCharges.value = amountFormat.format(vatChargesSum);
-    this.sumOfAllPayments.value = amountFormat
+    totalRentalPayment.value = amountFormat.format(rentalSum);
+    totalAdditionalCharges.value = amountFormat.format(additionalSum);
+    totalVatOnRent.value = amountFormat.format(vatRentSum);
+    totalVatOnCharges.value = amountFormat.format(vatChargesSum);
+    sumOfAllPayments.value = amountFormat
         .format(rentalSum + additionalSum + vatRentSum + vatChargesSum);
   }
 
@@ -186,8 +192,9 @@ class GetContractsDetailsController extends GetxController {
     final resp = await TenantRepository.canCheckingContract(contractId);
     if (resp is CanCheckinModel) {
       canCheckinModel = resp;
-    } else
+    } else {
       errorLoadingCanCheckin = resp;
+    }
     loadingCanCheckin.value = false;
   }
 
@@ -232,9 +239,10 @@ class GetContractsDetailsController extends GetxController {
         getContractsDetails.value.contract!.contractno??'',
         getContractsDetails.value.contract!.contractId,
       )) {
-        if (getContractsDetails.value.caseStageInfo!.stageId == 9)
+        if (getContractsDetails.value.caseStageInfo!.stageId == 9) {
           updateContractStage(
               getContractsDetails.value.caseStageInfo!.dueActionid??0, 11);
+        }
       }
       downloadingContract.value = false;
     } else {

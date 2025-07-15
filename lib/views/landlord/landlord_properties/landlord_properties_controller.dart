@@ -28,17 +28,18 @@ class LandlordPropertiesController extends GetxController {
     if (response is LandlordPropertiesModel) {
       propsModel = response;
       props = propsModel!.serviceRequests!.toList();
-    } else
+    } else {
       errorLoadingProperties.value = response;
+    }
     loadingProperties.value = false;
   }
 
   String pageNo = '1';
   Future<void> getPropertiesPagination(String pageNoP, searchtext) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadingProperties.value = '';
     try {
@@ -69,9 +70,9 @@ class LandlordPropertiesController extends GetxController {
   var loadingDataLoadMore = false.obs;
   getPropertiesPaginationLoadMore(String pageNoP, searchtext) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMore.value = '';
     try {
@@ -106,21 +107,22 @@ class LandlordPropertiesController extends GetxController {
 
   searchData(String qry) {
     loadingProperties.value = true;
-    List<ServiceRequests> _searchedProps = [];
+    List<ServiceRequests> searchedProps = [];
     for (int i = 0; i < propsModel!.serviceRequests!.length; i++) {
       if (propsModel!.serviceRequests![i].propertyName!
               .contains(qry.toLowerCase()) ||
           propsModel!.serviceRequests![i].propertyType!
               .toLowerCase()
               .contains(qry.toLowerCase())) {
-        _searchedProps.add(propsModel!.serviceRequests![i]);
+        searchedProps.add(propsModel!.serviceRequests![i]);
       }
     }
-    props = _searchedProps.toList();
-    if (props.length == 0)
+    props = searchedProps.toList();
+    if (props.isEmpty) {
       errorLoadingProperties.value = AppMetaLabels().noPropertiesFound;
-    else
+    } else {
       errorLoadingProperties.value = '';
+    }
 
     loadingProperties.value = false;
   }
@@ -147,9 +149,9 @@ class LandlordPropertiesController extends GetxController {
 
   getFilteredData(String pageNo, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadingProperties.value = '';
     loadingProperties.value = true;
@@ -163,8 +165,9 @@ class LandlordPropertiesController extends GetxController {
       } else {
         errorLoadingProperties.value = AppMetaLabels().notFound;
       }
-    } else
+    } else {
       errorLoadingProperties.value = response;
+    }
     loadingProperties.value = false;
   }
 
@@ -180,9 +183,9 @@ class LandlordPropertiesController extends GetxController {
   RxString errorLoadMoreFilter = ''.obs;
   getFilteredDataPagiation(String pageNoP, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       errorLoadingProperties.value = '';
@@ -216,9 +219,9 @@ class LandlordPropertiesController extends GetxController {
   Future<void> getFilteredDataPagiationLoadMore(
       String pageNoP, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       errorLoadMoreFilter.value = '';

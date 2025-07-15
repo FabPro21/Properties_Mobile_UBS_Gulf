@@ -14,8 +14,7 @@ class AppUpdateManually extends StatefulWidget {
   final String? appVersion;
   final String? availableVersion;
   const AppUpdateManually(
-      {Key? key, @required this.appVersion, @required this.availableVersion})
-      : super(key: key);
+      {super.key, @required this.appVersion, @required this.availableVersion});
 
   @override
   State<AppUpdateManually> createState() => _AppUpdateManuallyState();
@@ -73,7 +72,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                             },
                             child: Align(
                               alignment: Alignment.center,
-                              child: Container(
+                              child: SizedBox(
                                 width: 80.0.w,
                                 child: Align(
                                   alignment: Alignment.topRight,
@@ -201,7 +200,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                         "com.fab.fabpropertiesEnterprise",
                                   );
 
-                                  await Future.delayed(Duration(seconds: 2));
+                                  await Future.delayed(const Duration(seconds: 2));
                                   exit(0);
                                 } catch (e) {
                                   print('Exception ::: $e');
@@ -232,7 +231,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                           SizedBox(
                             height: 3.h,
                           ),
-                          AppDivider(),
+                          const AppDivider(),
                           SizedBox(
                             height: 2.h,
                           ),

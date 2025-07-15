@@ -12,9 +12,9 @@ import 'package:sizer/sizer.dart';
 class TermsAndConditionsNewContract extends StatelessWidget {
   final String? title;
   TermsAndConditionsNewContract({
-    Key? key,
+    super.key,
     this.title,
-  }) : super(key: key);
+  });
 
   final controller = Get.put(TermsAndConditionsNewController());
 
@@ -36,11 +36,11 @@ class TermsAndConditionsNewContract extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
               )),
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage(AppImagesPath.appbarimg),
             fit: BoxFit.cover,
           ),
@@ -53,7 +53,7 @@ class TermsAndConditionsNewContract extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 4.0.w, vertical: 2.0.h),
             child: Obx(() {
               return controller.loadingData.value
-                  ? LoadingIndicatorBlue()
+                  ? const LoadingIndicatorBlue()
                   : controller.errorLoadingData != ''
                       ? Center(
                           child: Column(
@@ -64,7 +64,7 @@ class TermsAndConditionsNewContract extends StatelessWidget {
                                 onPressed: () {
                                   controller.getData(title??"");
                                 },
-                                icon: Icon(Icons.refresh),
+                                icon: const Icon(Icons.refresh),
                               )
                             ],
                           ),

@@ -19,8 +19,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordPropertyUnitInfoDetails extends StatefulWidget {
   final String? unitID;
-  const LandlordPropertyUnitInfoDetails({Key? key, this.unitID})
-      : super(key: key);
+  const LandlordPropertyUnitInfoDetails({super.key, this.unitID});
 
   @override
   _LandlordPropertyUnitInfoDetailsState createState() =>
@@ -50,8 +49,8 @@ class _LandlordPropertyUnitInfoDetailsState
   }
 
   Set<Annotation> _createAnnotation() {
-    var lat;
-    var lng;
+    double lat;
+    double lng;
     if (controller
                 .propertyUnitDetailModel.propertyUnitDetails?.first.latitude !=
             "" &&
@@ -68,7 +67,7 @@ class _LandlordPropertyUnitInfoDetailsState
       lat = 0.0;
       lng = 0.0;
     }
-    return <Annotation>[
+    return <Annotation>{
       Annotation(
           annotationId: AnnotationId("annotation_1"),
           position: LatLng(lat, lng),
@@ -89,7 +88,7 @@ class _LandlordPropertyUnitInfoDetailsState
                         .propertyNameAR ??
                     "",
           )),
-    ].toSet();
+    };
   }
 
   @override
@@ -107,8 +106,8 @@ class _LandlordPropertyUnitInfoDetailsState
           mapHeight = 40;
         }
 
-        var lat;
-        var lng;
+        double lat;
+        double lng;
         if (controller.propertyUnitDetailModel.propertyUnitDetails?.first
                     .latitude !=
                 "" &&
@@ -127,7 +126,7 @@ class _LandlordPropertyUnitInfoDetailsState
         }
         _createAnnotation();
         final marker = Gm.Marker(
-          markerId: Gm.MarkerId('Hello'),
+          markerId: const Gm.MarkerId('Hello'),
           position: Gm.LatLng(lat, lng),
           // icon: BitmapDescriptor.,
           infoWindow: Gm.InfoWindow(
@@ -148,7 +147,7 @@ class _LandlordPropertyUnitInfoDetailsState
           ),
         );
         setState(() {
-          markers[Gm.MarkerId('place_name')] = marker;
+          markers[const Gm.MarkerId('place_name')] = marker;
         });
         setState(() {});
       }
@@ -198,7 +197,7 @@ class _LandlordPropertyUnitInfoDetailsState
                         ? 70.h
                         : 100.h,
                     child: controller.loadingPropertiesUnitDetail.value == true
-                        ? LoadingIndicatorBlue()
+                        ? const LoadingIndicatorBlue()
                         : controller.errorLoadingPropertiesUnitDetail.value != ''
                             ? SizedBox(
                                 height: 60.h,
@@ -213,11 +212,11 @@ class _LandlordPropertyUnitInfoDetailsState
                             : controller.propertyUnitDetailModel
                                         .propertyUnitDetails ==
                                     null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
                                       Flexible(
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 100.0.w,
                                           height: 100.0.h,
                                           child: SingleChildScrollView(
@@ -281,7 +280,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                                 .start,
                                                                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                         children: [
-                                                                          Container(
+                                                                          SizedBox(
                                                                             width:
                                                                                 90.0.w,
                                                                             child:
@@ -303,7 +302,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color:
-                                                                                  Color.fromRGBO(
+                                                                                  const Color.fromRGBO(
                                                                                 241,
                                                                                 248,
                                                                                 252,
@@ -362,7 +361,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                               margin:
                                                                                   EdgeInsets.only(top: 2.h),
                                                                               decoration: BoxDecoration(
-                                                                                  color: Color.fromRGBO(247, 247, 247, 1),
+                                                                                  color: const Color.fromRGBO(247, 247, 247, 1),
                                                                                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(2.h), bottomRight: Radius.circular(2.h))),
                                                                               child:
                                                                                   Padding(
@@ -476,7 +475,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                             color: AppColors
                                                                 .blackColor,
                                                           ),
-                                                          Container(
+                                                          SizedBox(
                                                             width: 70.0.w,
                                                             child: Text(
                                                               SessionController()

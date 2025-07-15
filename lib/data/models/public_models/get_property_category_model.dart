@@ -11,7 +11,7 @@ String? getPropertyCategoryModelToJson(GetPropertyCategoryModel data) =>
     json.encode(data.toJson());
 
 class GetPropertyCategoryModel {
-  GetPropertyCategoryModel({
+  GetPropertyCategoryModel({  
     this.statusCode,
     this.status,
     this.message,

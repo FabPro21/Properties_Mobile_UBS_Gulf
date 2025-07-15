@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class ContractsStatusFilter extends StatefulWidget {
-  const ContractsStatusFilter({Key? key}) : super(key: key);
+  const ContractsStatusFilter({super.key});
 
   @override
   _ContractsStatusFilterState createState() => _ContractsStatusFilterState();
@@ -47,13 +47,13 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                       AppMetaLabels().contractStatus,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -61,7 +61,7 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -70,7 +70,7 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -80,7 +80,7 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                 Expanded(
                   child: Obx(() {
                     return _filterContractsStatusController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterContractsStatusController.error.value != ''
@@ -141,7 +141,7 @@ class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
                                                         .contractsStatusLength -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         SizedBox(height: 1.0.h),
                                       ],
                                     ),

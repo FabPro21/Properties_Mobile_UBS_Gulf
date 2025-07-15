@@ -15,10 +15,10 @@ import 'lpo_proretries/lpo_properties_screen.dart';
 class LpoDetails extends StatefulWidget {
   final Lpo? lpo;
 
-  LpoDetails({
-    Key? key,
+  const LpoDetails({
+    super.key,
     this.lpo,
-  }) : super(key: key);
+  });
 
   @override
   _LpoDetailsState createState() => _LpoDetailsState();
@@ -80,9 +80,9 @@ class _LpoDetailsState extends State<LpoDetails> {
                       LpoPropertiesScreen(
                         lpo: widget.lpo,
                       ),
-                      LpoServices(),
-                      LpoTerms(),
-                      LpoInvoicesSereen(),
+                      const LpoServices(),
+                      const LpoTerms(),
+                      const LpoInvoicesSereen(),
                     ],
                   ),
                 ),

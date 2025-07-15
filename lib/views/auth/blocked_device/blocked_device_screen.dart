@@ -11,7 +11,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'blocked_device_controller.dart';
 
 class BlockedDeviceScreen extends StatelessWidget {
-  BlockedDeviceScreen({Key? key}) : super(key: key);
+  BlockedDeviceScreen({super.key});
 
   final btController = Get.put(BlockedDeviceController());
   // Testing purpose

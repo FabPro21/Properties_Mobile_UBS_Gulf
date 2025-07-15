@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 import 'validate_user_controller.dart';
 
 class PhoneNoField extends StatelessWidget {
-  PhoneNoField({Key? key}) : super(key: key);
+  PhoneNoField({super.key});
   static final TextEditingController phoneController = TextEditingController();
   final tooltipKey = GlobalKey<State<Tooltip>>();
   final vUController = Get.put(ValidateUserController());
@@ -24,7 +24,7 @@ class PhoneNoField extends StatelessWidget {
       cursorHeight: 3.0.h,
       style: AppTextStyle.normalWhite13,
       keyboardType:
-          TextInputType.numberWithOptions(signed: true, decimal: true),
+          const TextInputType.numberWithOptions(signed: true, decimal: true),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(12),
@@ -42,7 +42,7 @@ class PhoneNoField extends StatelessWidget {
       },
       decoration: InputDecoration(
         suffixIcon: Tooltip(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
           ),
           textStyle: AppTextStyle.normalBlack10,
@@ -78,7 +78,7 @@ class PhoneNoField extends StatelessWidget {
 }
 
 class PhoneNoFieldFB extends StatelessWidget {
-  PhoneNoFieldFB({Key? key}) : super(key: key);
+  PhoneNoFieldFB({super.key});
   static final TextEditingController phoneController = TextEditingController();
   final tooltipKey = GlobalKey<State<Tooltip>>();
   final vUController = Get.put(FirebaseAuthController());
@@ -93,7 +93,7 @@ class PhoneNoFieldFB extends StatelessWidget {
       cursorHeight: 3.0.h,
       style: AppTextStyle.normalWhite13,
       keyboardType:
-          TextInputType.numberWithOptions(signed: true, decimal: true),
+          const TextInputType.numberWithOptions(signed: true, decimal: true),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(12),
@@ -110,7 +110,7 @@ class PhoneNoFieldFB extends StatelessWidget {
       },
       decoration: InputDecoration(
         suffixIcon: Tooltip(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
           ),
           textStyle: AppTextStyle.normalBlack10,

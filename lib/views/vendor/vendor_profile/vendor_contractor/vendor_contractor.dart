@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import '../vendor_profile_controller.dart';
 
 class VendorContractor extends StatefulWidget {
-  VendorContractor({Key? key}) : super(key: key);
+  const VendorContractor({super.key});
 
   @override
   State<VendorContractor> createState() => _VendorContractorState();
@@ -37,11 +37,11 @@ class _VendorContractorState extends State<VendorContractor> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          AppDivider(),
+          const AppDivider(),
           Expanded(
             child: Obx(() {
               return vendorProfileContrller.loadingData.value == true
-                  ? Center(child: LoadingIndicatorBlue())
+                  ? const Center(child: LoadingIndicatorBlue())
                   : vendorProfileContrller.error.value != ''
                       ? AppErrorWidget(
                           errorText: vendorProfileContrller.error.value,
@@ -96,8 +96,8 @@ class _VendorContractorState extends State<VendorContractor> {
                                           AppMetaLabels().address,
                                           style: AppTextStyle.normalGrey10,
                                         ),
-                                        Spacer(),
-                                        Container(
+                                        const Spacer(),
+                                        SizedBox(
                                           width: 45.0.w,
                                           child: Text(
                                             SessionController().getLanguage() ==
@@ -146,7 +146,7 @@ class _VendorContractorState extends State<VendorContractor> {
                                         AppMetaLabels().status,
                                         style: AppTextStyle.normalGrey10,
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       StatusWidget(
                                         text:
                                             SessionController().getLanguage() ==
@@ -216,15 +216,15 @@ class _VendorContractorState extends State<VendorContractor> {
                       docCode: 44,
                     ));
               },
-              child: Text(
-                AppMetaLabels().uploadDocs,
-                style: AppTextStyle.semiBoldWhite12,
-              ),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(1.3.h),
                 ),
-                backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
+              ),
+              child: Text(
+                AppMetaLabels().uploadDocs,
+                style: AppTextStyle.semiBoldWhite12,
               ),
             ),
           )
@@ -240,7 +240,7 @@ class _VendorContractorState extends State<VendorContractor> {
           t1,
           style: AppTextStyle.normalGrey10,
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           child: Text(
             t2,

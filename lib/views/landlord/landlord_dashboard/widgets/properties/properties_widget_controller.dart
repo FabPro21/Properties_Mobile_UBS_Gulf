@@ -47,16 +47,16 @@ class LandlordPropsWidgetController extends GetxController {
   RxString paidCurrency = "0.0".obs;
   RxInt lengthNotiification = 0.obs;
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     loadingData.value = true;
     error.value = '';
     var result = await LandlordRepository.landlordDashboardGetData();
     loadingData.value = false;
     if (result == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (result is LandlordDashboardGetDataModel) {
       if (dashboardData.value.status == AppMetaLabels().notFound) {
         error.value = AppMetaLabels().noDatafound;
@@ -122,15 +122,17 @@ class LandlordPropsWidgetController extends GetxController {
     print(response);
     if (response is LandlordPropertiesModel) {
       propsModel = response;
-      if (propsModel!.serviceRequests!.length < 1) {
+      if (propsModel!.serviceRequests!.isEmpty) {
         errorLoadingProperties = AppMetaLabels().noDatafound;
       }
-      if (propsModel!.serviceRequests!.length <= 3)
+      if (propsModel!.serviceRequests!.length <= 3) {
         length = propsModel!.serviceRequests!.length;
-      else
+      } else {
         length = 3;
-    } else
+      }
+    } else {
       errorLoadingProperties = response;
+    }
     loadingProperties.value = false;
   }
 

@@ -5,11 +5,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color greyColor = const Color(0xFF5F748A);
+  static const Color greyColor = Color(0xFF5F748A);
   static Color greyHeadingColor = const Color(0xFF4C4B5E);
   static Color darkGreyColor = const Color.fromRGBO(177, 185, 195, 1);
   static Color greyBG = const Color.fromRGBO(241, 241, 245, 1);
-  static Color greyBG1 = Color.fromARGB(255, 227, 227, 242);
+  static Color greyBG1 = const Color.fromARGB(255, 227, 227, 242);
   static Color blueColor = const Color.fromRGBO(0, 98, 255, 1);
   static Color blueColor2 = const Color.fromRGBO(0, 98, 255, 0.2);
   static Color blueColor3 = const Color.fromRGBO(0, 98, 255, 0.5);
@@ -22,7 +22,7 @@ class AppColors {
   static Color whiteColor = const Color(0xFFffffff);
   static Color white54 = Colors.white54;
   static Color appBarColor = const Color(0xFF273647);
-  static Color redColor = Color.fromRGBO(255, 36, 27, 1);
+  static Color redColor = const Color.fromRGBO(255, 36, 27, 1);
   static Color redColor2 = Colors.red.shade300;
   static const Color errorColor = Color.fromRGBO(255, 36, 27, 1);
   static Color greenColorWithOpacity035 = const Color.fromRGBO(0, 150, 0, 0.35);
@@ -57,7 +57,7 @@ class AppColors {
 
   static Color chartDarkBlueColor = const Color(0xFF003fac);
   static Color chartBlueColor = const Color(0xFF5b8ccf);
-  static const Color chartlightBlueColor = const Color(0xFFe1eeff);
+  static const Color chartlightBlueColor = Color(0xFFe1eeff);
   static const Color chartlightBlueColorCharges =
       Color.fromARGB(255, 57, 135, 236);
 

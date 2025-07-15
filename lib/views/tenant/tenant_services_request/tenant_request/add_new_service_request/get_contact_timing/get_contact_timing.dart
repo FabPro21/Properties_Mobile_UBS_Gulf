@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import 'get_contact_timing_controller.dart';
 
 class GetContactTiming extends StatefulWidget {
-  GetContactTiming({Key? key}) : super(key: key);
+  const GetContactTiming({super.key});
 
   @override
   State<GetContactTiming> createState() => _GetContactTimingState();
@@ -50,7 +50,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
                         AppMetaLabels().contactTime,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -64,7 +64,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -133,7 +133,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
                             return getCTController.loadingData.value == true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : getCTController.error.value != ''
                                     ? AppErrorWidget(
@@ -142,7 +142,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: getCTController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -200,7 +200,7 @@ class _GetContactTimingState extends State<GetContactTiming> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == getCTController.length - 1 ? Container() : AppDivider(),
+          index == getCTController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

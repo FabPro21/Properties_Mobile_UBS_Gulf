@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordFilterPCategory extends StatefulWidget {
-  const LandlordFilterPCategory({Key? key}) : super(key: key);
+  const LandlordFilterPCategory({super.key});
 
   @override
   _LandlordFilterPCategoryState createState() =>
@@ -50,13 +50,13 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                       AppMetaLabels().category,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -64,7 +64,7 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -73,7 +73,7 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -83,7 +83,7 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                 Expanded(
                   child: Obx(() {
                     return _filterPropertyController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterPropertyController.error.value != ''
@@ -141,7 +141,7 @@ class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
                                                         .propertyCategoryModelLength -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         SizedBox(height: 1.0.h),
                                       ],
                                     ),

@@ -19,9 +19,9 @@ class LandLordProfileController extends GetxController {
   int? caseNo;
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingData.value = true;
@@ -62,9 +62,9 @@ class LandLordProfileController extends GetxController {
 
   Future<bool> updateProfile(
       String name, String mobileNo, String email, String address) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingUpdate.value = true;

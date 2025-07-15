@@ -31,9 +31,9 @@ class SvcReqMainInfoController extends GetxController {
 
   Future<void> getData() async {
     canCommunicate = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -43,8 +43,9 @@ class SvcReqMainInfoController extends GetxController {
     if (result is GetVendorServiceRequestDetailsModel) {
       vendorRequestDetails.value = result;
       if (result.detail!.status!.toLowerCase().contains('closed') ||
-          result.detail!.status!.toLowerCase().contains('cancelled'))
+          result.detail!.status!.toLowerCase().contains('cancelled')) {
         canCommunicate = false;
+      }
       getPhotos();
     } else {
       error.value = result;
@@ -58,10 +59,11 @@ class SvcReqMainInfoController extends GetxController {
     var resp = await VendorRepository.getReqPhotos(
         vendorRequestDetails.value.detail!.caseNo!, 1);
     if (resp is List<PhotoFile>) {
-      if (resp.length == 0) errorGettingPhotos = AppMetaLabels().noPhotos;
+      if (resp.isEmpty) errorGettingPhotos = AppMetaLabels().noPhotos;
       photos = resp;
-    } else
+    } else {
       errorGettingPhotos = AppMetaLabels().noPhotos;
+    }
     gettingPhotos.value = false;
   }
 

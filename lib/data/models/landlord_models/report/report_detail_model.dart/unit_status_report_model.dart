@@ -20,7 +20,7 @@ class UnitStatusReportSummaryModel {
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests!.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];

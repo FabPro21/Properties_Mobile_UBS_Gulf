@@ -21,8 +21,7 @@ import 'package:get/get.dart';
 class VerifyUserOtpScreenFB extends StatefulWidget {
   final String? otpCodeForVerifyOTP;
   final bool? isForgotMpin;
-  VerifyUserOtpScreenFB({Key? key, this.otpCodeForVerifyOTP, this.isForgotMpin})
-      : super(key: key);
+  const VerifyUserOtpScreenFB({super.key, this.otpCodeForVerifyOTP, this.isForgotMpin});
 
   @override
   State<VerifyUserOtpScreenFB> createState() => _VerifyUserOtpScreenFBState();
@@ -37,7 +36,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
     var l = p!.length;
     var first = p.substring(0, 5);
     var last = p.substring(l - 3, l);
-    return first + "****" + last;
+    return "$first****$last";
   }
 
   @override
@@ -140,7 +139,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                         // height: 8.0.h,
                                         child: Column(
                                           children: [
-                                            LoadingIndicatorWhite(),
+                                            const LoadingIndicatorWhite(),
                                             SizedBox(
                                               height: 2.0.h,
                                             ),
@@ -186,7 +185,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                   top: 5.0.h, left: 5.0.h, right: 5.0.h),
                               child: authController
                                       .resendProgressBarLoading.value
-                                  ? LoadingIndicatorWhite()
+                                  ? const LoadingIndicatorWhite()
                                   : authController.resendProgressBar.value
                                       ? Container(
                                           decoration: BoxDecoration(
@@ -223,7 +222,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                           ? Container(
                                               height: 6.0.h,
                                             )
-                                          : ResendOtpFB(),
+                                          : const ResendOtpFB(),
                             ),
 
                           //////////////////////////////////////
@@ -238,11 +237,11 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                 : Container(
                                     width: 85.0.w,
                                     decoration: BoxDecoration(
-                                      color: Color.fromRGBO(255, 59, 48, 0.6),
+                                      color: const Color.fromRGBO(255, 59, 48, 0.6),
                                       borderRadius:
                                           BorderRadius.circular(1.0.h),
                                       border: Border.all(
-                                        color: Color.fromRGBO(255, 59, 48, 1),
+                                        color: const Color.fromRGBO(255, 59, 48, 1),
                                       ),
                                     ),
                                     child: Padding(
@@ -257,7 +256,7 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                                           Padding(
                                             padding:
                                                 EdgeInsets.only(left: 1.0.h),
-                                            child: Container(
+                                            child: SizedBox(
                                               width: 72.0.w,
                                               child: Text(
                                                 authController.error.value,

@@ -37,9 +37,9 @@ class GetLanguageController extends GetxController {
     try {
       isLoginBool.value =
           await GlobalPreferences.getBool(GlobalPreferencesLabels.isLoginBool);
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(() => NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(() => const NoInternetScreen());
       }
       loadingData.value = true;
       var result = await CommonRepository.getLanguage();
@@ -66,7 +66,7 @@ class GetLanguageController extends GetxController {
     selectedLang.value = langId;
     SessionController().setLanguage(selectedLang.value);
     GlobalPreferences.setbool(GlobalPreferencesLabels.setLanguage, true);
-    int _prevLang =
+    int prevLang =
         await GlobalPreferences.getInt(GlobalPreferencesLabels.langId) ?? 1;
     GlobalPreferences.setInt(GlobalPreferencesLabels.langId, langId);
     if (langId == 1) {
@@ -75,20 +75,20 @@ class GetLanguageController extends GetxController {
       GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, false);
     }
 
-    if (!isLoggedIn)
+    if (!isLoggedIn) {
       Get.offAll(() => SessionController().enableFireBaseOTP
-          ? ValidateUserScreenFB()
-          : ValidateUserScreen());
-    else if (!cont && _prevLang != langId) {
+          ? const ValidateUserScreenFB()
+          : const ValidateUserScreen());
+    } else if (!cont && prevLang != langId) {
       await changeLang.updateLang();
       if (SessionController().getSelectedRoleId() == 1) {
-        Get.offAll(() => TenantDashboardTabs());
+        Get.offAll(() => const TenantDashboardTabs());
       } else if (SessionController().getSelectedRoleId() == 3) {
-        Get.offAll(() => VendorDashboardTabs());
+        Get.offAll(() => const VendorDashboardTabs());
       } else if (SessionController().getSelectedRoleId() == 2) {
-        Get.offAll(() => LandlordHome());
+        Get.offAll(() => const LandlordHome());
       } else if (SessionController().getSelectedRoleId() == 4) {
-        Get.offAll(() => SearchPropertiesDashboardTabs());
+        Get.offAll(() => const SearchPropertiesDashboardTabs());
       }
     }
     loadingData.value = false;
@@ -114,9 +114,9 @@ class GetLanguageController extends GetxController {
       }
     }
     isLoginBool.value == true
-        ? Get.to(() => SelectRoleScreen())
+        ? Get.to(() => const SelectRoleScreen())
         : Get.to(() => SessionController().enableFireBaseOTP
-            ? ValidateUserScreenFB()
-            : ValidateUserScreen());
+            ? const ValidateUserScreenFB()
+            : const ValidateUserScreen());
   }
 }

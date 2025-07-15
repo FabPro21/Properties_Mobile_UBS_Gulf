@@ -11,6 +11,8 @@ import '../../data/helpers/session_controller.dart';
 
 // ignore: must_be_immutable
 class SSLPinningScreen extends StatefulWidget {
+  const SSLPinningScreen({super.key});
+
   @override
   State<SSLPinningScreen> createState() => _SSLPinningScreenState();
 }

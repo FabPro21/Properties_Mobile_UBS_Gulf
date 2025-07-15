@@ -30,9 +30,9 @@ class PublicProfileController extends GetxController {
 
   getPublicProfile() async {
     profileLoading.value = true;
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       var resp = await PublicRepositoryDrop2.getProfile();
@@ -62,9 +62,9 @@ class PublicProfileController extends GetxController {
   }
 
   Future<bool> updateProfile(String name, String mobileNo, String email) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingUpdate.value = true;
@@ -109,9 +109,9 @@ class PublicProfileController extends GetxController {
   var updateUserModel = User();
   Future<dynamic> updatePublicProfile(
       String name, String userID, String email) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       errorUpdatePublicProfile.value = '';

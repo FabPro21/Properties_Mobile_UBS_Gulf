@@ -14,7 +14,8 @@ class VendorGetDataSvc {
     
       return vendorGetDataModelFromJson(response.body);
      
-    } else
+    } else {
       return response;
+    }
   }
 }

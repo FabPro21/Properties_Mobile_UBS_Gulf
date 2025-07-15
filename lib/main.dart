@@ -35,9 +35,9 @@ class MyHttpOverrides extends HttpOverrides {
 firebaseMessaging() async {
   print('Firebase Messaging Message received: func call');
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   // Request permission for iOS
-  _firebaseMessaging.requestPermission();
+  firebaseMessaging.requestPermission();
   // Configure foreground message handler
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print('Message received: ${message.messageId}');
@@ -82,7 +82,7 @@ Future<void> main() async {
   );
 
   await dotenv.load(fileName: ".env");
-  HttpOverrides.global = new MyHttpOverrides();
+  HttpOverrides.global = MyHttpOverrides();
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent,
@@ -91,13 +91,13 @@ Future<void> main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
     Phoenix(
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -182,22 +182,22 @@ class _MyAppState extends State<MyApp> {
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           // add builder because want to make indepent app for font size of device
-          localizationsDelegates: [
+          localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: [
+          supportedLocales: const [
             Locale('en', ''),
             Locale('ar', ''), // arabic, no country code
           ],
           builder: (BuildContext context, Widget? child) {
             final MediaQueryData data = MediaQuery.of(context).copyWith(
-              textScaler: TextScaler.linear(1.0),
+              textScaler: const TextScaler.linear(1.0),
             );
             return MediaQuery(
               data: data.copyWith(
-                textScaler: TextScaler.linear(1.0),
+                textScaler: const TextScaler.linear(1.0),
               ),
               child: child!,
             );
@@ -205,14 +205,14 @@ class _MyAppState extends State<MyApp> {
           // above lines for restrict the use of device dont
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              appBarTheme: AppBarTheme(
+              appBarTheme: const AppBarTheme(
                 backgroundColor: Colors.white,
               ),
               scaffoldBackgroundColor: Colors.grey,
               canvasColor: Colors.transparent,
               snackBarTheme:
-                  SnackBarThemeData(backgroundColor: Colors.white54)),
-          home: SplashScreen(),
+                  const SnackBarThemeData(backgroundColor: Colors.white54)),
+          home: const SplashScreen(),
           onInit: () {
             PushNotificationService().setupInteractedMessage();
           },

@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 
 class ResponseInText extends StatefulWidget {
   final String? respose;
-  ResponseInText({Key? key, this.respose}) : super(key: key);
+  const ResponseInText({super.key, this.respose});
 
   @override
   State<ResponseInText> createState() => _ResponseInTextState();
@@ -25,7 +25,7 @@ class _ResponseInTextState extends State<ResponseInText> {
         backgroundColor: AppColors.white54,
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.black,
             ),

@@ -74,16 +74,18 @@ class LoginMpinController extends GetxController {
             GlobalPreferencesLabels.blockTime, AppConst.blockTime);
         GlobalPreferences.setbool(GlobalPreferencesLabels.isBlocked, true);
       } else if (resp is SessionTokenModel) {
-        if (SessionController().getSelectedRoleId() == 4)
+        if (SessionController().getSelectedRoleId() == 4) {
           SessionController().setPublicToken(resp.token);
-        else
+        } else {
           SessionController().setToken(resp.token);
+        }
         goToDashboard();
       } else {
         validMpin.value = false;
       }
-    } else
+    } else {
       validMpin.value = false;
+    }
   }
 
   void validateRoleByFP() async {
@@ -95,10 +97,11 @@ class LoginMpinController extends GetxController {
       loadingData.value = false;
     }
     if (resp is SessionTokenModel) {
-      if (SessionController().getSelectedRoleId() == 4)
+      if (SessionController().getSelectedRoleId() == 4) {
         SessionController().setPublicToken(resp.token);
-      else
+      } else {
         SessionController().setToken(resp.token);
+      }
       goToDashboard();
     } else {
       loadingData.value = false;
@@ -109,24 +112,24 @@ class LoginMpinController extends GetxController {
     resettingMpin.value = true;
     GlobalPreferences.setbool(GlobalPreferencesLabels.isLoginBool, false);
 
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.offAll(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.offAll(const NoInternetScreen());
     }
     SessionController().setResetMpin(true);
-    var _resp = await CommonRepository.validateUser();
+    var resp = await CommonRepository.validateUser();
     resettingMpin.value = false;
-    if (_resp is ValidateUserModel) {
+    if (resp is ValidateUserModel) {
       // Get.to(() => VerifyUserOtpScreen());
-      print('OTP Code IS :::: +=====> ${_resp.otpCode}');
+      print('OTP Code IS :::: +=====> ${resp.otpCode}');
       Get.to(() => VerifyUserOtpScreen(
-            otpCodeForVerifyOTP: _resp.otpCode??"",
+            otpCodeForVerifyOTP: resp.otpCode??"",
           ));
-      SessionController().setOtpCode(_resp.otpCode);
+      SessionController().setOtpCode(resp.otpCode);
     } else {
       Get.snackbar(
         AppMetaLabels().error,
-        _resp,
+        resp,
         backgroundColor: AppColors.white54,
       );
     }
@@ -140,9 +143,9 @@ class LoginMpinController extends GetxController {
     print('Firebase is  enable');
     final String phone = SessionController().getPhone()??"";
     print('Phone Validation ::: $phone');
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.offAll(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.offAll(const NoInternetScreen());
     }
     SessionController().setResetMpin(true);
     await authController.forgotMPin();
@@ -154,7 +157,7 @@ class LoginMpinController extends GetxController {
     try {
       return await auth.authenticate(
           localizedReason: AppMetaLabels().pleaseUseFingerprint,
-          options: AuthenticationOptions(
+          options: const AuthenticationOptions(
               useErrorDialogs: true, stickyAuth: true, biometricOnly: true));
 
       // ignore: unused_catch_clause
@@ -173,16 +176,16 @@ class LoginMpinController extends GetxController {
     switch (SessionController().getSelectedRoleId()) {
       case 1:
         Get.offAll(
-          () => TenantDashboardTabs(),
+          () => const TenantDashboardTabs(),
         );
         if (notificationData != null && notificationData['roleId'] == '1') {
-          Get.to(() => TenantNotifications());
+          Get.to(() => const TenantNotifications());
         }
         break;
 
       case 2:
         Get.offAll(
-          () => LandlordHome(),
+          () => const LandlordHome(),
         );
 
         break;
@@ -190,19 +193,19 @@ class LoginMpinController extends GetxController {
         {
           print('User Type :::::: ${SessionController().vendorUserType}');
           Get.offAll(
-            () => VendorDashboardTabs(),
+            () => const VendorDashboardTabs(),
           );
           if (notificationData != null && notificationData['roleId'] == '3') {
-            Get.to(() => VendorNotification());
+            Get.to(() => const VendorNotification());
           }
         }
         break;
       case 4:
         Get.offAll(
-          () => SearchPropertiesDashboardTabs(),
+          () => const SearchPropertiesDashboardTabs(),
         );
         if (notificationData != null && notificationData['roleId'] == '4') {
-          Get.to(() => PublicNotification());
+          Get.to(() => const PublicNotification());
         }
 
         break;
@@ -216,7 +219,7 @@ class LoginMpinController extends GetxController {
       authenticated = await auth.authenticate(
           localizedReason: 'Let OS determine authentication method',
           options:
-              AuthenticationOptions(useErrorDialogs: true, stickyAuth: true));
+              const AuthenticationOptions(useErrorDialogs: true, stickyAuth: true));
 
       return authenticated;
       // ignore: unused_catch_clause

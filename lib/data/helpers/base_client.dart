@@ -12,23 +12,25 @@ import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
 import 'package:fap_properties/views/common/no_internet_screen.dart';
-import 'package:flutter/foundation.dart' as foundation;
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' as getx;
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class BaseClientClass {
-  // static const int TIME_OUT_DURATION = 30;
-  static const int TIME_OUT_DURATION = 60;
+  // static const int timeOutDuration = 30;
+  static const int timeOutDuration = 60;
   static String dumnyUrl = '';
   //////
   static Future<dynamic> post(String url, data, {String? token}) async {
-    if (token == null) token = SessionController().getToken();
+    token ??= SessionController().getToken();
     var forTestingdata = data;
     var data1 = await encriptdata(data);
     data = {"requestBody": data1};
-    print('Encripted Data Post $url :::: => $data');
-    print('Token Post :::: => $token');
+    if (kDebugMode) {
+      print('Encripted Data Post $url :::: => $data');
+      print('Token Post :::: => $token');
+    }
     http.Response response;
     try {
       response = await http
@@ -43,13 +45,17 @@ class BaseClientClass {
             },
             encoding: Encoding.getByName('utf-8'),
           )
-          .timeout(Duration(seconds: TIME_OUT_DURATION));
-      print('response:: ${response.statusCode}');
+          .timeout(const Duration(seconds: timeOutDuration));
+      if (kDebugMode) {
+        print('response:: ${response.statusCode}');
+      }
       return _getResponse(response, url, forTestingdata);
     } on SocketException {
-      print('Response :: BCC SocketException:: No internet connection');
-      await Get.to(() => NoInternetScreen());
-      Get.offAll(() => SplashScreen());
+      if (kDebugMode) {
+        print('Response :: BCC SocketException:: No internet connection');
+      }
+      await Get.to(() => const NoInternetScreen());
+      Get.offAll(() => const SplashScreen());
       return SessionController().getLanguage() == 1
           ? 'No internet connection'
           : 'لا يوجد اتصال بالإنترنت';
@@ -59,9 +65,11 @@ class BaseClientClass {
         AppMetaLabels().connectionTimedOut,
         backgroundColor: AppColors.white54,
       );
-      return '${AppMetaLabels().connectionTimedOut}';
+      return AppMetaLabels().connectionTimedOut;
     } catch (e) {
-      if (foundation.kDebugMode) print(e);
+       if (kDebugMode) {
+        print(e);
+      }
       return AppMetaLabels().anyError;
     }
   }
@@ -69,10 +77,12 @@ class BaseClientClass {
 ////////
   static Future<dynamic> postwithheader(String url, data,
       {String? token}) async {
-    if (token == null) token = SessionController().getToken();
+    token ??= SessionController().getToken();
     var forTestingdata = data;
     data = {"requestBody": encriptdata(data)};
-    print('Encripted Data PostWithHeader :::: => $data');
+    if (kDebugMode) {
+      print('Encripted Data PostWithHeader :::: => $data');
+    }
     // print('Token PostWithHeader :::: => $token');
     http.Response response;
     try {
@@ -88,31 +98,39 @@ class BaseClientClass {
             },
             encoding: Encoding.getByName('utf-8'),
           )
-          .timeout(Duration(seconds: TIME_OUT_DURATION));
-      if (foundation.kDebugMode) {
+          .timeout(const Duration(seconds: timeOutDuration));
+      if (kDebugMode) {
         print('Request: ${response.request}');
         // print('Headers: ${response.request.headers}');
         print('End: $url');
       }
-      print('response:: ${response.statusCode}');
+      if (kDebugMode) {
+        print('response:: ${response.statusCode}');
+      }
       return _getResponse(response, url, forTestingdata);
     } on SocketException {
-      print('Response :: BCC SocketException:: No internet connection');
-      await Get.to(() => NoInternetScreen());
-      Get.offAll(() => SplashScreen());
+      if (kDebugMode) {
+        print('Response :: BCC SocketException:: No internet connection');
+      }
+      await Get.to(() => const NoInternetScreen());
+      Get.offAll(() => const SplashScreen());
       return 'No internet connection';
     } on TimeoutException {
-      print('Response ::TimeoutException:: Time out');
+      if (kDebugMode) {
+        print('Response ::TimeoutException:: Time out');
+      }
       getx.Get.snackbar(
         AppMetaLabels().error,
         AppMetaLabels().connectionTimedOut,
         backgroundColor: AppColors.white54,
       );
-      return '${AppMetaLabels().connectionTimedOut}';
+      return AppMetaLabels().connectionTimedOut;
     } catch (e) {
-      print('Response ::Catch e.toString():: ${e.toString()}');
+      
+      if (kDebugMode) {
+        print('Response ::Catch e.toString():: ${e.toString()}');
       print('Response ::Catch:: $e');
-      if (foundation.kDebugMode) print(e);
+      }
       return AppMetaLabels().anyError;
     }
   }
@@ -125,7 +143,9 @@ class BaseClientClass {
     dumnyUrl = url;
     var forTestingdata = data;
     data = {"requestBody": encriptdata(data)};
-    print('Encripted Data Postwithheaderwithouttoken :::: => $data');
+    if (kDebugMode) {
+      print('Encripted Data Postwithheaderwithouttoken :::: => $data');
+    }
 
     http.Response response;
     try {
@@ -141,19 +161,19 @@ class BaseClientClass {
             },
             encoding: Encoding.getByName('utf-8'),
           )
-          .timeout(Duration(seconds: TIME_OUT_DURATION));
-      if (foundation.kDebugMode) {
-        print('Request: ${response.request}');
-        // print('Headers: ${response.request.headers}');
-        print('End: $url');
-      }
+          .timeout(const Duration(seconds: timeOutDuration));
 
-      print('response:: ${response.statusCode}');
+       if (kDebugMode) print('Request: ${response.request}');
+        // print('Headers: ${response.request.headers}');
+       if (kDebugMode) print('End: $url');
+
+
+     if (kDebugMode) print('response:: ${response.statusCode}');
       return _getResponse(response, url, forTestingdata);
     } on SocketException {
-      print('Response :: BCC SocketException:: No internet connection');
-      await Get.to(() => NoInternetScreen());
-      Get.offAll(() => SplashScreen());
+     if (kDebugMode) print('Response :: BCC SocketException:: No internet connection');
+      await Get.to(() => const NoInternetScreen());
+      Get.offAll(() => const SplashScreen());
 
       return 'No internet connection';
     } on TimeoutException {
@@ -162,9 +182,9 @@ class BaseClientClass {
         AppMetaLabels().connectionTimedOut,
         backgroundColor: AppColors.white54,
       );
-      return '${AppMetaLabels().connectionTimedOut}';
+      return AppMetaLabels().connectionTimedOut;
     } catch (e) {
-      if (foundation.kDebugMode) print(e);
+      if (kDebugMode) print(e);
       return AppMetaLabels().anyError;
     }
   }
@@ -173,19 +193,21 @@ class BaseClientClass {
   static Future<dynamic> uploadFile(
       String url, Map<String, String> fields, String fileField, String filePath,
       {String? token}) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.offAll(NoInternetScreen());
-      Get.offAll(() => SplashScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.offAll(const NoInternetScreen());
+      Get.offAll(() => const SplashScreen());
       return;
     }
     String bearerToken = token ?? SessionController().getToken() ?? '';
     try {
       http.MultipartRequest request =
-          new http.MultipartRequest("POST", Uri.parse(url));
+          http.MultipartRequest("POST", Uri.parse(url));
       // if (filePath != null) {
       if (filePath != '') {
-        print('Inside ::::: ');
+          if (kDebugMode) {
+          print('Inside ::::: ');
+        }
         http.MultipartFile multipartFile =
             await http.MultipartFile.fromPath(fileField, filePath);
         request.files.add(multipartFile);
@@ -195,7 +217,9 @@ class BaseClientClass {
         "Content-Type": "application/json",
         'Authorization': 'Bearer $bearerToken',
       });
-      print('Request :::::::: $request');
+        if (kDebugMode) {
+        print('Request :::::::: $request');
+      }
       http.StreamedResponse response = await request.send();
       // var res = await http.Response.fromStream(response);
       // print('Respone :11::22:: ${res.body}');
@@ -215,10 +239,10 @@ class BaseClientClass {
       // response.statusCode == 401 putting this condition because
       // in multipart we are not calling _getResponse for handle the response
       if (response.statusCode == 401) {
-        Get.offAll(() => SelectRoleScreen());
+        Get.offAll(() => const SelectRoleScreen());
         getx.Get.snackbar(
           AppMetaLabels().error,
-          "${AppMetaLabels().unauthorized}",
+          AppMetaLabels().unauthorized,
           backgroundColor: AppColors.white54,
         );
         return AppMetaLabels().unauthorized;
@@ -229,10 +253,12 @@ class BaseClientClass {
       // print('Respone :11::22:: ${res.body}');
       return response;
     } catch (e) {
-      if (foundation.kDebugMode) print(e);
-      print('Catch ========> From BaseClient $e');
-      if (foundation.kReleaseMode) print(e);
-      if (foundation.kReleaseMode) print(e.toString());
+      if (kDebugMode){
+        print('Catch ========> From BaseClient $e');
+      print(e);
+      print(e.toString());
+      }
+      
       return 0;
     }
   }
@@ -251,8 +277,8 @@ class BaseClientClass {
 
   static dynamic _getResponse(
       http.Response response, String url, dynamic data) async {
-    print(
-        'Response Body :::: inside getResponse:: $url ::: $data Test:=> ${response.body}');
+       if (kDebugMode) { print(
+        'Response Body :::: inside getResponse:: $url ::: $data Test:=> ${response.body}');}
 
     if (response.statusCode == 404) {
       if (response.statusCode == 404 &&
@@ -260,14 +286,18 @@ class BaseClientClass {
           response.body.contains(
                   '!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN') ==
               true) {
-        print(response.body);
+        if (kDebugMode) {
+          print(response.body);
+        }
         await Get.to(() => ResponseInText(
               respose: response.body.trim(),
             ));
       }
     }
     if (response.body.contains('BadRequestExecution Timeout Expired')) {
-      print('Response inhelper :: ${response.body}');
+      if (kDebugMode) {
+        print('Response inhelper :: ${response.body}');
+      }
       return AppMetaLabels().connectionTimedOut;
     }
     switch (response.statusCode) {
@@ -280,25 +310,27 @@ class BaseClientClass {
         }
         return AppMetaLabels().badRequest;
       case 401:
-        Get.offAll(() => SelectRoleScreen());
+        Get.offAll(() => const SelectRoleScreen());
         getx.Get.snackbar(
           AppMetaLabels().error,
-          "${AppMetaLabels().unauthorized}",
+          AppMetaLabels().unauthorized,
           backgroundColor: AppColors.white54,
         );
         return AppMetaLabels().unauthorized;
       case 403:
-        Get.offAll(() => SelectRoleScreen());
+        Get.offAll(() => const SelectRoleScreen());
         getx.Get.snackbar(
           AppMetaLabels().error,
-          "${AppMetaLabels().unauthorized}",
+          AppMetaLabels().unauthorized,
           backgroundColor: AppColors.white54,
         );
         return AppMetaLabels().unauthorized;
       case 404:
         return AppMetaLabels().noDatafound;
       case 500:
-        if (foundation.kDebugMode) print(response.body);
+        if (kDebugMode) {
+          print(response.body);
+        }
         // getx.Get.snackbar(
         //   AppMetaLabels().error,
         //   AppMetaLabels().anyError,
@@ -307,7 +339,9 @@ class BaseClientClass {
         return AppMetaLabels().anyError;
 
       case 501:
-        if (foundation.kDebugMode) print(response.body);
+        if (kDebugMode) {
+          print(response.body);
+        }
         getx.Get.snackbar(
           AppMetaLabels().error,
           AppMetaLabels().processingError,
@@ -318,10 +352,10 @@ class BaseClientClass {
       default:
         getx.Get.snackbar(
           AppMetaLabels().error,
-          "${AppMetaLabels().couldNotConnectToServer}",
+          AppMetaLabels().couldNotConnectToServer,
           backgroundColor: AppColors.white54,
         );
-        return '${AppMetaLabels().couldNotConnectToServer}';
+        return AppMetaLabels().couldNotConnectToServer;
     }
   }
 }
@@ -342,8 +376,8 @@ class BaseClientClass {
 // import 'package:http/http.dart' as http;
 
 // class BaseClientClass {
-//   // static const int TIME_OUT_DURATION = 30;
-//   static const int TIME_OUT_DURATION = 60;
+//   // static const int timeOutDuration = 30;
+//   static const int timeOutDuration = 60;
 //   static String dumnyUrl = '';
 //   //////
 //   static Future<dynamic> post(String url, data, {String token}) async {
@@ -368,7 +402,7 @@ class BaseClientClass {
 //             },
 //             encoding: Encoding.getByName('utf-8'),
 //           )
-//           .timeout(Duration(seconds: TIME_OUT_DURATION));
+//           .timeout(Duration(seconds: timeOutDuration));
 //       if (foundation.kDebugMode) {
 //         // print('Request: ${response.request}');
 //         // print('Headers: ${response.request.headers}');
@@ -418,7 +452,7 @@ class BaseClientClass {
 //             },
 //             encoding: Encoding.getByName('utf-8'),
 //           )
-//           .timeout(Duration(seconds: TIME_OUT_DURATION));
+//           .timeout(Duration(seconds: timeOutDuration));
 //       if (foundation.kDebugMode) {
 //         print('Request: ${response.request}');
 //         // print('Headers: ${response.request.headers}');
@@ -469,7 +503,7 @@ class BaseClientClass {
 //             },
 //             encoding: Encoding.getByName('utf-8'),
 //           )
-//           .timeout(Duration(seconds: TIME_OUT_DURATION));
+//           .timeout(Duration(seconds: timeOutDuration));
 //       if (foundation.kDebugMode) {
 //         print('Request: ${response.request}');
 //         // print('Headers: ${response.request.headers}');

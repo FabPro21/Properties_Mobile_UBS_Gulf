@@ -9,8 +9,7 @@ class CustomButton extends StatelessWidget {
   final Function? onPressed;
   final String? text;
   final bool? loading;
-  const CustomButton({Key? key, this.onPressed, this.text, this.loading = false})
-      : super(key: key);
+  const CustomButton({super.key, this.onPressed, this.text, this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +19,18 @@ class CustomButton extends StatelessWidget {
           : () {
               onPressed!();
             },
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(3.0.sp),
+          ),
+          backgroundColor: AppColors.blueColor2,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 8)),
       child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,
-              pause: Duration(milliseconds: 10),
+              pause: const Duration(milliseconds: 10),
               animatedTexts: [
                 ColorizeAnimatedText(text ?? '',
                     textStyle: AppTextStyle.normalBlue11,
@@ -33,20 +39,13 @@ class CustomButton extends StatelessWidget {
                       AppColors.blueColor2,
                       AppColors.blueColor
                     ],
-                    speed: Duration(milliseconds: 200)),
+                    speed: const Duration(milliseconds: 200)),
               ],
             )
           : Text(
               text ?? '',
               style: AppTextStyle.normalBlue11,
             ),
-      style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(3.0.sp),
-          ),
-          backgroundColor: AppColors.blueColor2,
-          shadowColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 8)),
     );
   }
 }
@@ -57,12 +56,11 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
   final Color? borderColor;
   final bool? loading;
   const CustomButtonWithoutBackgroud(
-      {Key? key,
+      {super.key,
       this.onPressed,
       this.text,
       this.loading = false,
-      @required this.borderColor})
-      : super(key: key);
+      @required this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -72,31 +70,6 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
           : () {
               onPressed!();
             },
-      child: loading!
-          ? AnimatedTextKit(
-              isRepeatingAnimation: true,
-              repeatForever: true,
-              pause: Duration(milliseconds: 10),
-              animatedTexts: [
-                ColorizeAnimatedText(text ?? '',
-                    textStyle: AppTextStyle.normalBlue11,
-                    colors: [
-                      AppColors.blueColor,
-                      AppColors.blueColor2,
-                      AppColors.blueColor
-                    ],
-                    speed: Duration(milliseconds: 200)),
-              ],
-            )
-          : Text(
-              text ?? '',
-              style: AppTextStyle.normalBlue11.copyWith(
-                  color: text == 'Vacate'
-                      ? Color.fromARGB(255, 197, 18, 6)
-                      : text == 'Offer Letter'
-                          ? AppColors.blackColor
-                          : AppColors.blueColor),
-            ),
       style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(3.0.sp),
@@ -106,7 +79,32 @@ class CustomButtonWithoutBackgroud extends StatelessWidget {
               )),
           backgroundColor: AppColors.whiteColor,
           shadowColor: borderColor,
-          padding: EdgeInsets.symmetric(horizontal: 8)),
+          padding: const EdgeInsets.symmetric(horizontal: 8)),
+      child: loading!
+          ? AnimatedTextKit(
+              isRepeatingAnimation: true,
+              repeatForever: true,
+              pause: const Duration(milliseconds: 10),
+              animatedTexts: [
+                ColorizeAnimatedText(text ?? '',
+                    textStyle: AppTextStyle.normalBlue11,
+                    colors: [
+                      AppColors.blueColor,
+                      AppColors.blueColor2,
+                      AppColors.blueColor
+                    ],
+                    speed: const Duration(milliseconds: 200)),
+              ],
+            )
+          : Text(
+              text ?? '',
+              style: AppTextStyle.normalBlue11.copyWith(
+                  color: text == 'Vacate'
+                      ? const Color.fromARGB(255, 197, 18, 6)
+                      : text == 'Offer Letter'
+                          ? AppColors.blackColor
+                          : AppColors.blueColor),
+            ),
     );
   }
 }
@@ -116,8 +114,7 @@ class CustomButtonRed extends StatelessWidget {
   final String? text;
   final bool? loading;
   const CustomButtonRed(
-      {Key? key, this.onPressed, this.text, this.loading = false})
-      : super(key: key);
+      {super.key, this.onPressed, this.text, this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -127,11 +124,18 @@ class CustomButtonRed extends StatelessWidget {
           : () {
               onPressed!();
             },
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(3.0.sp),
+          ),
+          backgroundColor: AppColors.redColor2,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 8)),
       child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,
-              pause: Duration(milliseconds: 10),
+              pause: const Duration(milliseconds: 10),
               animatedTexts: [
                 ColorizeAnimatedText(text ?? '',
                     textStyle: AppTextStyle.normalWhite11,
@@ -140,20 +144,13 @@ class CustomButtonRed extends StatelessWidget {
                       AppColors.whiteColor,
                       AppColors.white54
                     ],
-                    speed: Duration(milliseconds: 200)),
+                    speed: const Duration(milliseconds: 200)),
               ],
             )
           : Text(
               text ?? '',
               style: AppTextStyle.normalWhite11,
             ),
-      style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(3.0.sp),
-          ),
-          backgroundColor: AppColors.redColor2,
-          shadowColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 8)),
     );
   }
 }

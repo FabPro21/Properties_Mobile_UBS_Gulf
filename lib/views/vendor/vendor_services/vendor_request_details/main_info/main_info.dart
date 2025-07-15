@@ -15,19 +15,19 @@ import '../../../../widgets/common_widgets/status_widget.dart';
 import 'main_info_controller.dart';
 
 class SvcReqMainInfo extends StatelessWidget {
-  SvcReqMainInfo({Key? key}) : super(key: key);
+  SvcReqMainInfo({super.key});
   final controller = Get.find<SvcReqMainInfoController>();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          BottomShadow(),
+          const BottomShadow(),
           Obx(() {
             return controller.loadingData.value == true
                 ? Padding(
                     padding: EdgeInsets.only(top: 10.0.h),
-                    child: LoadingIndicatorBlue(),
+                    child: const LoadingIndicatorBlue(),
                   )
                 : controller.error.value != ''
                     ? Padding(
@@ -136,7 +136,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         ConstrainedBox(
                                             constraints:
                                                 BoxConstraints(maxWidth: 55.w),
@@ -225,7 +225,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                             '${AppMetaLabels().name}: ',
                                             style: AppTextStyle.normalGrey10,
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
                                             controller
                                                     .vendorRequestDetails
@@ -251,7 +251,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                             '${AppMetaLabels().phoneNumber}: ',
                                             style: AppTextStyle.normalGrey10,
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
                                             controller
                                                     .vendorRequestDetails
@@ -277,7 +277,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                             '${AppMetaLabels().contactTime}: ',
                                             style: AppTextStyle.normalGrey10,
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
                                             controller
                                                     .vendorRequestDetails
@@ -355,7 +355,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                               height: 9.h,
                                               alignment: Alignment.center,
                                               margin: EdgeInsets.all(0.5.h),
-                                              child: LoadingIndicatorBlue(),
+                                              child: const LoadingIndicatorBlue(),
                                             )
                                           : controller.errorGettingPhotos != ''
                                               ? Center(
@@ -376,7 +376,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                               controller
                                                                   .getPhotos();
                                                             },
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                                 Icons.refresh))
                                                       ],
                                                     ),
@@ -385,7 +385,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                               : GridView.builder(
                                                   shrinkWrap: true,
                                                   physics:
-                                                      NeverScrollableScrollPhysics(),
+                                                      const NeverScrollableScrollPhysics(),
                                                   padding:
                                                       EdgeInsets.only(top: 1.h),
                                                   gridDelegate:
@@ -459,10 +459,10 @@ class SvcReqMainInfo extends StatelessWidget {
                                     ),
                                     child: Obx(() {
                                       return controller.updatingStatus.value
-                                          ? LoadingIndicatorBlue()
+                                          ? const LoadingIndicatorBlue()
                                           : Row(
                                               children: [
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Expanded(
@@ -475,7 +475,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                         AppMetaLabels().ack),
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Expanded(
@@ -494,7 +494,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                               ],
@@ -545,7 +545,7 @@ class SvcReqMainInfo extends StatelessWidget {
                                                   AppTextStyle.semiBoldBlue12),
                                         ),
                                       )
-                                    : SizedBox()
+                                    : const SizedBox()
                           ],
                         ),
                       );
@@ -572,7 +572,7 @@ class SvcReqMainInfo extends StatelessWidget {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.cancel))
+                      icon: const Icon(Icons.cancel))
                 ],
               ),
             ),

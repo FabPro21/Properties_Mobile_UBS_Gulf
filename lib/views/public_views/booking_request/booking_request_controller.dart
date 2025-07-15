@@ -28,9 +28,9 @@ class BookingRequestController extends GetxController {
   }
 
   Future<void> getAgent() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingAgent.value = true;
@@ -49,9 +49,9 @@ class BookingRequestController extends GetxController {
   Future<dynamic> saveBookingRequestData(propertyID, description,
       contractUnitId, otherContactPersonName, otherContactPersonMobile) async {
     loadingSaveBooking.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       var result = await PublicRepositoryDrop2.savePublicBookingRequest(

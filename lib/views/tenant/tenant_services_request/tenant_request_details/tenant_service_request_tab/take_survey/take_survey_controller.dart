@@ -45,8 +45,9 @@ class TakeSurveyController extends GetxController {
       } else {
         errorLoadingQuestions = AppMetaLabels().noSurveyFound;
       }
-    } else
+    } else {
       errorLoadingQuestions = resp;
+    }
     return false;
   }
 
@@ -60,8 +61,9 @@ class TakeSurveyController extends GetxController {
       if (resp.faqOptions!.isEmpty) {
         questions!.faqQuestion![currentQuestion.value.toInt()]
             .errorLoadingAnswers = AppMetaLabels().noOptionsfound;
-      } else
+      } else {
         questions!.faqQuestion![currentQuestion.value.toInt()].answers = resp;
+      }
     }
     questions!.faqQuestion![currentQuestion.value.toInt()].loadingAnswers.value =
         false;
@@ -74,13 +76,15 @@ class TakeSurveyController extends GetxController {
         progress.value =
             (currentQuestion.value + 1) / questions!.faqQuestion!.length;
         if (questions!.faqQuestion![currentQuestion.value.toInt()].answers ==
-            null)
+            null) {
           getSurveyQuestionAnswers(questions!
                   .faqQuestion![currentQuestion.value.toInt()].questionId ??
               0);
+        }
         return true;
-      } else
+      } else {
         return false;
+      }
     }
     return false;
   }

@@ -19,20 +19,20 @@ class GetLandLordCategoryModel {
     if (json['proppertyCategoris'] != null) {
       proppertyCategoris = <ProppertyCategoris>[];
       json['proppertyCategoris'].forEach((v) {
-        proppertyCategoris!.add(new ProppertyCategoris.fromJson(v));
+        proppertyCategoris!.add(ProppertyCategoris.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    if (this.proppertyCategoris != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    if (proppertyCategoris != null) {
       data['proppertyCategoris'] =
-          this.proppertyCategoris!.map((v) => v.toJson()).toList();
+          proppertyCategoris!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -57,11 +57,11 @@ class ProppertyCategoris {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['propertyCategoryID'] = this.propertyCategoryID;
-    data['propertyCategory'] = this.propertyCategory;
-    data['propertyCategoryAR'] = this.propertyCategoryAR;
-    data['propertyCategoryCode'] = this.propertyCategoryCode;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['propertyCategoryID'] = propertyCategoryID;
+    data['propertyCategory'] = propertyCategory;
+    data['propertyCategoryAR'] = propertyCategoryAR;
+    data['propertyCategoryCode'] = propertyCategoryCode;
     return data;
   }
 }

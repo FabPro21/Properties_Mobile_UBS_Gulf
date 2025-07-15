@@ -25,7 +25,7 @@ import '../tenant_contracts_tabs.dart/tenant_contracts_details.dart/tenant_contr
 class MakePayment extends StatefulWidget {
   final RegisterPaymentResponse? data;
   final String? contractNo;
-  const MakePayment({Key? key, this.data, this.contractNo}) : super(key: key);
+  const MakePayment({super.key, this.data, this.contractNo});
 
   @override
   State<MakePayment> createState() => _MakePaymentState();
@@ -73,7 +73,7 @@ class _MakePaymentState extends State<MakePayment> {
                   Get.back();
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
               )),
@@ -89,7 +89,7 @@ class _MakePaymentState extends State<MakePayment> {
                   Navigator.pop(context);
                 }),
           ],
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage(AppImagesPath.appbarimg),
             fit: BoxFit.cover,
           ),
@@ -117,7 +117,7 @@ class _MakePaymentState extends State<MakePayment> {
                   });
                 },
               ),
-              if (showProgress) LoadingIndicatorBlue(),
+              if (showProgress) const LoadingIndicatorBlue(),
               if (showBack)
                 Padding(
                   padding: EdgeInsets.only(top: 75.0.h),
@@ -126,10 +126,6 @@ class _MakePaymentState extends State<MakePayment> {
                       onPressed: () {
                         getBack();
                       },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 36.0.w),
-                        child: Text(AppMetaLabels().back),
-                      ),
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(3.0.sp),
@@ -140,6 +136,10 @@ class _MakePaymentState extends State<MakePayment> {
                           backgroundColor: AppColors.greyBG,
                           foregroundColor: AppColors.blueColor,
                           shadowColor: Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 36.0.w),
+                        child: Text(AppMetaLabels().back),
+                      ),
                     ),
                   ),
                 )
@@ -156,9 +156,9 @@ class _MakePaymentState extends State<MakePayment> {
 
   Future getOnlinePayable() async {
     try {
-      bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isIntenetConnected) {
-        Get.to(() => NoInternetScreen());
+      bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+      if (!isIntenetConnected) {
+        Get.to(() => const NoInternetScreen());
       }
       SnakBarWidget.getLoadingWithColor();
       var resp = await TenantRepository.getContractOnlinePayable(
@@ -243,7 +243,7 @@ class _MakePaymentState extends State<MakePayment> {
                           )),
                       onPressed: () {
                         Get.back();
-                        Get.off(() => TenantDashboardTabs(
+                        Get.off(() => const TenantDashboardTabs(
                               initialIndex: 0,
                             ));
                       },

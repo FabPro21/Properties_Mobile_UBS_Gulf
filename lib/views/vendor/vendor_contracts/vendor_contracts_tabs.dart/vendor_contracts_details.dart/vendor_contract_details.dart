@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'vendor_contract_info.dart';
 
 class VendorContractsDetailsTabs extends StatelessWidget {
-  VendorContractsDetailsTabs({Key? key}) : super(key: key);
+  const VendorContractsDetailsTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class VendorContractsDetailsTabs extends StatelessWidget {
                     unselectedLabelColor: AppColors.blackColor,
                     labelStyle: AppTextStyle.semiBoldBlack10,
                   ),
-                  views: [
+                  views: const [
                     VendorInfo(),
                     VendorPropertyScreen(),
                     VendorFinancialTerms(),

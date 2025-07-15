@@ -10,12 +10,11 @@ class AppErrorWidget extends StatelessWidget {
   final Function? onRetry;
   final String? color;
   const AppErrorWidget(
-      {Key? key,
+      {super.key,
       this.errorText = '',
       this.errorImage = AppImagesPath.noDataFound,
       this.onRetry,
-      this.color})
-      : super(key: key);
+      this.color});
 
   @override
   Widget build(BuildContext context) {

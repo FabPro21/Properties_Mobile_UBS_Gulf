@@ -19,7 +19,7 @@ import 'main_info/main_info_controller.dart';
 class VendorRequestDetails extends StatefulWidget {
   final int? caseNo;
   final bool? status;
-  const VendorRequestDetails({Key? key, this.caseNo, this.status}) : super(key: key);
+  const VendorRequestDetails({super.key, this.caseNo, this.status});
 
   @override
   _VendorRequestDetailsState createState() => _VendorRequestDetailsState();
@@ -46,7 +46,7 @@ class _VendorRequestDetailsState extends State<VendorRequestDetails> {
                 return controller.loadingData.value == true
                     ? Padding(
                         padding: EdgeInsets.only(top: 10.0.h),
-                        child: LoadingIndicatorBlue(),
+                        child: const LoadingIndicatorBlue(),
                       )
                     : controller.error.value != ''
                         ? Padding(
@@ -73,7 +73,7 @@ class _VendorRequestDetailsState extends State<VendorRequestDetails> {
                                   ],
                                 ),
                               ),
-                              AppDivider(),
+                              const AppDivider(),
                               Expanded(
                                 child: ContainedTabBarView(
                                   tabs: [

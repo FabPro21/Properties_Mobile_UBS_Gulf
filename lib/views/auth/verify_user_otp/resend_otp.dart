@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ResendOtp extends StatelessWidget {
-  ResendOtp({Key? key}) : super(key: key);
+  ResendOtp({super.key});
   final VerifyUserOtpController vUOController = Get.find();
 
   @override
@@ -19,7 +19,7 @@ class ResendOtp extends StatelessWidget {
       return SizedBox(
         width: 90.0.w,
         child: vUOController.resending.value
-            ? LoadingIndicatorWhite()
+            ? const LoadingIndicatorWhite()
             : OutlinedButton(
                 onPressed: () async {
                   vUOController.resendOtpBtn();
@@ -32,7 +32,7 @@ class ResendOtp extends StatelessWidget {
                     style: BorderStyle.solid,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(1.3.h),
+                    borderRadius: BorderRadius.circular(1.3.h),
                   ),
                 ),
                 child: Padding(
@@ -49,7 +49,7 @@ class ResendOtp extends StatelessWidget {
 }
 
 class ResendOtpFB extends StatefulWidget {
-  ResendOtpFB({Key? key}) : super(key: key);
+  const ResendOtpFB({super.key});
 
   @override
   State<ResendOtpFB> createState() => _ResendOtpFBState();
@@ -64,7 +64,7 @@ class _ResendOtpFBState extends State<ResendOtpFB> {
       return SizedBox(
         width: 90.0.w,
         child: authController.resending.value
-            ? LoadingIndicatorWhite()
+            ? const LoadingIndicatorWhite()
             : OutlinedButton(
                 onPressed: () async {
                   setState(() {
@@ -85,7 +85,7 @@ class _ResendOtpFBState extends State<ResendOtpFB> {
                     style: BorderStyle.solid,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(1.3.h),
+                    borderRadius: BorderRadius.circular(1.3.h),
                   ),
                 ),
                 child: Padding(

@@ -14,7 +14,7 @@ import '../tenant_payments/payment_details/tenent_payment_details.dart';
 
 class PaymentsWidget extends StatefulWidget {
   final Function(int)? managePayments;
-  const PaymentsWidget({Key? key, this.managePayments}) : super(key: key);
+  const PaymentsWidget({super.key, this.managePayments});
 
   @override
   State<PaymentsWidget> createState() => _PaymentsWidgetState();
@@ -65,19 +65,19 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.0.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Container(
               child: Obx(() {
                 return paymentsController.loadingPaymentsData.value == true
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : paymentsController.errorPayments.value != ''
                         ? AppErrorWidget(
                             errorText: paymentsController.errorPayments.value,
                           )
                         : ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: paymentsController.paymentsLength2,
                             itemBuilder: (context, index) {
                               return inkWell(index);
@@ -177,7 +177,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
               child: Row(
                 children: [
                   Text(
-                    "${AppMetaLabels().contractNo}",
+                    AppMetaLabels().contractNo,
                     style: AppTextStyle.semiBoldGrey11,
                   ),
                   const Spacer(),
@@ -195,7 +195,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                 ? Container()
                 : Padding(
                     padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
-                    child: AppDivider(),
+                    child: const AppDivider(),
                   ),
           ],
         ),

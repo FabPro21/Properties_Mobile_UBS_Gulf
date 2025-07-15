@@ -28,19 +28,19 @@ class TenantDashboardNotificationPopupModel {
     if (json['notifications'] != null) {
       notifications = <Notifications>[];
       json['notifications'].forEach((v) {
-        notifications!.add(new Notifications.fromJson(v));
+        notifications!.add(Notifications.fromJson(v));
       });
     }
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['status'] = this.status;
-    data['message'] = this.message;
-    if (this.notifications != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['status'] = status;
+    data['message'] = message;
+    if (notifications != null) {
       data['notifications'] =
-          this.notifications!.map((v) => v.toJson()).toList();
+          notifications!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -100,22 +100,22 @@ class Notifications {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['contractno'] = this.contractno;
-    data['fromDate'] = this.fromDate;
-    data['toDate'] = this.toDate;
-    data['stageId'] = this.stageId;
-    data['notificationId'] = this.notificationId;
-    data['recordId'] = this.recordId;
-    data['title'] = this.title;
-    data['titleAr'] = this.titleAr;
-    data['recordType'] = this.recordType;
-    data['description'] = this.description;
-    data['descriptionAr'] = this.descriptionAr;
-    data['createdOn'] = this.createdOn;
-    data['dueActionid'] = this.dueActionid;
-    data['caseId'] = this.caseId;
-    data['showExtend'] = this.showExtend;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['contractno'] = contractno;
+    data['fromDate'] = fromDate;
+    data['toDate'] = toDate;
+    data['stageId'] = stageId;
+    data['notificationId'] = notificationId;
+    data['recordId'] = recordId;
+    data['title'] = title;
+    data['titleAr'] = titleAr;
+    data['recordType'] = recordType;
+    data['description'] = description;
+    data['descriptionAr'] = descriptionAr;
+    data['createdOn'] = createdOn;
+    data['dueActionid'] = dueActionid;
+    data['caseId'] = caseId;
+    data['showExtend'] = showExtend;
     return data;
   }
 }

@@ -36,7 +36,7 @@ import 'tenant_contracts_detail_controller.dart';
 
 class MainInfo extends StatefulWidget {
   final String? prevContractNo;
-  const MainInfo({Key? key, @required this.prevContractNo}) : super(key: key);
+  const MainInfo({super.key, @required this.prevContractNo});
 
   @override
   _MainInfoState createState() => _MainInfoState();
@@ -65,7 +65,7 @@ class _MainInfoState extends State<MainInfo> {
           children: [
             SingleChildScrollView(
               child: Obx(() {
-                return Container(
+                return SizedBox(
                   height: getCDController.canDownload.value &&
                           getCDController.getContractsDetails.value.contract!
                                   .contractStatus ==
@@ -85,7 +85,7 @@ class _MainInfoState extends State<MainInfo> {
                     child: Obx(
                       () {
                         return getCDController.loadingContract.value == true
-                            ? LoadingIndicatorBlue()
+                            ? const LoadingIndicatorBlue()
                             : getCDController.errorLoadingContract.value != ''
                                 ? AppErrorWidget(
                                     errorText: getCDController
@@ -128,15 +128,11 @@ class _MainInfoState extends State<MainInfo> {
                                                   alignment:
                                                       Alignment.bottomRight,
                                                   child: Text(
-                                                    getCDController.daysPassed
-                                                                .toString() +
-                                                            '/' +
-                                                            getCDController
+                                                    '${getCDController.daysPassed}/${getCDController
                                                                 .getContractsDetails
                                                                 .value
                                                                 .contract!
-                                                                .noOfDays
-                                                                .toString(),
+                                                                .noOfDays}',
                                                     style: AppTextStyle
                                                         .normalBlack10,
                                                   ),
@@ -257,7 +253,7 @@ class _MainInfoState extends State<MainInfo> {
                                                         ),
                                                       ],
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Column(
                                                       crossAxisAlignment:
                                                           SessionController()
@@ -442,7 +438,7 @@ class _MainInfoState extends State<MainInfo> {
                                                     right: 4.0,
                                                     top: 5.h,
                                                   ),
-                                                  child: LoadingIndicatorBlue(
+                                                  child: const LoadingIndicatorBlue(
                                                     size: 20,
                                                   ),
                                                 )
@@ -526,7 +522,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                               AppMetaLabels().renatalpayments,
                                                                               style: AppTextStyle.normalBlack10,
                                                                             ),
-                                                                            Spacer(),
+                                                                            const Spacer(),
                                                                             Text(
                                                                               '${AppMetaLabels().aed} ${getCDController.totalRentalPayment.value}',
                                                                               style: AppTextStyle.semiBoldBlack11,
@@ -548,7 +544,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                               AppMetaLabels().additionalCharges,
                                                                               style: AppTextStyle.normalBlack10,
                                                                             ),
-                                                                            Spacer(),
+                                                                            const Spacer(),
                                                                             Text(
                                                                               '${AppMetaLabels().aed} ${getCDController.totalAdditionalCharges.value}',
                                                                               style: AppTextStyle.semiBoldBlack11,
@@ -570,7 +566,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                               AppMetaLabels().vatOnRent,
                                                                               style: AppTextStyle.normalBlack10,
                                                                             ),
-                                                                            Spacer(),
+                                                                            const Spacer(),
                                                                             Text(
                                                                               '${AppMetaLabels().aed} ${getCDController.totalVatOnRent.value}',
                                                                               style: AppTextStyle.semiBoldBlack11,
@@ -592,7 +588,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                               AppMetaLabels().vatOnCharges,
                                                                               style: AppTextStyle.normalBlack10,
                                                                             ),
-                                                                            Spacer(),
+                                                                            const Spacer(),
                                                                             Text(
                                                                               '${AppMetaLabels().aed} ${getCDController.totalVatOnCharges.value}',
                                                                               style: AppTextStyle.semiBoldBlack11,
@@ -612,7 +608,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                           style:
                                                                               AppTextStyle.normalBlack10,
                                                                         ),
-                                                                        Spacer(),
+                                                                        const Spacer(),
                                                                         Text(
                                                                           '${AppMetaLabels().aed} ${getCDController.sumOfAllPayments.value}',
                                                                           style:
@@ -631,7 +627,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                             height:
                                                                                 1.5.h,
                                                                           ),
-                                                                          AppDivider(),
+                                                                          const AppDivider(),
                                                                           SizedBox(
                                                                             height:
                                                                                 1.5.h,
@@ -1230,12 +1226,12 @@ class _MainInfoState extends State<MainInfo> {
 //                                       ? 14.h
 //                                       : 0.h,
                   width: double.infinity,
-                  padding: EdgeInsets.only(top: 0.5, bottom: 0.5),
+                  padding: const EdgeInsets.only(top: 0.5, bottom: 0.5),
                   decoration: getCDController.canDownload.value == false
                       ? null
                       : BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15)),
                           boxShadow: [
@@ -1248,7 +1244,7 @@ class _MainInfoState extends State<MainInfo> {
                           ],
                         ),
                   child: getCDController.canDownload.value == false
-                      ? SizedBox()
+                      ? const SizedBox()
                       : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -1261,7 +1257,7 @@ class _MainInfoState extends State<MainInfo> {
                                       getCDController.getContractsDetails.value
                                               .caseStageInfo!.stageId! <
                                           8
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : getCDController.canDownloadContract
                                               .canDownload ==
                                           '1'
@@ -1300,7 +1296,7 @@ class _MainInfoState extends State<MainInfo> {
                                               contractDownloadController
                                                           .downloading.value ==
                                                       true
-                                                  ? LoadingIndicatorBlue()
+                                                  ? const LoadingIndicatorBlue()
                                                   : InkWell(
                                                       onTap: () {
                                                         {
@@ -1333,7 +1329,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                   .normalBlue12,
                                                             ),
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Icon(
                                                             Icons.download,
                                                             size: 3.0.h,
@@ -1349,13 +1345,13 @@ class _MainInfoState extends State<MainInfo> {
                                               '0'
                                           ? Container(
                                               alignment: Alignment.center,
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               margin: EdgeInsets.only(
                                                   top: 2.h,
                                                   left: 3.w,
                                                   right: 3.w),
                                               decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
+                                                  color: const Color.fromRGBO(
                                                       255, 249, 235, 1),
                                                   borderRadius:
                                                       BorderRadius.circular(8)),
@@ -1367,7 +1363,7 @@ class _MainInfoState extends State<MainInfo> {
                                                     Icons.error_outline,
                                                     color: Colors.amber[400],
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 8.0,
                                                   ),
                                                   // 112233 error alert
@@ -1391,7 +1387,7 @@ class _MainInfoState extends State<MainInfo> {
                                                 ],
                                               ),
                                             )
-                                          : SizedBox();
+                                          : const SizedBox();
                             }),
                             // commenting this because we want to show the Feedback button
                             // on the base of of canDownload
@@ -1421,7 +1417,7 @@ class _MainInfoState extends State<MainInfo> {
                                     //         getCDController.getContractsDetails
                                     //                 .value.caseStageInfo.stageId <
                                     //             8
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : getCDController.canDownloadContract
                                                 .canDownload ==
                                             '1'
@@ -1458,7 +1454,7 @@ class _MainInfoState extends State<MainInfo> {
                                                 },
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: EdgeInsets.all(5.0),
+                                                  padding: const EdgeInsets.all(5.0),
                                                   margin: EdgeInsets.only(
                                                       top: 2.h, bottom: 2.h),
                                                   decoration: BoxDecoration(
@@ -1472,14 +1468,14 @@ class _MainInfoState extends State<MainInfo> {
                                                         CrossAxisAlignment
                                                             .center,
                                                     children: [
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 8.0,
                                                       ),
-                                                      Icon(
+                                                      const Icon(
                                                         Icons.info,
                                                         color: Colors.white,
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 8.0,
                                                       ),
                                                       Expanded(
@@ -1502,7 +1498,7 @@ class _MainInfoState extends State<MainInfo> {
                                                     ],
                                                   ),
                                                 )))
-                                        : SizedBox();
+                                        : const SizedBox();
                               }),
                             ),
                           ],
@@ -1511,9 +1507,9 @@ class _MainInfoState extends State<MainInfo> {
               );
             }),
             getCDController.isEnableScreen.value == false
-                ? ScreenDisableWidget()
-                : SizedBox(),
-            BottomShadow(),
+                ? const ScreenDisableWidget()
+                : const SizedBox(),
+            const BottomShadow(),
           ],
         ),
         bottomNavigationBar: Obx(() {
@@ -1543,8 +1539,8 @@ class _MainInfoState extends State<MainInfo> {
                   getCDController
                           .getContractsDetails.value.caseStageInfo!.stageId! >
                       9
-              ? SizedBox()
-              : SizedBox();
+              ? const SizedBox()
+              : const SizedBox();
           // BottomAppBar is commented on 14-03-2023 becaause
           // we faced a conflict on stageID
           // : BottomAppBar(
@@ -1833,7 +1829,7 @@ class _MainInfoState extends State<MainInfo> {
 
                               // for loading
                               SnakBarWidget.getLoadingWithColor();
-                              await Future.delayed(Duration(seconds: 0));
+                              await Future.delayed(const Duration(seconds: 0));
                               SnakBarWidget.getSnackBarErrorBlue(
                                 AppMetaLabels().loading,
                                 AppMetaLabels().generatingContractInfo,
@@ -1933,9 +1929,9 @@ class _MainInfoState extends State<MainInfo> {
                         }
                       : () {
                           if (getCDController.canDownloadContract.canDownload ==
-                              '1')
+                              '1') {
                             getCDController.downloadContract();
-                          else if (getCDController
+                          } else if (getCDController
                                   .canDownloadContract.canDownload ==
                               '2')
                             Get.snackbar(AppMetaLabels().error,
@@ -1951,11 +1947,12 @@ class _MainInfoState extends State<MainInfo> {
       itemCount: 8,
       itemBuilder: (context, index2) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          if (itemScrollController.isAttached)
+          if (itemScrollController.isAttached) {
             itemScrollController.scrollTo(
                 index: dueActionIndex,
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.easeIn);
+          }
         });
         return actionList[index2];
       },
@@ -1968,8 +1965,7 @@ class CustomButton2 extends StatelessWidget {
   final String? text;
   final bool? loading;
   const CustomButton2(
-      {Key? key, this.onPressed, this.text, this.loading = false})
-      : super(key: key);
+      {super.key, this.onPressed, this.text, this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -1981,11 +1977,18 @@ class CustomButton2 extends StatelessWidget {
             : () {
                 onPressed!();
               },
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0.sp),
+            ),
+            backgroundColor: AppColors.blueColor3,
+            shadowColor: Colors.transparent,
+            padding: const EdgeInsets.symmetric(horizontal: 8)),
         child: loading!
             ? AnimatedTextKit(
                 isRepeatingAnimation: true,
                 repeatForever: true,
-                pause: Duration(milliseconds: 10),
+                pause: const Duration(milliseconds: 10),
                 animatedTexts: [
                   ColorizeAnimatedText(text??"",
                       textStyle: AppTextStyle.normalBlue12
@@ -1995,20 +1998,13 @@ class CustomButton2 extends StatelessWidget {
                         AppColors.blueColor2,
                         AppColors.blueColor
                       ],
-                      speed: Duration(milliseconds: 200)),
+                      speed: const Duration(milliseconds: 200)),
                 ],
               )
             : Text(
                 text ?? '',
                 style: AppTextStyle.normalBlue12.copyWith(color: Colors.white),
               ),
-        style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0.sp),
-            ),
-            backgroundColor: AppColors.blueColor3,
-            shadowColor: Colors.transparent,
-            padding: EdgeInsets.symmetric(horizontal: 8)),
       ),
     );
   }

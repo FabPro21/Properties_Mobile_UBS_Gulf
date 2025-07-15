@@ -15,7 +15,7 @@ import 'public_notification_controller.dart';
 import 'dart:ui' as ui;
 
 class PublicNotificationDetails extends StatefulWidget {
-  const PublicNotificationDetails({Key? key}) : super(key: key);
+  const PublicNotificationDetails({super.key});
 
   @override
   _PublicNotificationDetailsState createState() =>
@@ -23,7 +23,7 @@ class PublicNotificationDetails extends StatefulWidget {
 }
 
 class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
-  var _controller = Get.put(PublicNotificationsController());
+  final _controller = Get.put(PublicNotificationsController());
 
   _getData() async {
     await _controller.notificationsDetails();
@@ -54,7 +54,7 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                       AppMetaLabels().notifications,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -68,7 +68,7 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.all(2.0.h),
@@ -76,7 +76,7 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                     return _controller.loadingnotificationsDetail.value == true
                         ? Padding(
                             padding: EdgeInsets.only(top: 40.0.h),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           )
                         : _controller.error.value != ''
                             ? Padding(
@@ -121,7 +121,7 @@ class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
                                         style: AppTextStyle.semiBoldBlack13,
                                       ),
                                     ),
-                                    AppDivider(),
+                                    const AppDivider(),
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 2.0.h,

@@ -18,11 +18,12 @@ class CaseCheckinContractService {
     });
     if (response is http.Response) {
       try {
-        Map<String, dynamic> _jsonResp = json.decode(response.body);
-        if (_jsonResp['status'] == 'Ok')
-          return _jsonResp['status'];
-        else
-          return _jsonResp['message'];
+        Map<String, dynamic> jsonResp = json.decode(response.body);
+        if (jsonResp['status'] == 'Ok') {
+          return jsonResp['status'];
+        } else {
+          return jsonResp['message'];
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

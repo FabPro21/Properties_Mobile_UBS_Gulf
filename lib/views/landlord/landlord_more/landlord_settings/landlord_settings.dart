@@ -12,7 +12,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'dart:ui' as ui;
 
 class LandLordSettings extends StatefulWidget {
-  const LandLordSettings({Key? key}) : super(key: key);
+  const LandLordSettings({super.key});
 
   @override
   _LandLordSettingsState createState() => _LandLordSettingsState();
@@ -54,7 +54,7 @@ class _LandLordSettingsState extends State<LandLordSettings> {
                         AppMetaLabels().biometric,
                         style: AppTextStyle.semiBoldBlack13,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -70,7 +70,7 @@ class _LandLordSettingsState extends State<LandLordSettings> {
                           ],
                           activeBgColors: [
                             [AppColors.blueColor],
-                            [Colors.white]
+                            const [Colors.white]
                           ],
                           inactiveBgColor: Colors.grey[200],
                           initialLabelIndex: fPOption,
@@ -95,7 +95,7 @@ class _LandLordSettingsState extends State<LandLordSettings> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(() => ChooseLanguage(loggedIn: true));
+                      Get.to(() => const ChooseLanguage(loggedIn: true));
                     },
                     child: Row(
                       children: [
@@ -109,7 +109,7 @@ class _LandLordSettingsState extends State<LandLordSettings> {
                           AppMetaLabels().language,
                           style: AppTextStyle.semiBoldBlack13,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 2.5.h,

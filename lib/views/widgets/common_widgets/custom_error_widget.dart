@@ -10,11 +10,10 @@ class CustomErrorWidget extends StatelessWidget {
   final String errorImage;
   final VoidCallback? onRetry;
   const CustomErrorWidget(
-      {Key? key,
+      {super.key,
       this.errorText = '',
       this.errorImage = AppImagesPath.noDataFound,
-      this.onRetry})
-      : super(key: key);
+      this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class CustomErrorWidget extends StatelessWidget {
             Align(
                 alignment: Alignment.center,
                 child: IconButton(
-                  icon: Icon(Icons.refresh),
+                  icon: const Icon(Icons.refresh),
                   onPressed: onRetry,
                 )),
         ],

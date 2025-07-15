@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 
 class TenantAllNotifications extends StatefulWidget {
   final int? index;
-  const TenantAllNotifications({Key? key, this.index}) : super(key: key);
+  const TenantAllNotifications({super.key, this.index});
 
   @override
   _TenantAllNotificationsState createState() => _TenantAllNotificationsState();
@@ -31,7 +31,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: getTNController.loadingData.value
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : getTNController.error.value != ''
               ? AppErrorWidget(
                   errorText: getTNController.error.value,
@@ -94,11 +94,12 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                                 .notificationId
                                                 .toString());
                                         if (!getTNController
-                                            .notifications![index].isRead!)
+                                            .notifications![index].isRead!) {
                                           await getTNController
                                               .readNotifications(index, 'all');
+                                        }
                                         Get.to(
-                                            () => TenantNotificationDetails());
+                                            () => const TenantNotificationDetails());
                                       },
                                       contentPadding: EdgeInsets.zero,
                                       horizontalTitleGap: 0,
@@ -132,7 +133,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                         ''
                                     ? Text(
                                         AppMetaLabels().noMoreData,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.blue,
                                         ).copyWith(fontWeight: FontWeight.bold),
                                       )
@@ -141,7 +142,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                         ? SizedBox(
                                             width: 75.w,
                                             height: 5.h,
-                                            child: Center(
+                                            child: const Center(
                                               child: LoadingIndicatorBlue(),
                                             ),
                                           )
@@ -157,7 +158,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                                       .toString());
                                               setState(() {});
                                             },
-                                            child: Container(
+                                            child: SizedBox(
                                                 width: 75.w,
                                                 height: 3.h,
                                                 child: RichText(
@@ -167,14 +168,14 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                                                       TextSpan(
                                                         text: AppMetaLabels()
                                                             .loadMoreData,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.blue,
                                                         ).copyWith(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
                                                       ),
-                                                      WidgetSpan(
+                                                      const WidgetSpan(
                                                         child: Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -349,7 +350,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                         height: 1.0.h,
                         width: 2.0.w,
                         margin: EdgeInsets.symmetric(horizontal: 1.w),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                           shape: BoxShape.circle,
                         ),
@@ -402,7 +403,7 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
                 ),
                 index == getTNController.allLength - 1
                     ? Container()
-                    : AppDivider(),
+                    : const AppDivider(),
               ],
             ),
           ),

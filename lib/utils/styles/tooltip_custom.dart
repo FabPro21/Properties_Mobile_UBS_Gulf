@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MessageBorderCircle extends ShapeBorder {
   final bool usePadding;
 
-  MessageBorderCircle({this.usePadding = true});
+  const MessageBorderCircle({this.usePadding = true});
 
   @override
   EdgeInsetsGeometry get dimensions =>
@@ -14,7 +14,7 @@ class MessageBorderCircle extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    rect = Rect.fromPoints(rect.topLeft, rect.bottomRight - Offset(0, 20));
+    rect = Rect.fromPoints(rect.topLeft, rect.bottomRight - const Offset(0, 20));
     return Path()
       ..addRRect(
           RRect.fromRectAndRadius(rect, Radius.circular(rect.height / 2)))
@@ -34,7 +34,7 @@ class MessageBorderCircle extends ShapeBorder {
 class MessageBorder extends ShapeBorder {
   final bool usePadding;
 
-  MessageBorder({this.usePadding = true});
+  const MessageBorder({this.usePadding = true});
 
   @override
   EdgeInsetsGeometry get dimensions =>
@@ -45,7 +45,7 @@ class MessageBorder extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    rect = Rect.fromPoints(rect.topLeft - Offset(0, -10), rect.bottomRight);
+    rect = Rect.fromPoints(rect.topLeft - const Offset(0, -10), rect.bottomRight);
     return Path()
       ..addRRect(
           RRect.fromRectAndRadius(rect, Radius.circular(rect.height / 3)))
@@ -65,7 +65,7 @@ class MessageBorder extends ShapeBorder {
 class MessageBorderForVideoTutorial extends ShapeBorder {
   final bool usePadding;
 
-  MessageBorderForVideoTutorial({this.usePadding = true});
+  const MessageBorderForVideoTutorial({this.usePadding = true});
 
   @override
   EdgeInsetsGeometry get dimensions =>
@@ -76,7 +76,7 @@ class MessageBorderForVideoTutorial extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    rect = Rect.fromPoints(rect.topLeft - Offset(0, -10), rect.bottomRight);
+    rect = Rect.fromPoints(rect.topLeft - const Offset(0, -10), rect.bottomRight);
     return Path()
       ..addRRect(
           RRect.fromRectAndRadius(rect, Radius.circular(rect.height / 3)))

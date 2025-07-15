@@ -62,8 +62,8 @@ class PushNotificationService {
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
-    var androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    var iOSSettings = DarwinInitializationSettings(
+    var androidSettings = const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iOSSettings = const DarwinInitializationSettings(
       requestSoundPermission: false,
       requestBadgePermission: false,
       requestAlertPermission: false,
@@ -113,7 +113,7 @@ class PushNotificationService {
     );
   }
 
-  androidNotificationChannel() => AndroidNotificationChannel(
+  androidNotificationChannel() => const AndroidNotificationChannel(
         'high_importance_channel', // id
         'High Importance Notifications', // title
         description:

@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class YourContracts extends StatefulWidget {
   final Function(int)? manageContracts;
-  YourContracts({Key? key, this.manageContracts}) : super(key: key);
+  const YourContracts({super.key, this.manageContracts});
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -59,8 +59,7 @@ class _YourContractsState extends State<YourContracts> {
                     return Text(
                       getContractsController.contractsLength.value == 0
                           ? AppMetaLabels().yourContracts
-                          : AppMetaLabels().yourContracts +
-                              "  (${getContractsController.contractsLength.value})",
+                          : "${AppMetaLabels().yourContracts}  (${getContractsController.contractsLength.value})",
                       style: AppTextStyle.semiBoldBlack13,
                     );
                   }),
@@ -69,12 +68,12 @@ class _YourContractsState extends State<YourContracts> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Container(
               child: Obx(() {
                 return getContractsController.loadingContractsData.value == true
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : getContractsController.contractsError.value != '' ||
                             getContractsController.contractsLength.value == 0
                         ? AppErrorWidget(
@@ -86,7 +85,7 @@ class _YourContractsState extends State<YourContracts> {
                           )
                         : ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: getContractsController.listLength,
                             itemBuilder: (context, index) {
                               return InkWell(
@@ -126,7 +125,7 @@ class _YourContractsState extends State<YourContracts> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       width: 50.0.w,
                                                       child: Text(
                                                         SessionController()
@@ -150,7 +149,7 @@ class _YourContractsState extends State<YourContracts> {
                                                             .ellipsis,
                                                       ),
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       "${getContractsController.getContracts.value.contracts![index].contractno}",
                                                       style: AppTextStyle
@@ -167,7 +166,7 @@ class _YourContractsState extends State<YourContracts> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       width: 30.0.w,
                                                       child: Text(
                                                         AppMetaLabels().unitNo,
@@ -177,7 +176,7 @@ class _YourContractsState extends State<YourContracts> {
                                                             .ellipsis,
                                                       ),
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Container(
                                                       alignment:
                                                           Alignment.centerRight,
@@ -219,7 +218,7 @@ class _YourContractsState extends State<YourContracts> {
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     ConstrainedBox(
                                                       constraints:
                                                           BoxConstraints(
@@ -276,7 +275,7 @@ class _YourContractsState extends State<YourContracts> {
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 1.0.h, right: 1.0.h),
-                                      child: AppDivider(),
+                                      child: const AppDivider(),
                                     ),
                                   ],
                                 ),

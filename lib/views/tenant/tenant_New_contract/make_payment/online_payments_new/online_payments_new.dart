@@ -18,7 +18,7 @@ import '../../../../../data/models/tenant_models/contract_payable/outstanding_pa
 
 class OnlinePaymentsNewContract extends StatefulWidget {
   final String? contractNo;
-  const OnlinePaymentsNewContract({Key? key, this.contractNo}) : super(key: key);
+  const OnlinePaymentsNewContract({super.key, this.contractNo});
 
   @override
   _OnlinePaymentsNewContractState createState() =>
@@ -26,7 +26,7 @@ class OnlinePaymentsNewContract extends StatefulWidget {
 }
 
 class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
-  var _controller = Get.put(OnlinePaymentsNewContractController());
+  final _controller = Get.put(OnlinePaymentsNewContractController());
   bool value = false;
 
   @override
@@ -60,7 +60,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                     InkWell(
                       onTap: () => Get.back(),
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -68,7 +68,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.5.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -78,13 +78,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
               // Divider
               Padding(
                 padding: EdgeInsets.only(top: 4.0.h, bottom: 2.0.w),
-                child: AppDivider(),
+                child: const AppDivider(),
               ),
               // Payments
               Padding(
                   padding: EdgeInsets.only(top: 7.0.h, bottom: 4.0.h),
                   child: _controller.loadingPayable.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : _controller.errorPayable.value != ''
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +104,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                       // 'View Contract'
                                       ),
                                   onPressed: () {
-                                    Get.off(() => ContractsDetailsTabs());
+                                    Get.off(() => const ContractsDetailsTabs());
                                   },
                                 )
                               ],
@@ -118,7 +118,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                           //     },
                           //   )
                           : _controller.contractPayableData.record! == null
-                              ? SizedBox()
+                              ? const SizedBox()
                               : Center(
                                   child: Container(
                                       width: 92.0.w,
@@ -170,7 +170,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                             SizedBox(
                                               height: 1.h,
                                             ),
-                                            AppDivider(),
+                                            const AppDivider(),
                                             SizedBox(
                                               height: 1.w,
                                             ),
@@ -540,10 +540,8 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                 .value ==
                                                             1
                                                         ? _controller
-                                                                    .cardPaymentListLength
-                                                                    .length ==
-                                                                0
-                                                            ? Container(
+                                                                    .cardPaymentListLength.isEmpty
+                                                            ? SizedBox(
                                                                 height: 50.h,
                                                                 child: Column(
                                                                   crossAxisAlignment:
@@ -608,7 +606,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                               4.0.w),
                                                                       child:
                                                                           Text(
-                                                                        "${AppMetaLabels().renatalpayments}",
+                                                                        AppMetaLabels().renatalpayments,
                                                                         style: AppTextStyle
                                                                             .semiBoldBlack11,
                                                                       ),
@@ -624,7 +622,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -633,12 +631,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type ==
-                                                                            'Contract Payable')
+                                                                            'Contract Payable') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -673,7 +672,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -682,12 +681,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type ==
-                                                                            'Additional Charges')
+                                                                            'Additional Charges') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -722,7 +722,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -731,12 +731,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
-                                                                            'VAT On Rent'.toLowerCase())
+                                                                            'VAT On Rent'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -771,7 +772,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -780,17 +781,18 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
-                                                                            'Vat On Charges'.toLowerCase())
+                                                                            'Vat On Charges'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                 ],
                                                               )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
 
                                                     // This Condition for "paymentsListItem" ListViewBuilder
                                                     // _controller.isPayemntValue.value == 3
@@ -801,10 +803,8 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                 .value ==
                                                             3
                                                         ? _controller
-                                                                    .bankTransferListLength
-                                                                    .length ==
-                                                                0
-                                                            ? Container(
+                                                                    .bankTransferListLength.isEmpty
+                                                            ? SizedBox(
                                                                 height: 50.h,
                                                                 child: Column(
                                                                   crossAxisAlignment:
@@ -869,7 +869,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                               4.0.w),
                                                                       child:
                                                                           Text(
-                                                                        "${AppMetaLabels().renatalpayments}",
+                                                                        AppMetaLabels().renatalpayments,
                                                                         style: AppTextStyle
                                                                             .semiBoldBlack11,
                                                                       ),
@@ -885,7 +885,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -894,12 +894,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type ==
-                                                                            'Contract Payable')
+                                                                            'Contract Payable') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -934,7 +935,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -943,12 +944,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type ==
-                                                                            'Additional Charges')
+                                                                            'Additional Charges') {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -983,7 +985,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -992,12 +994,13 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
-                                                                            'VAT On Rent'.toLowerCase())
+                                                                            'VAT On Rent'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                   if (_controller
@@ -1032,7 +1035,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       shrinkWrap:
                                                                           true,
                                                                       physics:
-                                                                          NeverScrollableScrollPhysics(),
+                                                                          const NeverScrollableScrollPhysics(),
                                                                       itemCount: _controller
                                                                           .contractPayableData
                                                                           .record!
@@ -1041,17 +1044,18 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           (BuildContext context,
                                                                               int index) {
                                                                         if (_controller.contractPayableData.record![index].type!.toLowerCase() ==
-                                                                            'Vat On Charges'.toLowerCase())
+                                                                            'Vat On Charges'.toLowerCase()) {
                                                                           return paymentsListItem(_controller
                                                                               .contractPayableData
                                                                               .record![index]);
-                                                                        else
-                                                                          return SizedBox();
+                                                                        } else {
+                                                                          return const SizedBox();
+                                                                        }
                                                                       },
                                                                     ),
                                                                 ],
                                                               )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
 
                                                     // This Condition for "Procced Button" and  Amount etc
                                                     // _controller.isPayemntValue.value == 1
@@ -1062,10 +1066,8 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                 .value ==
                                                             1
                                                         ? _controller
-                                                                    .cardPaymentListLength
-                                                                    .length ==
-                                                                0
-                                                            ? SizedBox()
+                                                                    .cardPaymentListLength.isEmpty
+                                                            ? const SizedBox()
                                                             : Column(
                                                                 children: [
                                                                   Padding(
@@ -1085,7 +1087,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                             style:
                                                                                 AppTextStyle.semiBoldBlack11,
                                                                           ),
-                                                                          Spacer(),
+                                                                          const Spacer(),
                                                                           Obx(() {
                                                                             return Text(
                                                                               '${AppMetaLabels().aed} ${_controller.sumOfSelectedPayments.value}',
@@ -1185,7 +1187,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                       child: Obx(
                                                                           () {
                                                                         return _controller.registeringPayment.value
-                                                                            ? LoadingIndicatorBlue()
+                                                                            ? const LoadingIndicatorBlue()
                                                                             : ElevatedButton(
                                                                                 onPressed: () {
                                                                                   if (_controller.sumOfSelectedPayments.value == '0.00') {
@@ -1194,10 +1196,6 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                                     _controller.registerPayment(widget.contractNo??"");
                                                                                   }
                                                                                 },
-                                                                                child: Text(
-                                                                                  AppMetaLabels().proceedTopayL,
-                                                                                  style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
-                                                                                ),
                                                                                 style: ButtonStyle(
                                                                                     elevation: WidgetStateProperty.all<double>(0.0),
                                                                                     backgroundColor: WidgetStateProperty.all<Color>(AppColors.blueColor),
@@ -1206,6 +1204,10 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                                         borderRadius: BorderRadius.circular(2.0.w),
                                                                                       ),
                                                                                     )),
+                                                                                child: Text(
+                                                                                  AppMetaLabels().proceedTopayL,
+                                                                                  style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
+                                                                                ),
                                                                               );
                                                                       }),
                                                                     ),
@@ -1223,10 +1225,8 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                     .value ==
                                                                 3
                                                             ? _controller
-                                                                        .bankTransferListLength
-                                                                        .length ==
-                                                                    0
-                                                                ? SizedBox()
+                                                                        .bankTransferListLength.isEmpty
+                                                                ? const SizedBox()
                                                                 : Column(
                                                                     children: [
                                                                       Padding(
@@ -1243,7 +1243,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                                 AppMetaLabels().amount,
                                                                                 style: AppTextStyle.semiBoldBlack11,
                                                                               ),
-                                                                              Spacer(),
+                                                                              const Spacer(),
                                                                               Obx(() {
                                                                                 return Text(
                                                                                   '${AppMetaLabels().aed} ${_controller.sumOfSelectedPayments1.value}',
@@ -1335,7 +1335,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                           child:
                                                                               Obx(() {
                                                                             return _controller.registeringPayment.value
-                                                                                ? LoadingIndicatorBlue()
+                                                                                ? const LoadingIndicatorBlue()
                                                                                 : ElevatedButton(
                                                                                     onPressed: () {
                                                                                       if (_controller.sumOfSelectedPayments1.value == '0.00') {
@@ -1344,10 +1344,6 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                                         _controller.registerPayment(widget.contractNo??"");
                                                                                       }
                                                                                     },
-                                                                                    child: Text(
-                                                                                      AppMetaLabels().proceedTopayL,
-                                                                                      style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
-                                                                                    ),
                                                                                     style: ButtonStyle(
                                                                                         elevation: WidgetStateProperty.all<double>(0.0),
                                                                                         backgroundColor: WidgetStateProperty.all<Color>(AppColors.blueColor),
@@ -1356,13 +1352,17 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                                                                                             borderRadius: BorderRadius.circular(2.0.w),
                                                                                           ),
                                                                                         )),
+                                                                                    child: Text(
+                                                                                      AppMetaLabels().proceedTopayL,
+                                                                                      style: AppTextStyle.semiBoldBlack11.copyWith(color: Colors.white),
+                                                                                    ),
                                                                                   );
                                                                           }),
                                                                         ),
                                                                       ),
                                                                     ],
                                                                   )
-                                                            : SizedBox(),
+                                                            : const SizedBox(),
                                                     // Padding(
                                                     //   padding: EdgeInsets.only(
                                                     //       top: 4.0.h,
@@ -1521,7 +1521,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (_controller.cardPaymentListLength.length == 0 &&
+        if (_controller.cardPaymentListLength.isEmpty &&
             _controller.isPayemntValue.value == 1)
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -1546,7 +1546,7 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
               ),
             ],
           ),
-        if (_controller.bankTransferListLength.length == 0 &&
+        if (_controller.bankTransferListLength.isEmpty &&
             _controller.isPayemntValue.value == 3)
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -1646,12 +1646,12 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
                     ],
                   ),
                 )
-              : SizedBox();
+              : const SizedBox();
         }),
         payable.defaultpaymentmethodtype!.value ==
                 _controller.isPayemntValue.value
-            ? AppDivider()
-            : SizedBox(),
+            ? const AppDivider()
+            : const SizedBox(),
       ],
     );
   }

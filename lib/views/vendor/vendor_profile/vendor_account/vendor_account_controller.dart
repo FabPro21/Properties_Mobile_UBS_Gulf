@@ -27,9 +27,9 @@ class VendorAccountController extends GetxController {
   }
 
   void getVendorAccounts() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loading.value = true;
@@ -37,15 +37,18 @@ class VendorAccountController extends GetxController {
     loading.value = false;
     if (resp is GetVendorAccountsModel) {
       getVendorAccountsModel.value = resp;
-    } else
+    } else {
       error.value = resp;
+    }
   }
 
   String getMaskedString(String text) {
     if (text.isEmpty) return '';
     // if (text == null) return ''; #1
     String mask = '';
-    for (int i = 4; i < text.length - 4; i++) mask = mask + '*';
+    for (int i = 4; i < text.length - 4; i++) {
+      mask = '$mask*';
+    }
     return text.substring(0, 4) +
         mask +
         text.substring(text.length - 4, text.length);

@@ -31,8 +31,7 @@ import 'package:flutter/services.dart';
 class TenantServiceDocuments extends StatefulWidget {
   final String? caseNo;
   final String? caller;
-  TenantServiceDocuments({Key? key, this.caseNo, this.caller})
-      : super(key: key) {
+  TenantServiceDocuments({super.key, this.caseNo, this.caller}) {
     Get.put(SvcReqDocsController(caseNo: caseNo));
   }
 
@@ -108,24 +107,24 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: _isSolving == true
-              ? Center(child: LoadingIndicatorBlue())
+              ? const Center(child: LoadingIndicatorBlue())
               : Stack(
                   children: [
                     controller.loadingDocs.value
-                        ? Center(child: LoadingIndicatorBlue())
+                        ? const Center(child: LoadingIndicatorBlue())
                         : Column(
                             children: [
                               Expanded(
                                 child: Obx(() {
                                   return controller.loadingDocs.value
-                                      ? Center(child: LoadingIndicatorBlue())
+                                      ? const Center(child: LoadingIndicatorBlue())
                                       : controller.errorLoadingDocs != ''
                                           ? AppErrorWidget(
                                               errorText:
                                                   controller.errorLoadingDocs,
                                             )
                                           : controller.docsModel?.docs == null
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : Container(
                                                   child: ListView.builder(
                                                       padding: EdgeInsets.zero,
@@ -170,18 +169,18 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                             '' &&
                                                                         SessionController().getLanguage() !=
                                                                             1
-                                                                    ? SizedBox()
+                                                                    ? const SizedBox()
                                                                     : controller.docsModel?.caseStageInfo?.stageId?.value ==
                                                                             4
                                                                         ? Container(
                                                                             alignment:
                                                                                 Alignment.center,
                                                                             padding:
-                                                                                EdgeInsets.all(8.0),
+                                                                                const EdgeInsets.all(8.0),
                                                                             margin:
                                                                                 EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
                                                                             decoration:
-                                                                                BoxDecoration(color: Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
+                                                                                BoxDecoration(color: const Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
                                                                             child:
                                                                                 Row(
                                                                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,7 +189,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                   Icons.error_outline,
                                                                                   color: Colors.amber[400],
                                                                                 ),
-                                                                                SizedBox(
+                                                                                const SizedBox(
                                                                                   width: 8.0,
                                                                                 ),
                                                                                 Expanded(
@@ -202,7 +201,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                               ],
                                                                             ),
                                                                           )
-                                                                        : SizedBox();
+                                                                        : const SizedBox();
                                                           }));
                                                         }
                                                         return Padding(
@@ -317,7 +316,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 }),
                               ),
                               controller.docsModel?.docs == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : SingleChildScrollView(
                                       child: Obx(() {
                                         // implementing the caseCategouryId && caseSubCatagouryId condition
@@ -337,20 +336,20 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                         .detail!
                                                         .caseSubCatagouryId !=
                                                     88
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : controller.docsModel
                                                         ?.caseStageInfo ==
                                                     null
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : controller.loadingDocs.value
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : controller
                                                                 .docsModel!
                                                                 .caseStageInfo!
                                                                 .stageId!
                                                                 .value >=
                                                             3
-                                                        ? SizedBox()
+                                                        ? const SizedBox()
                                                         : Align(
                                                             alignment: Alignment
                                                                 .bottomCenter,
@@ -383,7 +382,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                 child: controller
                                                                         .updatingDocStage
                                                                         .value
-                                                                    ? LoadingIndicatorBlue()
+                                                                    ? const LoadingIndicatorBlue()
                                                                     : ElevatedButton(
                                                                         onPressed: !controller.enableSubmit.value
                                                                             ? null
@@ -408,6 +407,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                       });
                                                                                 }
                                                                               },
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          shape:
+                                                                              RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(1.3.h),
+                                                                          ),
+                                                                          backgroundColor: controller.enableSubmit.value
+                                                                              ? const Color.fromRGBO(0, 61, 166, 1)
+                                                                              : Colors.grey.shade400,
+                                                                        ),
                                                                         child:
                                                                             SizedBox(
                                                                           width:
@@ -421,17 +431,6 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        style: ElevatedButton
-                                                                            .styleFrom(
-                                                                          shape:
-                                                                              RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(1.3.h),
-                                                                          ),
-                                                                          backgroundColor: controller.enableSubmit.value
-                                                                              ? Color.fromRGBO(0, 61, 166, 1)
-                                                                              : Colors.grey.shade400,
-                                                                        ),
                                                                       ),
                                                               ),
                                                             ),
@@ -441,23 +440,23 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ],
                           ),
                     isEnableScreen == false
-                        ? ScreenDisableWidget()
-                        : SizedBox(),
+                        ? const ScreenDisableWidget()
+                        : const SizedBox(),
                     Obx(() {
                       return controller.isLoadingForScanning.value == true
                           ? Container(
                               height: double.infinity,
                               width: double.infinity,
                               color: Colors.black.withOpacity(0.3),
-                              child: Center(
+                              child: const Center(
                                   child: CircularProgressIndicator(
                                 backgroundColor: Colors.white,
                                 color: Colors.blue,
                               )),
                             )
-                          : SizedBox();
+                          : const SizedBox();
                     }),
-                    BottomShadow(),
+                    const BottomShadow(),
                   ],
                 )),
     );
@@ -518,7 +517,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 style: AppTextStyle.normalErrorText3)
                           ]),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Obx(() {
@@ -624,7 +623,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               ),
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(246, 248, 249, 1),
+                                color: const Color.fromRGBO(246, 248, 249, 1),
                                 borderRadius: BorderRadius.circular(0.5.h),
                               ),
                               child: Column(
@@ -739,7 +738,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             }
                           }
 
-                          var expDate;
+                          DateTime? expDate;
                           if (controller.docsModel?.docs?[index].path != null) {
                             print('Tapping :::::: ');
                             expDate = await showRoundedDatePicker(
@@ -749,11 +748,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               context: context,
                               // locale: Locale('en'),
                               locale: SessionController().getLanguage() == 1
-                                  ? Locale('en', '')
-                                  : Locale('ar', ''),
+                                  ? const Locale('en', '')
+                                  : const Locale('ar', ''),
                               initialDate: DateTime.now(),
                               firstDate:
-                                  DateTime.now().subtract(Duration(seconds: 1)),
+                                  DateTime.now().subtract(const Duration(seconds: 1)),
                               lastDate: DateTime(DateTime.now().year + 20),
                               borderRadius: 2.0.h,
                               // theme:
@@ -805,7 +804,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 AppMetaLabels().selectFuturedate,
                               );
                             } else {
-                              DateFormat dateFormat = new DateFormat(
+                              DateFormat dateFormat = DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
                               if (controller.docsModel?.docs?[index].name!
@@ -837,7 +836,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           width: 40.0.w,
                           height: 5.5.h,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(246, 248, 249, 1),
+                              color: const Color.fromRGBO(246, 248, 249, 1),
                               borderRadius: BorderRadius.circular(1.0.h),
                               border: Border.all(
                                   color: index ==
@@ -862,7 +861,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   );
                                 }),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -890,9 +889,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           child: Center(
                               child: Text(
                             AppMetaLabels().pleaseSelectExpiryDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: const TextStyle(color: Colors.blue),
                           )))
-                      : SizedBox(
+                      : const SizedBox(
                           height: 10,
                         ),
                   Container(
@@ -985,12 +984,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               .path = null;
                                           SnakBarWidget.getSnackBarErrorBlue(
                                               AppMetaLabels().alert,
-                                              AppMetaLabels()
-                                                      .someThingWentWrong +
-                                                  ' ' +
-                                                  AppMetaLabels().please +
-                                                  ' ' +
-                                                  AppMetaLabels().reScane);
+                                              '${AppMetaLabels()
+                                                      .someThingWentWrong} ${AppMetaLabels().please} ${AppMetaLabels().reScane}');
                                         });
                                       }
                                     },
@@ -1105,17 +1100,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                 isEnableScreen = true;
                                               });
                                             },
-                                      child: Text(
-                                        AppMetaLabels().upload,
-                                        style: AppTextStyle.semiBoldWhite12,
-                                      ),
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            const Color.fromRGBO(0, 61, 166, 1),
+                                      ),
+                                      child: Text(
+                                        AppMetaLabels().upload,
+                                        style: AppTextStyle.semiBoldWhite12,
                                       ),
                                     );
                                   });
@@ -1135,11 +1130,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.storage),
-                        title: new Text(AppMetaLabels().storage),
+                    ListTile(
+                        leading: const Icon(Icons.storage),
+                        title: Text(AppMetaLabels().storage),
                         onTap: () async {
                           // if (!await Permission.storage.request().isGranted) {
                           //   print('Else');
@@ -1158,9 +1153,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             print("Exception ::: $e");
                           }
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         // if (!await Permission.camera.request().isGranted) {
                         //   print('Else');
@@ -1199,11 +1194,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
               child: SafeArea(
                   child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                      leading: new Icon(Icons.photo_library),
-                      title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                      leading: const Icon(Icons.photo_library),
+                      title: Text(AppMetaLabels().photoLibrary),
                       onTap: () async {
                         // new
                         // if (!await Permission.photos.request().isGranted) {
@@ -1247,9 +1242,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         }
                       },
                     ),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         // new
                         // if (!await Permission.camera.request().isGranted) {
@@ -1390,12 +1385,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
     iDNumberText.text = controller.cardScanModel.idNumber ?? "";
     if (controller.cardScanModel.dob != null) {
       dOBText =
-          '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!)}';
+          DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!);
     }
     print('iDNumberText TextField :::: ${iDNumberText.text}');
     expiryText = controller.cardScanModel.expiry == null
         ? controller.docsModel?.docs![index].expiry ?? ""
-        : '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!)}';
+        : DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!);
 
     print('expiryText expiryText :::: $expiryText');
     setState(() {
@@ -1444,9 +1439,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                       text: AppMetaLabels().name,
                                       style: AppTextStyle.normalGrey10),
                                   TextSpan(
-                                    text: ' (' +
-                                        '${AppMetaLabels().invalidName}' +
-                                        ')',
+                                    text: ' (' '${AppMetaLabels().invalidName})',
                                     style: AppTextStyle.normalGrey8,
                                   ),
                                 ],
@@ -1522,7 +1515,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               hintText: AppMetaLabels().name,
                               hintStyle: AppTextStyle.normalBlack10
                                   .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: TextStyle(fontSize: 0),
+                              errorStyle: const TextStyle(fontSize: 0),
                               contentPadding: EdgeInsets.all(2.5.w),
                             ),
                           ),
@@ -1538,7 +1531,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                     .copyWith(color: Colors.red),
                               ),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                       // ID Number
                       Padding(
                         padding: EdgeInsets.only(
@@ -1563,7 +1556,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             inputFormatters: [maskFormatter],
                             controller: iDNumberText,
                             maxLength: 18,
-                            keyboardType: TextInputType.numberWithOptions(),
+                            keyboardType: const TextInputType.numberWithOptions(),
                             onChanged: (val) {
                               if (val.isNotEmpty) {
                                 setState(() {
@@ -1604,7 +1597,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               hintText: '000-0000-0000000-0',
                               hintStyle: AppTextStyle.normalBlack10
                                   .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: TextStyle(fontSize: 0),
+                              errorStyle: const TextStyle(fontSize: 0),
                               contentPadding: EdgeInsets.all(2.5.w),
                             ),
                           ),
@@ -1635,11 +1628,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             context: context,
                             // locale: Locale('en'),
                             locale: SessionController().getLanguage() == 1
-                                ? Locale('en', '')
-                                : Locale('ar', ''),
+                                ? const Locale('en', '')
+                                : const Locale('ar', ''),
                             initialDate: DateTime.now(),
                             firstDate:
-                                DateTime.now().subtract(Duration(seconds: 1)),
+                                DateTime.now().subtract(const Duration(seconds: 1)),
                             lastDate: DateTime(DateTime.now().year + 10),
                             borderRadius: 2.0.h,
                             // theme:
@@ -1671,7 +1664,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 AppMetaLabels().selectFuturedate,
                               );
                             } else {
-                              DateFormat dateFormat = new DateFormat(
+                              DateFormat dateFormat = DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
                               setState(() {
@@ -1690,7 +1683,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           margin: EdgeInsets.only(
                               top: 0.5.h, left: 2.0.w, right: 2.0.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                             border: Border.all(
                               color: isExpiryError == true
@@ -1710,7 +1703,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   style: AppTextStyle.normalBlack10,
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -1753,8 +1746,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             context: context,
                             // locale: Locale('en'),
                             locale: SessionController().getLanguage() == 1
-                                ? Locale('en', '')
-                                : Locale('ar', ''),
+                                ? const Locale('en', '')
+                                : const Locale('ar', ''),
                             initialDate: DateTime.now(),
                             firstDate: DateTime(DateTime.now().year - 100),
                             lastDate: DateTime.now(),
@@ -1788,7 +1781,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 AppMetaLabels().selectFuturedate,
                               );
                             } else {
-                              DateFormat dateFormat = new DateFormat(
+                              DateFormat dateFormat = DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
                               setState(() {
@@ -1804,7 +1797,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           margin: EdgeInsets.only(
                               top: 0.5.h, left: 2.0.w, right: 2.0.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                             border: Border.all(
                               color: isDOBError == true
@@ -1824,7 +1817,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   style: AppTextStyle.normalBlack10,
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -1851,7 +1844,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 controller.mergedId!,
                                 fit: BoxFit.contain,
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                       ),
                     ],
                   ),
@@ -2302,7 +2295,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Align(
@@ -2315,11 +2308,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(1.3.h),
                               ),
-                              backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                              backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                             ),
                             onPressed: () {
                               Get.back();
-                              Get.off(() => TenantDashboardTabs(
+                              Get.off(() => const TenantDashboardTabs(
                                     initialIndex: 0,
                                   ));
                             },
@@ -2434,7 +2427,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () async {
                         Get.back();
@@ -2486,7 +2479,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                 : ui.TextDirection.rtl,
             child: AlertDialog(
               title: Text(AppMetaLabels().emirateid),
-              content: Container(
+              content: SizedBox(
                 height: Get.height * 0.6,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -2532,7 +2525,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: Get.width * 0.3,
                           height: Get.height * 0.05,
@@ -2547,7 +2540,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(3.0.w),
-                                      side: BorderSide(color: Colors.blue))),
+                                      side: const BorderSide(color: Colors.blue))),
                               backgroundColor:
                                   WidgetStateProperty.all<Color>(Colors.white),
                             ),
@@ -2558,7 +2551,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: Get.width * 0.3,
                           height: Get.height * 0.05,
@@ -2620,7 +2613,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     )
                   ],

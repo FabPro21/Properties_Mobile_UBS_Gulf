@@ -21,8 +21,8 @@ import 'contract_payments_controller.dart';
 // unverified
 class PaymentsScreen extends StatefulWidget {
   const PaymentsScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _PaymentsScreenState createState() => _PaymentsScreenState();
@@ -143,7 +143,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ],
                 ));
           }),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -155,9 +155,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         if (paymentsController.error.value == '')
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 249, 235, 1),
+                color: const Color.fromRGBO(255, 249, 235, 1),
                 borderRadius: BorderRadius.circular(8)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,7 +166,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   Icons.error_outline,
                   color: Colors.amber[400],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8.0,
                 ),
                 Expanded(
@@ -183,7 +183,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
           ),
         Expanded(
           child: paymentsController.loadingData.value == true
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : paymentsController.error.value != ''
                   ? CustomErrorWidget(
                       errorText: paymentsController.error.value,
@@ -240,7 +240,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                       AppMetaLabels().amount,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "${AppMetaLabels().aed} $amount",
                       style: AppTextStyle.semiBoldGrey11,
@@ -266,7 +266,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(247, 247, 247, 1),
+                      color: const Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.circular(1.0.h),
                     ),
                     child: Column(
@@ -277,7 +277,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                   true
                               ? Padding(
                                   padding: EdgeInsets.all(2.h),
-                                  child: LoadingIndicatorBlue(),
+                                  child: const LoadingIndicatorBlue(),
                                 )
                               : paymentsController.payments.payments![index]
                                           .errorLoadingCheque !=
@@ -295,7 +295,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                       ? ListView.builder(
                                           shrinkWrap: true,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           padding: EdgeInsets.zero,
                                           itemCount: paymentsController
                                               .payments
@@ -403,12 +403,12 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                                                 .transactionCheque!
                                                                 .length -
                                                             1
-                                                    ? SizedBox()
-                                                    : AppDivider(),
+                                                    ? const SizedBox()
+                                                    : const AppDivider(),
                                               ],
                                             );
                                           })
-                                      : SizedBox();
+                                      : const SizedBox();
                         }),
                       ],
                     ),
@@ -444,7 +444,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                         child: paymentsController.payments.payments![index]
                                     .downloadingReceipt!.value ==
                                 true
-                            ? LoadingIndicatorBlue()
+                            ? const LoadingIndicatorBlue()
                             : InkWell(
                                 onTap: () async {
                                   paymentDownloadReceiptController
@@ -467,7 +467,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                         style: AppTextStyle.normalBlue12,
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Icon(
                                       Icons.download,
                                       size: 3.0.h,
@@ -481,7 +481,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               ],
             ),
           ),
-          index == paymentsController.length - 1 ? Container() : AppDivider(),
+          index == paymentsController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );
@@ -489,7 +489,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
 
   Widget unverifiedPayments() {
     return paymentsController.loadingUnverified.value == true
-        ? LoadingIndicatorBlue()
+        ? const LoadingIndicatorBlue()
         : paymentsController.errorLoadingUnverified != ''
             ? CustomErrorWidget(
                 errorText: paymentsController.errorLoadingUnverified,
@@ -531,7 +531,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                       AppMetaLabels().refNo,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       paymentsController.unverifiedPayments
                               .contractPayments![index].referenceNo ??
@@ -598,7 +598,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                       AppMetaLabels().amount,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "${AppMetaLabels().aed} $amount",
                       style: AppTextStyle.semiBoldGrey11,
@@ -608,7 +608,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               ],
             ),
           ),
-          index == paymentsController.length - 1 ? Container() : AppDivider(),
+          index == paymentsController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );
@@ -623,7 +623,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             style: AppTextStyle.normalGrey11,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 8,
         ),
         Expanded(

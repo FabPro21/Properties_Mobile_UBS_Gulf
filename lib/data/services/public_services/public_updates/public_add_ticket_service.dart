@@ -21,9 +21,11 @@ class PublicAddTicketService {
     if (response is StreamedResponse) {
       if (response.statusCode == 200) {
         return 'Ok';
-      } else
+      } else {
         return response.statusCode;
-    } else
+      }
+    } else {
       return response;
+    }
   }
 }

@@ -252,14 +252,14 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicProfile extends StatefulWidget {
-  const PublicProfile({Key? key}) : super(key: key);
+  const PublicProfile({super.key});
 
   @override
   _PublicProfileState createState() => _PublicProfileState();
 }
 
 class _PublicProfileState extends State<PublicProfile> {
-  PublicProfileController _controller = Get.put(PublicProfileController());
+  final PublicProfileController _controller = Get.put(PublicProfileController());
   String name = "";
   _getName() {
     String mystring = SessionController().getUserName() ?? "";
@@ -326,7 +326,7 @@ class _PublicProfileState extends State<PublicProfile> {
                 return _controller.profileLoading.value
                     ? Padding(
                         padding: EdgeInsets.only(top: 50.0.h),
-                        child: LoadingIndicatorBlue(),
+                        child: const LoadingIndicatorBlue(),
                       )
                     : Column(
                         children: [

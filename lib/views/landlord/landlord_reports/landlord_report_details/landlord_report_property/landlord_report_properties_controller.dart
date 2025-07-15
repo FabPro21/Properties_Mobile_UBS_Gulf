@@ -15,10 +15,6 @@ class LandLordReportPropertiesController extends GetxController {
   RxString error = ''.obs;
   int proppertyTypesLength = 0;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   LandlordPropertiesModel? propsModel;
   List<ServiceRequests>? listOfProperties;
@@ -29,14 +25,15 @@ class LandLordReportPropertiesController extends GetxController {
     print(response);
     if (response is LandlordPropertiesModel) {
       propsModel = response;
-      if (propsModel!.serviceRequests!.length < 1) {
+      if (propsModel!.serviceRequests!.isEmpty) {
         error.value = AppMetaLabels().noDatafound;
       } else {
         listOfProperties = propsModel!.serviceRequests!.toSet().toList();
         proppertyTypesLength = listOfProperties!.length;
       }
-    } else
+    } else {
       error.value = response;
+    }
     loading.value = false;
   }
 
@@ -47,9 +44,9 @@ class LandLordReportPropertiesController extends GetxController {
   //     dropDownModel.GetDropDownModel().obs;
   RxList<dropDownModel.ServiceRequests> getDropDownModelList = <dropDownModel.ServiceRequests>[].obs;
   getDropdownType(String type) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       errorDropdownType.value = '';
@@ -83,9 +80,9 @@ class LandLordReportPropertiesController extends GetxController {
 
   void getPropertyTypes() async {
     if (propertyTypesModel.value.message == null) {
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(const NoInternetScreen());
       }
       loading.value = true;
       var resp = await LandlordRepository.getPropertyTypes();

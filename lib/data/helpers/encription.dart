@@ -54,9 +54,7 @@ encriptdata(payload) {
     jsonUser,
     iv: iv,
   );
-  
-  final decrypted = encrypter.decrypt(encrypted, iv: iv);
-  print('decrypted for encrypt $decrypted');
+
   return encrypted.base64;
 }
 
@@ -70,9 +68,8 @@ encriptdatasingle(payload) {
     payload,
     iv: iv,
   );
-  final decrypted = encrypter.decrypt(encrypted, iv: iv);
   // print("ans is------");
-  print(decrypted); // Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  // Lorem ipsum dolor sit amet, consectetur adipiscing elit
   // print(encrypted.base64);
   return encrypted.base64;
 }

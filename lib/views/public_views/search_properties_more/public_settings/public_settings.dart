@@ -14,7 +14,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class PublicSettings extends StatefulWidget {
-  const PublicSettings({Key? key}) : super(key: key);
+  const PublicSettings({super.key});
 
   @override
   _PublicSettingsState createState() => _PublicSettingsState();
@@ -57,7 +57,7 @@ class _PublicSettingsState extends State<PublicSettings> {
                         AppMetaLabels().biometric,
                         style: AppTextStyle.semiBoldBlack13,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -73,7 +73,7 @@ class _PublicSettingsState extends State<PublicSettings> {
                           ],
                           activeBgColors: [
                             [AppColors.blueColor],
-                            [Colors.white]
+                            const [Colors.white]
                           ],
                           inactiveBgColor: Colors.grey[200],
                           initialLabelIndex: fPOption,
@@ -98,7 +98,7 @@ class _PublicSettingsState extends State<PublicSettings> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(() => ChooseLanguage(loggedIn: true));
+                      Get.to(() => const ChooseLanguage(loggedIn: true));
                     },
                     child: Row(
                       children: [
@@ -112,7 +112,7 @@ class _PublicSettingsState extends State<PublicSettings> {
                           AppMetaLabels().language,
                           style: AppTextStyle.semiBoldBlack13,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 2.5.h,

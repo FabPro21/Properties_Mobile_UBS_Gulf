@@ -22,12 +22,11 @@ class ContractExtend extends StatefulWidget {
   final String? caller;
   final int? dueActionId;
   const ContractExtend(
-      {Key? key,
+      {super.key,
       this.contractNo,
       this.contractId,
       this.caller,
-      this.dueActionId = 0})
-      : super(key: key);
+      this.dueActionId = 0});
 
   @override
   _ContractExtendState createState() => _ContractExtendState();
@@ -123,7 +122,7 @@ class _ContractExtendState extends State<ContractExtend> {
                   ),
                   child: Obx(() {
                     return controller.loadingPeriods.value
-                        ? LoadingIndicatorBlue()
+                        ? const LoadingIndicatorBlue()
                         : controller.errorLoadingPeriods != ''
                             ? AppErrorWidget(
                                 errorText: controller.errorLoadingPeriods,
@@ -145,13 +144,16 @@ class _ContractExtendState extends State<ContractExtend> {
                                     SizedBox(
                                       height: 1.5.h,
                                     ),
-                                    Container(
+                                    SizedBox(
                                         height: 5.5.h,
                                         child: ElevatedButton(
                                           autofocus: true,
                                           onPressed: () {
                                             modalBottomSheetMenu();
                                           },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppColors.greyBG,
+                                              elevation: 0),
                                           child: Padding(
                                             padding: EdgeInsets.only(
                                                 left: 1.0.w, right: 1.0.w),
@@ -181,7 +183,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                                   style:
                                                       AppTextStyle.normalGrey10,
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Icon(
                                                   Icons.arrow_drop_down_sharp,
                                                   size: 4.0.h,
@@ -190,9 +192,6 @@ class _ContractExtendState extends State<ContractExtend> {
                                               ],
                                             )),
                                           ),
-                                          style: ElevatedButton.styleFrom(
-                                              backgroundColor: AppColors.greyBG,
-                                              elevation: 0),
                                         )),
                                     Padding(
                                       padding: EdgeInsets.only(top: 2.5.h),
@@ -267,14 +266,14 @@ class _ContractExtendState extends State<ContractExtend> {
                                           ],
                                         ),
                                       ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Align(
                                       alignment: Alignment.center,
                                       child: SizedBox(
                                         height: 6.5.h,
                                         width: 79.0.w,
                                         child: controller.submitting.value
-                                            ? LoadingIndicatorBlue()
+                                            ? const LoadingIndicatorBlue()
                                             : ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                   shape: RoundedRectangleBorder(
@@ -283,7 +282,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                                             1.3.h),
                                                   ),
                                                   backgroundColor:
-                                                      Color.fromRGBO(
+                                                      const Color.fromRGBO(
                                                           0, 61, 166, 1),
                                                 ),
                                                 onPressed: () async {
@@ -294,7 +293,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                                           widget.contractId??0,
                                                           widget.caller??"",
                                                           widget.dueActionId??0);
-                                                  if (resp == 'ok')
+                                                  if (resp == 'ok') {
                                                     showDialog(
                                                         context: context,
                                                         barrierDismissible:
@@ -311,7 +310,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                                               content:
                                                                   showDialogData());
                                                         });
-                                                  else {
+                                                  } else {
                                                     Get.snackbar(
                                                         AppMetaLabels().error,
                                                         resp,
@@ -397,7 +396,7 @@ class _ContractExtendState extends State<ContractExtend> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         SessionController()
@@ -434,13 +433,13 @@ class _ContractExtendState extends State<ContractExtend> {
                     .transparent, //could change this to Color(0xFF737373),
                 //so you don't have to change MaterialApp canvasColor
                 child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20.0),
                             topRight: Radius.circular(20.0))),
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: ListView.builder(
                           padding: EdgeInsets.only(top: 2.0.h),
                           shrinkWrap: true,
@@ -485,7 +484,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                                     .duration??""
                                                     .replaceAll('Month', 'شهر'),
                                             style: AppTextStyle.normalBlack10),
-                                        Spacer(),
+                                        const Spacer(),
                                         Text(
                                             '${controller.extensionPeriods?.extensionPeriod?[index].extensionDetail?.addNewDate} - ${controller.extensionPeriods?.extensionPeriod?[index].extensionDetail?.endNewDate}',
                                             style: AppTextStyle.normalBlack10),
@@ -495,7 +494,7 @@ class _ContractExtendState extends State<ContractExtend> {
                                       ],
                                     );
                                   }),
-                                  AppDivider(),
+                                  const AppDivider(),
                                 ],
                               ),
                               onTap: () {

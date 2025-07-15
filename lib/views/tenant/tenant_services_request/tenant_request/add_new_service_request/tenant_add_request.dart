@@ -21,7 +21,7 @@ import 'tenant_sub_case_category/tenant_sub_case_category.dart';
 import 'package:flutter/services.dart';
 
 class TenantAddServicesRequest extends StatefulWidget {
-  const TenantAddServicesRequest({Key? key}) : super(key: key);
+  const TenantAddServicesRequest({super.key});
 
   @override
   State<TenantAddServicesRequest> createState() =>
@@ -100,21 +100,20 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
               children: [
                 CustomAppBar2(title: AppMetaLabels().newRequestSmall),
                 propertiesController.loadingData.value
-                    ? LoadingIndicatorBlue()
+                    ? const Center(child: LoadingIndicatorBlue())
                     : propertiesController.error.value != ''
                         ? AppErrorWidget(
                             errorText: propertiesController.error.value,
                           )
                         : propertiesController.getTenantProperties.value
-                                    .properties!.length ==
-                                0
+                                    .properties!.isEmpty
                             ? Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: CustomErrorWidget(
                                   errorText: AppMetaLabels().cannotAddSvcReq,
                                 ),
                               )
-                            : Container(
+                            : SizedBox(
                               height: 88.h,
                               child: Form(
                                   key: formKey,
@@ -186,7 +185,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                               .h),
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color
+                                                                    color: const Color
                                                                         .fromRGBO(
                                                                             246,
                                                                             248,
@@ -242,7 +241,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                               onTap: () async {
                                                                 var caseCategoryResult =
                                                                     await Get.to(() =>
-                                                                        TenantCaseCategory());
+                                                                        const TenantCaseCategory());
                                                                 if (caseCategoryResult !=
                                                                     null) {
                                                                   tASRController
@@ -275,7 +274,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 height: 5.0.h,
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  color: Color
+                                                                  color: const Color
                                                                       .fromRGBO(
                                                                           246,
                                                                           248,
@@ -311,7 +310,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                         style: AppTextStyle
                                                                             .normalGrey10,
                                                                       ),
-                                                                      Spacer(),
+                                                                      const Spacer(),
                                                                       Icon(
                                                                         Icons
                                                                             .arrow_drop_down,
@@ -377,7 +376,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   var caseSubCategoryResult =
                                                                       await Get.to(
                                                                           () =>
-                                                                              TenantSubCaseCategory());
+                                                                              const TenantSubCaseCategory());
                                                                   if (caseSubCategoryResult !=
                                                                       null) {
                                                                     tASRController
@@ -401,7 +400,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   height: 5.0.h,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color
+                                                                    color: const Color
                                                                         .fromRGBO(
                                                                             246,
                                                                             248,
@@ -429,7 +428,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                             .h),
                                                                     child: Row(
                                                                       children: [
-                                                                        Container(
+                                                                        SizedBox(
                                                                           width: Get.width *
                                                                               0.67,
                                                                           child:
@@ -443,7 +442,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                                 TextOverflow.ellipsis,
                                                                           ),
                                                                         ),
-                                                                        Spacer(),
+                                                                        const Spacer(),
                                                                         Icon(
                                                                           Icons
                                                                               .arrow_drop_down,
@@ -498,7 +497,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                           onTap: () async {
                                                             var result =
                                                                 await Get.to(() =>
-                                                                    GetTenantProperties());
+                                                                    const GetTenantProperties());
                                                             if (result != null) {
                                                               tASRController
                                                                   .contractUnitName
@@ -518,7 +517,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color:
-                                                                  Color.fromRGBO(
+                                                                  const Color.fromRGBO(
                                                                       246,
                                                                       248,
                                                                       249,
@@ -554,7 +553,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     style: AppTextStyle
                                                                         .normalGrey10,
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   Icon(
                                                                     Icons
                                                                         .arrow_drop_down,
@@ -677,10 +676,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     (String?
                                                                         value) {
                                                                   if (value!
-                                                                      .isEmpty)
+                                                                      .isEmpty) {
                                                                     return AppMetaLabels()
                                                                         .requiredField;
-                                                                  else if (!nameValidator
+                                                                  } else if (!nameValidator
                                                                       .hasMatch(
                                                                           value))
                                                                     return AppMetaLabels()
@@ -728,10 +727,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     (String?
                                                                         value) {
                                                                   if (value!
-                                                                      .isEmpty)
+                                                                      .isEmpty) {
                                                                     return AppMetaLabels()
                                                                         .requiredField;
-                                                                  else if (!phoneValidator
+                                                                  } else if (!phoneValidator
                                                                       .hasMatch(
                                                                           value))
                                                                     return AppMetaLabels()
@@ -779,7 +778,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                         () async {
                                                                       var contactTime =
                                                                           await Get.to(() =>
-                                                                              GetContactTiming());
+                                                                              const GetContactTiming());
                                                                       if (contactTime !=
                                                                           null) {
                                                                         tASRController
@@ -801,7 +800,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                       height:
                                                                           5.0.h,
                                                                       decoration: BoxDecoration(
-                                                                          color: Color.fromRGBO(
+                                                                          color: const Color.fromRGBO(
                                                                               246,
                                                                               248,
                                                                               249,
@@ -828,7 +827,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                               style:
                                                                                   AppTextStyle.normalGrey10,
                                                                             ),
-                                                                            Spacer(),
+                                                                            const Spacer(),
                                                                             Icon(
                                                                               Icons.arrow_drop_down,
                                                                               size:
@@ -927,10 +926,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                           maxLines: 5,
                                                           validator:
                                                               (String? value) {
-                                                            if (value!.isEmpty)
+                                                            if (value!.isEmpty) {
                                                               return AppMetaLabels()
                                                                   .requiredField;
-                                                            else if (!textValidator
+                                                            } else if (!textValidator
                                                                 .hasMatch(value
                                                                     .replaceAll(
                                                                         '\n',
@@ -978,7 +977,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                             padding: EdgeInsets.all(3.5.h),
                                             child: tASRController
                                                     .loadingData.value
-                                                ? LoadingIndicatorBlue()
+                                                ? const LoadingIndicatorBlue()
                                                 : ElevatedButton(
                                                     style:
                                                         ElevatedButton.styleFrom(
@@ -989,7 +988,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                 1.3.h),
                                                       ),
                                                       backgroundColor:
-                                                          Color.fromRGBO(
+                                                          const Color.fromRGBO(
                                                               0, 61, 166, 1),
                                                     ),
                                                     onPressed: () {

@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 
 class LandLordAllNotifications extends StatefulWidget {
   final int? index;
-  const LandLordAllNotifications({Key? key, this.index}) : super(key: key);
+  const LandLordAllNotifications({super.key, this.index});
 
   @override
   _LandLordAllNotificationsState createState() =>
@@ -32,7 +32,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: getLandLController.loadingData.value
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : getLandLController.error.value != ''
               ? AppErrorWidget(
                   errorText: getLandLController.error.value,
@@ -104,11 +104,12 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                             .getNotifications
                                             .value
                                             .notifications![index]
-                                            .isRead!)
+                                            .isRead!) {
                                           await getLandLController
                                               .readNotifications(index, 'all');
+                                        }
                                         Get.to(() =>
-                                            LandlordNotificationDetails());
+                                            const LandlordNotificationDetails());
                                       },
                                       contentPadding: EdgeInsets.zero,
                                       horizontalTitleGap: 0,
@@ -139,7 +140,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                               height: 1.0.h,
                             ),
                             getLandLController.allLength < 20
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Center(
                                     child: Obx(() {
                                       return getLandLController
@@ -147,7 +148,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                               ''
                                           ? Text(
                                               AppMetaLabels().noMoreData,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.blue,
                                               ),
                                             )
@@ -157,7 +158,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                               ? SizedBox(
                                                   width: 75.w,
                                                   height: 5.h,
-                                                  child: Center(
+                                                  child: const Center(
                                                     child:
                                                         LoadingIndicatorBlue(),
                                                   ),
@@ -190,12 +191,12 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                                             TextSpan(
                                                               text: AppMetaLabels()
                                                                   .loadMoreData,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                 color:
                                                                     Colors.blue,
                                                               ),
                                                             ),
-                                                            WidgetSpan(
+                                                            const WidgetSpan(
                                                               child: Icon(
                                                                 Icons
                                                                     .arrow_forward_ios,
@@ -377,7 +378,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                         height: 1.0.h,
                         width: 2.0.w,
                         margin: EdgeInsets.symmetric(horizontal: 1.w),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                           shape: BoxShape.circle,
                         ),
@@ -437,7 +438,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                 ),
                 index == getLandLController.allLength - 1
                     ? Container()
-                    : AppDivider(),
+                    : const AppDivider(),
               ],
             ),
           ),

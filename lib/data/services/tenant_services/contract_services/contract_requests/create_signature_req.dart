@@ -13,11 +13,12 @@ class CreateSignatureRequest {
     var response = await BaseClientClass.post(url ?? "", {'contractId': contractId});
     if (response is http.Response) {
       try {
-        Map<String, dynamic> _jsonResp = json.decode(response.body);
-        if (_jsonResp['status'] == 'Ok')
-          return _jsonResp['addServiceRequest']['caseNo'];
-        else
-          return _jsonResp['message'];
+        Map<String, dynamic> jsonResp = json.decode(response.body);
+        if (jsonResp['status'] == 'Ok') {
+          return jsonResp['addServiceRequest']['caseNo'];
+        } else {
+          return jsonResp['message'];
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

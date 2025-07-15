@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 
 class UnitInfoDetails extends StatelessWidget {
   final String? unitRefNo;
-  UnitInfoDetails({Key? key, this.unitRefNo}) : super(key: key);
+  UnitInfoDetails({super.key, this.unitRefNo});
   final TenantUnitInfoDetailsController _unitInfoDetailsController =
       Get.put(TenantUnitInfoDetailsController());
 
@@ -30,7 +30,7 @@ class UnitInfoDetails extends StatelessWidget {
         body: SafeArea(
           child: Obx(() {
             return _unitInfoDetailsController.loadingData.value
-                ? LoadingIndicatorBlue()
+                ? const LoadingIndicatorBlue()
                 : _unitInfoDetailsController.error.value != ''
                     ? CustomErrorWidget(
                         errorText: _unitInfoDetailsController.error.value,
@@ -43,7 +43,7 @@ class UnitInfoDetails extends StatelessWidget {
                                 top: 4.0.h, left: 4.0.w, right: 4.0.w),
                             child: Row(
                               children: [
-                                Container(
+                                SizedBox(
                                   width: 80.w,
                                   child: Text(
                                     SessionController().getLanguage() == 1
@@ -67,11 +67,11 @@ class UnitInfoDetails extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                   // width: 7.5.w,
 
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Color.fromRGBO(241, 241, 245, 1),
                                       shape: BoxShape.circle),
                                   child: Padding(
@@ -82,14 +82,14 @@ class UnitInfoDetails extends StatelessWidget {
                                       },
                                       child: Icon(Icons.close,
                                           size: 2.5.h,
-                                          color: Color.fromRGBO(70, 82, 95, 1)),
+                                          color: const Color.fromRGBO(70, 82, 95, 1)),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          AppDivider(),
+                          const AppDivider(),
                           Expanded(
                             child: SingleChildScrollView(
                                 child: Padding(
@@ -119,7 +119,7 @@ class UnitInfoDetails extends StatelessWidget {
                                   ),
                                   child: Column(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: 92.0.w,
                                         height: 30.5.h,
                                         child: ClipRRect(
@@ -180,7 +180,7 @@ class UnitInfoDetails extends StatelessWidget {
                                               ),
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
+                                                  color: const Color.fromRGBO(
                                                     241,
                                                     248,
                                                     252,
@@ -198,7 +198,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      Container(
+                                                      SizedBox(
                                                         width: 25.0.w,
                                                         child: columnList(
                                                             AppMetaLabels()
@@ -219,7 +219,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                                         .unitCategoryAr ??
                                                                     ''),
                                                       ),
-                                                      Container(
+                                                      SizedBox(
                                                         width: 25.0.w,
                                                         child: columnList(
                                                             AppMetaLabels()
@@ -240,7 +240,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                                         .unitTypeAr ??
                                                                     ''),
                                                       ),
-                                                      Container(
+                                                      SizedBox(
                                                         width: 25.0.w,
                                                         child: columnList(
                                                             AppMetaLabels()
@@ -273,7 +273,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width: 25.0.w,
                                                     child: columnList(
                                                         AppMetaLabels().area,
@@ -284,7 +284,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                                 .areasize ??
                                                             'N/A'),
                                                   ),
-                                                  Container(
+                                                  SizedBox(
                                                     width: 25.0.w,
                                                     child: columnList(
                                                         AppMetaLabels()
@@ -304,7 +304,7 @@ class UnitInfoDetails extends StatelessWidget {
                                               .loadingAdditionalData.value
                                           ? Padding(
                                               padding: EdgeInsets.all(1.5.h),
-                                              child: LoadingIndicatorBlue(),
+                                              child: const LoadingIndicatorBlue(),
                                             )
                                           : _unitInfoDetailsController
                                                           .errorLoadingAdditional
@@ -314,11 +314,11 @@ class UnitInfoDetails extends StatelessWidget {
                                                       .errorLoadingAdditional
                                                       .value
                                                       .contains('No data found')
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : Container(
                                                   padding:
                                                       EdgeInsets.all(1.5.h),
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color.fromRGBO(
                                                         247, 247, 247, 1),
                                                   ),
@@ -349,7 +349,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                           : ListView.builder(
                                                               shrinkWrap: true,
                                                               physics:
-                                                                  NeverScrollableScrollPhysics(),
+                                                                  const NeverScrollableScrollPhysics(),
                                                               itemCount:
                                                                   _unitInfoDetailsController
                                                                       .length,
@@ -383,7 +383,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                       SizedBox(
                                                         height: 1.h,
                                                       ),
-                                                      AppDivider(),
+                                                      const AppDivider(),
                                                     ],
                                                   )),
                                       _unitInfoDetailsController
@@ -394,7 +394,7 @@ class UnitInfoDetails extends StatelessWidget {
                                               AppMetaLabels().residential
                                           ? Container(
                                               decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
+                                                  color: const Color.fromRGBO(
                                                       247, 247, 247, 1),
                                                   borderRadius:
                                                       BorderRadius.only(
@@ -523,7 +523,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                                     CrossAxisAlignment
                                                                         .start),
                                                           ),
-                                                          Expanded(
+                                                          const Expanded(
                                                             child: SizedBox(),
                                                           )
                                                         ],
@@ -531,7 +531,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                     ],
                                                   )),
                                             )
-                                          : SizedBox(),
+                                          : const SizedBox(),
                                     ],
                                   ),
                                 ),

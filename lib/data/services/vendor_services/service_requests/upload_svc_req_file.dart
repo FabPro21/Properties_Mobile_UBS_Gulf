@@ -43,10 +43,12 @@ class VendorUploadSvcReqFile {
       print(response.statusCode);
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());
-      } else
+      } else {
         return response.statusCode;
-    } else
+      }
+    } else {
       return response;
+    }
   }
 
   static Future<dynamic> uploadFileInvoiceSR(int caseNo, String filePath,
@@ -87,9 +89,11 @@ class VendorUploadSvcReqFile {
       // print(response.statusCode);
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());
-      } else
+      } else {
         return response.statusCode;
-    } else
+      }
+    } else {
       return response;
+    }
   }
 }

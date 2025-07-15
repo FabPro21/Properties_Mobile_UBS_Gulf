@@ -25,10 +25,6 @@ class TenantContracrsFilterController extends GetxController {
     toDateText.value = '';
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   bool setFromDate(DateTime date) {
     if (toDate.value == '') {
@@ -98,12 +94,8 @@ class TenantContracrsFilterController extends GetxController {
       dynamic pti = propType.value.propertyTypeId;
       dynamic csi = contractStatus.value.contractTypeId;
 
-      if (pti == null) {
-        pti = "-1";
-      }
-      if (csi == null) {
-        csi = "-1";
-      }
+      pti ??= "-1";
+      csi ??= "-1";
       Get.back(
         result: FilterData(
           propertyName,

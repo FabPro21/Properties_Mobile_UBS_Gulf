@@ -27,10 +27,10 @@ class PermissionHandlerClass {
                 ? ui.TextDirection.ltr
                 : ui.TextDirection.rtl,
             child: AlertDialog(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 contentPadding:
-                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
+                    const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -40,16 +40,16 @@ class PermissionHandlerClass {
                           textAlign: TextAlign.center,
                           style: AppTextStyle.semiBoldBlack11),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
-                    AppDivider(),
-                    SizedBox(
+                    const AppDivider(),
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
                       child: ElevatedButton(
-                        child: Text('Allow access'),
+                        child: const Text('Allow access'),
                         onPressed: () => openAppSettings(),
                       ),
                     ),

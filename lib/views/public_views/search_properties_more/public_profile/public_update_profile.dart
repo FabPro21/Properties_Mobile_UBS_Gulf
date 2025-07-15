@@ -13,17 +13,17 @@ import 'package:sizer/sizer.dart';
 
 class PublicUpdateProfile extends StatefulWidget {
   final ProfileDetail? profile;
-  const PublicUpdateProfile({Key? key, this.profile}) : super(key: key);
+  const PublicUpdateProfile({super.key, this.profile});
 
   @override
   _PublicUpdateProfileState createState() => _PublicUpdateProfileState();
 }
 
 class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
-  var _controller = Get.put(PublicProfileController());
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
+  final _controller = Get.put(PublicProfileController());
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   void initState() {
@@ -154,7 +154,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                         hintText: AppMetaLabels().name,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -194,7 +194,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                         hintText: AppMetaLabels().email,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -242,7 +242,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                           hintText: AppMetaLabels().mobileNumber,
                           hintStyle: AppTextStyle.normalBlack10
                               .copyWith(color: AppColors.textFieldBGColor),
-                          errorStyle: TextStyle(fontSize: 0),
+                          errorStyle: const TextStyle(fontSize: 0),
                           contentPadding: EdgeInsets.all(4.w),
                         ),
                       ),
@@ -258,7 +258,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                               color: AppColors.blueColor,
                             ),
                           )
-                        : Container(
+                        : SizedBox(
                             height: 6.0.h,
                             width: 49.0.w,
                             child: ElevatedButton(
@@ -273,7 +273,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                                     _nameController.text,
                                     _phoneController.text,
                                     _emailController.text,
-                                  ))
+                                  )) {
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -285,6 +285,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                                                   Colors.transparent,
                                               content: showDialogData());
                                         });
+                                  }
                                 } else {
                                   Get.snackbar(
                                     AppMetaLabels().error,
@@ -293,10 +294,6 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                                   );
                                 }
                               },
-                              child: Text(
-                                AppMetaLabels().updateProfile,
-                                style: AppTextStyle.semiBoldBlue12,
-                              ),
                               style: ButtonStyle(
                                   elevation:
                                       WidgetStateProperty.all<double>(0.0),
@@ -313,6 +310,10 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                                           width: 1.0,
                                         )),
                                   )),
+                              child: Text(
+                                AppMetaLabels().updateProfile,
+                                style: AppTextStyle.semiBoldBlue12,
+                              ),
                             ),
                           );
                   })
@@ -371,7 +372,7 @@ class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(1.3.h),
                       ),
-                      backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                      backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                     ),
                     onPressed: () {
                       Get.back();

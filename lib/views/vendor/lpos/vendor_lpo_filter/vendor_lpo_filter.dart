@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 
 class VendorLpoFilter extends StatefulWidget {
   final bool? clear;
-  const VendorLpoFilter({Key? key, this.clear}) : super(key: key);
+  const VendorLpoFilter({super.key, this.clear});
 
   @override
   _VendorLpoFilterState createState() => _VendorLpoFilterState();
@@ -21,7 +21,7 @@ class VendorLpoFilter extends StatefulWidget {
 
 class _VendorLpoFilterState extends State<VendorLpoFilter> {
   final TextEditingController propertyController = TextEditingController();
-  VendorLpoFilterController _controller = Get.find();
+  final VendorLpoFilterController _controller = Get.find();
 
   @override
   void initState() {
@@ -54,13 +54,13 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                           AppMetaLabels().filter,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         InkWell(
                           onTap: () {
                             Get.back();
                           },
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromRGBO(118, 118, 128, 0.12),
                             ),
@@ -68,13 +68,13 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               padding: EdgeInsets.all(0.5.h),
                               child: Icon(Icons.close,
                                   size: 2.0.h,
-                                  color: Color.fromRGBO(158, 158, 158, 1)),
+                                  color: const Color.fromRGBO(158, 158, 158, 1)),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     SizedBox(
                       height: 3.0.h,
                     ),
@@ -88,7 +88,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                     Container(
                       width: 100.0.w,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 249, 1),
+                        color: const Color.fromRGBO(246, 248, 249, 1),
                         borderRadius: BorderRadius.circular(1.0.h),
                       ),
                       child: Row(
@@ -124,7 +124,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                     Obx(() {
                       return InkWell(
                         onTap: () async {
-                          var res = await Get.to(() => VendorLpoStatusFilter());
+                          var res = await Get.to(() => const VendorLpoStatusFilter());
                           print(res);
                           if (res != null &&
                               res != AppMetaLabels().pleaseSelect) {
@@ -136,7 +136,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                           height: 5.5.h,
                           padding: EdgeInsets.only(left: 3.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                           ),
                           alignment: Alignment.centerLeft,
@@ -152,7 +152,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                         '',
                                 style: AppTextStyle.normalBlack12,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -201,8 +201,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                     // locale: Locale('en'),
                                     locale:
                                         SessionController().getLanguage() == 1
-                                            ? Locale('en', '')
-                                            : Locale('ar', ''),
+                                            ? const Locale('en', '')
+                                            : const Locale('ar', ''),
                                     initialDate: DateTime.now(),
                                     firstDate:
                                         DateTime(DateTime.now().year - 10),
@@ -247,7 +247,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -264,7 +264,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -302,8 +302,8 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                     // locale: Locale('en'),
                                     locale:
                                         SessionController().getLanguage() == 1
-                                            ? Locale('en', '')
-                                            : Locale('ar', ''),
+                                            ? const Locale('en', '')
+                                            : const Locale('ar', ''),
                                     initialDate: DateTime.now(),
                                     firstDate:
                                         DateTime(DateTime.now().year - 10),
@@ -348,7 +348,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -365,7 +365,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -392,10 +392,10 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                               child: Container(
                                 width: 85.0.w,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 59, 48, 0.6),
+                                  color: const Color.fromRGBO(255, 59, 48, 0.6),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                   border: Border.all(
-                                    color: Color.fromRGBO(255, 59, 48, 1),
+                                    color: const Color.fromRGBO(255, 59, 48, 1),
                                   ),
                                 ),
                                 child: Padding(
@@ -426,12 +426,12 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                   padding: EdgeInsets.only(bottom: 2.0.h),
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
+                    child: SizedBox(
                       height: 5.0.h,
                       width: 30.0.w,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(0, 98, 255, 1),
+                          backgroundColor: const Color.fromRGBO(0, 98, 255, 1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(3.0.h),
                           ),
@@ -473,12 +473,12 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color.fromRGBO(246, 248, 249, 1),
+        fillColor: const Color.fromRGBO(246, 248, 249, 1),
         focusColor: Colors.red,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
         border: OutlineInputBorder(
@@ -491,7 +491,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
 
 class ClearButton extends StatelessWidget {
   final Function? clear;
-  const ClearButton({Key? key, this.clear}) : super(key: key);
+  const ClearButton({super.key, this.clear});
 
   @override
   Widget build(BuildContext context) {
@@ -500,14 +500,14 @@ class ClearButton extends StatelessWidget {
         clear!();
       },
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Color.fromRGBO(118, 118, 128, 0.12),
         ),
         child: Padding(
           padding: EdgeInsets.all(0.5.h),
           child: Icon(Icons.close,
-              size: 2.0.h, color: Color.fromRGBO(158, 158, 158, 1)),
+              size: 2.0.h, color: const Color.fromRGBO(158, 158, 158, 1)),
         ),
       ),
     );

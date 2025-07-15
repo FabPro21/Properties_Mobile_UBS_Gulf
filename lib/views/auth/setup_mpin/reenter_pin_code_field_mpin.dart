@@ -11,7 +11,7 @@ class ReEnterPinCodeFieldMpin extends StatelessWidget {
   // static StreamController<ErrorAnimationType> errorController;
   final formKey = GlobalKey<FormState>();
 
-  ReEnterPinCodeFieldMpin({Key? key}) : super(key: key);
+  ReEnterPinCodeFieldMpin({super.key});
   final SetupMpinController setupMpinController =
       Get.find<SetupMpinController>();
 
@@ -61,7 +61,7 @@ class ReEnterPinCodeFieldMpin extends StatelessWidget {
         // errorAnimationController: errorController,
         controller: reEnterMpinController,
         keyboardType:
-            TextInputType.numberWithOptions(signed: true, decimal: true),
+            const TextInputType.numberWithOptions(signed: true, decimal: true),
         onCompleted: (v) async {
           FocusScope.of(context).unfocus();
         },

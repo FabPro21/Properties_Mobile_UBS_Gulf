@@ -36,10 +36,6 @@ class TenantServiceUpdatesController extends GetxController {
 
   bool chatUpdate = true;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   InternalFinalCallback<void> get onDelete {
@@ -67,7 +63,7 @@ class TenantServiceUpdatesController extends GetxController {
     }
     gettingReplies.value = true;
     gettingReplies.value = false;
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     if (chatUpdate) updateChat();
   }
 
@@ -178,7 +174,7 @@ class TenantServiceUpdatesController extends GetxController {
     // 112233 checking file extension
     if (!CheckFileExtenstion().checkFileExtFunc(result)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       return;
@@ -238,15 +234,15 @@ class TenantServiceUpdatesController extends GetxController {
   saveFileInsideTheDevice(Uint8List bytes) async {
     // Get the directory where the file will be saved
     final status = await Permission.storage.status;
-    Directory _directory = Directory("");
+    Directory directory = Directory("");
     if (status.isGranted) {
       if (Platform.isAndroid) {
         // Redirects it to download folder in android
-        _directory = Directory("/storage/emulated/0/Download");
+        directory = Directory("/storage/emulated/0/Download");
       } else {
-        _directory = await getApplicationDocumentsDirectory();
+        directory = await getApplicationDocumentsDirectory();
       }
-      final exPath = _directory.path;
+      final exPath = directory.path;
       print("Saved Path: $exPath");
       await Directory(exPath).create(recursive: true);
 

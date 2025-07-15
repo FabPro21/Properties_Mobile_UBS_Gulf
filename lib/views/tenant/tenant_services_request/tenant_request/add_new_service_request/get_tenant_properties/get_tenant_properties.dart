@@ -11,7 +11,7 @@ import '../../../../../../data/helpers/session_controller.dart';
 import 'get_tenant_properties_controller.dart';
 
 class GetTenantProperties extends StatefulWidget {
-  GetTenantProperties({Key? key}) : super(key: key);
+  const GetTenantProperties({super.key});
 
   @override
   State<GetTenantProperties> createState() => _GetTenantPropertiesState();
@@ -47,7 +47,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
                           AppMetaLabels().property,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
                           onPressed: () {
                             Get.back();
@@ -61,7 +61,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
                       ],
                     ),
                   ),
-                  AppDivider(),
+                  const AppDivider(),
                   Padding(
                     padding: EdgeInsets.all(2.0.h),
                     child: Container(
@@ -128,7 +128,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
                             child: getTPController.loadingData.value == true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : getTPController.error.value != ''
                                     ? AppErrorWidget(
@@ -137,7 +137,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: getTPController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -214,7 +214,7 @@ class _GetTenantPropertiesState extends State<GetTenantProperties> {
               style: AppTextStyle.semiBoldGrey10,
             ),
           ),
-          index == getTPController.length - 1 ? Container() : AppDivider(),
+          index == getTPController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

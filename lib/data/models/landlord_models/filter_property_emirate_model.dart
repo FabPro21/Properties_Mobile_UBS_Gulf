@@ -18,20 +18,20 @@ class GetLandLordEmirateModel {
     if (json['propertyEmirate'] != null) {
       propertyEmirate = <PropertyEmirate>[];
       json['propertyEmirate'].forEach((v) {
-        propertyEmirate!.add(new PropertyEmirate.fromJson(v));
+        propertyEmirate!.add(PropertyEmirate.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    if (this.propertyEmirate != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    if (propertyEmirate != null) {
       data['propertyEmirate'] =
-          this.propertyEmirate!.map((v) => v.toJson()).toList();
+          propertyEmirate!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -50,10 +50,10 @@ class PropertyEmirate {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['emirateID'] = this.emirateID;
-    data['emirateName'] = this.emirateName;
-    data['emirateNameAR'] = this.emirateNameAR;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['emirateID'] = emirateID;
+    data['emirateName'] = emirateName;
+    data['emirateNameAR'] = emirateNameAR;
     return data;
   }
 }

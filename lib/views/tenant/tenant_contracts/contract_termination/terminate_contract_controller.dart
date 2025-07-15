@@ -83,7 +83,7 @@ class TerminateContractController extends GetxController {
       SessionController().setPublicToken(resp.token);
       // update the search page 4 Nov 22
       // Get.off(() => SearchVacantUnits());
-      Get.off(() => SearchPropertiesDashboardTabs());
+      Get.off(() => const SearchPropertiesDashboardTabs());
     }
   }
 

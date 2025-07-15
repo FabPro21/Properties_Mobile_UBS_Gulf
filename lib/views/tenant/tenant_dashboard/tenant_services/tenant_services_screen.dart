@@ -8,7 +8,7 @@ import 'package:shape_of_view_null_safe/shape_of_view_null_safe.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantServicesScreen extends StatefulWidget {
-  TenantServicesScreen({Key? key}) : super(key: key);
+  const TenantServicesScreen({super.key});
 
   @override
   State<TenantServicesScreen> createState() => _TenantServicesScreenState();
@@ -88,7 +88,7 @@ class _TenantServicesScreenState extends State<TenantServicesScreen> {
                             // _getData();
                             searchControler.clear();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.refresh,
                           ),
                         ),

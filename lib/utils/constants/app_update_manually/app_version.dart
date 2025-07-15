@@ -9,12 +9,12 @@ import 'package:http/http.dart' as http;
 
 class CheckVerion {
   Future<dynamic> fetchAppVersion() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.offAll(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.offAll(const NoInternetScreen());
     }
-    final String bundle = 'com.fab.properties';
-    final String url = 'https://itunes.apple.com/lookup?bundleId=$bundle';
+    const String bundle = 'com.fab.properties';
+    const String url = 'https://itunes.apple.com/lookup?bundleId=$bundle';
     http.Response response;
     try {
       response = await http
@@ -22,7 +22,7 @@ class CheckVerion {
             Uri.parse(url),
             encoding: Encoding.getByName('utf-8'),
           )
-          .timeout(Duration(seconds: 30));
+          .timeout(const Duration(seconds: 30));
       Map<String, dynamic> result = jsonDecode(response.body);
       if (result['resultCount'] > 0 &&
           result['results'] != null &&
