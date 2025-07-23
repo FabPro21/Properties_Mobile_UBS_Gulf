@@ -453,7 +453,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      print('Tapping');
                                       if (sPSConrtoller.categoryName.value ==
                                               AppMetaLabels().pleaseSelect ||
                                           sPSConrtoller.categoryName.value ==
@@ -880,8 +879,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                         ""
                                                                     : 'المساحة بالمتر المربع';
                                                           });
-                                                          print(
-                                                              'Value :::: $_selectedValue');
                                                         },
                                                       ),
                                                       InkWell(
@@ -894,8 +891,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     ? 'SQM'
                                                                     : 'المساحة بالمتر المربع';
                                                           });
-                                                          print(
-                                                              'Value :::: $_selectedValue');
                                                         },
                                                         child: Text(
                                                           AppMetaLabels().sqMt,

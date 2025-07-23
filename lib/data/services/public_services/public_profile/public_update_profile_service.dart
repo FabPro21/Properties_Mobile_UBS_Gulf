@@ -44,16 +44,12 @@ class PublicUpdateProfileService {
   ) async {
     var url = AppConfig().updatePublicProfile;
     var data = {"UserId": userID, "Name": name, "EmailAddress": email};
-    print('Data :::: $data');
-    print('Token :::: ${SessionController().getLoginToken()}');
 
     var resp = await BaseClientClass.post(url ?? "", data,
         token: SessionController().getLoginToken());
     if (resp is http.Response) {
       try {
-        print('Resp in repo Before:::: ${resp.body}');
         var reponse = userModelFromJson(resp.body);
-        print('Resp in repo After:::: $reponse');
         return reponse;
       } catch (e) {
         return AppMetaLabels().anyError;

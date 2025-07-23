@@ -217,7 +217,9 @@ class VerifyUserOtpControllerFB extends GetxController {
       }
     } else {
       FirebaseMessaging.instance.getToken().then((String? token) {
-        print("FCM Token: $token");
+        if (kDebugMode) {
+          print("FCM Token: $token");
+        }
         // Use the token (e.g., send it to your server)
       });
     }
