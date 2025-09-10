@@ -221,8 +221,8 @@ class BaseClientClass {
         print('Request :::::::: $request');
       }
       http.StreamedResponse response = await request.send();
-      // var res = await http.Response.fromStream(response);
-      // print('Respone :11::22:: ${res.body}');
+      var res = await http.Response.fromStream(response);
+      print('Respone :11::22:: ${res.body}');
 
       if (response.statusCode == 404) {
         final respStr = await response.stream.bytesToString();
@@ -282,6 +282,20 @@ class BaseClientClass {
 
     if (response.statusCode == 404) {
       if (response.statusCode == 404 &&
+              response.body.contains('HTML') == true ||
+          response.body.contains(
+                  '!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN') ==
+              true) {
+        if (kDebugMode) {
+          print(response.body);
+        }
+        await Get.to(() => ResponseInText(
+              respose: response.body.trim(),
+            ));
+      }
+    }
+     if (response.statusCode == 503) {
+      if (response.statusCode == 503 &&
               response.body.contains('HTML') == true ||
           response.body.contains(
                   '!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN') ==

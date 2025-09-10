@@ -1248,19 +1248,28 @@ class _ContractsWithActionState extends State<ContractsWithAction> {
                               AppMetaLabels().alert,
                               AppMetaLabels().yourRequestCancelled);
                         }
-                      : () {
+                      : () async {
                           SessionController().setCaseNo(
                             controller.contractsList[index].caseId.toString(),
                           );
-                          Get.to(
-                            () => TenantServiceRequestTabs(
-                              requestNo: controller.contractsList[index].caseId
-                                  .toString(),
-                              caller: 'contracts_with_actions',
-                              title: AppMetaLabels().renewalReq,
-                              initialIndex: 1,
-                            ),
-                          );
+                          Get.to(() => MunicipalApproval(
+                                caller: 'contracts_with_actions',
+                                dueActionId: controller
+                                        .contractsList[index].dueActionid ??
+                                    0,
+                                contractId: controller
+                                        .contractsList[index].contractid ??
+                                    0,
+                              ));
+                          // Get.to(
+                          //   () => TenantServiceRequestTabs(
+                          //     requestNo: controller.contractsList[index].caseId
+                          //         .toString(),
+                          //     caller: 'contracts_with_actions',
+                          //     title: AppMetaLabels().renewalReq,
+                          //     initialIndex: 1,
+                          //   ),
+                          // );
                         })
               : StepNoWidget(label: '1', tooltip: AppMetaLabels().uploadDocs)),
       Padding(

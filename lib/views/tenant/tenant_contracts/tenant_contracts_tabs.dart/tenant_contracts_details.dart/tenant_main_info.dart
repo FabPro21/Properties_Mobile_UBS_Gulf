@@ -659,7 +659,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                             child:
                                                                                 Text(
                                                                               // getCDController.outstandingPaymentsController.gotoOnlinePayments.value?
-                                                                              AppMetaLabels().proceedTopay,
+                                                                              '${AppMetaLabels().proceedTopay}',
                                                                               // : AppMetaLabels().chequeDetailsC,
                                                                               style: AppTextStyle.semiBoldBlue10,
                                                                             ),
@@ -1513,17 +1513,6 @@ class _MainInfoState extends State<MainInfo> {
           ],
         ),
         bottomNavigationBar: Obx(() {
-          print(
-              'getCDController.loadingContract.value ******** ****** 1 ***** ***** ${getCDController.loadingContract.value}');
-          print(
-              'getCDController.errorLoadingContract.value *********  2 ***** ***** ${getCDController.errorLoadingContract.value}');
-          print(
-              'getContractsDetails.contract!.contractStatus ********* 3 ***** ***** ${getCDController.getContractsDetails.value.contract!.contractStatus}');
-          print(
-              'getCDController.getContractsDetails.caseStageInfo *** 4 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo}');
-          print(
-              'getCDController.caseStageInfo.stageId ******** ****** 5 ***** ***** ${getCDController.getContractsDetails.value.caseStageInfo!.stageId}');
-
           return getCDController.loadingContract.value ||
                   getCDController.errorLoadingContract.value != '' ||
                   getCDController

@@ -125,194 +125,192 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                             )
                                           : controller.docsModel?.docs == null
                                               ? const SizedBox()
-                                              : Container(
-                                                  child: ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      itemCount: controller
-                                                              .docsModel
-                                                              ?.docs
-                                                              ?.length ??
-                                                          0 + 1,
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        if (controller
-                                                                .docsModel
-                                                                ?.docs
-                                                                ?.length ==
-                                                            index) {
-                                                          return Center(
-                                                              child: Obx(() {
-                                                            return controller
-                                                                        .docsModel!
-                                                                        .caseStageInfo!
-                                                                        .stageId!
-                                                                        .value <
-                                                                    3
-                                                                ? Column(
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                4.w,
-                                                                            vertical: 2.h),
-                                                                        child:
-                                                                            Text(
-                                                                          AppMetaLabels()
-                                                                              .allMandatory,
-                                                                          style:
-                                                                              AppTextStyle.normalBlack10,
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  )
-                                                                : controller.docsModel?.responseMessageAR ==
-                                                                            '' &&
-                                                                        SessionController().getLanguage() !=
-                                                                            1
-                                                                    ? const SizedBox()
-                                                                    : controller.docsModel?.caseStageInfo?.stageId?.value ==
-                                                                            4
-                                                                        ? Container(
-                                                                            alignment:
-                                                                                Alignment.center,
-                                                                            padding:
-                                                                                const EdgeInsets.all(8.0),
-                                                                            margin:
-                                                                                EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
-                                                                            decoration:
-                                                                                BoxDecoration(color: const Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
-                                                                            child:
-                                                                                Row(
-                                                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                                                              children: [
-                                                                                Icon(
-                                                                                  Icons.error_outline,
-                                                                                  color: Colors.amber[400],
-                                                                                ),
-                                                                                const SizedBox(
-                                                                                  width: 8.0,
-                                                                                ),
-                                                                                Expanded(
-                                                                                  child: Text(
-                                                                                    SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
-                                                                                    style: AppTextStyle.normalBlack12,
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          )
-                                                                        : const SizedBox();
-                                                          }));
-                                                        }
-                                                        return Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    2.0.h),
-                                                            child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
+                                              : ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  itemCount: controller
+                                                          .docsModel
+                                                          ?.docs
+                                                          ?.length ??
+                                                      0 + 1,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    if (controller
+                                                            .docsModel
+                                                            ?.docs
+                                                            ?.length ==
+                                                        index) {
+                                                      return Center(
+                                                          child: Obx(() {
+                                                        return controller
+                                                                    .docsModel!
+                                                                    .caseStageInfo!
+                                                                    .stageId!
+                                                                    .value <
+                                                                3
+                                                            ? Column(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                        left: 4.0
-                                                                            .w,
-                                                                        bottom: 2.0
-                                                                            .h,
-                                                                        right: 4.0
-                                                                            .w),
-                                                                    child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? controller.docsModel?.docs![index].name ??
-                                                                              ""
-                                                                          : controller.docsModel?.docs?[index].nameAr ??
-                                                                              '',
-                                                                      style: AppTextStyle
-                                                                          .semiBoldBlack12,
+                                                                    padding: EdgeInsets.symmetric(
+                                                                        horizontal:
+                                                                            4.w,
+                                                                        vertical: 2.h),
+                                                                    child:
+                                                                        Text(
+                                                                      AppMetaLabels()
+                                                                          .allMandatory,
+                                                                      style:
+                                                                          AppTextStyle.normalBlack10,
                                                                     ),
                                                                   ),
-                                                                  controller.docsModel?.docs?[index].id ==
-                                                                              null ||
-                                                                          controller.docsModel?.docs?[index].isRejected ==
-                                                                              true
-                                                                      ? uploadFile(
-                                                                          context,
-                                                                          index)
-                                                                      : Container(
-                                                                          width:
-                                                                              100.0.w,
-                                                                          padding: EdgeInsets.symmetric(
-                                                                              vertical: 1.h,
-                                                                              horizontal: 4.w),
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(2.0.h),
-                                                                            boxShadow: [
-                                                                              BoxShadow(
-                                                                                color: Colors.black12,
-                                                                                blurRadius: 0.5.h,
-                                                                                spreadRadius: 0.1.h,
-                                                                                offset: Offset(0.1.h, 0.1.h),
+                                                                ],
+                                                              )
+                                                            : controller.docsModel?.responseMessageAR ==
+                                                                        '' &&
+                                                                    SessionController().getLanguage() !=
+                                                                        1
+                                                                ? const SizedBox()
+                                                                : controller.docsModel?.caseStageInfo?.stageId?.value ==
+                                                                        4
+                                                                    ? Container(
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        padding:
+                                                                            const EdgeInsets.all(8.0),
+                                                                        margin:
+                                                                            EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
+                                                                        decoration:
+                                                                            BoxDecoration(color: const Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
+                                                                        child:
+                                                                            Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                                          children: [
+                                                                            Icon(
+                                                                              Icons.error_outline,
+                                                                              color: Colors.amber[400],
+                                                                            ),
+                                                                            const SizedBox(
+                                                                              width: 8.0,
+                                                                            ),
+                                                                            Expanded(
+                                                                              child: Text(
+                                                                                SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
+                                                                                style: AppTextStyle.normalBlack12,
                                                                               ),
-                                                                            ],
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    : const SizedBox();
+                                                      }));
+                                                    }
+                                                    return Padding(
+                                                        padding:
+                                                            EdgeInsets.all(
+                                                                2.0.h),
+                                                        child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsets.only(
+                                                                    left: 4.0
+                                                                        .w,
+                                                                    bottom: 2.0
+                                                                        .h,
+                                                                    right: 4.0
+                                                                        .w),
+                                                                child: Text(
+                                                                  SessionController().getLanguage() ==
+                                                                          1
+                                                                      ? controller.docsModel?.docs![index].name ??
+                                                                          ""
+                                                                      : controller.docsModel?.docs?[index].nameAr ??
+                                                                          '',
+                                                                  style: AppTextStyle
+                                                                      .semiBoldBlack12,
+                                                                ),
+                                                              ),
+                                                              controller.docsModel?.docs?[index].id ==
+                                                                          null ||
+                                                                      controller.docsModel?.docs?[index].isRejected ==
+                                                                          true
+                                                                  ? uploadFile(
+                                                                      context,
+                                                                      index)
+                                                                  : Container(
+                                                                      width:
+                                                                          100.0.w,
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          vertical: 1.h,
+                                                                          horizontal: 4.w),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color:
+                                                                            Colors.white,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(2.0.h),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            color: Colors.black12,
+                                                                            blurRadius: 0.5.h,
+                                                                            spreadRadius: 0.1.h,
+                                                                            offset: Offset(0.1.h, 0.1.h),
                                                                           ),
-                                                                          child:
-                                                                              Obx(() {
-                                                                            return FileView(
-                                                                              file: controller.docsModel?.docs?[index],
-                                                                              onDelete: controller.docsModel?.docs?[index].loading.value == true
-                                                                                  ? () {}
-                                                                                  : () async {
-                                                                                      if (controller.docsModel?.docs?[index].name!.toLowerCase() == 'emirate id') {
-                                                                                        setState(() {
-                                                                                          isEnableScreen = false;
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          controller.mergedId = null;
-                                                                                          controller.cardScanModel = CardScanModel();
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          nameText.clear();
-                                                                                          iDNumberText.clear();
-                                                                                          expiryText = '';
-                                                                                          dOBText = '';
-                                                                                          controller.mergedId = null;
-                                                                                          controller.cardScanModel.backImage = null;
-                                                                                          controller.cardScanModel.frontImage = null;
-                                                                                        });
-                                                                                        await controller.removePickedFile(index);
-                                                                                        await controller.removeFile(index);
-                                                                                        setState(() {
-                                                                                          controller.isDocUploaded[index] = 'false';
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          isEnableScreen = true;
-                                                                                        });
-                                                                                        return;
-                                                                                      }
-                                                                                      setState(() {
-                                                                                        isEnableScreen = false;
-                                                                                      });
-                                                                                      await controller.removeFile(index);
-                                                                                      setState(() {
-                                                                                        isEnableScreen = true;
-                                                                                      });
-                                                                                    },
-                                                                              onPressed: () {
-                                                                                print('Testing .....');
-                                                                                controller.downloadDoc(index);
-                                                                              },
-                                                                              canDelete: controller.docsModel!.caseStageInfo!.stageId!.value < 3,
-                                                                            );
-                                                                          }),
-                                                                        )
-                                                                ]));
-                                                      }),
-                                                );
+                                                                        ],
+                                                                      ),
+                                                                      child:
+                                                                          Obx(() {
+                                                                        return FileView(
+                                                                          file: controller.docsModel?.docs?[index],
+                                                                          onDelete: controller.docsModel?.docs?[index].loading.value == true
+                                                                              ? () {}
+                                                                              : () async {
+                                                                                  if (controller.docsModel?.docs?[index].name!.toLowerCase() == 'emirate id') {
+                                                                                    setState(() {
+                                                                                      isEnableScreen = false;
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      controller.mergedId = null;
+                                                                                      controller.cardScanModel = CardScanModel();
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      nameText.clear();
+                                                                                      iDNumberText.clear();
+                                                                                      expiryText = '';
+                                                                                      dOBText = '';
+                                                                                      controller.mergedId = null;
+                                                                                      controller.cardScanModel.backImage = null;
+                                                                                      controller.cardScanModel.frontImage = null;
+                                                                                    });
+                                                                                    await controller.removePickedFile(index);
+                                                                                    await controller.removeFile(index);
+                                                                                    setState(() {
+                                                                                      controller.isDocUploaded[index] = 'false';
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      isEnableScreen = true;
+                                                                                    });
+                                                                                    return;
+                                                                                  }
+                                                                                  setState(() {
+                                                                                    isEnableScreen = false;
+                                                                                  });
+                                                                                  await controller.removeFile(index);
+                                                                                  setState(() {
+                                                                                    isEnableScreen = true;
+                                                                                  });
+                                                                                },
+                                                                          onPressed: () {
+                                                                            print('Testing .....');
+                                                                            controller.downloadDoc(index);
+                                                                          },
+                                                                          canDelete: controller.docsModel!.caseStageInfo!.stageId!.value < 3,
+                                                                        );
+                                                                      }),
+                                                                    )
+                                                            ]));
+                                                  });
                                 }),
                               ),
                               controller.docsModel?.docs == null
@@ -1413,441 +1411,439 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       : Alignment.centerRight,
                   child: Text(AppMetaLabels().pleaseVerify)),
               content: SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Name
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 0.5.h, right: 4.0.w),
-                        child: SizedBox(
-                          width: 70.w,
-                          child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: RichText(
-                              textAlign: SessionController().getLanguage() == 1
-                                  ? TextAlign.left
-                                  : TextAlign.right,
-                              maxLines: 2,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: AppMetaLabels().name,
-                                      style: AppTextStyle.normalGrey10),
-                                  TextSpan(
-                                    text: ' (' '${AppMetaLabels().invalidName})',
-                                    style: AppTextStyle.normalGrey8,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                        child: SizedBox(
-                          // height: 4.h,
-                          width: 90.w,
-                          child: TextFormField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
-                              // RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
-                            ],
-                            controller: nameText,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Name
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 0.5.h, right: 4.0.w),
+                      child: SizedBox(
+                        width: 70.w,
+                        child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: RichText(
+                            textAlign: SessionController().getLanguage() == 1
+                                ? TextAlign.left
+                                : TextAlign.right,
                             maxLines: 2,
-                            style: AppTextStyle.normalBlack10,
-                            // onChanged: (val) {
-                            //   if (val.isNotEmpty) {
-                            //     setState(() {
-                            //       isNameError = false;
-                            //     });
-                            //   } else {
-                            //     if (!nameValidator.hasMatch(val)) {
-                            //       setState(() {
-                            //         isNameError = true;
-                            //       });
-                            //       return;
-                            //     }
-                            //   }
-                            // },
-                            // validator: (value) {
-                            //   if (!nameValidator.hasMatch(value)) {
-                            //     isNameError = true;
-                            //     return;
-                            //   } else
-                            //     return null;
-                            // },
-                            decoration: InputDecoration(
-                              suffixIconConstraints: BoxConstraints(
-                                minWidth: 4.h,
-                                minHeight: 2,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 2.h,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isNameError
-                                      ? AppColors.redColor
-                                      : AppColors.blueColor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: AppMetaLabels().name,
+                                    style: AppTextStyle.normalGrey10),
+                                TextSpan(
+                                  text: ' (' '${AppMetaLabels().invalidName})',
+                                  style: AppTextStyle.normalGrey8,
                                 ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isNameError
-                                      ? AppColors.redColor
-                                      : AppColors.bordercolornew,
-                                  width: 0.2.w,
-                                ),
-                              ),
-                              fillColor: AppColors.greyBG,
-                              filled: true,
-                              hintText: AppMetaLabels().name,
-                              hintStyle: AppTextStyle.normalBlack10
-                                  .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: const TextStyle(fontSize: 0),
-                              contentPadding: EdgeInsets.all(2.5.w),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      isNameError == true
-                          ? Padding(
-                              padding: EdgeInsets.only(
-                                  left: 2.0.w, top: 0.2.h, right: 4.0.w),
-                              child: Text(
-                                AppMetaLabels().invalidName,
-                                style: AppTextStyle.normalGrey8
-                                    .copyWith(color: Colors.red),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                      child: SizedBox(
+                        // height: 4.h,
+                        width: 90.w,
+                        child: TextFormField(
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
+                            // RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
+                          ],
+                          controller: nameText,
+                          maxLines: 2,
+                          style: AppTextStyle.normalBlack10,
+                          // onChanged: (val) {
+                          //   if (val.isNotEmpty) {
+                          //     setState(() {
+                          //       isNameError = false;
+                          //     });
+                          //   } else {
+                          //     if (!nameValidator.hasMatch(val)) {
+                          //       setState(() {
+                          //         isNameError = true;
+                          //       });
+                          //       return;
+                          //     }
+                          //   }
+                          // },
+                          // validator: (value) {
+                          //   if (!nameValidator.hasMatch(value)) {
+                          //     isNameError = true;
+                          //     return;
+                          //   } else
+                          //     return null;
+                          // },
+                          decoration: InputDecoration(
+                            suffixIconConstraints: BoxConstraints(
+                              minWidth: 4.h,
+                              minHeight: 2,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.edit,
+                              size: 2.h,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isNameError
+                                    ? AppColors.redColor
+                                    : AppColors.blueColor,
                               ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isNameError
+                                    ? AppColors.redColor
+                                    : AppColors.bordercolornew,
+                                width: 0.2.w,
+                              ),
+                            ),
+                            fillColor: AppColors.greyBG,
+                            filled: true,
+                            hintText: AppMetaLabels().name,
+                            hintStyle: AppTextStyle.normalBlack10
+                                .copyWith(color: AppColors.textFieldBGColor),
+                            errorStyle: const TextStyle(fontSize: 0),
+                            contentPadding: EdgeInsets.all(2.5.w),
+                          ),
+                        ),
+                      ),
+                    ),
+                    isNameError == true
+                        ? Padding(
+                            padding: EdgeInsets.only(
+                                left: 2.0.w, top: 0.2.h, right: 4.0.w),
+                            child: Text(
+                              AppMetaLabels().invalidName,
+                              style: AppTextStyle.normalGrey8
+                                  .copyWith(color: Colors.red),
+                            ),
+                          )
+                        : const SizedBox(),
+                    // ID Number
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            // 'ID Number',
+                            AppMetaLabels().iDNumber,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                      child: SizedBox(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        child: TextFormField(
+                          inputFormatters: [maskFormatter],
+                          controller: iDNumberText,
+                          maxLength: 18,
+                          keyboardType: const TextInputType.numberWithOptions(),
+                          onChanged: (val) {
+                            if (val.isNotEmpty) {
+                              setState(() {
+                                isIDError = false;
+                              });
+                            }
+                          },
+                          style: AppTextStyle.normalBlack10,
+                          decoration: InputDecoration(
+                            suffixIconConstraints: BoxConstraints(
+                              minWidth: 4.h,
+                              minHeight: 2,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.edit,
+                              size: 2.h,
+                            ),
+                            counterText: "",
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isIDError
+                                    ? AppColors.redColor
+                                    : AppColors.blueColor,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isIDError
+                                    ? AppColors.redColor
+                                    : AppColors.bordercolornew,
+                                width: 0.2.w,
+                              ),
+                            ),
+                            fillColor: AppColors.greyBG,
+                            filled: true,
+                            hintText: '000-0000-0000000-0',
+                            hintStyle: AppTextStyle.normalBlack10
+                                .copyWith(color: AppColors.textFieldBGColor),
+                            errorStyle: const TextStyle(fontSize: 0),
+                            contentPadding: EdgeInsets.all(2.5.w),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Expiry
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            AppMetaLabels().expDate,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 0.5.h,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        print('Show ::::::');
+                        var expDate = await showRoundedDatePicker(
+                          theme: ThemeData(primaryColor: AppColors.blueColor),
+                          height: 50.0.h,
+                          context: context,
+                          // locale: Locale('en'),
+                          locale: SessionController().getLanguage() == 1
+                              ? const Locale('en', '')
+                              : const Locale('ar', ''),
+                          initialDate: DateTime.now(),
+                          firstDate:
+                              DateTime.now().subtract(const Duration(seconds: 1)),
+                          lastDate: DateTime(DateTime.now().year + 10),
+                          borderRadius: 2.0.h,
+                          // theme:
+                          //     ThemeData(primarySwatch: Colors.deepPurple),
+                          styleDatePicker: MaterialRoundedDatePickerStyle(
+                            backgroundHeader: Colors.grey.shade300,
+                            // Appbar year like '2023' button
+                            textStyleYearButton: TextStyle(
+                              fontSize: 30.sp,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.grey.shade100,
+                              leadingDistribution:
+                                  TextLeadingDistribution.even,
+                            ),
+                            // Appbar day like 'Thu, Mar 16' button
+                            textStyleDayButton: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                
+                        if (expDate != null) {
+                          if (expDate.isBefore(DateTime.now()) ||
+                              expDate.isAtSameMomentAs(DateTime.now())) {
+                            SnakBarWidget.getSnackBarErrorBlue(
+                              AppMetaLabels().error,
+                              AppMetaLabels().selectFuturedate,
+                            );
+                          } else {
+                            DateFormat dateFormat = DateFormat(
+                                AppMetaLabels()
+                                    .dateFormatForShowRoundedDatePicker);
+                            setState(() {
+                              expiryText = dateFormat.format(expDate);
+                              controller.docsModel?.docs?[index].expiry =
+                                  dateFormat.format(expDate);
+                
+                              isExpiryError = false;
+                            });
+                          }
+                        }
+                      },
+                      child: Container(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        margin: EdgeInsets.only(
+                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(246, 248, 249, 1),
+                          borderRadius: BorderRadius.circular(1.0.h),
+                          border: Border.all(
+                            color: isExpiryError == true
+                                ? AppColors.redColor
+                                : AppColors.bordercolornew,
+                            width: 0.2.w,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: Text(
+                                expiryText,
+                                style: AppTextStyle.normalBlack10,
+                              ),
+                            ),
+                            const Spacer(),
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: ClearButton(
+                                clear: () {
+                                  setState(() {
+                                    expiryText = '';
+                                    controller
+                                        .docsModel?.docs?[index].expiry = '';
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // DOB
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            // 'Date Of Birth',
+                            AppMetaLabels().dateOFBirth,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 0.5.h,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        var expDate = await showRoundedDatePicker(
+                          theme: ThemeData(primaryColor: AppColors.blueColor),
+                          height: 50.0.h,
+                          context: context,
+                          // locale: Locale('en'),
+                          locale: SessionController().getLanguage() == 1
+                              ? const Locale('en', '')
+                              : const Locale('ar', ''),
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 100),
+                          lastDate: DateTime.now(),
+                          borderRadius: 2.0.h,
+                          // theme:
+                          //     ThemeData(primarySwatch: Colors.deepPurple),
+                          styleDatePicker: MaterialRoundedDatePickerStyle(
+                            backgroundHeader: Colors.grey.shade300,
+                            // Appbar year like '2023' button
+                            textStyleYearButton: TextStyle(
+                              fontSize: 30.sp,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.grey.shade100,
+                              leadingDistribution:
+                                  TextLeadingDistribution.even,
+                            ),
+                            // Appbar day like 'Thu, Mar 16' button
+                            textStyleDayButton: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                
+                        if (expDate != null) {
+                          if (expDate.isAfter(DateTime.now()) ||
+                              expDate.isAtSameMomentAs(DateTime.now())) {
+                            SnakBarWidget.getSnackBarErrorBlue(
+                              AppMetaLabels().error,
+                              AppMetaLabels().selectFuturedate,
+                            );
+                          } else {
+                            DateFormat dateFormat = DateFormat(
+                                AppMetaLabels()
+                                    .dateFormatForShowRoundedDatePicker);
+                            setState(() {
+                              isDOBError = false;
+                              dOBText = dateFormat.format(expDate);
+                            });
+                          }
+                        }
+                      },
+                      child: Container(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        margin: EdgeInsets.only(
+                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(246, 248, 249, 1),
+                          borderRadius: BorderRadius.circular(1.0.h),
+                          border: Border.all(
+                            color: isDOBError == true
+                                ? AppColors.redColor
+                                : AppColors.bordercolornew,
+                            width: 0.2.w,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: Text(
+                                dOBText,
+                                style: AppTextStyle.normalBlack10,
+                              ),
+                            ),
+                            const Spacer(),
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: ClearButton(
+                                clear: () {
+                                  setState(() {
+                                    dOBText = '';
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 2.0.h,
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.3,
+                      width: double.infinity,
+                      child: controller.mergedId != null
+                          ? Image.file(
+                              controller.mergedId!,
+                              fit: BoxFit.contain,
                             )
                           : const SizedBox(),
-                      // ID Number
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              // 'ID Number',
-                              AppMetaLabels().iDNumber,
-                              style: AppTextStyle.normalGrey10,
-                            )),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                        child: SizedBox(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          child: TextFormField(
-                            inputFormatters: [maskFormatter],
-                            controller: iDNumberText,
-                            maxLength: 18,
-                            keyboardType: const TextInputType.numberWithOptions(),
-                            onChanged: (val) {
-                              if (val.isNotEmpty) {
-                                setState(() {
-                                  isIDError = false;
-                                });
-                              }
-                            },
-                            style: AppTextStyle.normalBlack10,
-                            decoration: InputDecoration(
-                              suffixIconConstraints: BoxConstraints(
-                                minWidth: 4.h,
-                                minHeight: 2,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 2.h,
-                              ),
-                              counterText: "",
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isIDError
-                                      ? AppColors.redColor
-                                      : AppColors.blueColor,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isIDError
-                                      ? AppColors.redColor
-                                      : AppColors.bordercolornew,
-                                  width: 0.2.w,
-                                ),
-                              ),
-                              fillColor: AppColors.greyBG,
-                              filled: true,
-                              hintText: '000-0000-0000000-0',
-                              hintStyle: AppTextStyle.normalBlack10
-                                  .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: const TextStyle(fontSize: 0),
-                              contentPadding: EdgeInsets.all(2.5.w),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Expiry
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              AppMetaLabels().expDate,
-                              style: AppTextStyle.normalGrey10,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          print('Show ::::::');
-                          var expDate = await showRoundedDatePicker(
-                            theme: ThemeData(primaryColor: AppColors.blueColor),
-                            height: 50.0.h,
-                            context: context,
-                            // locale: Locale('en'),
-                            locale: SessionController().getLanguage() == 1
-                                ? const Locale('en', '')
-                                : const Locale('ar', ''),
-                            initialDate: DateTime.now(),
-                            firstDate:
-                                DateTime.now().subtract(const Duration(seconds: 1)),
-                            lastDate: DateTime(DateTime.now().year + 10),
-                            borderRadius: 2.0.h,
-                            // theme:
-                            //     ThemeData(primarySwatch: Colors.deepPurple),
-                            styleDatePicker: MaterialRoundedDatePickerStyle(
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
-                              ),
-                            ),
-                          );
-
-                          if (expDate != null) {
-                            if (expDate.isBefore(DateTime.now()) ||
-                                expDate.isAtSameMomentAs(DateTime.now())) {
-                              SnakBarWidget.getSnackBarErrorBlue(
-                                AppMetaLabels().error,
-                                AppMetaLabels().selectFuturedate,
-                              );
-                            } else {
-                              DateFormat dateFormat = DateFormat(
-                                  AppMetaLabels()
-                                      .dateFormatForShowRoundedDatePicker);
-                              setState(() {
-                                expiryText = dateFormat.format(expDate);
-                                controller.docsModel?.docs?[index].expiry =
-                                    dateFormat.format(expDate);
-
-                                isExpiryError = false;
-                              });
-                            }
-                          }
-                        },
-                        child: Container(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          margin: EdgeInsets.only(
-                              top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(246, 248, 249, 1),
-                            borderRadius: BorderRadius.circular(1.0.h),
-                            border: Border.all(
-                              color: isExpiryError == true
-                                  ? AppColors.redColor
-                                  : AppColors.bordercolornew,
-                              width: 0.2.w,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: Text(
-                                  expiryText,
-                                  style: AppTextStyle.normalBlack10,
-                                ),
-                              ),
-                              const Spacer(),
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: ClearButton(
-                                  clear: () {
-                                    setState(() {
-                                      expiryText = '';
-                                      controller
-                                          .docsModel?.docs?[index].expiry = '';
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // DOB
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              // 'Date Of Birth',
-                              AppMetaLabels().dateOFBirth,
-                              style: AppTextStyle.normalGrey10,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          var expDate = await showRoundedDatePicker(
-                            theme: ThemeData(primaryColor: AppColors.blueColor),
-                            height: 50.0.h,
-                            context: context,
-                            // locale: Locale('en'),
-                            locale: SessionController().getLanguage() == 1
-                                ? const Locale('en', '')
-                                : const Locale('ar', ''),
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(DateTime.now().year - 100),
-                            lastDate: DateTime.now(),
-                            borderRadius: 2.0.h,
-                            // theme:
-                            //     ThemeData(primarySwatch: Colors.deepPurple),
-                            styleDatePicker: MaterialRoundedDatePickerStyle(
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
-                              ),
-                            ),
-                          );
-
-                          if (expDate != null) {
-                            if (expDate.isAfter(DateTime.now()) ||
-                                expDate.isAtSameMomentAs(DateTime.now())) {
-                              SnakBarWidget.getSnackBarErrorBlue(
-                                AppMetaLabels().error,
-                                AppMetaLabels().selectFuturedate,
-                              );
-                            } else {
-                              DateFormat dateFormat = DateFormat(
-                                  AppMetaLabels()
-                                      .dateFormatForShowRoundedDatePicker);
-                              setState(() {
-                                isDOBError = false;
-                                dOBText = dateFormat.format(expDate);
-                              });
-                            }
-                          }
-                        },
-                        child: Container(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          margin: EdgeInsets.only(
-                              top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(246, 248, 249, 1),
-                            borderRadius: BorderRadius.circular(1.0.h),
-                            border: Border.all(
-                              color: isDOBError == true
-                                  ? AppColors.redColor
-                                  : AppColors.bordercolornew,
-                              width: 0.2.w,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: Text(
-                                  dOBText,
-                                  style: AppTextStyle.normalBlack10,
-                                ),
-                              ),
-                              const Spacer(),
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: ClearButton(
-                                  clear: () {
-                                    setState(() {
-                                      dOBText = '';
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 2.0.h,
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.3,
-                        width: double.infinity,
-                        child: controller.mergedId != null
-                            ? Image.file(
-                                controller.mergedId!,
-                                fit: BoxFit.contain,
-                              )
-                            : const SizedBox(),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               actions: [

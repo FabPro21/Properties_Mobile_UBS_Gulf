@@ -1654,7 +1654,7 @@ class AppMetaLabels {
       : 'اعتماد العقد فى البلدية';
 
   String confirmMunicipality = SessionController().getLanguage() == 1
-      ? "I confirm that I've completed the municipality approval procedure.."
+      ? "I confirm that I've completed the municipality approval procedure."
       : 'أقر بأنني أكملت إجراءات موافقة البلدية.';
 
   String uploadVendorDocs = SessionController().getLanguage() == 1

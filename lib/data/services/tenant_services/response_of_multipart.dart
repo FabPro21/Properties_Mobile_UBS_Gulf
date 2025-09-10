@@ -29,41 +29,44 @@ class _ResponseInTextState extends State<ResponseInText> {
               Icons.arrow_back_ios,
               color: Colors.black,
             ),
-            iconSize: 2.0.h,
+            iconSize: 2.5.h,
             onPressed: () {
               Get.back();
             },
           ),
           title: Text(
             AppMetaLabels().error,
-            style: AppTextStyle.semiBoldBlack10,
+            style: AppTextStyle.semiBoldBlack12,
           ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          child: Container(
-              padding: EdgeInsets.zero,
-              margin:
-                  EdgeInsets.only(top: 1.h, left: 2.w, right: 2.w, bottom: 2.h),
-              width: 100.0.w,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(2.0.h),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 0.5.h,
-                    spreadRadius: 0.1.h,
-                    offset: Offset(0.1.h, 0.1.h),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Html(
-                  data: widget.respose,
-                  // padding: EdgeInsets.zero,
+          child: Center(
+            child: Container(
+                padding: EdgeInsets.zero,
+                margin:
+                    EdgeInsets.only(top: 1.h, left: 2.w, right: 2.w, bottom: 2.h),
+                width: 100.0.w,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(2.0.h),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 0.5.h,
+                      spreadRadius: 0.1.h,
+                      offset: Offset(0.1.h, 0.1.h),
+                    ),
+                  ],
                 ),
-              )),
+                child: Center(
+                  child: Html(
+                    data: widget.respose,
+                    // padding: EdgeInsets.zero,
+                  ),
+                )),
+          ),
         ),
       ),
     );

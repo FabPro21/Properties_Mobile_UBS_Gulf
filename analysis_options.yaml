@@ -1,5 +1,8 @@
 include: package:flutter_lints/flutter.yaml
+
 analyzer:
   errors:
-    avoid_print: ignore ignore
+    avoid_print: ignore
     unused_local_variable: ignore
+    file_names: ignore
+    collection_methods_unrelated_type: ignore

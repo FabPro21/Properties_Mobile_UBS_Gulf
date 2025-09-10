@@ -112,22 +112,19 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  AppMetaLabels()
-                                                                      .invoiceNumber,
+                                                                  '${AppMetaLabels()
+                                                                      .invoiceNumber} :',
                                                                   style: AppTextStyle
                                                                       .semiBoldBlack11,
                                                                 ),
-                                                                const Spacer(),
-                                                                Text(
-                                                                  _controller
-                                                                          .getLpoInvoices
-                                                                          .value
-                                                                          .invoice![
-                                                                              index]
-                                                                          .lpono
-                                                                          .toString() ,
-                                                                  style: AppTextStyle
-                                                                      .semiBoldBlack11,
+                                                                Flexible(
+                                                                  child: Text(
+                                                                    _controller.getLpoInvoices.value.invoice![index].lpono.toString(),
+                                                                    style: AppTextStyle.semiBoldBlack11.copyWith(),
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    maxLines: 1,
+                                                                    textAlign: TextAlign.right,
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),

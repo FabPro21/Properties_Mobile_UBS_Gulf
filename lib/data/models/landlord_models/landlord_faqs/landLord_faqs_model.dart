@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final landLordFaqsModel = landLordFaqsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 LandLordFaqsModel landLordFaqsModelFromJson(String? str) =>

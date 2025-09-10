@@ -147,7 +147,10 @@ class _VendorContractorState extends State<VendorContractor> {
                                         style: AppTextStyle.normalGrey10,
                                       ),
                                       const Spacer(),
-                                      StatusWidget(
+                                    vendorProfileContrller
+                                                        .vendorProfile
+                                                        .value
+                                                        .profile?.lpoStatusName == null?const SizedBox():  StatusWidget(
                                         text:
                                             SessionController().getLanguage() ==
                                                     1
