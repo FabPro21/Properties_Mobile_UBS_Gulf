@@ -230,20 +230,22 @@ class _LandLordMoreState extends State<LandLordMore> {
                                 ),
                               ),
 
-                              ListTile(
-                                onTap: () async {
-                                  await Get.to(() => const LandLordReports());
-                                },
-                                leading: Image.asset(
-                                  AppImagesPath.reportsLand,
-                                  height: 3.5.h,
-                                  fit: BoxFit.cover,
-                                ),
-                                title: Text(
-                                  AppMetaLabels().report,
-                                  style: AppTextStyle.normalBlack12,
-                                ),
-                              ),
+                              // ListTile(
+                              //   onTap: () async {
+                              //     await Get.to(() => const LandLordReports());
+                              //   },
+                              //   leading: Image.asset(
+                              //     AppImagesPath.reportsLand,
+                              //     height: 3.5.h,
+                              //     fit: BoxFit.cover,
+                              //   ),
+                              //   title: Text(
+                              //     AppMetaLabels().report,
+                              //     style: AppTextStyle.normalBlack12,
+                              //   ),
+                              // ),
+                              
+                              
                               // ListTile(
                               //   onTap: () async {
                               //     await Get.to(() => InvoicesScreenLandlord());
