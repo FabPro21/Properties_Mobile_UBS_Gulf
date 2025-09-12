@@ -1,7 +1,10 @@
 // ignore_for_file: unused_import
 
+import 'dart:async';
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
+import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -25,7 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
     // Enable Firebase
     // From SessionController().enableFireBaseOTP this flag we are enabling and disable firebase
     SessionController().enableFireBaseOTP = true;
-    splashScreenController.isSetupMpin();
+   
+     Timer(const Duration(seconds: 2), () {
+      // Navigate to next screen
+       splashScreenController.isSetupMpin();
+    });
 
     _getFcmToken();
     _setupNotificationListeners();
@@ -89,15 +96,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     print(' isFab App :::::: ${SessionController().isFabApp}');
     return Scaffold(
-      backgroundColor: const Color(0xFF001838),
+      backgroundColor: AppColors.blueColor3,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppImagesPath.splashGifUbsPropt),
-            fit: BoxFit.cover,
-          ),
+          // image: DecorationImage(
+          //   image: AssetImage(AppImagesPath.splashGifUbsPropt),
+          //   fit: BoxFit.cover,
+          // ),
         ),
       ),
     );
