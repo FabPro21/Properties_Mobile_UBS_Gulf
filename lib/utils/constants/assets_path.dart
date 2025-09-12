@@ -5,6 +5,7 @@ class AppImagesPath {
 
   static const String commonRoot = 'assets/images/common_images';
   static const String appNewLogo = '$commonRoot/app_icon/new_app_logo.png';
+  static const String appNewLogo1 = '$commonRoot/app_icon/UbsPropt.png';
 
   static const String view360 = '$commonRoot/360.png';
   static const String thumbnail = '$commonRoot/thumbnail.jpg';
@@ -15,6 +16,8 @@ class AppImagesPath {
   static const String splashGifUbsPropt = '$commonRoot/trimmed_background.gif';
   static const String splashGif = '$commonRoot/splash.gif';
   static const String backgroundImage = '$commonRoot/backgroundImg.png';
+  static const String appLogoUbsPropt = '$commonRoot/logo_Prop.png';
+  static const String appLogoPropt = '$commonRoot/proptN.png';
   static const String appLogo = '$commonRoot/app_logo.png';
   static const String uaeFlag = '$commonRoot/flagUAE.png';
   static const String convex = '$commonRoot/convex.png';
