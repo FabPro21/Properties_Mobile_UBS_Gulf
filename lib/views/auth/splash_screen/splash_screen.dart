@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // From SessionController().enableFireBaseOTP this flag we are enabling and disable firebase
     SessionController().enableFireBaseOTP = true;
    
-     Timer(const Duration(seconds: 2), () {
+     Timer(const Duration(seconds: 1), () {
       // Navigate to next screen
        splashScreenController.isSetupMpin();
     });

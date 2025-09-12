@@ -83,11 +83,12 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                       padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                       child: Row(
                         children: [
-                           SizedBox(
-                                 child:  Padding(
-                                    padding:EdgeInsets.only(top: 0.5.h),
-                                   child: Text('PropT',style: TextStyle(fontSize: 3.5.h,color: Colors.white,fontWeight: FontWeight.bold),),
-                                 )),
+                          SizedBox(height: 2.5.h,width: 10.h, child: const AppLogo()),
+                          //  SizedBox(
+                          //        child:  Padding(
+                          //           padding:EdgeInsets.only(top: 0.5.h),
+                          //          child: Text('PropT',style: TextStyle(fontSize: 3.5.h,color: Colors.white,fontWeight: FontWeight.bold),),
+                          //        )),
                           const Spacer(),
                           Container(
                             decoration: const BoxDecoration(
