@@ -95,7 +95,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImagesPath.splashGif),
+            image: AssetImage(AppImagesPath.splashGifUbsPropt),
             fit: BoxFit.cover,
           ),
         ),

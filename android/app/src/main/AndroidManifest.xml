@@ -20,7 +20,7 @@
     android:theme="@style/AppTheme"
     android:allowBackup="false"
     android:fullBackupOnly="false"
-    android:label="FAB Properties"
+    android:label="UBSPropt"
     android:icon="@mipmap/ic_launcher"
     android:usesCleartextTraffic="false"
     android:extractNativeLibs="true">

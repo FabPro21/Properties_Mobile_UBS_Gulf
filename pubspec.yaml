@@ -145,7 +145,8 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/common_images/app_icon/new_app_logo.png"
+  image_path: "assets/images/common_images/app_icon/UbsPropt.png"
+  # image_path: "assets/images/common_images/app_icon/new_app_logo.png"
     
 flutter:
   uses-material-design: true

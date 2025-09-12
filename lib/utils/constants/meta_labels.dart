@@ -146,11 +146,11 @@ class AppMetaLabels {
       : "إعدادات الموافقة";
 
   String fabPropertiesPrivacyPolicy = SessionController().getLanguage() == 1
-      ? "FAB Properties - Privacy Policy"
+      ? "UBSPropt - Privacy Policy"
       : "خصائص أبوظبي الأول العقارية - سياسة الخصوصية";
 
   String fabPropertiesSource = SessionController().getLanguage() == 1
-      ? '"FAB Properties" Would Like to access the '
+      ? '"UBSPropt" Would Like to access the '
       : "أبوظبي الأول العقارية ترغب في الوصول إلى";
 
   String fabPropertiesPrivacyPolicyLink = SessionController().isFabApp == 1
@@ -338,7 +338,7 @@ class AppMetaLabels {
 
   String fabProps = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
-          ? "FAB Properties"
+          ? "UBSPropt"
           : "أبوظبي الأول العقارية"
       : SessionController().getLanguage() == 1
           ? "MENA Real Estate"
@@ -836,7 +836,7 @@ class AppMetaLabels {
 
   String fabProperties = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
-          ? 'FAB Properties '
+          ? 'UBSPropt '
           : ' أبوظبي الأول العقارية'
       : SessionController().getLanguage() == 1
           ? "MENA Real Estate"
@@ -2429,14 +2429,14 @@ class AppMetaLabels {
 
   String personalDocUploadInfo = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
-          ? 'I understand that I need to share my Emirates ID, passport and any other related documents with FAB Properties as this is necessary for the renewal of my Tenancy agreement with FAB Properties.'
+          ? 'I understand that I need to share my Emirates ID, passport and any other related documents with UBSPropt as this is necessary for the renewal of my Tenancy agreement with UBSPropt.'
           : 'أدرك أنني بحاجة إلى مشاركة هوية الإمارات وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول لأن هذا ضروري لتجديد عقد الإيجار الخاص بي مع بنك أبوظبي الأول.'
       : SessionController().getLanguage() == 1
           ? 'I understand that I need to share my Emirates ID, passport and any other related documents with MENA Real Estate as this is necessary for the renewal of my Tenancy agreement with MENA Real Estate.'
           : 'أدرك أنني بحاجة إلى مشاركة بطاقة الهوية الإماراتية وجواز السفر وأي مستندات أخرى ذات صلة مع شركة مينا العقارية لأن ذلك ضروري لتجديد عقد الإيجار الخاص بي مع شركة مينا العقارية.';
 
   // String personalDocUploadInfo = SessionController().getLanguage() == 1
-  //     ? 'I agree to share my Emirates ID, passport, and any other related documents with FAB Properties for the renewal of my tenancy contract.'
+  //     ? 'I agree to share my Emirates ID, passport, and any other related documents with UBSPropt for the renewal of my tenancy contract.'
   //     : 'أوافق على مشاركة بطاقة الهوية الإماراتية الخاصة بي وجواز السفر وأي مستندات أخرى ذات صلة مع بنك أبوظبي الأول من أجل تجديد عقد الإيجار الخاص بي.';
 
   // String succesfullSubmissionRenewalRequest = SessionController()
@@ -3104,19 +3104,19 @@ class AppMetaLabels {
 
   String stage4 = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
-          ? 'Your documents have been approved by FAB Properties and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
+          ? 'Your documents have been approved by UBSPropt and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
           : 'تمت الموافقة على مستنداتك من قبل ابوظبى الاولى العقارية  وبدأت عملية التجديد.يمكنك توقع مشاركة تفاصيل العقد الجديد في غضون يوم إلى يومي عمل.'
       : SessionController().getLanguage() == 1
           ? 'Your documents have been approved by MENA Real Estate and the renewal process has been initiated. You can expect the details of the new contract to be shared within 1 to 2 working days.'
           : 'تمت الموافقة على مستنداتك من قبل شركة مينا العقارية وبدأت عملية التجديد. يمكنك أن تتوقع مشاركة تفاصيل العقد الجديد خلال يوم أو يومين عمل.';
 
   // String stage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
+  //     ? 'Your submitted documents have been approved by UBSPropt and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
   //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
 
   String stage5 = SessionController().isFabApp == 1
       ? SessionController().getLanguage() == 1
-          ? 'The first rental installment and all other charges must be paid through “Online”. The remaining rental installments can be paid by cheques (made out to FAB Properties) which can be submitted through the Aramex service (at no additional cost) initiated by FABP.'
+          ? 'The first rental installment and all other charges must be paid through “Online”. The remaining rental installments can be paid by cheques (made out to UBSPropt) which can be submitted through the Aramex service (at no additional cost) initiated by FABP.'
           : "يمكن دفع القسط الاول وجميع الرسوم عبرالانترنت ، ام بالنسبة الاقساط المتبقية فيكن الدفع عن طريق الشيكات الصادرة الى \"ابوظبى الاول العقارية\" من خلال خدمة \"ارامكس\" بدون تكلفة اضافية . "
       : SessionController().getLanguage() == 1
           ? 'The first rental installment and all other charges must be paid through “Online”. The remaining rental installments can be paid by cheques (made out to Colliers Properties) which can be submitted through the Aramex service (at no additional cost) initiated by Colliers Properties.'
@@ -3172,14 +3172,14 @@ class AppMetaLabels {
   //     ? 'Please upload the required documents to proceed with your Renewal Request.'
   //     : 'يرجى تحميل المستندات المطلوبة لمتابعة طلب التجديد الخاص بك.';
   // String stage3 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents are under review with FAB Properties team, you will be notified once verification process is completed. This may take 1 to 2 working days.'
+  //     ? 'Your submitted documents are under review with UBSPropt team, you will be notified once verification process is completed. This may take 1 to 2 working days.'
   //     : 'المستندات المقدمة الخاصة بك قيد المراجعة مع فريق خصائص فاب ، وسيتم إخطارك بمجرد اكتمال عملية التحقق. قد يستغرق هذا من يوم إلى يومين عمل.';
   // String stage4 = SessionController().getLanguage() == 1
-  //     ? 'Your submitted documents have been approved by FAB Properties and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
+  //     ? 'Your submitted documents have been approved by UBSPropt and Renewal Process has been initiated, already.\nThe Details of New Contract will be shared with you within 1 to 2 working days in order to verify and to proceed with the payments, accordingly.'
   //     : 'تمت الموافقة على المستندات التي أرسلتها من قبل خصائص فاب وتم بدء عملية التجديد بالفعل. \n ستتم مشاركة تفاصيل العقد الجديد معك في غضون يوم إلى يومي عمل للتحقق من المدفوعات ومتابعتها ، وفقًا لذلك.';
   // String stage5 = SessionController().getLanguage() == 1
-  //     ? 'Please proceed to Make Payment.\n\n1- The first installment of your Rental Payment and Additional Charges including VAT must be made by Credit/Debit card.\n\n2- Remaining Rental Installments can be made either by Credit/Debit card OR Cheques\n\n3- Please prepare the Cheque(s) to the benefit of FAB PROPERTIES in order to upload the copies while making the payments.\n\n4- Kindly note that you can submit the cheque(s) free of charges via Aramex service initiated by our team'
-  //     : 'يرجى المتابعة لإجراء الدفع. \n \n1- يجب سداد الدفعة الأولى من مدفوعات الإيجار والرسوم الإضافية بما في ذلك ضريبة القيمة المضافة بواسطة بطاقة الائتمان / الخصم. \n \n2- يمكن سداد أقساط الإيجار المتبقية إما عن طريق بطاقة الائتمان / الخصم أو الشيكات \n \n3- يرجى تحضير الشيك (الشيكات) لصالح FAB PROPERTIES من أجل تحميل النسخ أثناء إجراء المدفوعات. \n \n4- يرجى ملاحظة أنه يمكنك إرسال الشيك (الشيكات) مجانًا عبر بادر فريقنا بخدمة أرامكس.';
+  //     ? 'Please proceed to Make Payment.\n\n1- The first installment of your Rental Payment and Additional Charges including VAT must be made by Credit/Debit card.\n\n2- Remaining Rental Installments can be made either by Credit/Debit card OR Cheques\n\n3- Please prepare the Cheque(s) to the benefit of UBSPropt in order to upload the copies while making the payments.\n\n4- Kindly note that you can submit the cheque(s) free of charges via Aramex service initiated by our team'
+  //     : 'يرجى المتابعة لإجراء الدفع. \n \n1- يجب سداد الدفعة الأولى من مدفوعات الإيجار والرسوم الإضافية بما في ذلك ضريبة القيمة المضافة بواسطة بطاقة الائتمان / الخصم. \n \n2- يمكن سداد أقساط الإيجار المتبقية إما عن طريق بطاقة الائتمان / الخصم أو الشيكات \n \n3- يرجى تحضير الشيك (الشيكات) لصالح UBSPropt من أجل تحميل النسخ أثناء إجراء المدفوعات. \n \n4- يرجى ملاحظة أنه يمكنك إرسال الشيك (الشيكات) مجانًا عبر بادر فريقنا بخدمة أرامكس.';
   // String stage5_1 = SessionController().getLanguage() == 1
   //     ? 'If you have made the payment already, please wait for our verification & reconciliation prior to get back to you within 1 to 2 working days.'
   //     : 'إذا كنت قد سددت الدفعة بالفعل ، فيرجى الانتظار حتى نرجع إليك التحقق والتسوية في غضون يوم إلى يومين عمل.';

@@ -12,6 +12,7 @@ class AppImagesPath {
   static const String playStore = '$commonRoot/app_icon/playStore.png';
   static const String appStore = '$commonRoot/app_icon/appStore.png';
 
+  static const String splashGifUbsPropt = '$commonRoot/trimmed_background.gif';
   static const String splashGif = '$commonRoot/splash.gif';
   static const String backgroundImage = '$commonRoot/backgroundImg.png';
   static const String appLogo = '$commonRoot/app_logo.png';
