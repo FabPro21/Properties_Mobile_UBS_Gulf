@@ -107,6 +107,9 @@ class _SplashScreenState extends State<SplashScreen> {
           //   fit: BoxFit.cover,
           // ),
         ),
+        child:  Center(
+          child: CircularProgressIndicator(color: AppColors.whiteColor,), // Loader in center
+        ),
       ),
     );
   }

@@ -46,12 +46,24 @@ class SelectRoloesController extends GetxController {
       await Get.to(() => const NoInternetScreen());
     }
     // RefreshToken
+    // loadingData.value = true;
+    // await getNewTokenfun().then((value) {
+    //   name.value = SessionController().getUserName() ?? '';
+    //   if(value == "Unauthorised"){return;}
+    //   getUserRoles();
+    // });
+    // loadingData.value = false;
     loadingData.value = true;
-    await getNewTokenfun().then((value) {
+      var tokenResult = await getNewTokenfun();
+
+      if (tokenResult == "Unauthorised" || tokenResult == "Error") {
+        loadingData.value = false;
+        return; // stop here, do not call getUserRoles()
+      }
+
       name.value = SessionController().getUserName() ?? '';
       getUserRoles();
-    });
-    loadingData.value = false;
+      loadingData.value = false;
   }
 
   bool isUpdateNeededFuncForIos(String storeVersion, String appVersion) {
@@ -314,7 +326,7 @@ class SelectRoloesController extends GetxController {
     }
   }
 
-  Future<void> getNewTokenfun() async {
+  Future<dynamic> getNewTokenfun() async {
     loadingData.value = true;
     print("phone num is=====${SessionController().getPhone()}");
     var data = {
@@ -325,12 +337,17 @@ class SelectRoloesController extends GetxController {
     if (!isInternetConnected) {
       await Get.to(() => const NoInternetScreen());
     }
+    
     try {
       var url = AppConfig().getNewToken;
       var result = await BaseClientClass.postwithheaderwithouttoken(
         url ?? "",
         data,
       );
+      if (result is String) {
+          loadingData.value = false;
+          return result; // could be "Unauthorised"
+        }
       if (result is http.Response) {
         var resp = getNewTokenModelFromJson(result.body);
         SessionController().setToken(resp.token);
