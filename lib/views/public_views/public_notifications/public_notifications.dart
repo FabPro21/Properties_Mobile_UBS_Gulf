@@ -94,8 +94,14 @@ class _PublicNotificationState extends State<PublicNotification> {
                             onToggle: (index) {
                               _controller.currentIndex.value = index!;
                               if (index == 0) {
+                                setState(() {
+                                  _controller.pagaNoPAll = '1';_controller.noMoreDataPageAll.value = '';
+                                });
                                 _getData();
                               } else {
+                                 setState(() {
+                                  _controller.pagaNoPURead = '1';_controller.noMoreDataUnRead.value = '';
+                                });
                                 _getUnreadNotifications();
                               }
                             },
