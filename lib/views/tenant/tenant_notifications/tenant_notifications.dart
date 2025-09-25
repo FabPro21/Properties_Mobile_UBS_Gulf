@@ -97,9 +97,17 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                             onToggle: (index) async {
                               getTNController.currentIndex.value = index!;
                               if (index == 0) {
+                                setState(() {
+                                  getTNController.pagaNoPAll = '1';
+                                  getTNController.noMoreDataPageAll.value = '';
+                                });
                                 await getTNController.getData(
                                     getTNController.pagaNoPAll.toString());
                               } else {
+                                setState(() {
+                                  getTNController.pagaNoPURead = '1';
+                                  getTNController.noMoreDataUnRead.value = '';
+                                });
                                 await getTNController.unReadNotifications(
                                     getTNController.pagaNoPURead);
                               }
