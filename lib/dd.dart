@@ -12,7 +12,7 @@
 // ' ,Please enter valid amount' : ' الرجاء إدخال مبلغ صالح '
 // 'Building Status Report' : ' تقرير حالة المبنى'
   // new End
-
+// lssldksd;kdskc
   // "Please select From and To dates" :"الرجاء تحديد تاريخ من وإلى"
   
 //         "Login" : 'تسجيل الدخول';
