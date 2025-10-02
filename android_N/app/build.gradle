@@ -1,0 +1,123 @@
+
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw  GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+android {
+    namespace  "com.fab.fabpropertiesEnterprise"
+    compileSdkVersion 35
+    ndkVersion flutter.ndkVersion
+    lintOptions {
+        disable 'InvalidPackage'
+        disable "Instantiatable"
+        checkReleaseBuilds false
+        
+        abortOnError false
+    }
+    
+     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
+        targetCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
+    }
+
+    kotlinOptions {
+        jvmTarget = '17' // Align this with Java
+        // jvmTarget = JavaVersion.VERSION_1_8 
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.fab.fabpropertiesEnterprise"
+        // applicationId "com.fab.flutterjailbreakdetection"
+        minSdkVersion 23
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
+   }
+    packagingOptions {
+        exclude '**/*.png'  // Add any specific exclusions if needed to avoid conflicts
+        exclude 'res/values-v35/values-v35.xml' 
+   }
+   buildTypes {
+    debug {
+            signingConfig signingConfigs.debug
+        }
+       release {
+           signingConfig signingConfigs.release
+           minifyEnabled false  // Disable minification
+           shrinkResources false  // Disable resource shrinking
+       }
+   }
+}
+
+flutter {
+   source '../..'
+ }
+
+dependencies {
+    modules {
+        module("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
+            replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
+        }
+        module("org.jetbrains.kotlin:kotlin-stdlib-jdk8") {
+            replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk8 is now part of kotlin-stdlib")
+        }
+    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation "androidx.browser:browser:1.3.0"
+    implementation platform('com.google.firebase:firebase-bom:33.8.0')  // Use latest BOM version
+    implementation 'com.google.firebase:firebase-auth'  // Authentication SDK
+    implementation 'com.google.firebase:firebase-messaging'  // Messaging SDK
+    implementation 'com.google.firebase:firebase-appcheck-safetynet'  // AppCheck SDK
+    implementation 'com.google.firebase:firebase-appcheck-debug'  // Debug AppCheck SDK
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+}
+

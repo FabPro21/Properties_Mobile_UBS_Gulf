@@ -13,6 +13,8 @@ key.properties
 **/*.jks
 
 # Android Studio will place build artifacts here
+/Users/apple/System/MobileAppRelated/properties_mobile_ubs_gulf/android/gradle-8.0-all.zip
+/android/gradle-8.0-all.zip
 /android/app/debug
 /android/app/profile
 /android/app/release

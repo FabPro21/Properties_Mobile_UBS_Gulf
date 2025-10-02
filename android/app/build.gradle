@@ -1,11 +1,10 @@
-
 plugins {
     id "com.android.application"
-    // START: FlutterFire Configuration
-    id 'com.google.gms.google-services'
     id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
+
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -35,6 +34,7 @@ def keystoreProperties = new Properties()
    if (keystorePropertiesFile.exists()) {
        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
    }
+
 android {
     namespace  "com.fab.fabpropertiesEnterprise"
     compileSdkVersion 35
@@ -46,6 +46,10 @@ android {
         
         abortOnError false
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+   
     
      compileOptions {
         sourceCompatibility JavaVersion.VERSION_17 // Align this with Kotlin
@@ -115,9 +119,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:33.8.0')  // Use latest BOM version
     implementation 'com.google.firebase:firebase-auth'  // Authentication SDK
     implementation 'com.google.firebase:firebase-messaging'  // Messaging SDK
-    implementation 'com.google.firebase:firebase-appcheck-safetynet'  // AppCheck SDK
+    // implementation 'com.google.firebase:firebase-appcheck-safetynet'  // AppCheck SDK --->(Firslty using this , comment this because it was creating an error)
     implementation 'com.google.firebase:firebase-appcheck-debug'  // Debug AppCheck SDK
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core-ktx:1.9.0'
 }
-
