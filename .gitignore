@@ -62,3 +62,9 @@ android/app/build/
 # Flutter specific
 .dart_tool/package_config.json
 .flutter-plugins-dependencies
+android/gradle-8.0-all.zip
+android/gradle-8.0-all.zip
+*.zip
+android/gradle-*.zip
+*.zip
+android/gradle-*.zip
