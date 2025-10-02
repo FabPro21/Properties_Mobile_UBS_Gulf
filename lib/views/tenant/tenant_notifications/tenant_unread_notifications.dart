@@ -298,8 +298,10 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                   .notificationsUnRead![index].notificationId
                   .toString());
               await getTNController.archiveNotifications();
-              getTNController.notificationsUnRead!.removeAt(index);
-              getTNController.unreadLength = getTNController.unreadLength - 1;
+               setState(() {
+                getTNController.unreadLength = getTNController.unreadLength - 1;
+                getTNController.notificationsUnRead!.removeAt(index);
+              });
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

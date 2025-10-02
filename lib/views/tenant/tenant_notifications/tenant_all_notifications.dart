@@ -239,6 +239,10 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
 
               await getTNController.archiveNotifications();
               // Use a callback or setState to update the UI if necessary
+               setState(() {
+                getTNController.allLength = getTNController.allLength - 1;
+                getTNController.notifications!.removeAt(index);
+              });
             },
             borderRadius: BorderRadius.circular(8.0),
             spacing: 8.0,

@@ -316,7 +316,9 @@ class BaseClientClass {
     }
     switch (response.statusCode) {
       case 200:
+      
         return response;
+        
       case 400:
         if (url == AppConfig().validateUser ||
             url == AppConfig().validateUserFB) {
@@ -324,7 +326,10 @@ class BaseClientClass {
         }
         return AppMetaLabels().badRequest;
       case 401:
-        Get.offAll(() => const SelectRoleScreen());
+       if (Get.currentRoute != '/SelectRoleScreen') {
+          Get.offAll(() => const SelectRoleScreen());
+        }
+        // Get.offAll(() => const SelectRoleScreen());
         getx.Get.snackbar(
           AppMetaLabels().error,
           AppMetaLabels().unauthorized,
@@ -332,7 +337,10 @@ class BaseClientClass {
         );
         return AppMetaLabels().unauthorized;
       case 403:
-        Get.offAll(() => const SelectRoleScreen());
+      if (Get.currentRoute != '/SelectRoleScreen') {
+          Get.offAll(() => const SelectRoleScreen());
+        }
+        // Get.offAll(() => const SelectRoleScreen());
         getx.Get.snackbar(
           AppMetaLabels().error,
           AppMetaLabels().unauthorized,

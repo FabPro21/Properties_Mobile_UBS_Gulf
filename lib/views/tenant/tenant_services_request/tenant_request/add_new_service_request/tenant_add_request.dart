@@ -100,7 +100,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
               children: [
                 CustomAppBar2(title: AppMetaLabels().newRequestSmall),
                 propertiesController.loadingData.value
-                    ? const Center(child: LoadingIndicatorBlue())
+                    ? Padding(
+                      padding:  EdgeInsets.only(top: 30.h),
+                      child: const Center(child: LoadingIndicatorBlue()),
+                    )
                     : propertiesController.error.value != ''
                         ? AppErrorWidget(
                             errorText: propertiesController.error.value,
@@ -108,7 +111,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                         : propertiesController.getTenantProperties.value
                                     .properties!.isEmpty
                             ? Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding:  EdgeInsets.only(top: 10.h,left: 8.h,right: 8.h),
                                 child: CustomErrorWidget(
                                   errorText: AppMetaLabels().cannotAddSvcReq,
                                 ),

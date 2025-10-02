@@ -227,20 +227,20 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              ListTile(
-                                onTap: () {
-                                  Get.off(() => const SearchPropertiesProperties());
-                                },
-                                leading: Image.asset(
-                                  AppImagesPath.contracts3,
-                                  width: 3.0.h,
-                                  color: AppColors.blackColor,
-                                ),
-                                title: Text(
-                                  AppMetaLabels().fabProps,
-                                  style: AppTextStyle.normalBlack12,
-                                ),
-                              ),
+                              // ListTile(
+                              //   onTap: () {
+                              //     Get.off(() => const SearchPropertiesProperties());
+                              //   },
+                              //   leading: Image.asset(
+                              //     AppImagesPath.contracts3,
+                              //     width: 3.0.h,
+                              //     color: AppColors.blackColor,
+                              //   ),
+                              //   title: Text(
+                              //     AppMetaLabels().fabProps,
+                              //     style: AppTextStyle.normalBlack12,
+                              //   ),
+                              // ),
                               ListTile(
                                 onTap: () {
                                   Get.off(() => const SearchPropertiesServices());

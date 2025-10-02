@@ -25,7 +25,7 @@ class SplashScreenController extends GetxController {
   SelectRoloesController obj = Get.put(SelectRoloesController());
   @override
   void onInit() async {
-    await isSetupMpin();
+    // await isSetupMpin();
     await setUserMobile();
     // want to set for the name latest
     // 12*

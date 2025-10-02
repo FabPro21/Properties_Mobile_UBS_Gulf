@@ -8,12 +8,12 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 80.0.w,
-      height: 10.0.h,
+      height: 5.5.h,
+      width: double.infinity,
       child: Image.asset(
-        AppImagesPath.appLogo,
+        AppImagesPath.appLogoPropt,
         fit: BoxFit.contain,
-      ),
-    );
+        ),
+      );
   }
 }
