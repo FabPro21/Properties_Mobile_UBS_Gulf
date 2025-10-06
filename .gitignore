@@ -58,7 +58,8 @@ app.*.map.json
 .DS_Store
 .dart_tool/package_config.json
 android/app/build/
-
+# .gitignore
+android/gradle-8.0-all.zip
 # Flutter specific
 .dart_tool/package_config.json
 .flutter-plugins-dependencies
