@@ -1,4 +1,4 @@
-package com.fab.fap_properties
+package com.fab.fabpropertiesEnterprise
 
 import io.flutter.embedding.android.FlutterActivity
 

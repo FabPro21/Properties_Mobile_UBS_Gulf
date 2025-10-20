@@ -6,7 +6,6 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/common/about_app.dart/about_app.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notifications.dart';
-import 'package:fap_properties/views/landlord/landlord_reports/landlord_report.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

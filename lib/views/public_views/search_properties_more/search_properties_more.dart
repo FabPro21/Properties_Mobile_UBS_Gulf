@@ -16,7 +16,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/about_app.dart/about_app.dart';
 import '../public_notifications/public_notifications.dart';
-import '../search_properties_properties/search_properties_properties.dart';
 import '../search_properties_services/search_properties_services.dart';
 import 'public_profile/public_profile.dart';
 import 'public_settings/public_settings.dart';

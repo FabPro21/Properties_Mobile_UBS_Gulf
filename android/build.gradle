@@ -1,5 +1,6 @@
 allprojects {
     repositories {
+        maven { url 'https://repo.maven.apache.org/maven2' }
         google()
         mavenCentral()
     }
