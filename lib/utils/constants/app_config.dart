@@ -495,6 +495,10 @@ class AppConfig {
         'https://tenant.api.ubspropt.com/api/';
     appConfigVendor =
         'https://vendor.api.ubspropt.com/api/';
+
+
+
+        
     landlordAppConfig =
         'https://landlord.api.ubspropt.com/api/';
 
