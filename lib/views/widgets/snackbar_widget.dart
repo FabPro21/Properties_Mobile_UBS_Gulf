@@ -1,5 +1,4 @@
 import 'package:fap_properties/utils/constants/meta_labels.dart';
-import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +11,11 @@ class SnakBarWidget {
   ) {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.BOTTOM,
-        duration: Duration(seconds: 4),
+        duration: const Duration(seconds: 4),
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         backgroundColor: Colors.green[700],
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.check,
           color: Colors.white,
         ));
@@ -31,7 +30,7 @@ class SnakBarWidget {
         backgroundColor: Colors.red,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -43,12 +42,11 @@ class SnakBarWidget {
   ) {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
-        backgroundColor: AppColors.colliersBlueColor,
-        // backgroundColor: Colors.blue,
+        duration: const Duration(seconds: 5),
+        backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -74,11 +72,11 @@ class SnakBarWidget {
           ),
         ),
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -98,11 +96,11 @@ class SnakBarWidget {
           ),
         ),
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -129,11 +127,11 @@ class SnakBarWidget {
           ),
         ),
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -155,11 +153,11 @@ class SnakBarWidget {
           ),
         ),
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -171,11 +169,11 @@ class SnakBarWidget {
   ) {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 40),
+        duration: const Duration(seconds: 40),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -187,11 +185,11 @@ class SnakBarWidget {
   ) {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.blue,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));
@@ -203,11 +201,11 @@ class SnakBarWidget {
   ) {
     return Get.snackbar(title, message,
         snackPosition: SnackPosition.TOP,
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.red,
         margin: EdgeInsets.only(bottom: 2.h, right: 1.h, left: 1.h),
         colorText: Colors.white,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           color: Colors.white,
         ));

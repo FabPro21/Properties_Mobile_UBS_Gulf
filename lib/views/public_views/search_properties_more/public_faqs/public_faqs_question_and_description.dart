@@ -15,8 +15,7 @@ import 'public_faqs_controller.dart';
 
 class PublicFaqsQuestionsAndDescription extends StatefulWidget {
   final int? categoryId;
-  const PublicFaqsQuestionsAndDescription({Key? key, this.categoryId})
-      : super(key: key);
+  const PublicFaqsQuestionsAndDescription({super.key, this.categoryId});
 
   @override
   _PublicFaqsQuestionsAndDescriptionState createState() =>
@@ -25,7 +24,7 @@ class PublicFaqsQuestionsAndDescription extends StatefulWidget {
 
 class _PublicFaqsQuestionsAndDescriptionState
     extends State<PublicFaqsQuestionsAndDescription> {
-  PublicFaqsController _controller = Get.put(PublicFaqsController());
+  final PublicFaqsController _controller = Get.put(PublicFaqsController());
   bool isShowDivider = true;
   @override
   void initState() {
@@ -48,7 +47,7 @@ class _PublicFaqsQuestionsAndDescriptionState
             Expanded(
               child: Obx(() {
                 return _controller.loadingQuestions.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.errorQuestions.value != '' ||
                             _controller.questionLength == 0
                         ? CustomErrorWidget(
@@ -143,8 +142,8 @@ class _PublicFaqsQuestionsAndDescriptionState
                                     ),
                                     _controller.questionLength - 1 == index ||
                                             !isShowDivider
-                                        ? SizedBox()
-                                        : AppDivider(),
+                                        ? const SizedBox()
+                                        : const AppDivider(),
                                   ],
                                 ),
                               );

@@ -23,9 +23,9 @@ import '../../tenant_payments/tenant_payments_screen.dart';
 class TenantDashboardTabs extends StatefulWidget {
   final int? initialIndex;
   const TenantDashboardTabs({
-    Key? key,
+    super.key,
     this.initialIndex = 0,
-  }) : super(key: key);
+  });
 
   @override
   _TenantDashboardTabsState createState() => _TenantDashboardTabsState();
@@ -33,11 +33,11 @@ class TenantDashboardTabs extends StatefulWidget {
 
 class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
   // ignore: unused_field
-  TenantDashboardTabsController _dashboardTabsController =
+  final TenantDashboardTabsController _dashboardTabsController =
       Get.put(TenantDashboardTabsController());
 
   int? _selectedIndex;
-  GlobalKey _toolTipKey = GlobalKey();
+  final GlobalKey _toolTipKey = GlobalKey();
 
   @override
   void initState() {
@@ -63,15 +63,15 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
           });
         },
       ),
-      TenantContractsScreen(),
-      TenantRequestList(),
-      TenantPaymentsScreen(),
+      const TenantContractsScreen(),
+      const TenantRequestList(),
+      const TenantPaymentsScreen(),
     ];
 
     return WillPopScope(
         onWillPop: () async {
           settingModalBottomSheet(context);
-          await Future.delayed(Duration(milliseconds: 100));
+          await Future.delayed(const Duration(milliseconds: 100));
           return false;
         },
         child: Directionality(
@@ -83,7 +83,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
             resizeToAvoidBottomInset: false,
             body: Stack(
               children: [
-                AppBackgroundConcave(),
+                const AppBackgroundConcave(),
                 SafeArea(
                   child: Column(
                     children: [
@@ -119,9 +119,9 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                           Tooltip(
                             key: _toolTipKey,
                             message: AppMetaLabels().serviceRequests,
-                            showDuration: Duration(seconds: 3),
+                            showDuration: const Duration(seconds: 3),
                             verticalOffset: 4.h,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 4, horizontal: 8),
                             decoration: BoxDecoration(
                                 color: AppColors.chartBlueColor,
@@ -132,9 +132,9 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                                   : AppImagesPath.services,
                               title: AppMetaLabels().services,
                               onTap: (pos) {
-                                final dynamic _toolTip =
+                                final dynamic toolTip =
                                     _toolTipKey.currentState;
-                                _toolTip.ensureTooltipVisible();
+                                toolTip.ensureTooltipVisible();
                                 setState(() {
                                   _selectedIndex = pos;
                                 });
@@ -158,11 +158,12 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
                             icon: AppImagesPath.menu,
                             title: AppMetaLabels().more,
                             onTap: (pos) async {
-                              int _res = await Get.to(() => TenantMoreScreen());
-                              if (_res != null)
+                              int res = await Get.to(() => const TenantMoreScreen());
+                              if (res != null) {
                                 setState(() {
-                                  _selectedIndex = _res;
+                                  _selectedIndex = res;
                                 });
+                              }
                             },
                             position: 4,
                           )
@@ -183,7 +184,7 @@ class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
         builder: (BuildContext bc) {
           return Container(
             color: AppColors.whiteColor,
-            child: new Wrap(
+            child: Wrap(
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 2.0.h, bottom: 0.0.h),

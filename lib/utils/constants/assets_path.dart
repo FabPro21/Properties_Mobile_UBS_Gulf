@@ -108,10 +108,10 @@ class AppImagesPath {
   /// Public
   /// /////////////
   static const String publicRoot = 'assets/images/public_images';
-  static const String location = publicRoot + '/location.png';
-  static const String search = publicRoot + '/search.png';
-  static const String location2 = publicRoot + '/location2.png';
-  static const String search2 = publicRoot + '/search2.png';
+  static const String location = '$publicRoot/location.png';
+  static const String search = '$publicRoot/search.png';
+  static const String location2 = '$publicRoot/location2.png';
+  static const String search2 = '$publicRoot/search2.png';
   /////////////////
   /// Icons
   /// /////////////
@@ -133,18 +133,18 @@ class AppImagesPath {
   /////////////////////    LandLord  ///////////////////////////////////
   static const String landlordRoot = 'assets/images/landlord_images';
   static const String contractImgLand =
-      landlordRoot + '/landlordContractImg.png';
+      '$landlordRoot/landlordContractImg.png';
   static const String propertiesImgLand =
-      landlordRoot + '/propertiesIconLand.png';
+      '$landlordRoot/propertiesIconLand.png';
   static const String propertiesBlueLand =
-      landlordRoot + '/propertiesBlueLand.png';
-  static const String reportsLand = landlordRoot + '/reportsLand.png';
-  static const String reportsBlueLand = landlordRoot + '/reportsBlueLand.png';
-  static const String settingsLand = landlordRoot + '/settingsLand.png';
-  static const String notificationLand = landlordRoot + '/notificationLand.png';
-  static const String myProfileLand = landlordRoot + '/myProfileLand.png';
-  static const String logoutLand = landlordRoot + '/logoutLand.png';
-  static const String faqsLand = landlordRoot + '/faqsLand.png';
-  static const String arrowDownwardLand = landlordRoot + '/arrowdown.png';
-  static const String view360Land = landlordRoot + '/view360Land.png';
+      '$landlordRoot/propertiesBlueLand.png';
+  static const String reportsLand = '$landlordRoot/reportsLand.png';
+  static const String reportsBlueLand = '$landlordRoot/reportsBlueLand.png';
+  static const String settingsLand = '$landlordRoot/settingsLand.png';
+  static const String notificationLand = '$landlordRoot/notificationLand.png';
+  static const String myProfileLand = '$landlordRoot/myProfileLand.png';
+  static const String logoutLand = '$landlordRoot/logoutLand.png';
+  static const String faqsLand = '$landlordRoot/faqsLand.png';
+  static const String arrowDownwardLand = '$landlordRoot/arrowdown.png';
+  static const String view360Land = '$landlordRoot/view360Land.png';
 }

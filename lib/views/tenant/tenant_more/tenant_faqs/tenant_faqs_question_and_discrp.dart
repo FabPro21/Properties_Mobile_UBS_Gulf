@@ -14,8 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class TenantFaqsQuestionsAndDescription extends StatefulWidget {
   final int? categoryId;
-  TenantFaqsQuestionsAndDescription({Key? key, this.categoryId})
-      : super(key: key);
+  const TenantFaqsQuestionsAndDescription({super.key, this.categoryId});
 
   @override
   State<TenantFaqsQuestionsAndDescription> createState() =>
@@ -24,7 +23,7 @@ class TenantFaqsQuestionsAndDescription extends StatefulWidget {
 
 class _TenantFaqsQuestionsAndDescriptionState
     extends State<TenantFaqsQuestionsAndDescription> {
-  TenantFaqsController _controller = Get.put(TenantFaqsController());
+  final TenantFaqsController _controller = Get.put(TenantFaqsController());
   bool isShowDivider = true;
   @override
   void initState() {
@@ -45,7 +44,7 @@ class _TenantFaqsQuestionsAndDescriptionState
             Expanded(
               child: Obx(() {
                 return _controller.loadingQuestions.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.errorQuestions.value != '' ||
                             _controller.questionLength == 0
                         ? Center(
@@ -135,8 +134,8 @@ class _TenantFaqsQuestionsAndDescriptionState
                                       ),
                                       _controller.questionLength - 1 == index ||
                                               !isShowDivider
-                                          ? SizedBox()
-                                          : AppDivider(),
+                                          ? const SizedBox()
+                                          : const AppDivider(),
                                     ],
                                   ),
                                 ),

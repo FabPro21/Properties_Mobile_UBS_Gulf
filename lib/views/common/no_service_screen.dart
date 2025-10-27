@@ -12,6 +12,8 @@ import '../auth/splash_screen/splash_screen.dart';
 
 // ignore: must_be_immutable
 class NoServiceScreen extends StatefulWidget {
+  const NoServiceScreen({super.key});
+
   @override
   State<NoServiceScreen> createState() => _NoServiceScreenState();
 }
@@ -60,10 +62,10 @@ class _NoServiceScreenState extends State<NoServiceScreen> {
                           child: ButtonWidget(
                             buttonText: AppMetaLabels().retry,
                             onPress: () async {
-                              bool _isInternetConnected =
+                              bool isInternetConnected =
                                   await BaseClientClass.isInternetConnected();
-                              if (_isInternetConnected) {
-                                Get.offAll(() => SplashScreen());
+                              if (isInternetConnected) {
+                                Get.offAll(() => const SplashScreen());
                               }
                             },
                           ))

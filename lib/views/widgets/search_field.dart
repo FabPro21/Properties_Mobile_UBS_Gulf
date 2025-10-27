@@ -9,12 +9,12 @@ class SearchField extends StatefulWidget {
   final VoidCallback? onPressed;
   final String? hint;
   const SearchField({
-    Key? key,
+    super.key,
     this.searchController,
     this.onChanged,
     this.onPressed,
     this.hint = '',
-  }) : super(key: key);
+  });
 
   @override
   State<SearchField> createState() => _SearchFieldState();
@@ -63,7 +63,7 @@ class _SearchFieldState extends State<SearchField> {
             ),
             IconButton(
               onPressed: widget.onPressed,
-              icon: Icon(
+              icon: const Icon(
                 Icons.refresh,
               ),
             )

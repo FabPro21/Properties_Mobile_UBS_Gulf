@@ -15,7 +15,8 @@ class UpdateProfileRequestService {
         if (foundation.kDebugMode) print(e);
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return resp;
+    }
   }
 }

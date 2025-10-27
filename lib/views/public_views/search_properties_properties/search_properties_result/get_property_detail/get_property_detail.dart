@@ -27,7 +27,7 @@ import 'package:flutter/foundation.dart';
 class GetPropertyDetails extends StatefulWidget {
   final int? unitId;
   final int? index;
-  GetPropertyDetails({Key? key, this.unitId, this.index}) : super(key: key);
+  const GetPropertyDetails({super.key, this.unitId, this.index});
 
   @override
   State<GetPropertyDetails> createState() => _GetPropertyDetailsState();
@@ -59,7 +59,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
       // icon: BitmapDescriptor.,
       infoWindow: Gm.InfoWindow(
         title: gPDController.data.value.property?.propertyName,
-        anchor: Offset(0.5, 0.5),
+        anchor: const Offset(0.5, 0.5),
         //snippet: 'address',
       ),
     );
@@ -76,7 +76,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
     var lng = gPDController.data.value.property?.longitude == null
         ? 0.0
         : double.parse(gPDController.data.value.property?.longitude ?? "");
-    return <Annotation>[
+    return <Annotation>{
       Annotation(
           annotationId: AnnotationId(
               "${gPDController.data.value.property?.propertyName}"),
@@ -90,7 +90,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                 ? gPDController.data.value.property?.propertyName ?? ""
                 : gPDController.data.value.property?.propertyNameAr ?? "",
           )),
-    ].toSet();
+    };
   }
 
   @override
@@ -98,9 +98,10 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
     return Obx(() {
       final paidFormatter = intl.NumberFormat('#,##0.00', 'AR');
       String price = '';
-      if (gPDController.data.value.property != null)
+      if (gPDController.data.value.property != null) {
         price =
             "${AppMetaLabels().aed} ${paidFormatter.format(gPDController.data.value.property?.amount ?? 0.0)}";
+      }
       return Directionality(
         textDirection: SessionController().getLanguage() == 1
             ? TextDirection.ltr
@@ -109,7 +110,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
               ),
@@ -155,7 +156,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                           ),
                         ],
                       ),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     ),
                   ),
                 )
@@ -183,7 +184,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                         ),
                       ),
                     )
-                  : Container(
+                  : SizedBox(
                       width: 100.0.w,
                       height: 100.0.h,
                       child: SingleChildScrollView(
@@ -218,7 +219,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: 100.0.w,
                                         height: 30.5.h,
                                         child: ClipRRect(
@@ -285,7 +286,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                         snapshot.data!,
                                                         fit: BoxFit.cover);
                                                   } else {
-                                                    return Center(
+                                                    return const Center(
                                                         child: Icon(
                                                             Icons.ac_unit));
                                                   }
@@ -303,7 +304,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                 CrossAxisAlignment.start,
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: 90.0.w,
                                                 child: Text(
                                                   SessionController()
@@ -337,7 +338,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Text(
                                                     gPDController
                                                             .data
@@ -360,7 +361,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                     style: AppTextStyle
                                                         .semiBoldBlack10,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Text(
                                                     price,
                                                     style: AppTextStyle
@@ -373,7 +374,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                               ),
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
+                                                  color: const Color.fromRGBO(
                                                     241,
                                                     248,
                                                     252,
@@ -516,7 +517,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                   margin:
                                                       EdgeInsets.only(top: 2.h),
                                                   decoration: BoxDecoration(
-                                                      color: Color.fromRGBO(
+                                                      color: const Color.fromRGBO(
                                                           247, 247, 247, 1),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -652,7 +653,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                             ),
                                             Row(
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 15.0.w,
                                                   child: Image.asset(
                                                     AppImagesPath.view360,
@@ -692,7 +693,7 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                                   size: 3.0.h,
                                                   color: AppColors.blackColor,
                                                 ),
-                                                Container(
+                                                SizedBox(
                                                   width: 70.0.w,
                                                   child: Text(
                                                     SessionController()

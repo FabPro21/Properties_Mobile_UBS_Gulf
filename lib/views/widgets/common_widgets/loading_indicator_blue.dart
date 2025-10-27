@@ -5,8 +5,7 @@ class LoadingIndicatorBlue extends StatelessWidget {
   final double strokeWidth;
   final double size;
 
-  const LoadingIndicatorBlue({Key? key, this.strokeWidth = 4, this.size = 40})
-      : super(key: key);
+  const LoadingIndicatorBlue({super.key, this.strokeWidth = 4, this.size = 40});
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -25,8 +24,7 @@ class LoadingIndicatorRed extends StatelessWidget {
   final double strokeWidth;
   final double size;
 
-  const LoadingIndicatorRed({Key? key, this.strokeWidth = 4, this.size = 40})
-      : super(key: key);
+  const LoadingIndicatorRed({super.key, this.strokeWidth = 4, this.size = 40});
   @override
   Widget build(BuildContext context) {
     return Center(

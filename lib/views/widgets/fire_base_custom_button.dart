@@ -11,12 +11,12 @@ class CustomButton extends StatelessWidget {
   bool loading = false;
 
   CustomButton({
-    Key? key,
+    super.key,
     @required this.text,
     @required this.onPressed,
     this.enabled = true,
     this.loading = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

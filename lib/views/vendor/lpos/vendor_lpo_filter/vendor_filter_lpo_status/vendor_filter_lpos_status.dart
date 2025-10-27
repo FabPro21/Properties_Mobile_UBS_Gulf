@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorLpoStatusFilter extends StatefulWidget {
-  const VendorLpoStatusFilter({Key? key}) : super(key: key);
+  const VendorLpoStatusFilter({super.key});
 
   @override
   _VendorLpoStatusFilterState createState() => _VendorLpoStatusFilterState();
@@ -44,13 +44,13 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                           AppMetaLabels().lPOStatus,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         InkWell(
                           onTap: () {
                             Get.back(result: AppMetaLabels().pleaseSelect);
                           },
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromRGBO(118, 118, 128, 0.12),
                             ),
@@ -58,7 +58,7 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                               padding: EdgeInsets.all(0.5.h),
                               child: Icon(Icons.close,
                                   size: 2.0.h,
-                                  color: Color.fromRGBO(158, 158, 158, 1)),
+                                  color: const Color.fromRGBO(158, 158, 158, 1)),
                             ),
                           ),
                         ),
@@ -67,7 +67,7 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                     SizedBox(
                       height: 1.0.h,
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     ////////////////////////////////////
                     ////   Property
                     ////////////////////////////////////
@@ -77,7 +77,7 @@ class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
                     Expanded(
                       child: Obx(() {
                         return _controller.loading.value
-                            ? Center(
+                            ? const Center(
                                 child: LoadingIndicatorBlue(),
                               )
                             : _controller.error.value != ''

@@ -44,9 +44,9 @@ class OnlinePaymentsController extends GetxController {
 
   Future<int> getOnlinePayable() async {
     try {
-      bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isIntenetConnected) {
-        Get.to(() => NoInternetScreen());
+      bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+      if (!isIntenetConnected) {
+        Get.to(() => const NoInternetScreen());
       }
       contractPayableData = OutstandingPaymentsModel();
       sumOfSelectedPayments.value = '0.00';
@@ -88,10 +88,10 @@ class OnlinePaymentsController extends GetxController {
         }
         print('====================');
         print(cardPaymentListLength.length);
-        if (cardPaymentListLength.length == 0) {
+        if (cardPaymentListLength.isEmpty) {
           isPayemntValue.value = 3;
         }
-        if (bankTransferListLength.length == 0) {
+        if (bankTransferListLength.isEmpty) {
           isPayemntValue.value = 1;
         }
         print(bankTransferListLength.length);
@@ -119,8 +119,9 @@ class OnlinePaymentsController extends GetxController {
       loadingPayable.value = false;
     }
     int noOfPayments = 0;
-    if (contractPayableData.record! != null)
+    if (contractPayableData.record! != null) {
       noOfPayments = contractPayableData.record!.length;
+    }
     return noOfPayments;
   }
 
@@ -131,9 +132,9 @@ class OnlinePaymentsController extends GetxController {
     vatChargesSum = 0;
     for (int i = 0; i < contractPayableData.record!.length; i++) {
       if (contractPayableData.record![i].type!.toLowerCase() ==
-          'contract payable')
+          'contract payable') {
         rentalSum = rentalSum + (contractPayableData.record![i].amount??0.0);
-      else if (contractPayableData.record![i].type!.toLowerCase() ==
+      } else if (contractPayableData.record![i].type!.toLowerCase() ==
           'additional charges') {
         additionalSum =
             additionalSum + (contractPayableData.record![i].amount??0.0);
@@ -168,12 +169,12 @@ class OnlinePaymentsController extends GetxController {
 
     final amountFormat = NumberFormat('#,##0.00', 'AR');
     String paymentValue = amountFormat.format(sum);
-    this.sumOfSelectedPayments.value = paymentValue;
+    sumOfSelectedPayments.value = paymentValue;
 
     final amountFormat1 = NumberFormat('#,##0.00', 'AR');
     String paymentValue1 = amountFormat1.format(sum1);
-    this.sumOfSelectedPayments1.value = paymentValue1;
-    this.sumOfSelectedPayments2 = sum;
+    sumOfSelectedPayments1.value = paymentValue1;
+    sumOfSelectedPayments2 = sum;
   }
   // void sumSelectedPayments() {
   //   double sum = 0;
@@ -190,9 +191,9 @@ class OnlinePaymentsController extends GetxController {
   // }
 
   void removeZeroBalance() {
-    contractPayableData.record!.forEach((element) {
+    for (var element in contractPayableData.record!) {
       if (element.amount == 0) contractPayableData.record!.remove(element);
-    });
+    }
   }
 
   void registerPayment(String contractNo) async {

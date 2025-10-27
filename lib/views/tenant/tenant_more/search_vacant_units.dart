@@ -16,7 +16,7 @@ import '../../widgets/clear_button.dart';
 import '../../widgets/custom_app_bar2.dart';
 
 class SearchVacantUnits extends StatefulWidget {
-  const SearchVacantUnits({Key? key}) : super(key: key);
+  const SearchVacantUnits({super.key});
 
   @override
   State<SearchVacantUnits> createState() => _SearchVacantUnitsState();
@@ -111,7 +111,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                   InkWell(
                                     onTap: () async {
                                       cityResult =
-                                          await Get.to(() => SelectCity());
+                                          await Get.to(() => const SelectCity());
 
                                       if (cityResult != null) {
                                         sPSConrtoller.cityName.value =
@@ -127,7 +127,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -140,7 +140,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                               sPSConrtoller.cityName.value,
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -168,7 +168,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                   InkWell(
                                     onTap: () async {
                                       categoryResult = await Get.to(
-                                          () => GetPropertyCategory());
+                                          () => const GetPropertyCategory());
                                       if (categoryResult != null) {
                                         sPSConrtoller.categoryName.value =
                                             categoryResult[0];
@@ -183,7 +183,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -198,7 +198,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -242,7 +242,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -256,7 +256,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -281,7 +281,7 @@ class _SearchVacantUnitsState extends State<SearchVacantUnits> {
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(1.3.h),
-                                        ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                        ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 6.0.h, vertical: 1.5.h),
                                         // textStyle: AppTextStyle.buttonTextStyle,

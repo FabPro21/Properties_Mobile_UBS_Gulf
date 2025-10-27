@@ -44,7 +44,7 @@ class VendorInvoiceDocsController extends GetxController {
     var resp =
         await VendorRepository.getDocsByType(controller.caseNoInvoice, 3, 46);
     if (resp is List<DocFile>) {
-      if (resp.length == 0) {
+      if (resp.isEmpty) {
         errorLoadingDocs = AppMetaLabels().noDatafound;
       } else {
         docs = resp;
@@ -52,8 +52,9 @@ class VendorInvoiceDocsController extends GetxController {
           isDocUploaded.add('false');
         }
       }
-    } else
+    } else {
       errorLoadingDocs = resp;
+    }
     loadingDocs.value = false;
   }
 
@@ -216,8 +217,8 @@ class VendorInvoiceDocsController extends GetxController {
     try {
       docs[index].loading.value = true;
       // old one
-      final ImagePicker _picker = ImagePicker();
-      XFile? result = await _picker.pickImage(source: ImageSource.camera);
+      final ImagePicker picker = ImagePicker();
+      XFile? result = await picker.pickImage(source: ImageSource.camera);
 
       docs[index].loading.value = false;
 
@@ -239,7 +240,7 @@ class VendorInvoiceDocsController extends GetxController {
         //       image: byteFile,
         //     ));
 
-        var editedImage;
+        Uint8List editedImage;
         final crop = await LatestCropper.ImageCropper()
             .cropImage(sourcePath: result.path, uiSettings: [
           LatestCropper.AndroidUiSettings(
@@ -406,7 +407,7 @@ class VendorInvoiceDocsController extends GetxController {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
-    return ((bytes / pow(1024, i)).toStringAsFixed(2)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${suffixes[i]}';
   }
 
   void downloadDoc(int index, int caseNo) async {

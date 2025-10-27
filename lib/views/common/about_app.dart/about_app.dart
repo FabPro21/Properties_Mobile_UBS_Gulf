@@ -8,7 +8,7 @@ import 'dart:ui' as ui;
 import '../../widgets/custom_app_bar2.dart';
 
 class AboutApp extends StatelessWidget {
-  AboutApp({Key? key}) : super(key: key);
+  AboutApp({super.key});
 
   final controller = Get.put(AboutAppController());
 
@@ -26,14 +26,14 @@ class AboutApp extends StatelessWidget {
                 CustomAppBar2(
                   title: AppMetaLabels().about,
                 ),
-                Spacer(),
+                const Spacer(),
                 //  Text('App Name: ${controller.version}'),
                 SessionController().getLanguage() == 1
                     ? Text('App Version: ${controller.version}',
                         style: AppTextStyle.normalBlack14)
                     : Text('نسخة التطبيق:  ${controller.version}',
                         style: AppTextStyle.normalBlack14),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 SessionController().getLanguage() == 1
                     ? Text('Build Number: ${controller.buildNo}',
                         style: AppTextStyle.normalBlack14)
@@ -41,7 +41,7 @@ class AboutApp extends StatelessWidget {
                         style: AppTextStyle.normalBlack14),
                 //  Text('Package:  ${controller.packageName.value }',
                 //     style: AppTextStyle.normalBlack14),
-                Spacer(),
+                const Spacer(),
               ],
             );
           })),

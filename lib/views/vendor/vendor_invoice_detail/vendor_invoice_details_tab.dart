@@ -22,13 +22,13 @@ class VendorInvoiceRequestTabs extends StatefulWidget {
   final int? initialIndex;
   String? title;
   VendorInvoiceRequestTabs({
-    Key? key,
+    super.key,
     this.requestNo,
     this.caller,
     this.title,
     this.initialIndex = 0,
-  }) : super(key: key) {
-    this.title = title;
+  }) {
+    title = title;
   }
 
   @override
@@ -86,7 +86,7 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
                         },
                 ),
                 !controller.isEnableInvoiceNo.value
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Padding(
                         padding: EdgeInsets.all(2.0.h),
                         child: Row(
@@ -116,7 +116,7 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
                               )
                             : ContainedTabBarView(
                                 key: controller.key,
-                                tabBarViewProperties: TabBarViewProperties(
+                                tabBarViewProperties: const TabBarViewProperties(
                                     physics: NeverScrollableScrollPhysics()),
                                 initialIndex: controller.tabIndex.value,
                                 //widget.initialIndex,
@@ -151,13 +151,13 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
                                   // if (tenantRDController.tenantRequestDetails
                                   //     .value.statusInfo.canUploadDocs)
                                   !controller.isEnableInvoiceNo.value
-                                      ? DocumentDumnyWidget()
+                                      ? const DocumentDumnyWidget()
                                       : VendorInvoiceDocumentsDetails(
                                           caseNo: widget.requestNo,
                                           caller: widget.caller,
                                         ),
                                   !controller.isEnableInvoiceNo.value
-                                      ? CommunicationDumnyWidget()
+                                      ? const CommunicationDumnyWidget()
                                       : VendorInvoiceCommunication(
                                           canCommunicate:
                                               controller.isEnableInvoiceNo.value
@@ -177,8 +177,8 @@ class _VendorInvoiceRequestTabsState extends State<VendorInvoiceRequestTabs> {
 
 class DocumentDumnyWidget extends StatefulWidget {
   const DocumentDumnyWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<DocumentDumnyWidget> createState() => _DocumentDumnyWidgetState();
@@ -193,7 +193,7 @@ class _DocumentDumnyWidgetState extends State<DocumentDumnyWidget> {
 
   final controller = Get.find<VendorInvoiceDetailsController>();
   callingDumnyFunc() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.tabIndex.value = 0;
     });
@@ -218,10 +218,10 @@ class _DocumentDumnyWidgetState extends State<DocumentDumnyWidget> {
           child: Container(
             height: 100,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.only(top: 10, right: 10, bottom: 10),
             margin:
                 EdgeInsets.only(top: 2.h, bottom: 3.5.h, left: 20, right: 20),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color.fromRGBO(255, 249, 235, 1),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
@@ -241,7 +241,7 @@ class _DocumentDumnyWidgetState extends State<DocumentDumnyWidget> {
                 SizedBox(
                   width: Get.width * 0.03,
                 ),
-                Container(
+                SizedBox(
                   width: Get.width * 0.66,
                   child: Text(
                     AppMetaLabels().pleaseFillDataInMainInfoFirst,
@@ -260,8 +260,8 @@ class _DocumentDumnyWidgetState extends State<DocumentDumnyWidget> {
 
 class CommunicationDumnyWidget extends StatefulWidget {
   const CommunicationDumnyWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<CommunicationDumnyWidget> createState() =>
@@ -301,10 +301,10 @@ class _CommunicationDumnyWidgetState extends State<CommunicationDumnyWidget> {
           child: Container(
             height: 100,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.only(top: 10, right: 10, bottom: 10),
             margin:
                 EdgeInsets.only(top: 2.h, bottom: 3.5.h, left: 20, right: 20),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color.fromRGBO(255, 249, 235, 1),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
@@ -324,7 +324,7 @@ class _CommunicationDumnyWidgetState extends State<CommunicationDumnyWidget> {
                 SizedBox(
                   width: Get.width * 0.03,
                 ),
-                Container(
+                SizedBox(
                   width: Get.width * 0.66,
                   child: Text(
                     AppMetaLabels().pleaseFillDataInMainInfoFirst,

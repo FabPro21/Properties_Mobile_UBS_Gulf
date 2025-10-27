@@ -16,14 +16,14 @@ import '../../../../data/helpers/session_controller.dart';
 
 class VendorOffersDetails extends StatefulWidget {
   final String? offerId;
-  const VendorOffersDetails({Key? key, this.offerId}) : super(key: key);
+  const VendorOffersDetails({super.key, this.offerId});
 
   @override
   _VendorOffersDetailsState createState() => _VendorOffersDetailsState();
 }
 
 class _VendorOffersDetailsState extends State<VendorOffersDetails> {
-  var _controller = Get.put(VendorOffersController());
+  final _controller = Get.put(VendorOffersController());
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
               Expanded(
                 child: Obx(() {
                   return _controller.loadingDetails.value
-                      ? Center(
+                      ? const Center(
                           child: LoadingIndicatorBlue(),
                         )
                       : _controller.errorDetails.value != ""
@@ -59,7 +59,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                               errorText: _controller.errorDetails.value,
                             )
                           : _controller.offersDetails.value == null
-                              ? SizedBox()
+                              ? const SizedBox()
                               : Column(
                                   children: [
                                     Padding(
@@ -121,7 +121,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                     _controller.offersDetails.value
                                                 .offerProperties ==
                                             null
-                                        ? SizedBox()
+                                        ? const SizedBox()
                                         : Padding(
                                             padding: EdgeInsets.only(
                                                 top: 4.0.h,
@@ -143,7 +143,7 @@ class _VendorOffersDetailsState extends State<VendorOffersDetails> {
                                     _controller.offersDetails.value
                                                 .offerProperties ==
                                             null
-                                        ? SizedBox()
+                                        ? const SizedBox()
                                         : Expanded(
                                             child: ListView.builder(
                                                 padding:

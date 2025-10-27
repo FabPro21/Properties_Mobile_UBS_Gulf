@@ -23,8 +23,7 @@ import '../vendor_services/vendor_request_list/vendor_request_list.dart';
 
 class VendorMoreScreen extends StatefulWidget {
   final Function(int)? manageMenu;
-  const VendorMoreScreen({Key? key, @required this.manageMenu})
-      : super(key: key);
+  const VendorMoreScreen({super.key, @required this.manageMenu});
 
   @override
   State<VendorMoreScreen> createState() => _VendorMoreScreenState();
@@ -107,7 +106,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                             },
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
                           padding: EdgeInsets.zero,
                           icon: Icon(
@@ -117,13 +116,13 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                           ),
                           onPressed: () {
                             SessionController().resetSession();
-                            Get.offAll(() => SelectRoleScreen());
+                            Get.offAll(() => const SelectRoleScreen());
                           },
                         ),
                         InkWell(
                           onTap: () {
                             SessionController().resetSession();
-                            Get.offAll(() => SelectRoleScreen());
+                            Get.offAll(() => const SelectRoleScreen());
                           },
                           child: Text(
                             AppMetaLabels().logout,
@@ -167,7 +166,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                       padding: EdgeInsets.only(top: 0.0.h),
                       child: InkWell(
                         onTap: () {
-                          Get.off(() => VendorProfile());
+                          Get.off(() => const VendorProfile());
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -195,7 +194,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => VendorProfile());
+                                  Get.off(() => const VendorProfile());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.myProfileLand,
@@ -225,7 +224,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                               // ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => VendorNotification());
+                                  Get.off(() => const VendorNotification());
                                 },
                                 leading: Icon(
                                   Icons.notifications_outlined,
@@ -237,11 +236,12 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              SessionController().vendorUserType == 'Technician'
-                                  ? SizedBox()
+                              SessionController().vendorUserType ==
+                                      'Technician'
+                                  ? const SizedBox()
                                   : ListTile(
                                       onTap: () {
-                                        Get.off(() => VendorRequestList());
+                                        Get.off(() => const VendorRequestList());
                                       },
                                       leading: Image.asset(
                                         AppImagesPath.services3,
@@ -256,7 +256,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                     ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => VendorSettings());
+                                  Get.off(() => const VendorSettings());
                                 },
                                 leading: Icon(
                                   Icons.settings_outlined,
@@ -268,11 +268,12 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                   style: AppTextStyle.normalBlack12,
                                 ),
                               ),
-                              SessionController().vendorUserType == 'Technician'
-                                  ? SizedBox()
+                              SessionController().vendorUserType ==
+                                      'Technician'
+                                  ? const SizedBox()
                                   : ListTile(
                                       onTap: () {
-                                        Get.off(() => VendorOffers());
+                                        Get.off(() => const VendorOffers());
                                       },
                                       leading: Icon(
                                         Icons.tag,
@@ -286,7 +287,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                     ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => VendorFaqsCategories());
+                                  Get.off(() => const VendorFaqsCategories());
                                 },
                                 leading: Icon(
                                   Icons.help_outline,
@@ -303,7 +304,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                   showModalBottomSheet(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return Container(
+                                      return SizedBox(
                                         height: 25.h,
                                         width: 100.0.w,
                                         child: Container(
@@ -371,7 +372,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                                                 AppTextStyle.semiBoldGrey10,
                                                                           ),
                                                                         ),
-                                                                        AppDivider(),
+                                                                        const AppDivider(),
                                                                         InkWell(
                                                                           onTap:
                                                                               () {
@@ -392,7 +393,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        AppDivider(),
+                                                                        const AppDivider(),
                                                                         InkWell(
                                                                           onTap:
                                                                               () {
@@ -486,7 +487,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                               .semiBoldBlack12,
                                                         ),
                                                       ),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Icon(
                                                         Icons.arrow_forward_ios,
                                                         color: AppColors
@@ -500,7 +501,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                               SizedBox(
                                                 height: 1.5.h,
                                               ),
-                                              AppDivider(),
+                                              const AppDivider(),
                                               SizedBox(
                                                 height: 3.0.h,
                                               ),
@@ -533,7 +534,7 @@ class _VendorMoreScreenState extends State<VendorMoreScreen> {
                                                               .semiBoldBlack12,
                                                         ),
                                                       ),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Icon(
                                                         Icons.arrow_forward_ios,
                                                         color: AppColors

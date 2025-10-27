@@ -18,7 +18,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class VendorFinancialTerms extends StatefulWidget {
-  const VendorFinancialTerms({Key? key}) : super(key: key);
+  const VendorFinancialTerms({super.key});
 
   @override
   _VendorFinancialTermsState createState() => _VendorFinancialTermsState();
@@ -47,13 +47,13 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
               child: Obx(() {
                 List<ChartData> chartData = [
                   ChartData(
-                      ' ' + AppMetaLabels().balance,
+                      ' ${AppMetaLabels().balance}',
                       getContractFinancialTermsController.totalAmountSum.value,
                       // 120,
                       // AppColors.chartDarkBlueColor,
                       AppColors.amber.withOpacity(0.2)),
                   ChartData(
-                      ' ' + AppMetaLabels().paid,
+                      ' ${AppMetaLabels().paid}',
                       // 110,
                       getContractFinancialTermsController.totalPaid.value,
                       // AppColors.chartlightBlueColor
@@ -63,7 +63,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                         true
                     ? Padding(
                         padding: EdgeInsets.only(top: 25.0.h),
-                        child: LoadingIndicatorBlue(),
+                        child: const LoadingIndicatorBlue(),
                       )
                     : getContractFinancialTermsController.error.value != ''
                         ? Padding(
@@ -130,14 +130,14 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                   columnList(
                                       // AppColors.chartlightBlueColor,
                                       AppColors.chartlightBlueColorCharges,
-                                      ' ' + AppMetaLabels().paid,
+                                      ' ${AppMetaLabels().paid}',
                                       getContractFinancialTermsController
                                               .totalPaidFormat.value
                                               .toString()),
                                   columnList(
                                       // AppColors.chartDarkBlueColor,
                                       AppColors.amber.withOpacity(0.2),
-                                      ' ' + AppMetaLabels().balance,
+                                      ' ${AppMetaLabels().balance}',
                                       getContractFinancialTermsController
                                               .balanceFormat.value
                                               .toString()),
@@ -161,7 +161,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                   ],
                                 ),
                                 child: ListView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
                                     itemCount:
@@ -228,7 +228,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                                           .length -
                                                       1
                                               ? Container()
-                                              : AppDivider(),
+                                              : const AppDivider(),
                                         ],
                                       );
                                     }),
@@ -238,7 +238,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
               }),
             ),
           ),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -286,7 +286,7 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

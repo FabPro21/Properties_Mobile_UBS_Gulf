@@ -22,7 +22,7 @@ import 'public_profile/public_profile.dart';
 import 'public_settings/public_settings.dart';
 
 class SearchPropertiesMore extends StatefulWidget {
-  const SearchPropertiesMore({Key? key}) : super(key: key);
+  const SearchPropertiesMore({super.key});
 
   @override
   _SearchPropertiesMoreState createState() => _SearchPropertiesMoreState();
@@ -90,7 +90,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             },
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
                           padding: EdgeInsets.zero,
                           icon: Icon(
@@ -102,7 +102,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             SessionController().resetSession();
                             // Sending redirect false because we ant to stop the user in the role screen
                             // even if there is only one role
-                            Get.offAll(() => SelectRoleScreen(
+                            Get.offAll(() => const SelectRoleScreen(
                                   redirect: false,
                                 ));
                             // Get.offAll(() => SelectRoleScreen());
@@ -113,7 +113,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             SessionController().resetSession();
                             // Sending redirect false because we ant to stop the user in the role screen
                             // even if there is only one role
-                            Get.offAll(() => SelectRoleScreen(
+                            Get.offAll(() => const SelectRoleScreen(
                                   redirect: false,
                                 ));
                             // Get.offAll(() => SelectRoleScreen());
@@ -156,7 +156,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                       padding: EdgeInsets.only(top: 5.0.h),
                       child: InkWell(
                         onTap: () {
-                          Get.off(() => PublicProfile());
+                          Get.off(() => const PublicProfile());
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -184,7 +184,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => PublicProfile());
+                                  Get.off(() => const PublicProfile());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.myProfileLand,
@@ -216,7 +216,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
 
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => PublicNotification());
+                                  Get.off(() => const PublicNotification());
                                 },
                                 leading: Icon(
                                   Icons.notifications_outlined,
@@ -230,7 +230,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => SearchPropertiesProperties());
+                                  Get.off(() => const SearchPropertiesProperties());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.contracts3,
@@ -244,7 +244,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => SearchPropertiesServices());
+                                  Get.off(() => const SearchPropertiesServices());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.services3,
@@ -258,7 +258,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => PublicSettings());
+                                  Get.off(() => const PublicSettings());
                                 },
                                 leading: Icon(
                                   Icons.settings_outlined,
@@ -272,7 +272,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => PublicFaqsCategories());
+                                  Get.off(() => const PublicFaqsCategories());
                                 },
                                 leading: Icon(
                                   Icons.help_outline,
@@ -296,7 +296,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                     1
                                                 ? TextDirection.ltr
                                                 : TextDirection.rtl,
-                                        child: Container(
+                                        child: SizedBox(
                                           height: 25.h,
                                           width: 100.0.w,
                                           child: Container(
@@ -361,7 +361,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                                               style: AppTextStyle.semiBoldGrey10,
                                                                             ),
                                                                           ),
-                                                                          AppDivider(),
+                                                                          const AppDivider(),
                                                                           InkWell(
                                                                             onTap:
                                                                                 () {
@@ -379,7 +379,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                          AppDivider(),
+                                                                          const AppDivider(),
                                                                           InkWell(
                                                                             onTap:
                                                                                 () {
@@ -463,7 +463,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -478,7 +478,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
-                                                AppDivider(),
+                                                const AppDivider(),
                                                 SizedBox(
                                                   height: 3.0.h,
                                                 ),
@@ -512,7 +512,7 @@ class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,

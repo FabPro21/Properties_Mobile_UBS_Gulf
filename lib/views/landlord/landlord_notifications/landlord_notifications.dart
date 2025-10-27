@@ -16,7 +16,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 
 class LandlordNotifications extends StatefulWidget {
-  LandlordNotifications({Key? key}) : super(key: key);
+  const LandlordNotifications({super.key});
 
   @override
   State<LandlordNotifications> createState() => _LandlordNotificationsState();
@@ -75,7 +75,7 @@ class _LandlordNotificationsState extends State<LandlordNotifications> {
                             minWidth: 25.0.w,
                             minHeight: 3.0.h,
                             cornerRadius: 3.0.h,
-                            activeBgColors: [
+                            activeBgColors: const [
                               [Colors.white],
                               [Colors.white]
                             ],
@@ -109,7 +109,7 @@ class _LandlordNotificationsState extends State<LandlordNotifications> {
                             AppMetaLabels().notifications,
                             style: AppTextStyle.semiBoldBlack16,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           IconButton(
                             onPressed: () {
                               Get.back();
@@ -125,18 +125,18 @@ class _LandlordNotificationsState extends State<LandlordNotifications> {
                         ],
                       ),
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     Obx(() {
                       return getLandLController.loadingData.value == true
                           ? Padding(
                               padding: EdgeInsets.only(top: 30.0.h),
-                              child: LoadingIndicatorBlue(),
+                              child: const LoadingIndicatorBlue(),
                             )
                           : getLandLController.currentIndex.value == 0
-                              ? Expanded(
+                              ? const Expanded(
                                   child: LandLordAllNotifications(),
                                 )
-                              : Expanded(
+                              : const Expanded(
                                   child: LandLordUnReadNotifications(),
                                 );
                     }),

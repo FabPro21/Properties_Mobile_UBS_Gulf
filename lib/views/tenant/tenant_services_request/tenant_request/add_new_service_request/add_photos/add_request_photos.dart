@@ -20,7 +20,7 @@ import 'dart:ui' as ui;
 
 class AddRequestPhotos extends StatefulWidget {
   final String? caseNo;
-  AddRequestPhotos({Key? key, this.caseNo}) : super(key: key);
+  const AddRequestPhotos({super.key, this.caseNo});
 
   @override
   State<AddRequestPhotos> createState() => _AddRequestPhotosState();
@@ -47,7 +47,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
         backgroundColor: AppColors.whiteColor,
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(
+            icon:  Icon(
               Icons.arrow_back_ios,
               color: AppColors.whiteColor,
             ),
@@ -62,7 +62,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage(
                   AppImagesPath.appbarimg,
                 ),
@@ -113,11 +113,11 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                               height: 9.h,
                               alignment: Alignment.center,
                               margin: EdgeInsets.all(0.5.h),
-                              child: LoadingIndicatorBlue(),
+                              child: const LoadingIndicatorBlue(),
                             )
                           : GridView.builder(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   SliverGridDelegateWithMaxCrossAxisExtent(
                                       maxCrossAxisExtent: 25.w,
@@ -133,7 +133,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               width: 100.0.w,
               height: 13.0.h,
@@ -155,7 +155,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(1.3.h),
                     ),
-                    backgroundColor: AppColors.colliersBlueColor,
+                    backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                   onPressed: () {
                     Get.snackbar(
@@ -192,18 +192,18 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                   : ui.TextDirection.rtl,
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () {
                           controller.pickPhoto(ImageSource.gallery);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () {
                         controller.pickPhoto(ImageSource.camera);
                         Navigator.of(context).pop();
@@ -227,7 +227,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(1.h),
         child: Container(
-          color: Color.fromRGBO(246, 248, 249, 1),
+          color: const Color.fromRGBO(246, 248, 249, 1),
           child: controller.photos[index] != null
               ? Stack(
                   children: [
@@ -246,10 +246,10 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                       return controller.photos[index]!.uploading.value ||
                               controller.photos[index]!.errorUploading
                           ? Container(
-                              color: Color.fromRGBO(255, 255, 255, 0.5),
+                              color: const Color.fromRGBO(255, 255, 255, 0.5),
                               alignment: Alignment.center,
                               child: controller.photos[index]!.uploading.value
-                                  ? LoadingIndicatorBlue(
+                                  ? const LoadingIndicatorBlue(
                                       size: 20,
                                     )
                                   : controller.photos[index]!.errorUploading
@@ -257,7 +257,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                                           onPressed: () {
                                             controller.uploadPhoto(index);
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.refresh_outlined,
                                             color: Colors.red,
                                           ),
@@ -271,11 +271,11 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                                 width: 28,
                                 height: 28,
                                 decoration: BoxDecoration(
-                                    color: Color.fromRGBO(255, 255, 255, 0.5),
+                                    color: const Color.fromRGBO(255, 255, 255, 0.5),
                                     borderRadius: BorderRadius.circular(24)),
-                                padding: EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(2),
                                 child: controller.photos[index]!.removing.value
-                                    ? LoadingIndicatorBlue()
+                                    ? const LoadingIndicatorBlue()
                                     : Icon(
                                         controller.photos[index]!.errorRemoving
                                             ? Icons.refresh_outlined
@@ -290,7 +290,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                   child: Text(
                     "+",
                     style: AppTextStyle.semiBoldWhite16
-                        .copyWith(color: Color.fromRGBO(180, 180, 180, 1)),
+                        .copyWith(color: const Color.fromRGBO(180, 180, 180, 1)),
                   ),
                 ),
         ),
@@ -305,7 +305,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
           return SafeArea(
             child: Container(
               color: Colors.white,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               child: Wrap(
                 children: <Widget>[
                   Text(
@@ -326,7 +326,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(1.3.h),
                             ),
-                            backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                            backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                           ),
                           onPressed: () {
                             controller.removePhoto(index);
@@ -386,7 +386,7 @@ class _AddRequestPhotosState extends State<AddRequestPhotos> {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.cancel))
+                      icon: const Icon(Icons.cancel))
                 ],
               ),
             ),

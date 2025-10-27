@@ -15,10 +15,6 @@ class TenantPaymentDetailsController extends GetxController {
 
   RxString error = "".obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   getCheque(Payment payment) async {
     loadingData.value = true;

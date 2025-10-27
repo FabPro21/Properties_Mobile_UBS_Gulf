@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 
 class LandLordAllNotifications extends StatefulWidget {
   final int? index;
-  const LandLordAllNotifications({Key? key, this.index}) : super(key: key);
+  const LandLordAllNotifications({super.key, this.index});
 
   @override
   _LandLordAllNotificationsState createState() =>
@@ -32,7 +32,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: getLandLController.loadingData.value
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : getLandLController.error.value != ''
               ? AppErrorWidget(
                   errorText: getLandLController.error.value,
@@ -104,11 +104,12 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                             .getNotifications
                                             .value
                                             .notifications![index]
-                                            .isRead!)
+                                            .isRead!) {
                                           await getLandLController
                                               .readNotifications(index, 'all');
+                                        }
                                         Get.to(() =>
-                                            LandlordNotificationDetails());
+                                            const LandlordNotificationDetails());
                                       },
                                       contentPadding: EdgeInsets.zero,
                                       horizontalTitleGap: 0,
@@ -139,7 +140,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                               height: 1.0.h,
                             ),
                             getLandLController.allLength < 20
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Center(
                                     child: Obx(() {
                                       return getLandLController
@@ -155,7 +156,7 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
                                               ? SizedBox(
                                                   width: 75.w,
                                                   height: 5.h,
-                                                  child: Center(
+                                                  child: const Center(
                                                     child:
                                                         LoadingIndicatorBlue(),
                                                   ),
@@ -358,83 +359,81 @@ class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          child: SizedBox(
-            width: 85.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    if (!getLandLController
-                        .getNotifications.value.notifications![index].isRead!)
-                      Container(
-                        height: 1.0.h,
-                        width: 2.0.w,
-                        margin: EdgeInsets.symmetric(horizontal: 1.w),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
+        SizedBox(
+          width: 85.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (!getLandLController
+                      .getNotifications.value.notifications![index].isRead!)
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 1.6.w),
-                      width: getLandLController.editTap.value == true
-                          ? 25.0.w
-                          : 75.0.w,
-                      child: Text(
-                        SessionController().getLanguage() == 1
-                            ? getLandLController.getNotifications.value
-                                    .notifications![index].title ??
-                                ""
-                            : getLandLController.getNotifications.value
-                                    .notifications![index].titleAR ??
-                                "",
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyle.semiBoldBlack11,
+                      height: 1.0.h,
+                      width: 2.0.w,
+                      margin: EdgeInsets.symmetric(horizontal: 1.w),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 1.6.w),
-                  child: Html(
-                    data: SessionController().getLanguage() == 1
-                        ? getLandLController.getNotifications.value
-                                .notifications![index].description ??
-                            ""
-                        : getLandLController.getNotifications.value
-                                .notifications![index].descriptionAR ??
-                            "",
-                    style: {
-                      'html': Style(
-                        textAlign: SessionController().getLanguage() == 1
-                            ? TextAlign.left
-                            : TextAlign.right,
-                        color: Colors.black,
-                        fontFamily: AppFonts.graphikRegular,
-                        fontSize: FontSize(10.0),
-                      ),
-                    },
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 1.6.w),
+                    width: getLandLController.editTap.value == true
+                        ? 25.0.w
+                        : 75.0.w,
+                    child: Text(
+                      SessionController().getLanguage() == 1
+                          ? getLandLController.getNotifications.value
+                                  .notifications![index].title ??
+                              ""
+                          : getLandLController.getNotifications.value
+                                  .notifications![index].titleAR ??
+                              "",
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyle.semiBoldBlack11,
+                    ),
                   ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 1.6.w),
+                child: Html(
+                  data: SessionController().getLanguage() == 1
+                      ? getLandLController.getNotifications.value
+                              .notifications![index].description ??
+                          ""
+                      : getLandLController.getNotifications.value
+                              .notifications![index].descriptionAR ??
+                          "",
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2.w),
-                  child: Text(
-                    getLandLController.getNotifications.value
-                            .notifications![index].createdOn ??
-                        "",
-                    style: AppTextStyle.normalBlack10,
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 2.w),
+                child: Text(
+                  getLandLController.getNotifications.value
+                          .notifications![index].createdOn ??
+                      "",
+                  style: AppTextStyle.normalBlack10,
                 ),
-                SizedBox(
-                  height: 2.0.h,
-                ),
-                index == getLandLController.allLength - 1
-                    ? Container()
-                    : AppDivider(),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 2.0.h,
+              ),
+              index == getLandLController.allLength - 1
+                  ? Container()
+                  : const AppDivider(),
+            ],
           ),
         ),
         Padding(

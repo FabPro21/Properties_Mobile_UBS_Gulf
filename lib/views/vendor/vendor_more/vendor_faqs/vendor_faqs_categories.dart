@@ -14,14 +14,14 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorFaqsCategories extends StatefulWidget {
-  const VendorFaqsCategories({Key? key}) : super(key: key);
+  const VendorFaqsCategories({super.key});
 
   @override
   _VendorFaqsCategoriesState createState() => _VendorFaqsCategoriesState();
 }
 
 class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
-  VendorFaqsController _controller = Get.put(VendorFaqsController());
+  final VendorFaqsController _controller = Get.put(VendorFaqsController());
   @override
   void initState() {
     _controller.getFaqsCatgData();
@@ -45,7 +45,7 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
               Expanded(
                 child: Obx(() {
                   return _controller.loadingFaqsCatg.value
-                      ? Center(
+                      ? const Center(
                           child: LoadingIndicatorBlue(),
                         )
                       : _controller.length == 0 ||
@@ -84,10 +84,10 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                                                       1
                                                   ? TextDirection.ltr
                                                   : TextDirection.rtl,
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: 90.w,
                                                 child: Row(children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width: 84.w,
                                                     child: Text(
                                                       SessionController()
@@ -113,7 +113,7 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                                                       maxLines: null,
                                                     ),
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Icon(
                                                     Icons
                                                         .arrow_forward_ios_rounded,

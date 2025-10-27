@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class TenantCancelRequest extends StatefulWidget {
-  const TenantCancelRequest({Key? key}) : super(key: key);
+  const TenantCancelRequest({super.key});
 
   @override
   _TenantCancelRequestState createState() => _TenantCancelRequestState();
@@ -23,7 +23,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
           iconSize: 2.0.h,
@@ -77,7 +77,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                           AppMetaLabels().addRequest,
                           style: AppTextStyle.semiBoldBlack12,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           "SR456678",
                           style: AppTextStyle.semiBoldBlack10,
@@ -125,10 +125,10 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                           "Kitchen",
                           style: AppTextStyle.normalBlack10,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(238, 248, 241, 1),
+                            color: const Color.fromRGBO(238, 248, 241, 1),
                             borderRadius: BorderRadius.circular(0.3.h),
                           ),
                           child: Padding(
@@ -137,7 +137,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                             child: Text(
                               "Resolved",
                               style: AppTextStyle.semiBoldBlack10.copyWith(
-                                color: Color.fromRGBO(36, 161, 72, 1),
+                                color: const Color.fromRGBO(36, 161, 72, 1),
                               ),
                             ),
                           ),
@@ -188,7 +188,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                       width: 100.0.w,
                       height: 8.0.h,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 249, 1),
+                        color: const Color.fromRGBO(246, 248, 249, 1),
                         borderRadius: BorderRadius.circular(1.0.h),
                       ),
                       child: Padding(
@@ -255,7 +255,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
-                          ), backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                          ), backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                           padding: EdgeInsets.symmetric(
                               horizontal: 6.0.h, vertical: 1.8.h),
                         ),
@@ -270,7 +270,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                                   Padding(
                                     padding: EdgeInsets.all(2.0.h),
                                     child: Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color.fromRGBO(255, 36, 27, 0.1),
                                         shape: BoxShape.circle,
                                       ),
@@ -303,7 +303,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(1.3.h),
-                                    ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                    ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 11.0.h, vertical: 1.8.h),
                                   ),
@@ -317,7 +317,7 @@ class _TenantCancelRequestState extends State<TenantCancelRequest> {
                                 ),
                               ),
                             ),
-                          )..show();
+                          ).show();
                           // Get.to(() => TenantFeedback());
                         },
                         child: Text(

@@ -22,10 +22,10 @@ class VendorInvoiceDocumentsDetails extends StatefulWidget {
   final String? caseNo;
   final String? caller;
   VendorInvoiceDocumentsDetails({
-    Key? key,
+    super.key,
     this.caseNo,
     this.caller,
-  }) : super(key: key) {
+  }) {
     Get.put(VendorInvoiceDocsController(caseNo: caseNo));
   }
 
@@ -76,21 +76,21 @@ class _VendorInvoiceDocumentsDetailsState
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: _isSolving == true
-              ? Center(child: LoadingIndicatorBlue())
+              ? const Center(child: LoadingIndicatorBlue())
               : Stack(
                   children: [
                     // the below loading indicator is just for removing (A RenderFlex overflowed by 99449 pixels on the bottom.)
                     // this error , there is no other logic behind this
                     controller.docs.isEmpty
-                        ? Center(child: SizedBox())
+                        ? const Center(child: SizedBox())
                         : controller.loadingDocs.value
-                            ? Center(child: LoadingIndicatorBlue())
+                            ? const Center(child: LoadingIndicatorBlue())
                             : Column(
                                 children: [
                                   Expanded(
                                     child: Obx(() {
                                       return controller.loadingDocs.value
-                                          ? Center(
+                                          ? const Center(
                                               child: LoadingIndicatorBlue())
                                           : controller.errorLoadingDocs != ''
                                               ? AppErrorWidget(
@@ -286,11 +286,11 @@ class _VendorInvoiceDocumentsDetailsState
                               ),
                     Obx(() {
                       return controller.isEnableScreen.value == false
-                          ? ScreenDisableWidget()
-                          : SizedBox();
+                          ? const ScreenDisableWidget()
+                          : const SizedBox();
                     }),
 
-                    BottomShadow(),
+                    const BottomShadow(),
                   ],
                 )),
     );
@@ -352,7 +352,7 @@ class _VendorInvoiceDocumentsDetailsState
                                 style: AppTextStyle.normalErrorText3)
                           ]),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   // upload document icon/Button
@@ -481,8 +481,9 @@ class _VendorInvoiceDocumentsDetailsState
                                                   // });
 
                                                   if (controller
-                                                      .docs[index].isRejected!)
+                                                      .docs[index].isRejected!) {
                                                     controller.updateDoc(index);
+                                                  }
 
                                                   print(
                                                       'Uploading :::::: ${widget.caseNo}');
@@ -499,17 +500,17 @@ class _VendorInvoiceDocumentsDetailsState
                                                         .value = true;
                                                   });
                                                 },
-                                      child: Text(
-                                        AppMetaLabels().upload,
-                                        style: AppTextStyle.semiBoldWhite12,
-                                      ),
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            const Color.fromRGBO(0, 61, 166, 1),
+                                      ),
+                                      child: Text(
+                                        AppMetaLabels().upload,
+                                        style: AppTextStyle.semiBoldWhite12,
                                       ),
                                     );
                                   });
@@ -529,11 +530,11 @@ class _VendorInvoiceDocumentsDetailsState
                   : ui.TextDirection.rtl,
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.storage),
-                        title: new Text(AppMetaLabels().storage),
+                    ListTile(
+                        leading: const Icon(Icons.storage),
+                        title: Text(AppMetaLabels().storage),
                         onTap: () async {
                           print('Index ::::::  $index');
                           // new S 6 jul 2023
@@ -566,9 +567,9 @@ class _VendorInvoiceDocumentsDetailsState
                           setState(() {});
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         // new S 6 jul 2023
                         // if ((await Permission.camera

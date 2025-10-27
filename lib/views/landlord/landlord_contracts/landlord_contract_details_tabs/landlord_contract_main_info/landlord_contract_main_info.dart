@@ -16,8 +16,7 @@ class LandlordContractMainInfo extends StatefulWidget {
   final int? contractId;
   final String? previousContactNo;
   const LandlordContractMainInfo(
-      {Key? key, @required this.contractId, this.previousContactNo})
-      : super(key: key);
+      {super.key, @required this.contractId, this.previousContactNo});
 
   @override
   _LandlordContractMainInfoState createState() =>
@@ -43,11 +42,11 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
           children: [
             Obx(() {
               return controller.loadingContractDetails.value
-                  ? LoadingIndicatorBlue()
+                  ? const LoadingIndicatorBlue()
                   : controller.errorLoadingContractDetails != '' &&
                           controller.contractDetails?.contract == null &&
                           controller.loadingContractDetails.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : controller.errorLoadingContractDetails != ''
                           ? CustomErrorWidget(
                               errorText: controller.errorLoadingContractDetails,
@@ -57,11 +56,11 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                               child: Obx(
                                 () {
                                   return controller.obxError.value == '0'
-                                      ? LoadingIndicatorBlue()
+                                      ? const LoadingIndicatorBlue()
                                       : controller.loadingContractDetails
                                                   .value ==
                                               true
-                                          ? LoadingIndicatorBlue()
+                                          ? const LoadingIndicatorBlue()
                                           : controller.errorLoadingContractDetails !=
                                                   ''
                                               ? AppErrorWidget(
@@ -116,14 +115,9 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                 alignment: Alignment
                                                                     .bottomRight,
                                                                 child: Text(
-                                                                  (controller.daysPassed)
-                                                                          .toString() +
-                                                                      '/' +
-                                                                      controller
-                                                                          .contractDetails!
-                                                                          .contract!
-                                                                          .noOfDays
-                                                                          .toString(),
+                                                                  '${controller.daysPassed}/${controller
+                                                                          .contractDetails!.contract!
+                                                                          .noOfDays}',
                                                                   style: AppTextStyle
                                                                       .normalBlack10,
                                                                 ),
@@ -238,7 +232,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   Column(
                                                                     crossAxisAlignment: SessionController().getLanguage() ==
                                                                             1
@@ -402,7 +396,7 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                               ),
                             );
             }),
-            BottomShadow(),
+            const BottomShadow(),
           ],
         ));
   }

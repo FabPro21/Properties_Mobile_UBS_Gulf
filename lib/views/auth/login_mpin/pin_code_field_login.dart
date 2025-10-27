@@ -11,7 +11,7 @@ class PinCodeFieldLoginMpin extends StatelessWidget {
   // static StreamController<ErrorAnimationType> errorController;
   final formKey = GlobalKey<FormState>();
 
-  PinCodeFieldLoginMpin({Key? key}) : super(key: key);
+  PinCodeFieldLoginMpin({super.key});
   final LoginMpinController loginMpinController =
       Get.find<LoginMpinController>();
 
@@ -62,7 +62,7 @@ class PinCodeFieldLoginMpin extends StatelessWidget {
               // errorAnimationController: errorController,
               controller: smsController,
               keyboardType:
-                  TextInputType.numberWithOptions(signed: true, decimal: true),
+                  const TextInputType.numberWithOptions(signed: true, decimal: true),
               onCompleted: (v) async {
                 FocusScope.of(context).unfocus();
                 loginMpinController.validateRoleByMpin();

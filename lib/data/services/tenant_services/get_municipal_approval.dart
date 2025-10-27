@@ -10,10 +10,11 @@ class GetMunicipalApproval {
         await BaseClientClass.post(AppConfig().getApproveMunicipal??"", data);
     if (response is http.Response) {
       final data = municipalInstructionsFromJson(response.body);
-      if (data.statusCode == '200')
+      if (data.statusCode == '200') {
         return data;
-      else
+      } else {
         return data.message;
+      }
     }
     return response;
   }
@@ -25,10 +26,11 @@ class GetMunicipalApprovalNew {
         await BaseClientClass.post(AppConfig().getApproveMunicipalNew??"", data);
     if (response is http.Response) {
       final data = municipalInstructionsFromJson(response.body);
-      if (data.statusCode == '200')
+      if (data.statusCode == '200') {
         return data;
-      else
+      } else {
         return data.message;
+      }
     }
     return response;
   }

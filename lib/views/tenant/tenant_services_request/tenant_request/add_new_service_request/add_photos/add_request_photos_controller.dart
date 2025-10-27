@@ -151,7 +151,7 @@ class AddRequestPhotosController extends GetxController {
     // checking file extension
     if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       return;
@@ -169,7 +169,7 @@ class AddRequestPhotosController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           addingPhoto.value = false;

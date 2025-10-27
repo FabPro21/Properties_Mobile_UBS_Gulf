@@ -25,9 +25,9 @@ class GetAllLpoController extends GetxController {
 
   getData() async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -53,9 +53,9 @@ class GetAllLpoController extends GetxController {
   String pageNo = '1';
   getDataPagination(String pageNoP, searchtext) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     errorLoadMore.value = '';
@@ -82,9 +82,9 @@ class GetAllLpoController extends GetxController {
   var loadingDataLoadMore = true.obs;
   getDataPaginationLoadMore(String pageNoP, searchtext) async {
     isFilter.value = false;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMore.value = '';
     loadingDataLoadMore.value = true;
@@ -119,9 +119,9 @@ class GetAllLpoController extends GetxController {
 
   void getFilteredData(LpoFilterData filterData) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -155,9 +155,9 @@ class GetAllLpoController extends GetxController {
   Future<void> getFilteredDataPagination(
       LpoFilterData filterData, String pageNoP) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     error.value = '';
     loadingData.value = true;
@@ -180,9 +180,9 @@ class GetAllLpoController extends GetxController {
   Future<void> getFilteredDataPaginationLoadMore(
       LpoFilterData filterData, String pageNoP) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMoreFilter.value = '';
     loadingDataLoadMore.value = true;
@@ -209,19 +209,20 @@ class GetAllLpoController extends GetxController {
     if (getAllLpos.value.lpos! != null) {
       qry.toLowerCase();
       loadingData.value = true;
-      List<Lpo> _searchedLpos = [];
+      List<Lpo> searchedLpos = [];
       for (int i = 0; i < getAllLpos.value.lpos!.length; i++) {
         if (getAllLpos.value.lpos![i].lpoReference!.contains(qry) ||
             getAllLpos.value.lpos![i].lpoStatus!.toLowerCase().contains(qry) ||
             getAllLpos.value.lpos![i].lpoStatusAr!.contains(qry)) {
-          _searchedLpos.add(getAllLpos.value.lpos![i]);
+          searchedLpos.add(getAllLpos.value.lpos![i]);
         }
       }
-      lpos = _searchedLpos;
-      if (lpos.length == 0)
+      lpos = searchedLpos;
+      if (lpos.isEmpty) {
         error.value = AppMetaLabels().noLPOFound;
-      else
+      } else {
         error.value = '';
+      }
 
       loadingData.value = false;
     }

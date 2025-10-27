@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:typed_data';
 
 import 'package:fap_properties/data/models/vendor_models/get_all_lpos_model.dart';
@@ -18,7 +20,7 @@ import 'lpo_proretries_controller.dart';
 
 class LpoPropertiesScreen extends StatefulWidget {
   final Lpo? lpo;
-  const LpoPropertiesScreen({Key? key, this.lpo}) : super(key: key);
+  const LpoPropertiesScreen({super.key, this.lpo});
 
   @override
   _LpoPropertiesScreenState createState() => _LpoPropertiesScreenState();
@@ -55,7 +57,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
           children: [
             Obx(() {
               return getLpoPropertiesController.loadingData.value == true
-                  ? LoadingIndicatorBlue()
+                  ? const LoadingIndicatorBlue()
                   : getLpoPropertiesController.error.value != ''
                       ? AppErrorWidget(
                           errorText: getLpoPropertiesController.error.value,
@@ -124,7 +126,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                               style:
                                                   AppTextStyle.semiBoldBlack11,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             StatusWidget(
                                               text: SessionController()
                                                           .getLanguage() ==
@@ -269,7 +271,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           width: 50.0.w,
                                                           child: Text(
                                                             SessionController()
@@ -297,8 +299,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                           ),
                                                         ),
                                                         Text(
-                                                          "${AppMetaLabels().aed}" +
-                                                              " $amount",
+                                                          "${AppMetaLabels().aed} $amount",
                                                           style: AppTextStyle
                                                               .normalGrey10,
                                                           overflow: TextOverflow
@@ -343,7 +344,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                                                   padding: EdgeInsets.only(
                                                       left: 1.0.h,
                                                       right: 1.0.h),
-                                                  child: AppDivider(),
+                                                  child: const AppDivider(),
                                                 ),
                                         ],
                                       );
@@ -406,7 +407,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
                           ),
                         );
             }),
-            BottomShadow(),
+            const BottomShadow(),
           ],
         ),
       ),
@@ -420,7 +421,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
           t1,
           style: AppTextStyle.normalGrey11,
         ),
-        Spacer(),
+        const Spacer(),
         SizedBox(
           width: 42.w,
           child: Text(
@@ -428,7 +429,7 @@ class _LpoPropertiesScreenState extends State<LpoPropertiesScreen> {
             style: AppTextStyle.normalGrey11,
             textAlign: TextAlign.end,
           ),
-        ),
+        )
       ],
     );
   }

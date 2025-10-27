@@ -25,11 +25,10 @@ class LandlordDashboard extends StatefulWidget {
   final Function(int)? manageProperties;
   final Function(int)? manageContracts;
   const LandlordDashboard(
-      {Key? key,
+      {super.key,
       this.manageProperties,
       this.manageContracts,
-      this.parentContext})
-      : super(key: key);
+      this.parentContext});
 
   @override
   State<LandlordDashboard> createState() => _LandlordDashboardState();
@@ -85,7 +84,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                           horizontal: 2.0.h, vertical: 1.h),
                       child: Row(
                         children: [
-                          AppLogoCollierDashboard(),
+                        const  AppLogoCollierDashboard(),
                           const Spacer(),
                           Container(
                             decoration: const BoxDecoration(
@@ -94,7 +93,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                             ),
                             child: TextButton(
                               onPressed: () async {
-                                await Get.to(() => LandLordProfile());
+                                await Get.to(() => const LandLordProfile());
                                 landLordPropertiesController.getDashboardData();
                               },
                               child: Text(
@@ -108,7 +107,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                 horizontal: 2.0.w, vertical: 0.0.h),
                             child: InkWell(
                               onTap: () async {
-                                await Get.to(() => LandlordNotifications());
+                                await Get.to(() => const LandlordNotifications());
                                 landLordPropertiesController.getProperties();
                               },
                               child: badge.Badge(
@@ -129,7 +128,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                 badgeStyle: badge.BadgeStyle(
                                   padding: EdgeInsets.all(0.8.h),
                                 ),
-                                badgeAnimation: badge.BadgeAnimation.rotation(
+                                badgeAnimation: const badge.BadgeAnimation.rotation(
                                   animationDuration: Duration(seconds: 300),
                                   colorChangeAnimationDuration:
                                       Duration(seconds: 1),
@@ -174,7 +173,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                   ),
                                 ],
                               ),
-                              child: LoadingIndicatorBlue(),
+                              child: const LoadingIndicatorBlue(),
                             ),
                           )
                         : landLordPropertiesController.error.value != ''
@@ -312,7 +311,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                     onTap: () {},
                                                     child: Row(
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           width:
                                                               Get.width * 0.08,
                                                           child: Text(
@@ -328,7 +327,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.only(
+                                                           const   EdgeInsets.only(
                                                                   left: 5),
                                                           child: Text(
                                                             AppMetaLabels()
@@ -347,18 +346,26 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                       onTap: () {},
                                                       child: Row(
                                                         children: [
-                                                          Container(
+                                                          SizedBox(
                                                             width: Get.width *
                                                                 0.08,
                                                             child: Text(
-                                                                landLordPropertiesController
-                                                                            .closeCases
-                                                                            .value ==
-                                                                        ''
-                                                                    ? ''
-                                                                    : "${landLordPropertiesController.closeCases.value.toString()}",
-                                                                style: AppTextStyle
-                                                                    .semiBoldBlack12),
+                                                              landLordPropertiesController
+                                                                          .closeCases
+                                                                          .value ==
+                                                                      ''
+                                                                  ? ''
+                                                                  : landLordPropertiesController.closeCases.value.toString(),
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize:
+                                                                    10.0.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            ),
                                                           ),
                                                           Padding(
                                                             padding:
@@ -382,7 +389,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                           ),
                                         ),
                                       ),
-                                      AppDivider(),
+                                      const AppDivider(),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h,
@@ -459,7 +466,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                                     .normalBlack8,
                                                               ),
                                                             ),
-                                                            Spacer(),
+                                                            const Spacer(),
                                                             Text(
                                                                 " ${landLordPropertiesController.activeContract.value.toInt()}",
                                                                 maxLines: 1,
@@ -586,7 +593,7 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                           ),
                                         ),
                                       ),
-                                      AppDivider(),
+                                      const AppDivider(),
                                       Align(
                                         alignment: Alignment.center,
                                         child: Padding(

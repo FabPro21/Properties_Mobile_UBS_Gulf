@@ -24,7 +24,7 @@ import '../../../data/repository/auth_repository.dart';
 import 'dart:ui' as ui;
 
 class TenantMoreScreen extends StatefulWidget {
-  const TenantMoreScreen({Key? key}) : super(key: key);
+  const TenantMoreScreen({super.key});
 
   @override
   State<TenantMoreScreen> createState() => _TenantMoreScreenState();
@@ -92,7 +92,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                           },
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         padding: EdgeInsets.zero,
                         icon: Icon(
@@ -102,16 +102,16 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                         ),
                         onPressed: () {
                           SessionController().resetSession();
-                          Get.offAll(() => SelectRoleScreen());
+                          Get.offAll(() => const SelectRoleScreen());
                         },
                       ),
                       InkWell(
                         onTap: () {
                           SessionController().resetSession();
-                          Get.offAll(() => SelectRoleScreen());
+                          Get.offAll(() => const SelectRoleScreen());
                         },
                         child: Text(
-                          AppMetaLabels().logout + '  ',
+                          '${AppMetaLabels().logout}  ',
                           style: AppTextStyle.semiBoldWhite12
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
@@ -153,7 +153,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                         top: 0.0.h, left: 2.5.h, right: 2.5.h, bottom: 2.5.h),
                     child: InkWell(
                       onTap: () {
-                        Get.off(() => TenantProfile());
+                        Get.off(() => const TenantProfile());
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -183,7 +183,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => TenantProfile());
+                                  Get.off(() => const TenantProfile());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.myProfileLand,
@@ -215,7 +215,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                               }),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => TenantNotifications());
+                                  Get.off(() => const TenantNotifications());
                                 },
                                 leading: Icon(
                                   Icons.notifications_outlined,
@@ -228,7 +228,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                 ),
                               ),
                               SessionController().isFabApp == 2
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : ListTile(
                                       onTap: () async {
                                         await showDialog(
@@ -255,7 +255,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                     ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => TenantSettings());
+                                  Get.off(() => const TenantSettings());
                                 },
                                 leading: Icon(
                                   Icons.settings_outlined,
@@ -269,7 +269,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => TenantOffers());
+                                  Get.off(() => const TenantOffers());
                                 },
                                 leading: Icon(
                                   Icons.tag,
@@ -283,7 +283,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => TenantFaqs());
+                                  Get.off(() => const TenantFaqs());
                                 },
                                 leading: Icon(
                                   Icons.help_outline,
@@ -306,7 +306,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                     1
                                                 ? ui.TextDirection.ltr
                                                 : ui.TextDirection.rtl,
-                                        child: Container(
+                                        child: SizedBox(
                                           height: 25.h,
                                           width: 100.0.w,
                                           child: Container(
@@ -371,7 +371,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                                               style: AppTextStyle.semiBoldGrey10,
                                                                             ),
                                                                           ),
-                                                                          AppDivider(),
+                                                                          const AppDivider(),
                                                                           InkWell(
                                                                             onTap:
                                                                                 () {
@@ -389,7 +389,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                          AppDivider(),
+                                                                          const AppDivider(),
                                                                           InkWell(
                                                                             onTap:
                                                                                 () {
@@ -473,7 +473,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -488,7 +488,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
-                                                AppDivider(),
+                                                const AppDivider(),
                                                 SizedBox(
                                                   height: 3.0.h,
                                                 ),
@@ -521,7 +521,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -589,7 +589,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
       SessionController().setPublicToken(resp.token);
       // update the search page 4 Nov 22
       // Get.off(() => SearchVacantUnits());
-      Get.off(() => SearchPropertiesDashboardTabs());
+      Get.off(() => const SearchPropertiesDashboardTabs());
     }
   }
 
@@ -677,7 +677,7 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
               AppMetaLabels().renewalFlowTutorialUrl,
               textAlign: TextAlign.center,
               style: AppTextStyle.semiBoldBlack13.copyWith(
-                color: Color.fromRGBO(0, 61, 166, 1),
+                color: const Color.fromRGBO(0, 61, 166, 1),
                 decoration: TextDecoration.underline,
               ),
             ),
@@ -698,10 +698,11 @@ class _TenantMoreScreenState extends State<TenantMoreScreen> {
                     width: 30.0.w,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3.0.w),
-                                side: BorderSide(color: Colors.blue))),
+                        shape:
+                            WidgetStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(3.0.w),
+                                    side: const BorderSide(color: Colors.blue))),
                         backgroundColor:
                             WidgetStateProperty.all<Color>(Colors.white),
                       ),

@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import '../../data/helpers/session_controller.dart';
 
 class SafeDeviceCheck extends StatefulWidget {
+  const SafeDeviceCheck({super.key});
+
   @override
   State<SafeDeviceCheck> createState() => _SafeDeviceCheckState();
 }

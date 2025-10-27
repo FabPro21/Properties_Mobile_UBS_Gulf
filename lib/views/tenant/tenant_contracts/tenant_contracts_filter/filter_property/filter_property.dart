@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class ContracrsPropertyFilter extends StatefulWidget {
-  const ContracrsPropertyFilter({Key? key}) : super(key: key);
+  const ContracrsPropertyFilter({super.key});
 
   @override
   _ContracrsPropertyFilterState createState() =>
@@ -47,13 +47,13 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                       AppMetaLabels().propertyType,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -61,7 +61,7 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -70,7 +70,7 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -80,7 +80,7 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                 Expanded(
                   child: Obx(() {
                     return _filterPropertyController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterPropertyController.error.value != ''
@@ -126,7 +126,7 @@ class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
                                                         .proppertyTypesLength -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         SizedBox(height: 1.0.h),
                                       ],
                                     ),

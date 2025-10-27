@@ -14,9 +14,9 @@ class PublicServiceRequestController extends GetxController {
   List<ServiceRequest> serviceReq = [ServiceRequest()].obs;
 
   Future<void> getSericeRequest() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -52,10 +52,11 @@ class PublicServiceRequestController extends GetxController {
         serviceReq.add(publicServiceRequest.value.serviceRequests![i]);
       }
     }
-    if (serviceReq.length == 0)
+    if (serviceReq.isEmpty) {
       error.value = AppMetaLabels().noServiceRequestsFound;
-    else
+    } else {
       error.value = '';
+    }
 
     loadingData.value = false;
   }

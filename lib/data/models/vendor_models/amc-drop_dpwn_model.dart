@@ -11,17 +11,17 @@ class AmcDropDownModel {
     if (json['amcData'] != null) {
       amcData = <AmcData>[];
       json['amcData'].forEach((v) {
-        amcData!.add(new AmcData.fromJson(v));
+        amcData!.add(AmcData.fromJson(v));
       });
     }
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['status'] = this.status;
-    if (this.amcData != null) {
-      data['amcData'] = this.amcData!.map((v) => v.toJson()).toList();
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['status'] = status;
+    if (amcData != null) {
+      data['amcData'] = amcData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -39,9 +39,9 @@ class AmcData {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
     return data;
   }
 }

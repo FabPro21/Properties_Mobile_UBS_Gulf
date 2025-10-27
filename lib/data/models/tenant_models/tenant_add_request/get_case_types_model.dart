@@ -48,11 +48,11 @@ class ServiceRequest {
 
   factory ServiceRequest.fromJson(Map<String?, dynamic> json) => ServiceRequest(
         id: json["id"],
-        name: json["name"] == null ? null : json["name"],
+        name: json["name"],
       );
 
   Map<String?, dynamic> toJson() => {
         "id": id,
-        "name": name == null ? null : name,
+        "name": name,
       };
 }

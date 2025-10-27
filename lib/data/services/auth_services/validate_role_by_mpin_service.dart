@@ -23,15 +23,15 @@ class ValidateRoleByMpinService {
         token: SessionController().getToken());
     if (response is http.Response) {
       print(response);
-      Map<String, dynamic> _jsonResp = json.decode(response.body);
-      if (_jsonResp["statusCode"] == '200') {
+      Map<String, dynamic> jsonResp = json.decode(response.body);
+      if (jsonResp["statusCode"] == '200') {
         try {
-          return SessionTokenModel.fromJson(_jsonResp);
+          return SessionTokenModel.fromJson(jsonResp);
         } catch (e) {
           return AppMetaLabels().anyError;
         }
       } else {
-        return _jsonResp["message"];
+        return jsonResp["message"];
       }
     }
     return response;

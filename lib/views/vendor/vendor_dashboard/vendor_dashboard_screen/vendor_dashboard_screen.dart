@@ -24,8 +24,7 @@ import '../../../../data/models/chart_data.dart';
 class VendorDashboard extends StatefulWidget {
   final Function(int)? manageLpos;
   final BuildContext? parentContext;
-  const VendorDashboard({Key? key, this.manageLpos, this.parentContext})
-      : super(key: key);
+  const VendorDashboard({super.key, this.manageLpos, this.parentContext});
 
   @override
   State<VendorDashboard> createState() => _VendorDashboardState();
@@ -73,7 +72,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                 padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                 child: Row(
                   children: [
-                    AppLogoCollierDashboard(),
+                 const   AppLogoCollierDashboard(),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(
@@ -82,7 +81,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Get.to(() => VendorProfile());
+                          Get.to(() => const VendorProfile());
                           //showNotificationPopup();
                         },
                         child: Text(
@@ -96,7 +95,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                           horizontal: 2.0.w, vertical: 0.0.h),
                       child: InkWell(
                         onTap: () {
-                          Get.to(() => VendorNotification());
+                          Get.to(() => const VendorNotification());
                         },
                         child: badge.Badge(
                           showBadge: controller.getDataModel.value
@@ -112,7 +111,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                           ),
                           position: badge.BadgePosition.topEnd(
                               top: -1.0.h, end: 0.0.h),
-                          badgeAnimation: badge.BadgeAnimation.rotation(
+                          badgeAnimation: const badge.BadgeAnimation.rotation(
                             animationDuration: Duration(seconds: 300),
                             colorChangeAnimationDuration: Duration(seconds: 1),
                             loopAnimation: false,
@@ -153,7 +152,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                     ],
                   ),
                   child: controller.loadingData.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : controller.error.value != ''
                           ? AppErrorWidget(
                               errorText: AppMetaLabels().noDatafound,
@@ -173,7 +172,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                     maxLines: 2,
                                   ),
                                 ),
-                                AppDivider(),
+                                const AppDivider(),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 1.0.h, vertical: 0.0.h),
@@ -234,7 +233,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                           },
                                                           child: Container(
                                                             decoration:
-                                                                BoxDecoration(
+                                                                const BoxDecoration(
                                                               shape: BoxShape
                                                                   .circle,
                                                               color: Color
@@ -252,7 +251,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                               child: Icon(
                                                                   Icons.close,
                                                                   size: 2.0.h,
-                                                                  color: Color
+                                                                  color: const Color
                                                                       .fromRGBO(
                                                                           158,
                                                                           158,
@@ -266,7 +265,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                     SizedBox(
                                                       height: 0.7.h,
                                                     ),
-                                                    AppDivider(),
+                                                    const AppDivider(),
                                                     SizedBox(
                                                       height: 1.0.h,
                                                     ),
@@ -309,7 +308,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                                 ),
                                               ]),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 66.0.w,
                                           height: 7.0.h,
                                           child: Column(
@@ -480,7 +479,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                     ),
                                   ),
                                 ),
-                                AppDivider(),
+                                const AppDivider(),
                                 TextButton(
                                   style: TextButton.styleFrom(
                                     minimumSize: Size.zero,
@@ -490,13 +489,12 @@ class _VendorDashboardState extends State<VendorDashboard> {
                                   ),
                                   onPressed: () {
                                     // widget.manageLpos(1);
-                                    Get.to(() => VendorRequestList());
+                                    Get.to(() => const VendorRequestList());
                                   },
                                   child: Text(
-                                    AppMetaLabels()
+                                    '${AppMetaLabels()
                                             .openServiceRequests
-                                            .toUpperCase() +
-                                        '  (${controller.getDataModel.value.dashboard?.totalOpenServiceRequests.toString()})',
+                                            .toUpperCase()}  (${controller.getDataModel.value.dashboard?.totalOpenServiceRequests.toString()})',
                                     // AppMetaLabels().managePayments,
                                     style: AppTextStyle.semiBoldBlue10,
                                   ),

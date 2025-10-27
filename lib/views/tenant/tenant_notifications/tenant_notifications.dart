@@ -16,7 +16,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class TenantNotifications extends StatefulWidget {
-  TenantNotifications({Key? key}) : super(key: key);
+  const TenantNotifications({super.key});
 
   @override
   State<TenantNotifications> createState() => _TenantNotificationsState();
@@ -24,7 +24,7 @@ class TenantNotifications extends StatefulWidget {
 
 class _TenantNotificationsState extends State<TenantNotifications> {
   final getTNController = Get.put(GetTenantNotificationsController());
-  TenantDashboardGetDataController _tenantDashboard = Get.find();
+  final TenantDashboardGetDataController _tenantDashboard = Get.find();
 
   _getData() async {
     await getTNController.getData(getTNController.pagaNoPAll);
@@ -75,7 +75,7 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                             minWidth: 25.0.w,
                             minHeight: 3.0.h,
                             cornerRadius: 3.0.h,
-                            activeBgColors: [
+                            activeBgColors: const [
                               [Colors.white],
                               [Colors.white]
                             ],
@@ -116,7 +116,7 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                             AppMetaLabels().notifications,
                             style: AppTextStyle.semiBoldBlack16,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           IconButton(
                             onPressed: () {
                               setState(() {
@@ -137,18 +137,18 @@ class _TenantNotificationsState extends State<TenantNotifications> {
                         ],
                       ),
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     Obx(() {
                       return getTNController.loadingData.value == true
                           ? Padding(
                               padding: EdgeInsets.only(top: 30.0.h),
-                              child: LoadingIndicatorBlue(),
+                              child: const LoadingIndicatorBlue(),
                             )
                           : getTNController.currentIndex.value == 0
-                              ? Expanded(
+                              ? const Expanded(
                                   child: TenantAllNotifications(),
                                 )
-                              : Expanded(
+                              : const Expanded(
                                   child: TenantUnReadNotifications(),
                                 );
                     }),

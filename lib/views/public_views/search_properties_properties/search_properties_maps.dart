@@ -11,21 +11,21 @@ import 'dart:io' as io;
 import 'carousel_search_map.dart';
 
 class SearchPropertiesMaps extends StatefulWidget {
-  const SearchPropertiesMaps({Key? key}) : super(key: key);
+  const SearchPropertiesMaps({super.key});
 
   @override
   _SearchPropertiesMapsState createState() => _SearchPropertiesMapsState();
 }
 
 class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
-  Completer<Gm.GoogleMapController> _mapsController = Completer();
-  Completer<Am.AppleMapController> _mapsAppleController = Completer();
+  final Completer<Gm.GoogleMapController> _mapsController = Completer();
+  final Completer<Am.AppleMapController> _mapsAppleController = Completer();
 
-  Gm.CameraPosition _kGooglePlex = Gm.CameraPosition(
+  final Gm.CameraPosition _kGooglePlex = const Gm.CameraPosition(
     target: Gm.LatLng(23.4241, 53.8478),
     zoom: 11.4746,
   );
-  Am.CameraPosition _kApplePlex = Am.CameraPosition(
+  final Am.CameraPosition _kApplePlex = const Am.CameraPosition(
     target: Am.LatLng(23.4241, 53.8478),
     zoom: 11.4746,
   );
@@ -35,7 +35,7 @@ class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
           iconSize: 2.0.h,
@@ -82,7 +82,7 @@ class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CarouselSearchMap(),
+                const CarouselSearchMap(),
                 SizedBox(
                   height: 4.0.h,
                 ),
@@ -94,7 +94,7 @@ class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 6.0.h,
                           width: 30.0.w,
                           child: ElevatedButton(
@@ -125,7 +125,7 @@ class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
                             height: 6.0.h,
                             width: 23.0.w,
                             decoration: BoxDecoration(
-                                color: Color.fromRGBO(0, 98, 255, 1),
+                                color: const Color.fromRGBO(0, 98, 255, 1),
                                 borderRadius: BorderRadius.circular(100.0.h)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

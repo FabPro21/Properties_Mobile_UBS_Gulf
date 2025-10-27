@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantOffers extends StatefulWidget {
-  const TenantOffers({Key? key}) : super(key: key);
+  const TenantOffers({super.key});
 
   @override
   _TenantOffersState createState() => _TenantOffersState();
@@ -50,89 +50,92 @@ class _TenantOffersState extends State<TenantOffers> {
             Expanded(
               child: Obx(() {
                 return _controller.loadingOffers.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.length == 0
                         ? CustomErrorWidget(
                             errorText: _controller.errorOffers.value,
                             errorImage: AppImagesPath.noServicesFound,
                           )
-                        : Container(
-                            child: ListView.builder(
-                                padding: EdgeInsets.only(top: 1.5.h),
-                                shrinkWrap: true,
-                                itemCount: _controller.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 5.0.w, top: 3.0.h, right: 5.0.w),
-                                    child: Directionality(
-                                      textDirection:
-                                          SessionController().getLanguage() == 1
-                                              ? TextDirection.ltr
-                                              : TextDirection.rtl,
-                                      child: Column(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Get.to(() => TenantOffersDetails(
-                                                  offerId: _controller
-                                                      .offers
-                                                      .value
-                                                      .record![index]
-                                                      .offerid
-                                                      .toString()));
-                                            },
-                                            child: Row(children: [
-                                              Text(
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? _controller
-                                                              .offers
-                                                              .value
-                                                              .record![index]
-                                                              .title ??
-                                                          ""
-                                                      : _controller
-                                                              .offers
-                                                              .value
-                                                              .record![index]
-                                                              .titleAr ??
-                                                          "",
-                                                  style: AppTextStyle
-                                                      .semiBoldBlack13),
-                                              Spacer(),
-                                              Icon(
-                                                Icons.arrow_forward_ios_rounded,
-                                                size: 2.0.h,
-                                                color: AppColors.grey1,
-                                              )
-                                            ]),
-                                          ),
-                                        ],
+                        : ListView.builder(
+                            padding: EdgeInsets.only(top: 1.5.h),
+                            shrinkWrap: true,
+                            itemCount: _controller.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    left: 5.0.w, top: 3.0.h, right: 5.0.w),
+                                child: Directionality(
+                                  textDirection:
+                                      SessionController().getLanguage() == 1
+                                          ? TextDirection.ltr
+                                          : TextDirection.rtl,
+                                  child: Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() => TenantOffersDetails(
+                                              offerId: _controller
+                                                  .offers
+                                                  .value
+                                                  .record![index]
+                                                  .offerid
+                                                  .toString()));
+                                        },
+                                        child: Row(children: [
+                                          Text(
+                                              SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _controller
+                                                          .offers
+                                                          .value
+                                                          .record![index]
+                                                          .title ??
+                                                      ""
+                                                  : _controller
+                                                          .offers
+                                                          .value
+                                                          .record![index]
+                                                          .titleAr ??
+                                                      "",
+                                              style: AppTextStyle
+                                                  .semiBoldBlack13),
+                                          const Spacer(),
+                                          Icon(
+                                            Icons.arrow_forward_ios_rounded,
+                                            size: 2.0.h,
+                                            color: AppColors.grey1,
+                                          )
+                                        ]),
                                       ),
-                                    ),
-                                  );
-                                }));
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
               }),
             ),
             SizedBox(
               height: 1.0.h,
             ),
             _controller.length < 20
-                ? SizedBox()
+                ? const SizedBox()
                 : Center(
                     child: Obx(() {
                       return _controller.errorDetailsMore.value != ''
-                          ? Text(AppMetaLabels().noMoreData,
-                              style: AppTextStyle.boldBlue)
+                          ? Text(
+                              AppMetaLabels().noMoreData,
+                              style: const TextStyle(
+                                color: Colors.blue,
+                              ),
+                            )
                           : _controller.length < 20
-                              ? SizedBox()
+                              ? const SizedBox()
                               : _controller.loadingDetailsMore.value
                                   ? SizedBox(
                                       width: 75.w,
                                       height: 5.h,
-                                      child: Center(
+                                      child: const Center(
                                         child: LoadingIndicatorBlue(),
                                       ),
                                     )
@@ -155,11 +158,13 @@ class _TenantOffersState extends State<TenantOffers> {
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
-                                                    text: AppMetaLabels()
-                                                        .loadMoreData,
-                                                    style:
-                                                        AppTextStyle.boldBlue),
-                                                WidgetSpan(
+                                                  text: AppMetaLabels()
+                                                      .loadMoreData,
+                                                  style: const TextStyle(
+                                                    color: Colors.blue,
+                                                  ),
+                                                ),
+                                                 WidgetSpan(
                                                   child: Icon(
                                                     Icons.arrow_forward_ios,
                                                     size: 15,
@@ -173,7 +178,7 @@ class _TenantOffersState extends State<TenantOffers> {
                     }),
                   ),
             _controller.length == 0
-                ? SizedBox()
+                ? const SizedBox()
                 : SizedBox(
                     height: 2.0.h,
                   ),

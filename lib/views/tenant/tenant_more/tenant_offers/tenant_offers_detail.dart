@@ -14,14 +14,14 @@ import '../../../../data/helpers/session_controller.dart';
 
 class TenantOffersDetails extends StatefulWidget {
   final String? offerId;
-  const TenantOffersDetails({Key? key, this.offerId}) : super(key: key);
+  const TenantOffersDetails({super.key, this.offerId});
 
   @override
   _TenantOffersDetailsState createState() => _TenantOffersDetailsState();
 }
 
 class _TenantOffersDetailsState extends State<TenantOffersDetails> {
-  TenantOffersController _controller = Get.put(TenantOffersController());
+  final TenantOffersController _controller = Get.put(TenantOffersController());
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                   return _controller.loadingDetails.value
                       ? SizedBox(
                           height: 90.h,
-                          child: Center(
+                          child: const Center(
                             child: LoadingIndicatorBlue(),
                           ),
                         )
@@ -61,7 +61,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                               errorImage: AppImagesPath.noServicesFound,
                               errorText: _controller.errorDetails.value)
                           : _controller.offersDetails.value.record == null
-                              ? SizedBox()
+                              ? const SizedBox()
                               : Directionality(
                                   textDirection:
                                       SessionController().getLanguage() == 1
@@ -153,9 +153,8 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                         ),
                                       ),
                                       _controller.offersDetails.value
-                                                  .offerProperties!.length ==
-                                              0
-                                          ? SizedBox()
+                                                  .offerProperties!.isEmpty
+                                          ? const SizedBox()
                                           : Padding(
                                               padding: EdgeInsets.only(
                                                   right: 4.0.w,
@@ -177,7 +176,7 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                       Container(
                                           child: ListView.builder(
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               padding:
                                                   EdgeInsets.only(top: 0.5.h),
                                               shrinkWrap: true,

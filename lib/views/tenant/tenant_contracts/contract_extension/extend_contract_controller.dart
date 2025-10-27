@@ -16,10 +16,6 @@ class ExtendContractController extends GetxController {
   RxBool submitting = false.obs;
   int? caseNo;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getExtensionPeriods(int contractId) async {
     loadingPeriods.value = true;
@@ -27,8 +23,9 @@ class ExtendContractController extends GetxController {
     var resp = await TenantRepository.getExtensionPeriods(contractId);
     if (resp is GetExtensionPeriodModel) {
       extensionPeriods = resp;
-    } else
+    } else {
       errorLoadingPeriods = resp;
+    }
     loadingPeriods.value = false;
   }
 

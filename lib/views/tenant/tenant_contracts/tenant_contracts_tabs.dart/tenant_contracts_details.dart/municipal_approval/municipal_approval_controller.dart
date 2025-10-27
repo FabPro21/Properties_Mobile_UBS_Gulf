@@ -17,10 +17,6 @@ class MunicipalApprovalController extends GetxController {
   
   RxBool isHideSubmitButton = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getInstructions(int contractId) async {
     print('(((((((((((((((((Inside)))))))))))))))))');
@@ -31,8 +27,9 @@ class MunicipalApprovalController extends GetxController {
     if (response is MunicipalInstructions) {
       municipalInstructions = response;
       print('((((((((((((((((($municipalInstructions)))))))))))))))))');
-    } else
+    } else {
       errorLoadingData = response;
+    }
   }
 
   RxBool updatingStage = false.obs;

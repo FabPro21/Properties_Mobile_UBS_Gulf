@@ -11,13 +11,13 @@ class CustomAppBar extends StatefulWidget {
   final Function(String)? onSearchTextChanged;
   final VoidCallback? onRefreshPressed;
   const CustomAppBar({
-    Key? key,
+    super.key,
     @required this.title,
     this.searchHint,
     this.onSearchTextChanged,
     this.onRefreshPressed,
     this.searchTextController,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();

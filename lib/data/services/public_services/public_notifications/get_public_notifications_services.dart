@@ -9,7 +9,7 @@ class PublicGetNotificationsServices {
   static Future<dynamic> getNotification(String status) async {
     var url = AppConfig().getPublicNotification;
 
-    var dataa;
+    Map<String, String> dataa;
     if (status == "") {
       dataa = {"status": "All", "pageNo": "1", "pageSize": "500"};
     } else {
@@ -29,7 +29,7 @@ class PublicGetNotificationsServices {
       String status, pageNo) async {
     var url = AppConfig().getPublicNotification;
 
-    var dataa;
+    Map<String, String> dataa;
     if (status == "") {
       dataa = {"status": "All", "pageNo": pageNo.toString(), "pageSize": "20"};
     } else {

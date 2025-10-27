@@ -17,7 +17,7 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class UnitInfo extends StatefulWidget {
-  const UnitInfo({Key? key}) : super(key: key);
+  const UnitInfo({super.key});
 
   @override
   _UnitInfoState createState() => _UnitInfoState();
@@ -35,7 +35,7 @@ class _UnitInfoState extends State<UnitInfo> {
       children: [
         Obx(() {
           return unitInfoController.loadingData.value == true
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : unitInfoController.error.value != ''
                   ? CustomErrorWidget(
                       errorText: unitInfoController.error.value,
@@ -178,7 +178,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 76.0.w,
                                           // color: Colors.red,
                                           child: Column(
@@ -187,7 +187,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: 80.0.w,
                                                 child: Text(
                                                   SessionController()
@@ -217,7 +217,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Text(
                                                     "${unitInfoController.unitInfo.value.contractUnits![index].unitRefNo}",
                                                     style: AppTextStyle
@@ -233,7 +233,7 @@ class _UnitInfoState extends State<UnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Text(
                                                     SessionController()
                                                                 .getLanguage() ==
@@ -265,9 +265,9 @@ class _UnitInfoState extends State<UnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Text(
-                                                    "${AppMetaLabels().aed} ${amount }",
+                                                    "${AppMetaLabels().aed} $amount ",
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
@@ -299,7 +299,7 @@ class _UnitInfoState extends State<UnitInfo> {
                         );
                       });
         }),
-        BottomShadow(),
+        const BottomShadow(),
       ],
     );
   }

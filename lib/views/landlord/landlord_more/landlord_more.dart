@@ -6,7 +6,6 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/common/about_app.dart/about_app.dart';
 import 'package:fap_properties/views/landlord/landlord_notifications/landlord_notifications.dart';
-import 'package:fap_properties/views/landlord/landlord_reports/landlord_report.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,7 @@ import 'landlord_settings/landlord_settings.dart';
 import 'dart:ui' as ui;
 
 class LandLordMore extends StatefulWidget {
-  const LandLordMore({Key? key}) : super(key: key);
+  const LandLordMore({super.key});
 
   @override
   _LandLordMoreState createState() => _LandLordMoreState();
@@ -97,7 +96,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                           },
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         padding: EdgeInsets.zero,
                         icon: Icon(
@@ -108,13 +107,13 @@ class _LandLordMoreState extends State<LandLordMore> {
                         ),
                         onPressed: () {
                           SessionController().resetSession();
-                          Get.offAll(() => SelectRoleScreen());
+                          Get.offAll(() => const SelectRoleScreen());
                         },
                       ),
                       InkWell(
                         onTap: () {
                           SessionController().resetSession();
-                          Get.offAll(() => SelectRoleScreen());
+                          Get.offAll(() => const SelectRoleScreen());
                         },
                         child: Text(
                           AppMetaLabels().logout,
@@ -156,7 +155,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                     padding: EdgeInsets.all(1.5.h),
                     child: InkWell(
                       onTap: () {
-                        Get.off(() => LandLordProfile());
+                        Get.off(() => const LandLordProfile());
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -186,7 +185,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  Get.to(() => LandLordProfile());
+                                  Get.to(() => const LandLordProfile());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.myProfileLand,
@@ -217,7 +216,7 @@ class _LandLordMoreState extends State<LandLordMore> {
 
                               ListTile(
                                 onTap: () async {
-                                  await Get.to(() => LandlordNotifications());
+                                  await Get.to(() => const LandlordNotifications());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.notificationLand,
@@ -231,20 +230,22 @@ class _LandLordMoreState extends State<LandLordMore> {
                                 ),
                               ),
 
-                              ListTile(
-                                onTap: () async {
-                                  await Get.to(() => LandLordReports());
-                                },
-                                leading: Image.asset(
-                                  AppImagesPath.reportsLand,
-                                  height: 3.5.h,
-                                  fit: BoxFit.cover,
-                                ),
-                                title: Text(
-                                  AppMetaLabels().report,
-                                  style: AppTextStyle.normalBlack12,
-                                ),
-                              ),
+                              // ListTile(
+                              //   onTap: () async {
+                              //     await Get.to(() => const LandLordReports());
+                              //   },
+                              //   leading: Image.asset(
+                              //     AppImagesPath.reportsLand,
+                              //     height: 3.5.h,
+                              //     fit: BoxFit.cover,
+                              //   ),
+                              //   title: Text(
+                              //     AppMetaLabels().report,
+                              //     style: AppTextStyle.normalBlack12,
+                              //   ),
+                              // ),
+                              
+                              
                               // ListTile(
                               //   onTap: () async {
                               //     await Get.to(() => InvoicesScreenLandlord());
@@ -262,7 +263,7 @@ class _LandLordMoreState extends State<LandLordMore> {
 
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => LandLordSettings());
+                                  Get.off(() => const LandLordSettings());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.settingsLand,
@@ -278,7 +279,7 @@ class _LandLordMoreState extends State<LandLordMore> {
 
                               ListTile(
                                 onTap: () {
-                                  Get.off(() => LandLordFaqs());
+                                  Get.off(() => const LandLordFaqs());
                                 },
                                 leading: Image.asset(
                                   AppImagesPath.faqsLand,
@@ -303,7 +304,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                     1
                                                 ? ui.TextDirection.ltr
                                                 : ui.TextDirection.rtl,
-                                        child: Container(
+                                        child: SizedBox(
                                           height: 25.h,
                                           width: 100.0.w,
                                           child: Container(
@@ -373,7 +374,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                                                 style: AppTextStyle.semiBoldGrey10,
                                                                               ),
                                                                             ),
-                                                                            AppDivider(),
+                                                                            const AppDivider(),
                                                                             InkWell(
                                                                               onTap: () {
                                                                                 var phone = AppMetaLabels().within.split('(')[0].removeAllWhitespace.trim();
@@ -389,7 +390,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            AppDivider(),
+                                                                            const AppDivider(),
                                                                             InkWell(
                                                                               onTap: () {
                                                                                 String phone = AppMetaLabels().outside.split('(')[0].removeAllWhitespace.trim();
@@ -471,7 +472,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -486,7 +487,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
-                                                AppDivider(),
+                                                const AppDivider(),
                                                 SizedBox(
                                                   height: 3.0.h,
                                                 ),
@@ -519,7 +520,7 @@ class _LandLordMoreState extends State<LandLordMore> {
                                                                 .semiBoldBlack12,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Icon(
                                                           Icons
                                                               .arrow_forward_ios,

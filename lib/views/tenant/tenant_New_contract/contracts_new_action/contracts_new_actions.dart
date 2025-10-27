@@ -34,7 +34,7 @@ import 'contracts_new_actions_controller.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class ContractNewAction extends StatefulWidget {
-  ContractNewAction({Key? key}) : super(key: key);
+  const ContractNewAction({super.key});
 
   @override
   State<ContractNewAction> createState() => _ContractNewActionState();
@@ -126,7 +126,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                         return controller
                                                     .loadingContracts.value ==
                                                 true
-                                            ? LoadingIndicatorBlue()
+                                            ? const LoadingIndicatorBlue()
                                             : controller.errorLoadingContracts !=
                                                     ''
                                                 ? CustomErrorWidget(
@@ -155,8 +155,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .caseId ==
                                                                   0
-                                                              ? SizedBox()
-                                                              : Container(
+                                                              ? const SizedBox()
+                                                              : SizedBox(
                                                                   width: double
                                                                       .infinity,
                                                                   child: Align(
@@ -190,7 +190,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                                     initialIndex: 0,
                                                                                   ));
                                                                             },
-                                                                            child: Text(AppMetaLabels().requestno + ' ' + controller.contractsList[index].caseId.toString() + ' ',
+                                                                            child: Text('${AppMetaLabels().requestno} ${controller.contractsList[index].caseId} ',
                                                                                 textAlign: TextAlign.left,
                                                                                 style: AppTextStyle.normalBlue12),
                                                                           ),
@@ -217,7 +217,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   2
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -245,7 +245,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -277,7 +277,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   5
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -305,7 +305,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -337,7 +337,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   6
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -391,7 +391,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -424,7 +424,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   8
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -445,7 +445,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -477,7 +477,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                             alignment: Alignment
                                                                 .center,
                                                             padding:
-                                                                EdgeInsets.only(
+                                                                const EdgeInsets.only(
                                                                     top: 10,
                                                                     right: 10,
                                                                     bottom: 10),
@@ -489,7 +489,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                     left: 20,
                                                                     right: 20),
                                                             decoration:
-                                                                BoxDecoration(
+                                                                const BoxDecoration(
                                                                     color: Color
                                                                         .fromRGBO(
                                                                             255,
@@ -535,7 +535,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                               .width *
                                                                           0.03,
                                                                     ),
-                                                                    Container(
+                                                                    SizedBox(
                                                                       width: Get
                                                                               .width *
                                                                           0.66,
@@ -572,7 +572,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                               ],
                                                             ),
                                                           ),
-                                                          AppDivider()
+                                                          const AppDivider()
                                                         ],
                                                       );
                                                     },
@@ -686,8 +686,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                     ),
                   ),
                   controller.isEnableScreen.value == false
-                      ? ScreenDisableWidget()
-                      : SizedBox()
+                      ? const ScreenDisableWidget()
+                      : const SizedBox()
                 ]);
               }))),
     );
@@ -743,8 +743,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
               ),
               content: Container(
                 height: Get.height * 0.35,
-                decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.all(new Radius.circular(32.0)),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   shape: BoxShape.rectangle,
                 ),
                 child: SingleChildScrollView(
@@ -755,7 +755,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                           style: AppTextStyle.semiBoldBlack14),
                       Obx(() {
                         return loading.value == true
-                            ? Center(child: const CircularProgressIndicator())
+                            ? const Center(child: CircularProgressIndicator())
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -781,7 +781,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                     child: VideoProgressIndicator(
                                       videoCotroller!,
                                       allowScrubbing: true,
-                                      colors: VideoProgressColors(
+                                      colors: const VideoProgressColors(
                                         backgroundColor: Colors.white24,
                                         playedColor: Colors.blue,
                                         bufferedColor: Colors.grey,
@@ -836,7 +836,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: 40.0.w,
                                   child: Text(
                                     SessionController().getLanguage() == 1
@@ -850,7 +850,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   "${controller.contractsList[index].contractno}",
                                   style: AppTextStyle.semiBoldBlack12,
@@ -883,7 +883,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 ConstrainedBox(
                                   constraints: BoxConstraints(maxWidth: 27.w),
                                   child: FittedBox(
@@ -908,9 +908,9 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                     controller.contractsList[index]
                                         .previousContractNo)
                               controller.contractsList[index].stageId! < 4
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Padding(
-                                      padding: EdgeInsets.only(top: 5.0),
+                                      padding: const EdgeInsets.only(top: 5.0),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -959,8 +959,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: index == controller.contractsList.length - 1
-                  ? SizedBox()
-                  : SizedBox(),
+                  ? const SizedBox()
+                  : const SizedBox(),
             ),
           ],
         ),
@@ -1017,7 +1017,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                   style: AppTextStyle.normalBlue11,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             width: 3,
           ),
           // if (controller.contractsList[index].showExtend)
@@ -1275,7 +1275,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                   controller.contractsList[index].contractno);
                               SnakBarWidget.getLoadingWithColor();
 
-                              await Future.delayed(Duration(seconds: 0));
+                              await Future.delayed(const Duration(seconds: 0));
                               SnakBarWidget.getSnackBarErrorBlueWith20Sec(
                                 AppMetaLabels().loading,
                                 AppMetaLabels().generatingContractInfo,
@@ -1379,7 +1379,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
           ? null
           : const PageStorageKey(0),
       physics: SessionController().getLanguage() == 1
-          ? NeverScrollableScrollPhysics()
+          ? const NeverScrollableScrollPhysics()
           : null,
       itemScrollController: itemScrollController,
       scrollDirection: Axis.horizontal,
@@ -1392,12 +1392,13 @@ class _ContractNewActionState extends State<ContractNewAction> {
         // will work on it later
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           if (itemScrollController.isAttached &&
-              SessionController().getLanguage() == 1)
+              SessionController().getLanguage() == 1) {
             itemScrollController.scrollTo(
               index: dueActionIndex > 3 ? 3 : dueActionIndex,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeIn,
             );
+          }
         });
         return actionList[index2];
       },

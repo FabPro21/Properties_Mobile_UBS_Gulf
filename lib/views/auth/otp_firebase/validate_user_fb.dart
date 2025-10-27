@@ -20,7 +20,7 @@ import '../country_picker/country_picker.dart';
 
 // ValidateUserScreenFB = >ValidateUserScreenFirebase
 class ValidateUserScreenFB extends StatefulWidget {
-  ValidateUserScreenFB({Key? key}) : super(key: key);
+  const ValidateUserScreenFB({super.key});
 
   @override
   State<ValidateUserScreenFB> createState() => _ValidateUserScreenFBState();
@@ -60,7 +60,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 32,
                                 ),
                                 Text(
@@ -69,7 +69,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                 ),
                                 IconButton(
                                     onPressed: () {
-                                      Get.to(() => ChooseLanguage(
+                                      Get.to(() => const ChooseLanguage(
                                             cont: false,
                                             loggedIn: false,
                                           ));
@@ -118,7 +118,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                             child: Container(
                               width: 90.0.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(70, 82, 95, 0.2),
+                                color: const Color.fromRGBO(70, 82, 95, 0.2),
                                 border: Border.all(
                                   color: Colors.white30,
                                 ),
@@ -130,7 +130,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                   children: [
                                     InkWell(
                                       onTap: () async {
-                                        Get.to(() => CountryPicker());
+                                        Get.to(() => const CountryPicker());
                                       },
                                       child: Row(
                                         children: [
@@ -173,11 +173,11 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                   child: Container(
                                     width: 85.0.w,
                                     decoration: BoxDecoration(
-                                      color: Color.fromRGBO(255, 59, 48, 0.6),
+                                      color: const Color.fromRGBO(255, 59, 48, 0.6),
                                       borderRadius:
                                           BorderRadius.circular(1.0.h),
                                       border: Border.all(
-                                        color: Color.fromRGBO(255, 59, 48, 1),
+                                        color: const Color.fromRGBO(255, 59, 48, 1),
                                       ),
                                     ),
                                     child: Padding(
@@ -222,7 +222,7 @@ class _ValidateUserScreenFBState extends State<ValidateUserScreenFB> {
                                   authController.verifying.value == true
                               ? Column(
                                   children: [
-                                    LoadingIndicatorWhite(),
+                                    const LoadingIndicatorWhite(),
                                     SizedBox(
                                       height: 2.0.h,
                                     ),

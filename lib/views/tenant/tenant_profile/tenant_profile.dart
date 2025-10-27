@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class TenantProfile extends StatefulWidget {
-  TenantProfile({Key? key}) : super(key: key);
+  const TenantProfile({super.key});
 
   @override
   State<TenantProfile> createState() => _TenantProfileState();
@@ -88,7 +88,7 @@ class _TenantProfileState extends State<TenantProfile> {
                     return tenantProfileController.loadingData.value == true
                         ? Padding(
                             padding: EdgeInsets.only(top: 50.0.h),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           )
                         : tenantProfileController.error.value != ''
                             ? Padding(

@@ -23,8 +23,9 @@ class LandlordGetPropertyUnitsServices {
         } catch (e) {
           print('=======> Response in Repo Catch :::: ${e.toString()} $e');
         }
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       return AppMetaLabels().someThingWentWrong;
     }
@@ -37,8 +38,9 @@ class LandlordGetPropertyUnitsServices {
       if (response is Response) {
         log(response.body);
         return landlordPropertiesDetailsModelFromJson(response.body);
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;
@@ -52,8 +54,9 @@ class LandlordGetPropertyUnitsServices {
       if (response is Response) {
         log(response.body);
         return LandLordUnitDetailModel.fromJson(jsonDecode(response.body));
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;

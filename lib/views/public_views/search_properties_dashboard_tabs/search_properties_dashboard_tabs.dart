@@ -19,8 +19,8 @@ import '../search_properties_services_request/public_service_request_list.dart';
 
 class SearchPropertiesDashboardTabs extends StatefulWidget {
   const SearchPropertiesDashboardTabs({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 // class SearchPropertiesDashboardTabs extends StatefulWidget {
 //   const SearchPropertiesDashboardTabs({Key? key}) : super(key: key);
 
@@ -32,7 +32,7 @@ class SearchPropertiesDashboardTabs extends StatefulWidget {
 class _SearchPropertiesDashboardTabsState
     extends State<SearchPropertiesDashboardTabs> {
   final _countController = Get.put(PublicCountNotificationsController());
-  GlobalKey _toolTipKey = GlobalKey();
+  final GlobalKey _toolTipKey = GlobalKey();
   @override
   void initState() {
     // _countController.countNotifications();
@@ -46,10 +46,10 @@ class _SearchPropertiesDashboardTabsState
   Widget build(BuildContext context) {
     _countController.countNotifications();
     _buildScreens = [
-      SearchPropertiesSearch(),
-      PublicServiceRequestList(),
-      SearchPropertiesLocation(),
-      PublicOffers()
+      const SearchPropertiesSearch(),
+      const PublicServiceRequestList(),
+      const SearchPropertiesLocation(),
+      const PublicOffers()
     ];
 
     return WillPopScope(
@@ -90,10 +90,10 @@ class _SearchPropertiesDashboardTabsState
                         Tooltip(
                           key: _toolTipKey,
                           message: AppMetaLabels().serviceRequests,
-                          showDuration: Duration(seconds: 3),
+                          showDuration: const Duration(seconds: 3),
                           verticalOffset: 4.h,
                           padding:
-                              EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                              const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                           decoration: BoxDecoration(
                               color: AppColors.chartBlueColor,
                               borderRadius: BorderRadius.circular(8)),
@@ -103,8 +103,8 @@ class _SearchPropertiesDashboardTabsState
                                 : AppImagesPath.services,
                             title: AppMetaLabels().services,
                             onTap: (pos) {
-                              final dynamic _toolTip = _toolTipKey.currentState;
-                              _toolTip.ensureTooltipVisible();
+                              final dynamic toolTip = _toolTipKey.currentState;
+                              toolTip.ensureTooltipVisible();
                               setState(() {
                                 _selectedIndex = pos;
                               });
@@ -141,7 +141,7 @@ class _SearchPropertiesDashboardTabsState
                           title: AppMetaLabels().more,
                           onTap: (pos) async {
                             Get.to(
-                              () => SearchPropertiesMore(),
+                              () => const SearchPropertiesMore(),
                             );
                           },
                           position: 4,

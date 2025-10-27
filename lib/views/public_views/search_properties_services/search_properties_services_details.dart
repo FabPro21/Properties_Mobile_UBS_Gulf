@@ -16,8 +16,7 @@ import 'services_categories_controller.dart';
 
 class SearchPropertiesServiceDetails extends StatefulWidget {
   final int? categoryId;
-  const SearchPropertiesServiceDetails({Key? key, this.categoryId})
-      : super(key: key);
+  const SearchPropertiesServiceDetails({super.key, this.categoryId});
 
   @override
   _SearchPropertiesServiceDetailsState createState() =>
@@ -26,7 +25,7 @@ class SearchPropertiesServiceDetails extends StatefulWidget {
 
 class _SearchPropertiesServiceDetailsState
     extends State<SearchPropertiesServiceDetails> {
-  var _controller = Get.put(PublicGetServicesController());
+  final _controller = Get.put(PublicGetServicesController());
 
   @override
   void initState() {
@@ -54,7 +53,7 @@ class _SearchPropertiesServiceDetailsState
               return _controller.loadingDetails.value
                   ? Padding(
                       padding: EdgeInsets.only(top: 40.0.h),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     )
                   : _controller.errorDetails.value != '' ||
                           _controller.lengthDetails == 0

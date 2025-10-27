@@ -37,8 +37,9 @@ class LandLordProfileServices {
       } catch (e) {
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return resp;
+    }
   }
 
   static Future<dynamic> updateProfile(

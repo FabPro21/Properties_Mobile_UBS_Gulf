@@ -21,7 +21,7 @@ import 'package:flutter/foundation.dart';
 
 class LandlordDownloadReportServices {
   static Future<dynamic> downloadReportFile(String fileName, Map data) async {
-    var url;
+    String? url;
     if (fileName == "Cheque Register Report") {
       url = AppConfig().downloadGenerateChequeRegisterReport;
     } else if (fileName == "Legal Case Report") {
@@ -52,8 +52,9 @@ class LandlordDownloadReportServices {
       if (response is Response) {
         log(response.body);
         return DownloadReportModel.fromJson(jsonDecode(response.body));
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;
@@ -62,7 +63,7 @@ class LandlordDownloadReportServices {
 
   static Future<dynamic> downloadReportFileBase64(
       String fileName, Map data) async {
-    var url;
+    String? url;
     if (fileName == "Cheque Register Report") {
       url = AppConfig().downloadGenerateChequeRegisterReport;
     } else if (fileName == "Legal Case Report") {
@@ -148,7 +149,7 @@ class LandlordDownloadReportServices {
 
   // generate Report summary
   static Future<dynamic> getreportSummary(Map data, String reportName) async {
-    var url;
+    String? url;
     if (reportName == 'LPO Report') {
       url = AppConfig().generateLPOReportSummary;
     } else if (reportName == 'AMC Report') {

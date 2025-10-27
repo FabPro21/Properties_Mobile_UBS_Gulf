@@ -15,7 +15,7 @@ import 'vendor_contracts_controller.dart';
 import 'vendor_contracts_tabs.dart/vendor_contracts_details.dart/vendor_contract_details.dart';
 
 class VendorContractsScreen extends StatefulWidget {
-  VendorContractsScreen({Key? key}) : super(key: key);
+  const VendorContractsScreen({super.key});
 
   @override
   State<VendorContractsScreen> createState() => _VendorContractsScreenState();
@@ -128,7 +128,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                 getContractsController.pageNo, '');
                             setState(() {});
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.refresh,
                           ),
                         )
@@ -165,7 +165,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                         child: Obx(() {
                           return getContractsController.loadingData.value ==
                                   true
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : getContractsController.error.value != ''
                                   ? CustomErrorWidget(
                                       errorText:
@@ -179,7 +179,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                           shrinkWrap: true,
                                           padding: EdgeInsets.zero,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           itemCount: getContractsController
                                               .contracts.length,
                                           itemBuilder: (context, index) {
@@ -189,7 +189,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                         getContractsController
                                                     .contracts.length <
                                                 19
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : getContractsController
                                                         .isFilter.value ==
                                                     false
@@ -197,7 +197,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                             .errorLoadMore
                                                             .value !=
                                                         ''
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : InkWell(
                                                         onTap: () async {
                                                           int pageSize = int.parse(
@@ -217,12 +217,12 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                       .text);
                                                           setState(() {});
                                                         },
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           height: 5.h,
                                                           width: 95.w,
                                                           child: Row(
                                                             children: [
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               RichText(
                                                                 textAlign:
                                                                     TextAlign
@@ -230,11 +230,17 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                        text: AppMetaLabels()
-                                                                            .loadMoreData,
-                                                                        style: AppTextStyle
-                                                                            .boldBlue),
-                                                                    WidgetSpan(
+                                                                      text: AppMetaLabels()
+                                                                          .loadMoreData,
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        color: Colors
+                                                                            .blue,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                    const WidgetSpan(
                                                                       child:
                                                                           Icon(
                                                                         Icons
@@ -259,7 +265,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                             .errorLoadMoreFilter
                                                             .value !=
                                                         ''
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : InkWell(
                                                         onTap: () async {
                                                           int pageSize = int.parse(
@@ -279,12 +285,12 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                       .text);
                                                           setState(() {});
                                                         },
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           height: 5.h,
                                                           width: 95.w,
                                                           child: Row(
                                                             children: [
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               RichText(
                                                                 textAlign:
                                                                     TextAlign
@@ -292,11 +298,17 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                        text: AppMetaLabels()
-                                                                            .loadMoreData,
-                                                                        style: AppTextStyle
-                                                                            .boldBlue),
-                                                                    WidgetSpan(
+                                                                      text: AppMetaLabels()
+                                                                          .loadMoreData,
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        color: Colors
+                                                                            .blue,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                    const WidgetSpan(
                                                                       child:
                                                                           Icon(
                                                                         Icons
@@ -332,13 +344,13 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
               padding: EdgeInsets.only(bottom: 2.0.h),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
+                child: SizedBox(
                   width: 100.0.w,
                   height: 4.0.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 4.0.h,
                         width: 28.0.w,
                         child: ElevatedButton(
@@ -375,7 +387,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                           ? Container()
                           : Padding(
                               padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                              child: Container(
+                              child: SizedBox(
                                 height: 4.0.h,
                                 width: 28.0.w,
                                 child: ElevatedButton(
@@ -423,12 +435,12 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
           }),
           Obx(() {
             return getContractsController.loadingDataLoadMore.value
-                ? Container(
+                ? const SizedBox(
                     height: double.infinity,
                     width: double.infinity,
                     child: Center(child: LoadingIndicatorBlue()),
                   )
-                : SizedBox();
+                : const SizedBox();
           })
         ],
       ),
@@ -443,7 +455,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
         SessionController()
             .setContractID(getContractsController.contracts[index].contractId);
 
-        Get.to(() => VendorContractsDetailsTabs());
+        Get.to(() => const VendorContractsDetailsTabs());
       },
       child: Column(
         children: [
@@ -453,7 +465,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.all(1.5.h),
-                child: Container(
+                child: SizedBox(
                   width: 78.0.w,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -486,8 +498,8 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Container(
-                                  width: 40.0.w,
+                                SizedBox(
+                                  width: 50.0.w,
                                   child: Text(
                                     SessionController().getLanguage() == 1
                                         ? getContractsController
@@ -531,7 +543,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   AppMetaLabels().contractDate,
                                   style: AppTextStyle.normalGrey10,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   getContractsController
                                       .contracts[index].contractDate
@@ -547,7 +559,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   AppMetaLabels().startDate,
                                   style: AppTextStyle.normalGrey10,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   getContractsController
                                       .contracts[index].startDate
@@ -563,7 +575,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   AppMetaLabels().endDate,
                                   style: AppTextStyle.normalGrey10,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   getContractsController
                                       .contracts[index].endDate
@@ -579,25 +591,17 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                   AppMetaLabels().contractStatus,
                                   style: AppTextStyle.semiBoldBlack11,
                                 ),
-                                Spacer(),
-                                Container(
-                                  width: 35.w,
-                                  child: FittedBox(
-                                    child: StatusWidgetVendor(
-                                      text:
-                                          SessionController().getLanguage() == 1
-                                              ? getContractsController
-                                                      .contracts[index]
-                                                      .contractStatus ??
-                                                  ''
-                                              : getContractsController
-                                                      .contracts[index]
-                                                      .contractStatusAr ??
-                                                  '',
-                                      valueToCompare: getContractsController
-                                          .contracts[index].contractStatus,
-                                    ),
-                                  ),
+                                const Spacer(),
+                                StatusWidgetVendor(
+                                  text: SessionController().getLanguage() == 1
+                                      ? getContractsController.contracts[index]
+                                              .contractStatus ??
+                                          ''
+                                      : getContractsController.contracts[index]
+                                              .contractStatusAr ??
+                                          '',
+                                  valueToCompare: getContractsController
+                                      .contracts[index].contractStatus,
                                 )
                               ],
                             ),
@@ -625,7 +629,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
           ),
           index == getContractsController.contracts.length - 1
               ? Container()
-              : AppDivider(),
+              : const AppDivider(),
         ],
       ),
     );

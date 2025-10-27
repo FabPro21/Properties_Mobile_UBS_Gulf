@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class TenantDateRange extends StatefulWidget {
-  TenantDateRange({Key? key}) : super(key: key);
+  const TenantDateRange({super.key});
 
   @override
   State<TenantDateRange> createState() => _TenantDateRangeState();
@@ -37,7 +37,7 @@ class _TenantDateRangeState extends State<TenantDateRange> {
                       "Date Range",
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -51,7 +51,7 @@ class _TenantDateRangeState extends State<TenantDateRange> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Padding(
                 padding: EdgeInsets.all(2.0.h),
                 child: Container(
@@ -71,7 +71,7 @@ class _TenantDateRangeState extends State<TenantDateRange> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
+                      const Row(
                         children: [],
                       ),
                       Padding(
@@ -79,14 +79,14 @@ class _TenantDateRangeState extends State<TenantDateRange> {
                         child: SfDateRangePicker(
                           selectionShape:
                               DateRangePickerSelectionShape.rectangle,
-                          headerStyle: DateRangePickerHeaderStyle(
+                          headerStyle: const DateRangePickerHeaderStyle(
                             textAlign: TextAlign.center,
                           ),
                           headerHeight: 8.0.h,
-                          selectionColor: Color.fromRGBO(0, 98, 255, 1),
+                          selectionColor: const Color.fromRGBO(0, 98, 255, 1),
                           startRangeSelectionColor:
-                              Color.fromRGBO(0, 98, 255, 1),
-                          endRangeSelectionColor: Color.fromRGBO(0, 98, 255, 1),
+                              const Color.fromRGBO(0, 98, 255, 1),
+                          endRangeSelectionColor: const Color.fromRGBO(0, 98, 255, 1),
                           onSelectionChanged: _onSelectionChanged,
                           selectionMode: DateRangePickerSelectionMode.range,
                         ),

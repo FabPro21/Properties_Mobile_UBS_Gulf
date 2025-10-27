@@ -27,15 +27,14 @@ import 'dart:ui' as ui;
 class OutstandingPayments extends StatefulWidget {
   final String? contractNo;
   final int? contractId;
-  const OutstandingPayments({Key? key, this.contractNo, this.contractId})
-      : super(key: key);
+  const OutstandingPayments({super.key, this.contractNo, this.contractId});
 
   @override
   _OutstandingPaymentsState createState() => _OutstandingPaymentsState();
 }
 
 class _OutstandingPaymentsState extends State<OutstandingPayments> {
-  var _controller = Get.put(OutstandingPaymentsController());
+  final _controller = Get.put(OutstandingPaymentsController());
 
 // chequeController is just to clear the field when cancel the selected copy of cheque
   // TextEditingController chequeController = TextEditingController();
@@ -45,7 +44,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
   bool isEnableScreen = true;
   String typeofPayment = '';
 
-  List<TextEditingController> _controllers = [];
+  final List<TextEditingController> _controllers = [];
   @override
   void initState() {
     initFuncs();
@@ -121,13 +120,13 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppMetaLabels().paymentMethod + '',
+                            AppMetaLabels().paymentMethod,
                             style: AppTextStyle.semiBoldBlack15,
                           ),
                           InkWell(
                             onTap: () => Get.back(),
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color.fromRGBO(118, 118, 128, 0.12),
                               ),
@@ -135,7 +134,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                 padding: EdgeInsets.all(0.5.h),
                                 child: Icon(Icons.close,
                                     size: 2.5.h,
-                                    color: Color.fromRGBO(158, 158, 158, 1)),
+                                    color: const Color.fromRGBO(158, 158, 158, 1)),
                               ),
                             ),
                           ),
@@ -145,14 +144,14 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                     // Divider
                     Padding(
                       padding: EdgeInsets.only(top: 4.0.h, bottom: 2.0.w),
-                      child: AppDivider(),
+                      child: const AppDivider(),
                     ),
 
                     // Main Info
                     Padding(
                         padding: EdgeInsets.only(top: 4.0.h, bottom: 6.0.h),
                         child: _controller.loadingOutstandingPayments.value
-                            ? LoadingIndicatorBlue()
+                            ? const LoadingIndicatorBlue()
                             : _controller.errorLoadingOutstandingPayments
                                         .value !=
                                     ''
@@ -180,7 +179,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                               AppMetaLabels().viewContract),
                                           onPressed: () {
                                             Get.off(
-                                                () => ContractsDetailsTabs());
+                                                () => const ContractsDetailsTabs());
                                           },
                                         )
                                     ],
@@ -277,8 +276,8 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                       ),
                                                     ),
                                                   )
-                                                : SizedBox(),
-                                            AppDivider(),
+                                                : const SizedBox(),
+                                            const AppDivider(),
                                             // remaining radio etc  work
                                             Expanded(
                                               child:
@@ -294,7 +293,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                           itemBuilder:
                                                               (context, index) {
                                                             _controllers.add(
-                                                                new TextEditingController());
+                                                                TextEditingController());
                                                             return _controller
                                                                             .paymentsToShow[
                                                                         index]
@@ -331,7 +330,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  AppDivider(),
+                                                  const AppDivider(),
                                                   // How would like to ...
                                                   Padding(
                                                     padding: EdgeInsets.only(
@@ -363,11 +362,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                   .record!
                                                                   .first
                                                                   .confirmed ==
-                                                              0)
+                                                              0) {
                                                             _controller
                                                                 .chequeDeliveryOption
                                                                 .value = value!;
-                                                          else
+                                                          } else {
                                                             SnakBarWidget
                                                                 .getSnackBarErrorBlue(
                                                               AppMetaLabels()
@@ -375,6 +374,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                               AppMetaLabels()
                                                                   .paymentConfirmed,
                                                             );
+                                                          }
                                                         },
                                                         value: 1,
                                                       ),
@@ -404,11 +404,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                   .record!
                                                                   .first
                                                                   .confirmed ==
-                                                              0)
+                                                              0) {
                                                             _controller
                                                                 .chequeDeliveryOption
                                                                 .value = value!;
-                                                          else
+                                                          } else {
                                                             SnakBarWidget
                                                                 .getSnackBarErrorBlue(
                                                               AppMetaLabels()
@@ -416,6 +416,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                               AppMetaLabels()
                                                                   .paymentConfirmed,
                                                             );
+                                                          }
                                                         },
                                                         value: 2,
                                                       ),
@@ -476,10 +477,10 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                   _controller.errorPickupDelivery
                                                               .value ==
                                                           ''
-                                                      ? SizedBox()
+                                                      ? const SizedBox()
                                                       : Container(
                                                           padding:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   left: 10,
                                                                   top: 5),
                                                           height: 30,
@@ -508,10 +509,10 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         height: 7.0.h,
-                        padding: EdgeInsets.only(top: 2.5, bottom: 2.5),
+                        padding: const EdgeInsets.only(top: 2.5, bottom: 2.5),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15)),
                           boxShadow: [
@@ -526,27 +527,27 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         child: Obx(() {
                           // jb tak loading ho ge button ki jgha sizedBox
                           return _controller.loadingOutstandingPayments.value
-                              ? SizedBox()
+                              ? const SizedBox()
                               : _controller.errorLoadingOutstandingPayments
                                           .value !=
                                       ''
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : !_controller.gotoOnlinePayments.value &&
                                           _controller.outstandingPayments
                                                   .record!.first.confirmed ==
                                               1
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : _controller
                                                   .errorLoadingOutstandingPayments
                                                   .value !=
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : _controller
                                                   .gotoOnlinePaymentsTest.value
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : _controller
                                                       .updatingAddress.value
-                                                  ? LoadingIndicatorBlue()
+                                                  ? const LoadingIndicatorBlue()
                                                   : Center(
                                                       child: Obx(() {
                                                         return !_controller
@@ -640,6 +641,21 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                     );
                                                                   }
                                                                 },
+                                                                style:
+                                                                    ButtonStyle(
+                                                                        elevation:
+                                                                            WidgetStateProperty.all<double>(
+                                                                                0.0),
+                                                                        backgroundColor:
+                                                                            WidgetStateProperty.all<Color>(AppColors
+                                                                                .blueColor),
+                                                                        shape: WidgetStateProperty.all<
+                                                                            RoundedRectangleBorder>(
+                                                                          RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(2.0.w),
+                                                                          ),
+                                                                        )),
                                                                 child: Padding(
                                                                   padding: const EdgeInsets
                                                                       .only(
@@ -656,9 +672,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                             .value
                                                                         ? AppMetaLabels()
                                                                             .confirmPayment
-                                                                        : '    ' +
-                                                                            AppMetaLabels().submit +
-                                                                            '    ',
+                                                                        : '    ${AppMetaLabels().submit}    ',
                                                                     style: AppTextStyle
                                                                         .semiBoldBlack11
                                                                         .copyWith(
@@ -666,21 +680,6 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                                 Colors.white),
                                                                   ),
                                                                 ),
-                                                                style:
-                                                                    ButtonStyle(
-                                                                        elevation:
-                                                                            WidgetStateProperty.all<double>(
-                                                                                0.0),
-                                                                        backgroundColor:
-                                                                            WidgetStateProperty.all<Color>(AppColors
-                                                                                .blueColor),
-                                                                        shape: WidgetStateProperty.all<
-                                                                            RoundedRectangleBorder>(
-                                                                          RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(2.0.w),
-                                                                          ),
-                                                                        )),
                                                               )
                                                             : ElevatedButton(
                                                                 onPressed:
@@ -787,6 +786,21 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                     );
                                                                   }
                                                                 },
+                                                                style:
+                                                                    ButtonStyle(
+                                                                        elevation:
+                                                                            WidgetStateProperty.all<double>(
+                                                                                0.0),
+                                                                        backgroundColor:
+                                                                            WidgetStateProperty.all<Color>(AppColors
+                                                                                .blueColor),
+                                                                        shape: WidgetStateProperty.all<
+                                                                            RoundedRectangleBorder>(
+                                                                          RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(2.0.w),
+                                                                          ),
+                                                                        )),
                                                                 child: Padding(
                                                                   padding: const EdgeInsets
                                                                       .only(
@@ -803,9 +817,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                             .value
                                                                         ? AppMetaLabels()
                                                                             .confirmPayment
-                                                                        : '    ' +
-                                                                            AppMetaLabels().submit +
-                                                                            '     ',
+                                                                        : '    ${AppMetaLabels().submit}     ',
                                                                     style: AppTextStyle
                                                                         .semiBoldBlack11
                                                                         .copyWith(
@@ -813,21 +825,6 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                                 Colors.white),
                                                                   ),
                                                                 ),
-                                                                style:
-                                                                    ButtonStyle(
-                                                                        elevation:
-                                                                            WidgetStateProperty.all<double>(
-                                                                                0.0),
-                                                                        backgroundColor:
-                                                                            WidgetStateProperty.all<Color>(AppColors
-                                                                                .blueColor),
-                                                                        shape: WidgetStateProperty.all<
-                                                                            RoundedRectangleBorder>(
-                                                                          RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(2.0.w),
-                                                                          ),
-                                                                        )),
                                                               );
                                                       }),
                                                     );
@@ -836,14 +833,14 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                     ),
 
                     isEnableScreen == false
-                        ? ScreenDisableWidget()
-                        : SizedBox(),
+                        ? const ScreenDisableWidget()
+                        : const SizedBox(),
                   ]);
                 }),
               ),
               Obx(() {
                 return _controller.isShowpopUp.value != true
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Container(
                         height: double.infinity,
                         width: double.infinity,
@@ -912,7 +909,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                       BorderRadius.circular(
                                                           1.3.h),
                                                 ),
-                                                backgroundColor: Color.fromRGBO(
+                                                backgroundColor: const Color.fromRGBO(
                                                     0, 61, 166, 1),
                                               ),
                                               onPressed: () {
@@ -966,7 +963,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                           style: AppTextStyle.normalBlack10,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       // AED 25,99,0008
@@ -987,7 +984,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                           style: AppTextStyle.semiBoldBlack10,
                           textAlign: TextAlign.end,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         // Instalment No etc
@@ -1030,9 +1027,9 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
           ),
           Obx(() {
             return payable.updatingPaymentMethod.value
-                ? Center(
+                ? const Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: LoadingIndicatorBlue(
                         size: 20,
                       ),
@@ -1043,7 +1040,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: InkWell(
-                              child: Icon(
+                              child: const Icon(
                                 Icons.refresh,
                                 size: 20,
                                 color: Colors.red,
@@ -1081,12 +1078,12 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                               payable.acceptPaymentType == 4 ||
                               payable.acceptPaymentType == 5)
                             // Card
-                            Container(
+                            SizedBox(
                               width: 28.w,
                               child: Row(
                                 children: [
                                   // Card
-                                  Container(
+                                  SizedBox(
                                     width: 4.w,
                                     child: Transform.scale(
                                       scale: 0.8,
@@ -1248,7 +1245,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                       style: AppTextStyle.normalBlack10,
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                             ),
@@ -1374,11 +1371,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                               payable.acceptPaymentType == 5 ||
                               payable.acceptPaymentType == 6)
                             // Cheque
-                            Container(
+                            SizedBox(
                               width: 18.w,
                               child: Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 4.w,
                                     child: Transform.scale(
                                       scale: 0.8,
@@ -1421,11 +1418,12 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                             setState(() {
                                               isEnableScreen = true;
                                             });
-                                          } else
+                                          } else {
                                             SnakBarWidget.getSnackBarErrorBlue(
                                               AppMetaLabels().alert,
                                               AppMetaLabels().paymentConfirmed,
                                             );
+                                          }
 
                                           setState(() {
                                             isEnableScreen = true;
@@ -1500,13 +1498,14 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                               setState(() {
                                                 isEnableScreen = true;
                                               });
-                                            } else
+                                            } else {
                                               SnakBarWidget
                                                   .getSnackBarErrorBlue(
                                                 AppMetaLabels().alert,
                                                 AppMetaLabels()
                                                     .paymentConfirmed,
                                               );
+                                            }
                                             setState(() {
                                               isEnableScreen = true;
                                             });
@@ -1573,7 +1572,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                       ),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   InkWell(
                                       onTap: () {
                                         print('Exactly here');
@@ -1592,7 +1591,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                               ),
                             ),
                             InkWell(
-                              child: Icon(
+                              child: const Icon(
                                 Icons.refresh,
                                 size: 25,
                                 color: Colors.red,
@@ -1612,7 +1611,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                 );
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             )
                           ],
@@ -1633,7 +1632,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                       child: Column(
                                         children: [
                                           Row(children: [
-                                            Icon(
+                                            const Icon(
                                               Icons.photo,
                                               color: Colors.black38,
                                             ),
@@ -1678,7 +1677,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                 }
                                               },
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             if (payable.confirmed != 1)
                                               payable.removingCheque.value
                                                   ? LoadingIndicatorBlue(
@@ -1729,7 +1728,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                           ),
                                                         )
                                           ]),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 8,
                                           ),
                                           Row(
@@ -1739,7 +1738,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               Text(
                                                 payable.chequeNo ?? "",
                                                 style:
@@ -1809,8 +1808,9 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                                         TapGestureRecognizer()
                                                                           ..onTap =
                                                                               () {
-                                                                            if (!payable.downloadingCheque.value)
+                                                                            if (!payable.downloadingCheque.value) {
                                                                               _controller.downloadCheque(payable);
+                                                                            }
                                                                           }),
                                                                 TextSpan(
                                                                     text:
@@ -1823,7 +1823,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                               width: Get.width * 0.78,
                                               height: Get.height * 0.05,
                                               margin:
-                                                  EdgeInsets.only(bottom: 10),
+                                                  const EdgeInsets.only(bottom: 10),
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
@@ -1875,9 +1875,9 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                         ),
                                       ),
                                     )
-                                  : SizedBox();
+                                  : const SizedBox();
                 })
-              : SizedBox(),
+              : const SizedBox(),
 
           // this is the card where cheque will upload
           // Obx(() {
@@ -2297,7 +2297,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
           //       : SizedBox();
           // }),
 
-          AppDivider(),
+          const AppDivider(),
         ],
       ),
     );
@@ -2337,7 +2337,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                         payable.downloadingCheque.value
                     ? SizedBox(
                         height: Get.height * 0.3,
-                        child: LoadingIndicatorBlue(
+                        child: const LoadingIndicatorBlue(
                           size: 20,
                         ),
                       )
@@ -2352,9 +2352,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      AppMetaLabels().cheque +
-                                          ' ' +
-                                          AppMetaLabels().upload,
+                                      '${AppMetaLabels().cheque} ${AppMetaLabels().upload}',
                                       style: AppTextStyle.semiBoldBlack15,
                                     ),
                                     SizedBox(
@@ -2371,7 +2369,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                     Row(
                                       children: [
                                         payable.filePath != null
-                                            ? Container(
+                                            ? SizedBox(
                                                 width: Get.width * 0.67,
                                                 child: Row(
                                                   children: [
@@ -2393,7 +2391,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     InkWell(
                                                         onTap: () {
                                                           print('Exactly here');
@@ -2430,7 +2428,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                         width: Get.width * 0.67,
                                                         height:
                                                             Get.height * 0.05,
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             bottom: 10),
                                                         decoration:
                                                             BoxDecoration(
@@ -2485,7 +2483,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                 : AppTextStyle.normalGrey10,
                                           ),
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         SizedBox(
                                             width: 37.w,
                                             height: 6.h,
@@ -2508,9 +2506,9 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                               ? Colors.red
                                                               : AppColors
                                                                   .grey1)),
-                                                  border: OutlineInputBorder(),
+                                                  border: const OutlineInputBorder(),
                                                   contentPadding:
-                                                      EdgeInsets.only(
+                                                      const EdgeInsets.only(
                                                           bottom: 5)),
                                               onChanged: (value) {
                                                 // adding this
@@ -2547,7 +2545,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                             ))
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
 
@@ -2649,13 +2647,6 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                             isEnableScreen = true;
                                           });
                                         },
-                                        child: Text(
-                                          '      ' +
-                                              AppMetaLabels().upload +
-                                              '     ',
-                                          style: AppTextStyle.normalBlack10
-                                              .copyWith(color: Colors.white),
-                                        ),
                                         style: ButtonStyle(
                                             elevation:
                                                 WidgetStateProperty.all<double>(
@@ -2671,6 +2662,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                                         1.5.w),
                                               ),
                                             )),
+                                        child: Text(
+                                          '      ${AppMetaLabels().upload}     ',
+                                          style: AppTextStyle.normalBlack10
+                                              .copyWith(color: Colors.white),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -2678,7 +2674,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                               ),
                             ),
                           )
-                        : SizedBox();
+                        : const SizedBox();
               });
             }),
           );
@@ -3532,18 +3528,18 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                   : ui.TextDirection.rtl,
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () async {
                           await _controller.pickDoc(payable);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         await _controller.takePhoto(payable);
                         Navigator.of(context).pop();
@@ -3564,7 +3560,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
         builder: (BuildContext bc) {
           return SafeArea(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
@@ -3576,7 +3572,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                     height: Get.width * 0.05,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                    padding: const EdgeInsets.only(left: 20, right: 20),
                     child: SizedBox(
                       width: double.infinity,
                       child: Text(
@@ -3590,11 +3586,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                   SizedBox(
                     height: Get.width * 0.03,
                   ),
-                  new Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       SizedBox(
                         width: Get.width * 0.3, // <-- match_parent
                         height: Get.height * 0.05,
@@ -3610,20 +3606,20 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                               return;
                             }
                           },
-                          child: Text(
-                            AppMetaLabels().cancel,
-                            style: AppTextStyle.semiBoldBlue11
-                                .copyWith(color: Colors.blue),
-                          ),
                           style: ButtonStyle(
                             shape:
                                 WidgetStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(2.0.w),
-                                        side: BorderSide(color: Colors.blue))),
+                                        side: const BorderSide(color: Colors.blue))),
                             backgroundColor:
                                 WidgetStateProperty.all<Color>(Colors.white),
+                          ),
+                          child: Text(
+                            AppMetaLabels().cancel,
+                            style: AppTextStyle.semiBoldBlue11
+                                .copyWith(color: Colors.blue),
                           ),
                         ),
                       ),
@@ -3635,7 +3631,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                             ? SizedBox(
                                 width: Get.width * 0.3, // <-- match_parent
                                 height: Get.height * 0.05,
-                                child: LoadingIndicatorBlue())
+                                child: const LoadingIndicatorBlue())
                             : SizedBox(
                                 width: Get.width * 0.3, // <-- match_parent
                                 height: Get.height * 0.05,
@@ -3651,10 +3647,11 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                           .record![index]
                                           .forceUploadCheque
                                           .value = true;
-                                      if (scrollController.isAttached)
+                                      if (scrollController.isAttached) {
                                         scrollController.scrollTo(
                                             index: index,
-                                            duration: Duration(seconds: 1));
+                                            duration: const Duration(seconds: 1));
+                                      }
                                     } else {
                                       bool proceed = true;
 
@@ -3701,11 +3698,6 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                     _controller.isEnableCancelButton.value =
                                         true;
                                   },
-                                  child: Text(
-                                    AppMetaLabels().confirm,
-                                    style: AppTextStyle.semiBoldBlack11
-                                        .copyWith(color: Colors.white),
-                                  ),
                                   style: ButtonStyle(
                                       elevation:
                                           WidgetStateProperty.all<double>(0.0),
@@ -3719,10 +3711,15 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                                               BorderRadius.circular(2.0.w),
                                         ),
                                       )),
+                                  child: Text(
+                                    AppMetaLabels().confirm,
+                                    style: AppTextStyle.semiBoldBlack11
+                                        .copyWith(color: Colors.white),
+                                  ),
                                 ),
                               );
                       }),
-                      Spacer(),
+                      const Spacer(),
                     ],
                   ),
                 ],
@@ -3839,8 +3836,8 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
             ),
             content: Container(
               height: Get.height * 0.35,
-              decoration: BoxDecoration(
-                borderRadius: new BorderRadius.all(new Radius.circular(32.0)),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 shape: BoxShape.rectangle,
               ),
               child: SingleChildScrollView(
@@ -3896,7 +3893,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
           return AlertDialog(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(3.h))),
-            content: Container(
+            content: SizedBox(
               height: Get.height * 0.42,
               child: Stack(
                 children: [
@@ -3904,15 +3901,15 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius:
-                            new BorderRadius.all(new Radius.circular(3.h)),
+                            BorderRadius.all(Radius.circular(3.h)),
                         shape: BoxShape.rectangle,
                       ),
                       child: PhotoView(
                         filterQuality: FilterQuality.high,
                         imageProvider:
-                            AssetImage('assets/images/common_images/pdf.png'),
+                            const AssetImage('assets/images/common_images/pdf.png'),
                         backgroundDecoration:
-                            BoxDecoration(color: Colors.transparent),
+                            const BoxDecoration(color: Colors.transparent),
                         gaplessPlayback: true,
                         customSize: Get.size * 0.5,
                         enableRotation: false,
@@ -3930,7 +3927,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                           Navigator.of(context, rootNavigator: true)
                               .pop('dialog');
                         },
-                        child: Icon(Icons.cancel)),
+                        child: const Icon(Icons.cancel)),
                   )
                 ],
               ),
@@ -3938,6 +3935,7 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
           );
         });
   }
+
 }
 
 // Before add the pop up for cheques upload 20 Feb 2024

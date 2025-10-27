@@ -9,8 +9,7 @@ class ButtonWidget extends StatelessWidget {
   final VoidCallback? onPress;
   final String? buttonText;
 
-  const ButtonWidget({Key? key, this.buttonText, this.onPress})
-      : super(key: key);
+  const ButtonWidget({super.key, this.buttonText, this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +38,7 @@ class ButtonWidgetBlue extends StatelessWidget {
   final VoidCallback? onPress;
   final String? buttonText;
 
-  const ButtonWidgetBlue({Key? key, this.buttonText, this.onPress})
-      : super(key: key);
+  const ButtonWidgetBlue({super.key, this.buttonText, this.onPress});
 
   @override
   Widget build(BuildContext context) {

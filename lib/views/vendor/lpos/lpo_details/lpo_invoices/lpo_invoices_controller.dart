@@ -20,9 +20,9 @@ class LpoInvoicesController extends GetxController {
 
   void lpoInvoices() async {
     loadingData.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
 
     var result = await VendorRepository.lpoInvoices();

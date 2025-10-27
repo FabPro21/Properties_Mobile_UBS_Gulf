@@ -17,33 +17,34 @@ class CheckBoxController {
     } else {
       markedCount.value--;
     }
-    if (markedCount.value == marked.length)
+    if (markedCount.value == marked.length) {
       markAll.value = true;
-    else if (markedCount.value == 0)
+    } else if (markedCount.value == 0)
       markAll.value = false;
     else
       markAll.value = false;
   }
 
   void toggleMarkAll() {
-    if (markAll.value)
+    if (markAll.value) {
       unmarkAll();
-    else
+    } else {
       markAllItems();
+    }
   }
 
   void markAllItems() {
-    marked.forEach((element) {
+    for (var element in marked) {
       element.value = true;
-    });
+    }
     markAll.value = true;
     markedCount.value = marked.length;
   }
 
   void unmarkAll() {
-    marked.forEach((element) {
+    for (var element in marked) {
       element.value = false;
-    });
+    }
     markAll.value = false;
     markedCount.value = 0;
   }

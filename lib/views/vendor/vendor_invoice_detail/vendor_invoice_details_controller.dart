@@ -53,9 +53,9 @@ class VendorInvoiceDetailsController extends GetxController {
 
   Future<void> submitRequest(String paymenFor, srNo, instNo, invoiceAmount, trn,
       workCompletion, remrks, invoiceNo, invoiceDate, paymentTermID) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var result;
     try {
@@ -108,9 +108,9 @@ class VendorInvoiceDetailsController extends GetxController {
   }
 
   Future<dynamic> getRequest(String caseNo) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       error.value = '';
@@ -150,9 +150,9 @@ class VendorInvoiceDetailsController extends GetxController {
   RxString selectedInstallmentDropDownVal = ''.obs;
   RxString selectedInstallmentDropDownNo = ''.obs;
   Future getLpodropDownForInvoice() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var result;
     try {
@@ -183,9 +183,9 @@ class VendorInvoiceDetailsController extends GetxController {
   }
 
   Future<dynamic> getAMCdropDownForInvoice() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var result;
     try {
@@ -215,9 +215,9 @@ class VendorInvoiceDetailsController extends GetxController {
 
   Future<dynamic> getAMCInstdropDownForInvoice(
       String contractRefNo, contractID) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var result;
     try {
@@ -227,7 +227,7 @@ class VendorInvoiceDetailsController extends GetxController {
           contractRefNo, contractID);
       loadingDataOfInstallment.value = false;
       if (result is InstallmentDropDownModel) {
-        if (result.installmentData!.length == 0) {
+        if (result.installmentData!.isEmpty) {
           errorInstallment.value = AppMetaLabels().noDatafound;
           loadingDataOfInstallment.value = false;
           return AppMetaLabels().noDatafound;

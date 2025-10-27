@@ -18,12 +18,11 @@ class PublicServiceRequestTab extends StatefulWidget {
   final bool? backToSearch;
   final bool? canCommunicate;
   const PublicServiceRequestTab(
-      {Key? key,
+      {super.key,
       this.requestNo,
       this.unitId,
       this.backToSearch = false,
-      this.canCommunicate})
-      : super(key: key);
+      this.canCommunicate});
 
   @override
   _PublicServiceRequestTabState createState() =>
@@ -45,7 +44,7 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration:const BoxDecoration(
                 color: AppColors.colliersBlueColor,
                 image: DecorationImage(
                   image: AssetImage(AppImagesPath.appbarimg),
@@ -64,8 +63,9 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
                   Get.back();
                   Get.back();
                   Get.back();
-                } else
+                } else {
                   Get.back();
+                }
               },
               child: Icon(
                 Icons.arrow_back_ios,
@@ -87,7 +87,7 @@ class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
                     ),
                     const Spacer(),
                     Text(
-                      "${widget.requestNo.toString()}",
+                      widget.requestNo.toString(),
                       style: AppTextStyle.semiBoldBlack12,
                     ),
                   ],

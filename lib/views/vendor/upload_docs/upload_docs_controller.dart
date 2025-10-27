@@ -33,10 +33,11 @@ class UploadDocsController extends GetxController {
   @override
   void onInit() {
     print('Case Nooooooo : $caseNo');
-    if (caseNo == null)
+    if (caseNo == null) {
       getCaseNo();
-    else
+    } else {
       getFiles();
+    }
     super.onInit();
   }
 
@@ -60,14 +61,15 @@ class UploadDocsController extends GetxController {
     loadingDocs.value = true;
     var resp = await VendorRepository.getDocsByType(caseNo!, 3, docCode!);
     if (resp is List<DocFile>) {
-      if (resp.length == 0) {
+      if (resp.isEmpty) {
         errorLoadingDocs = AppMetaLabels().noDatafound;
       } else {
         docs = resp;
         for (int i = 0; i < resp.length; i++) {}
       }
-    } else
+    } else {
       errorLoadingDocs = resp;
+    }
     loadingDocs.value = false;
   }
 
@@ -283,7 +285,7 @@ class UploadDocsController extends GetxController {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
-    return ((bytes / pow(1024, i)).toStringAsFixed(2)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${suffixes[i]}';
   }
 
   Future<void> downloadDoc(int index) async {

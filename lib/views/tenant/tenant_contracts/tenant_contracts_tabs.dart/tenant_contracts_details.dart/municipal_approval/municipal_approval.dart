@@ -22,9 +22,8 @@ class MunicipalApproval extends StatefulWidget {
   final int? dueActionId;
   final int? contractId;
 
-  MunicipalApproval(
-      {Key? key, this.caller, this.dueActionId, @required this.contractId})
-      : super(key: key);
+  const MunicipalApproval(
+      {super.key, this.caller, this.dueActionId, @required this.contractId});
 
   @override
   State<MunicipalApproval> createState() => _MunicipalApprovalState();
@@ -45,7 +44,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
     if (controller.isShowpopUp.value != true) {
       Get.back();
     } else {
-      Get.off(() => TenantDashboardTabs(
+      Get.off(() => const TenantDashboardTabs(
             initialIndex: 0,
           ));
     }
@@ -77,9 +76,9 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyle.semiBoldBlack16,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color.fromRGBO(241, 241, 245, 1),
                                 shape: BoxShape.circle),
                             child: Padding(
@@ -90,7 +89,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                 },
                                 child: Icon(Icons.close,
                                     size: 2.5.h,
-                                    color: Color.fromRGBO(70, 82, 95, 1)),
+                                    color: const Color.fromRGBO(70, 82, 95, 1)),
                               ),
                             ),
                           ),
@@ -101,7 +100,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                       padding: EdgeInsets.only(
                         top: 1.0.h,
                       ),
-                      child: AppDivider(),
+                      child: const AppDivider(),
                     ),
                     Expanded(
                       child: Padding(
@@ -132,7 +131,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                               SizedBox(
                                 height: 1.h,
                               ),
-                              AppDivider(),
+                              const AppDivider(),
                               Expanded(
                                 child: Column(
                                   children: [
@@ -143,7 +142,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                               padding: EdgeInsets.only(
                                                   top: Get.height * 0.1,
                                                   left: 0),
-                                              child: Center(
+                                              child: const Center(
                                                 child: LoadingIndicatorBlue(),
                                               ),
                                             )
@@ -186,7 +185,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                           color: Colors
                                                               .blue.shade600,
                                                           borderRadius:
-                                                              BorderRadius.only(
+                                                              const BorderRadius.only(
                                                             bottomLeft:
                                                                 Radius.circular(
                                                                     10),
@@ -232,10 +231,10 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                     Obx(() {
                                       return controller
                                               .loadingInstructions.value
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Container(
                                               alignment: Alignment.center,
-                                              padding: EdgeInsets.only(
+                                              padding: const EdgeInsets.only(
                                                   top: 10,
                                                   right: 10,
                                                   bottom: 10),
@@ -244,7 +243,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                   bottom: 3.5.h,
                                                   left: 20,
                                                   right: 20),
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                   color: Color.fromRGBO(
                                                       255, 249, 235, 1),
                                                   borderRadius:
@@ -276,7 +275,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                       SizedBox(
                                                         width: Get.width * 0.03,
                                                       ),
-                                                      Container(
+                                                      SizedBox(
                                                         width: Get.width * 0.6,
                                                         child: Text(
                                                           AppMetaLabels()
@@ -298,7 +297,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                               ),
                               Obx(() {
                                 return controller.isHideSubmitButton.value
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -326,56 +325,38 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                               Center(
                                 child: Obx(() {
                                   return controller.isHideSubmitButton.value
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : controller.updatingStage.value
-                                          ? LoadingIndicatorBlue()
+                                          ? const LoadingIndicatorBlue()
                                           : ElevatedButton(
-                                              onPressed:
-                                                  !controller.approved.value
-                                                      ? null
-                                                      : () async {
-                                                          print(controller
-                                                              .approved.value);
-                                                          if (controller
-                                                              .approved.value) {
-                                                            await controller
-                                                                .updateContractStage(
-                                                                    widget.dueActionId ??
-                                                                        0,
-                                                                    9,
-                                                                    widget.caller ??
-                                                                        "");
-                                                            controller
-                                                                .isShowpopUp
-                                                                .value = true;
-                                                          } else {
-                                                            Get.snackbar(
-                                                                AppMetaLabels()
-                                                                    .error,
-                                                                AppMetaLabels()
-                                                                    .pleaseConfirm,
-                                                                backgroundColor:
-                                                                    AppColors
-                                                                        .white54);
-                                                          }
-                                                        },
-                                              child: SizedBox(
-                                                width: 40.w,
-                                                child: Center(
-                                                  child: Text(
-                                                    SessionController()
-                                                                .getLanguage() ==
-                                                            1
-                                                        ? AppMetaLabels().submit
-                                                        : AppMetaLabels().apply,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack11
-                                                        .copyWith(
-                                                            color:
-                                                                Colors.white),
-                                                  ),
-                                                ),
-                                              ),
+                                              onPressed: !controller
+                                                      .approved.value
+                                                  ? null
+                                                  : () async {
+                                                      print(controller
+                                                          .approved.value);
+                                                      if (controller
+                                                          .approved.value) {
+                                                        await controller
+                                                            .updateContractStage(
+                                                                widget
+                                                                    .dueActionId??0,
+                                                                9,
+                                                                widget.caller??"");
+                                                        controller.isShowpopUp
+                                                            .value = true;
+                                                      
+                                                      } else {
+                                                        Get.snackbar(
+                                                            AppMetaLabels()
+                                                                .error,
+                                                            AppMetaLabels()
+                                                                .pleaseConfirm,
+                                                            backgroundColor:
+                                                                AppColors
+                                                                    .white54);
+                                                      }
+                                                    },
                                               style: ButtonStyle(
                                                   elevation: WidgetStateProperty
                                                       .all<double>(0.0),
@@ -395,6 +376,23 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                               2.0.w),
                                                     ),
                                                   )),
+                                              child: SizedBox(
+                                                width: 40.w,
+                                                child: Center(
+                                                  child: Text(
+                                                    SessionController()
+                                                                .getLanguage() ==
+                                                            1
+                                                        ? AppMetaLabels().submit
+                                                        : AppMetaLabels().apply,
+                                                    style: AppTextStyle
+                                                        .semiBoldBlack11
+                                                        .copyWith(
+                                                            color:
+                                                                Colors.white),
+                                                  ),
+                                                ),
+                                              ),
                                             );
                                 }),
                               )
@@ -408,7 +406,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
               ),
               Obx(() {
                 return controller.isShowpopUp.value != true
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Container(
                         height: double.infinity,
                         width: double.infinity,
@@ -525,7 +523,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 10,
                                             ),
                                             Align(
@@ -543,13 +541,13 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                                                               1.3.h),
                                                     ),
                                                     backgroundColor:
-                                                        Color.fromRGBO(
+                                                        const Color.fromRGBO(
                                                             0, 61, 166, 1),
                                                   ),
                                                   onPressed: () {
                                                     Get.back();
                                                     Get.off(() =>
-                                                        TenantDashboardTabs(
+                                                        const TenantDashboardTabs(
                                                           initialIndex: 0,
                                                         ));
                                                   },
@@ -638,11 +636,11 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
                           ),
-                          backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                          backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                         ),
                         onPressed: () {
                           Get.back();
-                          Get.off(() => TenantDashboardTabs(
+                          Get.off(() => const TenantDashboardTabs(
                                 initialIndex: 0,
                               ));
                         },
@@ -696,7 +694,7 @@ class _MunicipalApprovalState extends State<MunicipalApproval> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

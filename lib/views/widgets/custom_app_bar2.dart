@@ -9,10 +9,10 @@ class CustomAppBar2 extends StatelessWidget {
   final String? title;
   final Function? onBackPressed;
   const CustomAppBar2({
-    Key? key,
+    super.key,
     @required this.title,
     this.onBackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +50,11 @@ class CustomAppBar2 extends StatelessWidget {
                       size: 3.h,
                     ),
                     onPressed: () {
-                      if (onBackPressed != null)
+                      if (onBackPressed != null) {
                         onBackPressed!();
-                      else
+                      } else {
                         Get.back();
+                      }
                     },
                   ),
                   Expanded(
@@ -81,10 +82,10 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
   final String? title;
   final Function? onBackPressed;
   const CustomAppBar2ForVendorTechniance({
-    Key? key,
+    super.key,
     @required this.title,
     this.onBackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +117,7 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SessionController().vendorUserType == 'Technician'
-                      ? SizedBox()
+                      ? const SizedBox()
                       : IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios,
@@ -124,10 +125,11 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
                             size: 3.h,
                           ),
                           onPressed: () {
-                            if (onBackPressed != null)
+                            if (onBackPressed != null) {
                               onBackPressed!();
-                            else
+                            } else {
                               Get.back();
+                            }
                           },
                         ),
                   Text(title!, style: AppTextStyle.semiBoldWhite14),

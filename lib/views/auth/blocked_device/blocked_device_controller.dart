@@ -25,7 +25,7 @@ class BlockedDeviceController extends GetxController {
   }
 
   void setTimer() {
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       if (blockTime >= 2) {
         blockTime = blockTime - 1;
         GlobalPreferences.setInt(GlobalPreferencesLabels.blockTime, blockTime);
@@ -33,8 +33,8 @@ class BlockedDeviceController extends GetxController {
       } else {
         timer.cancel();
         Get.offAll(() => SessionController().enableFireBaseOTP
-            ? ValidateUserScreenFB()
-            : ValidateUserScreen());
+            ? const ValidateUserScreenFB()
+            : const ValidateUserScreen());
         // : Get.offAll(() => ValidateUserArabicScreen());
         GlobalPreferencesEncrypted.clearValues();
         GlobalPreferences.setClear();

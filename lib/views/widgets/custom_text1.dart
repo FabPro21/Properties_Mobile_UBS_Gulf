@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class CustomText1 extends StatelessWidget {
   final String? text;
   const CustomText1({
-    Key? key,
+    super.key,
     @required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,7 @@ class CustomeTextField extends StatelessWidget {
   final int? maxLines;
 
   const CustomeTextField(
-      {Key? key, this.controller, this.label, this.validator, this.maxLines = 1})
-      : super(key: key);
+      {super.key, this.controller, this.label, this.validator, this.maxLines = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +39,16 @@ class CustomeTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         labelStyle: AppTextStyle.normalBlack14,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.borderGrey, width: 1.0),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.borderGrey, width: 1.0),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.bgBlue1, width: 1.0),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.errorColor, width: 1.0),
         ),
       ),

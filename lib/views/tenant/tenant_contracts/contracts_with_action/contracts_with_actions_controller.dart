@@ -36,9 +36,9 @@ class ContractsWithActionsController extends GetxController {
     int index,
   ) async {
     try {
-      bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isIntenetConnected) {
-        Get.to(() => NoInternetScreen());
+      bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+      if (!isIntenetConnected) {
+        Get.to(() => const NoInternetScreen());
       }
       print(
           'Contract ID From List ::::$index::: ${contractsList[index].contractid}');
@@ -74,8 +74,9 @@ class ContractsWithActionsController extends GetxController {
       contractsList = response;
       // was not here
       makingFalsForToolTip();
-    } else
+    } else {
       errorLoadingContracts = response;
+    }
     loadingContracts.value = false;
   }
 
@@ -83,7 +84,7 @@ class ContractsWithActionsController extends GetxController {
  // for hidding tooltip i just change the seconds from 5 to -1
   RxBool isShowCustomToolTip = true.obs;
   makingFalsForToolTip() async {
-    await Future.delayed(Duration(seconds: -1));
+    await Future.delayed(const Duration(seconds: 5));
     isShowCustomToolTip.value = false;
   }
 
@@ -108,9 +109,9 @@ class ContractsWithActionsController extends GetxController {
   }
 
   downloadOfferLetter(ContractWithDueAction contract) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     contract.downloading!.value = true;
     var result =

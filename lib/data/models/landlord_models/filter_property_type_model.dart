@@ -19,19 +19,19 @@ class GetLandLordPropertiesTypesModel {
     if (json['propertyType'] != null) {
       propertyType = <PropertyType>[];
       json['propertyType'].forEach((v) {
-        propertyType!.add(new PropertyType.fromJson(v));
+        propertyType!.add(PropertyType.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    if (this.propertyType != null) {
-      data['propertyType'] = this.propertyType!.map((v) => v.toJson()).toList();
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    if (propertyType != null) {
+      data['propertyType'] = propertyType!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -50,10 +50,10 @@ class PropertyType {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['propertyType'] = this.propertyType;
-    data['propertyTypeID'] = this.propertyTypeID;
-    data['propertyTypeAR'] = this.propertyTypeAR;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['propertyType'] = propertyType;
+    data['propertyTypeID'] = propertyTypeID;
+    data['propertyTypeAR'] = propertyTypeAR;
     return data;
   }
 }

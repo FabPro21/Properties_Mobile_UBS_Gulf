@@ -17,9 +17,9 @@ class LandlordInvoicesController extends GetxController {
 
   String pageNo = '1';
   getAllInvoicsePagination(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var result;
     try {
@@ -59,9 +59,9 @@ class LandlordInvoicesController extends GetxController {
   RxString errorLoadMore = ''.obs;
   var loadingDataLoadMore = true.obs;
   getAllInvoicsePaginationLoadMore(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingDataLoadMore.value = true;
@@ -104,10 +104,11 @@ class LandlordInvoicesController extends GetxController {
           allInvoice.add(allInvoicesData.value.invoice![i]);
         }
       }
-      if (allInvoice.length == 0)
+      if (allInvoice.isEmpty) {
         error.value = AppMetaLabels().noInvoicesFound;
-      else
+      } else {
         error.value = '';
+      }
 
       loadingData.value = false;
     }

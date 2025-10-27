@@ -12,14 +12,13 @@ import 'package:sizer/sizer.dart';
 
 class ChargesReceipts extends StatefulWidget {
   final int? chargesTypeId;
-  const ChargesReceipts({Key? key, @required this.chargesTypeId})
-      : super(key: key);
+  const ChargesReceipts({super.key, @required this.chargesTypeId});
   @override
   State<ChargesReceipts> createState() => _ChargesReceiptsState();
 }
 
 class _ChargesReceiptsState extends State<ChargesReceipts> {
-  ChargesReceiptsController _controller = Get.put(ChargesReceiptsController());
+  final ChargesReceiptsController _controller = Get.put(ChargesReceiptsController());
   String amountCurrency = "";
 
   @override
@@ -44,9 +43,9 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyle.semiBoldBlack16,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Color.fromRGBO(241, 241, 245, 1),
                         shape: BoxShape.circle),
                     child: Padding(
@@ -56,7 +55,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                           Get.back();
                         },
                         child: Icon(Icons.close,
-                            size: 2.5.h, color: Color.fromRGBO(70, 82, 95, 1)),
+                            size: 2.5.h, color: const Color.fromRGBO(70, 82, 95, 1)),
                       ),
                     ),
                   ),
@@ -65,7 +64,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 1.0.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Expanded(
                 child: Padding(
@@ -88,7 +87,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                   padding: EdgeInsets.all(2.0.h),
                   child: Obx(() {
                     return _controller.loading.value == true
-                        ? Center(child: LoadingIndicatorBlue())
+                        ? const Center(child: LoadingIndicatorBlue())
                         : _controller.error != ''
                             ? Center(
                                 child: AppErrorWidget(
@@ -134,7 +133,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                                 .receiptNo,
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Text(
                                                           _controller
                                                                   .receipts[
@@ -146,7 +145,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                         )
                                                       ],
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     rowList(
@@ -154,7 +153,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                         _controller
                                                             .receipts[index]
                                                             .transactionDate??""),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     rowList(
@@ -163,7 +162,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                         _controller
                                                             .receipts[index]
                                                             .paymentType??""),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 3,
                                                     ),
                                                     Row(
@@ -174,7 +173,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                           style: AppTextStyle
                                                               .normalBlack10,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Text(
                                                           '${AppMetaLabels().aed} $amountCurrency',
                                                           style: AppTextStyle
@@ -188,7 +187,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
                                                                     .length -
                                                                 1
                                                         ? Container()
-                                                        : AppDivider(),
+                                                        : const AppDivider(),
                                                     SizedBox(height: 1.0.h),
                                                   ],
                                                 ),
@@ -216,7 +215,7 @@ class _ChargesReceiptsState extends State<ChargesReceipts> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

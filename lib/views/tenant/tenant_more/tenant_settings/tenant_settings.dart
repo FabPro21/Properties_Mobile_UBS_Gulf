@@ -15,7 +15,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class TenantSettings extends StatefulWidget {
-  const TenantSettings({Key? key}) : super(key: key);
+  const TenantSettings({super.key});
 
   @override
   _TenantSettingsState createState() => _TenantSettingsState();
@@ -68,7 +68,7 @@ class _TenantSettingsState extends State<TenantSettings> {
                           AppMetaLabels().biometric,
                           style: AppTextStyle.semiBoldBlack13,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           decoration: BoxDecoration(
                             color: Colors.grey[200],
@@ -84,7 +84,7 @@ class _TenantSettingsState extends State<TenantSettings> {
                             ],
                             activeBgColors: [
                               [AppColors.blueColor],
-                              [Colors.white]
+                              const [Colors.white]
                             ],
                             inactiveBgColor: Colors.grey[200],
                             initialLabelIndex: fPOption,
@@ -110,7 +110,7 @@ class _TenantSettingsState extends State<TenantSettings> {
                     // choose language
                     InkWell(
                       onTap: () {
-                        Get.to(() => ChooseLanguage(loggedIn: true));
+                        Get.to(() => const ChooseLanguage(loggedIn: true));
                       },
                       child: Row(
                         children: [
@@ -124,7 +124,7 @@ class _TenantSettingsState extends State<TenantSettings> {
                             AppMetaLabels().language,
                             style: AppTextStyle.semiBoldBlack13,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Icon(
                             Icons.arrow_forward_ios,
                             size: 2.5.h,

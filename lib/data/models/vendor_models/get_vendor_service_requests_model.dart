@@ -89,8 +89,8 @@ class ServiceRequest {
         "category": category,
         "detail": detail,
         "date": date,
-        "propertyName": propertyName == null ? null : propertyName,
-        "status": status == null ? null : status,
+        "propertyName": propertyName,
+        "status": status,
         "units": units,
       };
 }

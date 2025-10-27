@@ -16,14 +16,14 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicAllNotifications extends StatefulWidget {
-  const PublicAllNotifications({Key? key}) : super(key: key);
+  const PublicAllNotifications({super.key});
 
   @override
   _PublicAllNotificationsState createState() => _PublicAllNotificationsState();
 }
 
 class _PublicAllNotificationsState extends State<PublicAllNotifications> {
-  var _controller = Get.find<PublicNotificationsController>();
+  final _controller = Get.find<PublicNotificationsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: _controller.loadingData.value
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : _controller.error.value != '' || _controller.allLength == 0
               ? CustomErrorWidget(
                   errorImage: AppImagesPath.noServicesFound,
@@ -77,18 +77,18 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                       }
                                       _controller.loadingData.value = false;
                                     }
-                                    Get.to(() => PublicNotificationDetails());
+                                    Get.to(() => const PublicNotificationDetails());
                                   },
                                   child: Row(
                                     children: [
                                       _controller.editTap.value == true
                                           ? Expanded(
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: 10.0.w,
                                                 height: 5.0.h,
                                                 child: CheckboxListTile(
                                                   selectedTileColor:
-                                                      Color.fromRGBO(
+                                                      const Color.fromRGBO(
                                                           0, 98, 255, 1),
                                                   contentPadding:
                                                       EdgeInsets.zero,
@@ -123,7 +123,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                     ? SizedBox(
                                         width: 75.w,
                                         height: 5.h,
-                                        child: Center(
+                                        child: const Center(
                                           child: LoadingIndicatorBlue(),
                                         ),
                                       )
@@ -152,7 +152,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                                                     style:
                                                         AppTextStyle.boldBlue,
                                                   ),
-                                                  WidgetSpan(
+                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 15,
@@ -230,7 +230,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
           ),
         ],
       ),
-      child: Container(
+      child: SizedBox(
         width: _controller.editTap.value == true ? 80.0.w : 90.0.w,
         child: ListTile(
           title: Column(
@@ -243,14 +243,14 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                       : Container(
                           height: 1.0.h,
                           width: 2.0.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.red,
                             shape: BoxShape.circle,
                           ),
                         ),
                   Padding(
                     padding: EdgeInsets.only(left: 1.0.h),
-                    child: Container(
+                    child: SizedBox(
                       width:
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
@@ -263,8 +263,8 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.more_horiz),
+                  const Spacer(),
+                  const Icon(Icons.more_horiz),
                 ],
               ),
               Padding(
@@ -298,7 +298,7 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
               SizedBox(
                 height: 2.0.h,
               ),
-              index == _controller.allLength - 1 ? Container() : AppDivider(),
+              index == _controller.allLength - 1 ? Container() : const AppDivider(),
             ],
           ),
         ),

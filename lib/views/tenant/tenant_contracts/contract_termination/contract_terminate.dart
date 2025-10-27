@@ -24,12 +24,11 @@ class ContractTerminate extends StatefulWidget {
   final String? caller;
   final int? dueActionid;
   const ContractTerminate(
-      {Key? key,
+      {super.key,
       this.contractNo,
       this.contractId,
       this.caller,
-      this.dueActionid = 0})
-      : super(key: key);
+      this.dueActionid = 0});
 
   @override
   _ContractTerminateState createState() => _ContractTerminateState();
@@ -108,517 +107,500 @@ class _ContractTerminateState extends State<ContractTerminate> {
                   ),
                 ),
                 Expanded(
-                  child:
-                      controller.gettingReasons.value ||
-                              controller.gettingPublicToken.value
-                          ? LoadingIndicatorBlue()
-                          : controller.errorGettingReasons != ''
-                              ? AppErrorWidget(
-                                  errorText: controller.errorGettingReasons,
-                                )
-                              : controller.reasons != null
-                                  ? Container(
-                                      width: 89.0.w,
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 3.h),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(2.0.h),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.black12,
-                                            blurRadius: 0.5.h,
-                                            spreadRadius: 0.3.h,
-                                            offset: Offset(0.1.h, 0.1.h),
-                                          ),
-                                        ],
+                  child: controller.gettingReasons.value ||
+                          controller.gettingPublicToken.value
+                      ? const LoadingIndicatorBlue()
+                      : controller.errorGettingReasons != ''
+                          ? AppErrorWidget(
+                              errorText: controller.errorGettingReasons,
+                            )
+                          : controller.reasons != null
+                              ? Container(
+                                  width: 89.0.w,
+                                  margin: EdgeInsets.symmetric(vertical: 3.h),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(2.0.h),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 0.5.h,
+                                        spreadRadius: 0.3.h,
+                                        offset: Offset(0.1.h, 0.1.h),
                                       ),
-                                      child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 4.0.w,
-                                              top: 4.5.h,
-                                              bottom: 2.5.h,
-                                              right: 4.0.w),
-                                          child: Scrollbar(
-                                            thumbVisibility: true,
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    // controller.reasons.note ??
-                                                    AppMetaLabels()
-                                                        .whyTerminate,
-                                                    textAlign: TextAlign.center,
-                                                    style: AppTextStyle
-                                                        .normalBlack12,
-                                                  ),
-                                                  ListView.builder(
-                                                    shrinkWrap: true,
-                                                    physics:
-                                                        NeverScrollableScrollPhysics(),
-                                                    itemCount: controller
-                                                        .reasons
-                                                        ?.record
-                                                        ?.length,
-                                                    itemBuilder:
-                                                        (BuildContext context,
-                                                            int index) {
-                                                      return InkWell(
-                                                        onTap: () {
-                                                          controller
-                                                              .selectedReason
-                                                              .value = index;
-                                                          if (controller
-                                                                  .reasons
-                                                                  ?.record?[
-                                                                      index]
-                                                                  .vacatingId ==
-                                                              3) {
-                                                            controller.addDesc
-                                                                .value = 1;
-                                                          } else if (controller
-                                                                  .reasons
-                                                                  ?.record?[
-                                                                      index]
-                                                                  .vacatingId ==
-                                                              7) {
-                                                            controller.addDesc
-                                                                .value = 2;
-                                                          } else
-                                                            controller.addDesc
-                                                                .value = 0;
-                                                        },
-                                                        child: Row(
-                                                          children: [
-                                                            Obx(() {
-                                                              return Radio(
-                                                                activeColor:
-                                                                    AppColors
-                                                                        .blueColor,
-                                                                groupValue:
-                                                                    controller
-                                                                        .selectedReason
-                                                                        .value,
-                                                                onChanged: (int?
-                                                                    value) {
-                                                                  controller
-                                                                      .selectedReason
-                                                                      .value = value!;
-                                                                  if (controller
-                                                                          .reasons
-                                                                          ?.record?[
-                                                                              index]
-                                                                          .vacatingId ==
-                                                                      3) {
-                                                                    controller
-                                                                        .addDesc
-                                                                        .value = 1;
-                                                                  } else if (controller
-                                                                          .reasons
-                                                                          ?.record?[
-                                                                              index]
-                                                                          .vacatingId ==
-                                                                      7) {
-                                                                    controller
-                                                                        .addDesc
-                                                                        .value = 2;
-                                                                  } else
-                                                                    controller
-                                                                        .addDesc
-                                                                        .value = 0;
-                                                                },
-                                                                value: index,
-                                                              );
-                                                            }),
-                                                            Text(
-                                                              SessionController()
-                                                                          .getLanguage() ==
-                                                                      1
-                                                                  ? controller
-                                                                          .reasons
-                                                                          ?.record![
-                                                                              index]
-                                                                          .title ??
-                                                                      ""
-                                                                  : controller
-                                                                          .reasons
-                                                                          ?.record?[
-                                                                              index]
-                                                                          .titleAr ??
-                                                                      "",
-                                                              style: AppTextStyle
-                                                                  .normalBlack11,
-                                                            )
-                                                          ],
-                                                        ),
-                                                      );
+                                    ],
+                                  ),
+                                  child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 4.0.w,
+                                          top: 4.5.h,
+                                          bottom: 2.5.h,
+                                          right: 4.0.w),
+                                      child: Scrollbar(
+                                        thumbVisibility: true,
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                // controller.reasons.note ??
+                                                AppMetaLabels().whyTerminate,
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    AppTextStyle.normalBlack12,
+                                              ),
+                                              ListView.builder(
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemCount: controller
+                                                    .reasons?.record?.length,
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      controller.selectedReason
+                                                          .value = index;
+                                                      if (controller
+                                                              .reasons
+                                                              ?.record?[index]
+                                                              .vacatingId ==
+                                                          3) {
+                                                        controller
+                                                            .addDesc.value = 1;
+                                                      } else if (controller
+                                                              .reasons
+                                                              ?.record?[index]
+                                                              .vacatingId ==
+                                                          7) {
+                                                        controller
+                                                            .addDesc.value = 2;
+                                                      } else
+                                                        controller
+                                                            .addDesc.value = 0;
                                                     },
-                                                  ),
-                                                  if (controller
-                                                          .addDesc.value !=
-                                                      0)
-                                                    Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 2.0.h),
-                                                        child: Form(
-                                                          key: formKey,
-                                                          child: TextFormField(
-                                                            controller:
-                                                                descTextController,
-                                                            maxLines: 1,
-                                                            validator: (value) {
-                                                              if (value ==
-                                                                      null ||
-                                                                  value.length <
-                                                                      3)
-                                                                return AppMetaLabels()
-                                                                    .requiredField;
-                                                              else
-                                                                return null;
+                                                    child: Row(
+                                                      children: [
+                                                        Obx(() {
+                                                          return Radio(
+                                                            activeColor:
+                                                                AppColors
+                                                                    .blueColor,
+                                                            groupValue: controller
+                                                                .selectedReason
+                                                                .value,
+                                                            onChanged:
+                                                                (int? value) {
+                                                              controller
+                                                                  .selectedReason
+                                                                  .value = value!;
+                                                              if (controller
+                                                                      .reasons
+                                                                      ?.record?[
+                                                                          index]
+                                                                      .vacatingId ==
+                                                                  3) {
+                                                                controller
+                                                                    .addDesc
+                                                                    .value = 1;
+                                                              } else if (controller
+                                                                      .reasons
+                                                                      ?.record?[
+                                                                          index]
+                                                                      .vacatingId ==
+                                                                  7) {
+                                                                controller
+                                                                    .addDesc
+                                                                    .value = 2;
+                                                              } else
+                                                                controller
+                                                                    .addDesc
+                                                                    .value = 0;
                                                             },
-                                                            style: AppTextStyle
-                                                                .normalBlack12,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: AppColors
-                                                                      .greyColor,
-                                                                ),
-                                                              ),
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: AppColors
-                                                                      .greyColor,
-                                                                ),
-                                                              ),
-                                                              errorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: AppColors
-                                                                      .redColor,
-                                                                ),
-                                                              ),
-                                                              focusedErrorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5.0),
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: AppColors
-                                                                      .redColor,
-                                                                ),
-                                                              ),
-                                                              labelText: controller
-                                                                          .addDesc
-                                                                          .value ==
-                                                                      2
-                                                                  ? AppMetaLabels()
-                                                                      .description
-                                                                  : AppMetaLabels()
-                                                                      .otherUnitInfo,
-                                                              labelStyle:
-                                                                  AppTextStyle
-                                                                      .normalGrey12,
-                                                              contentPadding:
-                                                                  EdgeInsets
-                                                                      .all(4.w),
-                                                            ),
-                                                          ),
-                                                        )),
-                                                  // Padding(
-                                                  //   padding:
-                                                  //       EdgeInsets.only(top: 2.0.h),
-                                                  //   child: Row(
-                                                  //     children: [
-                                                  //       Checkbox(
-                                                  //         onChanged: (bool value) {
-                                                  //           controller.earlyTermination
-                                                  //               .value = value;
-                                                  //         },
-                                                  //         value: controller
-                                                  //             .earlyTermination.value,
-                                                  //       ),
-                                                  //       Text(
-                                                  //         AppMetaLabels()
-                                                  //             .earlyTermination,
-                                                  //         style: AppTextStyle
-                                                  //             .semiBoldBlack10,
-                                                  //       )
-                                                  //     ],
-                                                  //   ),
-                                                  // ),
-
-                                                  if (controller
-                                                      .earlyTermination.value)
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: 2.0.h),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            AppMetaLabels()
-                                                                .terminationDate,
-                                                            style: AppTextStyle
-                                                                .semiBoldBlack10,
-                                                          ),
-                                                          InkWell(
-                                                            onTap: () async {
-                                                              var expDate =
-                                                                  await showRoundedDatePicker(
-                                                                theme: ThemeData(
-                                                                    primaryColor:
-                                                                        AppColors
-                                                                            .blueColor),
-                                                                height: 50.0.h,
-                                                                context:
-                                                                    context,
-                                                                // locale: Locale('en'),
-                                                                locale: SessionController()
-                                                                            .getLanguage() ==
-                                                                        1
-                                                                    ? Locale(
-                                                                        'en',
-                                                                        '')
-                                                                    : Locale(
-                                                                        'ar',
-                                                                        ''),
-                                                                initialDate:
-                                                                    DateTime
-                                                                        .now(),
-                                                                borderRadius:
-                                                                    2.0.h,
-                                                                styleDatePicker: MaterialRoundedDatePickerStyle(
-                                                                    decorationDateSelected: BoxDecoration(color: AppColors.blueColor, borderRadius: BorderRadius.circular(100)),
-                                                                    textStyleButtonPositive: TextStyle(
-                                                                      color: AppColors
-                                                                          .blueColor,
-                                                                    ),
-                                                                    textStyleButtonNegative: TextStyle(
-                                                                      color: AppColors
-                                                                          .blueColor,
-                                                                    ),
-                                                                    backgroundHeader: Colors.grey.shade300,
-                                                                    // Appbar year like '2023' button
-                                                                    textStyleYearButton: AppTextStyle.boldBlue30.copyWith(backgroundColor: Colors.grey.shade100, leadingDistribution: TextLeadingDistribution.even),
-                                                                    // Appbar day like 'Thu, Mar 16' button
-                                                                    textStyleDayButton: AppTextStyle.normalWhite16
-
-                                                                    // Heading year like 'S M T W TH FR SA ' button
-                                                                    // textStyleDayHeader: TextStyle(
-                                                                    //   fontSize: 30.sp,
-                                                                    //   color: Colors.white,
-                                                                    //   backgroundColor: Colors.red,
-                                                                    //   decoration: TextDecoration.overline,
-                                                                    //   decorationColor: Colors.pink,
-                                                                    // ),
-                                                                    ),
-                                                              );
-
-                                                              if (expDate !=
-                                                                  null) {
-                                                                if (expDate.isBefore(
-                                                                        DateTime
-                                                                            .now()) ||
-                                                                    expDate.isAtSameMomentAs(
-                                                                        DateTime
-                                                                            .now())) {
-                                                                  Get.snackbar(
-                                                                      AppMetaLabels()
-                                                                          .error,
-                                                                      AppMetaLabels()
-                                                                          .selectFuturedate,
-                                                                      backgroundColor:
-                                                                          AppColors
-                                                                              .white54);
-                                                                } else {
-                                                                  DateFormat
-                                                                      dateFormat =
-                                                                      new DateFormat(
-                                                                          AppMetaLabels()
-                                                                              .dateFormatForShowRoundedDatePicker);
-                                                                  // DateFormat
-                                                                  //     dateFormat =
-                                                                  //     new DateFormat(
-                                                                  //         AppMetaLabels()
-                                                                  //             .dateFormat);
-                                                                  controller
-                                                                          .vacationDate
-                                                                          .value =
-                                                                      dateFormat
-                                                                          .format(
-                                                                              expDate);
-                                                                }
-                                                              }
-                                                            },
-                                                            child: Container(
-                                                              width: 40.0.w,
-                                                              height: 5.5.h,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        246,
-                                                                        248,
-                                                                        249,
-                                                                        1),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            1.0.h),
-                                                              ),
-                                                              child: Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceAround,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(
-                                                                        horizontal:
-                                                                            1.0.h),
-                                                                    child:
-                                                                        Obx(() {
-                                                                      return Text(
-                                                                        controller
-                                                                            .vacationDate
-                                                                            .value,
-                                                                        style: AppTextStyle
-                                                                            .normalBlack12,
-                                                                      );
-                                                                    }),
-                                                                  ),
-                                                                  Spacer(),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(
-                                                                        horizontal:
-                                                                            1.0.h),
-                                                                    child:
-                                                                        ClearButton(
-                                                                      clear:
-                                                                          () {
-                                                                        controller
-                                                                            .vacationDate
-                                                                            .value = '';
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
+                                                            value: index,
+                                                          );
+                                                        }),
+                                                        Text(
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? controller
+                                                                      .reasons
+                                                                      ?.record![
+                                                                          index]
+                                                                      .title ??
+                                                                  ""
+                                                              : controller
+                                                                      .reasons
+                                                                      ?.record?[
+                                                                          index]
+                                                                      .titleAr ??
+                                                                  "",
+                                                          style: AppTextStyle
+                                                              .normalBlack11,
+                                                        )
+                                                      ],
                                                     ),
-                                                  Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 4.h),
-                                                      height: 6.5.h,
-                                                      width: 79.0.w,
-                                                      child: controller
-                                                              .terminating.value
-                                                          ? LoadingIndicatorBlue()
-                                                          : Obx(() {
-                                                              return ElevatedButton(
-                                                                style: ElevatedButton
-                                                                    .styleFrom(
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            1.3.h),
-                                                                  ),
+                                                  );
+                                                },
+                                              ),
+                                              if (controller.addDesc.value != 0)
+                                                Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: 2.0.h),
+                                                    child: Form(
+                                                      key: formKey,
+                                                      child: TextFormField(
+                                                        controller:
+                                                            descTextController,
+                                                        maxLines: 1,
+                                                        validator: (value) {
+                                                          if (value == null ||
+                                                              value.length < 3) {
+                                                            return AppMetaLabels()
+                                                                .requiredField;
+                                                          } else {
+                                                            return null;
+                                                          }
+                                                        },
+                                                        style: AppTextStyle
+                                                            .normalBlack12,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: AppColors
+                                                                  .greyColor,
+                                                            ),
+                                                          ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: AppColors
+                                                                  .greyColor,
+                                                            ),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: AppColors
+                                                                  .redColor,
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: AppColors
+                                                                  .redColor,
+                                                            ),
+                                                          ),
+                                                          labelText: controller
+                                                                      .addDesc
+                                                                      .value ==
+                                                                  2
+                                                              ? AppMetaLabels()
+                                                                  .description
+                                                              : AppMetaLabels()
+                                                                  .otherUnitInfo,
+                                                          labelStyle:
+                                                              AppTextStyle
+                                                                  .normalGrey12,
+                                                          contentPadding:
+                                                              EdgeInsets.all(
+                                                                  4.w),
+                                                        ),
+                                                      ),
+                                                    )),
+                                              // Padding(
+                                              //   padding:
+                                              //       EdgeInsets.only(top: 2.0.h),
+                                              //   child: Row(
+                                              //     children: [
+                                              //       Checkbox(
+                                              //         onChanged: (bool value) {
+                                              //           controller.earlyTermination
+                                              //               .value = value;
+                                              //         },
+                                              //         value: controller
+                                              //             .earlyTermination.value,
+                                              //       ),
+                                              //       Text(
+                                              //         AppMetaLabels()
+                                              //             .earlyTermination,
+                                              //         style: AppTextStyle
+                                              //             .semiBoldBlack10,
+                                              //       )
+                                              //     ],
+                                              //   ),
+                                              // ),
+
+                                              if (controller
+                                                  .earlyTermination.value)
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 2.0.h),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        AppMetaLabels()
+                                                            .terminationDate,
+                                                        style: AppTextStyle
+                                                            .semiBoldBlack10,
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () async {
+                                                          var expDate =
+                                                              await showRoundedDatePicker(
+                                                            theme: ThemeData(
+                                                                primaryColor:
+                                                                    AppColors
+                                                                        .blueColor),
+                                                            height: 50.0.h,
+                                                            context: context,
+                                                            // locale: Locale('en'),
+                                                            locale: SessionController()
+                                                                        .getLanguage() ==
+                                                                    1
+                                                                ? const Locale(
+                                                                    'en', '')
+                                                                : const Locale(
+                                                                    'ar', ''),
+                                                            initialDate:
+                                                                DateTime.now(),
+                                                            borderRadius: 2.0.h,
+                                                          );
+
+                                                          if (expDate != null) {
+                                                            if (expDate.isBefore(
+                                                                    DateTime
+                                                                        .now()) ||
+                                                                expDate.isAtSameMomentAs(
+                                                                    DateTime
+                                                                        .now())) {
+                                                              Get.snackbar(
+                                                                  AppMetaLabels()
+                                                                      .error,
+                                                                  AppMetaLabels()
+                                                                      .selectFuturedate,
                                                                   backgroundColor:
-                                                                      Color.fromRGBO(
+                                                                      AppColors
+                                                                          .white54);
+                                                            } else {
+                                                              DateFormat
+                                                                  dateFormat =
+                                                                  DateFormat(
+                                                                      AppMetaLabels()
+                                                                          .dateFormatForShowRoundedDatePicker);
+                                                              // DateFormat
+                                                              //     dateFormat =
+                                                              //     new DateFormat(
+                                                              //         AppMetaLabels()
+                                                              //             .dateFormat);
+                                                              controller
+                                                                      .vacationDate
+                                                                      .value =
+                                                                  dateFormat
+                                                                      .format(
+                                                                          expDate);
+                                                            }
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: 40.0.w,
+                                                          height: 5.5.h,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color:
+                                                                const Color.fromRGBO(
+                                                                    246,
+                                                                    248,
+                                                                    249,
+                                                                    1),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        1.0.h),
+                                                          ),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceAround,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            1.0.h),
+                                                                child: Obx(() {
+                                                                  return Text(
+                                                                    controller
+                                                                        .vacationDate
+                                                                        .value,
+                                                                    style: AppTextStyle
+                                                                        .normalBlack12,
+                                                                  );
+                                                                }),
+                                                              ),
+                                                              const Spacer(),
+                                                              Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            1.0.h),
+                                                                child:
+                                                                    ClearButton(
+                                                                  clear: () {
+                                                                    controller
+                                                                        .vacationDate
+                                                                        .value = '';
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              Container(
+                                                  margin:
+                                                      EdgeInsets.only(top: 4.h),
+                                                  height: 6.5.h,
+                                                  width: 79.0.w,
+                                                  child: controller
+                                                          .terminating.value
+                                                      ? const LoadingIndicatorBlue()
+                                                      : Obx(() {
+                                                          return ElevatedButton(
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                                
+                                                              ),
+                                                              backgroundColor:
+                                                                  const Color
+                                                                      .fromRGBO(
                                                                           0,
                                                                           61,
                                                                           166,
                                                                           1),
-                                                                ),
-                                                                onPressed: controller.selectedReason.value ==
-                                                                            -1 ||
-                                                                        (controller.earlyTermination.value &&
-                                                                            controller.vacationDate.value ==
-                                                                                '')
-                                                                    ? null
-                                                                    : () async {
-                                                                        var resp =
-                                                                            '';
-                                                                        if (controller.addDesc.value !=
-                                                                            0) {
-                                                                          if (formKey
-                                                                              .currentState!
-                                                                              .validate()) {
-                                                                            String
-                                                                                desc =
-                                                                                descTextController.text;
-                                                                            if (controller.addDesc.value ==
-                                                                                1)
-                                                                              desc = AppMetaLabels().otherUnitInfo + desc;
-                                                                            resp = await controller.terminateContract(
-                                                                                widget.contractId ?? 0,
-                                                                                desc,
-                                                                                widget.caller ?? '',
-                                                                                widget.dueActionid ?? 0);
-                                                                          }
-                                                                        } else
-                                                                          resp = await controller.terminateContract(
-                                                                              widget.contractId ?? 0,
-                                                                              '',
-                                                                              widget.caller ?? '',
-                                                                              widget.dueActionid ?? 0);
-                                                                        if (resp ==
-                                                                            'ok') {
-                                                                          if (controller.reasons?.record?[controller.selectedReason.value].vacatingId ==
-                                                                              3) {
-                                                                            controller.selectNewUnit();
-                                                                          } else
-                                                                            showDialog(
-                                                                                context: context,
-                                                                                barrierDismissible: false,
-                                                                                builder: (BuildContext context) {
-                                                                                  return AlertDialog(contentPadding: EdgeInsets.zero, backgroundColor: Colors.transparent, content: showDialogData());
-                                                                                });
+                                                            ),
+                                                            onPressed: controller
+                                                                            .selectedReason
+                                                                            .value ==
+                                                                        -1 ||
+                                                                    (controller
+                                                                            .earlyTermination
+                                                                            .value &&
+                                                                        controller.vacationDate.value ==
+                                                                            '')
+                                                                ? null
+                                                                : () async {
+                                                                    var resp =
+                                                                        '';
+                                                                    if (controller
+                                                                            .addDesc
+                                                                            .value !=
+                                                                        0) {
+                                                                      if (formKey
+                                                                          .currentState!
+                                                                          .validate()) {
+                                                                        String
+                                                                            desc =
+                                                                            descTextController.text;
+                                                                        if (controller.addDesc.value ==
+                                                                            1) {
+                                                                          desc =
+                                                                              AppMetaLabels().otherUnitInfo + desc;
                                                                         }
-                                                                      },
-                                                                child: Text(
-                                                                  AppMetaLabels()
-                                                                      .terminate,
-                                                                  style: AppTextStyle
-                                                                      .semiBoldWhite12,
-                                                                ),
-                                                              );
-                                                            })),
-                                                ],
-                                              ),
-                                            ),
-                                          )))
-                                  : SizedBox(),
+                                                                        resp = await controller.terminateContract(
+                                                                            widget.contractId ??
+                                                                                0,
+                                                                            desc,
+                                                                            widget.caller ??
+                                                                                '',
+                                                                            widget.dueActionid ??
+                                                                                0);
+                                                                      }
+                                                                    } else {
+                                                                      resp = await controller.terminateContract(
+                                                                          widget.contractId ??
+                                                                              0,
+                                                                          '',
+                                                                          widget.caller ??
+                                                                              '',
+                                                                          widget.dueActionid ??
+                                                                              0);
+                                                                    }
+                                                                    if (resp ==
+                                                                        'ok') {
+                                                                      if (controller
+                                                                              .reasons
+                                                                              ?.record?[controller.selectedReason.value]
+                                                                              .vacatingId ==
+                                                                          3) {
+                                                                        controller
+                                                                            .selectNewUnit();
+                                                                      } else {
+                                                                        showDialog(
+                                                                            // ignore: use_build_context_synchronously
+                                                                            context:
+                                                                                context,
+                                                                            barrierDismissible:
+                                                                                false,
+                                                                            builder:
+                                                                                (BuildContext context) {
+                                                                              return AlertDialog(contentPadding: EdgeInsets.zero, backgroundColor: Colors.transparent, content: showDialogData());
+                                                                            });
+                                                                      }
+                                                                    }
+                                                                  },
+                                                            child: Text(
+                                                              AppMetaLabels()
+                                                                  .terminate,
+                                                              style: AppTextStyle
+                                                                  .semiBoldWhite12,
+                                                            ),
+                                                          );
+                                                        })),
+                                            ],
+                                          ),
+                                        ),
+                                      )))
+                              : const SizedBox(),
                 ),
               ]);
             })),
@@ -685,7 +667,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         SessionController()

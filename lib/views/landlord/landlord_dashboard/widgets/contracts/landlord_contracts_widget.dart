@@ -15,7 +15,7 @@ import 'contracts_widget_controller.dart';
 
 class YourContracts extends StatefulWidget {
   final Function(int)? manageContracts;
-  YourContracts({Key? key, this.manageContracts}) : super(key: key);
+  const YourContracts({super.key, this.manageContracts});
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -58,19 +58,19 @@ class _YourContractsState extends State<YourContracts> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
             Container(
               child: Obx(() {
                 return controller.loadingContracts.value == true
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : controller.errorLoadingContracts != ''
                         ? AppErrorWidget(
                             errorText: controller.errorLoadingContracts,
                           )
                         : ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: controller.length,
                             itemBuilder: (context, index) {
                               final contract =
@@ -100,7 +100,7 @@ class _YourContractsState extends State<YourContracts> {
                                           SizedBox(
                                             width: 2.0.w,
                                           ),
-                                          Container(
+                                          SizedBox(
                                             width: 62.0.w,
                                             child: Column(
                                               mainAxisAlignment:
@@ -113,7 +113,7 @@ class _YourContractsState extends State<YourContracts> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       width: 48.0.w,
                                                       child: Text(
                                                         isEng
@@ -197,7 +197,7 @@ class _YourContractsState extends State<YourContracts> {
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 1.0.h, right: 1.0.h),
-                                      child: AppDivider(),
+                                      child: const AppDivider(),
                                     ),
                                   ],
                                 ),

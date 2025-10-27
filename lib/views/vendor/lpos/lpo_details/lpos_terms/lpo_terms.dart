@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -13,7 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class LpoTerms extends StatefulWidget {
-  LpoTerms({Key? key}) : super(key: key);
+  const LpoTerms({super.key});
 
   @override
   _LpoTermsState createState() => _LpoTermsState();
@@ -37,10 +39,10 @@ class _LpoTermsState extends State<LpoTerms> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return _controller.loadingData.value
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : _controller.error.value != ''
                   ? AppErrorWidget(
                       errorText: _controller.error.value,
@@ -111,38 +113,27 @@ class _LpoTermsState extends State<LpoTerms> {
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10,
                                                           ),
-                                                          Spacer(),
-                                                          SizedBox(
-                                                            width:
-                                                                Get.width * 0.6,
-                                                            child: Text(
-                                                              SessionController()
-                                                                          .getLanguage() ==
-                                                                      1
-                                                                  ? _controller
-                                                                          .getLpoTermsResp
-                                                                          .value
-                                                                          .lpoTerms![
-                                                                              index]
-                                                                          .termName ??
-                                                                      ""
-                                                                  : _controller
-                                                                          .getLpoTermsResp
-                                                                          .value
-                                                                          .lpoTerms![
-                                                                              index]
-                                                                          .termNameAr ??
-                                                                      "",
-                                                              style: AppTextStyle
-                                                                  .semiBoldBlack10,
-                                                              textAlign: SessionController()
-                                                                          .getLanguage() ==
-                                                                      1
-                                                                  ? TextAlign
-                                                                      .end
-                                                                  : TextAlign
-                                                                      .start,
-                                                            ),
+                                                          const Spacer(),
+                                                          Text(
+                                                            SessionController()
+                                                                        .getLanguage() ==
+                                                                    1
+                                                                ? _controller
+                                                                        .getLpoTermsResp
+                                                                        .value
+                                                                        .lpoTerms![
+                                                                            index]
+                                                                        .termName ??
+                                                                    ""
+                                                                : _controller
+                                                                        .getLpoTermsResp
+                                                                        .value
+                                                                        .lpoTerms![
+                                                                            index]
+                                                                        .termNameAr ??
+                                                                    "",
+                                                            style: AppTextStyle
+                                                                .semiBoldBlack10,
                                                           ),
                                                         ],
                                                       ),
@@ -157,10 +148,9 @@ class _LpoTermsState extends State<LpoTerms> {
                                                             style: AppTextStyle
                                                                 .normalBlack10,
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Text(
-                                                            "${AppMetaLabels().aed}" +
-                                                                " $amount",
+                                                            "${AppMetaLabels().aed} $amount",
                                                             style: AppTextStyle
                                                                 .normalBlack10,
                                                           ),
@@ -177,7 +167,7 @@ class _LpoTermsState extends State<LpoTerms> {
                                                                       .length -
                                                                   1
                                                           ? Container()
-                                                          : AppDivider(),
+                                                          : const AppDivider(),
                                                       index ==
                                                               _controller
                                                                       .getLpoTermsResp

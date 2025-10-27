@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final getNewTokenModel = getNewTokenModelFromJson(jsonString);
-
 import 'dart:convert';
 
 GetNewTokenModel getNewTokenModelFromJson(String? str) => GetNewTokenModel.fromJson(json.decode(str!));

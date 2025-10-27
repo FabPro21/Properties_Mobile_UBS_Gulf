@@ -12,22 +12,18 @@ import 'public_service_request_controller.dart';
 class PublicServiceMaininfoController extends GetxController {
   var publicMaininfoDetails = PublicServiceMainInfoModel().obs;
   var publicCancelRequest = PublicCancelBookingRequestModel();
-  var _controller = Get.put(PublicServiceRequestController());
+  final _controller = Get.put(PublicServiceRequestController());
   var loadingData = true.obs;
   RxString onSearch = "".obs;
   RxString error = "".obs;
 
   RxBool cancellingRequest = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> getServiceMaininfo(int caseno) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -48,19 +44,21 @@ class PublicServiceMaininfoController extends GetxController {
       if (resp.status == 'Ok') {
         getServiceMaininfo(publicMaininfoDetails.value.detail!.caseNo!);
         _controller.getSericeRequest();
-      } else
+      } else {
         Get.snackbar(
           AppMetaLabels().error,
           AppMetaLabels().requestNotCancelled,
           backgroundColor: AppColors.white54,
         );
+      }
       cancellingRequest.value = false;
-    } else
+    } else {
       Get.snackbar(
         AppMetaLabels().error,
         AppMetaLabels().someThingWentWrong,
         backgroundColor: AppColors.white54,
       );
+    }
     cancellingRequest.value = false;
   }
 }

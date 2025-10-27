@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 
 class TenantUnReadNotifications extends StatefulWidget {
   final int? index;
-  const TenantUnReadNotifications({Key? key, this.index}) : super(key: key);
+  const TenantUnReadNotifications({super.key, this.index});
 
   @override
   _TenantUnReadNotificationsState createState() =>
@@ -48,7 +48,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
       resizeToAvoidBottomInset: false,
       body: Obx(() {
         return getTNController.unreadNotificationsLoading.value
-            ? LoadingIndicatorBlue()
+            ? const LoadingIndicatorBlue()
             : getTNController.errorUnread.value != ''
                 ? AppErrorWidget(
                     errorText: getTNController.errorUnread.value,
@@ -136,7 +136,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                               });
                                             }
                                             await Get.to(() =>
-                                                TenantNotificationDetails());
+                                                const TenantNotificationDetails());
                                             setState(() {});
                                             setState(() {});
                                             getTNController
@@ -174,14 +174,17 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                           ''
                                       ? Text(
                                           AppMetaLabels().noMoreData,
-                                          style: AppTextStyle.boldBlue,
+                                          style: const TextStyle(
+                                            color: Colors.blue,
+                                          ).copyWith(
+                                              fontWeight: FontWeight.bold),
                                         )
                                       : getTNController
                                               .isLoadingUnReadNotification.value
                                           ? SizedBox(
                                               width: 75.w,
                                               height: 5.h,
-                                              child: Center(
+                                              child: const Center(
                                                 child: LoadingIndicatorBlue(),
                                               ),
                                             )
@@ -210,10 +213,14 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                                                         TextSpan(
                                                           text: AppMetaLabels()
                                                               .loadMoreData,
-                                                          style: AppTextStyle
-                                                              .boldBlue,
+                                                          style: const TextStyle(
+                                                            color: Colors.blue,
+                                                          ).copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
-                                                        WidgetSpan(
+                                                         WidgetSpan(
                                                           child: Icon(
                                                             Icons
                                                                 .arrow_forward_ios,
@@ -421,7 +428,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
                     height: 1.0.h,
                     width: 2.0.w,
                     margin: EdgeInsets.symmetric(horizontal: 1.6.w),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
@@ -479,7 +486,7 @@ class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
               ),
               index == getTNController.unreadLength - 1
                   ? Container()
-                  : AppDivider(),
+                  : const AppDivider(),
             ],
           ),
         ),

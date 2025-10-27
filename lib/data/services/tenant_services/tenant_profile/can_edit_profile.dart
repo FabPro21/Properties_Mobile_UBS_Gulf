@@ -15,7 +15,8 @@ class CanEditProfile {
       } catch (e) {
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return resp;
+    }
   }
 }

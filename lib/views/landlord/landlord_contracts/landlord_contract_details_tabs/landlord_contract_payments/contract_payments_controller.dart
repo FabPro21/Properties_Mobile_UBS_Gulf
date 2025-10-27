@@ -34,9 +34,9 @@ class LandlordContractPaymentsController extends GetxController {
   // }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingData.value = true;
@@ -60,9 +60,9 @@ class LandlordContractPaymentsController extends GetxController {
   }
 
   getUnverifiedPayments() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingUnverified.value = true;
@@ -103,9 +103,9 @@ class LandlordContractPaymentsController extends GetxController {
   }
 
   void downloadReceipt(Payment payment) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     payment.downloadingReceipt!.value = true;
     print('Condition """"::::');

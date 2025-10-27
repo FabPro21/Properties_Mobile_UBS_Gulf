@@ -14,12 +14,13 @@ class GetUserRolesService {
     var response = await BaseClientClass.postwithheader(url, {},
         token: SessionController().getToken());
     if (response is http.Response) {
-      Map<String, dynamic> _jsonResp = json.decode(response.body);
+      Map<String, dynamic> jsonResp = json.decode(response.body);
       try {
-        if (_jsonResp["statustCode"] == '200') 
-        return getUserRoleModelFromJson(response.body);
-        else
-          return _jsonResp["statustCode"];
+        if (jsonResp["statustCode"] == '200') {
+          return getUserRoleModelFromJson(response.body);
+        } else {
+          return jsonResp["statustCode"];
+        }
       } catch (e) {
         print('*******************');
         print(e);

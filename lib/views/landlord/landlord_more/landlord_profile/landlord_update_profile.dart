@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordUpdatesProfile extends StatefulWidget {
   final Data? profile;
-  const LandlordUpdatesProfile({Key? key, this.profile}) : super(key: key);
+  const LandlordUpdatesProfile({super.key, this.profile});
 
   @override
   _LandlordUpdatesProfileState createState() => _LandlordUpdatesProfileState();
@@ -20,10 +20,10 @@ class LandlordUpdatesProfile extends StatefulWidget {
 
 class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
   final landLordProfileController = Get.put(LandLordProfileController());
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   @override
   void initState() {
@@ -175,6 +175,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().name,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -214,6 +215,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().email,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -257,6 +259,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                           hintText: AppMetaLabels().mobileNumber,
                           hintStyle: AppTextStyle.normalBlack10
                               .copyWith(color: AppColors.textFieldBGColor),
+                          errorStyle: const TextStyle(fontSize: 0),
                           contentPadding: EdgeInsets.all(4.w),
                         ),
                       ),
@@ -298,6 +301,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         hintText: AppMetaLabels().address,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -312,7 +316,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                               color: AppColors.blueColor,
                             ),
                           )
-                        : Container(
+                        : SizedBox(
                             height: 6.0.h,
                             width: 49.0.w,
                             child: ElevatedButton(
@@ -331,11 +335,12 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                                     _addressController.text != '') {
                                   if (await landLordProfileController
                                       .updateProfile(
-                                          _nameController.text,
-                                          _phoneController.text,
-                                          _emailController.text,
-                                          _addressController.text))
+                                          _nameController.text ,
+                                          _phoneController.text ,
+                                          _emailController.text ,
+                                          _addressController.text)) {
                                     showDialog(
+                                        // ignore: use_build_context_synchronously
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
@@ -348,6 +353,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                                                   width: 100.w,
                                                   child: showDialogData()));
                                         });
+                                  }
                                 } else {
                                   Get.snackbar(
                                     AppMetaLabels().error,
@@ -356,10 +362,6 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                                   );
                                 }
                               },
-                              child: Text(
-                                AppMetaLabels().updateProfile,
-                                style: AppTextStyle.semiBoldBlue12,
-                              ),
                               style: ButtonStyle(
                                   elevation:
                                       WidgetStateProperty.all<double>(0.0),
@@ -376,6 +378,10 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                                           width: 1.0,
                                         )),
                                   )),
+                              child: Text(
+                                AppMetaLabels().updateProfile,
+                                style: AppTextStyle.semiBoldBlue12,
+                              ),
                             ),
                           );
                   })
@@ -433,7 +439,7 @@ class _LandlordUpdatesProfileState extends State<LandlordUpdatesProfile> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         Navigator.pop(context);

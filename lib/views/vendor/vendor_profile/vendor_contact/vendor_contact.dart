@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorContact extends StatefulWidget {
-  VendorContact({Key? key}) : super(key: key);
+  const VendorContact({super.key});
 
   @override
   State<VendorContact> createState() => _VendorContactState();
@@ -34,12 +34,12 @@ class _VendorContactState extends State<VendorContact> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          AppDivider(),
+          const AppDivider(),
           Obx(() {
             return getContactPersonsController.loadingData.value == true
                 ? Padding(
                     padding: EdgeInsets.only(top: 25.0.h),
-                    child: LoadingIndicatorBlue(),
+                    child: const LoadingIndicatorBlue(),
                   )
                 : getContactPersonsController.error.value != ''
                     ? Padding(
@@ -86,7 +86,7 @@ class _VendorContactState extends State<VendorContact> {
                                       Row(
                                         children: [
                                           Container(
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Color.fromRGBO(
                                                   72, 88, 106, 1),
                                               shape: BoxShape.circle,
@@ -247,7 +247,7 @@ class _VendorContactState extends State<VendorContact> {
           t1,
           style: AppTextStyle.normalGrey10,
         ),
-        Spacer(),
+       const Spacer(),
         SizedBox(
           width: Get.width * 0.4,
           child: Text(

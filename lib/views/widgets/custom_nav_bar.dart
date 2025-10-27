@@ -7,10 +7,10 @@ import 'package:sizer/sizer.dart';
 
 class CustomNavBar extends StatelessWidget {
   final List<Widget>? items;
-  CustomNavBar({
-    Key? key,
+  const CustomNavBar({
+    super.key,
     @required this.items,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CustomNavBar extends StatelessWidget {
             color: Colors.black12,
             blurRadius: 1.0.h,
             spreadRadius: 0.1.h,
-            offset: Offset(0, -10),
+            offset: const Offset(0, -10),
           ),
         ],
       ),
@@ -43,12 +43,12 @@ class NavBarItem extends StatelessWidget {
   final String? title;
   final String? icon;
   const NavBarItem({
-    Key? key,
+    super.key,
     @required this.onTap,
     @required this.position,
     @required this.title,
     @required this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

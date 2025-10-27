@@ -16,7 +16,8 @@ class VendorGetLpoTermsSvc {
       GetLpoTermsModel getLpoTermsModel =
           getLpoTermsModelFromJson(response.body);
       return getLpoTermsModel;
-    } else
+    } else {
       return response;
+    }
   }
 }

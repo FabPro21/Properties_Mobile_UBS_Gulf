@@ -13,8 +13,7 @@ class DueActionListButton extends StatelessWidget {
   final bool? loading;
   final String? srNo;
   const DueActionListButton(
-      {Key? key, this.onPressed, this.text, this.loading = false, this.srNo})
-      : super(key: key);
+      {super.key, this.onPressed, this.text, this.loading = false, this.srNo});
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +31,21 @@ class DueActionListButton extends StatelessWidget {
             color: AppColors.blueColor2,
             textColor: AppColors.blueColor,
           ),
-          Container(
+          SizedBox(
             height: 8.h,
             child: RotatedBox(
               quarterTurns: 1,
               child: Arc(
                 arcType: ArcType.CONVEY,
                 height: 4.5.sp,
-                child: new Container(
+                child: Container(
                   padding: EdgeInsets.symmetric(vertical: 3.w),
                   width: 20.sp,
                   decoration: BoxDecoration(
                     color: AppColors.blueColor2,
-                    borderRadius: new BorderRadius.only(
-                      topLeft: new Radius.circular(10.sp),
-                      topRight: new Radius.circular(10.sp),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.sp),
+                      topRight: Radius.circular(10.sp),
                     ),
                   ),
                   alignment: Alignment.center,
@@ -56,7 +55,7 @@ class DueActionListButton extends StatelessWidget {
                         ? AnimatedTextKit(
                             isRepeatingAnimation: true,
                             repeatForever: true,
-                            pause: Duration(milliseconds: 10),
+                            pause: const Duration(milliseconds: 10),
                             animatedTexts: [
                               ColorizeAnimatedText(text ?? '',
                                   textStyle: AppTextStyle.normalBlue11,
@@ -65,7 +64,7 @@ class DueActionListButton extends StatelessWidget {
                                     AppColors.blueColor2,
                                     AppColors.blueColor
                                   ],
-                                  speed: Duration(milliseconds: 200)),
+                                  speed: const Duration(milliseconds: 200)),
                             ],
                           )
                         : Text(text ?? '',

@@ -22,8 +22,7 @@ class PublicServiceUpdates extends StatefulWidget {
   final int? reqNo;
   final bool? canCommunicate;
   const PublicServiceUpdates(
-      {Key? key, @required this.reqNo, @required this.canCommunicate})
-      : super(key: key);
+      {super.key, @required this.reqNo, @required this.canCommunicate});
 
   @override
   _PublicServiceUpdatesState createState() => _PublicServiceUpdatesState();
@@ -32,7 +31,7 @@ class PublicServiceUpdates extends StatefulWidget {
 class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
   KeyboardActionsConfig _buildKeyboardConfig(BuildContext context) {
@@ -160,14 +159,14 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           _controller.fileToUpload.value =
                                               DocFile();
                                         },
-                                        icon: Icon(Icons.cancel_outlined))
+                                        icon: const Icon(Icons.cancel_outlined))
                                   ],
                                 ),
                           SizedBox(
                             height: 2.h,
                           ),
                           _controller.addingReply.value
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -194,12 +193,13 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           _controller.typing.value = false;
                                           _messageTextController.clear();
                                           scrollToEndofChat();
-                                        } else
+                                        } else {
                                           Get.snackbar(
                                             AppMetaLabels().error,
                                             _controller.errorReplying,
                                             backgroundColor: AppColors.white54,
                                           );
+                                        }
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -278,7 +278,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 73.0.w,
                                     child: Directionality(
                                       textDirection:
@@ -304,7 +304,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           focusedBorder: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0.w),
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.white,
                                               width: 1.0,
                                             ),
@@ -312,7 +312,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0.w),
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.white,
                                               width: 1.0,
                                             ),
@@ -321,7 +321,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           filled: true,
                                           hintText: AppMetaLabels().yourMessage,
                                           hintStyle: AppTextStyle.normalGrey11,
-                                          errorStyle: TextStyle(fontSize: 0),
+                                          errorStyle: const TextStyle(fontSize: 0),
                                           contentPadding: EdgeInsets.only(
                                               top: 4.w,
                                               left: 4.0.w,
@@ -361,7 +361,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                           )))
               ],
             ),
-            BottomShadow(),
+            const BottomShadow(),
           ],
         ),
       );
@@ -377,18 +377,18 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
             scrollToEndofChat();
           });
           return _controller.gettingReplies.value
-              ? Center(
+              ? const Center(
                   child: LoadingIndicatorBlue(),
                 )
               : _controller.errorGettingReplies != ''
-                  ? Center(
+                  ? const Center(
                       child: AppErrorWidget(),
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
                       itemCount: _controller.ticketReplies?.ticketReply?.length,
                       shrinkWrap: true,
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
                           alignment: (_controller.ticketReplies
@@ -418,7 +418,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                       ),
                                       color: (AppColors.sendchatclr),
                                     ),
-                              padding: EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
                               child: Column(
                                 crossAxisAlignment: _controller.ticketReplies
                                             ?.ticketReply?[index].userId2 ==
@@ -455,7 +455,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                                         .downloadingFile
                                                         ?.value ??
                                                     false
-                                                ? LoadingIndicatorBlue(
+                                                ? const LoadingIndicatorBlue(
                                                     strokeWidth: 2,
                                                     size: 24,
                                                   )
@@ -465,7 +465,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                                         _controller
                                                             .isLoadingDownload
                                                             .value
-                                                    ? LoadingIndicatorBlue(
+                                                    ? const LoadingIndicatorBlue(
                                                         strokeWidth: 2,
                                                         size: 24,
                                                       )

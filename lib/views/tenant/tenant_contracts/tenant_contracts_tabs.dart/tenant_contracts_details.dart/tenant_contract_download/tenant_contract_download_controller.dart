@@ -13,15 +13,11 @@ import 'package:permission_handler/permission_handler.dart';
 class ContractDownloadController extends GetxController {
   RxBool downloading = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<String> downloadContract(String contractNo, bool save) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
 
     downloading.value = true;
@@ -69,9 +65,9 @@ class ContractDownloadController extends GetxController {
   }
 
   Future<String> downloadContractNew(String contractNo, bool save) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
 
     downloading.value = true;
@@ -120,9 +116,9 @@ class ContractDownloadController extends GetxController {
   }
 
   Future<bool> downloadSignedContract(String contractNo, int contractId) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     downloading.value = true;
     var result = await TenantRepository.downloadSignedContract(contractId);

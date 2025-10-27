@@ -14,10 +14,6 @@ class LandlordContractsController extends GetxController {
   RxString errorLoadingContracts = ''.obs;
   List<Data> contracts = [];
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   String pageNo = '1';
   getContracts(String pageNoP, searchText) async {
@@ -32,8 +28,9 @@ class LandlordContractsController extends GetxController {
       } else {
         errorLoadingContracts.value = AppMetaLabels().notFound1;
       }
-    } else
+    } else {
       errorLoadingContracts.value = response;
+    }
     loadingContracts.value = false;
   }
 
@@ -53,8 +50,9 @@ class LandlordContractsController extends GetxController {
       } else {
         errorLoadMore.value = AppMetaLabels().notFound1;
       }
-    } else
+    } else {
       errorLoadMore.value = response;
+    }
     loadingDataLoadMore.value = false;
   }
 
@@ -72,9 +70,9 @@ class LandlordContractsController extends GetxController {
   RxString errorLoadMoreFilter = ''.obs;
   getFilteredData(String pageNo, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadingContracts.value = '';
     loadingContracts.value = true;
@@ -88,16 +86,17 @@ class LandlordContractsController extends GetxController {
       } else {
         errorLoadingContracts.value = AppMetaLabels().noDatafound;
       }
-    } else
+    } else {
       errorLoadingContracts = result;
+    }
     loadingContracts.value = false;
   }
 
   getFilteredDataLoadMore(String pageNoP, searchText) async {
     isFilter.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorLoadMoreFilter.value = '';
     loadingDataLoadMore.value = true;
@@ -106,34 +105,36 @@ class LandlordContractsController extends GetxController {
     loadingDataLoadMore.value = false;
     if (result is LandlordContractsModel) {
       contractsModel = result;
-      if (result.data!.length != 0 || result.data!.isNotEmpty) {
+      if (result.data!.isNotEmpty || result.data!.isNotEmpty) {
         for (int i = 0; i < result.data!.length; i++) {
           contracts.add(result.data![i]);
         }
       } else {
         errorLoadMoreFilter.value = AppMetaLabels().notFound1;
       }
-    } else
+    } else {
       errorLoadMoreFilter = result;
+    }
     loadingContracts.value = false;
   }
 
   searchData(String qry) {
     loadingContracts.value = true;
-    List<Data> _searchedCont = [];
+    List<Data> searchedCont = [];
     for (int i = 0; i < contractsModel.data!.length; i++) {
       if (contractsModel.data![i].contractno!.contains(qry) ||
           contractsModel.data![i].contractStatus!
               .toLowerCase()
               .contains(qry.toLowerCase())) {
-        _searchedCont.add(contractsModel.data![i]);
+        searchedCont.add(contractsModel.data![i]);
       }
     }
-    contracts = _searchedCont.toList();
-    if (contracts.length == 0)
+    contracts = searchedCont.toList();
+    if (contracts.isEmpty) {
       errorLoadingContracts.value = AppMetaLabels().noContractsFound;
-    else
+    } else {
       errorLoadingContracts.value = '';
+    }
 
     loadingContracts.value = false;
   }

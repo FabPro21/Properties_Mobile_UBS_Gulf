@@ -16,8 +16,8 @@ import 'tenant_payments_controller.dart';
 
 class TenantPaymentsScreen extends StatefulWidget {
   const TenantPaymentsScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _TenantPaymentsScreenState createState() => _TenantPaymentsScreenState();
@@ -108,7 +108,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                         searchControler.clear();
                         paymentsController.getData(paymentsController.pageNo);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.refresh,
                       ),
                     )
@@ -143,7 +143,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                     ),
                     child: Obx(() {
                       return paymentsController.loadingData.value == true
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : paymentsController.error.value != ''
                               ? CustomErrorWidget(
                                   errorText: AppMetaLabels().noPaymentFound,
@@ -155,7 +155,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                                 )
                               : ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: paymentsController.payments.length,
                                   itemBuilder: (context, index) {
                                     return inkWell(index);
@@ -203,7 +203,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                             AppMetaLabels().amount,
                             style: AppTextStyle.semiBoldGrey11,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
                             "${AppMetaLabels().aed} ${amountFormatter.format(paymentsController.payments[index].amount)}",
                             style: AppTextStyle.semiBoldGrey11,
@@ -270,23 +270,27 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
           ),
           index == paymentsController.payments.length - 1
               ? Container()
-              : AppDivider(),
+              : const AppDivider(),
           index == paymentsController.payments.length - 1
               ? paymentsController.payments.length < 20
-                  ? SizedBox()
+                  ? const SizedBox()
                   : paymentsController.isSearch.value
-                      ? SizedBox()
+                      ? const SizedBox()
                       : Center(
                           child: Obx(() {
                             return paymentsController.errorNoMoreData.value !=
                                     ''
-                                ? Text(AppMetaLabels().noMoreData,
-                                    style: AppTextStyle.boldBlue)
+                                ? Text(
+                                    AppMetaLabels().noMoreData,
+                                    style: const TextStyle(
+                                      color: Colors.blue,
+                                    ),
+                                  )
                                 : paymentsController.loadingDataMore.value
                                     ? SizedBox(
                                         width: 75.w,
                                         height: 5.h,
-                                        child: Center(
+                                        child: const Center(
                                           child: LoadingIndicatorBlue(),
                                         ),
                                       )
@@ -309,11 +313,13 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                                               text: TextSpan(
                                                 children: [
                                                   TextSpan(
-                                                      text: AppMetaLabels()
-                                                          .loadMoreData,
-                                                      style: AppTextStyle
-                                                          .boldBlue),
-                                                  WidgetSpan(
+                                                    text: AppMetaLabels()
+                                                        .loadMoreData,
+                                                    style: const TextStyle(
+                                                      color: Colors.blue,
+                                                    ),
+                                                  ),
+                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 15,
@@ -327,7 +333,7 @@ class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
                                       );
                           }),
                         )
-              : SizedBox(),
+              : const SizedBox(),
           SizedBox(
             height: 1.5.h,
           )

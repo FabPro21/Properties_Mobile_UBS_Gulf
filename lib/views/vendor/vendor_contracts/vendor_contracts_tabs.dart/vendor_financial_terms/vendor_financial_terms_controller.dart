@@ -29,9 +29,9 @@ class GetContractFinancialTermsController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     // try {
 
@@ -52,9 +52,9 @@ class GetContractFinancialTermsController extends GetxController {
 
         totalAmountSum.value = 0.0;
 
-        getFinalcialTerms.value.contractFinancialTerms!.forEach((element) {
+        for (var element in getFinalcialTerms.value.contractFinancialTerms!) {
           totalAmountSum.value = totalAmountSum.value + element.amount;
-        });
+        }
         /////////
         /// balance = total -paid;
         /////////

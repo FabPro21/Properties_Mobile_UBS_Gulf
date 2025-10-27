@@ -14,7 +14,8 @@ class VendorGetLpoDetailsSvc {
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
-    } else
+    } else {
       return response;
+    }
   }
 }

@@ -32,7 +32,9 @@ class UpdateSvcReqFile {
         }
         return response.statusCode;
       }
-    } else
+    } else {
       return response;
+    }
+    }
   }
-}
+

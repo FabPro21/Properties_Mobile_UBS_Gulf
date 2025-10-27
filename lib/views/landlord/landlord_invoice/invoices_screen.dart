@@ -16,14 +16,14 @@ import 'package:sizer/sizer.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class InvoicesScreenLandlord extends StatefulWidget {
-  InvoicesScreenLandlord({Key? key}) : super(key: key);
+  const InvoicesScreenLandlord({super.key});
 
   @override
   State<InvoicesScreenLandlord> createState() => _InvoicesScreenLandlordState();
 }
 
 class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
-  var _controller = Get.put(LandlordInvoicesController());
+  final _controller = Get.put(LandlordInvoicesController());
   final TextEditingController searchControler = TextEditingController();
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
             : TextDirection.rtl,
         child: Stack(
           children: [
-            AppBackgroundConcave(),
+            const AppBackgroundConcave(),
             SafeArea(
               child: Column(children: [
                 Padding(
@@ -123,7 +123,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                   _controller.pageNo, '');
                               searchControler.clear();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.refresh,
                             ),
                           ),
@@ -158,7 +158,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                               ),
                               child: Obx(() {
                                 return _controller.loadingData.value == true
-                                    ? Center(
+                                    ? const Center(
                                         child: LoadingIndicatorBlue(),
                                       )
                                     : _controller.error.value != ''
@@ -186,7 +186,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                             ),
                                             child: ListView.builder(
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               shrinkWrap: true,
                                               padding: EdgeInsets.zero,
                                               itemCount:
@@ -253,8 +253,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                         .propertyNameLand,
                                                                     SessionController().getLanguage() ==
                                                                             1
-                                                                        ? _controller.allInvoice[index].propertyName.toString() +
-                                                                            ''
+                                                                        ? '${_controller.allInvoice[index].propertyName}'
                                                                         : _controller
                                                                             .allInvoice[index]
                                                                             .propertyNameAR
@@ -307,22 +306,17 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                         style: AppTextStyle
                                                                             .semiBoldBlack10,
                                                                       ),
-                                                                      Spacer(),
-                                                                      ConstrainedBox(
-                                                                        constraints:
-                                                                            BoxConstraints(maxWidth: 45.w),
-                                                                        child:
-                                                                            FittedBox(
-                                                                          child:
-                                                                              StatusWidgetVendor(
-                                                                            text: SessionController().getLanguage() == 1
-                                                                                ? _controller.allInvoice[index].statusName ?? ""
-                                                                                : _controller.allInvoice[index].statusNameAR ?? "",
-                                                                            valueToCompare:
-                                                                                _controller.allInvoice[index].statusName ?? "",
-                                                                          ),
-                                                                        ),
-                                                                      )
+                                                                      const Spacer(),
+                                                                      StatusWidgetVendor(
+                                                                        text: SessionController().getLanguage() == 1
+                                                                            ? _controller.allInvoice[index].statusName ??
+                                                                                ""
+                                                                            : _controller.allInvoice[index].statusNameAR ??
+                                                                                "",
+                                                                        valueToCompare:
+                                                                            _controller.allInvoice[index].statusName ??
+                                                                                "",
+                                                                      ),
                                                                     ],
                                                                   ),
                                                                   SizedBox(
@@ -342,7 +336,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                     .length -
                                                                 1
                                                         ? Container()
-                                                        : AppDivider(),
+                                                        : const AppDivider(),
                                                     index ==
                                                             _controller
                                                                     .allInvoice
@@ -351,7 +345,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                         ? _controller.allInvoice
                                                                     .length <
                                                                 20
-                                                            ? SizedBox()
+                                                            ? const SizedBox()
                                                             // : _controller
                                                             //         .isSearch.value
                                                             //     ? SizedBox()
@@ -361,14 +355,14 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                               .errorLoadMore
                                                                               .value !=
                                                                           ''
-                                                                      ? SizedBox()
+                                                                      ? const SizedBox()
                                                                       : _controller
                                                                               .loadingDataLoadMore
                                                                               .value
                                                                           ? SizedBox(
                                                                               width: 75.w,
                                                                               height: 5.h,
-                                                                              child: Center(
+                                                                              child: const Center(
                                                                                 child: LoadingIndicatorBlue(),
                                                                               ),
                                                                             )
@@ -391,9 +385,12 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                                       children: [
                                                                                         TextSpan(
                                                                                           text: AppMetaLabels().loadMoreData,
-                                                                                          style: AppTextStyle.boldBlue,
+                                                                                          style: const TextStyle(
+                                                                                            color: Colors.blue,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
                                                                                         ),
-                                                                                        WidgetSpan(
+                                                                                         WidgetSpan(
                                                                                           child: Icon(
                                                                                             Icons.arrow_forward_ios,
                                                                                             size: 15,
@@ -406,7 +403,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
                                                                             );
                                                                 }),
                                                               )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                     SizedBox(
                                                       height: 1.5.h,
                                                     )
@@ -434,7 +431,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.semiBoldBlack10,
@@ -449,7 +446,7 @@ class _InvoicesScreenLandlordState extends State<InvoicesScreenLandlord> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+       const Spacer(),
         SizedBox(
           width: 37.5.w,
           child: Text(

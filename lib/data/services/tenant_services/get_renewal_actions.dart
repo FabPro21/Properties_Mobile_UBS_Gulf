@@ -14,14 +14,14 @@ class GetRenewalActions {
     if (response is http.Response) {
       log(response.body);
       try {
-        final _jsonResp = json.decode(response.body);
-        if (_jsonResp['statusCode'] == '200') {
-          return List<ContractWithDueAction>.from(_jsonResp["record"]
+        final jsonResp = json.decode(response.body);
+        if (jsonResp['statusCode'] == '200') {
+          return List<ContractWithDueAction>.from(jsonResp["record"]
               .map((x) => ContractWithDueAction.fromJson(x)));
-        } else if (_jsonResp['statusCode'] == '404') {
+        } else if (jsonResp['statusCode'] == '404') {
           return AppMetaLabels().noContractsFound;
         } else
-          return _jsonResp['message'];
+          return jsonResp['message'];
       } catch (e) {
         return AppMetaLabels().anyError;
       }
@@ -36,14 +36,14 @@ class GetNewActions {
     if (response is http.Response) {
       log(response.body);
       try {
-        final _jsonResp = json.decode(response.body);
-        if (_jsonResp['statusCode'] == '200') {
-          return List<ContractWithDueAction>.from(_jsonResp["record"]
+        final jsonResp = json.decode(response.body);
+        if (jsonResp['statusCode'] == '200') {
+          return List<ContractWithDueAction>.from(jsonResp["record"]
               .map((x) => ContractWithDueAction.fromJson(x)));
-        } else if (_jsonResp['statusCode'] == '404') {
+        } else if (jsonResp['statusCode'] == '404') {
           return AppMetaLabels().noContractsFound;
         } else
-          return _jsonResp['message'];
+          return jsonResp['message'];
       } catch (e) {
         return AppMetaLabels().anyError;
       }

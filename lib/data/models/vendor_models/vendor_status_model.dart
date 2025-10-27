@@ -14,7 +14,7 @@ class GetContractStatusModelVendor {
     if (json['contractStatus'] != null) {
       contractStatus = <ContractStatus>[];
       json['contractStatus'].forEach((v) {
-        contractStatus!.add(new ContractStatus.fromJson(v));
+        contractStatus!.add(ContractStatus.fromJson(v));
       });
     }
     message = json['message'];
@@ -36,10 +36,10 @@ class ContractStatus {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['serviceContractStatusID'] = this.serviceContractStatusID;
-    data['statusName'] = this.statusName;
-    data['statusNameAr'] = this.statusNameAr;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['serviceContractStatusID'] = serviceContractStatusID;
+    data['statusName'] = statusName;
+    data['statusNameAr'] = statusNameAr;
     return data;
   }
 }

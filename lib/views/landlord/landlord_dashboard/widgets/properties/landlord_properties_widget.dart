@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class PropertiesWidget extends StatefulWidget {
   final Function(int)? manageProperties;
-  const PropertiesWidget({Key? key, this.manageProperties}) : super(key: key);
+  const PropertiesWidget({super.key, this.manageProperties});
 
   @override
   _PropertiesWidgetState createState() => _PropertiesWidgetState();
@@ -53,301 +53,284 @@ class _PropertiesWidgetState extends State<PropertiesWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Obx(
-              () => controller.loadingProperties.value == true
-                  ? SizedBox(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 2.h, horizontal: 3.5.w),
-                      child: Text(
-                        AppMetaLabels().propertiessLand,
-                        style: AppTextStyle.semiBoldBlack13,
-                      ),
-                    ),
-                  )
-                  : Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 2.h, horizontal: 3.5.w),
-                      child: Text(
-                        AppMetaLabels().propertiessLand +
-                            "  (${controller.length})",
-                        style: AppTextStyle.semiBoldBlack13,
-                      ),
-                    ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.5.w),
+              child: Text(
+                "${AppMetaLabels().propertiessLand}  (${controller.propsModel?.serviceRequests?.length})",
+                style: AppTextStyle.semiBoldBlack13,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
-            Container(
-              child: Obx(() {
-                return controller.loadingProperties.value == true
-                    ? LoadingIndicatorBlue()
-                    : controller.errorLoadingProperties != ''
-                        ? AppErrorWidget(
-                            errorImage: AppImagesPath.noContractsFound,
-                            errorText: controller.errorLoadingProperties,
-                          )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: controller.length,
-                            itemBuilder: (context, index) {
-                              final property = controller
-                                  .propsModel?.serviceRequests?[index];
-                              return InkWell(
-                                onTap: () {
-                                  Get.to(() => LandlordPropertDetailsTabs(
-                                        propertyId: controller.propsModel
-                                            ?.serviceRequests?[index].propertyID
-                                            .toString(),
-                                        propertyNo: controller.propsModel
-                                                    ?.serviceRequests ==
-                                                null
-                                            ? ''
-                                            : SessionController()
-                                                        .getLanguage() ==
-                                                    1
-                                                ? controller
-                                                        .propsModel
-                                                        ?.serviceRequests![
-                                                            index]
-                                                        .emirateName
-                                                        .toString() ??
-                                                    ""
-                                                : controller
-                                                        .propsModel
-                                                        ?.serviceRequests?[
-                                                            index]
-                                                        .emirateNameAR
-                                                        .toString() ??
-                                                    "",
-                                      ));
-                                },
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 1.0.h,
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 4.w,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 1.0.h,
-                                              bottom: 1.h,
-                                              right: 1.0.h),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 78.0.w,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      alignment: SessionController()
+            Obx(() {
+              return controller.loadingProperties.value == true
+                  ? const LoadingIndicatorBlue()
+                  : controller.errorLoadingProperties != ''
+                      ? AppErrorWidget(
+                          errorImage: AppImagesPath.noContractsFound,
+                          errorText: controller.errorLoadingProperties,
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.length,
+                          itemBuilder: (context, index) {
+                            final property = controller
+                                .propsModel?.serviceRequests?[index];
+                            return InkWell(
+                              onTap: () {
+                                Get.to(() => LandlordPropertDetailsTabs(
+                                      propertyId: controller.propsModel
+                                          ?.serviceRequests?[index].propertyID
+                                          .toString(),
+                                      propertyNo: controller.propsModel
+                                                  ?.serviceRequests ==
+                                              null
+                                          ? ''
+                                          : SessionController()
+                                                      .getLanguage() ==
+                                                  1
+                                              ? controller
+                                                      .propsModel
+                                                      ?.serviceRequests![
+                                                          index]
+                                                      .emirateName
+                                                      .toString() ??
+                                                  ""
+                                              : controller
+                                                      .propsModel
+                                                      ?.serviceRequests?[
+                                                          index]
+                                                      .emirateNameAR
+                                                      .toString() ??
+                                                  "",
+                                    ));
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 1.0.h,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 4.w,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 1.0.h,
+                                            bottom: 1.h,
+                                            right: 1.0.h),
+                                        child: Row(
+                                          children: [
+                                            SizedBox(
+                                              width: 78.0.w,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    alignment: SessionController()
+                                                                .getLanguage() ==
+                                                            1
+                                                        ? Alignment.topLeft
+                                                        : Alignment.topRight,
+                                                    width: 58.w,
+                                                    child: Text(
+                                                      SessionController()
                                                                   .getLanguage() ==
                                                               1
-                                                          ? Alignment.topLeft
-                                                          : Alignment.topRight,
-                                                      width: 58.w,
-                                                      child: Text(
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? property
-                                                                    ?.propertyName ??
-                                                                ""
-                                                            : property
-                                                                    ?.propertyNameAR ??
-                                                                "",
-                                                        maxLines: 1,
+                                                          ? property
+                                                                  ?.propertyName ??
+                                                              ""
+                                                          : property
+                                                                  ?.propertyNameAR ??
+                                                              "",
+                                                      maxLines: 1,
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack12,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 1.0.h,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        AppMetaLabels()
+                                                            .emirate,
                                                         style: AppTextStyle
-                                                            .semiBoldBlack12,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
+                                                            .normalGrey11,
                                                       ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 1.0.h,
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          AppMetaLabels()
-                                                              .emirate,
+                                                      const Spacer(),
+                                                      Container(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 58.w,
+                                                        child: Text(
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? property
+                                                                      ?.emirateName ??
+                                                                  ""
+                                                              : property
+                                                                      ?.emirateNameAR ??
+                                                                  "",
                                                           style: AppTextStyle
-                                                              .normalGrey11,
+                                                              .semiBoldBlack11,
+                                                          maxLines: 1,
                                                         ),
-                                                        Spacer(),
-                                                        Container(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          width: 58.w,
-                                                          child: Text(
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? property
-                                                                        ?.emirateName ??
-                                                                    ""
-                                                                : property
-                                                                        ?.emirateNameAR ??
-                                                                    "",
-                                                            style: AppTextStyle
-                                                                .semiBoldBlack11,
-                                                            maxLines: 1,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    // SizedBox(
-                                                    //   height: 1.0.h,
-                                                    // ),
-                                                    // Row(
-                                                    //   children: [
-                                                    //     Text(
-                                                    //       AppMetaLabels()
-                                                    //           .sector,
-                                                    //       style: AppTextStyle
-                                                    //           .semiBoldBlack11,
-                                                    //     ),
-                                                    //     Spacer(),
-                                                    //     Container(
-                                                    //       alignment: Alignment
-                                                    //           .centerRight,
-                                                    //       width: 58.w,
-                                                    //       child: Text(
-                                                    //         SessionController()
-                                                    //                     .getLanguage() ==
-                                                    //                 1
-                                                    //             ? property
-                                                    //                     .sector ??
-                                                    //                 ""
-                                                    //             : property
-                                                    //                     .sectorAR ??
-                                                    //                 "",
-                                                    //         style: AppTextStyle
-                                                    //             .normalGrey10,
-                                                    //         maxLines: 1,
-                                                    //       ),
-                                                    //     ),
-                                                    //   ],
-                                                    // ),
-                                                    SizedBox(
-                                                      height: 1.0.h,
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          AppMetaLabels().type,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  // SizedBox(
+                                                  //   height: 1.0.h,
+                                                  // ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Text(
+                                                  //       AppMetaLabels()
+                                                  //           .sector,
+                                                  //       style: AppTextStyle
+                                                  //           .semiBoldBlack11,
+                                                  //     ),
+                                                  //     Spacer(),
+                                                  //     Container(
+                                                  //       alignment: Alignment
+                                                  //           .centerRight,
+                                                  //       width: 58.w,
+                                                  //       child: Text(
+                                                  //         SessionController()
+                                                  //                     .getLanguage() ==
+                                                  //                 1
+                                                  //             ? property
+                                                  //                     .sector ??
+                                                  //                 ""
+                                                  //             : property
+                                                  //                     .sectorAR ??
+                                                  //                 "",
+                                                  //         style: AppTextStyle
+                                                  //             .normalGrey10,
+                                                  //         maxLines: 1,
+                                                  //       ),
+                                                  //     ),
+                                                  //   ],
+                                                  // ),
+                                                  SizedBox(
+                                                    height: 1.0.h,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        AppMetaLabels().type,
+                                                        style: AppTextStyle
+                                                            .normalGrey11,
+                                                      ),
+                                                      const Spacer(),
+                                                      Container(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 58.w,
+                                                        child: Text(
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? property
+                                                                      ?.propertyType ??
+                                                                  ""
+                                                              : property
+                                                                      ?.propertyTypeAR ??
+                                                                  "",
                                                           style: AppTextStyle
-                                                              .normalGrey11,
+                                                              .normalGrey10,
+                                                          maxLines: 1,
                                                         ),
-                                                        Spacer(),
-                                                        Container(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          width: 58.w,
-                                                          child: Text(
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? property
-                                                                        ?.propertyType ??
-                                                                    ""
-                                                                : property
-                                                                        ?.propertyTypeAR ??
-                                                                    "",
-                                                            style: AppTextStyle
-                                                                .normalGrey10,
-                                                            maxLines: 1,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      height: 1.2.h,
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          AppMetaLabels()
-                                                              .category,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 1.2.h,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        AppMetaLabels()
+                                                            .category,
+                                                        style: AppTextStyle
+                                                            .normalGrey11,
+                                                      ),
+                                                      const Spacer(),
+                                                      Container(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 58.w,
+                                                        child: Text(
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? property
+                                                                      ?.propertyCategory ??
+                                                                  ""
+                                                              : property
+                                                                      ?.propertyCategoryAR ??
+                                                                  "".trim(),
                                                           style: AppTextStyle
-                                                              .normalGrey11,
+                                                              .normalGrey10,
+                                                          maxLines: 1,
                                                         ),
-                                                        Spacer(),
-                                                        Container(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          width: 58.w,
-                                                          child: Text(
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? property
-                                                                        ?.propertyCategory ??
-                                                                    ""
-                                                                : property
-                                                                        ?.propertyCategoryAR ??
-                                                                    "".trim(),
-                                                            style: AppTextStyle
-                                                                .normalGrey10,
-                                                            maxLines: 1,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? EdgeInsets.only(
+                                                      right: 1.0.h,
+                                                      left: 0.5.h)
+                                                  : EdgeInsets.only(
+                                                      right: 0.5.h,
+                                                      left: 1.0.h),
+                                              child: SizedBox(
+                                                width: 0.15.w,
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_forward_ios_rounded,
+                                                  color: AppColors.blackColor,
+                                                  size: 20,
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: SessionController()
-                                                            .getLanguage() ==
-                                                        1
-                                                    ? EdgeInsets.only(
-                                                        right: 1.0.h,
-                                                        left: 0.5.h)
-                                                    : EdgeInsets.only(
-                                                        right: 0.5.h,
-                                                        left: 1.0.h),
-                                                child: SizedBox(
-                                                  width: 0.15.w,
-                                                  child: Icon(
-                                                    Icons
-                                                        .arrow_forward_ios_rounded,
-                                                    color: AppColors.blackColor,
-                                                    size: 20,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            )
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                    index == controller.length - 1
-                                        ? SizedBox()
-                                        : AppDivider(),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-              }),
-            ),
+                                      ),
+                                    ],
+                                  ),
+                                  index == controller.length - 1
+                                      ? const SizedBox()
+                                      : const AppDivider(),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+            }),
             controller.errorLoadingProperties != ''
                 ? SizedBox(
                     height: Get.height * 0.1,

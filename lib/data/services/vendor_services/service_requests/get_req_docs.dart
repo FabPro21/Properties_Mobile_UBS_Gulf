@@ -40,8 +40,9 @@ class VendorGetReqDocs {
             print('reqPhotos at $i id::::::: ${reqPhotos[i].type}');
           }
           return reqPhotos;
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

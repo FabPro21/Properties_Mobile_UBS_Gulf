@@ -55,7 +55,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                         return controller.loadingProfile.value
                             ? Padding(
                                 padding: EdgeInsets.only(top: 20.h),
-                                child: LoadingIndicatorWhite(),
+                                child: const LoadingIndicatorWhite(),
                               )
                             : controller.errorLoadingProfile != ''
                                 ? Padding(
@@ -100,11 +100,12 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                       .nameTextController,
                                                   validator: (value) {
                                                     if (value == null ||
-                                                        value.length < 3)
+                                                        value.length < 3) {
                                                       return AppMetaLabels()
                                                           .pleaseEnterName;
-                                                    else
+                                                    } else {
                                                       return null;
+                                                    }
                                                   },
                                                   onChanged: (value) {
                                                     if (value !=
@@ -116,9 +117,10 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                             controller
                                                                 .profileData!
                                                                 .profileDetail!
-                                                                .fullNameAr)
+                                                                .fullNameAr) {
                                                       controller.updateEnabled
                                                           .value = true;
+                                                    }
                                                   },
                                                   style: AppTextStyle
                                                       .normalWhite12,
@@ -147,6 +149,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().name,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
+                                                    errorStyle:
+                                                        const TextStyle(fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),
@@ -162,9 +166,10 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         controller
                                                             .profileData!
                                                             .profileDetail!
-                                                            .email)
+                                                            .email) {
                                                       controller.updateEnabled
                                                           .value = true;
+                                                    }
                                                   },
                                                   style: AppTextStyle
                                                       .normalWhite12,
@@ -193,6 +198,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().email,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
+                                                    errorStyle:
+                                                        const TextStyle(fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),
@@ -202,7 +209,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                           ),
                                         ),
                                         controller.updatingProfile.value
-                                            ? LoadingIndicatorWhite()
+                                            ? const LoadingIndicatorWhite()
                                             : ButtonWidget(
                                                 buttonText: AppMetaLabels()
                                                     .updateProfile,
@@ -211,11 +218,11 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                     ? () {
                                                         FocusScope.of(context)
                                                             .unfocus();
-                                                        if (formKey
-                                                            .currentState!
-                                                            .validate())
+                                                        if (formKey.currentState!
+                                                            .validate()) {
                                                           controller
                                                               .updateProfile();
+                                                        }
                                                       }
                                                     : null,
                                               ),
@@ -229,7 +236,7 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                               buttonText: AppMetaLabels().skip,
                                               onPress: () {
                                                 Get.offAll(() =>
-                                                    SearchPropertiesDashboardTabs());
+                                                    const SearchPropertiesDashboardTabs());
                                               },
                                             ),
                                           ),

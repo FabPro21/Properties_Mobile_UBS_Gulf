@@ -6,8 +6,8 @@ class InfoItem2 extends StatelessWidget {
   final String? label;
   final String? text;
   const InfoItem2({
-    Key? key, this.label, this.text,
-  }) : super(key: key);
+    super.key, this.label, this.text,
+  });
 
   @override
   Widget build(BuildContext context) {

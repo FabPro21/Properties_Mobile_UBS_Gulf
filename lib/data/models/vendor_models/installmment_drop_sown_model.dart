@@ -12,7 +12,7 @@ class InstallmentDropDownModel {
     if (json['installmentData'] != null) {
       installmentData = <InstallmentData>[];
       json['installmentData'].forEach((v) {
-        installmentData!.add(new InstallmentData.fromJson(v));
+        installmentData!.add(InstallmentData.fromJson(v));
       });
     }else{
       installmentData = [];
@@ -20,12 +20,12 @@ class InstallmentDropDownModel {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['status'] = this.status;
-    if (this.installmentData != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['status'] = status;
+    if (installmentData != null) {
       data['installmentData'] =
-          this.installmentData!.map((v) => v.toJson()).toList();
+          installmentData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -51,13 +51,13 @@ class InstallmentData {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['instNo'] = this.instNo;
-    data['balance'] = this.instNo;
-    data['netAmount'] = this.instNo;
-    data['invoiceAmount'] = this.instNo;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['instNo'] = instNo;
+    data['balance'] = instNo;
+    data['netAmount'] = instNo;
+    data['invoiceAmount'] = instNo;
     return data;
   }
 }

@@ -15,21 +15,21 @@ class GetDropDownModel {
     if (json['serviceRequests'] != null) {
       serviceRequests = [];
       json['serviceRequests'].forEach((v) {
-        serviceRequests!.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    data['totalRecord'] = this.totalRecord;
-    if (this.serviceRequests != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    data['totalRecord'] = totalRecord;
+    if (serviceRequests != null) {
       data['serviceRequests'] =
-          this.serviceRequests!.map((v) => v.toJson()).toList();
+          serviceRequests!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -48,10 +48,10 @@ class ServiceRequests {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['nameAr'] = this.nameAr;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['nameAr'] = nameAr;
     return data;
   }
 }

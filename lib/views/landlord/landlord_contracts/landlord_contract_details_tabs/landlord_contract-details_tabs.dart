@@ -18,11 +18,10 @@ class LandlordContractDetailsTabs extends StatefulWidget {
   final int contractId;
   final String prevContractNo;
   const LandlordContractDetailsTabs(
-      {Key? key,
+      {super.key,
       required this.contractNo,
       required this.contractId,
-      required this.prevContractNo})
-      : super(key: key);
+      required this.prevContractNo});
 
   @override
   _LandlordContractDetailsTabsState createState() =>
@@ -53,7 +52,7 @@ class _LandlordContractDetailsTabsState
                       AppMetaLabels().contractNo,
                       style: AppTextStyle.semiBoldBlack12,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       widget.contractNo,
                       style: AppTextStyle.semiBoldBlack12,
@@ -61,7 +60,7 @@ class _LandlordContractDetailsTabsState
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Expanded(
                 child: ContainedTabBarView(
                   tabs: [
@@ -86,8 +85,8 @@ class _LandlordContractDetailsTabsState
                     LandlordContractUnitInfo(
                       contractId: widget.contractId,
                     ),
-                    LandlordPaymentsScreen(),
-                    LandlordChargesScreen()
+                    const LandlordPaymentsScreen(),
+                    const LandlordChargesScreen()
                   ],
                 ),
               ),

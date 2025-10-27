@@ -14,7 +14,7 @@ import 'landlord_property_unit_Info_details.dart';
 
 class LandlordPropertyUnitInfo extends StatefulWidget {
   final String? propertID;
-  const LandlordPropertyUnitInfo({Key? key, this.propertID}) : super(key: key);
+  const LandlordPropertyUnitInfo({super.key, this.propertID});
 
   @override
   _LandlordPropertyUnitInfoState createState() =>
@@ -44,7 +44,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
           return controller.loadingPropertiesInfo.value == true
               ? SizedBox(
                   height: 70.h,
-                  child: Center(
+                  child: const Center(
                     child: LoadingIndicatorBlue(),
                   ),
                 )
@@ -177,7 +177,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                           left: 1.5.h,
                                           right: 1.0.h,
                                         ),
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 81.0.w,
                                           // color: Colors.red,
                                           child: Column(
@@ -186,7 +186,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: 90.0.w,
                                                 child: Text(
                                                   controller.propertyUnitInfo
@@ -222,7 +222,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Container(
                                                     width: 57.w,
                                                     alignment: SessionController()
@@ -251,7 +251,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Container(
                                                     width: 57.w,
                                                     alignment: SessionController()
@@ -294,7 +294,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                                                     style: AppTextStyle
                                                         .normalGrey11,
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Container(
                                                     width: 55.w,
                                                     alignment: SessionController()
@@ -342,7 +342,7 @@ class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
                         );
                       });
         }),
-        BottomShadow(),
+        const BottomShadow(),
       ]),
     );
   }

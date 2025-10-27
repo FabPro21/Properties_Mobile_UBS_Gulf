@@ -31,7 +31,8 @@ class AddTicketService {
         return;
       } else
         return response.statusCode;
-    } else
+    } else {
       return response;
+    }
   }
 }

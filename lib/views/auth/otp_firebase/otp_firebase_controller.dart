@@ -234,7 +234,7 @@ class FirebaseAuthController extends GetxController {
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
-          print('Exception ::::: ${e}');
+          print('Exception ::::: $e');
         }
       }
     }
@@ -255,7 +255,7 @@ class FirebaseAuthController extends GetxController {
         otpManuallyVerified = true;
         error.value = '';
         isCodeSent.value = false;
-        Get.offAll(() => SetupMpinScreen());
+        Get.offAll(() => const SetupMpinScreen());
         // next logic
       } on FirebaseAuthException catch (e) {
         verifying.value = false;
@@ -292,7 +292,7 @@ class FirebaseAuthController extends GetxController {
       } catch (e) {
         loadingData.value = false;
         if (kDebugMode) {
-          print('Exception ::::: ${e}');
+          print('Exception ::::: $e');
         }
       }
     }
@@ -457,9 +457,9 @@ class FirebaseAuthController extends GetxController {
 
   Future<void> validateMobileUser() async {
     isUpdating.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     errorValidateUser.value = '';
     try {

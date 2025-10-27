@@ -28,8 +28,9 @@ class TenantGetReqDocs {
                 name: 'doc${docIds[i]}'));
           }
           return reqPhotos;
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

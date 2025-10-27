@@ -14,14 +14,14 @@ import 'package:sizer/sizer.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorOffers extends StatefulWidget {
-  const VendorOffers({Key? key}) : super(key: key);
+  const VendorOffers({super.key});
 
   @override
   _VendorOffersState createState() => _VendorOffersState();
 }
 
 class _VendorOffersState extends State<VendorOffers> {
-  var _controller = Get.put(VendorOffersController());
+  final _controller = Get.put(VendorOffersController());
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _VendorOffersState extends State<VendorOffers> {
               Expanded(
                 child: Obx(() {
                   return _controller.loadingOffers.value
-                      ? Center(
+                      ? const Center(
                           child: LoadingIndicatorBlue(),
                         )
                       : _controller.length == 0
@@ -103,7 +103,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                           "",
                                                   style: AppTextStyle
                                                       .semiBoldBlack13),
-                                              Spacer(),
+                                              const Spacer(),
                                               Icon(
                                                 Icons.arrow_forward_ios_rounded,
                                                 size: 2.0.h,
@@ -132,7 +132,7 @@ class _VendorOffersState extends State<VendorOffers> {
                 Expanded(
                   child: Obx(() {
                     return _controller.loadingOffers.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _controller.length == 0
@@ -183,7 +183,7 @@ class _VendorOffersState extends State<VendorOffers> {
                                                             "",
                                                     style: AppTextStyle
                                                         .semiBoldBlack13),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Icon(
                                                   Icons
                                                       .arrow_forward_ios_rounded,

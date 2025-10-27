@@ -20,7 +20,8 @@ class VendorGetContractPropsSvc {
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
-    } else
+    } else {
       return response;
+    }
   }
 }

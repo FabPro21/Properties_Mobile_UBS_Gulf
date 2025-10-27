@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class PublicBookingAgentList extends StatefulWidget {
-  const PublicBookingAgentList({Key? key}) : super(key: key);
+  const PublicBookingAgentList({super.key});
 
   @override
   _PublicBookingAgentListState createState() => _PublicBookingAgentListState();
@@ -45,7 +45,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                         AppMetaLabels().agentList,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -59,7 +59,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -128,7 +128,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                             return agentController.loadingAgent.value == true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : agentController.errorAgent.value != ''
                                     ? AppErrorWidget(
@@ -138,7 +138,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: agentController.lengthAgent,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -226,7 +226,7 @@ class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == agentController.lengthAgent - 1 ? Container() : AppDivider(),
+          index == agentController.lengthAgent - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

@@ -13,7 +13,7 @@ import '../../../../data/helpers/session_controller.dart';
 
 // ignore: must_be_immutable
 class VendorAcconut extends StatelessWidget {
-  VendorAcconut({Key? key}) : super(key: key);
+  VendorAcconut({super.key});
 
   final VendorAccountController _vendorAccountController =
       Get.put(VendorAccountController());
@@ -23,16 +23,16 @@ class VendorAcconut extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppDivider(),
+        const AppDivider(),
         SingleChildScrollView(
           child: Obx(() {
             return _vendorAccountController.loading.value
                 ? Column(
                     children: [
-                      AppDivider(),
+                      const AppDivider(),
                       Padding(
                         padding: EdgeInsets.only(top: 25.0.h),
-                        child: LoadingIndicatorBlue(),
+                        child: const LoadingIndicatorBlue(),
                       ),
                     ],
                   )
@@ -72,7 +72,7 @@ class VendorAcconut extends StatelessWidget {
                               child: ListView.builder(
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: _vendorAccountController
                                       .getVendorAccountsModel
                                       .value
@@ -116,7 +116,7 @@ class VendorAcconut extends StatelessWidget {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10,
                                                   ),
                                                   Text(
@@ -140,13 +140,12 @@ class VendorAcconut extends StatelessWidget {
                                                   SizedBox(
                                                     height: 1.h,
                                                   ),
-                                                  Container(
+                                                  SizedBox(
                                                     width: 62.0.w,
                                                     child: Text(
                                                       // ignore: unrelated_type_equality_checks
-                                                      AppMetaLabels()
-                                                              .accountTitle +
-                                                          "${SessionController().getLanguage() == 1 ? _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitle ?? '' : _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitleAR ?? ''}",
+                                                      "${AppMetaLabels()
+                                                              .accountTitle}${SessionController().getLanguage() == 1 ? _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitle ?? '' : _vendorAccountController.getVendorAccountsModel.value.accounts![index].accountTitleAR ?? ''}",
 
                                                       style: AppTextStyle
                                                           .normalGrey12,
@@ -229,8 +228,8 @@ class VendorAcconut extends StatelessWidget {
                                                           .accounts!
                                                           .length -
                                                       1
-                                              ? SizedBox()
-                                              : AppDivider()
+                                              ? const SizedBox()
+                                              : const AppDivider()
                                         ],
                                       ),
                                     );

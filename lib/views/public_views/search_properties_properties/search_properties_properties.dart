@@ -13,7 +13,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'search_properties_management_controller.dart';
 
 class SearchPropertiesProperties extends StatefulWidget {
-  const SearchPropertiesProperties({Key? key}) : super(key: key);
+  const SearchPropertiesProperties({super.key});
 
   @override
   _SearchPropertiesPropertiesState createState() =>
@@ -22,7 +22,7 @@ class SearchPropertiesProperties extends StatefulWidget {
 
 class _SearchPropertiesPropertiesState
     extends State<SearchPropertiesProperties> {
-  var _controller = Get.put(PublicGetpropertyMangementController());
+  final _controller = Get.put(PublicGetpropertyMangementController());
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class _SearchPropertiesPropertiesState
             onTap: () {
               Get.back();
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -62,7 +62,7 @@ class _SearchPropertiesPropertiesState
         ),
         body: Obx(() {
           return _controller.loadingData.value
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : _controller.length == 0
                   ? CustomErrorWidget(
                       errorImage: AppImagesPath.noServicesFound,

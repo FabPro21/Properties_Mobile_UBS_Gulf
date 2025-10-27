@@ -14,7 +14,7 @@ import 'landlord_more/landlord_more.dart';
 import 'landlord_properties/landlord_properties.dart';
 
 class LandlordHome extends StatefulWidget {
-  const LandlordHome({Key? key}) : super(key: key);
+  const LandlordHome({super.key});
 
   @override
   _LandlordHomeState createState() => _LandlordHomeState();
@@ -40,10 +40,10 @@ class _LandlordHomeState extends State<LandlordHome> {
           });
         },
       ),
-      LandLordProperties(),
-      LandLordContracts(),
+      const LandLordProperties(),
+      const LandLordContracts(),
       // LandLordReports(),
-      InvoicesScreenLandlord()
+      const InvoicesScreenLandlord()
     ];
     super.initState();
   }
@@ -59,7 +59,7 @@ class _LandlordHomeState extends State<LandlordHome> {
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            AppBackgroundConcave(),
+            const AppBackgroundConcave(),
             SafeArea(
               child: Column(
                 children: [
@@ -120,11 +120,12 @@ class _LandlordHomeState extends State<LandlordHome> {
                         icon: AppImagesPath.menu,
                         title: AppMetaLabels().more,
                         onTap: (pos) async {
-                          int? _res = await Get.to(() => LandLordMore());
-                          if (_res != null)
+                          int? res = await Get.to(() => const LandLordMore());
+                          if (res != null) {
                             setState(() {
-                              _selectedIndex = _res;
+                              _selectedIndex = res;
                             });
+                          }
                         },
                         position: 4,
                       )

@@ -65,7 +65,7 @@ class LandlordReportController extends GetxController {
   makeLoading() async {
     isLoading.value = true;
     reportsList.clear();
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     if (SessionController().getLanguage() == 1) {
       for (int i = 0; i < apiListData.length; i++) {
         reportsList.add(apiListData[i]);
@@ -80,18 +80,19 @@ class LandlordReportController extends GetxController {
 
   searchData(String qry) {
     isLoading.value = true;
-    List<String> _searchedCont = [];
+    List<String> searchedCont = [];
     for (int i = 0; i < apiListData.length; i++) {
       print('Report Result :::: ${apiListData[i].contains(qry)}');
       if (apiListData[i].toLowerCase().contains(qry.toLowerCase())) {
-        _searchedCont.add(apiListData[i]);
+        searchedCont.add(apiListData[i]);
       }
     }
-    reportsList = _searchedCont.toList();
-    if (reportsList.length == 0)
+    reportsList = searchedCont.toList();
+    if (reportsList.isEmpty) {
       errorLoadingReport.value = AppMetaLabels().noDatafound;
-    else
+    } else {
       errorLoadingReport.value = '';
+    }
 
     isLoading.value = false;
   }

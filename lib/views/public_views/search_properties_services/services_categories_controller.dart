@@ -23,9 +23,9 @@ class PublicGetServicesController extends GetxController {
   }
 
   Future<void> getServiceCategories() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingData.value = true;
@@ -47,9 +47,9 @@ class PublicGetServicesController extends GetxController {
   }
 
   Future<void> getServiceCategoriesDetails(int categoryId) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingDetails.value = true;

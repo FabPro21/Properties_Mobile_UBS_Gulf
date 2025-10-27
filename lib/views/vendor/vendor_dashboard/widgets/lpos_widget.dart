@@ -17,7 +17,7 @@ import 'package:sizer/sizer.dart';
 // ignore: must_be_immutable
 class LposWidget extends StatelessWidget {
   final Function(int)? manageLpos;
-  LposWidget({Key? key, this.manageLpos}) : super(key: key);
+  LposWidget({super.key, this.manageLpos});
   final getAllLpoWidgetController = Get.put(GetAllLpoWidgetController());
 
   String gAmount = "";
@@ -57,25 +57,25 @@ class LposWidget extends StatelessWidget {
                 ],
               ),
             ),
-            AppDivider(),
-            Container(
+            const AppDivider(),
+            SizedBox(
               width: getAllLpoWidgetController.error.value != '' ? 90.w : 86.w,
               child: Obx(() {
                 return getAllLpoWidgetController.loadingData.value == true
                     ? Padding(
                         padding:
                             EdgeInsets.only(left: 4.h, top: 4.w, bottom: 4.w),
-                        child: Center(child: LoadingIndicatorBlue()),
+                        child: const Center(child: LoadingIndicatorBlue()),
                       )
                     : getAllLpoWidgetController.error.value != ''
                         ? Padding(
                             padding: EdgeInsets.all(4.h),
                             child: CustomErrorWidget(
-                              errorText: AppMetaLabels().noLPOFound + '',
+                              errorText: AppMetaLabels().noLPOFound,
                               errorImage: AppImagesPath.nolpos,
                             ))
                         : ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             padding: EdgeInsets.zero,
                             itemCount:
@@ -125,7 +125,7 @@ class LposWidget extends StatelessWidget {
                                 },
                                 child: Row(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 84.w,
                                       child: Column(
                                         children: [
@@ -237,36 +237,30 @@ class LposWidget extends StatelessWidget {
                                                   style: AppTextStyle
                                                       .normalBlack11,
                                                 ),
-                                                Spacer(),
-                                                ConstrainedBox(
-                                                  constraints: BoxConstraints(
-                                                      maxWidth: 40.w),
-                                                  child: FittedBox(
-                                                    child: StatusWidgetVendor(
-                                                      // text: 'Under Approval',
-                                                      text: SessionController()
-                                                                  .getLanguage() ==
-                                                              1
-                                                          ? getAllLpoWidgetController
-                                                              .getAllLposModel
-                                                              .value
-                                                              .lpos![index]
-                                                              .lpoStatus
-                                                          : getAllLpoWidgetController
-                                                              .getAllLposModel
-                                                              .value
-                                                              .lpos![index]
-                                                              .lpoStatusAr,
-                                                      valueToCompare:
-                                                          // 'Under Approval'
-                                                          getAllLpoWidgetController
-                                                              .getAllLposModel
-                                                              .value
-                                                              .lpos![index]
-                                                              .lpoStatus,
-                                                    ),
-                                                  ),
-                                                )
+                                                const Spacer(),
+                                                StatusWidgetVendor(
+                                                  // text: 'Under Approval',
+                                                  text: SessionController()
+                                                              .getLanguage() ==
+                                                          1
+                                                      ? getAllLpoWidgetController
+                                                          .getAllLposModel
+                                                          .value
+                                                          .lpos![index]
+                                                          .lpoStatus
+                                                      : getAllLpoWidgetController
+                                                          .getAllLposModel
+                                                          .value
+                                                          .lpos![index]
+                                                          .lpoStatusAr,
+                                                  valueToCompare:
+                                                      // 'Under Approval'
+                                                      getAllLpoWidgetController
+                                                          .getAllLposModel
+                                                          .value
+                                                          .lpos![index]
+                                                          .lpoStatus,
+                                                ),
                                               ],
                                             ),
                                           ),
@@ -283,16 +277,16 @@ class LposWidget extends StatelessWidget {
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Text(
-                                                  "${AppMetaLabels().aed} ${nAmount}",
+                                                  "${AppMetaLabels().aed} $nAmount",
                                                   style: AppTextStyle
                                                       .semiBoldBlack10,
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          AppDivider(),
+                                          const AppDivider(),
                                         ],
                                       ),
                                     ),
@@ -333,7 +327,7 @@ class LposWidget extends StatelessWidget {
                       style: AppTextStyle.semiBoldBlue10,
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             SizedBox(
               height:
                   getAllLpoWidgetController.lpoWidgetListLength > 0 ? 2.0.h : 0,
@@ -351,7 +345,7 @@ class LposWidget extends StatelessWidget {
           t1,
           style: AppTextStyle.normalBlack11,
         ),
-        Spacer(),
+     const   Spacer(),
         SizedBox(
           width: 40.w,
           child: Text(

@@ -25,21 +25,21 @@ class LandlordPropertiesModel {
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests!.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    data['totalRecord'] = this.totalRecord;
-    if (this.serviceRequests != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    data['totalRecord'] = totalRecord;
+    if (serviceRequests != null) {
       data['serviceRequests'] =
-          this.serviceRequests!.map((v) => v.toJson()).toList();
+          serviceRequests!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -115,28 +115,28 @@ class ServiceRequests {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['propertyID'] = this.propertyID;
-    data['buildingRefNo'] = this.buildingRefNo;
-    data['buildingNumber'] = this.buildingNumber;
-    data['propertyName'] = this.propertyName;
-    data['propertyNameAR'] = this.propertyNameAR;
-    data['plotNumber'] = this.plotNumber;
-    data['roadName'] = this.roadName;
-    data['roadNameAR'] = this.roadNameAR;
-    data['sector'] = this.sector;
-    data['sectorAR'] = this.sectorAR;
-    data['propertyType'] = this.propertyType;
-    data['propertyTypeAR'] = this.propertyTypeAR;
-    data['propertyCategory'] = this.propertyCategory;
-    data['propertyCategoryAR'] = this.propertyCategoryAR;
-    data['emirateName'] = this.emirateName;
-    data['emirateNameAR'] = this.emirateNameAR;
-    data['noofResidentialFlat'] = this.noofResidentialFlat;
-    data['noofCommercialFlat'] = this.noofCommercialFlat;
-    data['noofStores'] = this.noofStores;
-    data['noofParkinglot'] = this.noofParkinglot;
-    data['totalRecord'] = this.totalRecord;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['propertyID'] = propertyID;
+    data['buildingRefNo'] = buildingRefNo;
+    data['buildingNumber'] = buildingNumber;
+    data['propertyName'] = propertyName;
+    data['propertyNameAR'] = propertyNameAR;
+    data['plotNumber'] = plotNumber;
+    data['roadName'] = roadName;
+    data['roadNameAR'] = roadNameAR;
+    data['sector'] = sector;
+    data['sectorAR'] = sectorAR;
+    data['propertyType'] = propertyType;
+    data['propertyTypeAR'] = propertyTypeAR;
+    data['propertyCategory'] = propertyCategory;
+    data['propertyCategoryAR'] = propertyCategoryAR;
+    data['emirateName'] = emirateName;
+    data['emirateNameAR'] = emirateNameAR;
+    data['noofResidentialFlat'] = noofResidentialFlat;
+    data['noofCommercialFlat'] = noofCommercialFlat;
+    data['noofStores'] = noofStores;
+    data['noofParkinglot'] = noofParkinglot;
+    data['totalRecord'] = totalRecord;
     return data;
   }
 }

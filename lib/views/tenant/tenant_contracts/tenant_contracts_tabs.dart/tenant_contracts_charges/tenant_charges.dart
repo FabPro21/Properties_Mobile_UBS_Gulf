@@ -20,7 +20,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../data/models/chart_data.dart';
 
 class ChargesScreen extends StatefulWidget {
-  const ChargesScreen({Key? key}) : super(key: key);
+  const ChargesScreen({super.key});
 
   @override
   _ChargesScreenState createState() => _ChargesScreenState();
@@ -59,7 +59,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
           //       AppColors.chartlightBlueColor),
           // ];
           return getCCController.loadingData.value == true
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : getCCController.error.value != ''
                   ? AppErrorWidget(
                       errorText: getCCController.error.value,
@@ -182,7 +182,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                     children: [
                                                       rowList(
                                                           AppMetaLabels().date,
-                                                          "${getCCController.getCharges.value.contractCharges![index].createdOn ?? ""}"),
+                                                          getCCController.getCharges.value.contractCharges![index].createdOn ?? ""),
                                                       SizedBox(
                                                         height: 0.7.h,
                                                       ),
@@ -232,7 +232,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                             style: AppTextStyle
                                                                 .semiBoldBlack10,
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Text(
                                                             "${AppMetaLabels().aed} ${tAmount.toString()}" ,
                                                             style: AppTextStyle
@@ -245,7 +245,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets.only(
                                                                 right: 8.0),
                                                         child: InkWell(
                                                           onTap: () {
@@ -276,7 +276,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                                           ),
                                           index == getCCController.length - 1
                                               ? Container()
-                                              : AppDivider(),
+                                              : const AppDivider(),
                                         ],
                                       );
                                     }),
@@ -287,7 +287,7 @@ class _ChargesScreenState extends State<ChargesScreen> {
                       ),
                     );
         }),
-        BottomShadow(),
+        const BottomShadow(),
       ],
     );
   }

@@ -18,10 +18,10 @@ import 'package:flutter/gestures.dart';
 
 class ContractsFLowTabs extends StatefulWidget {
   final String? prevContractNo;
-  ContractsFLowTabs({
-    Key? key,
+  const ContractsFLowTabs({
+    super.key,
     this.prevContractNo,
-  }) : super(key: key);
+  });
 
   @override
   State<ContractsFLowTabs> createState() => _ContractsFLowTabsState();
@@ -45,7 +45,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
           backgroundColor: Colors.white,
           body: Stack(
             children: [
-              AppBackgroundConcave(),
+              const AppBackgroundConcave(),
               Obx((() => SafeArea(
                     child: Stack(
                       children: [
@@ -66,7 +66,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                     onTap: () {
                                       Get.back();
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios,
                                       color: Colors.white,
                                     ),
@@ -89,7 +89,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                             .getContractsNew();
                                       }
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.refresh_rounded,
                                       color: Colors.white,
                                     ),
@@ -110,9 +110,9 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                   : controllerRenewalController
                                               .errorLoadingContracts !=
                                           ''
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : SessionController().isFabApp == 2
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Padding(
                                               padding: EdgeInsets.only(
                                                   left: 0.5.w, right: 4.5.w),
@@ -177,7 +177,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                       .videoPathFromAsset,
                                                                 ));
                                                           },
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             height: 2.h,
                                                             width: SessionController()
                                                                         .getLanguage() ==
@@ -209,7 +209,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                             .videoPathFromAsset,
                                                                       ));
                                                                 },
-                                                                pause: Duration(
+                                                                pause:const Duration(
                                                                     milliseconds:
                                                                         3),
                                                                 animatedTexts: [
@@ -227,7 +227,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                         Colors
                                                                             .white,
                                                                       ],
-                                                                      speed: Duration(
+                                                                      speed:const Duration(
                                                                           milliseconds:
                                                                               100)),
                                                                 ],
@@ -251,7 +251,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                   : contractEndActionsController
                                               .errorLoadingContracts !=
                                           ''
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : Padding(
                                           padding: EdgeInsets.only(
                                               left: 0.5.w, right: 4.5.w),
@@ -314,7 +314,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                   .videoPathFromAsset,
                                                             ));
                                                       },
-                                                      child: Container(
+                                                      child: SizedBox(
                                                         height: 2.h,
                                                         width: SessionController()
                                                                     .getLanguage() ==
@@ -344,7 +344,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                         .videoPathFromAsset,
                                                                   ));
                                                             },
-                                                            pause: Duration(
+                                                            pause: const Duration(
                                                                 milliseconds:
                                                                     3),
                                                             animatedTexts: [
@@ -361,7 +361,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                                     Colors
                                                                         .white,
                                                                   ],
-                                                                  speed: Duration(
+                                                                  speed: const Duration(
                                                                       milliseconds:
                                                                           100)),
                                                             ],
@@ -383,7 +383,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                       Expanded(
                                         child: ContainedTabBarView(
                                           tabBarViewProperties:
-                                              TabBarViewProperties(
+                                              const TabBarViewProperties(
                                                   physics:
                                                       NeverScrollableScrollPhysics()),
                                           tabs: [
@@ -400,13 +400,13 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                             labelColor: AppColors.whiteColor,
                                             unselectedLabelColor:
                                                 AppColors.whiteColor,
-                                            unselectedLabelStyle: TextStyle(
+                                            unselectedLabelStyle: const TextStyle(
                                                 fontWeight: FontWeight.normal),
                                             isScrollable: false,
                                             labelStyle:
                                                 AppTextStyle.semiBoldBlack11,
                                           ),
-                                          views: [
+                                          views: const [
                                             ContractsWithAction(),
                                             // ContractNewAction(),
                                           ],
@@ -445,7 +445,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                             .errorLoadingContracts ==
                                                         ''
                                                 ? Transform.translate(
-                                                    offset: Offset(0, -5),
+                                                    offset: const Offset(0, -5),
                                                     child: Container(
                                                       width: 50.w,
                                                       height:
@@ -463,7 +463,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                             : 2.h,
                                                       ),
                                                       decoration:
-                                                          ShapeDecoration(
+                                                          const ShapeDecoration(
                                                         color: Colors.white,
                                                         shape:
                                                             MessageBorderForVideoTutorial(),
@@ -489,9 +489,8 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(
-                                                              text: AppMetaLabels()
-                                                                      .clickabovebtnForContractRenewalTutorial +
-                                                                  "  ",
+                                                              text: "${AppMetaLabels()
+                                                                      .clickabovebtnForContractRenewalTutorial}  ",
                                                               style: AppTextStyle
                                                                   .normalBlack9
                                                                   .copyWith(
@@ -529,7 +528,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                       ),
                                                     ),
                                                   )
-                                                : SizedBox();
+                                                : const SizedBox();
                                           }),
                                         )
                                       : Align(
@@ -553,7 +552,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                             .errorLoadingContracts ==
                                                         ''
                                                 ? Transform.translate(
-                                                    offset: Offset(0, -5),
+                                                    offset: const Offset(0, -5),
                                                     child: Container(
                                                       width: 50.w,
                                                       height:
@@ -571,7 +570,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                             : 2.h,
                                                       ),
                                                       decoration:
-                                                          ShapeDecoration(
+                                                          const ShapeDecoration(
                                                         color: Colors.white,
                                                         shape:
                                                             MessageBorderForVideoTutorial(),
@@ -597,9 +596,8 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(
-                                                              text: AppMetaLabels()
-                                                                      .clickabovebtnForContractNewTutorial +
-                                                                  "  cc",
+                                                              text: "${AppMetaLabels()
+                                                                      .clickabovebtnForContractNewTutorial}  ",
                                                               style: AppTextStyle
                                                                   .normalBlack9
                                                                   .copyWith(
@@ -637,7 +635,7 @@ class _ContractsFLowTabsState extends State<ContractsFLowTabs> {
                                                       ),
                                                     ),
                                                   )
-                                                : SizedBox();
+                                                : const SizedBox();
                                           }),
                                         ),
                                 ],

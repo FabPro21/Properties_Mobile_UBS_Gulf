@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -12,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import 'vendor_contracts_detail_controller.dart';
 
 class VendorInfo extends StatefulWidget {
-  const VendorInfo({Key? key}) : super(key: key);
+  const VendorInfo({super.key});
 
   @override
   _VendorInfoState createState() => _VendorInfoState();
@@ -33,14 +35,14 @@ class _VendorInfoState extends State<VendorInfo> {
         body: Center(
           child: Column(
             children: [
-              BottomShadow(),
+              const BottomShadow(),
               Padding(
                 padding: EdgeInsets.only(top: 2.0.h),
                 child: Obx(() {
                   return getCDController.loadingData.value == true
                       ? Padding(
                           padding: EdgeInsets.only(top: 25.0.h),
-                          child: LoadingIndicatorBlue(),
+                          child: const LoadingIndicatorBlue(),
                         )
                       : getCDController.error.value != ''
                           ? Padding(
@@ -150,7 +152,7 @@ class _VendorInfoState extends State<VendorInfo> {
                                         Padding(
                                           padding: EdgeInsets.only(
                                               top: 2.0.h, bottom: 2.0.h),
-                                          child: AppDivider(),
+                                          child: const AppDivider(),
                                         ),
                                         rowList(AppMetaLabels().contractLength,
                                             "${getCDController.daysPassed} / ${getCDController.getContractsDetails.value.contractDetail?.contractLength.toString()}"),
@@ -209,8 +211,7 @@ class _VendorInfoState extends State<VendorInfo> {
                                         ),
                                         rowList(
                                           AppMetaLabels().amount,
-                                          "${AppMetaLabels().aed}" +
-                                              " ${getCDController.amountCurrency.toString()}",
+                                          "${AppMetaLabels().aed} ${getCDController.amountCurrency.toString()}",
                                         ),
                                       ],
                                     ),
@@ -232,7 +233,7 @@ class _VendorInfoState extends State<VendorInfo> {
           text1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Padding(
           padding: EdgeInsets.only(top: 1.8.h),
           child: Text(

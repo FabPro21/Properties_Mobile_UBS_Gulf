@@ -6,7 +6,7 @@ import 'package:signature/signature.dart';
 class SignaturePad extends StatefulWidget {
   final double? height;
   final SignatureController? controller;
-  const SignaturePad({Key? key, this.height, this.controller}) : super(key: key);
+  const SignaturePad({super.key, this.height, this.controller});
 
   @override
   _SignaturePadState createState() => _SignaturePadState();

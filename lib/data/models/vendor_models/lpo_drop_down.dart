@@ -11,17 +11,17 @@ class LpoDropDownModel {
     if (json['lpos'] != null) {
       lpos = <Lpos>[];
       json['lpos'].forEach((v) {
-        lpos!.add(new Lpos.fromJson(v));
+        lpos!.add(Lpos.fromJson(v));
       });
     }
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['status'] = this.status;
-    if (this.lpos != null) {
-      data['lpos'] = this.lpos!.map((v) => v.toJson()).toList();
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['status'] = status;
+    if (lpos != null) {
+      data['lpos'] = lpos!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -45,12 +45,12 @@ class Lpos {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['balance'] = this.balance;
-    data['netAmount'] = this.netAmount;
-    data['invoiceAmount'] = this.invoiceAmount;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['balance'] = balance;
+    data['netAmount'] = netAmount;
+    data['invoiceAmount'] = invoiceAmount;
     return data;
   }
 }

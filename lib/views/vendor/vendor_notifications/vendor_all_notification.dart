@@ -16,14 +16,14 @@ import 'package:sizer/sizer.dart';
 
 class VendorAllNotification extends StatefulWidget {
   final int? index;
-  const VendorAllNotification({Key? key, this.index}) : super(key: key);
+  const VendorAllNotification({super.key, this.index});
 
   @override
   _VendorAllNotificationState createState() => _VendorAllNotificationState();
 }
 
 class _VendorAllNotificationState extends State<VendorAllNotification> {
-  var _controller = Get.find<VendorNotificationsController>();
+  final _controller = Get.find<VendorNotificationsController>();
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
       resizeToAvoidBottomInset: false,
       body: Obx(() {
         return _controller.loadingData.value
-            ? LoadingIndicatorBlue()
+            ? const LoadingIndicatorBlue()
             : _controller.error.value != ''
                 ? AppErrorWidget(
                     errorText: _controller.error.value,
@@ -84,14 +84,14 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                                         }
                                         _controller.loadingData.value = false;
                                       }
-                                      Get.to(() => VendorNotificationDetails());
+                                      Get.to(() => const VendorNotificationDetails());
                                     },
                                     child: Row(
                                       // getTNController.  editTap.value == true ? 80.0.w :
                                       children: [
                                         _controller.editTap.value == true
                                             ? Expanded(
-                                                child: Container(
+                                                child: SizedBox(
                                                   width: 10.0.w,
                                                   height: 5.0.h,
                                                   // color: Colors.red,
@@ -99,7 +99,7 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                                                       // Text("1"),
                                                       CheckboxListTile(
                                                     selectedTileColor:
-                                                        Color.fromRGBO(
+                                                        const Color.fromRGBO(
                                                             0, 98, 255, 1),
                                                     contentPadding:
                                                         EdgeInsets.zero,
@@ -132,13 +132,15 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                               return _controller.noMoreDataPageAll.value != ''
                                   ? Text(
                                       AppMetaLabels().noMoreData,
-                                      style: AppTextStyle.boldBlue,
+                                      style: const TextStyle(
+                                        color: Colors.blue,
+                                      ).copyWith(fontWeight: FontWeight.bold),
                                     )
                                   : _controller.isLoadingAllNotification.value
                                       ? SizedBox(
                                           width: 75.w,
                                           height: 5.h,
-                                          child: Center(
+                                          child: const Center(
                                             child: LoadingIndicatorBlue(),
                                           ),
                                         )
@@ -164,10 +166,13 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                                                     TextSpan(
                                                       text: AppMetaLabels()
                                                           .loadMoreData,
-                                                      style:
-                                                          AppTextStyle.boldBlue,
+                                                      style: const TextStyle(
+                                                        color: Colors.blue,
+                                                      ).copyWith(
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
-                                                    WidgetSpan(
+                                                     WidgetSpan(
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
                                                         size: 15,
@@ -244,7 +249,7 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
           ),
         ],
       ),
-      child: Container(
+      child: SizedBox(
         width: _controller.editTap.value == true ? 80.0.w : 90.0.w,
         child: ListTile(
           title: Column(
@@ -257,14 +262,14 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                       : Container(
                           height: 1.0.h,
                           width: 2.0.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.red,
                             shape: BoxShape.circle,
                           ),
                         ),
                   Padding(
                     padding: EdgeInsets.only(left: 1.0.h),
-                    child: Container(
+                    child: SizedBox(
                       width:
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
@@ -277,8 +282,8 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.more_horiz),
+                  const Spacer(),
+                  const Icon(Icons.more_horiz),
                 ],
               ),
               Padding(
@@ -308,7 +313,7 @@ class _VendorAllNotificationState extends State<VendorAllNotification> {
                 ),
               ),
               SizedBox(height: 2.0.h),
-              index == _controller.allLength - 1 ? Container() : AppDivider(),
+              index == _controller.allLength - 1 ? Container() : const AppDivider(),
             ],
           ),
         ),

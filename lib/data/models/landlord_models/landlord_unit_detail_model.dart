@@ -11,20 +11,20 @@ class LandLordUnitDetailModel {
     if (json['propertyUnitDetails'] != null) {
       propertyUnitDetails = <PropertyUnitDetails>[];
       json['propertyUnitDetails'].forEach((v) {
-        propertyUnitDetails!.add(new PropertyUnitDetails.fromJson(v));
+        propertyUnitDetails!.add(PropertyUnitDetails.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    if (this.propertyUnitDetails != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    if (propertyUnitDetails != null) {
       data['propertyUnitDetails'] =
-          this.propertyUnitDetails!.map((v) => v.toJson()).toList();
+          propertyUnitDetails!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -118,34 +118,34 @@ class PropertyUnitDetails {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['propertyImage'] = this.propertyImage;
-    data['unitView'] = this.unitView;
-    data['unitViewAR'] = this.unitViewAR;
-    data['longitude'] = this.longitude;
-    data['latitude'] = this.latitude;
-    data['propertyName'] = this.propertyName;
-    data['propertyNameAR'] = this.propertyNameAR;
-    data['address'] = this.address;
-    data['addressAR'] = this.addressAR;
-    data['bedRooms'] = this.bedRooms;
-    data['noofWashrooms'] = this.noofWashrooms;
-    data['areaSize'] = this.areaSize;
-    data['measurementType'] = this.measurementType;
-    data['landlordName'] = this.landlordName;
-    data['unitType'] = this.unitType;
-    data['unitTypeAR'] = this.unitTypeAR;
-    data['unitCategoryName'] = this.unitCategoryName;
-    data['unitCategoryNameAR'] = this.unitCategoryNameAR;
-    data['unitRefNo'] = this.unitRefNo;
-    data['unitName'] = this.unitName;
-    data['noofKitchens'] = this.noofKitchens;
-    data['maidRooms'] = this.maidRooms;
-    data['noofLivingRooms'] = this.noofLivingRooms;
-    data['noofBalconies'] = this.noofBalconies;
-    data['propertyID'] = this.propertyID;
-    data['unitID'] = this.unitID;
-    data['measurementTypeAR'] = this.measurementTypeAR;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['propertyImage'] = propertyImage;
+    data['unitView'] = unitView;
+    data['unitViewAR'] = unitViewAR;
+    data['longitude'] = longitude;
+    data['latitude'] = latitude;
+    data['propertyName'] = propertyName;
+    data['propertyNameAR'] = propertyNameAR;
+    data['address'] = address;
+    data['addressAR'] = addressAR;
+    data['bedRooms'] = bedRooms;
+    data['noofWashrooms'] = noofWashrooms;
+    data['areaSize'] = areaSize;
+    data['measurementType'] = measurementType;
+    data['landlordName'] = landlordName;
+    data['unitType'] = unitType;
+    data['unitTypeAR'] = unitTypeAR;
+    data['unitCategoryName'] = unitCategoryName;
+    data['unitCategoryNameAR'] = unitCategoryNameAR;
+    data['unitRefNo'] = unitRefNo;
+    data['unitName'] = unitName;
+    data['noofKitchens'] = noofKitchens;
+    data['maidRooms'] = maidRooms;
+    data['noofLivingRooms'] = noofLivingRooms;
+    data['noofBalconies'] = noofBalconies;
+    data['propertyID'] = propertyID;
+    data['unitID'] = unitID;
+    data['measurementTypeAR'] = measurementTypeAR;
     return data;
   }
 }

@@ -16,7 +16,7 @@ import 'package:get/get.dart';
 import 'tenant_contracts_controller.dart';
 
 class TenantContractsScreen extends StatefulWidget {
-  TenantContractsScreen({Key? key}) : super(key: key);
+  const TenantContractsScreen({super.key});
 
   @override
   State<TenantContractsScreen> createState() => _TenantContractsScreenState();
@@ -147,7 +147,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                               searchControler.clear();
                               getContractsController.getData();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.refresh,
                             ),
                           )
@@ -180,7 +180,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                         child: Obx(() {
                           return getContractsController.loadingData.value ==
                                   true
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : getContractsController.error.value != ''
                                   ? CustomErrorWidget(
                                       errorText:
@@ -194,7 +194,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                                           shrinkWrap: true,
                                           padding: EdgeInsets.zero,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           itemCount: getContractsController
                                               .contracts.length,
                                           itemBuilder: (context, index) {
@@ -352,13 +352,13 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                 padding: EdgeInsets.only(bottom: 2.0.h),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
+                  child: SizedBox(
                     width: 100.0.w,
                     height: 4.0.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 4.0.h,
                           width: 30.0.w,
                           child: ElevatedButton(
@@ -394,7 +394,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                             : Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: Container(
+                                child: SizedBox(
                                   height: 4.0.h,
                                   width: SessionController().getLanguage() == 1
                                       ? 30.0.w
@@ -436,12 +436,12 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
               );
             }),
             getContractsController.loadingDataMoreData.value
-                ? Container(
+                ? const SizedBox(
                     height: double.infinity,
                     width: double.infinity,
                     child: Center(child: LoadingIndicatorBlue()),
                   )
-                : SizedBox()
+                : const SizedBox()
           ],
         );
       }),
@@ -483,7 +483,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 44.0.w,
                               child: Text(
                                 SessionController().getLanguage() == 1
@@ -497,7 +497,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               "${getContractsController.contracts[index].contractno}",
                               style: AppTextStyle.semiBoldBlack12,
@@ -511,7 +511,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 30.0.w,
                               child: Text(
                                 AppMetaLabels().unitNo,
@@ -519,7 +519,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 40.0.w,
@@ -555,7 +555,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
                                 ),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 22.w),
                               child: FittedBox(
@@ -597,7 +597,7 @@ class _TenantContractsScreenState extends State<TenantContractsScreen> {
             ),
             index == getContractsController.contracts.length - 1
                 ? Container()
-                : AppDivider(),
+                : const AppDivider(),
           ],
         ),
       ),

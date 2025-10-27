@@ -27,7 +27,7 @@ class LandlordDashboardGetDataModel {
     if (json['data'] != null) {
       dashboard = <Data>[];
       json['data'].forEach((v) {
-        dashboard!.add(new Data.fromJson(v));
+        dashboard!.add(Data.fromJson(v));
       });
     }
     message = json['message'];

@@ -65,8 +65,8 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.mena.realestate"
         // applicationId "com.mena.flutterjailbreakdetection"
-        minSdkVersion 23
-        targetSdkVersion 34
+        minSdkVersion 24 //23
+        targetSdkVersion 35 //34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
