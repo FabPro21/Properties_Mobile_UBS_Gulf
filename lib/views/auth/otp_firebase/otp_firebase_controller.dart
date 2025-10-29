@@ -66,7 +66,7 @@ class FirebaseAuthController extends GetxController {
     } catch (e) {
       isUpdating.value = false;
       loadingData.value = false;
-      Get.to(() => SafeDeviceCheck());
+      Get.to(() => const SafeDeviceCheck());
     }
   }
 

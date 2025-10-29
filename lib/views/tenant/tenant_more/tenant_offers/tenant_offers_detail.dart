@@ -173,64 +173,63 @@ class _TenantOffersDetailsState extends State<TenantOffersDetails> {
                                                         .semiBoldBlack14,
                                                   )),
                                             ),
-                                      Container(
-                                          child: ListView.builder(
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              padding:
-                                                  EdgeInsets.only(top: 0.5.h),
-                                              shrinkWrap: true,
-                                              itemCount: _controller
-                                                  .offersDetails
-                                                  .value
-                                                  .offerProperties!
-                                                  .length,
-                                              itemBuilder: (context, index) {
-                                                return Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 5.0.w,
-                                                      top: 3.0.h,
-                                                      right: 5.0.w),
-                                                  child: Column(
-                                                    children: [
-                                                      Row(children: [
-                                                        Image.asset(
-                                                          AppImagesPath.home3,
-                                                          width: 6.0.w,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 2.0.w,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 80.0.w,
-                                                          child: Text(
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? _controller
-                                                                        .offersDetails
-                                                                        .value
-                                                                        .offerProperties![
-                                                                            index]
-                                                                        .propertyName!
-                                                                        .trim() 
-                                                                : _controller
-                                                                        .offersDetails
-                                                                        .value
-                                                                        .offerProperties![
-                                                                            index]
-                                                                        .propertyNameAr!
-                                                                        .trim() ,
-                                                            style: AppTextStyle
-                                                                .normalBlack12,
-                                                            maxLines: null,
-                                                          ),
-                                                        ),
-                                                      ]),
-                                                    ],
-                                                  ),
-                                                );
-                                              }))
+                                      ListView.builder(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          padding:
+                                              EdgeInsets.only(top: 0.5.h),
+                                          shrinkWrap: true,
+                                          itemCount: _controller
+                                              .offersDetails
+                                              .value
+                                              .offerProperties!
+                                              .length,
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 5.0.w,
+                                                  top: 3.0.h,
+                                                  right: 5.0.w),
+                                              child: Column(
+                                                children: [
+                                                  Row(children: [
+                                                    Image.asset(
+                                                      AppImagesPath.home3,
+                                                      width: 6.0.w,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 2.0.w,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 80.0.w,
+                                                      child: Text(
+                                                        SessionController()
+                                                                    .getLanguage() ==
+                                                                1
+                                                            ? _controller
+                                                                    .offersDetails
+                                                                    .value
+                                                                    .offerProperties![
+                                                                        index]
+                                                                    .propertyName!
+                                                                    .trim() 
+                                                            : _controller
+                                                                    .offersDetails
+                                                                    .value
+                                                                    .offerProperties![
+                                                                        index]
+                                                                    .propertyNameAr!
+                                                                    .trim() ,
+                                                        style: AppTextStyle
+                                                            .normalBlack12,
+                                                        maxLines: null,
+                                                      ),
+                                                    ),
+                                                  ]),
+                                                ],
+                                              ),
+                                            );
+                                          })
                                     ],
                                   ),
                                 );

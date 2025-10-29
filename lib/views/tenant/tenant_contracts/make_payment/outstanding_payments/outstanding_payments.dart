@@ -1554,41 +1554,39 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                   return payable.errorUploadingCheque
                       ? Column(
                           children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      OpenFile.open(
-                                        payable.filePath,
-                                      );
-                                    },
-                                    child: SizedBox(
-                                      width: Get.width * 0.66,
-                                      child: Text(
-                                        payable.filePath!.split('/').last,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 5,
-                                      ),
+                            Row(
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    OpenFile.open(
+                                      payable.filePath,
+                                    );
+                                  },
+                                  child: SizedBox(
+                                    width: Get.width * 0.66,
+                                    child: Text(
+                                      payable.filePath!.split('/').last,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 5,
                                     ),
                                   ),
-                                  const Spacer(),
-                                  InkWell(
-                                      onTap: () {
-                                        print('Exactly here');
-                                        setState(() {
-                                          payable.filePath = null;
-                                          payable.errorUploadingCheque = false;
-                                        });
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.cancel,
-                                        size: 23,
-                                        color: AppColors.grey1,
-                                      ))
-                                ],
-                              ),
+                                ),
+                                const Spacer(),
+                                InkWell(
+                                    onTap: () {
+                                      print('Exactly here');
+                                      setState(() {
+                                        payable.filePath = null;
+                                        payable.errorUploadingCheque = false;
+                                      });
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      Icons.cancel,
+                                      size: 23,
+                                      color: AppColors.grey1,
+                                    ))
+                              ],
                             ),
                             InkWell(
                               child: const Icon(

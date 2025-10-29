@@ -178,8 +178,8 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                         controller
                                                             .addDesc.value = 2;
                                                       } else
-                                                        controller
-                                                            .addDesc.value = 0;
+                                                        {controller
+                                                            .addDesc.value = 0;}
                                                     },
                                                     child: Row(
                                                       children: [
@@ -215,9 +215,9 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                     .addDesc
                                                                     .value = 2;
                                                               } else
-                                                                controller
+                                                                {controller
                                                                     .addDesc
-                                                                    .value = 0;
+                                                                    .value = 0;}
                                                             },
                                                             value: index,
                                                           );

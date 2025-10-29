@@ -154,67 +154,61 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                       ),
                                       Expanded(
                                         child:
-                                            _controller
-                                                        .offersDetails
-                                                        .value
-                                                        .offerProperties
-                                                        ?.length ==
-                                                    0
+                                            _controller.offersDetails.value.offerProperties?.isEmpty ?? true
                                                 ? AppErrorWidget(
                                                     errorText: AppMetaLabels()
                                                         .noDatafound,
                                                   )
-                                                : Container(
-                                                    child: ListView.builder(
+                                                : ListView.builder(
+                                                    padding:
+                                                        EdgeInsets.only(
+                                                            top: 0.5.h),
+                                                    itemCount: _controller
+                                                        .offersDetails
+                                                        .value
+                                                        .offerProperties
+                                                        ?.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      return Padding(
                                                         padding:
                                                             EdgeInsets.only(
-                                                                top: 0.5.h),
-                                                        itemCount: _controller
-                                                            .offersDetails
-                                                            .value
-                                                            .offerProperties
-                                                            ?.length,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    left: 5.0.w,
-                                                                    top: 3.0.h,
-                                                                    right:
-                                                                        5.0.w),
-                                                            child: Column(
-                                                              children: [
-                                                                Row(children: [
-                                                                  Image.asset(
-                                                                    AppImagesPath
-                                                                        .home3,
-                                                                    width:
-                                                                        6.0.w,
-                                                                  ),
-                                                                  SizedBox(
-                                                                    width:
-                                                                        2.0.w,
-                                                                  ),
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      _controller.offersDetails.value.offerProperties ==
-                                                                              null
-                                                                          ? ''
-                                                                          : SessionController().getLanguage() == 1
-                                                                              ? _controller.offersDetails.value.offerProperties![index].propertyName ?? "".trim()
-                                                                              : _controller.offersDetails.value.offerProperties![index].propertyNameAr ?? "".trim(),
-                                                                      style: AppTextStyle
-                                                                          .normalBlack12,
-                                                                      maxLines:
-                                                                          2,
-                                                                    ),
-                                                                  ),
-                                                                ]),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        })),
+                                                                left: 5.0.w,
+                                                                top: 3.0.h,
+                                                                right:
+                                                                    5.0.w),
+                                                        child: Column(
+                                                          children: [
+                                                            Row(children: [
+                                                              Image.asset(
+                                                                AppImagesPath
+                                                                    .home3,
+                                                                width:
+                                                                    6.0.w,
+                                                              ),
+                                                              SizedBox(
+                                                                width:
+                                                                    2.0.w,
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  _controller.offersDetails.value.offerProperties ==
+                                                                          null
+                                                                      ? ''
+                                                                      : SessionController().getLanguage() == 1
+                                                                          ? _controller.offersDetails.value.offerProperties![index].propertyName ?? "".trim()
+                                                                          : _controller.offersDetails.value.offerProperties![index].propertyNameAr ?? "".trim(),
+                                                                  style: AppTextStyle
+                                                                      .normalBlack12,
+                                                                  maxLines:
+                                                                      2,
+                                                                ),
+                                                              ),
+                                                            ]),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    }),
                                       )
                                     ],
                                   );

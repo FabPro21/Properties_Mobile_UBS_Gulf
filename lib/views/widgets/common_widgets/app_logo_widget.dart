@@ -34,7 +34,7 @@ class AppLogoCollier extends StatelessWidget {
 }
 
 class AppLogoCollierDashboard extends StatelessWidget {
-  const AppLogoCollierDashboard({Key? key}) : super(key: key);
+  const AppLogoCollierDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {

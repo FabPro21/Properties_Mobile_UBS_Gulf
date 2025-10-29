@@ -73,9 +73,9 @@ class SetupMpinController extends GetxController {
         return false;
       } else if (int.parse(pin[i - 1]) + 1 == int.parse(pin[i]) &&
           int.parse(pin[i + 1]) - 1 == int.parse(pin[i]))
-        return false;
+    {    return false;}
       else if (int.parse(pin[i + 1]) + 1 == int.parse(pin[i]) &&
-          int.parse(pin[i - 1]) - 1 == int.parse(pin[i])) return false;
+          int.parse(pin[i - 1]) - 1 == int.parse(pin[i])) {return false;}
     }
     return true;
   }

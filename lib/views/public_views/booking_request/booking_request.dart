@@ -494,6 +494,8 @@
 //     );
 //   }
 
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 //   Column columnList(String t1, String t2) {
 //     return Column(
 //       mainAxisAlignment: MainAxisAlignment.start,
@@ -744,7 +746,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      widget.property?.bedRooms == '0' ||
+                                      widget.property?.bedRooms == 0 ||
                                               widget.property?.bedRooms == 0 ||
                                               widget.property?.bedRooms == null
                                           ? const SizedBox()
@@ -753,7 +755,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      widget.property?.noofWashrooms == '0' ||
+                                      widget.property?.noofWashrooms == 0 ||
                                               widget.property?.noofWashrooms ==
                                                   0 ||
                                               widget.property?.noofWashrooms ==

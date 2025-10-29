@@ -570,16 +570,14 @@ class _LandlordDashboardState extends State<LandlordDashboard> {
                                                             ),
                                                             const Spacer(),
                                                             FittedBox(
-                                                              child: Container(
-                                                                child: Text(
-                                                                  "${landLordPropertiesController.vacantUnit.value.toInt()}",
-                                                                  style: AppTextStyle
-                                                                      .semiBoldBlack10,
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                ),
+                                                              child: Text(
+                                                                "${landLordPropertiesController.vacantUnit.value.toInt()}",
+                                                                style: AppTextStyle
+                                                                    .semiBoldBlack10,
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                               ),
                                                             ),
                                                           ],

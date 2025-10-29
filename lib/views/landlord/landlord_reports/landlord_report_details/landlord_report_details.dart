@@ -14,6 +14,7 @@ import 'package:fap_properties/views/widgets/clear_button.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
 import 'package:fap_properties/views/widgets/custom_app_bar2.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
@@ -199,10 +200,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                 InkWell(
                                   onTap: () async {
                                     lDReportController.selectedPropType.value =
-                                        await Get.to(
-                                            () => const LandlordReportProperties(
-                                                  dropDownType: '4',
-                                                ));
+                                        await Get.to(() =>
+                                            const LandlordReportProperties(
+                                              dropDownType: '4',
+                                            ));
 
                                     if (lDReportController
                                             .selectedPropType.value ==
@@ -257,7 +258,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                     width: 100.0.w,
                                     height: 5.5.h,
                                     decoration: BoxDecoration(
-                                      color: const Color.fromRGBO(246, 248, 249, 1),
+                                      color: const Color.fromRGBO(
+                                          246, 248, 249, 1),
                                       borderRadius:
                                           BorderRadius.circular(0.5.h),
                                     ),
@@ -407,9 +409,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     ),
                                                     const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -507,9 +509,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     ),
                                                     const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -624,9 +626,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     ),
                                                     const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -748,9 +750,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     ),
                                                     const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -871,9 +873,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     ),
                                                     const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -982,7 +984,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       AppMetaLabels()
                                                           .validDateRange;
                                                 }
-                                              } catch (e) {}
+                                              } catch (e) {
+                                                if (kDebugMode) {
+                                                  print('Exception ::::: $e');
+                                                }
+                                              }
                                             },
                                             child: Container(
                                               width: 100.0.w,
@@ -1015,9 +1021,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                   }),
                                                   const Spacer(),
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.symmetric(
-                                                            horizontal: 0.1),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 0.1),
                                                     child: ClearButton(
                                                       clear: () {
                                                         lDReportController
@@ -1196,8 +1202,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 },
                                                 decoration: InputDecoration(
                                                   filled: true,
-                                                  fillColor: const Color.fromRGBO(
-                                                      246, 248, 249, 1),
+                                                  fillColor:
+                                                      const Color.fromRGBO(
+                                                          246, 248, 249, 1),
                                                   focusColor: Colors.red,
                                                   enabledBorder:
                                                       const UnderlineInputBorder(
@@ -1257,8 +1264,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 },
                                                 decoration: InputDecoration(
                                                   filled: true,
-                                                  fillColor: const Color.fromRGBO(
-                                                      246, 248, 249, 1),
+                                                  fillColor:
+                                                      const Color.fromRGBO(
+                                                          246, 248, 249, 1),
                                                   focusColor: Colors.red,
                                                   enabledBorder:
                                                       const UnderlineInputBorder(
@@ -1328,8 +1336,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     var dT =
                                                         await showRoundedDatePicker(
                                                       theme: ThemeData(
-                                                          primarySwatch: Colors
-                                                              .red),
+                                                          primarySwatch:
+                                                              Colors.red),
 
                                                       height: 50.0.h,
                                                       context: context,
@@ -1337,8 +1345,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       locale: SessionController()
                                                                   .getLanguage() ==
                                                               1
-                                                          ? const Locale('en', '')
-                                                          : const Locale('ar', ''),
+                                                          ? const Locale(
+                                                              'en', '')
+                                                          : const Locale(
+                                                              'ar', ''),
                                                       initialDate:
                                                           DateTime.now(),
                                                       firstDate: DateTime(
@@ -1406,7 +1416,12 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         isDownloaded = false;
                                                       });
                                                     }
-                                                  } catch (e) {}
+                                                  } catch (e) {
+                                                    if (kDebugMode) {
+                                                      print(
+                                                          'Exception ::::: $e');
+                                                    }
+                                                  }
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,
@@ -1517,8 +1532,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       locale: SessionController()
                                                                   .getLanguage() ==
                                                               1
-                                                          ? const Locale('en', '')
-                                                          : const Locale('ar', ''),
+                                                          ? const Locale(
+                                                              'en', '')
+                                                          : const Locale(
+                                                              'ar', ''),
                                                       initialDate:
                                                           lDReportController
                                                               .fromDateDT,
@@ -1629,7 +1646,12 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           .value = '';
                                                       return;
                                                     }
-                                                  } catch (e) {}
+                                                  } catch (e) {
+                                                    if (kDebugMode) {
+                                                      print(
+                                                          'Exception ::::: $e');
+                                                    }
+                                                  }
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,
@@ -1757,7 +1779,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                       )
                     : const SizedBox();
               }),
-              isEnableScreen == false ? const ScreenDisableWidget() : const SizedBox(),
+              isEnableScreen == false
+                  ? const ScreenDisableWidget()
+                  : const SizedBox(),
             ],
           ),
           bottomNavigationBar: BottomAppBar(
@@ -1852,7 +1876,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         propertyID = null;
                                       } else {
                                         propertyID = lDReportController
-                                                .selectedPropType.value.id;
+                                            .selectedPropType.value.id;
                                       }
                                       dynamic chequeStatusID;
                                       if (lDReportController
@@ -1861,9 +1885,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         chequeStatusID = null;
                                       } else {
                                         chequeStatusID = lDReportController
-                                                .selectedChequeStatus
-                                                .value
-                                                .id;
+                                            .selectedChequeStatus.value.id;
                                       }
                                       dynamic unitStatusID;
                                       if (lDReportController
@@ -1872,7 +1894,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         unitStatusID = null;
                                       } else {
                                         unitStatusID = lDReportController
-                                                .selectedUnitStatus.value.id;
+                                            .selectedUnitStatus.value.id;
                                       }
 
                                       dynamic contractorID;
@@ -1882,9 +1904,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         contractorID = null;
                                       } else {
                                         contractorID = lDReportController
-                                                .selectedcontractorType
-                                                .value
-                                                .id;
+                                            .selectedcontractorType.value.id;
                                       }
 
                                       dynamic contractCategoryStatusID;
@@ -1896,9 +1916,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                       } else {
                                         contractCategoryStatusID =
                                             lDReportController
-                                                    .selectedcontractCategoryType
-                                                    .value
-                                                    .id;
+                                                .selectedcontractCategoryType
+                                                .value
+                                                .id;
                                       }
                                       dynamic serviceContractStatusID;
                                       if (lDReportController
@@ -1907,7 +1927,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           null) {
                                         serviceContractStatusID = null;
                                       } else {
-                                        serviceContractStatusID = lDReportController
+                                        serviceContractStatusID =
+                                            lDReportController
                                                 .selectedserviceContractStatusType
                                                 .value
                                                 .id;
@@ -1919,9 +1940,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         transactionID = null;
                                       } else {
                                         transactionID = lDReportController
-                                                .selectedTransactionID
-                                                .value
-                                                .id;
+                                            .selectedTransactionID.value.id;
                                       }
                                       propertyID ??= "-1";
                                       contractorID ??= "-1";

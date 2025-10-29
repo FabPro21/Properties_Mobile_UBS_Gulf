@@ -371,18 +371,16 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                           top: 1.5
                                                                               .h),
                                                                   child:
-                                                                      Container(
-                                                                    child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? controller.contractDetails?.contract?.address.toString() ??
-                                                                              ""
-                                                                          : controller.contractDetails?.contract?.addressAr.toString() ??
-                                                                              "",
-                                                                      style: AppTextStyle
-                                                                          .semiBoldBlack10,
-                                                                    ),
-                                                                  ),
+                                                                      Text(
+                                                                        SessionController().getLanguage() ==
+                                                                                1
+                                                                            ? controller.contractDetails?.contract?.address.toString() ??
+                                                                                ""
+                                                                            : controller.contractDetails?.contract?.addressAr.toString() ??
+                                                                                "",
+                                                                        style: AppTextStyle
+                                                                            .semiBoldBlack10,
+                                                                      ),
                                                                 ),
                                                               ],
                                                             ),

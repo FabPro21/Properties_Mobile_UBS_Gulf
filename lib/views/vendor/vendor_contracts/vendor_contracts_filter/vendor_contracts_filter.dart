@@ -6,6 +6,7 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_contracts_filter_controller.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_filter_contract_status/vendor_filter_contracts_status.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -71,7 +72,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                 padding: EdgeInsets.all(0.5.h),
                                 child: Icon(Icons.close,
                                     size: 2.0.h,
-                                    color: const Color.fromRGBO(158, 158, 158, 1)),
+                                    color:
+                                        const Color.fromRGBO(158, 158, 158, 1)),
                               ),
                             ),
                           ),
@@ -126,8 +128,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                       ),
                       InkWell(
                         onTap: () async {
-                          var res =
-                              await Get.to(() => const VendorContractsStatusFilter());
+                          var res = await Get.to(
+                              () => const VendorContractsStatusFilter());
                           if (res != null) {
                             vCFilterController.contractStatusNew.value = res;
                           }
@@ -267,13 +269,18 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) {
+                                    if (kDebugMode) {
+                                      print('Exception :::: $e');
+                                    }
+                                  }
                                 },
                                 child: Container(
                                   width: 40.0.w,
                                   height: 5.5.h,
                                   decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(246, 248, 249, 1),
+                                    color:
+                                        const Color.fromRGBO(246, 248, 249, 1),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                   ),
                                   child: Row(
@@ -386,13 +393,18 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) {
+                                    if (kDebugMode) {
+                                      print('Exception :::: $e');
+                                    }
+                                  }
                                 },
                                 child: Container(
                                   width: 40.0.w,
                                   height: 5.5.h,
                                   decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(246, 248, 249, 1),
+                                    color:
+                                        const Color.fromRGBO(246, 248, 249, 1),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                   ),
                                   child: Row(

@@ -85,7 +85,7 @@ class SelectRoloesController extends GetxController {
     return false;
   }
 
-  Future<void> compareToken(num) async {
+  Future<void> compareToken(String num) async {
     bool isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!isInternetConnected) {
       await Get.to(() => const NoInternetScreen());

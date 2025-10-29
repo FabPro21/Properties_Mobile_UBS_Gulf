@@ -189,14 +189,13 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                     //   child: Text("Total Duration: " +
                     //       controller!.value.duration.toString()),
                     // ),
-                    Container(
-                        child: VideoProgressIndicator(controller!,
-                            allowScrubbing: true,
-                            colors: const VideoProgressColors(
-                              backgroundColor: Colors.white24,
-                              playedColor: Colors.blue,
-                              bufferedColor: Colors.grey,
-                            ))),
+                    VideoProgressIndicator(controller!,
+                        allowScrubbing: true,
+                        colors: const VideoProgressColors(
+                          backgroundColor: Colors.white24,
+                          playedColor: Colors.blue,
+                          bufferedColor: Colors.grey,
+                        )),
                     SizedBox(
                       height: 1.h,
                     ),

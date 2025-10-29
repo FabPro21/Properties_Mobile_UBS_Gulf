@@ -20,9 +20,9 @@ class CheckBoxController {
     if (markedCount.value == marked.length) {
       markAll.value = true;
     } else if (markedCount.value == 0)
-      markAll.value = false;
+      {markAll.value = false;}
     else
-      markAll.value = false;
+     { markAll.value = false;}
   }
 
   void toggleMarkAll() {

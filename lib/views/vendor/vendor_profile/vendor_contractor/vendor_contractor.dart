@@ -84,41 +84,39 @@ class _VendorContractorState extends State<VendorContractor> {
                                   SizedBox(
                                     height: 2.0.h,
                                   ),
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          AppMetaLabels().address,
-                                          style: AppTextStyle.normalGrey10,
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppMetaLabels().address,
+                                        style: AppTextStyle.normalGrey10,
+                                      ),
+                                      const Spacer(),
+                                      SizedBox(
+                                        width: 45.0.w,
+                                        child: Text(
+                                          SessionController().getLanguage() ==
+                                                  1
+                                              ? vendorProfileContrller
+                                                      .vendorProfile
+                                                      .value
+                                                      .profile
+                                                      ?.address ??
+                                                  ""
+                                              : vendorProfileContrller
+                                                      .vendorProfile
+                                                      .value
+                                                      .profile
+                                                      ?.addressAR ??
+                                                  "",
+                                          style: AppTextStyle.semiBoldBlack9,
+                                          textAlign: TextAlign.right,
                                         ),
-                                        const Spacer(),
-                                        SizedBox(
-                                          width: 45.0.w,
-                                          child: Text(
-                                            SessionController().getLanguage() ==
-                                                    1
-                                                ? vendorProfileContrller
-                                                        .vendorProfile
-                                                        .value
-                                                        .profile
-                                                        ?.address ??
-                                                    ""
-                                                : vendorProfileContrller
-                                                        .vendorProfile
-                                                        .value
-                                                        .profile
-                                                        ?.addressAR ??
-                                                    "",
-                                            style: AppTextStyle.semiBoldBlack9,
-                                            textAlign: TextAlign.right,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(
                                     height: 2.0.h,
@@ -248,7 +246,7 @@ class _VendorContractorState extends State<VendorContractor> {
           style: AppTextStyle.normalGrey10,
         ),
         const Spacer(),
-        Container(
+        SizedBox(
           width: Get.width * 0.5,
           child: Text(
             t2,

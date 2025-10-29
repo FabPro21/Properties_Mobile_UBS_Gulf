@@ -288,11 +288,9 @@ class _PublicAllNotificationsState extends State<PublicAllNotifications> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
-                child: Container(
-                  child: Text(
-                    _controller.notifications![index].createdOn ?? "",
-                    style: AppTextStyle.normalBlack10,
-                  ),
+                child: Text(
+                  _controller.notifications![index].createdOn ?? "",
+                  style: AppTextStyle.normalBlack10,
                 ),
               ),
               SizedBox(

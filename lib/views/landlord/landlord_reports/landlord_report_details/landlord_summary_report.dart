@@ -50,7 +50,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
             Column(children: [
               CustomAppBar2(
                   title:
-                      widget.reportName ?? "" ' ' + AppMetaLabels().summary),
+                      '${widget.reportName ?? ''} ${AppMetaLabels().summary}'),
               Expanded(
                   child: Padding(
                       padding: EdgeInsets.only(
@@ -97,7 +97,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         padding: EdgeInsets.zero,
-                                        physics: const NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         // itemCount: 3,
                                         itemCount: widget.reportName ==
                                                 'AMC Report'
@@ -171,7 +172,9 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                     )
                   : const SizedBox();
             }),
-            isEnableScreen == false ? const ScreenDisableWidget() : const SizedBox(),
+            isEnableScreen == false
+                ? const ScreenDisableWidget()
+                : const SizedBox(),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
@@ -182,7 +185,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                 : Container(
                     height: 10.h, //set your height here
                     width: double.maxFinite, //set your width here
-                    decoration: BoxDecoration(color:  Colors.transparent, boxShadow: [
+                    decoration:
+                        BoxDecoration(color: Colors.transparent, boxShadow: [
                       BoxShadow(
                         color: Colors.transparent,
                         blurRadius: 0.9.h,
@@ -250,13 +254,10 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                                           '\n',
                                                                           ''));
 
-                                                              var path = await lDReportController.createFile(
-                                                                  base64Decoded,
-                                                                  '${lDReportController
-                                                                          .downloadedFileModel!
-                                                                          .name!}.${lDReportController
-                                                                          .downloadedFileModel!
-                                                                          .extension!}');
+                                                              var path = await lDReportController
+                                                                  .createFile(
+                                                                      base64Decoded,
+                                                                      '${lDReportController.downloadedFileModel!.name!}.${lDReportController.downloadedFileModel!.extension!}');
                                                               final result =
                                                                   await OpenFile
                                                                       .open(
@@ -517,7 +518,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
 class LPOReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
-  const LPOReportSummaryWidget({super.key, this.index, this.lDReportController});
+  const LPOReportSummaryWidget(
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<LPOReportSummaryWidget> createState() => _LPOReportSummaryWidgetState();
@@ -815,7 +817,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().lPOStatus,
                               style: AppTextStyle.normalGrey11,
                             ),
-                          const  Spacer(),
+                            const Spacer(),
                             ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 35.w),
                               child: FittedBox(
@@ -915,7 +917,8 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
 class VatReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
-  const VatReportSummaryWidget({super.key, this.index, this.lDReportController});
+  const VatReportSummaryWidget(
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<VatReportSummaryWidget> createState() => _VatReportSummaryWidgetState();

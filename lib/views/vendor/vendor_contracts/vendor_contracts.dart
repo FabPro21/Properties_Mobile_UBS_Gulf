@@ -519,7 +519,7 @@ class _VendorContractsScreenState extends State<VendorContractsScreen> {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                                Spacer(),
+                              const  Spacer(),
                                 SizedBox(
                                   width: 25.w,
                                   child: Text(

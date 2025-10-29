@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/views/widgets/common_widgets/error_text_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_white.dart';

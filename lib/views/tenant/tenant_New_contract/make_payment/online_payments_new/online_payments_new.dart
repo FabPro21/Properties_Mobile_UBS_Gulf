@@ -1574,78 +1574,76 @@ class _OnlinePaymentsNewContractState extends State<OnlinePaymentsNewContract> {
         Obx(() {
           return payable.defaultpaymentmethodtype!.value ==
                   _controller.isPayemntValue.value
-              ? Container(
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          if (payable.type!.toLowerCase() ==
-                              'contract payable') {
-                            payable.isChecked.value = !payable.isChecked.value;
-                            _controller.sumSelectedPayments();
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Obx(() {
-                              return Checkbox(
-                                activeColor: AppColors.blueColor,
-                                value: payable.isChecked.value,
-                                onChanged: (bool? value) {
-                                  if (payable.type!.toLowerCase() ==
-                                      'contract payable') {
-                                    payable.isChecked.value = value!;
-                                    _controller.sumSelectedPayments();
-                                  }
-                                },
-                              );
-                            }), //Check
-                            Expanded(
-                              child: Text(
-                                SessionController().getLanguage() == 1
-                                    ? payable.title??""
-                                    : payable.titleAr ?? '',
-                                style: AppTextStyle.normalBlack10,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 4.0.w),
-                                child: Text(
-                                  '${AppMetaLabels().aed} ${payable.amountFormatted}',
-                                  style: AppTextStyle.normalBlack10,
-                                  textAlign: TextAlign.end,
-                                ),
-                              ),
-                            )
-                          ],
+              ? Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if (payable.type!.toLowerCase() ==
+                          'contract payable') {
+                        payable.isChecked.value = !payable.isChecked.value;
+                        _controller.sumSelectedPayments();
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Obx(() {
+                          return Checkbox(
+                            activeColor: AppColors.blueColor,
+                            value: payable.isChecked.value,
+                            onChanged: (bool? value) {
+                              if (payable.type!.toLowerCase() ==
+                                  'contract payable') {
+                                payable.isChecked.value = value!;
+                                _controller.sumSelectedPayments();
+                              }
+                            },
+                          );
+                        }), //Check
+                        Expanded(
+                          child: Text(
+                            SessionController().getLanguage() == 1
+                                ? payable.title??""
+                                : payable.titleAr ?? '',
+                            style: AppTextStyle.normalBlack10,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppMetaLabels().dueDate,
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 4.0.w),
+                            child: Text(
+                              '${AppMetaLabels().aed} ${payable.amountFormatted}',
                               style: AppTextStyle.normalBlack10,
+                              textAlign: TextAlign.end,
                             ),
-                            Text(
-                              payable.paymentDate??"",
-                              style: AppTextStyle.normalBlue10,
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Text(
-                      //   'Payment Method ID : ${payable.paymentMethodId.value}',
-                      // ),
-                    ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                )
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppMetaLabels().dueDate,
+                          style: AppTextStyle.normalBlack10,
+                        ),
+                        Text(
+                          payable.paymentDate??"",
+                          style: AppTextStyle.normalBlue10,
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Text(
+                  //   'Payment Method ID : ${payable.paymentMethodId.value}',
+                  // ),
+                ],
+              )
               : const SizedBox();
         }),
         payable.defaultpaymentmethodtype!.value ==

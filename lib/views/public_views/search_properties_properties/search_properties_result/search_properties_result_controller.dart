@@ -1,8 +1,8 @@
-import 'dart:typed_data';
 import 'package:fap_properties/data/helpers/base_client.dart';
 
 import 'package:fap_properties/data/repository/public_repository.dart';
 import 'package:fap_properties/views/common/no_internet_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../../../data/models/public_models/get_properties_model.dart';
 import '../../../../data/models/public_models/public_booking_request/public_bookingreq_get_images_model.dart';
@@ -134,7 +134,9 @@ class SearchPropertiesResultController extends GetxController {
         isLoadingMore.value = false;
       }
     } catch (e) {
-      print('Exception :::: $e');
+     if(kDebugMode){
+       print('Exception :::: $e');
+     }
     }
   }
   // RxString noMoreDataError = ''.obs;

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_type_check, unnecessary_null_comparison
+// ignore_for_file: unnecessary_type_check, unnecessary_null_comparison, prefer_is_empty
 
 import 'dart:io';
 import 'dart:math';

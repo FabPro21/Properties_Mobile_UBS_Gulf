@@ -92,8 +92,9 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     return AppMetaLabels().invalidText;
                                   } else if (value.trim().isEmpty == true) {
                                     return AppMetaLabels().invalidText;
-                                  } else
+                                  } else {
                                     return null;
+                                  }
                                 },
                               ),
                             ),
@@ -186,19 +187,21 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     InkWell(
                                       onTap: () async {
                                         _focusNode.unfocus();
-                                        if (formKey.currentState!.validate()) if (await _controller
-                                            .addTicketReply(
-                                                widget.reqNo.toString(),
-                                                _messageTextController.text)) {
-                                          _controller.typing.value = false;
-                                          _messageTextController.clear();
-                                          scrollToEndofChat();
-                                        } else {
-                                          Get.snackbar(
-                                            AppMetaLabels().error,
-                                            _controller.errorReplying,
-                                            backgroundColor: AppColors.white54,
-                                          );
+                                        if (formKey.currentState!.validate()) {
+                                          if (await _controller.addTicketReply(
+                                              widget.reqNo.toString(),
+                                              _messageTextController.text)) {
+                                            _controller.typing.value = false;
+                                            _messageTextController.clear();
+                                            scrollToEndofChat();
+                                          } else {
+                                            Get.snackbar(
+                                              AppMetaLabels().error,
+                                              _controller.errorReplying,
+                                              backgroundColor:
+                                                  AppColors.white54,
+                                            );
+                                          }
                                         }
                                       },
                                       child: Container(
@@ -321,7 +324,8 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                           filled: true,
                                           hintText: AppMetaLabels().yourMessage,
                                           hintStyle: AppTextStyle.normalGrey11,
-                                          errorStyle: const TextStyle(fontSize: 0),
+                                          errorStyle:
+                                              const TextStyle(fontSize: 0),
                                           contentPadding: EdgeInsets.only(
                                               top: 4.w,
                                               left: 4.0.w,

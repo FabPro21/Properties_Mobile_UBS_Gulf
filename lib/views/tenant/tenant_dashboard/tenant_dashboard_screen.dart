@@ -768,251 +768,249 @@ class _TenantDashboardState extends State<TenantDashboard>
                   // }),
 
                   Expanded(
-                    child: Container(
-                      child: Stack(
-                        children: [
-                          SingleChildScrollView(
-                            // change column into stack
-                            child: Column(
-                              children: [
-                                ///////////////////////////////////////////
-                                ////   Your Contracts Widget
-                                ///////////////////////////////////////////
-                                YourContracts(
-                                  manageContracts: widget.manageContracts,
-                                ),
-                                ///////////////////////////////////////////
-                                ////   Service Request Widget
-                                ///////////////////////////////////////////
-                                // const ServicesRequestWidget(),
-                                ///////////////////////////////////////////
-                                ////   Payments Widget
-                                ///////////////////////////////////////////
-                                // Padding(
-                                //   padding: EdgeInsets.only(
-                                //       left: 1.8.h,
-                                //       right: 1.8.h,
-                                //       top: 3.0.h,
-                                //       bottom: 2.h),
-                                //   child: PaymentsWidget(
-                                //     managePayments: widget.managePayments,
-                                //   ),
-                                // ),
-                              ],
-                            ),
+                    child: Stack(
+                      children: [
+                        SingleChildScrollView(
+                          // change column into stack
+                          child: Column(
+                            children: [
+                              ///////////////////////////////////////////
+                              ////   Your Contracts Widget
+                              ///////////////////////////////////////////
+                              YourContracts(
+                                manageContracts: widget.manageContracts,
+                              ),
+                              ///////////////////////////////////////////
+                              ////   Service Request Widget
+                              ///////////////////////////////////////////
+                              // const ServicesRequestWidget(),
+                              ///////////////////////////////////////////
+                              ////   Payments Widget
+                              ///////////////////////////////////////////
+                              // Padding(
+                              //   padding: EdgeInsets.only(
+                              //       left: 1.8.h,
+                              //       right: 1.8.h,
+                              //       top: 3.0.h,
+                              //       bottom: 2.h),
+                              //   child: PaymentsWidget(
+                              //     managePayments: widget.managePayments,
+                              //   ),
+                              // ),
+                            ],
                           ),
-                          // Remove the Pop up
-                          // Align(
-                          //   alignment: SessionController().getLanguage() == 1
-                          //       ? Alignment.topRight
-                          //       : Alignment.topLeft,
-                          //   child: Obx(() {
-                          //     // Tooltip Conditions
-                          //     // 1- If banner and notifiation popup both are not available the
-                          //     //    tooltip will not show
-                          //     // 2- If only banner is available means notification popup is not
-                          //     //    available then tooltip will show
-                          //     // 3- If both notification popup and banner will available then
-                          //     //    tooltip will show once notification banner will close
-                          //     return tDGDController.loadingData.value != true &&
-                          //             tDGDController.showRenewalButton.value
-                          //         ? Stack(
-                          //             children: [
-                          //               Transform.translate(
-                          //                 offset: Offset(0, -7),
-                          //                 child: Container(
-                          //                   width: 50.w,
-                          //                   height: Get.height * 0.085,
-                          //                   margin: EdgeInsets.only(
-                          //                     right: SessionController()
-                          //                                 .getLanguage() ==
-                          //                             1
-                          //                         ? 2.h
-                          //                         : 0.h,
-                          //                     left: SessionController()
-                          //                                 .getLanguage() ==
-                          //                             1
-                          //                         ? 0.h
-                          //                         : 2.h,
-                          //                   ),
-                          //                   decoration: ShapeDecoration(
-                          //                     color: Colors.white,
-                          //                     shape: MessageBorder(),
-                          //                     shadows: [
-                          //                       BoxShadow(
-                          //                           color: Colors.black,
-                          //                           blurRadius: 4.0,
-                          //                           offset: Offset(2, 2)),
-                          //                     ],
-                          //                   ),
-                          //                   alignment: Alignment.center,
-                          //                   padding: EdgeInsets.only(
-                          //                     left: 1.w,
-                          //                     right: 1.w,
-                          //                     // top: 1.w,
-                          //                     // bottom: 1.w,
-                          //                   ),
-                          //                   child: RichText(
-                          //                     textAlign: TextAlign.center,
-                          //                     text: TextSpan(
-                          //                       children: [
-                          //                         TextSpan(
-                          //                           text: AppMetaLabels()
-                          //                               .clickaboveButton,
-                          //                           style: AppTextStyle
-                          //                               .normalBlack9
-                          //                               .copyWith(height: 1.2),
-                          //                         ),
-                          //                         TextSpan(
-                          //                           text: SessionController()
-                          //                                       .getLanguage() ==
-                          //                                   1
-                          //                               ? AppMetaLabels().renwal
-                          //                               : '',
-                          //                           style: AppTextStyle
-                          //                               .semiBoldBlack9
-                          //                               .copyWith(height: 1.2),
-                          //                         ),
-                          //                         TextSpan(
-                          //                           text: SessionController()
-                          //                                       .getLanguage() ==
-                          //                                   1
-                          //                               ? AppMetaLabels()
-                          //                                   .processOr
-                          //                               : '',
-                          //                           style: AppTextStyle
-                          //                               .normalBlack9
-                          //                               .copyWith(height: 1.2),
-                          //                         ),
-                          //                         TextSpan(
-                          //                             text: SessionController()
-                          //                                         .getLanguage() ==
-                          //                                     1
-                          //                                 ? AppMetaLabels()
-                          //                                     .clickHere
-                          //                                 : '',
-                          //                             style: AppTextStyle
-                          //                                 .semiBoldBlue9ul
-                          //                                 .copyWith(
-                          //                                     height: 1.2),
-                          //                             recognizer:
-                          //                                 TapGestureRecognizer()
-                          //                                   ..onTap = () async {
-                          //                                     // await Get.to(() =>
-                          //                                     //     ContractsWithAction());
-                          //                                     await Get.to(() =>
-                          //                                         ContractsFLowTabs());
-                          //                                     tDGDController
-                          //                                         .getDashboardData();
-                          //                                     setState(() {});
-                          //                                   }),
-                          //                       ],
-                          //                     ),
-                          //                   ),
-                          //                 ),
-                          //               ),
-
-                          //               // Container(
-                          //               //   padding: EdgeInsets.symmetric(
-                          //               //       horizontal: 0.5.h,
-                          //               //       vertical: 0.4.h),
-                          //               //   width: 64.w,
-                          //               //   decoration: BoxDecoration(
-                          //               //     color: Colors.white70,
-                          //               //     boxShadow: [
-                          //               //       BoxShadow(
-                          //               //         color: Colors.black12,
-                          //               //         blurRadius: 1.0.h,
-                          //               //         spreadRadius: 0.6.h,
-                          //               //         offset: Offset(0.0.h, 0.7.h),
-                          //               //       )
-                          //               //     ],
-                          //               //     borderRadius:
-                          //               //         BorderRadius.circular(8),
-                          //               //     border: Border.all(
-                          //               //         color: AppColors.blueColor,
-                          //               //         width: 2),
-                          //               //   ),
-                          //               //   child: Container(
-                          //               //     decoration: BoxDecoration(
-                          //               //       color: Colors.white,
-                          //               //       borderRadius:
-                          //               //           BorderRadius.circular(6),
-                          //               //       boxShadow: [
-                          //               //         BoxShadow(
-                          //               //           color: Colors.black12,
-                          //               //           blurRadius: 1.0.h,
-                          //               //           spreadRadius: 0.6.h,
-                          //               //           offset: Offset(0.0.h, 0.7.h),
-                          //               //         ),
-                          //               //       ],
-                          //               //     ),
-                          //               //     child: Padding(
-                          //               //       padding:
-                          //               //           const EdgeInsets.all(2.0),
-                          //               //       child: RichText(
-                          //               //         textAlign: TextAlign.center,
-                          //               //         text: TextSpan(
-                          //               //           children: [
-                          //               //             TextSpan(
-                          //               //               text: AppMetaLabels()
-                          //               //                   .clickaboveButton,
-                          //               //               style: AppTextStyle
-                          //               //                   .normalBlack9
-                          //               //                   .copyWith(
-                          //               //                       height: 1.2),
-                          //               //             ),
-                          //               //             TextSpan(
-                          //               //               text: AppMetaLabels()
-                          //               //                   .renwalOrVacating,
-                          //               //               style: AppTextStyle
-                          //               //                   .semiBoldBlack9
-                          //               //                   .copyWith(
-                          //               //                       height: 1.2),
-                          //               //             ),
-                          //               //             TextSpan(
-                          //               //               text: AppMetaLabels()
-                          //               //                   .processOr,
-                          //               //               style: AppTextStyle
-                          //               //                   .normalBlack9
-                          //               //                   .copyWith(
-                          //               //                       height: 1.2),
-                          //               //             ),
-                          //               //             TextSpan(
-                          //               //                 text: AppMetaLabels()
-                          //               //                     .clickHere,
-                          //               //                 style: AppTextStyle
-                          //               //                     .semiBoldBlue9ul
-                          //               //                     .copyWith(
-                          //               //                         height: 1.2),
-                          //               //                 recognizer:
-                          //               //                     TapGestureRecognizer()
-                          //               //                       ..onTap =
-                          //               //                           () async {
-                          //               //                         setState(() {
-                          //               //                           tDGDController
-                          //               //                               .showSimpleToolTip
-                          //               //                               .value = false;
-                          //               //                         });
-                          //               //                         await Get.to(() =>
-                          //               //                             ContractsWithAction());
-                          //               //                         tDGDController
-                          //               //                             .getDashboardData();
-                          //               //                         setState(() {});
-                          //               //                       }),
-                          //               //           ],
-                          //               //         ),
-                          //               //       ),
-                          //               //     ),
-                          //               //   ),
-                          //               // ),
-                          //             ],
-                          //           )
-                          //         : SizedBox();
-                          //   }),
-                          // ),
-                        ],
-                      ),
+                        ),
+                        // Remove the Pop up
+                        // Align(
+                        //   alignment: SessionController().getLanguage() == 1
+                        //       ? Alignment.topRight
+                        //       : Alignment.topLeft,
+                        //   child: Obx(() {
+                        //     // Tooltip Conditions
+                        //     // 1- If banner and notifiation popup both are not available the
+                        //     //    tooltip will not show
+                        //     // 2- If only banner is available means notification popup is not
+                        //     //    available then tooltip will show
+                        //     // 3- If both notification popup and banner will available then
+                        //     //    tooltip will show once notification banner will close
+                        //     return tDGDController.loadingData.value != true &&
+                        //             tDGDController.showRenewalButton.value
+                        //         ? Stack(
+                        //             children: [
+                        //               Transform.translate(
+                        //                 offset: Offset(0, -7),
+                        //                 child: Container(
+                        //                   width: 50.w,
+                        //                   height: Get.height * 0.085,
+                        //                   margin: EdgeInsets.only(
+                        //                     right: SessionController()
+                        //                                 .getLanguage() ==
+                        //                             1
+                        //                         ? 2.h
+                        //                         : 0.h,
+                        //                     left: SessionController()
+                        //                                 .getLanguage() ==
+                        //                             1
+                        //                         ? 0.h
+                        //                         : 2.h,
+                        //                   ),
+                        //                   decoration: ShapeDecoration(
+                        //                     color: Colors.white,
+                        //                     shape: MessageBorder(),
+                        //                     shadows: [
+                        //                       BoxShadow(
+                        //                           color: Colors.black,
+                        //                           blurRadius: 4.0,
+                        //                           offset: Offset(2, 2)),
+                        //                     ],
+                        //                   ),
+                        //                   alignment: Alignment.center,
+                        //                   padding: EdgeInsets.only(
+                        //                     left: 1.w,
+                        //                     right: 1.w,
+                        //                     // top: 1.w,
+                        //                     // bottom: 1.w,
+                        //                   ),
+                        //                   child: RichText(
+                        //                     textAlign: TextAlign.center,
+                        //                     text: TextSpan(
+                        //                       children: [
+                        //                         TextSpan(
+                        //                           text: AppMetaLabels()
+                        //                               .clickaboveButton,
+                        //                           style: AppTextStyle
+                        //                               .normalBlack9
+                        //                               .copyWith(height: 1.2),
+                        //                         ),
+                        //                         TextSpan(
+                        //                           text: SessionController()
+                        //                                       .getLanguage() ==
+                        //                                   1
+                        //                               ? AppMetaLabels().renwal
+                        //                               : '',
+                        //                           style: AppTextStyle
+                        //                               .semiBoldBlack9
+                        //                               .copyWith(height: 1.2),
+                        //                         ),
+                        //                         TextSpan(
+                        //                           text: SessionController()
+                        //                                       .getLanguage() ==
+                        //                                   1
+                        //                               ? AppMetaLabels()
+                        //                                   .processOr
+                        //                               : '',
+                        //                           style: AppTextStyle
+                        //                               .normalBlack9
+                        //                               .copyWith(height: 1.2),
+                        //                         ),
+                        //                         TextSpan(
+                        //                             text: SessionController()
+                        //                                         .getLanguage() ==
+                        //                                     1
+                        //                                 ? AppMetaLabels()
+                        //                                     .clickHere
+                        //                                 : '',
+                        //                             style: AppTextStyle
+                        //                                 .semiBoldBlue9ul
+                        //                                 .copyWith(
+                        //                                     height: 1.2),
+                        //                             recognizer:
+                        //                                 TapGestureRecognizer()
+                        //                                   ..onTap = () async {
+                        //                                     // await Get.to(() =>
+                        //                                     //     ContractsWithAction());
+                        //                                     await Get.to(() =>
+                        //                                         ContractsFLowTabs());
+                        //                                     tDGDController
+                        //                                         .getDashboardData();
+                        //                                     setState(() {});
+                        //                                   }),
+                        //                       ],
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //               ),
+                    
+                        //               // Container(
+                        //               //   padding: EdgeInsets.symmetric(
+                        //               //       horizontal: 0.5.h,
+                        //               //       vertical: 0.4.h),
+                        //               //   width: 64.w,
+                        //               //   decoration: BoxDecoration(
+                        //               //     color: Colors.white70,
+                        //               //     boxShadow: [
+                        //               //       BoxShadow(
+                        //               //         color: Colors.black12,
+                        //               //         blurRadius: 1.0.h,
+                        //               //         spreadRadius: 0.6.h,
+                        //               //         offset: Offset(0.0.h, 0.7.h),
+                        //               //       )
+                        //               //     ],
+                        //               //     borderRadius:
+                        //               //         BorderRadius.circular(8),
+                        //               //     border: Border.all(
+                        //               //         color: AppColors.blueColor,
+                        //               //         width: 2),
+                        //               //   ),
+                        //               //   child: Container(
+                        //               //     decoration: BoxDecoration(
+                        //               //       color: Colors.white,
+                        //               //       borderRadius:
+                        //               //           BorderRadius.circular(6),
+                        //               //       boxShadow: [
+                        //               //         BoxShadow(
+                        //               //           color: Colors.black12,
+                        //               //           blurRadius: 1.0.h,
+                        //               //           spreadRadius: 0.6.h,
+                        //               //           offset: Offset(0.0.h, 0.7.h),
+                        //               //         ),
+                        //               //       ],
+                        //               //     ),
+                        //               //     child: Padding(
+                        //               //       padding:
+                        //               //           const EdgeInsets.all(2.0),
+                        //               //       child: RichText(
+                        //               //         textAlign: TextAlign.center,
+                        //               //         text: TextSpan(
+                        //               //           children: [
+                        //               //             TextSpan(
+                        //               //               text: AppMetaLabels()
+                        //               //                   .clickaboveButton,
+                        //               //               style: AppTextStyle
+                        //               //                   .normalBlack9
+                        //               //                   .copyWith(
+                        //               //                       height: 1.2),
+                        //               //             ),
+                        //               //             TextSpan(
+                        //               //               text: AppMetaLabels()
+                        //               //                   .renwalOrVacating,
+                        //               //               style: AppTextStyle
+                        //               //                   .semiBoldBlack9
+                        //               //                   .copyWith(
+                        //               //                       height: 1.2),
+                        //               //             ),
+                        //               //             TextSpan(
+                        //               //               text: AppMetaLabels()
+                        //               //                   .processOr,
+                        //               //               style: AppTextStyle
+                        //               //                   .normalBlack9
+                        //               //                   .copyWith(
+                        //               //                       height: 1.2),
+                        //               //             ),
+                        //               //             TextSpan(
+                        //               //                 text: AppMetaLabels()
+                        //               //                     .clickHere,
+                        //               //                 style: AppTextStyle
+                        //               //                     .semiBoldBlue9ul
+                        //               //                     .copyWith(
+                        //               //                         height: 1.2),
+                        //               //                 recognizer:
+                        //               //                     TapGestureRecognizer()
+                        //               //                       ..onTap =
+                        //               //                           () async {
+                        //               //                         setState(() {
+                        //               //                           tDGDController
+                        //               //                               .showSimpleToolTip
+                        //               //                               .value = false;
+                        //               //                         });
+                        //               //                         await Get.to(() =>
+                        //               //                             ContractsWithAction());
+                        //               //                         tDGDController
+                        //               //                             .getDashboardData();
+                        //               //                         setState(() {});
+                        //               //                       }),
+                        //               //           ],
+                        //               //         ),
+                        //               //       ),
+                        //               //     ),
+                        //               //   ),
+                        //               // ),
+                        //             ],
+                        //           )
+                        //         : SizedBox();
+                        //   }),
+                        // ),
+                      ],
                     ),
                   )
                 ],

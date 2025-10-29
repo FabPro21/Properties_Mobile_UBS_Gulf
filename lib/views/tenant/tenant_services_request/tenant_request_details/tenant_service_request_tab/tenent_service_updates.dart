@@ -101,7 +101,7 @@ class _TenantServiceRequestUpdatesState
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
                                     } else
-                                      return null;
+                                  {    return null;}
                                   },
                                 ),
                               ),

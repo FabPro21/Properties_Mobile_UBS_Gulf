@@ -100,8 +100,9 @@ class _VendorInvoiceCommunicationState
                                       return AppMetaLabels().invalidText;
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
-                                    } else
+                                    } else {
                                       return null;
+                                    }
                                   },
                                 ),
                               ),
@@ -163,7 +164,8 @@ class _VendorInvoiceCommunicationState
                                             _controller.fileToUpload.value =
                                                 DocFile();
                                           },
-                                          icon: const Icon(Icons.cancel_outlined))
+                                          icon:
+                                              const Icon(Icons.cancel_outlined))
                                     ],
                                   ),
                             SizedBox(
@@ -191,7 +193,7 @@ class _VendorInvoiceCommunicationState
                                       InkWell(
                                         onTap: () async {
                                           _focusNode.unfocus();
-                                          if (formKey.currentState!.validate()) if (await _controller
+                                          if (formKey.currentState!.validate()) {if (await _controller
                                               .addTicketReply(
                                                   detailController.caseNoInvoice
                                                       .toString(),
@@ -209,7 +211,7 @@ class _VendorInvoiceCommunicationState
                                                       .someThingWentWrong
                                                   : _controller.errorReplying,
                                             );
-                                          }
+                                          }}
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -337,7 +339,8 @@ class _VendorInvoiceCommunicationState
                                                 AppMetaLabels().yourMessage,
                                             hintStyle:
                                                 AppTextStyle.normalGrey11,
-                                            errorStyle: const TextStyle(fontSize: 0),
+                                            errorStyle:
+                                                const TextStyle(fontSize: 0),
                                             contentPadding: EdgeInsets.only(
                                                 top: 4.w, left: 4.0.w),
                                           ),

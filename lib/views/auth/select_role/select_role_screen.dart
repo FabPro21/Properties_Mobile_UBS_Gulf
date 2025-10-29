@@ -412,7 +412,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                       ),
                       Padding(
                           padding: EdgeInsets.only(top: 6.0.h),
-                          child: AppLogoCollier()
+                          child: const AppLogoCollier()
                           // const AppLogo(),
                           ),
                       Obx(() {
