@@ -18,13 +18,12 @@ class ContractCheckin extends StatefulWidget {
   final int? dueActionId;
   final int? caseId;
   const ContractCheckin(
-      {Key? key,
+      {super.key,
       this.contractNo,
       this.contractId,
       this.caller,
       this.dueActionId,
-      this.caseId})
-      : super(key: key);
+      this.caseId});
 
   @override
   _ContractCheckinState createState() => _ContractCheckinState();
@@ -136,20 +135,20 @@ class _ContractCheckinState extends State<ContractCheckin> {
                           width: 79.0.w,
                           child: Obx(() {
                             return controller.checkingIn.value
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(1.3.h),
-                                      ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                      ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                                     ),
                                     onPressed: () async {
-                                      var resp;
+                                      String resp;
                                       resp = await controller.checkinContract(
                                           widget.contractId!, widget.caller!);
 
-                                      if (resp == 'ok')
+                                      if (resp == 'ok') {
                                         showDialog(
                                             context: context,
                                             barrierDismissible: false,
@@ -161,6 +160,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
                                                       Colors.transparent,
                                                   content: showDialogData());
                                             });
+                                      }
                                     },
                                     child: Text(
                                       AppMetaLabels().checkin,
@@ -171,7 +171,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
                         ),
                       ],
                     ))),
-            Spacer()
+            const Spacer()
           ])),
     );
   }
@@ -235,7 +235,7 @@ class _ContractCheckinState extends State<ContractCheckin> {
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
-                          ), backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                          ), backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                         ),
                         onPressed: () {
                           Get.back();

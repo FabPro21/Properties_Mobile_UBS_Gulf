@@ -20,9 +20,9 @@ class GetAllLpoWidgetController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -40,10 +40,11 @@ class GetAllLpoWidgetController extends GetxController {
       } else {
         print('Inside the Else::::::::');
         getAllLposModel.value = result;
-        if (getAllLposModel.value.lpos!.length > 3)
+        if (getAllLposModel.value.lpos!.length > 3) {
           lpoWidgetListLength = 3;
-        else
+        } else {
           lpoWidgetListLength = getAllLposModel.value.lpos!.length;
+        }
         print(lpoWidgetListLength);
         loadingData.value = false;
       }
@@ -54,9 +55,9 @@ class GetAllLpoWidgetController extends GetxController {
   }
 
   getDataPagination(String pageNo, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -74,10 +75,11 @@ class GetAllLpoWidgetController extends GetxController {
       } else {
         print('Inside the Else::::::::');
         getAllLposModel.value = result;
-        if (getAllLposModel.value.lpos!.length > 3)
+        if (getAllLposModel.value.lpos!.length > 3) {
           lpoWidgetListLength = 3;
-        else
+        } else {
           lpoWidgetListLength = getAllLposModel.value.lpos!.length;
+        }
         print(lpoWidgetListLength);
         loadingData.value = false;
       }

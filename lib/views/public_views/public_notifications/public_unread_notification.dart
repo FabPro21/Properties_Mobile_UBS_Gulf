@@ -16,7 +16,7 @@ import 'public_notification_controller.dart';
 import 'public_notification_details.dart';
 
 class PublicUnreadNotification extends StatefulWidget {
-  const PublicUnreadNotification({Key? key}) : super(key: key);
+  const PublicUnreadNotification({super.key});
 
   @override
   _PublicUnreadNotificationState createState() =>
@@ -24,7 +24,7 @@ class PublicUnreadNotification extends StatefulWidget {
 }
 
 class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
-  var _controller = Get.find<PublicNotificationsController>();
+  final _controller = Get.find<PublicNotificationsController>();
   _getUnreadNotifications() async {
     await _controller.unReadNotifications(_controller.pagaNoPURead);
   }
@@ -47,7 +47,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
       resizeToAvoidBottomInset: false,
       body: Obx(() {
         return _controller.unreadNotificationsLoading.value
-            ? LoadingIndicatorBlue()
+            ? const LoadingIndicatorBlue()
             : _controller.errorUnread.value != '' ||
                     _controller.unreadLength == 0
                 ? CustomErrorWidget(
@@ -102,7 +102,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                           });
                                         }
                                       }
-                                      Get.to(() => PublicNotificationDetails());
+                                      Get.to(() => const PublicNotificationDetails());
                                       _controller.unreadNotificationsLoading
                                           .value = false;
                                       _getUnreadNotifications();
@@ -124,7 +124,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                               return _controller.noMoreDataUnRead.value != ''
                                   ? Text(
                                       AppMetaLabels().noMoreData,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.blue,
                                       ).copyWith(fontWeight: FontWeight.bold),
                                     )
@@ -133,7 +133,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                       ? SizedBox(
                                           width: 75.w,
                                           height: 5.h,
-                                          child: Center(
+                                          child: const Center(
                                             child: LoadingIndicatorBlue(),
                                           ),
                                         )
@@ -160,13 +160,13 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                                                     TextSpan(
                                                       text: AppMetaLabels()
                                                           .loadMoreData,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         color: Colors.blue,
                                                       ).copyWith(
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
-                                                    WidgetSpan(
+                                                    const WidgetSpan(
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
                                                         size: 15,
@@ -246,7 +246,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
           ),
         ],
       ),
-      child: Container(
+      child: SizedBox(
         width: 90.0.w,
         child: ListTile(
           title: Column(
@@ -259,14 +259,14 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                       : Container(
                           height: 1.0.h,
                           width: 2.0.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.red,
                             shape: BoxShape.circle,
                           ),
                         ),
                   Padding(
                     padding: EdgeInsets.only(left: 1.0.h),
-                    child: Container(
+                    child: SizedBox(
                       width:
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
@@ -280,8 +280,8 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.more_horiz),
+                  const Spacer(),
+                  const Icon(Icons.more_horiz),
                 ],
               ),
               Padding(
@@ -306,11 +306,9 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
-                child: Container(
-                  child: Text(
-                    _controller.notificationsUnRead![index].createdOn ?? "",
-                    style: AppTextStyle.normalBlack10,
-                  ),
+                child: Text(
+                  _controller.notificationsUnRead![index].createdOn ?? "",
+                  style: AppTextStyle.normalBlack10,
                 ),
               ),
               SizedBox(
@@ -318,7 +316,7 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
               ),
               index == _controller.unreadLength - 1
                   ? Container()
-                  : AppDivider(),
+                  : const AppDivider(),
             ],
           ),
         ),

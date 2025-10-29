@@ -15,8 +15,9 @@ class LandlordGetContractUnitsServices {
     try {
       if (response is Response) {
         return landlordContractUnitsModelFromJson(response.body);
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;

@@ -15,8 +15,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordContractUnitInfo extends StatefulWidget {
   final int contractId;
-  const LandlordContractUnitInfo({ Key? key, required this.contractId})
-      : super(key: key);
+  const LandlordContractUnitInfo({ super.key, required this.contractId});
 
   @override
   _LandlordContractUnitInfoState createState() =>
@@ -37,7 +36,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
       children: [
         Obx(() {
           return controller.loadingUnits.value
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : controller.errorLoadingUnits != ''
                   ? CustomErrorWidget(
                       errorText: controller.errorLoadingUnits,
@@ -139,7 +138,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                       ),
                                       child: Row(
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: 76.0.w,
                                             child: Column(
                                               mainAxisAlignment:
@@ -148,7 +147,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 80.0.w,
                                                   child: Text(
                                                     SessionController()
@@ -172,7 +171,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                       style: AppTextStyle
                                                           .normalGrey11,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       "${unit.unitRefNo}",
                                                       style: AppTextStyle
@@ -188,7 +187,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                       style: AppTextStyle
                                                           .normalGrey11,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       SessionController()
                                                                   .getLanguage() ==
@@ -209,7 +208,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                                                       style: AppTextStyle
                                                           .normalGrey11,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       '${AppMetaLabels().aed} $amount',
                                                       style: AppTextStyle
@@ -249,7 +248,7 @@ class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
                         );
                       });
         }),
-        BottomShadow(),
+        const BottomShadow(),
       ],
     );
   }

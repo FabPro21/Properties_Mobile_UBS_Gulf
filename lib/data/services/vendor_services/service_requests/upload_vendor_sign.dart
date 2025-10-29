@@ -17,10 +17,12 @@ class UploadVendorSign {
     if (response is StreamedResponse) {
       if (response.statusCode == 200) {
         return json.decode(await response.stream.bytesToString());
-      } else
+      } else {
         return response.statusCode;
-    } else
+      }
+    } else {
       return response;
+    }
   }
 }
 

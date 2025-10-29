@@ -15,14 +15,14 @@ import 'package:sizer/sizer.dart';
 import 'lpo_invoices_controller.dart';
 
 class LpoInvoicesSereen extends StatefulWidget {
-  const LpoInvoicesSereen({Key? key}) : super(key: key);
+  const LpoInvoicesSereen({super.key});
 
   @override
   _LpoInvoicesSereenState createState() => _LpoInvoicesSereenState();
 }
 
 class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
-  var _controller = Get.put(LpoInvoicesController());
+  final _controller = Get.put(LpoInvoicesController());
   String amount = "";
 
   @override
@@ -33,10 +33,10 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
           : TextDirection.rtl,
       child: Stack(
         children: [
-          BottomShadow(),
+          const BottomShadow(),
           Obx(() {
             return _controller.loadingData.value
-                ? LoadingIndicatorBlue()
+                ? const LoadingIndicatorBlue()
                 : _controller.error.value != ''
                     ? AppErrorWidget(
                         errorText: _controller.error.value,
@@ -112,22 +112,19 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  AppMetaLabels()
-                                                                      .invoiceNumber,
+                                                                  '${AppMetaLabels()
+                                                                      .invoiceNumber} :',
                                                                   style: AppTextStyle
                                                                       .semiBoldBlack11,
                                                                 ),
-                                                                Spacer(),
-                                                                Text(
-                                                                  _controller
-                                                                          .getLpoInvoices
-                                                                          .value
-                                                                          .invoice![
-                                                                              index]
-                                                                          .lpono
-                                                                          .toString() ,
-                                                                  style: AppTextStyle
-                                                                      .semiBoldBlack11,
+                                                                Flexible(
+                                                                  child: Text(
+                                                                    _controller.getLpoInvoices.value.invoice![index].lpono.toString(),
+                                                                    style: AppTextStyle.semiBoldBlack11.copyWith(),
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    maxLines: 1,
+                                                                    textAlign: TextAlign.right,
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -183,7 +180,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                   style: AppTextStyle
                                                                       .semiBoldBlack10,
                                                                 ),
-                                                                Spacer(),
+                                                                const Spacer(),
                                                                 StatusWidget(
                                                                   text: SessionController()
                                                                               .getLanguage() ==
@@ -218,7 +215,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
                                                                             .length -
                                                                         1
                                                                 ? Container()
-                                                                : AppDivider(),
+                                                                : const AppDivider(),
                                                             index ==
                                                                     _controller
                                                                             .length -
@@ -257,7 +254,7 @@ class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
 
             // AppMetaLabels().name,
             style: AppTextStyle.normalBlack10),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

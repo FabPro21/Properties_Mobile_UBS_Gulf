@@ -18,16 +18,12 @@ class SearchPropertiesResultController extends GetxController {
 
   String sortedBy = '';
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> getData(String propName, minRentAmount, maxRentAmount, areaType,
       minAreaSize, maxAreaSize, minRoom, maxRoom, pagenum) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -54,9 +50,9 @@ class SearchPropertiesResultController extends GetxController {
   List<Stream<Uint8List>>? propertiesImageU8;
   Future<void> getDataPagination(String propName, minRentAmount, maxRentAmount,
       areaType, minAreaSize, maxAreaSize, minRoom, maxRoom, pageNo) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -94,9 +90,9 @@ class SearchPropertiesResultController extends GetxController {
     maxRoom,
     pageNo,
   ) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       // because when we click on sorting
@@ -129,12 +125,12 @@ class SearchPropertiesResultController extends GetxController {
         }
 
         await sortListLoadMore();
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
         isLoadingMore.value = false;
         update();
       } else {
         noMoreDataError.value = result;
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
         isLoadingMore.value = false;
       }
     } catch (e) {

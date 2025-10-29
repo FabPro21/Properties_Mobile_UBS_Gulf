@@ -14,14 +14,14 @@ import 'package:sizer/sizer.dart';
 
 class LandLordFaqsDetails extends StatefulWidget {
   final int? categoryId;
-  LandLordFaqsDetails({Key? key, this.categoryId}) : super(key: key);
+  const LandLordFaqsDetails({super.key, this.categoryId});
 
   @override
   _LandLordFaqsDetailsState createState() => _LandLordFaqsDetailsState();
 }
 
 class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
-  LandLordFaqsController _controller = Get.put(LandLordFaqsController());
+  final LandLordFaqsController _controller = Get.put(LandLordFaqsController());
   bool isShowDivider = true;
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
           Expanded(
             child: Obx(() {
               return _controller.loadingQuestions.value
-                  ? LoadingIndicatorBlue()
+                  ? const LoadingIndicatorBlue()
                   : _controller.errorQuestions.value != '' ||
                           _controller.questionLength == 0
                       ? Center(
@@ -123,8 +123,8 @@ class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
                                     ),
                                     _controller.questionLength - 1 == index ||
                                             !isShowDivider
-                                        ? SizedBox()
-                                        : AppDivider(),
+                                        ? const SizedBox()
+                                        : const AppDivider(),
                                   ],
                                 ),
                               ),

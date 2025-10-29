@@ -545,10 +545,10 @@ class BookingRequest extends StatefulWidget {
   final Property? property;
   final int? index;
   const BookingRequest({
-    Key? key,
+    super.key,
     this.property,
     this.index,
-  }) : super(key: key);
+  });
 
   @override
   _BookingRequestState createState() => _BookingRequestState();
@@ -594,7 +594,7 @@ class _BookingRequestState extends State<BookingRequest> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
               ),
@@ -691,7 +691,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                     return Image.memory(snapshot.data!,
                                         fit: BoxFit.cover);
                                   } else {
-                                    return Center(child: Icon(Icons.ac_unit));
+                                    return const Center(child: Icon(Icons.ac_unit));
                                   }
                                 },
                               ),
@@ -699,7 +699,7 @@ class _BookingRequestState extends State<BookingRequest> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 1.0.h, right: 1.0.h),
-                            child: Container(
+                            child: SizedBox(
                               width: 62.0.w,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -728,7 +728,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                         color: AppColors.greyColor,
                                         size: 2.5.h,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         width: 55.0.w,
                                         child: Text(
                                           widget.property?.address ?? "",
@@ -744,28 +744,26 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      widget.property?.bedRooms == '0' ||
                                               widget.property?.bedRooms == 0 ||
                                               widget.property?.bedRooms == null
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : columnList(AppMetaLabels().beds,
                                               "${widget.property?.bedRooms ?? ""}"),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
-                                      widget.property?.noofWashrooms == '0' ||
-                                              widget.property?.noofWashrooms ==
+                                      widget.property?.noofWashrooms ==
                                                   0 ||
                                               widget.property?.noofWashrooms ==
                                                   null
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : columnList(AppMetaLabels().bath,
                                               "${widget.property?.noofWashrooms ?? ""}"),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       columnList(AppMetaLabels().sqFt,
-                                          "${widget.property?.areaSize ?? ""}"),
+                                          widget.property?.areaSize ?? ""),
                                       // columnList(AppMetaLabels().sqFt,
                                       //     "${widget.property?.areaSize ?? ""}"),
                                       // columnList(
@@ -776,7 +774,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       columnList(
-                                          AppMetaLabels().amount + '', amount),
+                                          AppMetaLabels().amount, amount),
                                     ],
                                   ),
                                 ],
@@ -824,12 +822,12 @@ class _BookingRequestState extends State<BookingRequest> {
                             TextFormField(
                               controller: otherPersonNameController,
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return AppMetaLabels().requiredField;
-                                else if (!nameValidator.hasMatch(value)) {
+                                } else if (!nameValidator.hasMatch(value)) {
                                   return AppMetaLabels().invalidName;
                                 } else
-                                  return null;
+                                 { return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().pleaseEnter),
@@ -854,12 +852,12 @@ class _BookingRequestState extends State<BookingRequest> {
                                 FilteringTextInputFormatter.digitsOnly
                               ],
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return AppMetaLabels().requiredField;
-                                else if (!phoneValidator.hasMatch(value)) {
+                                } else if (!phoneValidator.hasMatch(value)) {
                                   return AppMetaLabels().invalidPhone;
                                 } else
-                                  return null;
+                                  {return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().pleaseEnter),
@@ -911,13 +909,13 @@ class _BookingRequestState extends State<BookingRequest> {
                               focusNode: _nodeTextReqDetails,
                               controller: remarksController,
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return AppMetaLabels().requiredField;
-                                else if (!textValidator
+                                } else if (!textValidator
                                     .hasMatch(value.replaceAll('\n', ' '))) {
                                   return AppMetaLabels().invalidText;
                                 } else
-                                  return null;
+                                  {return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().enterRemarks),
@@ -974,7 +972,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                   onTap: () async {
                                     FocusScope.of(context).unfocus();
                                     var agent = await Get.to(
-                                        () => PublicBookingAgentList());
+                                        () => const PublicBookingAgentList());
                                     if (agent != null) {
                                       bookingRequestController.agentId.value =
                                           agent[1];
@@ -987,7 +985,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                     width: 100.0.w,
                                     height: 5.0.h,
                                     decoration: BoxDecoration(
-                                      color: Color.fromRGBO(246, 248, 249, 1),
+                                      color: const Color.fromRGBO(246, 248, 249, 1),
                                       borderRadius:
                                           BorderRadius.circular(0.5.h),
                                     ),
@@ -1003,7 +1001,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                               style: AppTextStyle.normalGrey10,
                                             );
                                           }),
-                                          Spacer(),
+                                          const Spacer(),
                                           ClearButton(
                                             clear: () {
                                               bookingRequestController
@@ -1038,7 +1036,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(1.3.h),
                                 ),
-                                backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                               ),
                               onPressed: () async {
                                 if (formKey.currentState?.validate() == false) {

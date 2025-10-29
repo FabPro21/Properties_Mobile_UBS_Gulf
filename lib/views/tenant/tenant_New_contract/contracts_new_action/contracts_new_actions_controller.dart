@@ -26,21 +26,22 @@ class ContractEndActionsController extends GetxController {
     if (response is List<ContractWithDueAction>) {
       contractsList = response;
       makingFalsForToolTip();
-    } else
+    } else {
       errorLoadingContracts = response;
+    }
     loadingContracts.value = false;
   }
 
   RxBool isShowCustomToolTip = true.obs;
   makingFalsForToolTip() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     isShowCustomToolTip.value = false;
   }
 
   downloadOfferLetter(ContractWithDueAction contract) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     contract.downloading!.value = true;
     var result =

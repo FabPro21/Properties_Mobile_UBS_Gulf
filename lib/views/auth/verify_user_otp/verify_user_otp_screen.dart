@@ -16,7 +16,7 @@ import 'package:get/get.dart';
 
 class VerifyUserOtpScreen extends StatefulWidget {
   final String? otpCodeForVerifyOTP;
-  VerifyUserOtpScreen({Key? key, this.otpCodeForVerifyOTP}) : super(key: key);
+  const VerifyUserOtpScreen({super.key, this.otpCodeForVerifyOTP});
 
   @override
   State<VerifyUserOtpScreen> createState() => _VerifyUserOtpScreenState();
@@ -31,7 +31,7 @@ class _VerifyUserOtpScreenState extends State<VerifyUserOtpScreen> {
     var l = p!.length;
     var first = p.substring(0, 5);
     var last = p.substring(l - 3, l);
-    return first + "****" + last;
+    return "$first****$last";
   }
 
   @override
@@ -108,20 +108,17 @@ class _VerifyUserOtpScreenState extends State<VerifyUserOtpScreen> {
                             child: vUOController.loadingData.value
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 24.0.h),
-                                    child: Container(
-                                      // height: 8.0.h,
-                                      child: Column(
-                                        children: [
-                                          LoadingIndicatorWhite(),
-                                          SizedBox(
-                                            height: 2.0.h,
-                                          ),
-                                          Text(
-                                            AppMetaLabels().verifyingOtp,
-                                            style: AppTextStyle.semiBoldWhite10,
-                                          ),
-                                        ],
-                                      ),
+                                    child: Column(
+                                      children: [
+                                        const LoadingIndicatorWhite(),
+                                        SizedBox(
+                                          height: 2.0.h,
+                                        ),
+                                        Text(
+                                          AppMetaLabels().verifyingOtp,
+                                          style: AppTextStyle.semiBoldWhite10,
+                                        ),
+                                      ],
                                     ),
                                   )
                                 : SizedBox(
@@ -239,10 +236,10 @@ class _VerifyUserOtpScreenState extends State<VerifyUserOtpScreen> {
                               : Container(
                                   width: 85.0.w,
                                   decoration: BoxDecoration(
-                                    color: Color.fromRGBO(255, 59, 48, 0.6),
+                                    color: const Color.fromRGBO(255, 59, 48, 0.6),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                     border: Border.all(
-                                      color: Color.fromRGBO(255, 59, 48, 1),
+                                      color: const Color.fromRGBO(255, 59, 48, 1),
                                     ),
                                   ),
                                   child: Padding(
@@ -256,7 +253,7 @@ class _VerifyUserOtpScreenState extends State<VerifyUserOtpScreen> {
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(left: 1.0.h),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: 72.0.w,
                                             child: Text(
                                               AppMetaLabels().incorrectCode,

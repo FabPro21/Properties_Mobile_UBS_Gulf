@@ -14,14 +14,14 @@ import 'public_faqs_controller.dart';
 import 'public_faqs_question_and_description.dart';
 
 class PublicFaqsCategories extends StatefulWidget {
-  const PublicFaqsCategories({Key? key}) : super(key: key);
+  const PublicFaqsCategories({super.key});
 
   @override
   _PublicFaqsCategoriesState createState() => _PublicFaqsCategoriesState();
 }
 
 class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
-  PublicFaqsController _controller = Get.put(PublicFaqsController());
+  final PublicFaqsController _controller = Get.put(PublicFaqsController());
   @override
   void initState() {
     _controller.getFaqsCatgData();
@@ -43,93 +43,92 @@ class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
             Expanded(
               child: Obx(() {
                 return _controller.loadingFaqsCatg.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : _controller.length == 0
                         ? CustomErrorWidget(
                             errorImage: AppImagesPath.noServicesFound,
                             errorText: _controller.errorFaqsCatg.value,
                           )
-                        : Container(
-                            child: ListView.builder(
-                                padding: EdgeInsets.only(top: 1.5.h),
-                                shrinkWrap: true,
-                                itemCount: _controller.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 5.0.w, top: 3.0.h, right: 5.0.w),
-                                    child: Column(
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Get.to(() =>
-                                                PublicFaqsQuestionsAndDescription(
-                                                  categoryId: _controller
-                                                      .faqsCategories
-                                                      .value
-                                                      .faqCategories?[index]
-                                                      .categoryId,
-                                                ));
-                                          },
-                                          child: Directionality(
-                                            textDirection: SessionController()
-                                                        .getLanguage() ==
-                                                    1
-                                                ? TextDirection.ltr
-                                                : TextDirection.rtl,
-                                            child: Container(
-                                              width: 90.w,
-                                              child: Row(children: [
-                                                Container(
-                                                  width: 84.w,
-                                                  child: Text(
-                                                    _controller
+                        : ListView.builder(
+                            padding: EdgeInsets.only(top: 1.5.h),
+                            shrinkWrap: true,
+                            itemCount: _controller.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    left: 5.0.w, top: 3.0.h, right: 5.0.w),
+                                child: Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Get.to(() =>
+                                            PublicFaqsQuestionsAndDescription(
+                                              categoryId: _controller
+                                                  .faqsCategories
+                                                  .value
+                                                  .faqCategories?[index]
+                                                  .categoryId,
+                                            ));
+                                      },
+                                      child: Directionality(
+                                        textDirection: SessionController()
+                                                    .getLanguage() ==
+                                                1
+                                            ? TextDirection.ltr
+                                            : TextDirection.rtl,
+                                        child: SizedBox(
+                                          width: 90.w,
+                                          child: Row(children: [
+                                            SizedBox(
+                                              width: 84.w,
+                                              child: Text(
+                                                _controller
+                                                            .faqsCategories
+                                                            .value
+                                                            .faqCategories ==
+                                                        null
+                                                    ? ''
+                                                    : SessionController()
+                                                                .getLanguage() ==
+                                                            1
+                                                        // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
+                        
+                                                        ? _controller
                                                                 .faqsCategories
                                                                 .value
-                                                                .faqCategories ==
-                                                            null
-                                                        ? ''
-                                                        : SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
-
-                                                            ? _controller
-                                                                    .faqsCategories
-                                                                    .value
-                                                                    .faqCategories![
-                                                                        index]
-                                                                    .title ??
-                                                                ""
-                                                            : _controller
-                                                                    .faqsCategories
-                                                                    .value
-                                                                    .faqCategories![
-                                                                        index]
-                                                                    .titleAr ??
-                                                                "",
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack13,
-                                                    maxLines: null,
-                                                    textAlign:
-                                                        TextAlign.justify,
-                                                  ),
-                                                ),
-                                                Spacer(),
-                                                Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_rounded,
-                                                  size: 2.0.h,
-                                                  color: AppColors.grey1,
-                                                )
-                                              ]),
+                                                                .faqCategories![
+                                                                    index]
+                                                                .title ??
+                                                            ""
+                                                        : _controller
+                                                                .faqsCategories
+                                                                .value
+                                                                .faqCategories![
+                                                                    index]
+                                                                .titleAr ??
+                                                            "",
+                                                style: AppTextStyle
+                                                    .semiBoldBlack13,
+                                                maxLines: null,
+                                                textAlign:
+                                                    TextAlign.justify,
+                                              ),
                                             ),
-                                          ),
+                                            const Spacer(),
+                                            Icon(
+                                              Icons
+                                                  .arrow_forward_ios_rounded,
+                                              size: 2.0.h,
+                                              color: AppColors.grey1,
+                                            )
+                                          ]),
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  );
-                                }));
+                                  ],
+                                ),
+                              );
+                            });
               }),
             )
           ]),

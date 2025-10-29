@@ -25,7 +25,7 @@ import 'package:flutter/services.dart';
 import 'select_city/select_city.dart';
 
 class SearchPropertiesSearch extends StatefulWidget {
-  const SearchPropertiesSearch({Key? key}) : super(key: key);
+  const SearchPropertiesSearch({super.key});
 
   @override
   _SearchPropertiesSearchState createState() => _SearchPropertiesSearchState();
@@ -119,14 +119,14 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                           padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                           child: Row(
                             children: [
-                              SizedBox(width: 45.0.w, child: AppLogo()),
+                              SizedBox(width: 45.0.w, child: const AppLogo()),
                               const Spacer(),
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 2.0.w, vertical: 0.0.h),
                                 child: InkWell(
                                   onTap: () {
-                                    Get.to(() => PublicNotification());
+                                    Get.to(() => const PublicNotification());
                                   },
                                   child: badge.Badge(
                                     showBadge:
@@ -136,7 +136,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                             ? false
                                             : true,
                                     badgeAnimation:
-                                        badge.BadgeAnimation.rotation(
+                                        const badge.BadgeAnimation.rotation(
                                       animationDuration: Duration(seconds: 300),
                                       colorChangeAnimationDuration:
                                           Duration(seconds: 1),
@@ -225,7 +225,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       searchControler.clear();
                                       print(searchControler.text);
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.refresh,
                                     ),
                                   )
@@ -261,7 +261,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                         AppMetaLabels().searchProperties,
                                         style: AppTextStyle.semiBoldBlack12,
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       InkWell(
                                         onTap: () {
                                           // Emirate
@@ -297,7 +297,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                           _selectedValue = AppMetaLabels().sqFt;
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.all(2),
+                                          padding: const EdgeInsets.all(2),
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
@@ -329,7 +329,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                   InkWell(
                                     onTap: () async {
                                       cityResult =
-                                          await Get.to(() => SelectCity());
+                                          await Get.to(() => const SelectCity());
 
                                       if (cityResult != null) {
                                         sPSConrtoller.cityName.value =
@@ -345,7 +345,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -358,7 +358,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               sPSConrtoller.cityName.value,
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -390,7 +390,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       sPSConrtoller.unitType.value =
                                           AppMetaLabels().pleaseSelect;
                                       categoryResult = await Get.to(
-                                          () => GetPropertyCategory());
+                                          () => const GetPropertyCategory());
                                       if (categoryResult != null) {
                                         sPSConrtoller.categoryName.value =
                                             categoryResult[0];
@@ -407,7 +407,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -421,7 +421,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -453,7 +453,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      print('Tapping');
                                       if (sPSConrtoller.categoryName.value ==
                                               AppMetaLabels().pleaseSelect ||
                                           sPSConrtoller.categoryName.value ==
@@ -488,7 +487,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       width: 100.0.w,
                                       height: 5.0.h,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(246, 248, 249, 1),
+                                        color: const Color.fromRGBO(246, 248, 249, 1),
                                         borderRadius:
                                             BorderRadius.circular(0.5.h),
                                       ),
@@ -502,7 +501,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               // SessionController().getServicesType(),
                                               style: AppTextStyle.normalGrey10,
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             ClearButton(
                                               clear: () {
                                                 SessionController()
@@ -531,7 +530,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                   Row(
                                     children: [
                                       //////////////// Min Rent ////////////////////
-                                      Container(
+                                      SizedBox(
                                         width: 35.0.w,
                                         height: 5.0.h,
                                         child: TextField(
@@ -550,7 +549,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                           },
                                           decoration: InputDecoration(
                                             filled: true,
-                                            fillColor: Color.fromRGBO(
+                                            fillColor: const Color.fromRGBO(
                                                 246, 248, 249, 1),
                                             contentPadding: EdgeInsets.only(
                                                 left: 3.0.w, right: 5.0.w),
@@ -579,8 +578,8 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                       ),
 
                                       /////////////// Max Rent //////////////////
-                                      Spacer(),
-                                      Container(
+                                      const Spacer(),
+                                      SizedBox(
                                         width: 35.0.w,
                                         height: 5.0.h,
                                         child: TextField(
@@ -599,7 +598,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                           },
                                           decoration: InputDecoration(
                                             filled: true,
-                                            fillColor: Color.fromRGBO(
+                                            fillColor: const Color.fromRGBO(
                                                 246, 248, 249, 1),
                                             contentPadding: EdgeInsets.only(
                                                 left: 3.0.w, right: 5.0.w),
@@ -658,7 +657,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                 Row(
                                                   children: [
                                                     //////////////// Min Rooms ////////////////////
-                                                    Container(
+                                                    SizedBox(
                                                       width: 35.0.w,
                                                       height: 5.0.h,
                                                       child: TextField(
@@ -685,7 +684,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             InputDecoration(
                                                           filled: true,
                                                           fillColor:
-                                                              Color.fromRGBO(
+                                                              const Color.fromRGBO(
                                                                   246,
                                                                   248,
                                                                   249,
@@ -728,8 +727,8 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                     ),
 
                                                     /////////////// Max Rooms //////////////////
-                                                    Spacer(),
-                                                    Container(
+                                                    const Spacer(),
+                                                    SizedBox(
                                                       width: 35.0.w,
                                                       height: 5.0.h,
                                                       child: TextField(
@@ -756,7 +755,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             InputDecoration(
                                                           filled: true,
                                                           fillColor:
-                                                              Color.fromRGBO(
+                                                              const Color.fromRGBO(
                                                                   246,
                                                                   248,
                                                                   249,
@@ -880,8 +879,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                         ""
                                                                     : 'المساحة بالمتر المربع';
                                                           });
-                                                          print(
-                                                              'Value :::: $_selectedValue');
                                                         },
                                                       ),
                                                       InkWell(
@@ -894,8 +891,6 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                                     ? 'SQM'
                                                                     : 'المساحة بالمتر المربع';
                                                           });
-                                                          print(
-                                                              'Value :::: $_selectedValue');
                                                         },
                                                         child: Text(
                                                           AppMetaLabels().sqMt,
@@ -911,7 +906,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                 Row(
                                                   children: [
                                                     //////////////// Min Area ////////////////////
-                                                    Container(
+                                                    SizedBox(
                                                       width: 35.0.w,
                                                       height: 5.0.h,
                                                       child: TextField(
@@ -938,7 +933,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             InputDecoration(
                                                           filled: true,
                                                           fillColor:
-                                                              Color.fromRGBO(
+                                                              const Color.fromRGBO(
                                                                   246,
                                                                   248,
                                                                   249,
@@ -981,8 +976,8 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                     ),
 
                                                     /////////////// Max Area //////////////////
-                                                    Spacer(),
-                                                    Container(
+                                                    const Spacer(),
+                                                    SizedBox(
                                                       width: 35.0.w,
                                                       height: 5.0.h,
                                                       child: TextField(
@@ -1009,7 +1004,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                                             InputDecoration(
                                                           filled: true,
                                                           fillColor:
-                                                              Color.fromRGBO(
+                                                              const Color.fromRGBO(
                                                                   246,
                                                                   248,
                                                                   249,
@@ -1070,7 +1065,7 @@ class _SearchPropertiesSearchState extends State<SearchPropertiesSearch> {
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            const Color.fromRGBO(0, 61, 166, 1),
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 6.0.h, vertical: 1.5.h),
                                       ),

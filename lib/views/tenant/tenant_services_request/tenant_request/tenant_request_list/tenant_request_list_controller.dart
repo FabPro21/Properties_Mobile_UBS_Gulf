@@ -135,7 +135,7 @@ class GetTenantServiceRequestsController extends GetxController {
         }
       }
       print('Inside FM func Length : ${serviceRequestsFM.length}');
-      if (serviceRequestsFM.length == 0) {
+      if (serviceRequestsFM.isEmpty) {
         errorFM.value = AppMetaLabels().notFound;
       } else {
         errorFM.value = '';
@@ -158,9 +158,9 @@ class GetTenantServiceRequestsController extends GetxController {
   RxString errorPM = "".obs;
 
   Future<void> getDataPM(String search) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingDataPM.value = true;
@@ -187,9 +187,9 @@ class GetTenantServiceRequestsController extends GetxController {
   }
 
   Future<void> getDataFM(String search) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingDataFM.value = true;
@@ -301,7 +301,7 @@ class GetTenantServiceRequestsController extends GetxController {
           serviceRequestsPM.add(allSvcReqPM[i]);
         }
       }
-      if (serviceRequestsPM.length == 0) {
+      if (serviceRequestsPM.isEmpty) {
         errorPM.value = AppMetaLabels().notFound;
       } else {
         errorPM.value = '';

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class CarouselSearchMap extends StatelessWidget {
-  CarouselSearchMap({Key? key}) : super(key: key);
+  const CarouselSearchMap({super.key});
   // final CarouselController buttonCarouselController = CarouselController();
 
   @override
@@ -55,7 +55,7 @@ class CarouselSearchMap extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 1.0.h),
-                child: Container(
+                child: SizedBox(
                   width: 62.0.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -64,12 +64,12 @@ class CarouselSearchMap extends StatelessWidget {
                       SizedBox(
                         height: 1.0.h,
                       ),
-                      Container(
+                      SizedBox(
                         width: 57.0.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 37.0.w,
                               child: Text(
                                 AppMetaLabels().discoveyGarden,

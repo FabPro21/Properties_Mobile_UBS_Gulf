@@ -26,10 +26,10 @@ class PublicMainInfo extends StatefulWidget {
   final int? caseno;
   final int? unitId;
   const PublicMainInfo({
-    Key? key,
+    super.key,
     this.caseno,
     this.unitId,
-  }) : super(key: key);
+  });
 
   @override
   _PublicMainInfoState createState() => _PublicMainInfoState();
@@ -38,11 +38,11 @@ class PublicMainInfo extends StatefulWidget {
 class _PublicMainInfoState extends State<PublicMainInfo> {
   final sPRController = Get.put(SearchPropertiesResultController());
   TextEditingController remarkEditingController = TextEditingController();
-  PublicServiceMaininfoController _mainInfoController =
+  final PublicServiceMaininfoController _mainInfoController =
       PublicServiceMaininfoController();
-  PublicSaveFeedbackController _feedbackController =
+  final PublicSaveFeedbackController _feedbackController =
       Get.put(PublicSaveFeedbackController());
-  PublicGetFeedbackController _getFeedbackController =
+  final PublicGetFeedbackController _getFeedbackController =
       Get.put(PublicGetFeedbackController());
   @override
   void initState() {
@@ -57,10 +57,10 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Stack(children: [
-          BottomShadow(),
+          const BottomShadow(),
           Obx(() {
             return _mainInfoController.loadingData.value == true
-                ? LoadingIndicatorBlue()
+                ? const LoadingIndicatorBlue()
                 : _mainInfoController.error.value != ''
                     ? CustomErrorWidget(
                         errorText: _mainInfoController.error.value,
@@ -106,7 +106,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       style: AppTextStyle
                                                           .semiBoldBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Text(
                                                       _mainInfoController
                                                               .publicMaininfoDetails
@@ -227,7 +227,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       style: AppTextStyle
                                                           .normalGrey10,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     StatusWidget(
                                                       text: SessionController()
                                                                   .getLanguage() ==
@@ -298,7 +298,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Text(
                                                             _mainInfoController
                                                                     .publicMaininfoDetails
@@ -321,7 +321,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                             style: AppTextStyle
                                                                 .normalGrey10,
                                                           ),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           Directionality(
                                                             textDirection:
                                                                 TextDirection
@@ -549,7 +549,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                   return _mainInfoController
                                                           .cancellingRequest
                                                           .value
-                                                      ? LoadingIndicatorBlue()
+                                                      ? const LoadingIndicatorBlue()
                                                       : SizedBox(
                                                           height: 6.5.h,
                                                           width: 90.0.w,
@@ -565,7 +565,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                               1.3.h),
                                                                 ),
                                                                 backgroundColor:
-                                                                    Color
+                                                                    const Color
                                                                         .fromRGBO(
                                                                             255,
                                                                             36,
@@ -599,7 +599,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                           child:
                                                                               Container(
                                                                             decoration:
-                                                                                BoxDecoration(
+                                                                                const BoxDecoration(
                                                                               color: Color.fromRGBO(255, 36, 27, 0.1),
                                                                               shape: BoxShape.circle,
                                                                             ),
@@ -645,7 +645,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                               shape: RoundedRectangleBorder(
                                                                                 borderRadius: BorderRadius.circular(1.3.h),
                                                                               ),
-                                                                              backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                                                                              backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                                                                               padding: EdgeInsets.symmetric(horizontal: 11.0.h, vertical: 1.8.h),
                                                                             ),
                                                                             onPressed:
@@ -676,11 +676,11 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                                 OutlinedButton.styleFrom(
                                                                               side: BorderSide(
                                                                                 width: 0.2.w,
-                                                                                color: Color.fromRGBO(0, 61, 166, 1),
+                                                                                color: const Color.fromRGBO(0, 61, 166, 1),
                                                                                 style: BorderStyle.solid,
                                                                               ),
                                                                               shape: RoundedRectangleBorder(
-                                                                                borderRadius: new BorderRadius.circular(1.3.h),
+                                                                                borderRadius: BorderRadius.circular(1.3.h),
                                                                               ),
                                                                             ),
                                                                             child:
@@ -689,7 +689,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                               child: Text(
                                                                                 AppMetaLabels().no,
                                                                                 style: AppTextStyle.semiBoldWhite12.copyWith(
-                                                                                  color: Color.fromRGBO(0, 61, 166, 1),
+                                                                                  color: const Color.fromRGBO(0, 61, 166, 1),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -698,7 +698,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                )..show();
+                                                                ).show();
 
                                                                 // Get.to(() => TenantFeedback());
                                                               },
@@ -709,7 +709,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                                     .semiBoldWhite12,
                                                               )));
                                                 }))
-                                            : SizedBox(),
+                                            : const SizedBox(),
                                         SizedBox(
                                           height: 2.5.h,
                                         ),
@@ -725,7 +725,7 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                     .feedback!
                                                     .rating ==
                                                 0.0)
-                                          Container(
+                                          SizedBox(
                                             height: 6.5.h,
                                             width: 90.0.w,
                                             child: ElevatedButton(
@@ -755,11 +755,6 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                     });
                                                 // Get.to(()=>ContractTerminate());
                                               },
-                                              child: Text(
-                                                AppMetaLabels().addFeedback,
-                                                style: AppTextStyle
-                                                    .semiBoldWhite12,
-                                              ),
                                               style: ButtonStyle(
                                                   elevation:
                                                       MaterialStateProperty.all<
@@ -781,6 +776,11 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                                                       // )
                                                     ),
                                                   )),
+                                              child: Text(
+                                                AppMetaLabels().addFeedback,
+                                                style: AppTextStyle
+                                                    .semiBoldWhite12,
+                                              ),
                                             ),
                                           ),
                                       ])))),
@@ -932,13 +932,13 @@ class _PublicMainInfoState extends State<PublicMainInfo> {
                     width: 65.0.w,
                     child: Obx(() {
                       return _feedbackController.loadingData.value
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(1.3.h),
                                 ),
-                                backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                                backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                               ),
                               onPressed: () async {
                                 if (remarkEditingController.text != "" &&

@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'services_categories_controller.dart';
 
 class SearchPropertiesServices extends StatefulWidget {
-  const SearchPropertiesServices({Key? key}) : super(key: key);
+  const SearchPropertiesServices({super.key});
 
   @override
   _SearchPropertiesServicesState createState() =>
@@ -21,7 +21,7 @@ class SearchPropertiesServices extends StatefulWidget {
 }
 
 class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
-  var _controller = Get.put(PublicGetServicesController());
+  final _controller = Get.put(PublicGetServicesController());
 
 // @override
 //   void initState() {
@@ -55,7 +55,7 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
             onTap: () {
               Get.back();
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -68,7 +68,7 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
         ),
         body: Obx(() {
           return _controller.loadingData.value
-              ? Center(
+              ? const Center(
                   child: LoadingIndicatorBlue(),
                 )
               : _controller.length == 0
@@ -76,71 +76,70 @@ class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
                       errorText: AppMetaLabels().noDatafound,
                       errorImage: AppImagesPath.noServicesFound,
                     )
-                  : Container(
-                      child: ListView.builder(
-                          padding: EdgeInsets.only(top: 1.5.h),
-                          shrinkWrap: true,
-                          itemCount: _controller.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                  left: 5.0.w, top: 3.0.h, right: 5.0.w),
-                              child: Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Get.to(() =>
-                                          SearchPropertiesServiceDetails(
-                                            categoryId: _controller
-                                                    .getServicesCatg
-                                                    .value
-                                                    .serviceCategories?[index]
-                                                    .categoryId ??
-                                                0,
-                                          ));
-                                    },
-                                    child: Row(children: [
-                                      Container(
-                                        width: Get.width * 0.8,
-                                        child: Text(
-                                            _controller.getServicesCatg.value
-                                                        .serviceCategories ==
-                                                    null
-                                                ? ''
-                                                : SessionController()
-                                                            .getLanguage() ==
-                                                        1
-                                                    ? _controller
-                                                            .getServicesCatg
-                                                            .value
-                                                            .serviceCategories![
-                                                                index]
-                                                            .title ??
-                                                        ""
-                                                    : _controller
-                                                            .getServicesCatg
-                                                            .value
-                                                            .serviceCategories![
-                                                                index]
-                                                            .titleAr ??
-                                                        "",
-                                            //   "title",
-                                            maxLines: 3,
-                                            style:
-                                                AppTextStyle.semiBoldBlack13),
-                                      ),
-                                      Spacer(),
-                                      Icon(
-                                        Icons.arrow_forward_ios_rounded,
-                                        size: 2.0.h,
-                                        color: AppColors.grey1,
-                                      )
-                                    ]),
+                  : ListView.builder(
+                      padding: EdgeInsets.only(top: 1.5.h),
+                      shrinkWrap: true,
+                      itemCount: _controller.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                              left: 5.0.w, top: 3.0.h, right: 5.0.w),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.to(() =>
+                                      SearchPropertiesServiceDetails(
+                                        categoryId: _controller
+                                                .getServicesCatg
+                                                .value
+                                                .serviceCategories?[index]
+                                                .categoryId ??
+                                            0,
+                                      ));
+                                },
+                                child: Row(children: [
+                                  SizedBox(
+                                    width: Get.width * 0.8,
+                                    child: Text(
+                                        _controller.getServicesCatg.value
+                                                    .serviceCategories ==
+                                                null
+                                            ? ''
+                                            : SessionController()
+                                                        .getLanguage() ==
+                                                    1
+                                                ? _controller
+                                                        .getServicesCatg
+                                                        .value
+                                                        .serviceCategories![
+                                                            index]
+                                                        .title ??
+                                                    ""
+                                                : _controller
+                                                        .getServicesCatg
+                                                        .value
+                                                        .serviceCategories![
+                                                            index]
+                                                        .titleAr ??
+                                                    "",
+                                        //   "title",
+                                        maxLines: 3,
+                                        style:
+                                            AppTextStyle.semiBoldBlack13),
                                   ),
-                                ],
+                                  const Spacer(),
+                                  Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 2.0.h,
+                                    color: AppColors.grey1,
+                                  )
+                                ]),
                               ),
-                            );
-                          }));
+                            ],
+                          ),
+                        );
+                      });
         }),
       ),
     );

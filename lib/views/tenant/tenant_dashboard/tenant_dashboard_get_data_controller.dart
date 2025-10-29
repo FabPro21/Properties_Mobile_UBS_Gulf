@@ -90,16 +90,16 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     loadingData.value = true;
     error.value = '';
     var result = await TenantRepository.tenantDashboardGetData();
     loadingData.value = false;
     if (result == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (result is TenantDashboardGetDataModel) {
       if (dashboardData.value.status == AppMetaLabels().notFound) {
         error.value = AppMetaLabels().noDatafound;
@@ -155,16 +155,16 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   getContractsData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     contractsError.value = '';
     loadingContractsData.value = true;
     var result = await TenantRepository.getContracts();
     User user = SessionController().getUser();
     if (result == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (result is GetContractsModel) {
       print(result);
       getContracts.value = result;
@@ -190,9 +190,9 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   getContractsDataPagination(String pageNo, String search) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     contractsError.value = '';
     loadingContractsData.value = true;
@@ -200,7 +200,7 @@ class TenantDashboardGetDataController extends GetxController {
     User user = SessionController().getUser();
 
     if (result == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (result is GetContractsModel) {
       getContracts.value = result;
       if (getContracts.value.status == AppMetaLabels().notFound) {
@@ -225,15 +225,15 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   getPaymentsData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     loadingPaymentsData.value = true;
     var result = await TenantRepository.payments();
     loadingPaymentsData.value = false;
     if (result == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (result is ContractPaymentModel) {
       payments.value = result;
       if (payments.value.status == AppMetaLabels().notFound) {
@@ -251,14 +251,14 @@ class TenantDashboardGetDataController extends GetxController {
 
   getDashboardNotifications() async {
     loadingNotification.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     try {
       var resp = await TenantRepository.getDashboardPopup();
       if (resp == 'No internet connection') {
-        await Get.to(NoInternetScreen());
+        await Get.to(const NoInternetScreen());
       } else if (resp is TenantDashboardNotificationPopupModel) {
         if (resp.status == AppMetaLabels().notFound) {
           error.value = AppMetaLabels().noDatafound;
@@ -276,9 +276,9 @@ class TenantDashboardGetDataController extends GetxController {
   }
 
   void getBottomSheetData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     errorSheet.value = '';
     loadingBottomSheetData.value = true;
@@ -286,7 +286,7 @@ class TenantDashboardGetDataController extends GetxController {
     loadingBottomSheetData.value = false;
 
     if (resp == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (resp is ToBePaidIn30DaysModel) {
       if (resp.status == AppMetaLabels().notFound) {
         errorSheet.value = AppMetaLabels().noDatafound;
@@ -309,11 +309,11 @@ class TenantDashboardGetDataController extends GetxController {
     loadingContractsExpiring.value = true;
     var resp = await TenantRepository.expiringIn30Days();
     if (resp == 'No internet connection') {
-      await Get.to(NoInternetScreen());
+      await Get.to(const NoInternetScreen());
     } else if (resp is ContractExpire30Days) {
       contractsExpiring = resp;
     } else
-      errorLoadingExpiringContracts = resp;
+      {errorLoadingExpiringContracts = resp;}
     loadingContractsExpiring.value = false;
   }
 }

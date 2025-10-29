@@ -20,10 +20,6 @@ class LandLordFilterPropController extends GetxController {
     propCategory.value = ProppertyCategoris();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void goBack() {
     if (propertyName == '' &&
@@ -37,15 +33,9 @@ class LandLordFilterPropController extends GetxController {
       dynamic csi = emirateName.value.emirateID;
       dynamic cti = propCategory.value.propertyCategoryID;
 
-      if (pti == null) {
-        pti = "-1";
-      }
-      if (csi == null) {
-        csi = "-1";
-      }
-      if (cti == null) {
-        cti = "-1";
-      }
+      pti ??= "-1";
+      csi ??= "-1";
+      cti ??= "-1";
       Get.back(
         result: PFilterData(propertyName, pti, csi, cti),
       );

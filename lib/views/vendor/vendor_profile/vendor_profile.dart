@@ -17,7 +17,7 @@ import 'vendor_profile_controller.dart';
 
 // ignore: must_be_immutable
 class VendorProfile extends StatefulWidget {
-  VendorProfile({Key? key}) : super(key: key);
+  const VendorProfile({super.key});
 
   @override
   State<VendorProfile> createState() => _VendorProfileState();
@@ -43,7 +43,7 @@ class _VendorProfileState extends State<VendorProfile> {
               return vendorProfileContrller.loadingData.value == true
                   ? Padding(
                       padding: EdgeInsets.only(top: 40.0.h),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     )
                   : vendorProfileContrller.error.value != ''
                       ? Padding(
@@ -59,7 +59,7 @@ class _VendorProfileState extends State<VendorProfile> {
                                 padding: EdgeInsets.all(2.0.h),
                                 child: Row(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 50.0.w,
                                       child: Text(
                                                   SessionController()
@@ -87,7 +87,7 @@ class _VendorProfileState extends State<VendorProfile> {
                                   ],
                                 ),
                               ),
-                              AppDivider(),
+                              const AppDivider(),
                               Expanded(
                                 child: ContainedTabBarView(
                                   tabs: [
@@ -104,8 +104,8 @@ class _VendorProfileState extends State<VendorProfile> {
                                     labelStyle: AppTextStyle.semiBoldBlack10,
                                   ),
                                   views: [
-                                    VendorContractor(),
-                                    VendorContact(),
+                                    const VendorContractor(),
+                                    const VendorContact(),
                                     VendorAcconut(),
                                   ],
                                 ),

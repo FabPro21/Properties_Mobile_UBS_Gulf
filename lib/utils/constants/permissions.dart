@@ -27,31 +27,27 @@ class PermissionHandlerClass {
                 ? ui.TextDirection.ltr
                 : ui.TextDirection.rtl,
             child: AlertDialog(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 contentPadding:
-                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
+                    const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      child: Text(
-                          '${AppMetaLabels().fabPropertiesSource} $source',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyle.semiBoldBlack11),
-                    ),
-                    SizedBox(
+                    Text(
+                        '${AppMetaLabels().fabPropertiesSource} $source',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.semiBoldBlack11),
+                    const SizedBox(
                       height: 15,
                     ),
-                    AppDivider(),
-                    SizedBox(
+                    const AppDivider(),
+                    const SizedBox(
                       height: 15,
                     ),
-                    Container(
-                      child: ElevatedButton(
-                        child: Text('Allow access'),
-                        onPressed: () => openAppSettings(),
-                      ),
+                    ElevatedButton(
+                      child: const Text('Allow access'),
+                      onPressed: () => openAppSettings(),
                     ),
                   ],
                 )),

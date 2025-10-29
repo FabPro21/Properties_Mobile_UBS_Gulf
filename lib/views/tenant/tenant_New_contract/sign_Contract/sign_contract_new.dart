@@ -26,15 +26,14 @@ class AuthenticateNewContract extends StatefulWidget {
   final String? caller;
   final int? caseId;
   const AuthenticateNewContract(
-      {Key? key,
+      {super.key,
       this.filePath,
       this.contractNo,
       this.contractId,
       this.dueActionId = 0,
       this.stageId = 0,
       this.caller,
-      this.caseId})
-      : super(key: key);
+      this.caseId});
 
   @override
   _AuthenticateNewContractState createState() => _AuthenticateNewContractState();
@@ -84,7 +83,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -92,7 +91,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.5.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -101,11 +100,11 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
-                child: AppDivider(),
+                child: const AppDivider(),
               ),
               Expanded(
                 child: controller.gettingCaseNo.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : controller.errorGettingCaseNo != ''
                         ? AppErrorWidget(
                             errorText: controller.errorGettingCaseNo,
@@ -149,7 +148,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                   SizedBox(
                                     height: 1.0.h,
                                   ),
-                                  AppDivider(),
+                                  const AppDivider(),
                                   Padding(
                                     padding: EdgeInsets.only(
                                         top: 1.0.h,
@@ -170,10 +169,10 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                     children: [
                                       Checkbox(
                                         activeColor: AppColors.blueColor,
-                                        value: this.acceptTerms,
+                                        value: acceptTerms,
                                         onChanged: (bool? value) {
                                           setState(() {
-                                            this.acceptTerms = value!;
+                                            acceptTerms = value!;
                                           });
                                         },
                                       ), //Check
@@ -191,7 +190,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                               ? AnimatedTextKit(
                                                   isRepeatingAnimation: true,
                                                   repeatForever: true,
-                                                  pause: Duration(
+                                                  pause: const Duration(
                                                       milliseconds: 10),
                                                   animatedTexts: [
                                                     ColorizeAnimatedText(
@@ -204,7 +203,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                                           AppColors.blueColor2,
                                                           AppColors.blueColor
                                                         ],
-                                                        speed: Duration(
+                                                        speed: const Duration(
                                                             milliseconds: 200)),
                                                   ],
                                                 )
@@ -220,12 +219,12 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                   ),
                                   // 112233 SUbmit button enable disable for Sign Contract
                                   Center(
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 5.0.h,
                                       width: 69.0.w,
                                       child: Obx(() {
                                         return controller.savingSignature.value
-                                            ? LoadingIndicatorBlue()
+                                            ? const LoadingIndicatorBlue()
                                             : ElevatedButton(
                                                 onPressed: !acceptTerms
                                                     ? null
@@ -282,17 +281,6 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                                           }
                                                         }
                                                       },
-                                                child: Text(
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? AppMetaLabels().submit
-                                                      : AppMetaLabels().apply,
-                                                  style: AppTextStyle
-                                                      .semiBoldBlack11
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                ),
                                                 style: ButtonStyle(
                                                     elevation:
                                                         WidgetStateProperty
@@ -314,6 +302,17 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                                                     2.0.w),
                                                       ),
                                                     )),
+                                                child: Text(
+                                                  SessionController()
+                                                              .getLanguage() ==
+                                                          1
+                                                      ? AppMetaLabels().submit
+                                                      : AppMetaLabels().apply,
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack11
+                                                      .copyWith(
+                                                          color: Colors.white),
+                                                ),
                                               );
                                       }),
                                     ),
@@ -401,7 +400,7 @@ class _AuthenticateNewContractState extends State<AuthenticateNewContract> {
                                           BorderRadius.circular(1.3.h),
                                     ),
                                     backgroundColor:
-                                        Color.fromRGBO(0, 61, 166, 1),
+                                        const Color.fromRGBO(0, 61, 166, 1),
                                   ),
                                   onPressed: () {
                                     Get.back();

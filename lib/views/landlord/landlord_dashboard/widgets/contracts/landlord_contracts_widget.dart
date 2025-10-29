@@ -15,7 +15,7 @@ import 'contracts_widget_controller.dart';
 
 class YourContracts extends StatefulWidget {
   final Function(int)? manageContracts;
-  YourContracts({Key? key, this.manageContracts}) : super(key: key);
+  const YourContracts({super.key, this.manageContracts});
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -58,147 +58,145 @@ class _YourContractsState extends State<YourContracts> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
-            Container(
-              child: Obx(() {
-                return controller.loadingContracts.value == true
-                    ? LoadingIndicatorBlue()
-                    : controller.errorLoadingContracts != ''
-                        ? AppErrorWidget(
-                            errorText: controller.errorLoadingContracts,
-                          )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: controller.length,
-                            itemBuilder: (context, index) {
-                              final contract =
-                                  controller.contractsModel!.data![index];
-                              final bool isEng =
-                                  SessionController().getLanguage() == 1;
-                              return InkWell(
-                                onTap: () {
-                                  Get.to(() => LandlordContractDetailsTabs(
-                                        contractId: int.parse(
-                                            contract.contractID.toString()),
-                                        contractNo: contract.contractno!,
-                                        prevContractNo: '',
-                                      ));
-                                },
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 3.0.w, vertical: 1.5.h),
-                                      child: Row(
-                                        children: [
-                                          SrNoWidget(
-                                            text: (index + 1).toString(),
-                                            size: 8.w,
+            Obx(() {
+              return controller.loadingContracts.value == true
+                  ? const LoadingIndicatorBlue()
+                  : controller.errorLoadingContracts != ''
+                      ? AppErrorWidget(
+                          errorText: controller.errorLoadingContracts,
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.length,
+                          itemBuilder: (context, index) {
+                            final contract =
+                                controller.contractsModel!.data![index];
+                            final bool isEng =
+                                SessionController().getLanguage() == 1;
+                            return InkWell(
+                              onTap: () {
+                                Get.to(() => LandlordContractDetailsTabs(
+                                      contractId: int.parse(
+                                          contract.contractID.toString()),
+                                      contractNo: contract.contractno!,
+                                      prevContractNo: '',
+                                    ));
+                              },
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 3.0.w, vertical: 1.5.h),
+                                    child: Row(
+                                      children: [
+                                        SrNoWidget(
+                                          text: (index + 1).toString(),
+                                          size: 8.w,
+                                        ),
+                                        SizedBox(
+                                          width: 2.0.w,
+                                        ),
+                                        SizedBox(
+                                          width: 62.0.w,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 48.0.w,
+                                                    child: Text(
+                                                      isEng
+                                                          ? contract
+                                                                  .propertyName ??
+                                                              ''
+                                                          : contract
+                                                                  .propertyNameAR ??
+                                                              "",
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack12,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${contract.contractno}',
+                                                    style: AppTextStyle
+                                                        .normalBlack11,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 1.0.h,
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    contract.contractStartDate ??
+                                                        "",
+                                                    style: AppTextStyle
+                                                        .normalGrey10,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 1.w),
+                                                    child: Icon(
+                                                        Icons.arrow_forward,
+                                                        size: 10.sp,
+                                                        color: AppColors
+                                                            .greyColor),
+                                                  ),
+                                                  Text(
+                                                    contract.contractEndDate ??
+                                                        "",
+                                                    style: AppTextStyle
+                                                        .normalGrey10,
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 1.0.h,
+                                              ),
+                                              StatusWidget(
+                                                text: isEng
+                                                    ? contract.contractStatus
+                                                    : contract
+                                                        .contractStatusAR,
+                                                valueToCompare:
+                                                    contract.contractStatus ??
+                                                        "",
+                                              )
+                                            ],
                                           ),
-                                          SizedBox(
-                                            width: 2.0.w,
-                                          ),
-                                          Container(
-                                            width: 62.0.w,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      width: 48.0.w,
-                                                      child: Text(
-                                                        isEng
-                                                            ? contract
-                                                                    .propertyName ??
-                                                                ''
-                                                            : contract
-                                                                    .propertyNameAR ??
-                                                                "",
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack12,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      '${contract.contractno}',
-                                                      style: AppTextStyle
-                                                          .normalBlack11,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 1.0.h,
-                                                ),
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      contract.contractStartDate ??
-                                                          "",
-                                                      style: AppTextStyle
-                                                          .normalGrey10,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 1.w),
-                                                      child: Icon(
-                                                          Icons.arrow_forward,
-                                                          size: 10.sp,
-                                                          color: AppColors
-                                                              .greyColor),
-                                                    ),
-                                                    Text(
-                                                      contract.contractEndDate ??
-                                                          "",
-                                                      style: AppTextStyle
-                                                          .normalGrey10,
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 1.0.h,
-                                                ),
-                                                StatusWidget(
-                                                  text: isEng
-                                                      ? contract.contractStatus
-                                                      : contract
-                                                          .contractStatusAR,
-                                                  valueToCompare:
-                                                      contract.contractStatus ??
-                                                          "",
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                        )
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 1.0.h, right: 1.0.h),
-                                      child: AppDivider(),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-              }),
-            ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 1.0.h, right: 1.0.h),
+                                    child: const AppDivider(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+            }),
             Padding(
               padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
               child: TextButton(

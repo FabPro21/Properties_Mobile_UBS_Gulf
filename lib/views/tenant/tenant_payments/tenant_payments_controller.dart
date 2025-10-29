@@ -22,9 +22,9 @@ class TenantPaymentsController extends GetxController {
   RxBool isSearch = false.obs;
   searchDataByApi(String pageNoP, String searchText) async {
     try {
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(const NoInternetScreen());
       }
       error.value = '';
       errorNoMoreData.value = '';
@@ -40,15 +40,16 @@ class TenantPaymentsController extends GetxController {
           error.value = AppMetaLabels().noDatafound;
           loadingData.value = false;
         } else {
-          List<Payment> _searchedPayments = [];
+          List<Payment> searchedPayments = [];
           for (int i = 0; i < getPayments.value.payments!.length; i++) {
-            _searchedPayments.add(getPayments.value.payments![i]);
+            searchedPayments.add(getPayments.value.payments![i]);
           }
-          payments = _searchedPayments;
-          if (payments.length == 0)
+          payments = searchedPayments;
+          if (payments.isEmpty) {
             error.value = AppMetaLabels().noPaymentFound;
-          else
+          } else {
             error.value = '';
+          }
           loadingData.value = false;
         }
       } else {
@@ -65,9 +66,9 @@ class TenantPaymentsController extends GetxController {
   String pageNo = '1';
   getData(String pageNoP) async {
     try {
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(const NoInternetScreen());
       }
       error.value = '';
       errorNoMoreData.value = '';
@@ -100,9 +101,9 @@ class TenantPaymentsController extends GetxController {
   RxString errorNoMoreData = ''.obs;
   getData1(String pageNoP) async {
     try {
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(const NoInternetScreen());
       }
       errorNoMoreData.value = '';
       loadingDataMore.value = true;
@@ -137,18 +138,19 @@ class TenantPaymentsController extends GetxController {
     if (getPayments.value.payments!.isNotEmpty) {
     // if (getPayments.value.payments != null) {
       loadingData.value = true;
-      List<Payment> _searchedPayments = [];
+      List<Payment> searchedPayments = [];
       for (int i = 0; i < getPayments.value.payments!.length; i++) {
         if (getPayments.value.payments![i].receiptNo!.contains(qry) ||
             getPayments.value.payments![i].contractNo!.contains(qry)) {
-          _searchedPayments.add(getPayments.value.payments![i]);
+          searchedPayments.add(getPayments.value.payments![i]);
         }
       }
-      payments = _searchedPayments;
-      if (payments.length == 0)
+      payments = searchedPayments;
+      if (payments.isEmpty) {
         error.value = AppMetaLabels().noPaymentFound;
-      else
+      } else {
         error.value = '';
+      }
       loadingData.value = false;
     }
   }

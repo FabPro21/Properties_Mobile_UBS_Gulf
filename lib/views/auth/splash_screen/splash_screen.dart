@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     print(' isFab App :::::: ${SessionController().isFabApp}');
     return Scaffold(
-      backgroundColor: Color(0xFF001838),
+      backgroundColor: const Color(0xFF001838),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

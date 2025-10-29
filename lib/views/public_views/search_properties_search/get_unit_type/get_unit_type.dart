@@ -11,7 +11,7 @@ import 'get_unit_type_controller.dart';
 
 class GetUnitType extends StatefulWidget {
   final String? categoryName;
-  GetUnitType({Key? key, this.categoryName}) : super(key: key);
+  const GetUnitType({super.key, this.categoryName});
 
   @override
   State<GetUnitType> createState() => _GetUnitTypeState();
@@ -26,7 +26,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
     print(" ---------- ${widget.categoryName} ------------");
     gPCController.getData(SessionController().getLanguage() == 1
         ? widget.categoryName ?? ""
-        : widget.categoryName! + 'AR');
+        : '${widget.categoryName!}AR');
     super.initState();
   }
 
@@ -54,7 +54,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
                         AppMetaLabels().unitType,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -68,7 +68,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -137,7 +137,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
                             return gPCController.loadingData.value == true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : gPCController.error.value != ""
                                     ? AppErrorWidget(
@@ -146,7 +146,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: gPCController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           // return selectLocation(index);
@@ -304,7 +304,7 @@ class _GetUnitTypeState extends State<GetUnitType> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == gPCController.length - 1 ? Container() : AppDivider(),
+          index == gPCController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

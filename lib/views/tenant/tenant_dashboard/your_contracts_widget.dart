@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class YourContracts extends StatefulWidget {
   final Function(int)? manageContracts;
-  YourContracts({Key? key, this.manageContracts}) : super(key: key);
+  const YourContracts({super.key, this.manageContracts});
 
   @override
   State<YourContracts> createState() => _YourContractsState();
@@ -59,8 +59,7 @@ class _YourContractsState extends State<YourContracts> {
                     return Text(
                       getContractsController.contractsLength.value == 0
                           ? AppMetaLabels().yourContracts
-                          : AppMetaLabels().yourContracts +
-                              "  (${getContractsController.contractsLength.value})",
+                          : "${AppMetaLabels().yourContracts}  (${getContractsController.contractsLength.value})",
                       style: AppTextStyle.semiBoldBlack13,
                     );
                   }),
@@ -69,67 +68,165 @@ class _YourContractsState extends State<YourContracts> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 2.h),
-              child: AppDivider(),
+              child: const AppDivider(),
             ),
-            Container(
-              child: Obx(() {
-                return getContractsController.loadingContractsData.value == true
-                    ? LoadingIndicatorBlue()
-                    : getContractsController.contractsError.value != '' ||
-                            getContractsController.contractsLength.value == 0
-                        ? AppErrorWidget(
-                            errorText: getContractsController
-                                        .contractsLength.value ==
-                                    0
-                                ? AppMetaLabels().noDatafound
-                                : getContractsController.contractsError.value,
-                          )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: getContractsController.listLength,
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                onTap: () async {
-                                  SessionController().setContractID(
-                                      getContractsController.getContracts.value
-                                          .contracts![index].contractId);
-                                  SessionController().setContractNo(
-                                      getContractsController.getContracts.value
-                                          .contracts![index].contractno);
-                                  await Get.to(() => ContractsDetailsTabs(
-                                        prevContractNo: getContractsController
-                                            .getContracts
-                                            .value
-                                            .contracts![index]
-                                            .previousContactNo,
-                                      ));
-                                  getContractsController.getDashboardData();
-                                },
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 3.5.w, vertical: 1.5.h),
-                                      child: Row(
-                                        children: [
-                                          SizedBox(
-                                            // height: 12.0.h,
-                                            width: 78.0.w,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Container(
-                                                      width: 50.0.w,
-                                                      child: Text(
-                                                        SessionController()
+            Obx(() {
+              return getContractsController.loadingContractsData.value == true
+                  ? const LoadingIndicatorBlue()
+                  : getContractsController.contractsError.value != '' ||
+                          getContractsController.contractsLength.value == 0
+                      ? AppErrorWidget(
+                          errorText: getContractsController
+                                      .contractsLength.value ==
+                                  0
+                              ? AppMetaLabels().noDatafound
+                              : getContractsController.contractsError.value,
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: getContractsController.listLength,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () async {
+                                SessionController().setContractID(
+                                    getContractsController.getContracts.value
+                                        .contracts![index].contractId);
+                                SessionController().setContractNo(
+                                    getContractsController.getContracts.value
+                                        .contracts![index].contractno);
+                                await Get.to(() => ContractsDetailsTabs(
+                                      prevContractNo: getContractsController
+                                          .getContracts
+                                          .value
+                                          .contracts![index]
+                                          .previousContactNo,
+                                    ));
+                                getContractsController.getDashboardData();
+                              },
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 3.5.w, vertical: 1.5.h),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          // height: 12.0.h,
+                                          width: 78.0.w,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 50.0.w,
+                                                    child: Text(
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getContractsController
+                                                                  .getContracts
+                                                                  .value
+                                                                  .contracts![
+                                                                      index]
+                                                                  .propertyName ??
+                                                              ""
+                                                          : getContractsController
+                                                                  .getContracts
+                                                                  .value
+                                                                  .contracts![
+                                                                      index]
+                                                                  .propertyNameAr ??
+                                                              "",
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack12,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
+                                                  ),
+                                                  const Spacer(),
+                                                  Text(
+                                                    "${getContractsController.getContracts.value.contracts![index].contractno}",
+                                                    style: AppTextStyle
+                                                        .semiBoldBlack12,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 1.0.h,
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 30.0.w,
+                                                    child: Text(
+                                                      AppMetaLabels().unitNo,
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack12,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
+                                                  ),
+                                                  const Spacer(),
+                                                  Container(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    width: 40.0.w,
+                                                    child: Text(
+                                                      "${getContractsController.getContracts.value.contracts![index].unitRefNo}",
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack12,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 1.0.h,
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "${getContractsController.getContracts.value.contracts![index].contractStartDate}",
+                                                    style: AppTextStyle
+                                                        .normalGrey10,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 1.w),
+                                                    child: Icon(
+                                                        Icons.arrow_forward,
+                                                        size: 10.sp,
+                                                        color: AppColors
+                                                            .greyColor),
+                                                  ),
+                                                  Text(
+                                                    "${getContractsController.getContracts.value.contracts![index].contractEndDate}",
+                                                    style: AppTextStyle
+                                                        .normalGrey10,
+                                                  ),
+                                                  const Spacer(),
+                                                  ConstrainedBox(
+                                                    constraints:
+                                                        BoxConstraints(
+                                                            maxWidth: 27.w),
+                                                    child: FittedBox(
+                                                      child: StatusWidget(
+                                                        text: SessionController()
                                                                     .getLanguage() ==
                                                                 1
                                                             ? getContractsController
@@ -137,156 +234,56 @@ class _YourContractsState extends State<YourContracts> {
                                                                     .value
                                                                     .contracts![
                                                                         index]
-                                                                    .propertyName ??
-                                                                ""
+                                                                    .contractStatus ??
+                                                                ''
                                                             : getContractsController
                                                                     .getContracts
                                                                     .value
                                                                     .contracts![
                                                                         index]
-                                                                    .propertyNameAr ??
-                                                                "",
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack12,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
+                                                                    .contractStatusAr ??
+                                                                '',
+                                                        valueToCompare:
+                                                            getContractsController
+                                                                .getContracts
+                                                                .value
+                                                                .contracts![
+                                                                    index]
+                                                                .contractStatus,
                                                       ),
                                                     ),
-                                                    Spacer(),
-                                                    Text(
-                                                      "${getContractsController.getContracts.value.contracts![index].contractno}",
-                                                      style: AppTextStyle
-                                                          .semiBoldBlack12,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 1.0.h,
-                                                ),
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Container(
-                                                      width: 30.0.w,
-                                                      child: Text(
-                                                        AppMetaLabels().unitNo,
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack12,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                      ),
-                                                    ),
-                                                    Spacer(),
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.centerRight,
-                                                      width: 40.0.w,
-                                                      child: Text(
-                                                        "${getContractsController.getContracts.value.contracts![index].unitRefNo}",
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack12,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 1.0.h,
-                                                ),
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      "${getContractsController.getContracts.value.contracts![index].contractStartDate}",
-                                                      style: AppTextStyle
-                                                          .normalGrey10,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 1.w),
-                                                      child: Icon(
-                                                          Icons.arrow_forward,
-                                                          size: 10.sp,
-                                                          color: AppColors
-                                                              .greyColor),
-                                                    ),
-                                                    Text(
-                                                      "${getContractsController.getContracts.value.contracts![index].contractEndDate}",
-                                                      style: AppTextStyle
-                                                          .normalGrey10,
-                                                    ),
-                                                    Spacer(),
-                                                    ConstrainedBox(
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              maxWidth: 27.w),
-                                                      child: FittedBox(
-                                                        child: StatusWidget(
-                                                          text: SessionController()
-                                                                      .getLanguage() ==
-                                                                  1
-                                                              ? getContractsController
-                                                                      .getContracts
-                                                                      .value
-                                                                      .contracts![
-                                                                          index]
-                                                                      .contractStatus ??
-                                                                  ''
-                                                              : getContractsController
-                                                                      .getContracts
-                                                                      .value
-                                                                      .contracts![
-                                                                          index]
-                                                                      .contractStatusAr ??
-                                                                  '',
-                                                          valueToCompare:
-                                                              getContractsController
-                                                                  .getContracts
-                                                                  .value
-                                                                  .contracts![
-                                                                      index]
-                                                                  .contractStatus,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              right: 0.5.h, left: 2.0.h),
+                                          child: SizedBox(
+                                            width: 0.15.w,
+                                            child: Icon(
+                                              Icons.arrow_forward_ios_rounded,
+                                              color: AppColors.grey1,
+                                              size: 20,
                                             ),
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                right: 0.5.h, left: 2.0.h),
-                                            child: SizedBox(
-                                              width: 0.15.w,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios_rounded,
-                                                color: AppColors.grey1,
-                                                size: 20,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                        )
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 1.0.h, right: 1.0.h),
-                                      child: AppDivider(),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-              }),
-            ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 1.0.h, right: 1.0.h),
+                                    child: const AppDivider(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+            }),
             Obx(() {
               return getContractsController.contractsLength.value == 0
                   ? SizedBox(

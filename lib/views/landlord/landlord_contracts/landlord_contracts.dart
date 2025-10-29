@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'landlord_contract_details_tabs/landlord_contract-details_tabs.dart';
 
 class LandLordContracts extends StatefulWidget {
-  const LandLordContracts({Key? key}) : super(key: key);
+  const LandLordContracts({super.key});
 
   @override
   _LandLordContractsState createState() => _LandLordContractsState();
@@ -121,7 +121,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                       controller.getContracts(
                           controller.pageNo, searchController.text);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.refresh,
                     ),
                   )
@@ -156,7 +156,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                     ),
                     child: Obx(() {
                       return controller.loadingContracts.value == true
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : controller.errorLoadingContracts.value != ''
                               ? CustomErrorWidget(
                                   errorText:
@@ -165,7 +165,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                 )
                               : ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: controller.contracts.length,
                                   itemBuilder: (context, index) {
                                     return Column(
@@ -173,13 +173,13 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                         inkWell(index),
                                         index == controller.contracts.length - 1
                                             ? controller.contracts.length < 20
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 // : _controller
                                                 //         .isSearch.value
                                                 //     ? SizedBox()
                                                 : controller.isFilter.value ==
                                                         false
-                                                    ? Container(
+                                                    ? SizedBox(
                                                         height: controller
                                                                     .errorLoadMore
                                                                     .value !=
@@ -189,13 +189,13 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                         width: 87.w,
                                                         child: Row(
                                                           children: [
-                                                            Spacer(),
+                                                            const Spacer(),
                                                             Obx(() {
                                                               return controller
                                                                           .errorLoadMore
                                                                           .value !=
                                                                       ''
-                                                                  ? SizedBox()
+                                                                  ? const SizedBox()
                                                                   : InkWell(
                                                                       onTap:
                                                                           () async {
@@ -232,12 +232,12 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                                 children: [
                                                                                   TextSpan(
                                                                                     text: AppMetaLabels().loadMoreData,
-                                                                                    style: TextStyle(
+                                                                                    style: const TextStyle(
                                                                                       color: Colors.blue,
                                                                                       fontWeight: FontWeight.bold,
                                                                                     ),
                                                                                   ),
-                                                                                  WidgetSpan(
+                                                                                  const WidgetSpan(
                                                                                     child: Icon(
                                                                                       Icons.arrow_forward_ios,
                                                                                       size: 15,
@@ -278,12 +278,12 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                           .text);
                                                               setState(() {});
                                                             },
-                                                            child: Container(
+                                                            child: SizedBox(
                                                               height: 5.h,
                                                               width: 95.w,
                                                               child: Row(
                                                                 children: [
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   RichText(
                                                                     textAlign:
                                                                         TextAlign
@@ -295,14 +295,14 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                                           text:
                                                                               AppMetaLabels().loadMoreData,
                                                                           style:
-                                                                              TextStyle(
+                                                                              const TextStyle(
                                                                             color:
                                                                                 Colors.blue,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
                                                                         ),
-                                                                        WidgetSpan(
+                                                                        const WidgetSpan(
                                                                           child:
                                                                               Icon(
                                                                             Icons.arrow_forward_ios,
@@ -322,7 +322,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                                               ),
                                                             ),
                                                           )
-                                            : SizedBox()
+                                            : const SizedBox()
                                       ],
                                     );
                                   },
@@ -336,13 +336,13 @@ class _LandLordContractsState extends State<LandLordContracts> {
           padding: EdgeInsets.only(bottom: 2.0.h),
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               width: 100.0.w,
               height: 4.0.h,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     height: 4.0.h,
                     width: 30.0.w,
                     child: ElevatedButton(
@@ -379,7 +379,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                       ? Container()
                       : Padding(
                           padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                          child: Container(
+                          child: SizedBox(
                             height: 4.0.h,
                             width: SessionController().getLanguage() == 1
                                 ? 30.0.w
@@ -419,12 +419,12 @@ class _LandLordContractsState extends State<LandLordContracts> {
       }),
       Obx(() {
         return controller.loadingDataLoadMore.value
-            ? Container(
+            ? const SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: Center(child: LoadingIndicatorBlue()),
               )
-            : SizedBox();
+            : const SizedBox();
       })
     ]);
   }
@@ -464,7 +464,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 44.0.w,
                               child: Text(
                                 SessionController().getLanguage() == 1
@@ -478,7 +478,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               "${controller.contracts[index].contractno}",
                               style: AppTextStyle.semiBoldBlack12,
@@ -492,7 +492,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 16.0.w,
                               child: Text(
                                 AppMetaLabels().unitNo,
@@ -500,7 +500,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               width: 53.0.w,
                               alignment: Alignment.centerRight,
@@ -536,7 +536,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                 ),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             SessionController().getLanguage() == 1 &&
                                         controller.contracts[index]
                                                 .contractStatus ==
@@ -544,7 +544,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                     controller
                                             .contracts[index].contractStatus ==
                                         ''
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : SessionController().getLanguage() != 1 &&
                                             controller.contracts[index]
                                                     .contractStatusAR ==
@@ -552,7 +552,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
                                         controller.contracts[index]
                                                 .contractStatusAR ==
                                             ''
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : ConstrainedBox(
                                         constraints:
                                             BoxConstraints(maxWidth: 25.w),
@@ -597,7 +597,7 @@ class _LandLordContractsState extends State<LandLordContracts> {
             ),
             index == controller.contracts.length - 1
                 ? Container()
-                : AppDivider(),
+                : const AppDivider(),
           ],
         ),
       ),

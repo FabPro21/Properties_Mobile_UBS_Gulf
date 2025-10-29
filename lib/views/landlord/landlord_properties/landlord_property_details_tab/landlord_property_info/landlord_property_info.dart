@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordPropertyInfo extends StatefulWidget {
   final String? propertID;
-  const LandlordPropertyInfo({Key? key, this.propertID}) : super(key: key);
+  const LandlordPropertyInfo({super.key, this.propertID});
 
   @override
   _LandlordPropertyInfoState createState() => _LandlordPropertyInfoState();
@@ -22,7 +22,7 @@ class LandlordPropertyInfo extends StatefulWidget {
 class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
   LandlordPropertiesTabDetailController controller =
       Get.put(LandlordPropertiesTabDetailController());
-  CameraPosition kGooglePlex = CameraPosition(
+  CameraPosition kGooglePlex = const CameraPosition(
     target: LatLng(23.4241, 53.8478),
     zoom: 5.0,
   );
@@ -50,7 +50,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                     return controller.loadingPropertiesDetail.value == true
                         ? SizedBox(
                             height: 70.h,
-                            child: Center(
+                            child: const Center(
                               child: LoadingIndicatorBlue(),
                             ),
                           )
@@ -133,7 +133,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                   style:
                                                       AppTextStyle.normalGrey11,
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Container(
                                                   alignment: SessionController()
                                                               .getLanguage() ==
@@ -215,7 +215,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                   style:
                                                       AppTextStyle.normalGrey11,
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Container(
                                                   alignment: SessionController()
                                                               .getLanguage() ==
@@ -259,7 +259,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                         .normalGrey11,
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Container(
                                                   alignment: SessionController()
                                                               .getLanguage() ==
@@ -288,7 +288,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                         .normalGrey11,
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Container(
                                                   alignment: SessionController()
                                                               .getLanguage() ==
@@ -378,7 +378,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                             ?.first
                                                             .propertyAddressAR ==
                                                         ''
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : Row(
                                                     children: [
                                                       Text(
@@ -386,7 +386,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                                                         style: AppTextStyle
                                                             .semiBoldBlack11,
                                                       ),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Container(
                                                         alignment: Alignment
                                                             .centerRight,
@@ -745,7 +745,7 @@ class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
                   }),
                 ),
               ),
-              BottomShadow(),
+              const BottomShadow(),
             ],
           ),
         ));

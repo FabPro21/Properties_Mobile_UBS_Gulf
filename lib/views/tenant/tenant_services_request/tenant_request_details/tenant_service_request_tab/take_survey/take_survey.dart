@@ -41,11 +41,11 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back_ios,
                     color: Colors.white,
                   )),
-              flexibleSpace: Image(
+              flexibleSpace: const Image(
                 image: AssetImage(AppImagesPath.appbarimg),
                 fit: BoxFit.cover,
               ),
@@ -110,7 +110,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
             body: Obx(() {
               return SafeArea(
                 child: controller.loadingQuestions.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : controller.errorLoadingQuestions != ''
                         ? AppErrorWidget(
                             errorText: controller.errorLoadingQuestions??"",
@@ -162,7 +162,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                         .toInt()]
                                                     .loadingAnswers
                                                     .value==true
-                                                ? LoadingIndicatorBlue()
+                                                ? const LoadingIndicatorBlue()
                                                 : controller
                                                             .questions?.faqQuestion?[controller
                                                                 .currentQuestion
@@ -251,9 +251,9 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                                                 ),
                                                               );
                                                             })
-                                                        : SizedBox()),
+                                                        : const SizedBox()),
                                     controller.savingAnswer.value
-                                        ? LoadingIndicatorBlue()
+                                        ? const LoadingIndicatorBlue()
                                         : Center(
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
@@ -297,7 +297,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                   ],
                                 ),
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
               );
             })),
       );
@@ -370,7 +370,7 @@ class TakeSurvey extends GetView<TakeSurveyController> {
                                     borderRadius: BorderRadius.circular(1.3.h),
                                   ),
                                   backgroundColor:
-                                      Color.fromRGBO(0, 61, 166, 1),
+                                      const Color.fromRGBO(0, 61, 166, 1),
                                 ),
                                 onPressed: () {
                                   final srDetailsController = Get.find<

@@ -19,21 +19,21 @@ class OccupancyVacancyRegisterSummaryModel {
     if (json['serviceRequests'] != null) {
       serviceRequests = <ServiceRequests>[];
       json['serviceRequests'].forEach((v) {
-        serviceRequests!.add(new ServiceRequests.fromJson(v));
+        serviceRequests!.add(ServiceRequests.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    data['totalRecord'] = this.totalRecord;
-    if (this.serviceRequests != null) {
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    data['totalRecord'] = totalRecord;
+    if (serviceRequests != null) {
       data['serviceRequests'] =
-          this.serviceRequests!.map((v) => v.toJson()).toList();
+          serviceRequests!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -82,19 +82,19 @@ class ServiceRequests {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['landlord'] = this.landlord;
-    data['landlordAR'] = this.landlordAR;
-    data['ubsNo'] = this.ubsNo;
-    data['propertyName'] = this.propertyName;
-    data['propertyNameAR'] = this.propertyNameAR;
-    data['emirateName'] = this.emirateName;
-    data['emirateNameAR'] = this.emirateNameAR;
-    data['totalUnits'] = this.totalUnits;
-    data['occupiedUnits'] = this.occupiedUnits;
-    data['vacantUnits'] = this.vacantUnits;
-    data['noOfOccupancy'] = this.noOfOccupancy;
-    data['noOfVacancy'] = this.noOfVacancy;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['landlord'] = landlord;
+    data['landlordAR'] = landlordAR;
+    data['ubsNo'] = ubsNo;
+    data['propertyName'] = propertyName;
+    data['propertyNameAR'] = propertyNameAR;
+    data['emirateName'] = emirateName;
+    data['emirateNameAR'] = emirateNameAR;
+    data['totalUnits'] = totalUnits;
+    data['occupiedUnits'] = occupiedUnits;
+    data['vacantUnits'] = vacantUnits;
+    data['noOfOccupancy'] = noOfOccupancy;
+    data['noOfVacancy'] = noOfVacancy;
     return data;
   }
 }

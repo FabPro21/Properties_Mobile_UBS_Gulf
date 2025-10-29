@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
 ToBePaidIn30DaysModel toBePaidIn30DaysModelFromJson(String? str) =>
@@ -28,13 +29,15 @@ class ToBePaidIn30DaysModel {
   dynamic totalAmount;
 
   factory ToBePaidIn30DaysModel.fromJson(Map<String?, dynamic> json) {
-    var amount;
+    String amount = "0.00";
     try {
       var am = json["totalAmount"];
       final paidFormatter = NumberFormat('#,##0.00', 'AR');
       amount = paidFormatter.format(am);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return ToBePaidIn30DaysModel(
       data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
@@ -70,13 +73,15 @@ class Datum {
   String? transactionNo;
 
   factory Datum.fromJson(Map<String?, dynamic> json) {
-    var amount;
+    String amount = "0.00";
     try {
       var am = json["amount"];
       final paidFormatter = NumberFormat('#,##0.00', 'AR');
       amount = paidFormatter.format(am);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return Datum(
       contractId: json["contractID"],

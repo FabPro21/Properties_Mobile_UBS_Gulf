@@ -10,12 +10,12 @@ class StepNoWidget extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   StepNoWidget({
-    Key? key,
+    super.key,
     this.label,
     this.tooltip,
     this.color = Colors.black12,
     this.textColor,
-  }) : super(key: key);
+  });
 
   final GlobalKey _toolTipKey = GlobalKey();
 
@@ -24,15 +24,15 @@ class StepNoWidget extends StatelessWidget {
     return Tooltip(
       key: _toolTipKey,
       message: tooltip,
-      showDuration: Duration(seconds: 3),
-      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      showDuration: const Duration(seconds: 3),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       decoration: BoxDecoration(
           color: AppColors.chartBlueColor,
           borderRadius: BorderRadius.circular(8)),
       child: InkWell(
         onTap: () {
-          final dynamic _toolTip = _toolTipKey.currentState;
-          _toolTip.ensureTooltipVisible();
+          final dynamic toolTip = _toolTipKey.currentState;
+          toolTip.ensureTooltipVisible();
         },
         child: SrNoWidget(
           size: 20.sp,

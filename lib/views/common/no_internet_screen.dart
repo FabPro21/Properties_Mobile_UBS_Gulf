@@ -13,6 +13,8 @@ import '../../data/helpers/session_controller.dart';
 
 // ignore: must_be_immutable
 class NoInternetScreen extends StatefulWidget {
+  const NoInternetScreen({super.key});
+
   @override
   State<NoInternetScreen> createState() => _NoInternetScreenState();
 }
@@ -62,9 +64,9 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
                           child: ButtonWidget(
                             buttonText: AppMetaLabels().retry,
                             onPress: () async {
-                              bool _isInternetConnected =
+                              bool isInternetConnected =
                                   await BaseClientClass.isInternetConnected();
-                              if (_isInternetConnected) {
+                              if (isInternetConnected) {
                                 Get.back(result: true);
                               }
                             },

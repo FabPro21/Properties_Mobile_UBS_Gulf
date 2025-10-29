@@ -8,17 +8,17 @@ class DownloadReportModel {
 
   DownloadReportModel.fromJson(Map<String?, dynamic> json) {
     filePath = json['filePath'] != null
-        ? new FilePath.fromJson(json['filePath'])
+        ? FilePath.fromJson(json['filePath'])
         : null;
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    if (this.filePath != null) {
-      data['filePath'] = this.filePath!.toJson();
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    if (filePath != null) {
+      data['filePath'] = filePath!.toJson();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -61,17 +61,17 @@ class FilePath {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['result'] = this.result;
-    data['id'] = this.id;
-    data['exception'] = this.exception;
-    data['status'] = this.status;
-    data['isCanceled'] = this.isCanceled;
-    data['isCompleted'] = this.isCompleted;
-    data['isCompletedSuccessfully'] = this.isCompletedSuccessfully;
-    data['creationOptions'] = this.creationOptions;
-    data['asyncState'] = this.asyncState;
-    data['isFaulted'] = this.isFaulted;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['result'] = result;
+    data['id'] = id;
+    data['exception'] = exception;
+    data['status'] = status;
+    data['isCanceled'] = isCanceled;
+    data['isCompleted'] = isCompleted;
+    data['isCompletedSuccessfully'] = isCompletedSuccessfully;
+    data['creationOptions'] = creationOptions;
+    data['asyncState'] = asyncState;
+    data['isFaulted'] = isFaulted;
     return data;
   }
 }

@@ -13,7 +13,7 @@ import '../../../data/helpers/session_controller.dart';
 
 class TenantUpdatesProfile extends StatefulWidget {
   final Profile? profile;
-  const TenantUpdatesProfile({Key? key, this.profile}) : super(key: key);
+  const TenantUpdatesProfile({super.key, this.profile});
 
   @override
   _TenantUpdatesProfileState createState() => _TenantUpdatesProfileState();
@@ -21,10 +21,10 @@ class TenantUpdatesProfile extends StatefulWidget {
 
 class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
   final tenantProfileController = Get.put(TenantProfileController());
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   @override
   void initState() {
@@ -156,7 +156,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                         hintText: AppMetaLabels().name,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -196,7 +196,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                         hintText: AppMetaLabels().email,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -240,7 +240,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                           hintText: AppMetaLabels().mobileNumber,
                           hintStyle: AppTextStyle.normalBlack10
                               .copyWith(color: AppColors.textFieldBGColor),
-                          errorStyle: TextStyle(fontSize: 0),
+                          errorStyle: const TextStyle(fontSize: 0),
                           contentPadding: EdgeInsets.all(4.w),
                         ),
                       ),
@@ -282,7 +282,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                         hintText: AppMetaLabels().address,
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: AppColors.textFieldBGColor),
-                        errorStyle: TextStyle(fontSize: 0),
+                        errorStyle: const TextStyle(fontSize: 0),
                         contentPadding: EdgeInsets.all(4.w),
                       ),
                     ),
@@ -297,7 +297,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                               color: AppColors.blueColor,
                             ),
                           )
-                        : Container(
+                        : SizedBox(
                             height: 6.0.h,
                             width: 49.0.w,
                             child: ElevatedButton(
@@ -315,7 +315,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                                           _nameController.text,
                                           _phoneController.text,
                                           _emailController.text,
-                                          _addressController.text))
+                                          _addressController.text)) {
                                     // get profile
                                     // await tenantProfileController.getData();
                                     // 12*
@@ -336,6 +336,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                                                   width: 100.w,
                                                   child: showDialogData()));
                                         });
+                                  }
                                 } else {
                                   Get.snackbar(
                                     AppMetaLabels().error,
@@ -344,10 +345,6 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                                   );
                                 }
                               },
-                              child: Text(
-                                AppMetaLabels().updateProfile,
-                                style: AppTextStyle.semiBoldBlue12,
-                              ),
                               style: ButtonStyle(
                                   elevation:
                                       WidgetStateProperty.all<double>(0.0),
@@ -364,6 +361,10 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                                           width: 1.0,
                                         )),
                                   )),
+                              child: Text(
+                                AppMetaLabels().updateProfile,
+                                style: AppTextStyle.semiBoldBlue12,
+                              ),
                             ),
                           );
                   })
@@ -421,7 +422,7 @@ class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         Navigator.pop(context);

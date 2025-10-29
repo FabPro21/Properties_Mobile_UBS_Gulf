@@ -11,15 +11,11 @@ class UpdateUserLanguageController extends GetxController {
   var loadingData = false.obs;
   RxString error = "".obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> updateData(langId) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     loadingData.value = true;
     var result = await CommonRepository.updateLanguage(langId);

@@ -19,8 +19,7 @@ import 'package:sizer/sizer.dart';
 
 class LandlordPropertyUnitInfoDetails extends StatefulWidget {
   final String? unitID;
-  const LandlordPropertyUnitInfoDetails({Key? key, this.unitID})
-      : super(key: key);
+  const LandlordPropertyUnitInfoDetails({super.key, this.unitID});
 
   @override
   _LandlordPropertyUnitInfoDetailsState createState() =>
@@ -50,8 +49,8 @@ class _LandlordPropertyUnitInfoDetailsState
   }
 
   Set<Annotation> _createAnnotation() {
-    var lat;
-    var lng;
+    double lat;
+    double lng;
     if (controller
                 .propertyUnitDetailModel.propertyUnitDetails?.first.latitude !=
             "" &&
@@ -68,7 +67,7 @@ class _LandlordPropertyUnitInfoDetailsState
       lat = 0.0;
       lng = 0.0;
     }
-    return <Annotation>[
+    return <Annotation>{
       Annotation(
           annotationId: AnnotationId("annotation_1"),
           position: LatLng(lat, lng),
@@ -89,7 +88,7 @@ class _LandlordPropertyUnitInfoDetailsState
                         .propertyNameAR ??
                     "",
           )),
-    ].toSet();
+    };
   }
 
   @override
@@ -107,8 +106,8 @@ class _LandlordPropertyUnitInfoDetailsState
           mapHeight = 40;
         }
 
-        var lat;
-        var lng;
+        double lat;
+        double lng;
         if (controller.propertyUnitDetailModel.propertyUnitDetails?.first
                     .latitude !=
                 "" &&
@@ -127,7 +126,7 @@ class _LandlordPropertyUnitInfoDetailsState
         }
         _createAnnotation();
         final marker = Gm.Marker(
-          markerId: Gm.MarkerId('Hello'),
+          markerId: const Gm.MarkerId('Hello'),
           position: Gm.LatLng(lat, lng),
           // icon: BitmapDescriptor.,
           infoWindow: Gm.InfoWindow(
@@ -148,7 +147,7 @@ class _LandlordPropertyUnitInfoDetailsState
           ),
         );
         setState(() {
-          markers[Gm.MarkerId('place_name')] = marker;
+          markers[const Gm.MarkerId('place_name')] = marker;
         });
         setState(() {});
       }
@@ -198,7 +197,7 @@ class _LandlordPropertyUnitInfoDetailsState
                         ? 70.h
                         : 100.h,
                     child: controller.loadingPropertiesUnitDetail.value == true
-                        ? LoadingIndicatorBlue()
+                        ? const LoadingIndicatorBlue()
                         : controller.errorLoadingPropertiesUnitDetail.value != ''
                             ? SizedBox(
                                 height: 60.h,
@@ -213,11 +212,11 @@ class _LandlordPropertyUnitInfoDetailsState
                             : controller.propertyUnitDetailModel
                                         .propertyUnitDetails ==
                                     null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
                                       Flexible(
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 100.0.w,
                                           height: 100.0.h,
                                           child: SingleChildScrollView(
@@ -272,169 +271,165 @@ class _LandlordPropertyUnitInfoDetailsState
                                                                             .all(2.0
                                                                                 .h),
                                                                     child:
-                                                                        Container(
-                                                                      // height: 13.0.h,
-                                                                      // color: Colors.red,
-                                                                      child: Column(
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment
-                                                                                .start,
-                                                                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                        children: [
-                                                                          Container(
-                                                                            width:
-                                                                                90.0.w,
-                                                                            child:
-                                                                                Text(
-                                                                              SessionController().getLanguage() == 1
-                                                                                  ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.propertyName ?? ''
-                                                                                  : controller.propertyUnitDetailModel.propertyUnitDetails?.first.propertyNameAR ?? '',
-                                                                              overflow:
-                                                                                  TextOverflow.ellipsis,
-                                                                              style:
-                                                                                  AppTextStyle.semiBoldBlack12,
-                                                                            ),
-                                                                          ),
-                                                                          SizedBox(
-                                                                            height:
-                                                                                0.5.h,
-                                                                          ),
-                                                                          Container(
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              color:
-                                                                                  Color.fromRGBO(
-                                                                                241,
-                                                                                248,
-                                                                                252,
-                                                                                0.1,
-                                                                              ),
-                                                                              borderRadius:
-                                                                                  BorderRadius.circular(1.0.h),
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding:
-                                                                                  EdgeInsets.only(top: 0.5.h),
+                                                                        Column(
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment
+                                                                                  .start,
+                                                                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                          children: [
+                                                                            SizedBox(
+                                                                              width:
+                                                                                  90.0.w,
                                                                               child:
-                                                                                  Row(
-                                                                                mainAxisAlignment:
-                                                                                    MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  SizedBox(
-                                                                                    width: 24.w,
-                                                                                    child: Center(
-                                                                                      child: columnList(
-                                                                                        AppMetaLabels().unitCatgLand,
-                                                                                        SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryName ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryNameAR ?? '',
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(
-                                                                                    width: 24.w,
-                                                                                    child: Center(
-                                                                                      child: columnList(
-                                                                                        AppMetaLabels().unitTypeLand,
-                                                                                        SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitType ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitTypeAR ?? '',
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(
-                                                                                    width: 24.w,
-                                                                                    child: Center(
-                                                                                      child: columnList(
-                                                                                        AppMetaLabels().unitView,
-                                                                                        SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitView ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitViewAR ?? '',
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
+                                                                                  Text(
+                                                                                SessionController().getLanguage() == 1
+                                                                                    ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.propertyName ?? ''
+                                                                                    : controller.propertyUnitDetailModel.propertyUnitDetails?.first.propertyNameAR ?? '',
+                                                                                overflow:
+                                                                                    TextOverflow.ellipsis,
+                                                                                style:
+                                                                                    AppTextStyle.semiBoldBlack12,
                                                                               ),
                                                                             ),
-                                                                          ),
-                                                                          if (controller
-                                                                                  .propertyUnitDetailModel
-                                                                                  .propertyUnitDetails
-                                                                                  ?.first
-                                                                                  .unitCategoryName ==
-                                                                              'Residential')
+                                                                            SizedBox(
+                                                                              height:
+                                                                                  0.5.h,
+                                                                            ),
                                                                             Container(
-                                                                              margin:
-                                                                                  EdgeInsets.only(top: 2.h),
-                                                                              decoration: BoxDecoration(
-                                                                                  color: Color.fromRGBO(247, 247, 247, 1),
-                                                                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(2.h), bottomRight: Radius.circular(2.h))),
+                                                                              decoration:
+                                                                                  BoxDecoration(
+                                                                                color:
+                                                                                    const Color.fromRGBO(
+                                                                                  241,
+                                                                                  248,
+                                                                                  252,
+                                                                                  0.1,
+                                                                                ),
+                                                                                borderRadius:
+                                                                                    BorderRadius.circular(1.0.h),
+                                                                              ),
                                                                               child:
                                                                                   Padding(
                                                                                 padding:
-                                                                                    EdgeInsets.all(2.0.h),
+                                                                                    EdgeInsets.only(top: 0.5.h),
                                                                                 child:
-                                                                                    Column(
-                                                                                  children: [
                                                                                     Row(
-                                                                                      children: [
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().bedRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.bedRooms.toString() ?? "", alignment: CrossAxisAlignment.start),
+                                                                                  mainAxisAlignment:
+                                                                                      MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    SizedBox(
+                                                                                      width: 24.w,
+                                                                                      child: Center(
+                                                                                        child: columnList(
+                                                                                          AppMetaLabels().unitCatgLand,
+                                                                                          SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryName ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryNameAR ?? '',
                                                                                         ),
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().kitchenLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofKitchens.toString() ?? "", alignment: CrossAxisAlignment.center),
-                                                                                        ),
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().maidRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.maidRooms.toString() ?? "", alignment: CrossAxisAlignment.end),
-                                                                                        ),
-                                                                                      ],
+                                                                                      ),
                                                                                     ),
                                                                                     SizedBox(
-                                                                                      height: 1.5.h,
+                                                                                      width: 24.w,
+                                                                                      child: Center(
+                                                                                        child: columnList(
+                                                                                          AppMetaLabels().unitTypeLand,
+                                                                                          SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitType ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitTypeAR ?? '',
+                                                                                        ),
+                                                                                      ),
                                                                                     ),
-                                                                                    Row(
-                                                                                      children: [
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().livingRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofLivingRooms.toString() ?? "", alignment: CrossAxisAlignment.start),
+                                                                                    SizedBox(
+                                                                                      width: 24.w,
+                                                                                      child: Center(
+                                                                                        child: columnList(
+                                                                                          AppMetaLabels().unitView,
+                                                                                          SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitView ?? '' : controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitViewAR ?? '',
                                                                                         ),
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().balconiesLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofBalconies.toString() ?? "", alignment: CrossAxisAlignment.center),
-                                                                                        ),
-                                                                                        Expanded(
-                                                                                          child: containerList(AppMetaLabels().washRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofWashrooms.toString() ?? "", alignment: CrossAxisAlignment.end),
-                                                                                        ),
-                                                                                      ],
+                                                                                      ),
                                                                                     ),
                                                                                   ],
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                          SizedBox(
-                                                                              height: controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryName != 'Residential'
-                                                                                  ? 1.h
-                                                                                  : 0),
-                                                                          if (controller
-                                                                                  .propertyUnitDetailModel
-                                                                                  .propertyUnitDetails
-                                                                                  ?.first
-                                                                                  .unitCategoryName ==
-                                                                              'Commercial')
-                                                                            Column(
-                                                                              children: [
-                                                                                Row(
-                                                                                  children: [
-                                                                                    Expanded(
-                                                                                      child: SizedBox(
-                                                                                        width: 18.w,
-                                                                                        child: columnList(
-                                                                                            AppMetaLabels().areaSize,
-                                                                                            controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize == null
-                                                                                                ? ""
-                                                                                                : "${controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType!.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
+                                                                            if (controller
+                                                                                    .propertyUnitDetailModel
+                                                                                    .propertyUnitDetails
+                                                                                    ?.first
+                                                                                    .unitCategoryName ==
+                                                                                'Residential')
+                                                                              Container(
+                                                                                margin:
+                                                                                    EdgeInsets.only(top: 2.h),
+                                                                                decoration: BoxDecoration(
+                                                                                    color: const Color.fromRGBO(247, 247, 247, 1),
+                                                                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(2.h), bottomRight: Radius.circular(2.h))),
+                                                                                child:
+                                                                                    Padding(
+                                                                                  padding:
+                                                                                      EdgeInsets.all(2.0.h),
+                                                                                  child:
+                                                                                      Column(
+                                                                                    children: [
+                                                                                      Row(
+                                                                                        children: [
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().bedRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.bedRooms.toString() ?? "", alignment: CrossAxisAlignment.start),
+                                                                                          ),
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().kitchenLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofKitchens.toString() ?? "", alignment: CrossAxisAlignment.center),
+                                                                                          ),
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().maidRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.maidRooms.toString() ?? "", alignment: CrossAxisAlignment.end),
+                                                                                          ),
+                                                                                        ],
                                                                                       ),
-                                                                                    ),
-                                                                                  ],
+                                                                                      SizedBox(
+                                                                                        height: 1.5.h,
+                                                                                      ),
+                                                                                      Row(
+                                                                                        children: [
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().livingRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofLivingRooms.toString() ?? "", alignment: CrossAxisAlignment.start),
+                                                                                          ),
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().balconiesLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofBalconies.toString() ?? "", alignment: CrossAxisAlignment.center),
+                                                                                          ),
+                                                                                          Expanded(
+                                                                                            child: containerList(AppMetaLabels().washRoomsLand, controller.propertyUnitDetailModel.propertyUnitDetails?.first.noofWashrooms.toString() ?? "", alignment: CrossAxisAlignment.end),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
                                                                                 ),
-                                                                              ],
-                                                                            ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
+                                                                              ),
+                                                                            SizedBox(
+                                                                                height: controller.propertyUnitDetailModel.propertyUnitDetails?.first.unitCategoryName != 'Residential'
+                                                                                    ? 1.h
+                                                                                    : 0),
+                                                                            if (controller
+                                                                                    .propertyUnitDetailModel
+                                                                                    .propertyUnitDetails
+                                                                                    ?.first
+                                                                                    .unitCategoryName ==
+                                                                                'Commercial')
+                                                                              Column(
+                                                                                children: [
+                                                                                  Row(
+                                                                                    children: [
+                                                                                      Expanded(
+                                                                                        child: SizedBox(
+                                                                                          width: 18.w,
+                                                                                          child: columnList(
+                                                                                              AppMetaLabels().areaSize,
+                                                                                              controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize == null
+                                                                                                  ? ""
+                                                                                                  : "${controller.propertyUnitDetailModel.propertyUnitDetails?.first.areaSize} ${SessionController().getLanguage() == 1 ? controller.propertyUnitDetailModel.propertyUnitDetails?.first.measurementType : controller.propertyUnitDetailModel.propertyUnitDetails!.first.measurementType!.contains('SQM') ? " المساحة بالمتر المربع" : "المساحة بالقدم المربع"} "),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                          ],
+                                                                        ),
                                                                   ),
                                                                 ])))),
                                                 Padding(
@@ -476,7 +471,7 @@ class _LandlordPropertyUnitInfoDetailsState
                                                             color: AppColors
                                                                 .blackColor,
                                                           ),
-                                                          Container(
+                                                          SizedBox(
                                                             width: 70.0.w,
                                                             child: Text(
                                                               SessionController()

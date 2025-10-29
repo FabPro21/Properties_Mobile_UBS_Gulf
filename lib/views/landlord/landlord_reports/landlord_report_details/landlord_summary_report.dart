@@ -21,8 +21,7 @@ import 'package:sizer/sizer.dart';
 class LandLordSummaryReports extends StatefulWidget {
   final String? reportName;
   final Map? data;
-  const LandLordSummaryReports({Key? key, this.reportName, this.data})
-      : super(key: key);
+  const LandLordSummaryReports({super.key, this.reportName, this.data});
 
   @override
   _LandLordSummaryReportsState createState() => _LandLordSummaryReportsState();
@@ -51,7 +50,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
             Column(children: [
               CustomAppBar2(
                   title:
-                      widget.reportName ?? "" + ' ' + AppMetaLabels().summary),
+                      '${widget.reportName ?? ''} ${AppMetaLabels().summary}'),
               Expanded(
                   child: Padding(
                       padding: EdgeInsets.only(
@@ -83,7 +82,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                           child: Obx(() {
                             return lDReportController.isLoadingSummary.value ==
                                     true
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : lDReportController.errorSummaryReport.value !=
                                         ''
                                     ? SizedBox(
@@ -98,7 +97,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         padding: EdgeInsets.zero,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         // itemCount: 3,
                                         itemCount: widget.reportName ==
                                                 'AMC Report'
@@ -165,25 +165,28 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
             ]),
             Obx(() {
               return lDReportController.isLoading.value
-                  ? Container(
+                  ? const SizedBox(
                       height: double.infinity,
                       width: double.infinity,
                       child: Center(child: LoadingIndicatorBlue()),
                     )
-                  : SizedBox();
+                  : const SizedBox();
             }),
-            isEnableScreen == false ? ScreenDisableWidget() : SizedBox(),
+            isEnableScreen == false
+                ? const ScreenDisableWidget()
+                : const SizedBox(),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
           color: AppColors.whiteColor,
           child: Obx(() {
             return lDReportController.errorSummaryReport.value != ''
-                ? SizedBox()
+                ? const SizedBox()
                 : Container(
                     height: 10.h, //set your height here
                     width: double.maxFinite, //set your width here
-                    decoration: BoxDecoration(color:  Colors.transparent, boxShadow: [
+                    decoration:
+                        BoxDecoration(color: Colors.transparent, boxShadow: [
                       BoxShadow(
                         color: Colors.transparent,
                         blurRadius: 0.9.h,
@@ -202,10 +205,10 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 80.0.w,
                                       child: isLoading
-                                          ? LoadingIndicatorBlue()
+                                          ? const LoadingIndicatorBlue()
                                           : ElevatedButton(
                                               onPressed: isTapOnDownload == true
                                                   ? null
@@ -213,12 +216,12 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                       ? null
                                                       : () async {
                                                           bool
-                                                              _isInternetConnected =
+                                                              isInternetConnected =
                                                               await BaseClientClass
                                                                   .isInternetConnected();
-                                                          if (!_isInternetConnected) {
+                                                          if (!isInternetConnected) {
                                                             await Get.to(
-                                                                NoInternetScreen());
+                                                                const NoInternetScreen());
                                                           }
                                                           setState(() {
                                                             isLoading = true;
@@ -251,15 +254,10 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                                           '\n',
                                                                           ''));
 
-                                                              var path = await lDReportController.createFile(
-                                                                  base64Decoded,
-                                                                  lDReportController
-                                                                          .downloadedFileModel!
-                                                                          .name! +
-                                                                      '.' +
-                                                                      lDReportController
-                                                                          .downloadedFileModel!
-                                                                          .extension!);
+                                                              var path = await lDReportController
+                                                                  .createFile(
+                                                                      base64Decoded,
+                                                                      '${lDReportController.downloadedFileModel!.name!}.${lDReportController.downloadedFileModel!.extension!}');
                                                               final result =
                                                                   await OpenFile
                                                                       .open(
@@ -394,6 +392,15 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                           //   });
                                                           // }
                                                         },
+                                              style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          2.0.w),
+                                                ),
+                                                backgroundColor:
+                                                    AppColors.blueColor,
+                                              ),
                                               child: Text(
                                                 isDownloaded == true
                                                     // ? 'Downloaded'
@@ -411,15 +418,6 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                         .semiBoldBlack11
                                                     : AppTextStyle
                                                         .semiBoldWhite11,
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          2.0.w),
-                                                ),
-                                                backgroundColor:
-                                                    AppColors.blueColor,
                                               ),
                                             ),
                                     ),
@@ -510,7 +508,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
                                                       lDReportController:
                                                           lDReportController,
                                                     )
-                                                  : SizedBox(
+                                                  : const SizedBox(
                                                       child: Text(
                                                           '********Nothing******'))),
     );
@@ -520,8 +518,8 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
 class LPOReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
-  const LPOReportSummaryWidget({Key? key, this.index, this.lDReportController})
-      : super(key: key);
+  const LPOReportSummaryWidget(
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<LPOReportSummaryWidget> createState() => _LPOReportSummaryWidgetState();
@@ -548,7 +546,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -617,7 +615,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -672,7 +670,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                                         .serviceRequests![widget.index!]
                                         .tenantNameAR ==
                                     null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : SizedBox(
                                 height: 1.2.h,
                               ),
@@ -704,16 +702,14 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                                         .serviceRequests![widget.index!]
                                         .tenantNameAR ==
                                     null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : Row(
                                 children: [
                                   Text(
-                                    AppMetaLabels().tenant +
-                                        ' ' +
-                                        AppMetaLabels().name,
+                                    '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                                     style: AppTextStyle.normalGrey11,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Container(
                                     alignment: Alignment.centerRight,
                                     width: 38.w,
@@ -749,7 +745,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().contractor1,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -785,7 +781,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().lPOType,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -821,7 +817,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().lPOStatus,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                                 alignment: Alignment.centerRight,
                                 width: 35.w,
@@ -860,7 +856,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().totalAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -882,7 +878,7 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                               AppMetaLabels().netAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -910,8 +906,8 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
                 widget.lDReportController!.lpoReportSummaryModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -920,8 +916,8 @@ class _LPOReportSummaryWidgetState extends State<LPOReportSummaryWidget> {
 class VatReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
-  const VatReportSummaryWidget({Key? key, this.index, this.lDReportController})
-      : super(key: key);
+  const VatReportSummaryWidget(
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<VatReportSummaryWidget> createState() => _VatReportSummaryWidgetState();
@@ -948,7 +944,7 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1017,7 +1013,7 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1050,12 +1046,10 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().tenant +
-                                  ' ' +
-                                  AppMetaLabels().name,
+                              '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1088,12 +1082,10 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().contract +
-                                  ' ' +
-                                  AppMetaLabels().type,
+                              '${AppMetaLabels().contract} ${AppMetaLabels().type}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1129,7 +1121,7 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                               AppMetaLabels().vatCharges,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1151,7 +1143,7 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                               AppMetaLabels().invoiceAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1173,7 +1165,7 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                               AppMetaLabels().vATPaidAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -1201,8 +1193,8 @@ class _VatReportSummaryWidgetState extends State<VatReportSummaryWidget> {
                 widget.lDReportController!.vatReportSummaryModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -1212,8 +1204,7 @@ class ReceiptRegisterReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const ReceiptRegisterReportSummaryWidget(
-      {Key? key, this.index, this.lDReportController})
-      : super(key: key);
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<ReceiptRegisterReportSummaryWidget> createState() =>
@@ -1242,7 +1233,7 @@ class _ReceiptRegisterReportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1311,7 +1302,7 @@ class _ReceiptRegisterReportSummaryWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1344,12 +1335,10 @@ class _ReceiptRegisterReportSummaryWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().tenant +
-                                  ' ' +
-                                  AppMetaLabels().name,
+                              '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1385,7 +1374,7 @@ class _ReceiptRegisterReportSummaryWidgetState
                               AppMetaLabels().unitType,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1421,7 +1410,7 @@ class _ReceiptRegisterReportSummaryWidgetState
                               AppMetaLabels().modeofPayment,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1457,7 +1446,7 @@ class _ReceiptRegisterReportSummaryWidgetState
                               AppMetaLabels().totalAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1485,8 +1474,8 @@ class _ReceiptRegisterReportSummaryWidgetState
                 widget.lDReportController!.receiptRegisterModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -1496,8 +1485,7 @@ class UnitStatusSummaryReportWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const UnitStatusSummaryReportWidget(
-      {Key? key, this.index, this.lDReportController})
-      : super(key: key);
+      {super.key, this.index, this.lDReportController});
 
   @override
   State<UnitStatusSummaryReportWidget> createState() =>
@@ -1526,7 +1514,7 @@ class _UnitStatusSummaryReportWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1595,7 +1583,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1628,12 +1616,10 @@ class _UnitStatusSummaryReportWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().tenant +
-                                  ' ' +
-                                  AppMetaLabels().name,
+                              '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1669,7 +1655,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().unitRefNo,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1697,7 +1683,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().unitType,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1733,7 +1719,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().unitCategory,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1766,12 +1752,10 @@ class _UnitStatusSummaryReportWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().unit +
-                                  ' ' +
-                                  AppMetaLabels().status,
+                              '${AppMetaLabels().unit} ${AppMetaLabels().status}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -1810,7 +1794,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().currentRent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1832,7 +1816,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().annualRent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -1854,7 +1838,7 @@ class _UnitStatusSummaryReportWidgetState
                               AppMetaLabels().lastContractAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -1882,8 +1866,8 @@ class _UnitStatusSummaryReportWidgetState
                 widget.lDReportController!.unitStatusReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -1893,8 +1877,7 @@ class OccupancyVancaneyreportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const OccupancyVancaneyreportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<OccupancyVancaneyreportSummaryWidget> createState() =>
@@ -1923,7 +1906,7 @@ class _OccupancyVancaneyreportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1992,7 +1975,7 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2028,7 +2011,7 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               AppMetaLabels().totalUnits,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2056,7 +2039,7 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               AppMetaLabels().occupiedUnits,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -2084,7 +2067,7 @@ class _OccupancyVancaneyreportSummaryWidgetState
                               AppMetaLabels().vacantUnits,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -2110,10 +2093,10 @@ class _OccupancyVancaneyreportSummaryWidgetState
                           children: [
                             Text(
                               // AppMetaLabels().noOfOccupancy,
-                              AppMetaLabels().occupancy + ' ( % )',
+                              '${AppMetaLabels().occupancy} ( % )',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -2138,10 +2121,10 @@ class _OccupancyVancaneyreportSummaryWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().vacancy + ' ( % )',
+                              '${AppMetaLabels().vacancy} ( % )',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2175,8 +2158,8 @@ class _OccupancyVancaneyreportSummaryWidgetState
                 widget.lDReportController!.occupanyReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -2186,8 +2169,7 @@ class LegalCasereportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const LegalCasereportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<LegalCasereportSummaryWidget> createState() =>
@@ -2216,7 +2198,7 @@ class _LegalCasereportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2279,7 +2261,7 @@ class _LegalCasereportSummaryWidgetState
                         SizedBox(
                           height: 1.0.h,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -2288,7 +2270,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2314,21 +2296,19 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().tenant +
-                                  ' ' +
-                                  AppMetaLabels().name,
+                              '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               width: Get.width * 0.52,
                               alignment: Alignment.centerRight,
@@ -2355,7 +2335,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2364,7 +2344,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().city,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2390,7 +2370,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2399,7 +2379,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().unitType,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2425,7 +2405,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2434,7 +2414,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().rent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2446,7 +2426,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2455,7 +2435,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().rentPaidAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2467,7 +2447,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2476,7 +2456,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().prevRent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2488,7 +2468,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2497,7 +2477,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().lossofRent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2509,7 +2489,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2518,7 +2498,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().period,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2536,7 +2516,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -2545,7 +2525,7 @@ class _LegalCasereportSummaryWidgetState
                               AppMetaLabels().lossofRentDays,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -2563,7 +2543,7 @@ class _LegalCasereportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                       ],
@@ -2578,8 +2558,8 @@ class _LegalCasereportSummaryWidgetState
                 widget.lDReportController!.legalCaseReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -2589,8 +2569,7 @@ class ContractReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const ContractReportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<ContractReportSummaryWidget> createState() =>
@@ -2619,7 +2598,7 @@ class _ContractReportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2661,7 +2640,7 @@ class _ContractReportSummaryWidgetState
                               AppMetaLabels().contractNo,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2689,7 +2668,7 @@ class _ContractReportSummaryWidgetState
                               AppMetaLabels().totalAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2708,12 +2687,10 @@ class _ContractReportSummaryWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().paid +
-                                  ' ' +
-                                  AppMetaLabels().amount,
+                              '${AppMetaLabels().paid} ${AppMetaLabels().amount}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2735,7 +2712,7 @@ class _ContractReportSummaryWidgetState
                               AppMetaLabels().vatAmount,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2757,7 +2734,7 @@ class _ContractReportSummaryWidgetState
                               AppMetaLabels().vatOnCharges,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2779,7 +2756,7 @@ class _ContractReportSummaryWidgetState
                               AppMetaLabels().status,
                               style: AppTextStyle.semiBoldBlack11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -2824,8 +2801,8 @@ class _ContractReportSummaryWidgetState
                 widget.lDReportController!.contractReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -2835,8 +2812,7 @@ class ChequeRegiterReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const ChequeRegiterReportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<ChequeRegiterReportSummaryWidget> createState() =>
@@ -2865,7 +2841,7 @@ class _ChequeRegiterReportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2934,7 +2910,7 @@ class _ChequeRegiterReportSummaryWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -2967,12 +2943,10 @@ class _ChequeRegiterReportSummaryWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().tenant +
-                                  ' ' +
-                                  AppMetaLabels().name,
+                              '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -3005,12 +2979,10 @@ class _ChequeRegiterReportSummaryWidgetState
                         Row(
                           children: [
                             Text(
-                              AppMetaLabels().cheque +
-                                  ' ' +
-                                  AppMetaLabels().amount,
+                              '${AppMetaLabels().cheque} ${AppMetaLabels().amount}',
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -3032,7 +3004,7 @@ class _ChequeRegiterReportSummaryWidgetState
                               AppMetaLabels().status,
                               style: AppTextStyle.semiBoldBlack11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -3101,8 +3073,8 @@ class _ChequeRegiterReportSummaryWidgetState
                 widget.lDReportController!.chequeRegisterReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -3112,8 +3084,7 @@ class BuildingStatusReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const BuildingStatusReportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<BuildingStatusReportSummaryWidget> createState() =>
@@ -3142,7 +3113,7 @@ class _BuildingStatusReportSummaryWidgetState
               padding: EdgeInsets.only(left: 1.0.h, bottom: 1.h, right: 1.0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 78.0.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -3214,7 +3185,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().emirate,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -3269,7 +3240,7 @@ class _BuildingStatusReportSummaryWidgetState
                                         .serviceRequests![widget.index!]
                                         .tenantNameAR ==
                                     null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : SizedBox(
                                 height: 1.2.h,
                               ),
@@ -3301,16 +3272,14 @@ class _BuildingStatusReportSummaryWidgetState
                                         .serviceRequests![widget.index!]
                                         .tenantNameAR ==
                                     null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : Row(
                                 children: [
                                   Text(
-                                    AppMetaLabels().tenant +
-                                        ' ' +
-                                        AppMetaLabels().name,
+                                    '${AppMetaLabels().tenant} ${AppMetaLabels().name}',
                                     style: AppTextStyle.normalGrey11,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Container(
                                     alignment: Alignment.centerRight,
                                     width: 38.w,
@@ -3346,7 +3315,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().unitType,
                               style: AppTextStyle.normalGrey10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: SessionController().getLanguage() == 1
                                   ? Alignment.centerRight
@@ -3384,7 +3353,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().unitCatgLand,
                               style: AppTextStyle.normalGrey10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: SessionController().getLanguage() == 1
                                   ? Alignment.centerRight
@@ -3422,7 +3391,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().rent,
                               style: AppTextStyle.normalGrey11,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 38.w,
@@ -3444,7 +3413,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().received,
                               style: AppTextStyle.normalGrey10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -3456,7 +3425,7 @@ class _BuildingStatusReportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -3465,7 +3434,7 @@ class _BuildingStatusReportSummaryWidgetState
                               AppMetaLabels().balance,
                               style: AppTextStyle.normalGrey10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               child: Text(
@@ -3477,14 +3446,14 @@ class _BuildingStatusReportSummaryWidgetState
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
                           children: [
                             Text(AppMetaLabels().status,
                                 style: AppTextStyle.semiBoldBlack10),
-                            Spacer(),
+                            const Spacer(),
                             Container(
                               alignment: Alignment.centerRight,
                               width: 30.w,
@@ -3526,8 +3495,8 @@ class _BuildingStatusReportSummaryWidgetState
                 widget.lDReportController!.buildingStatusReportModel.value
                         .totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }
@@ -3537,8 +3506,7 @@ class AMCReportSummaryWidget extends StatefulWidget {
   final int? index;
   final LandLordReportPropController? lDReportController;
   const AMCReportSummaryWidget(
-      {Key? key, @required this.index, @required this.lDReportController})
-      : super(key: key);
+      {super.key, @required this.index, @required this.lDReportController});
 
   @override
   State<AMCReportSummaryWidget> createState() => _AMCReportSummaryWidgetState();
@@ -3558,7 +3526,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
           padding: EdgeInsets.only(left: 2.0.h, bottom: 1.h, right: 2.0.h),
           child: Row(
             children: [
-              Container(
+              SizedBox(
                 width: 80.0.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -3592,7 +3560,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .propertyNameAR ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               Container(
@@ -3648,7 +3616,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .ownerNameAR ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : SizedBox(
                             height: 1.0.h,
                           ),
@@ -3680,7 +3648,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .ownerNameAR ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -3736,16 +3704,14 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractCategory ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               Text(
-                                AppMetaLabels().contract +
-                                    ' ' +
-                                    AppMetaLabels().category,
+                                '${AppMetaLabels().contract} ${AppMetaLabels().category}',
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 38.w,
@@ -3800,7 +3766,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractCategory ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : SizedBox(
                             height: 1.2.h,
                           ),
@@ -3832,14 +3798,14 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractor ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               Text(
                                 AppMetaLabels().contractor1,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 38.w,
@@ -3894,7 +3860,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractor ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : SizedBox(
                             height: 1.2.h,
                           ),
@@ -3926,14 +3892,14 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractTotalAmount ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               Text(
                                 AppMetaLabels().contractTotalAmount,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 30.w,
@@ -3974,7 +3940,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractTotalAmount ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : SizedBox(
                             height: 1.2.h,
                           ),
@@ -4006,14 +3972,14 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                                     .serviceRequests![widget.index!]
                                     .contractAnnualAmount ==
                                 null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               Text(
                                 AppMetaLabels().contractAnnualAmount,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 30.w,
@@ -4035,7 +4001,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                           AppMetaLabels().contractValueUnPaid,
                           style: AppTextStyle.normalGrey11,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           alignment: Alignment.centerRight,
                           width: 30.w,
@@ -4057,7 +4023,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                           AppMetaLabels().paidCharges,
                           style: AppTextStyle.normalGrey11,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           alignment: Alignment.centerRight,
                           width: 38.w,
@@ -4079,7 +4045,7 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
                           AppMetaLabels().balance,
                           style: AppTextStyle.semiBoldBlack11,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           alignment: Alignment.centerRight,
                           width: 38.w,
@@ -4101,8 +4067,8 @@ class _AMCReportSummaryWidgetState extends State<AMCReportSummaryWidget> {
         widget.index ==
                 widget.lDReportController!.amcRepportModel.value.totalRecord! -
                     1
-            ? SizedBox()
-            : AppDivider(),
+            ? const SizedBox()
+            : const AppDivider(),
       ],
     );
   }

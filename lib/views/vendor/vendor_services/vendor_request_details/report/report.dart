@@ -25,7 +25,7 @@ import '../../vendor_request_list/vendor_request_list_controller.dart';
 class SvcReqReport extends StatefulWidget {
   final int? caseNo;
   final bool? status;
-  SvcReqReport({Key? key, this.caseNo, this.status}) : super(key: key);
+  const SvcReqReport({super.key, this.caseNo, this.status});
 
   @override
   State<SvcReqReport> createState() => _SvcReqReportState();
@@ -79,372 +79,298 @@ class _SvcReqReportState extends State<SvcReqReport> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return controller.loadingDataReportTAB.value == true
-              ? Expanded(
+              ? const Expanded(
                   child: Center(child: LoadingIndicatorBlue()),
                 )
               : Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
                     child: SingleChildScrollView(
-                      child: Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: SessionController().getLanguage() == 1
-                                  ? 10
-                                  : 0,
-                            ),
-                            //  Report
-                            // listviewbuilder
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  isShowList = !isShowList;
-                                });
-                                // if (mainContainerHeight == 84.h) {
-                                //   setState(() {
-                                //     mainContainerHeight = 95.h;
-                                //     isShowList = true;
-                                //   });
-                                // } else {
-                                //   setState(() {
-                                //     mainContainerHeight = 84.h;
-                                //     isShowList = false;
-                                //   });
-                                // }
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(2.0.h),
-                                margin: EdgeInsets.only(left: 2.w, right: 2.w),
-                                width: 90.0.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                    color: erroFABCorrectiveList != ''
-                                        ? Colors.red
-                                        : Colors.transparent,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: SessionController().getLanguage() == 1
+                                ? 10
+                                : 0,
+                          ),
+                          //  Report
+                          // listviewbuilder
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                isShowList = !isShowList;
+                              });
+                              // if (mainContainerHeight == 84.h) {
+                              //   setState(() {
+                              //     mainContainerHeight = 95.h;
+                              //     isShowList = true;
+                              //   });
+                              // } else {
+                              //   setState(() {
+                              //     mainContainerHeight = 84.h;
+                              //     isShowList = false;
+                              //   });
+                              // }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(2.0.h),
+                              margin: EdgeInsets.only(left: 2.w, right: 2.w),
+                              width: 90.0.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: erroFABCorrectiveList != ''
+                                      ? Colors.red
+                                      : Colors.transparent,
+                                ),
+                                borderRadius: isShowList == true
+                                    ? BorderRadius.only(
+                                        topLeft: Radius.circular(2.0.h),
+                                        topRight: Radius.circular(2.0.h))
+                                    : BorderRadius.circular(2.0.h),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 0.5.h,
+                                    spreadRadius: 0.24.h,
+                                    offset: Offset(0.1.h, 0.1.h),
                                   ),
-                                  borderRadius: isShowList == true
-                                      ? BorderRadius.only(
-                                          topLeft: Radius.circular(2.0.h),
-                                          topRight: Radius.circular(2.0.h))
-                                      : BorderRadius.circular(2.0.h),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 0.5.h,
-                                      spreadRadius: 0.24.h,
-                                      offset: Offset(0.1.h, 0.1.h),
-                                    ),
-                                  ],
-                                ),
-                                height: Get.height * 0.065,
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      controller.listTitle,
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                    Spacer(),
-                                    Icon(
-                                      isShowList != true
-                                          ? Icons.arrow_drop_down
-                                          : Icons.arrow_drop_up,
-                                      color: AppColors.greyColor,
-                                    )
-                                  ],
-                                ),
+                                ],
+                              ),
+                              height: Get.height * 0.065,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    controller.listTitle,
+                                    style: AppTextStyle.normalGrey10,
+                                  ),
+                                  const Spacer(),
+                                  Icon(
+                                    isShowList != true
+                                        ? Icons.arrow_drop_down
+                                        : Icons.arrow_drop_up,
+                                    color: AppColors.greyColor,
+                                  )
+                                ],
                               ),
                             ),
-                            isShowList != true
-                                ? SizedBox()
-                                : Container(
-                                    padding: EdgeInsets.all(2.0.h),
-                                    margin:
-                                        EdgeInsets.only(left: 2.w, right: 2.w),
-                                    width: 90.0.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(2.0.h),
-                                          bottomRight: Radius.circular(2.0.h)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black12,
-                                          blurRadius: 0.5.h,
-                                          spreadRadius: 0.1.h,
-                                          offset: Offset(0.1.h, 0.1.h),
-                                        ),
-                                      ],
-                                    ),
-                                    child: ListView.builder(
-                                      itemCount: listvalues.length,
-                                      shrinkWrap: true,
-                                      padding: EdgeInsets.zero,
-                                      itemBuilder: (_, index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              isShowList = !isShowList;
-                                              controller.listTitle =
-                                                  listvalues[index];
-                                              selectedFABCorrectiveAcion =
-                                                  index + 1;
-                                              print(selectedFABCorrectiveAcion);
-                                              // mainContainerHeight = 84.h;
-                                              erroFABCorrectiveList = '';
-                                            });
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(6.0),
-                                            child: Text(
-                                              listvalues[index],
-                                              style: AppTextStyle.normalGrey10,
-                                            ),
+                          ),
+                          isShowList != true
+                              ? const SizedBox()
+                              : Container(
+                                  padding: EdgeInsets.all(2.0.h),
+                                  margin:
+                                      EdgeInsets.only(left: 2.w, right: 2.w),
+                                  width: 90.0.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(2.0.h),
+                                        bottomRight: Radius.circular(2.0.h)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 0.5.h,
+                                        spreadRadius: 0.1.h,
+                                        offset: Offset(0.1.h, 0.1.h),
+                                      ),
+                                    ],
+                                  ),
+                                  child: ListView.builder(
+                                    itemCount: listvalues.length,
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
+                                    itemBuilder: (_, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            isShowList = !isShowList;
+                                            controller.listTitle =
+                                                listvalues[index];
+                                            selectedFABCorrectiveAcion =
+                                                index + 1;
+                                            print(selectedFABCorrectiveAcion);
+                                            // mainContainerHeight = 84.h;
+                                            erroFABCorrectiveList = '';
+                                          });
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(6.0),
+                                          child: Text(
+                                            listvalues[index],
+                                            style: AppTextStyle.normalGrey10,
                                           ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                            SizedBox(
-                              height: erroFABCorrectiveList == '' ? 0 : 5,
-                            ),
-                            erroFABCorrectiveList == ''
-                                ? SizedBox()
-                                : Text(
-                                    erroFABCorrectiveList,
-                                    style: AppTextStyle.normalErrorText1,
-                                  ),
-
-                            SizedBox(
-                              height: 15,
-                            ),
-                            // Free Entry Text 1
-                            Container(
-                              padding: EdgeInsets.all(2.0.h),
-                              width: 90.0.w,
-                              margin: EdgeInsets.only(left: 2.w, right: 2.w),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(2.0.h),
-                                border: Border.all(
-                                  color: erroFreEntryText1 != ''
-                                      ? Colors.red
-                                      : Colors.transparent,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    blurRadius: 0.5.h,
-                                    spreadRadius: 0.24.h,
-                                    offset: Offset(0.1.h, 0.1.h),
-                                  ),
-                                ],
-                              ),
-                              height: Get.height * 0.065,
-                              child: Center(
-                                child: TextField(
-                                  controller:
-                                      controller.textEditingControlerFET1,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      erroFreEntryText1 = '';
-                                    });
-                                  },
-                                  style: AppTextStyle.normalGrey10,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        left: 2.0.w, right: 5.0.w),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(0.5.h),
-                                      borderSide: BorderSide(
-                                          color: AppColors.whiteColor,
-                                          width: 0.1.h),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(0.5.h),
-                                      borderSide: BorderSide(
-                                          color: AppColors.whiteColor,
-                                          width: 0.1.h),
-                                    ),
-                                    hintText: AppMetaLabels().purposedRemedy,
-                                    hintStyle: AppTextStyle.normalBlack10
-                                        .copyWith(color: Colors.grey),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: erroFreEntryText1 == '' ? 0 : 5,
-                            ),
-                            erroFreEntryText1 == ''
-                                ? SizedBox()
-                                : Text(
-                                    erroFreEntryText1,
-                                    style: AppTextStyle.normalErrorText1,
-                                  ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            // Free Entry Text 2
-                            Container(
-                              padding: EdgeInsets.all(2.0.h),
-                              margin: EdgeInsets.only(left: 2.w, right: 2.w),
-                              width: 90.0.w,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                  color: erroFreEntryText2 != ''
-                                      ? Colors.red
-                                      : Colors.transparent,
+                          SizedBox(
+                            height: erroFABCorrectiveList == '' ? 0 : 5,
+                          ),
+                          erroFABCorrectiveList == ''
+                              ? const SizedBox()
+                              : Text(
+                                  erroFABCorrectiveList,
+                                  style: AppTextStyle.normalErrorText1,
                                 ),
-                                borderRadius: BorderRadius.circular(2.0.h),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    blurRadius: 0.5.h,
-                                    spreadRadius: 0.24.h,
-                                    offset: Offset(0.1.h, 0.1.h),
-                                  ),
-                                ],
+                      
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          // Free Entry Text 1
+                          Container(
+                            padding: EdgeInsets.all(2.0.h),
+                            width: 90.0.w,
+                            margin: EdgeInsets.only(left: 2.w, right: 2.w),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(2.0.h),
+                              border: Border.all(
+                                color: erroFreEntryText1 != ''
+                                    ? Colors.red
+                                    : Colors.transparent,
                               ),
-                              height: Get.height * 0.065,
-                              child: Center(
-                                child: TextField(
-                                  controller:
-                                      controller.textEditingControlerFET2,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      erroFreEntryText2 = '';
-                                    });
-                                  },
-                                  style: AppTextStyle.normalGrey10,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        left: 2.0.w, right: 5.0.w),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(0.5.h),
-                                      borderSide: BorderSide(
-                                          color: AppColors.whiteColor,
-                                          width: 0.1.h),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(0.5.h),
-                                      borderSide: BorderSide(
-                                          color: AppColors.whiteColor,
-                                          width: 0.1.h),
-                                    ),
-                                    hintText: AppMetaLabels().descriptionn,
-                                    hintStyle: AppTextStyle.normalBlack10
-                                        .copyWith(color: Colors.grey),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 0.5.h,
+                                  spreadRadius: 0.24.h,
+                                  offset: Offset(0.1.h, 0.1.h),
+                                ),
+                              ],
+                            ),
+                            height: Get.height * 0.065,
+                            child: Center(
+                              child: TextField(
+                                controller:
+                                    controller.textEditingControlerFET1,
+                                onChanged: (value) {
+                                  setState(() {
+                                    erroFreEntryText1 = '';
+                                  });
+                                },
+                                style: AppTextStyle.normalGrey10,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      left: 2.0.w, right: 5.0.w),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(0.5.h),
+                                    borderSide: BorderSide(
+                                        color: AppColors.whiteColor,
+                                        width: 0.1.h),
                                   ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(0.5.h),
+                                    borderSide: BorderSide(
+                                        color: AppColors.whiteColor,
+                                        width: 0.1.h),
+                                  ),
+                                  hintText: AppMetaLabels().purposedRemedy,
+                                  hintStyle: AppTextStyle.normalBlack10
+                                      .copyWith(color: Colors.grey),
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: erroFreEntryText2 == '' ? 0 : 5,
-                            ),
-                            erroFreEntryText2 == ''
-                                ? SizedBox()
-                                : Text(
-                                    erroFreEntryText2,
-                                    style: AppTextStyle.normalErrorText1,
-                                  ),
-                            // report
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 3.5.h,
-                                  left: 4.0.w,
-                                  bottom: 1.5.h,
-                                  right: 4.0.w),
-                              child: Text(
-                                AppMetaLabels().serviceCompletionReport,
-                                style: AppTextStyle.semiBoldBlack11,
-                              ),
-                            ),
-                            // upload service request
-                            Container(
-                                padding: EdgeInsets.all(2.0.h),
-                                width: 88.0.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(2.0.h),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 0.5.h,
-                                      spreadRadius: 0.1.h,
-                                      offset: Offset(0.1.h, 0.1.h),
-                                    ),
-                                  ],
+                          ),
+                          SizedBox(
+                            height: erroFreEntryText1 == '' ? 0 : 5,
+                          ),
+                          erroFreEntryText1 == ''
+                              ? const SizedBox()
+                              : Text(
+                                  erroFreEntryText1,
+                                  style: AppTextStyle.normalErrorText1,
                                 ),
-                                child: Obx(() {
-                                  return controller.loadingReport.value
-                                      ? Container(
-                                          height: 9.h,
-                                          alignment: Alignment.center,
-                                          margin: EdgeInsets.all(0.5.h),
-                                          child: LoadingIndicatorBlue(),
-                                        )
-                                      : controller.errorLoadingReport != ''
-                                          ? Center(
-                                              child: SizedBox(
-                                                height: 12.h,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    Text(
-                                                      controller
-                                                          .errorLoadingReport,
-                                                      style: AppTextStyle
-                                                          .semiBoldGrey10,
-                                                    ),
-                                                    IconButton(
-                                                        onPressed: () {
-                                                          controller.getFiles();
-                                                        },
-                                                        icon: Icon(
-                                                          Icons.refresh,
-                                                        ))
-                                                  ],
-                                                ),
-                                              ),
-                                            )
-                                          : controller.report.value.id != null
-                                              ? showReport()
-                                              : controller.canClose.value
-                                                  ? uploadReport()
-                                                  : Text(
-                                                      AppMetaLabels().noReports,
-                                                      style: AppTextStyle
-                                                          .normalBlack10,
-                                                    );
-                                })),
-                            SizedBox(height: 2.h),
-                            // upload photo
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 1.h,
-                                  left: 4.0.w,
-                                  bottom: 1.0.h,
-                                  right: 4.0.w),
-                              child: Text(
-                                AppMetaLabels().uploadPhotos,
-                                style: AppTextStyle.semiBoldBlack11,
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          // Free Entry Text 2
+                          Container(
+                            padding: EdgeInsets.all(2.0.h),
+                            margin: EdgeInsets.only(left: 2.w, right: 2.w),
+                            width: 90.0.w,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: erroFreEntryText2 != ''
+                                    ? Colors.red
+                                    : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(2.0.h),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 0.5.h,
+                                  spreadRadius: 0.24.h,
+                                  offset: Offset(0.1.h, 0.1.h),
+                                ),
+                              ],
+                            ),
+                            height: Get.height * 0.065,
+                            child: Center(
+                              child: TextField(
+                                controller:
+                                    controller.textEditingControlerFET2,
+                                onChanged: (value) {
+                                  setState(() {
+                                    erroFreEntryText2 = '';
+                                  });
+                                },
+                                style: AppTextStyle.normalGrey10,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      left: 2.0.w, right: 5.0.w),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(0.5.h),
+                                    borderSide: BorderSide(
+                                        color: AppColors.whiteColor,
+                                        width: 0.1.h),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(0.5.h),
+                                    borderSide: BorderSide(
+                                        color: AppColors.whiteColor,
+                                        width: 0.1.h),
+                                  ),
+                                  hintText: AppMetaLabels().descriptionn,
+                                  hintStyle: AppTextStyle.normalBlack10
+                                      .copyWith(color: Colors.grey),
+                                ),
                               ),
                             ),
-
-                            Container(
-                              margin: EdgeInsets.only(top: 1.h, bottom: 3.h),
+                          ),
+                          SizedBox(
+                            height: erroFreEntryText2 == '' ? 0 : 5,
+                          ),
+                          erroFreEntryText2 == ''
+                              ? const SizedBox()
+                              : Text(
+                                  erroFreEntryText2,
+                                  style: AppTextStyle.normalErrorText1,
+                                ),
+                          // report
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: 3.5.h,
+                                left: 4.0.w,
+                                bottom: 1.5.h,
+                                right: 4.0.w),
+                            child: Text(
+                              AppMetaLabels().serviceCompletionReport,
+                              style: AppTextStyle.semiBoldBlack11,
+                            ),
+                          ),
+                          // upload service request
+                          Container(
                               padding: EdgeInsets.all(2.0.h),
                               width: 88.0.w,
                               decoration: BoxDecoration(
@@ -454,20 +380,20 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                   BoxShadow(
                                     color: Colors.black12,
                                     blurRadius: 0.5.h,
-                                    spreadRadius: 0.24.h,
+                                    spreadRadius: 0.1.h,
                                     offset: Offset(0.1.h, 0.1.h),
                                   ),
                                 ],
                               ),
                               child: Obx(() {
-                                return controller.gettingPhotos.value
+                                return controller.loadingReport.value
                                     ? Container(
                                         height: 9.h,
                                         alignment: Alignment.center,
                                         margin: EdgeInsets.all(0.5.h),
-                                        child: LoadingIndicatorBlue(),
+                                        child: const LoadingIndicatorBlue(),
                                       )
-                                    : controller.errorGettingPhotos != ''
+                                    : controller.errorLoadingReport != ''
                                         ? Center(
                                             child: SizedBox(
                                               height: 12.h,
@@ -477,87 +403,159 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                                 children: [
                                                   Text(
                                                     controller
-                                                        .errorGettingPhotos,
+                                                        .errorLoadingReport,
                                                     style: AppTextStyle
                                                         .semiBoldGrey10,
                                                   ),
                                                   IconButton(
                                                       onPressed: () {
-                                                        controller.getPhotos();
+                                                        controller.getFiles();
                                                       },
-                                                      icon: Icon(Icons.refresh))
+                                                      icon: const Icon(
+                                                        Icons.refresh,
+                                                      ))
                                                 ],
                                               ),
                                             ),
                                           )
-                                        : controller.photos.length > 0
-                                            ? GridView.builder(
-                                                shrinkWrap: true,
-                                                physics:
-                                                    NeverScrollableScrollPhysics(),
-                                                padding:
-                                                    EdgeInsets.only(top: 1.h),
-                                                gridDelegate:
-                                                    SliverGridDelegateWithMaxCrossAxisExtent(
-                                                        maxCrossAxisExtent:
-                                                            25.w,
-                                                        childAspectRatio: 3 / 2,
-                                                        crossAxisSpacing: 1.w,
-                                                        mainAxisSpacing: 1.w),
-                                                itemCount:
-                                                    controller.photos.length,
-                                                itemBuilder:
-                                                    (BuildContext ctx, index) {
-                                                  return showImage(
-                                                      context, index);
-                                                })
-                                            : Text(
-                                                AppMetaLabels().noPhotos,
-                                                style:
-                                                    AppTextStyle.normalBlack10,
-                                              );
-                              }),
+                                        : controller.report.value.id != null
+                                            ? showReport()
+                                            : controller.canClose.value
+                                                ? uploadReport()
+                                                : Text(
+                                                    AppMetaLabels().noReports,
+                                                    style: AppTextStyle
+                                                        .normalBlack10,
+                                                  );
+                              })),
+                          SizedBox(height: 2.h),
+                          // upload photo
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: 1.h,
+                                left: 4.0.w,
+                                bottom: 1.0.h,
+                                right: 4.0.w),
+                            child: Text(
+                              AppMetaLabels().uploadPhotos,
+                              style: AppTextStyle.semiBoldBlack11,
                             ),
-                            // signature
-                            Obx(() {
-                              return controller.canClose.value &&
-                                      !controller.tenantSignatureSaved.value
-                                  ? Center(
-                                      child: OutlinedButton(
-                                        onPressed: () {
-                                          showTenantSignDialog(context);
-                                        },
-                                        style: OutlinedButton.styleFrom(
-                                          side: BorderSide(
-                                            width: 0.2.w,
-                                            color:
-                                                Color.fromRGBO(0, 61, 166, 1),
-                                            style: BorderStyle.solid,
-                                          ),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(
-                                                    1.3.h),
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 9.0.h, vertical: 2.h),
-                                          child: Text(
-                                            AppMetaLabels().takeTenantSignature,
-                                            style: AppTextStyle.semiBoldWhite12
-                                                .copyWith(
-                                              color:
-                                                  Color.fromRGBO(0, 61, 166, 1),
+                          ),
+                      
+                          Container(
+                            margin: EdgeInsets.only(top: 1.h, bottom: 3.h),
+                            padding: EdgeInsets.all(2.0.h),
+                            width: 88.0.w,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(2.0.h),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 0.5.h,
+                                  spreadRadius: 0.24.h,
+                                  offset: Offset(0.1.h, 0.1.h),
+                                ),
+                              ],
+                            ),
+                            child: Obx(() {
+                              return controller.gettingPhotos.value
+                                  ? Container(
+                                      height: 9.h,
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.all(0.5.h),
+                                      child: const LoadingIndicatorBlue(),
+                                    )
+                                  : controller.errorGettingPhotos != ''
+                                      ? Center(
+                                          child: SizedBox(
+                                            height: 12.h,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  controller
+                                                      .errorGettingPhotos,
+                                                  style: AppTextStyle
+                                                      .semiBoldGrey10,
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      controller.getPhotos();
+                                                    },
+                                                    icon: const Icon(Icons.refresh))
+                                              ],
                                             ),
+                                          ),
+                                        )
+                                      : controller.photos.isNotEmpty
+                                          ? GridView.builder(
+                                              shrinkWrap: true,
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              padding:
+                                                  EdgeInsets.only(top: 1.h),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                                      maxCrossAxisExtent:
+                                                          25.w,
+                                                      childAspectRatio: 3 / 2,
+                                                      crossAxisSpacing: 1.w,
+                                                      mainAxisSpacing: 1.w),
+                                              itemCount:
+                                                  controller.photos.length,
+                                              itemBuilder:
+                                                  (BuildContext ctx, index) {
+                                                return showImage(
+                                                    context, index);
+                                              })
+                                          : Text(
+                                              AppMetaLabels().noPhotos,
+                                              style:
+                                                  AppTextStyle.normalBlack10,
+                                            );
+                            }),
+                          ),
+                          // signature
+                          Obx(() {
+                            return controller.canClose.value &&
+                                    !controller.tenantSignatureSaved.value
+                                ? Center(
+                                    child: OutlinedButton(
+                                      onPressed: () {
+                                        showTenantSignDialog(context);
+                                      },
+                                      style: OutlinedButton.styleFrom(
+                                        side: BorderSide(
+                                          width: 0.2.w,
+                                          color:
+                                              const Color.fromRGBO(0, 61, 166, 1),
+                                          style: BorderStyle.solid,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(
+                                                  1.3.h),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 9.0.h, vertical: 2.h),
+                                        child: Text(
+                                          AppMetaLabels().takeTenantSignature,
+                                          style: AppTextStyle.semiBoldWhite12
+                                              .copyWith(
+                                            color:
+                                                const Color.fromRGBO(0, 61, 166, 1),
                                           ),
                                         ),
                                       ),
-                                    )
-                                  : SizedBox();
-                            })
-                          ],
-                        ),
+                                    ),
+                                  )
+                                : const SizedBox();
+                          })
+                        ],
                       ),
                     ),
                   ),
@@ -587,7 +585,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(1.3.h),
                     ),
-                    backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                    backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                   onPressed: controller.canClose.value &&
                           (controller.report.value.id != null ||
@@ -654,7 +652,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                    width: 3.h, height: 3.h, child: LoadingIndicatorBlue()),
+                    width: 3.h, height: 3.h, child: const LoadingIndicatorBlue()),
               )
             : controller.errorEditingReport
                 ? IconButton(
@@ -727,19 +725,19 @@ class _SvcReqReportState extends State<SvcReqReport> {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Obx(() {
             return controller.editingReport.value
                 ? SizedBox(
-                    width: 3.2.h, height: 3.2.h, child: LoadingIndicatorBlue())
+                    width: 3.2.h, height: 3.2.h, child: const LoadingIndicatorBlue())
                 : !controller.canClose.value
-                    ? SizedBox()
+                    ? const SizedBox()
                     : InkWell(
                         onTap: () {
                           controller.removeReport();
                         },
                         child: controller.errorEditingReport
-                            ? Icon(Icons.refresh, color: Colors.red)
+                            ? const Icon(Icons.refresh, color: Colors.red)
                             : Image.asset(
                                 AppImagesPath.deleteimg,
                                 width: 3.2.h,
@@ -764,18 +762,18 @@ class _SvcReqReportState extends State<SvcReqReport> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () {
                           controller.pickPhoto(ImageSource.gallery);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () {
                         controller.pickPhoto(ImageSource.camera);
                         Navigator.of(context).pop();
@@ -791,7 +789,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
 
   Widget showImage(BuildContext context, int index) {
     return !controller.canClose.value && controller.photos[index] == null
-        ? SizedBox()
+        ? const SizedBox()
         : InkWell(
             onTap: controller.photos[index] == null
                 ? () {
@@ -803,7 +801,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
               child: Container(
                 width: 20.0.w,
                 height: 9.0.h,
-                color: Color.fromRGBO(246, 248, 249, 1),
+                color: const Color.fromRGBO(246, 248, 249, 1),
                 child: controller.photos[index] != null
                     ? Stack(
                         children: [
@@ -825,11 +823,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                 ? Container(
                                     width: 20.0.w,
                                     height: 9.0.h,
-                                    color: Color.fromRGBO(255, 255, 255, 0.5),
+                                    color: const Color.fromRGBO(255, 255, 255, 0.5),
                                     alignment: Alignment.center,
                                     child: controller
                                             .photos[index]!.uploading.value
-                                        ? LoadingIndicatorBlue(
+                                        ? const LoadingIndicatorBlue(
                                             size: 20,
                                           )
                                         : controller
@@ -838,14 +836,14 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                                 onPressed: () {
                                                   controller.uploadPhoto(index);
                                                 },
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons.refresh_outlined,
                                                   color: Colors.red,
                                                 ),
                                               )
                                             : null)
                                 : !controller.canClose.value
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : InkWell(
                                         onTap: () {
                                           controller.removePhoto(index);
@@ -854,14 +852,14 @@ class _SvcReqReportState extends State<SvcReqReport> {
                                           width: 28,
                                           height: 28,
                                           decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   255, 255, 255, 0.5),
                                               borderRadius:
                                                   BorderRadius.circular(24)),
-                                          padding: EdgeInsets.all(2),
+                                          padding: const EdgeInsets.all(2),
                                           child: controller
                                                   .photos[index]!.removing.value
-                                              ? LoadingIndicatorBlue(
+                                              ? const LoadingIndicatorBlue(
                                                   size: 20,
                                                 )
                                               : Icon(
@@ -879,7 +877,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                         child: Text(
                           "+",
                           style: AppTextStyle.semiBoldWhite16.copyWith(
-                              color: Color.fromRGBO(184, 184, 184, 1)),
+                              color: const Color.fromRGBO(184, 184, 184, 1)),
                         ),
                       ),
               ),
@@ -904,7 +902,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.cancel))
+                      icon: const Icon(Icons.cancel))
                 ],
               ),
             ),
@@ -963,7 +961,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                        backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                       ),
                       onPressed: () async {
                         if (signatureController1.isEmpty) {
@@ -1016,11 +1014,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
             style: OutlinedButton.styleFrom(
               side: BorderSide(
                 width: 0.2.w,
-                color: Color.fromRGBO(0, 61, 166, 1),
+                color: const Color.fromRGBO(0, 61, 166, 1),
                 style: BorderStyle.solid,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(1.3.h),
+                borderRadius: BorderRadius.circular(1.3.h),
               ),
             ),
             child: SizedBox(
@@ -1029,7 +1027,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                 child: Text(
                   AppMetaLabels().cancel,
                   style: AppTextStyle.semiBoldWhite12.copyWith(
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                 ),
               ),
@@ -1104,8 +1102,9 @@ class _SvcReqReportState extends State<SvcReqReport> {
                           );
                         } else {
                           if (await controller.saveTenantSignature(
-                              await signatureController2.toPngBytes()))
+                              await signatureController2.toPngBytes())) {
                             Navigator.pop(context);
+                          }
                         }
                       },
                       child: SizedBox(
@@ -1127,11 +1126,11 @@ class _SvcReqReportState extends State<SvcReqReport> {
             style: OutlinedButton.styleFrom(
               side: BorderSide(
                 width: 0.2.w,
-                color: Color.fromRGBO(0, 61, 166, 1),
+                color: const Color.fromRGBO(0, 61, 166, 1),
                 style: BorderStyle.solid,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(1.3.h),
+                borderRadius: BorderRadius.circular(1.3.h),
               ),
             ),
             child: SizedBox(
@@ -1140,7 +1139,7 @@ class _SvcReqReportState extends State<SvcReqReport> {
                 child: Text(
                   AppMetaLabels().cancel,
                   style: AppTextStyle.semiBoldWhite12.copyWith(
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                   ),
                 ),
               ),

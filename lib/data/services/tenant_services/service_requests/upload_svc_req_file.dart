@@ -20,19 +20,23 @@ class UploadSvcReqFile {
       var formatter = DateFormat('dd-MM-yyyy');
       String foramteDate = formatter.format(now);
       exp = foramteDate;
-    }
+    } 
     var data = {
       'CaseNo': encriptdatasingle(reqNo).toString(),
       'AttachmentType': encriptdatasingle(fileType).toString(),
       'ExpireDate': encriptdatasingle(exp).toString(),
       'DocumentTypeId': encriptdatasingle(docTypeId).toString(),
     };
+    log(reqNo.toString());
+    log(fileType.toString());
+    log(exp.toString());
+    log(docTypeId.toString());
     log(data.toString());
     log(filePath.toString());
 
     var response;
     response =
-        await BaseClientClass.uploadFile(url ?? "", data, 'File', filePath);
+        await BaseClientClass.uploadFile(url ?? "", data, 'Filed', filePath);
     if (response is StreamedResponse) {
       print('Response :::::respStr:: ');
       // print(await response.stream.bytesToString());

@@ -274,9 +274,9 @@ class SvcReqReportController extends GetxController {
   TextEditingController textEditingControlerFET1 = TextEditingController();
   TextEditingController textEditingControlerFET2 = TextEditingController();
   Future<void> getReportTABData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingDataReportTAB.value = true;
@@ -318,8 +318,9 @@ class SvcReqReportController extends GetxController {
         report.value = resp[0];
         report.value.size = getFileSize(report.value.file!);
       }
-    } else
+    } else {
       errorLoadingReport = resp;
+    }
     loadingReport.value = false;
   }
 
@@ -362,9 +363,9 @@ class SvcReqReportController extends GetxController {
   Future<String> saveReport() async {
     final path = await getTemporaryDirectory();
     print(
-        'Path :::: ${path.path}/${this.report.value.name}${this.report.value.type}');
+        'Path :::: ${path.path}/${report.value.name}${report.value.type}');
     final file =
-        File("${path.path}/${this.report.value.name}${this.report.value.type}");
+        File("${path.path}/${report.value.name}${report.value.type}");
     // File("${path.path}/${this.report.value.name}${this.report.value.type}");
     await file.writeAsBytes(report.value.file!);
     return file.path;
@@ -458,6 +459,6 @@ class SvcReqReportController extends GetxController {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
-    return ((bytes / pow(1024, i)).toStringAsFixed(2)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${suffixes[i]}';
   }
 }

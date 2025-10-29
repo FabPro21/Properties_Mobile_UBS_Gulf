@@ -15,7 +15,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class VendorPropertyScreen extends StatefulWidget {
-  const VendorPropertyScreen({Key? key}) : super(key: key);
+  const VendorPropertyScreen({super.key});
 
   @override
   _UnitInfoState createState() => _UnitInfoState();
@@ -35,12 +35,12 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return vendorPropertiesController.loadingData.value == true
               ? Padding(
                   padding: EdgeInsets.only(top: 0.0.h),
-                  child: LoadingIndicatorBlue(),
+                  child: const LoadingIndicatorBlue(),
                 )
               : vendorPropertiesController.error.value != ''
                   ? Padding(
@@ -187,37 +187,72 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                   ),
                                   Padding(
                                     padding: EdgeInsets.all(2.0.h),
-                                    child: Container(
-                                      // height: 14.0.h,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SizedBox(
+                                              width: 50.0.w,
+                                              // color: Colors.green,
+                                              child: Text(
+                                                SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? vendorPropertiesController
+                                                            .vendorProperty
+                                                            .value
+                                                            .contractProperties![index].propertyName ??
+                                                        ""
+                                                    : vendorPropertiesController
+                                                            .vendorProperty
+                                                            .value
+                                                            .contractProperties![
+                                                                index]
+                                                            .propertyNameAr ??
+                                                        "",
+                                                style: AppTextStyle
+                                                    .semiBoldBlack11,
+                                                overflow:
+                                                    TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                            // const Spacer(),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 7.0.w),
+                                              child: Text(
+                                                vendorPropertiesController
+                                                    .vendorProperty
+                                                    .value
+                                                    .contractProperties![
+                                                        index]
+                                                    .propertyId
+                                                    .toString(),
+                                                style:
+                                                    AppTextStyle.normalBlack9,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 2.0.h, bottom: 2.0.h),
+                                          child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment
+                                                    .spaceBetween,
                                             children: [
-                                              Container(
-                                                width: 50.0.w,
+                                              SizedBox(
+                                                width: 40.0.w,
                                                 // color: Colors.green,
                                                 child: Text(
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? vendorPropertiesController
-                                                              .vendorProperty
-                                                              .value
-                                                              .contractProperties![index].propertyName ??
-                                                          ""
-                                                      : vendorPropertiesController
-                                                              .vendorProperty
-                                                              .value
-                                                              .contractProperties![
-                                                                  index]
-                                                              .propertyNameAr ??
-                                                          "",
+                                                  AppMetaLabels().totalAmount,
                                                   style: AppTextStyle
                                                       .semiBoldBlack11,
                                                   overflow:
@@ -229,53 +264,15 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                                 padding: EdgeInsets.only(
                                                     left: 7.0.w),
                                                 child: Text(
-                                                  vendorPropertiesController
-                                                      .vendorProperty
-                                                      .value
-                                                      .contractProperties![
-                                                          index]
-                                                      .propertyId
-                                                      .toString(),
-                                                  style:
-                                                      AppTextStyle.normalBlack9,
+                                                  "${AppMetaLabels().aed} $amount",
+                                                  style: AppTextStyle
+                                                      .normalBlack9,
                                                 ),
                                               ),
                                             ],
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 2.0.h, bottom: 2.0.h),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                SizedBox(
-                                                  width: 40.0.w,
-                                                  // color: Colors.green,
-                                                  child: Text(
-                                                    AppMetaLabels().totalAmount,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack11,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                                // const Spacer(),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 7.0.w),
-                                                  child: Text(
-                                                    "${AppMetaLabels().aed} $amount",
-                                                    style: AppTextStyle
-                                                        .normalBlack9,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],

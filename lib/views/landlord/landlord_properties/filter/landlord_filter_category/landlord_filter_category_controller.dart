@@ -14,16 +14,12 @@ class LandLordFilterCategoryController extends GetxController {
   RxString error = ''.obs;
   int propertyCategoryModelLength = 0;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getPropertyCategory() async {
     if (propertyCategoryModel.value.message == null) {
-      bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-      if (!_isInternetConnected) {
-        await Get.to(NoInternetScreen());
+      bool isInternetConnected = await BaseClientClass.isInternetConnected();
+      if (!isInternetConnected) {
+        await Get.to(const NoInternetScreen());
       }
       loading.value = true;
       var resp = await LandlordRepository.getPropertyCategory();

@@ -72,8 +72,9 @@ class TenantRequestDetailsController extends GetxController {
         report.value = resp[0];
         report.value.size = getFileSize(report.value.file!);
       }
-    } else
+    } else {
       errorLoadingReport = resp;
+    }
     loadingReport.value = false;
   }
 
@@ -95,7 +96,7 @@ class TenantRequestDetailsController extends GetxController {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
-    return ((bytes / pow(1024, i)).toStringAsFixed(2)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${suffixes[i]}';
   }
 
   void showReport() async {
@@ -112,7 +113,7 @@ class TenantRequestDetailsController extends GetxController {
   Future<String> saveReport() async {
     final path = await getTemporaryDirectory();
     final file =
-        File("${path.path}/${this.report.value.name}${this.report.value.type}");
+        File("${path.path}/${report.value.name}${report.value.type}");
     await file.writeAsBytes(report.value.file!);
     return file.path;
   }
@@ -159,9 +160,9 @@ class TenantRequestDetailsController extends GetxController {
     print('========>>>> Main');
     print('====> Case No ::::::: $caseNo =====>');
     canCommunicate = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -210,12 +211,13 @@ class TenantRequestDetailsController extends GetxController {
       photos = resp;
       if (tenantRequestDetails.value.statusInfo!.canCancel!) photos.add(null);
     } else if (resp == 404 || resp == AppMetaLabels().noDatafound) {
-      if (tenantRequestDetails.value.statusInfo!.canCancel!)
+      if (tenantRequestDetails.value.statusInfo!.canCancel!) {
         photos.add(null);
-      else
+      } else {
         errorGettingPhotos = AppMetaLabels().noPhotos;
+      }
     } else
-      errorGettingPhotos = resp;
+      {errorGettingPhotos = resp;}
     gettingPhotos.value = false;
   }
 
@@ -236,19 +238,21 @@ class TenantRequestDetailsController extends GetxController {
           // Get.find<GetTenantServiceRequestsController>().getData();
           updatedReq = true;
           return true;
-        } else
+        } else {
           Get.snackbar(
             AppMetaLabels().error,
             resp,
             backgroundColor: AppColors.white54,
           );
+        }
         return false;
-      } else
+      } else {
         Get.snackbar(
           AppMetaLabels().error,
           AppMetaLabels().someThingWentWrong,
           backgroundColor: AppColors.white54,
         );
+      }
       return false;
     } catch (e) {
       cancellingRequest.value = false;
@@ -284,7 +288,7 @@ class TenantRequestDetailsController extends GetxController {
     // checking file extension
     if (!CheckFileExtenstion().checkImageExtFunc(file!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       return;
@@ -305,7 +309,7 @@ class TenantRequestDetailsController extends GetxController {
           Get.snackbar(
             AppMetaLabels().error,
             AppMetaLabels().fileSizenError,
-            duration: Duration(seconds: 5),
+            duration: const Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
             colorText: AppColors.white54,
           );
@@ -353,9 +357,9 @@ class TenantRequestDetailsController extends GetxController {
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
     print(
-        'File Size getFileSizeFromPath ** :::::: ** ${((bytes / pow(1024, i)).toStringAsFixed(1)) + ' ' + suffixes[i]}');
+        'File Size getFileSizeFromPath ** :::::: ** ${'${(bytes / pow(1024, i)).toStringAsFixed(1)} ${suffixes[i]}'}');
 
-    return ((bytes / pow(1024, i)).toStringAsFixed(1)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(1)} ${suffixes[i]}';
   }
 
   uploadPhoto(int index) async {

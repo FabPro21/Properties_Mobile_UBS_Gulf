@@ -15,8 +15,8 @@ import 'dart:ui' as ui;
 // ignore: must_be_immutable
 class LoginMpinScreen extends StatefulWidget {
   const LoginMpinScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   State<LoginMpinScreen> createState() => _LoginMpinScreenState();
 }
@@ -61,7 +61,7 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                   padding: EdgeInsets.only(top: 50.0.h),
                                   child: Column(
                                     children: [
-                                      LoadingIndicatorWhite(),
+                                      const LoadingIndicatorWhite(),
                                       SizedBox(
                                         height: 2.0.h,
                                       ),
@@ -133,13 +133,13 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                                   child: Container(
                                                     width: 85.0.w,
                                                     decoration: BoxDecoration(
-                                                      color: Color.fromRGBO(
+                                                      color: const Color.fromRGBO(
                                                           255, 59, 48, 0.6),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               1.0.h),
                                                       border: Border.all(
-                                                        color: Color.fromRGBO(
+                                                        color: const Color.fromRGBO(
                                                             255, 59, 48, 1),
                                                       ),
                                                     ),
@@ -164,7 +164,7 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                                                   Colors.white,
                                                               size: 3.5.h,
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               width: 10,
                                                             ),
                                                             Padding(
@@ -172,7 +172,7 @@ class _LoginMpinScreenState extends State<LoginMpinScreen> {
                                                                   .only(
                                                                       left: 1.0
                                                                           .h),
-                                                              child: Container(
+                                                              child: SizedBox(
                                                                 width: 68.0.w,
                                                                 child: Text(
                                                                   AppMetaLabels()

@@ -31,8 +31,7 @@ import 'package:flutter/services.dart';
 class TenantServiceDocuments extends StatefulWidget {
   final String? caseNo;
   final String? caller;
-  TenantServiceDocuments({Key? key, this.caseNo, this.caller})
-      : super(key: key) {
+  TenantServiceDocuments({super.key, this.caseNo, this.caller}) {
     Get.put(SvcReqDocsController(caseNo: caseNo));
   }
 
@@ -108,216 +107,214 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: _isSolving == true
-              ? Center(child: LoadingIndicatorBlue())
+              ? const Center(child: LoadingIndicatorBlue())
               : Stack(
                   children: [
                     controller.loadingDocs.value
-                        ? Center(child: LoadingIndicatorBlue())
+                        ? const Center(child: LoadingIndicatorBlue())
                         : Column(
                             children: [
                               Expanded(
                                 child: Obx(() {
                                   return controller.loadingDocs.value
-                                      ? Center(child: LoadingIndicatorBlue())
+                                      ? const Center(child: LoadingIndicatorBlue())
                                       : controller.errorLoadingDocs != ''
                                           ? AppErrorWidget(
                                               errorText:
                                                   controller.errorLoadingDocs,
                                             )
                                           : controller.docsModel?.docs == null
-                                              ? SizedBox()
-                                              : Container(
-                                                  child: ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      itemCount: controller
-                                                              .docsModel
-                                                              ?.docs
-                                                              ?.length ??
-                                                          0 + 1,
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        if (controller
-                                                                .docsModel
-                                                                ?.docs
-                                                                ?.length ==
-                                                            index) {
-                                                          return Center(
-                                                              child: Obx(() {
-                                                            return controller
-                                                                        .docsModel!
-                                                                        .caseStageInfo!
-                                                                        .stageId!
-                                                                        .value <
-                                                                    3
-                                                                ? Column(
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                4.w,
-                                                                            vertical: 2.h),
-                                                                        child:
-                                                                            Text(
-                                                                          AppMetaLabels()
-                                                                              .allMandatory,
-                                                                          style:
-                                                                              AppTextStyle.normalBlack10,
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  )
-                                                                : controller.docsModel?.responseMessageAR ==
-                                                                            '' &&
-                                                                        SessionController().getLanguage() !=
-                                                                            1
-                                                                    ? SizedBox()
-                                                                    : controller.docsModel?.caseStageInfo?.stageId?.value ==
-                                                                            4
-                                                                        ? Container(
-                                                                            alignment:
-                                                                                Alignment.center,
-                                                                            padding:
-                                                                                EdgeInsets.all(8.0),
-                                                                            margin:
-                                                                                EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
-                                                                            decoration:
-                                                                                BoxDecoration(color: Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
-                                                                            child:
-                                                                                Row(
-                                                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                                                              children: [
-                                                                                Icon(
-                                                                                  Icons.error_outline,
-                                                                                  color: Colors.amber[400],
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  width: 8.0,
-                                                                                ),
-                                                                                Expanded(
-                                                                                  child: Text(
-                                                                                    SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
-                                                                                    style: AppTextStyle.normalBlack12,
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          )
-                                                                        : SizedBox();
-                                                          }));
-                                                        }
-                                                        return Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    2.0.h),
-                                                            child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
+                                              ? const SizedBox()
+                                              : ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  itemCount: controller
+                                                          .docsModel
+                                                          ?.docs
+                                                          ?.length ??
+                                                      0 + 1,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    if (controller
+                                                            .docsModel
+                                                            ?.docs
+                                                            ?.length ==
+                                                        index) {
+                                                      return Center(
+                                                          child: Obx(() {
+                                                        return controller
+                                                                    .docsModel!
+                                                                    .caseStageInfo!
+                                                                    .stageId!
+                                                                    .value <
+                                                                3
+                                                            ? Column(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                        left: 4.0
-                                                                            .w,
-                                                                        bottom: 2.0
-                                                                            .h,
-                                                                        right: 4.0
-                                                                            .w),
-                                                                    child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? controller.docsModel?.docs![index].name ??
-                                                                              ""
-                                                                          : controller.docsModel?.docs?[index].nameAr ??
-                                                                              '',
-                                                                      style: AppTextStyle
-                                                                          .semiBoldBlack12,
+                                                                    padding: EdgeInsets.symmetric(
+                                                                        horizontal:
+                                                                            4.w,
+                                                                        vertical: 2.h),
+                                                                    child:
+                                                                        Text(
+                                                                      AppMetaLabels()
+                                                                          .allMandatory,
+                                                                      style:
+                                                                          AppTextStyle.normalBlack10,
                                                                     ),
                                                                   ),
-                                                                  controller.docsModel?.docs?[index].id ==
-                                                                              null ||
-                                                                          controller.docsModel?.docs?[index].isRejected ==
-                                                                              true
-                                                                      ? uploadFile(
-                                                                          context,
-                                                                          index)
-                                                                      : Container(
-                                                                          width:
-                                                                              100.0.w,
-                                                                          padding: EdgeInsets.symmetric(
-                                                                              vertical: 1.h,
-                                                                              horizontal: 4.w),
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(2.0.h),
-                                                                            boxShadow: [
-                                                                              BoxShadow(
-                                                                                color: Colors.black12,
-                                                                                blurRadius: 0.5.h,
-                                                                                spreadRadius: 0.1.h,
-                                                                                offset: Offset(0.1.h, 0.1.h),
+                                                                ],
+                                                              )
+                                                            : controller.docsModel?.responseMessageAR ==
+                                                                        '' &&
+                                                                    SessionController().getLanguage() !=
+                                                                        1
+                                                                ? const SizedBox()
+                                                                : controller.docsModel?.caseStageInfo?.stageId?.value ==
+                                                                        4
+                                                                    ? Container(
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        padding:
+                                                                            const EdgeInsets.all(8.0),
+                                                                        margin:
+                                                                            EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
+                                                                        decoration:
+                                                                            BoxDecoration(color: const Color.fromRGBO(255, 249, 235, 1), borderRadius: BorderRadius.circular(8)),
+                                                                        child:
+                                                                            Row(
+                                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                                          children: [
+                                                                            Icon(
+                                                                              Icons.error_outline,
+                                                                              color: Colors.amber[400],
+                                                                            ),
+                                                                            const SizedBox(
+                                                                              width: 8.0,
+                                                                            ),
+                                                                            Expanded(
+                                                                              child: Text(
+                                                                                SessionController().getLanguage() == 1 ? controller.docsModel?.responseMessage ?? '' : controller.docsModel?.responseMessageAR ?? "",
+                                                                                style: AppTextStyle.normalBlack12,
                                                                               ),
-                                                                            ],
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    : const SizedBox();
+                                                      }));
+                                                    }
+                                                    return Padding(
+                                                        padding:
+                                                            EdgeInsets.all(
+                                                                2.0.h),
+                                                        child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsets.only(
+                                                                    left: 4.0
+                                                                        .w,
+                                                                    bottom: 2.0
+                                                                        .h,
+                                                                    right: 4.0
+                                                                        .w),
+                                                                child: Text(
+                                                                  SessionController().getLanguage() ==
+                                                                          1
+                                                                      ? controller.docsModel?.docs![index].name ??
+                                                                          ""
+                                                                      : controller.docsModel?.docs?[index].nameAr ??
+                                                                          '',
+                                                                  style: AppTextStyle
+                                                                      .semiBoldBlack12,
+                                                                ),
+                                                              ),
+                                                              controller.docsModel?.docs?[index].id ==
+                                                                          null ||
+                                                                      controller.docsModel?.docs?[index].isRejected ==
+                                                                          true
+                                                                  ? uploadFile(
+                                                                      context,
+                                                                      index)
+                                                                  : Container(
+                                                                      width:
+                                                                          100.0.w,
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          vertical: 1.h,
+                                                                          horizontal: 4.w),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color:
+                                                                            Colors.white,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(2.0.h),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            color: Colors.black12,
+                                                                            blurRadius: 0.5.h,
+                                                                            spreadRadius: 0.1.h,
+                                                                            offset: Offset(0.1.h, 0.1.h),
                                                                           ),
-                                                                          child:
-                                                                              Obx(() {
-                                                                            return FileView(
-                                                                              file: controller.docsModel?.docs?[index],
-                                                                              onDelete: controller.docsModel?.docs?[index].loading.value == true
-                                                                                  ? () {}
-                                                                                  : () async {
-                                                                                      if (controller.docsModel?.docs?[index].name!.toLowerCase() == 'emirate id') {
-                                                                                        setState(() {
-                                                                                          isEnableScreen = false;
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          controller.mergedId = null;
-                                                                                          controller.cardScanModel = CardScanModel();
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          nameText.clear();
-                                                                                          iDNumberText.clear();
-                                                                                          expiryText = '';
-                                                                                          dOBText = '';
-                                                                                          controller.mergedId = null;
-                                                                                          controller.cardScanModel.backImage = null;
-                                                                                          controller.cardScanModel.frontImage = null;
-                                                                                        });
-                                                                                        await controller.removePickedFile(index);
-                                                                                        await controller.removeFile(index);
-                                                                                        setState(() {
-                                                                                          controller.isDocUploaded[index] = 'false';
-                                                                                        });
-                                                                                        setState(() {
-                                                                                          isEnableScreen = true;
-                                                                                        });
-                                                                                        return;
-                                                                                      }
-                                                                                      setState(() {
-                                                                                        isEnableScreen = false;
-                                                                                      });
-                                                                                      await controller.removeFile(index);
-                                                                                      setState(() {
-                                                                                        isEnableScreen = true;
-                                                                                      });
-                                                                                    },
-                                                                              onPressed: () {
-                                                                                print('Testing .....');
-                                                                                controller.downloadDoc(index);
-                                                                              },
-                                                                              canDelete: controller.docsModel!.caseStageInfo!.stageId!.value < 3,
-                                                                            );
-                                                                          }),
-                                                                        )
-                                                                ]));
-                                                      }),
-                                                );
+                                                                        ],
+                                                                      ),
+                                                                      child:
+                                                                          Obx(() {
+                                                                        return FileView(
+                                                                          file: controller.docsModel?.docs?[index],
+                                                                          onDelete: controller.docsModel?.docs?[index].loading.value == true
+                                                                              ? () {}
+                                                                              : () async {
+                                                                                  if (controller.docsModel?.docs?[index].name!.toLowerCase() == 'emirate id') {
+                                                                                    setState(() {
+                                                                                      isEnableScreen = false;
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      controller.mergedId = null;
+                                                                                      controller.cardScanModel = CardScanModel();
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      nameText.clear();
+                                                                                      iDNumberText.clear();
+                                                                                      expiryText = '';
+                                                                                      dOBText = '';
+                                                                                      controller.mergedId = null;
+                                                                                      controller.cardScanModel.backImage = null;
+                                                                                      controller.cardScanModel.frontImage = null;
+                                                                                    });
+                                                                                    await controller.removePickedFile(index);
+                                                                                    await controller.removeFile(index);
+                                                                                    setState(() {
+                                                                                      controller.isDocUploaded[index] = 'false';
+                                                                                    });
+                                                                                    setState(() {
+                                                                                      isEnableScreen = true;
+                                                                                    });
+                                                                                    return;
+                                                                                  }
+                                                                                  setState(() {
+                                                                                    isEnableScreen = false;
+                                                                                  });
+                                                                                  await controller.removeFile(index);
+                                                                                  setState(() {
+                                                                                    isEnableScreen = true;
+                                                                                  });
+                                                                                },
+                                                                          onPressed: () {
+                                                                            print('Testing .....');
+                                                                            controller.downloadDoc(index);
+                                                                          },
+                                                                          canDelete: controller.docsModel!.caseStageInfo!.stageId!.value < 3,
+                                                                        );
+                                                                      }),
+                                                                    )
+                                                            ]));
+                                                  });
                                 }),
                               ),
                               controller.docsModel?.docs == null
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : SingleChildScrollView(
                                       child: Obx(() {
                                         // implementing the caseCategouryId && caseSubCatagouryId condition
@@ -337,20 +334,20 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                         .detail!
                                                         .caseSubCatagouryId !=
                                                     88
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : controller.docsModel
                                                         ?.caseStageInfo ==
                                                     null
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : controller.loadingDocs.value
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : controller
                                                                 .docsModel!
                                                                 .caseStageInfo!
                                                                 .stageId!
                                                                 .value >=
                                                             3
-                                                        ? SizedBox()
+                                                        ? const SizedBox()
                                                         : Align(
                                                             alignment: Alignment
                                                                 .bottomCenter,
@@ -383,7 +380,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                 child: controller
                                                                         .updatingDocStage
                                                                         .value
-                                                                    ? LoadingIndicatorBlue()
+                                                                    ? const LoadingIndicatorBlue()
                                                                     : ElevatedButton(
                                                                         onPressed: !controller.enableSubmit.value
                                                                             ? null
@@ -408,6 +405,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                                       });
                                                                                 }
                                                                               },
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          shape:
+                                                                              RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(1.3.h),
+                                                                          ),
+                                                                          backgroundColor: controller.enableSubmit.value
+                                                                              ? const Color.fromRGBO(0, 61, 166, 1)
+                                                                              : Colors.grey.shade400,
+                                                                        ),
                                                                         child:
                                                                             SizedBox(
                                                                           width:
@@ -421,17 +429,6 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        style: ElevatedButton
-                                                                            .styleFrom(
-                                                                          shape:
-                                                                              RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(1.3.h),
-                                                                          ),
-                                                                          backgroundColor: controller.enableSubmit.value
-                                                                              ? Color.fromRGBO(0, 61, 166, 1)
-                                                                              : Colors.grey.shade400,
-                                                                        ),
                                                                       ),
                                                               ),
                                                             ),
@@ -441,23 +438,23 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ],
                           ),
                     isEnableScreen == false
-                        ? ScreenDisableWidget()
-                        : SizedBox(),
+                        ? const ScreenDisableWidget()
+                        : const SizedBox(),
                     Obx(() {
                       return controller.isLoadingForScanning.value == true
                           ? Container(
                               height: double.infinity,
                               width: double.infinity,
                               color: Colors.black.withOpacity(0.3),
-                              child: Center(
+                              child: const Center(
                                   child: CircularProgressIndicator(
                                 backgroundColor: Colors.white,
                                 color: Colors.blue,
                               )),
                             )
-                          : SizedBox();
+                          : const SizedBox();
                     }),
-                    BottomShadow(),
+                    const BottomShadow(),
                   ],
                 )),
     );
@@ -518,7 +515,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 style: AppTextStyle.normalErrorText3)
                           ]),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Obx(() {
@@ -624,7 +621,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               ),
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(246, 248, 249, 1),
+                                color: const Color.fromRGBO(246, 248, 249, 1),
                                 borderRadius: BorderRadius.circular(0.5.h),
                               ),
                               child: Column(
@@ -739,7 +736,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             }
                           }
 
-                          var expDate;
+                          DateTime? expDate;
                           if (controller.docsModel?.docs?[index].path != null) {
                             print('Tapping :::::: ');
                             expDate = await showRoundedDatePicker(
@@ -750,11 +747,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               context: context,
                               // locale: Locale('en'),
                               locale: SessionController().getLanguage() == 1
-                                  ? Locale('en', '')
-                                  : Locale('ar', ''),
+                                  ? const Locale('en', '')
+                                  : const Locale('ar', ''),
                               initialDate: DateTime.now(),
                               firstDate:
-                                  DateTime.now().subtract(Duration(seconds: 1)),
+                                  DateTime.now().subtract(const Duration(seconds: 1)),
                               lastDate: DateTime(DateTime.now().year + 20),
                               borderRadius: 2.0.h,
                               // theme:
@@ -815,7 +812,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 AppMetaLabels().selectFuturedate,
                               );
                             } else {
-                              DateFormat dateFormat = new DateFormat(
+                              DateFormat dateFormat = DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
                               if (controller.docsModel?.docs?[index].name!
@@ -847,7 +844,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           width: 40.0.w,
                           height: 5.5.h,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(246, 248, 249, 1),
+                              color: const Color.fromRGBO(246, 248, 249, 1),
                               borderRadius: BorderRadius.circular(1.0.h),
                               border: Border.all(
                                   color: index ==
@@ -872,7 +869,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   );
                                 }),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -900,9 +897,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           child: Center(
                               child: Text(
                             AppMetaLabels().pleaseSelectExpiryDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: const TextStyle(color: Colors.blue),
                           )))
-                      : SizedBox(
+                      : const SizedBox(
                           height: 10,
                         ),
                   Container(
@@ -995,12 +992,8 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                               .path = null;
                                           SnakBarWidget.getSnackBarErrorBlue(
                                               AppMetaLabels().alert,
-                                              AppMetaLabels()
-                                                      .someThingWentWrong +
-                                                  ' ' +
-                                                  AppMetaLabels().please +
-                                                  ' ' +
-                                                  AppMetaLabels().reScane);
+                                              '${AppMetaLabels()
+                                                      .someThingWentWrong} ${AppMetaLabels().please} ${AppMetaLabels().reScane}');
                                         });
                                       }
                                     },
@@ -1115,17 +1108,17 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                 isEnableScreen = true;
                                               });
                                             },
-                                      child: Text(
-                                        AppMetaLabels().upload,
-                                        style: AppTextStyle.semiBoldWhite12,
-                                      ),
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            const Color.fromRGBO(0, 61, 166, 1),
+                                      ),
+                                      child: Text(
+                                        AppMetaLabels().upload,
+                                        style: AppTextStyle.semiBoldWhite12,
                                       ),
                                     );
                                   });
@@ -1145,11 +1138,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.storage),
-                        title: new Text(AppMetaLabels().storage),
+                    ListTile(
+                        leading: const Icon(Icons.storage),
+                        title: Text(AppMetaLabels().storage),
                         onTap: () async {
                           // if (!await Permission.storage.request().isGranted) {
                           //   print('Else');
@@ -1165,9 +1158,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             print("Exception ::: $e");
                           }
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         // if (!await Permission.camera.request().isGranted) {
                         //   print('Else');
@@ -1206,11 +1199,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
               child: SafeArea(
                   child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                      leading: new Icon(Icons.photo_library),
-                      title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                      leading: const Icon(Icons.photo_library),
+                      title: Text(AppMetaLabels().photoLibrary),
                       onTap: () async {
                         // new
                         // if (!await Permission.photos.request().isGranted) {
@@ -1254,9 +1247,9 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         }
                       },
                     ),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () async {
                         // new
                         // if (!await Permission.camera.request().isGranted) {
@@ -1397,12 +1390,12 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
     iDNumberText.text = controller.cardScanModel.idNumber ?? "";
     if (controller.cardScanModel.dob != null) {
       dOBText =
-          '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!)}';
+          DateFormat('dd-MM-yyyy').format(controller.cardScanModel.dob!);
     }
     print('iDNumberText TextField :::: ${iDNumberText.text}');
     expiryText = controller.cardScanModel.expiry == null
         ? controller.docsModel?.docs![index].expiry ?? ""
-        : '${DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!)}';
+        : DateFormat('dd-MM-yyyy').format(controller.cardScanModel.expiry!);
 
     print('expiryText expiryText :::: $expiryText');
     setState(() {
@@ -1425,461 +1418,439 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       : Alignment.centerRight,
                   child: Text(AppMetaLabels().pleaseVerify)),
               content: SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Name
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 0.5.h, right: 4.0.w),
-                        child: SizedBox(
-                          width: 70.w,
-                          child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: RichText(
-                              textAlign: SessionController().getLanguage() == 1
-                                  ? TextAlign.left
-                                  : TextAlign.right,
-                              maxLines: 2,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: AppMetaLabels().name,
-                                      style: AppTextStyle.normalGrey10),
-                                  TextSpan(
-                                    text: ' (' +
-                                        '${AppMetaLabels().invalidName}' +
-                                        ')',
-                                    style: AppTextStyle.normalGrey8,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                        child: SizedBox(
-                          // height: 4.h,
-                          width: 90.w,
-                          child: TextFormField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
-                              // RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
-                            ],
-                            controller: nameText,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Name
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 0.5.h, right: 4.0.w),
+                      child: SizedBox(
+                        width: 70.w,
+                        child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: RichText(
+                            textAlign: SessionController().getLanguage() == 1
+                                ? TextAlign.left
+                                : TextAlign.right,
                             maxLines: 2,
-                            style: AppTextStyle.normalBlack10,
-                            // onChanged: (val) {
-                            //   if (val.isNotEmpty) {
-                            //     setState(() {
-                            //       isNameError = false;
-                            //     });
-                            //   } else {
-                            //     if (!nameValidator.hasMatch(val)) {
-                            //       setState(() {
-                            //         isNameError = true;
-                            //       });
-                            //       return;
-                            //     }
-                            //   }
-                            // },
-                            // validator: (value) {
-                            //   if (!nameValidator.hasMatch(value)) {
-                            //     isNameError = true;
-                            //     return;
-                            //   } else
-                            //     return null;
-                            // },
-                            decoration: InputDecoration(
-                              suffixIconConstraints: BoxConstraints(
-                                minWidth: 4.h,
-                                minHeight: 2,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 2.h,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isNameError
-                                      ? AppColors.redColor
-                                      : AppColors.blueColor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: AppMetaLabels().name,
+                                    style: AppTextStyle.normalGrey10),
+                                TextSpan(
+                                  text: ' (' '${AppMetaLabels().invalidName})',
+                                  style: AppTextStyle.normalGrey8,
                                 ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isNameError
-                                      ? AppColors.redColor
-                                      : AppColors.bordercolornew,
-                                  width: 0.2.w,
-                                ),
-                              ),
-                              fillColor: AppColors.greyBG,
-                              filled: true,
-                              hintText: AppMetaLabels().name,
-                              hintStyle: AppTextStyle.normalBlack10
-                                  .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: TextStyle(fontSize: 0),
-                              contentPadding: EdgeInsets.all(2.5.w),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      isNameError == true
-                          ? Padding(
-                              padding: EdgeInsets.only(
-                                  left: 2.0.w, top: 0.2.h, right: 4.0.w),
-                              child: Text(
-                                AppMetaLabels().invalidName,
-                                style: AppTextStyle.normalGrey8
-                                    .copyWith(color: Colors.red),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                      child: SizedBox(
+                        // height: 4.h,
+                        width: 90.w,
+                        child: TextFormField(
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
+                            // RegExp(r'^[a-zA-Z\u0621-\u064A ]+$'))
+                          ],
+                          controller: nameText,
+                          maxLines: 2,
+                          style: AppTextStyle.normalBlack10,
+                          // onChanged: (val) {
+                          //   if (val.isNotEmpty) {
+                          //     setState(() {
+                          //       isNameError = false;
+                          //     });
+                          //   } else {
+                          //     if (!nameValidator.hasMatch(val)) {
+                          //       setState(() {
+                          //         isNameError = true;
+                          //       });
+                          //       return;
+                          //     }
+                          //   }
+                          // },
+                          // validator: (value) {
+                          //   if (!nameValidator.hasMatch(value)) {
+                          //     isNameError = true;
+                          //     return;
+                          //   } else
+                          //     return null;
+                          // },
+                          decoration: InputDecoration(
+                            suffixIconConstraints: BoxConstraints(
+                              minWidth: 4.h,
+                              minHeight: 2,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.edit,
+                              size: 2.h,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isNameError
+                                    ? AppColors.redColor
+                                    : AppColors.blueColor,
                               ),
-                            )
-                          : SizedBox(),
-                      // ID Number
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              // 'ID Number',
-                              AppMetaLabels().iDNumber,
-                              style: AppTextStyle.normalGrey10,
-                            )),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isNameError
+                                    ? AppColors.redColor
+                                    : AppColors.bordercolornew,
+                                width: 0.2.w,
+                              ),
+                            ),
+                            fillColor: AppColors.greyBG,
+                            filled: true,
+                            hintText: AppMetaLabels().name,
+                            hintStyle: AppTextStyle.normalBlack10
+                                .copyWith(color: AppColors.textFieldBGColor),
+                            errorStyle: const TextStyle(fontSize: 0),
+                            contentPadding: EdgeInsets.all(2.5.w),
+                          ),
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
+                    ),
+                    isNameError == true
+                        ? Padding(
+                            padding: EdgeInsets.only(
+                                left: 2.0.w, top: 0.2.h, right: 4.0.w),
+                            child: Text(
+                              AppMetaLabels().invalidName,
+                              style: AppTextStyle.normalGrey8
+                                  .copyWith(color: Colors.red),
+                            ),
+                          )
+                        : const SizedBox(),
+                    // ID Number
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            // 'ID Number',
+                            AppMetaLabels().iDNumber,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                      child: SizedBox(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        child: TextFormField(
+                          inputFormatters: [maskFormatter],
+                          controller: iDNumberText,
+                          maxLength: 18,
+                          keyboardType: const TextInputType.numberWithOptions(),
+                          onChanged: (val) {
+                            if (val.isNotEmpty) {
+                              setState(() {
+                                isIDError = false;
+                              });
+                            }
+                          },
+                          style: AppTextStyle.normalBlack10,
+                          decoration: InputDecoration(
+                            suffixIconConstraints: BoxConstraints(
+                              minWidth: 4.h,
+                              minHeight: 2,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.edit,
+                              size: 2.h,
+                            ),
+                            counterText: "",
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isIDError
+                                    ? AppColors.redColor
+                                    : AppColors.blueColor,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: isIDError
+                                    ? AppColors.redColor
+                                    : AppColors.bordercolornew,
+                                width: 0.2.w,
+                              ),
+                            ),
+                            fillColor: AppColors.greyBG,
+                            filled: true,
+                            hintText: '000-0000-0000000-0',
+                            hintStyle: AppTextStyle.normalBlack10
+                                .copyWith(color: AppColors.textFieldBGColor),
+                            errorStyle: const TextStyle(fontSize: 0),
+                            contentPadding: EdgeInsets.all(2.5.w),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Expiry
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            AppMetaLabels().expDate,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 0.5.h,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        print('Show ::::::');
+                        var expDate = await showRoundedDatePicker(
+                          theme: ThemeData(primaryColor: AppColors.blueColor),
+                          height: 50.0.h,
+                          context: context,
+                          // locale: Locale('en'),
+                          locale: SessionController().getLanguage() == 1
+                              ? const Locale('en', '')
+                              : const Locale('ar', ''),
+                          initialDate: DateTime.now(),
+                          firstDate:
+                              DateTime.now().subtract(const Duration(seconds: 1)),
+                          lastDate: DateTime(DateTime.now().year + 10),
+                          borderRadius: 2.0.h,
+                          // theme:
+                          //     ThemeData(primarySwatch: Colors.deepPurple),
+                          styleDatePicker: MaterialRoundedDatePickerStyle(
+                            backgroundHeader: Colors.grey.shade300,
+                            // Appbar year like '2023' button
+                            textStyleYearButton: TextStyle(
+                              fontSize: 30.sp,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.grey.shade100,
+                              leadingDistribution:
+                                  TextLeadingDistribution.even,
+                            ),
+                            // Appbar day like 'Thu, Mar 16' button
+                            textStyleDayButton: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                
+                        if (expDate != null) {
+                          if (expDate.isBefore(DateTime.now()) ||
+                              expDate.isAtSameMomentAs(DateTime.now())) {
+                            SnakBarWidget.getSnackBarErrorBlue(
+                              AppMetaLabels().error,
+                              AppMetaLabels().selectFuturedate,
+                            );
+                          } else {
+                            DateFormat dateFormat = DateFormat(
+                                AppMetaLabels()
+                                    .dateFormatForShowRoundedDatePicker);
+                            setState(() {
+                              expiryText = dateFormat.format(expDate);
+                              controller.docsModel?.docs?[index].expiry =
+                                  dateFormat.format(expDate);
+                
+                              isExpiryError = false;
+                            });
+                          }
+                        }
+                      },
+                      child: Container(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        margin: EdgeInsets.only(
                             top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                        child: SizedBox(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          child: TextFormField(
-                            inputFormatters: [maskFormatter],
-                            controller: iDNumberText,
-                            maxLength: 18,
-                            keyboardType: TextInputType.numberWithOptions(),
-                            onChanged: (val) {
-                              if (val.isNotEmpty) {
-                                setState(() {
-                                  isIDError = false;
-                                });
-                              }
-                            },
-                            style: AppTextStyle.normalBlack10,
-                            decoration: InputDecoration(
-                              suffixIconConstraints: BoxConstraints(
-                                minWidth: 4.h,
-                                minHeight: 2,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.edit,
-                                size: 2.h,
-                              ),
-                              counterText: "",
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isIDError
-                                      ? AppColors.redColor
-                                      : AppColors.blueColor,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: isIDError
-                                      ? AppColors.redColor
-                                      : AppColors.bordercolornew,
-                                  width: 0.2.w,
-                                ),
-                              ),
-                              fillColor: AppColors.greyBG,
-                              filled: true,
-                              hintText: '000-0000-0000000-0',
-                              hintStyle: AppTextStyle.normalBlack10
-                                  .copyWith(color: AppColors.textFieldBGColor),
-                              errorStyle: TextStyle(fontSize: 0),
-                              contentPadding: EdgeInsets.all(2.5.w),
-                            ),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(246, 248, 249, 1),
+                          borderRadius: BorderRadius.circular(1.0.h),
+                          border: Border.all(
+                            color: isExpiryError == true
+                                ? AppColors.redColor
+                                : AppColors.bordercolornew,
+                            width: 0.2.w,
                           ),
                         ),
-                      ),
-                      // Expiry
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              AppMetaLabels().expDate,
-                              style: AppTextStyle.normalGrey10,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          print('Show ::::::');
-                          var expDate = await showRoundedDatePicker(
-                            theme: ThemeData(primaryColor: AppColors.blueColor),
-                            height: 50.0.h,
-                            context: context,
-                            // locale: Locale('en'),
-                            locale: SessionController().getLanguage() == 1
-                                ? Locale('en', '')
-                                : Locale('ar', ''),
-                            initialDate: DateTime.now(),
-                            firstDate:
-                                DateTime.now().subtract(Duration(seconds: 1)),
-                            lastDate: DateTime(DateTime.now().year + 10),
-                            borderRadius: 2.0.h,
-                            // theme:
-                            //     ThemeData(primarySwatch: Colors.deepPurple),
-                            styleDatePicker: MaterialRoundedDatePickerStyle(
-                              decorationDateSelected: BoxDecoration(
-                                  color: AppColors.blueColor,
-                                  borderRadius: BorderRadius.circular(100)),
-                              textStyleButtonPositive: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              textStyleButtonNegative: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: Text(
+                                expiryText,
+                                style: AppTextStyle.normalBlack10,
                               ),
                             ),
-                          );
-
-                          if (expDate != null) {
-                            if (expDate.isBefore(DateTime.now()) ||
-                                expDate.isAtSameMomentAs(DateTime.now())) {
-                              SnakBarWidget.getSnackBarErrorBlue(
-                                AppMetaLabels().error,
-                                AppMetaLabels().selectFuturedate,
-                              );
-                            } else {
-                              DateFormat dateFormat = new DateFormat(
-                                  AppMetaLabels()
-                                      .dateFormatForShowRoundedDatePicker);
-                              setState(() {
-                                expiryText = dateFormat.format(expDate);
-                                controller.docsModel?.docs?[index].expiry =
-                                    dateFormat.format(expDate);
-
-                                isExpiryError = false;
-                              });
-                            }
+                            const Spacer(),
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: ClearButton(
+                                clear: () {
+                                  setState(() {
+                                    expiryText = '';
+                                    controller
+                                        .docsModel?.docs?[index].expiry = '';
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // DOB
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 2.0.w, top: 1.0.h, right: 4.0.w),
+                      child: Align(
+                          alignment: SessionController().getLanguage() == 1
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: Text(
+                            // 'Date Of Birth',
+                            AppMetaLabels().dateOFBirth,
+                            style: AppTextStyle.normalGrey10,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 0.5.h,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        var expDate = await showRoundedDatePicker(
+                          theme: ThemeData(primaryColor: AppColors.blueColor),
+                          height: 50.0.h,
+                          context: context,
+                          // locale: Locale('en'),
+                          locale: SessionController().getLanguage() == 1
+                              ? const Locale('en', '')
+                              : const Locale('ar', ''),
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 100),
+                          lastDate: DateTime.now(),
+                          borderRadius: 2.0.h,
+                          // theme:
+                          //     ThemeData(primarySwatch: Colors.deepPurple),
+                          styleDatePicker: MaterialRoundedDatePickerStyle(
+                            backgroundHeader: Colors.grey.shade300,
+                            // Appbar year like '2023' button
+                            textStyleYearButton: TextStyle(
+                              fontSize: 30.sp,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.grey.shade100,
+                              leadingDistribution:
+                                  TextLeadingDistribution.even,
+                            ),
+                            // Appbar day like 'Thu, Mar 16' button
+                            textStyleDayButton: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                
+                        if (expDate != null) {
+                          if (expDate.isAfter(DateTime.now()) ||
+                              expDate.isAtSameMomentAs(DateTime.now())) {
+                            SnakBarWidget.getSnackBarErrorBlue(
+                              AppMetaLabels().error,
+                              AppMetaLabels().selectFuturedate,
+                            );
+                          } else {
+                            DateFormat dateFormat = DateFormat(
+                                AppMetaLabels()
+                                    .dateFormatForShowRoundedDatePicker);
+                            setState(() {
+                              isDOBError = false;
+                              dOBText = dateFormat.format(expDate);
+                            });
                           }
-                        },
-                        child: Container(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          margin: EdgeInsets.only(
-                              top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
-                            borderRadius: BorderRadius.circular(1.0.h),
-                            border: Border.all(
-                              color: isExpiryError == true
-                                  ? AppColors.redColor
-                                  : AppColors.bordercolornew,
-                              width: 0.2.w,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: Text(
-                                  expiryText,
-                                  style: AppTextStyle.normalBlack10,
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: ClearButton(
-                                  clear: () {
-                                    setState(() {
-                                      expiryText = '';
-                                      controller
-                                          .docsModel?.docs?[index].expiry = '';
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
+                        }
+                      },
+                      child: Container(
+                        width: 90.0.w,
+                        height: 4.0.h,
+                        margin: EdgeInsets.only(
+                            top: 0.5.h, left: 2.0.w, right: 2.0.w),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(246, 248, 249, 1),
+                          borderRadius: BorderRadius.circular(1.0.h),
+                          border: Border.all(
+                            color: isDOBError == true
+                                ? AppColors.redColor
+                                : AppColors.bordercolornew,
+                            width: 0.2.w,
                           ),
                         ),
-                      ),
-                      // DOB
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 2.0.w, top: 1.0.h, right: 4.0.w),
-                        child: Align(
-                            alignment: SessionController().getLanguage() == 1
-                                ? Alignment.centerLeft
-                                : Alignment.centerRight,
-                            child: Text(
-                              // 'Date Of Birth',
-                              AppMetaLabels().dateOFBirth,
-                              style: AppTextStyle.normalGrey10,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          var expDate = await showRoundedDatePicker(
-                            theme: ThemeData(primaryColor: AppColors.blueColor),
-                            height: 50.0.h,
-                            context: context,
-                            // locale: Locale('en'),
-                            locale: SessionController().getLanguage() == 1
-                                ? Locale('en', '')
-                                : Locale('ar', ''),
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(DateTime.now().year - 100),
-                            lastDate: DateTime.now(),
-                            borderRadius: 2.0.h,
-                            // theme:
-                            //     ThemeData(primarySwatch: Colors.deepPurple),
-                            styleDatePicker: MaterialRoundedDatePickerStyle(
-                              decorationDateSelected: BoxDecoration(
-                                  color: AppColors.blueColor,
-                                  borderRadius: BorderRadius.circular(100)),
-                              textStyleButtonPositive: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              textStyleButtonNegative: TextStyle(
-                                color: AppColors.blueColor,
-                              ),
-                              backgroundHeader: Colors.grey.shade300,
-                              // Appbar year like '2023' button
-                              textStyleYearButton: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.grey.shade100,
-                                leadingDistribution:
-                                    TextLeadingDistribution.even,
-                              ),
-                              // Appbar day like 'Thu, Mar 16' button
-                              textStyleDayButton: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: Text(
+                                dOBText,
+                                style: AppTextStyle.normalBlack10,
                               ),
                             ),
-                          );
-
-                          if (expDate != null) {
-                            if (expDate.isAfter(DateTime.now()) ||
-                                expDate.isAtSameMomentAs(DateTime.now())) {
-                              SnakBarWidget.getSnackBarErrorBlue(
-                                AppMetaLabels().error,
-                                AppMetaLabels().selectFuturedate,
-                              );
-                            } else {
-                              DateFormat dateFormat = new DateFormat(
-                                  AppMetaLabels()
-                                      .dateFormatForShowRoundedDatePicker);
-                              setState(() {
-                                isDOBError = false;
-                                dOBText = dateFormat.format(expDate);
-                              });
-                            }
-                          }
-                        },
-                        child: Container(
-                          width: 90.0.w,
-                          height: 4.0.h,
-                          margin: EdgeInsets.only(
-                              top: 0.5.h, left: 2.0.w, right: 2.0.w),
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
-                            borderRadius: BorderRadius.circular(1.0.h),
-                            border: Border.all(
-                              color: isDOBError == true
-                                  ? AppColors.redColor
-                                  : AppColors.bordercolornew,
-                              width: 0.2.w,
+                            const Spacer(),
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 1.0.h),
+                              child: ClearButton(
+                                clear: () {
+                                  setState(() {
+                                    dOBText = '';
+                                  });
+                                },
+                              ),
                             ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: Text(
-                                  dOBText,
-                                  style: AppTextStyle.normalBlack10,
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 1.0.h),
-                                child: ClearButton(
-                                  clear: () {
-                                    setState(() {
-                                      dOBText = '';
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 2.0.h,
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.3,
-                        width: double.infinity,
-                        child: controller.mergedId != null
-                            ? Image.file(
-                                controller.mergedId!,
-                                fit: BoxFit.contain,
-                              )
-                            : SizedBox(),
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 2.0.h,
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.3,
+                      width: double.infinity,
+                      child: controller.mergedId != null
+                          ? Image.file(
+                              controller.mergedId!,
+                              fit: BoxFit.contain,
+                            )
+                          : const SizedBox(),
+                    ),
+                  ],
                 ),
               ),
               actions: [
@@ -2363,7 +2334,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Align(
@@ -2376,11 +2347,11 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(1.3.h),
                               ),
-                              backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                              backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                             ),
                             onPressed: () {
                               Get.back();
-                              Get.off(() => TenantDashboardTabs(
+                              Get.off(() => const TenantDashboardTabs(
                                     initialIndex: 0,
                                   ));
                             },
@@ -2495,7 +2466,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () async {
                         Get.back();
@@ -2547,7 +2518,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                 : ui.TextDirection.rtl,
             child: AlertDialog(
               title: Text(AppMetaLabels().emirateid),
-              content: Container(
+              content: SizedBox(
                 height: Get.height * 0.6,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -2593,7 +2564,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: Get.width * 0.3,
                           height: Get.height * 0.05,
@@ -2608,7 +2579,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(3.0.w),
-                                      side: BorderSide(color: Colors.blue))),
+                                      side: const BorderSide(color: Colors.blue))),
                               backgroundColor:
                                   WidgetStateProperty.all<Color>(Colors.white),
                             ),
@@ -2619,7 +2590,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         SizedBox(
                           width: Get.width * 0.3,
                           height: Get.height * 0.05,
@@ -2681,7 +2652,7 @@ class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     )
                   ],

@@ -13,8 +13,7 @@ import 'dart:ui' as ui;
 
 class LandlordReportProperties extends StatefulWidget {
   final String? dropDownType;
-  const LandlordReportProperties({Key? key, @required this.dropDownType})
-      : super(key: key);
+  const LandlordReportProperties({super.key, @required this.dropDownType});
 
   @override
   _LandlordReportPropertiesState createState() =>
@@ -58,13 +57,9 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                   children: [
                     Text(
                       widget.dropDownType == '7'
-                          ? AppMetaLabels().cheque +
-                              ' ' +
-                              AppMetaLabels().status
+                          ? '${AppMetaLabels().cheque} ${AppMetaLabels().status}'
                           : widget.dropDownType == '6'
-                              ? AppMetaLabels().unit +
-                                  ' ' +
-                                  AppMetaLabels().status
+                              ? '${AppMetaLabels().unit} ${AppMetaLabels().status}'
                               : widget.dropDownType == '5'
                                   ? AppMetaLabels().transactionID
                                   : widget.dropDownType == '4'
@@ -72,20 +67,18 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                                       : widget.dropDownType == '3'
                                           ? AppMetaLabels().contractor1
                                           : widget.dropDownType == '2'
-                                              ? AppMetaLabels().contract +
-                                                  ' ' +
-                                                  AppMetaLabels().category
+                                              ? '${AppMetaLabels().contract} ${AppMetaLabels().category}'
                                               : AppMetaLabels()
                                                   .servieContractStatus,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back(result: null);
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -93,7 +86,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -102,7 +95,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -112,14 +105,13 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                 Expanded(
                   child: Obx(() {
                     return _filterPropertyController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterPropertyController.errorDropdownType.value !=
                                     '' ||
                                 _filterPropertyController
-                                        .getDropDownModelList.length ==
-                                    0
+                                        .getDropDownModelList.isEmpty
                             ? CustomErrorWidget(
                                 errorText: _filterPropertyController
                                     .errorDropdownType.value,
@@ -172,7 +164,7 @@ class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
                                                         .length -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         // index ==
                                         //         _filterPropertyController
                                         //                 .proppertyTypesLength -

@@ -510,7 +510,6 @@
 
 //        "CHEQUE DETAILS": 'تفاصيل الشيك';
 
-///////
 //         'Notifications' : 'إشعارات';
 
 

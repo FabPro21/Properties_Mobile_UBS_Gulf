@@ -14,7 +14,7 @@ import 'package:sizer/sizer.dart';
 import 'lpo_services_controller.dart';
 
 class LpoServices extends StatefulWidget {
-  const LpoServices({Key? key}) : super(key: key);
+  const LpoServices({super.key});
 
   @override
   _LpoServicesState createState() => _LpoServicesState();
@@ -41,10 +41,10 @@ class _LpoServicesState extends State<LpoServices> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BottomShadow(),
+        const BottomShadow(),
         Obx(() {
           return getLpoServicesController.loadingData.value
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : getLpoServicesController.error.value != ''
                   ? AppErrorWidget(
                       errorText: getLpoServicesController.error.value,
@@ -161,28 +161,26 @@ class _LpoServicesState extends State<LpoServices> {
                                                       height: 1.0.h,
                                                     ),
 
-                                                    Container(
-                                                      child: Text(
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? getLpoServicesController
-                                                                    .lpoServices
-                                                                    .value
-                                                                    .lpoServices![
-                                                                        index]
-                                                                    .description ??
-                                                                '_'
-                                                            : getLpoServicesController
-                                                                    .lpoServices
-                                                                    .value
-                                                                    .lpoServices![
-                                                                        index]
-                                                                    .descriptionAr ??
-                                                                '_',
-                                                        style: AppTextStyle
-                                                            .normalBlack10,
-                                                      ),
+                                                    Text(
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getLpoServicesController
+                                                                  .lpoServices
+                                                                  .value
+                                                                  .lpoServices![
+                                                                      index]
+                                                                  .description ??
+                                                              '_'
+                                                          : getLpoServicesController
+                                                                  .lpoServices
+                                                                  .value
+                                                                  .lpoServices![
+                                                                      index]
+                                                                  .descriptionAr ??
+                                                              '_',
+                                                      style: AppTextStyle
+                                                          .normalBlack10,
                                                     ),
                                                     SizedBox(
                                                       height: 1.0.h,
@@ -302,7 +300,7 @@ class _LpoServicesState extends State<LpoServices> {
                                                                     .length -
                                                                 1
                                                         ? Container()
-                                                        : AppDivider(),
+                                                        : const AppDivider(),
                                                   ],
                                                 ),
                                               ),
@@ -340,11 +338,10 @@ class _LpoServicesState extends State<LpoServices> {
                                           AppMetaLabels().grandTotal,
                                           style: AppTextStyle.semiBoldBlack11,
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         Text(
-                                          "${AppMetaLabels().aed} " +
-                                              getLpoServicesController
-                                                  .totalAmount.value,
+                                          "${AppMetaLabels().aed} ${getLpoServicesController
+                                                  .totalAmount.value}",
                                           style: AppTextStyle.semiBoldBlack11,
                                         ),
                                       ],

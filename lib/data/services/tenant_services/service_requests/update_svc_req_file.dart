@@ -20,9 +20,11 @@ class UpdateSvcReqFile {
     if (response is StreamedResponse) {
       if (response.statusCode == 200) {
         return 200;
-      } else
+      } else {
         return response.statusCode;
-    } else
+      }
+    } else {
       return response;
+    }
   }
 }

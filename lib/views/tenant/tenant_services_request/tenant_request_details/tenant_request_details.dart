@@ -31,10 +31,10 @@ class TenantRequestDetails extends StatefulWidget {
   // here adding for the VACATING AND FROM CONTACT DETAIL
   final String? caseNo;
   TenantRequestDetails({
-    Key? key,
+    super.key,
     this.caller,
     this.caseNo,
-  }) : super(key: key) {
+  }) {
     Get.put(TenantRequestDetailsController());
   }
 
@@ -110,327 +110,359 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               return tenantRDController.loadingData.value == true
                   ? Padding(
                       padding: EdgeInsets.only(top: 10.0.h),
-                      child: LoadingIndicatorBlue(),
+                      child: const LoadingIndicatorBlue(),
                     )
                   : tenantRDController.error.value != ''
                       ? AppErrorWidget(
                           errorText: tenantRDController.error.value,
                         )
-                      : Container(
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 2.0.w,
-                                  top: 2.0.h,
-                                  right: 2.0.w,
-                                  bottom: 2.h),
-                              child: Column(children: [
-                                // Request Detail Container
-                                Container(
-                                  width: 100.0.w,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(2.0.h),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 0.5.h,
-                                        spreadRadius: 0.1.h,
-                                        offset: Offset(0.1.h, 0.1.h),
-                                      ),
-                                    ],
+                      : SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 2.0.w,
+                              top: 2.0.h,
+                              right: 2.0.w,
+                              bottom: 2.h),
+                          child: Column(children: [
+                            // Request Detail Container
+                            Container(
+                              width: 100.0.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(2.0.h),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 0.5.h,
+                                    spreadRadius: 0.1.h,
+                                    offset: Offset(0.1.h, 0.1.h),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(2.0.h),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                ],
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(2.0.h),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      AppMetaLabels().requestDetails,
+                                      style: AppTextStyle.semiBoldBlack12,
+                                    ),
+                                    SizedBox(
+                                      height: 1.0.h,
+                                    ),
+                                    Text(
+                                      SessionController().getLanguage() == 1
+                                          ? tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .category ??
+                                              ""
+                                          : tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .categoryAR ??
+                                              "",
+                                      style: AppTextStyle.normalGrey10,
+                                    ),
+                                    SizedBox(
+                                      height: 1.h,
+                                    ),
+                                    Text(
+                                      SessionController().getLanguage() == 1
+                                          ? tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .subCategory ??
+                                              ""
+                                          : tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .subCategoryAR ??
+                                              " ",
+                                      style: AppTextStyle.normalGrey10,
+                                    ),
+                                    SizedBox(
+                                      height: 1.h,
+                                    ),
+                                    Text(
+                                      SessionController().getLanguage() == 1
+                                          ? tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .propertyName ??
+                                              ""
+                                          : tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .propertyNameAr ??
+                                              "",
+                                      style: AppTextStyle.normalGrey10,
+                                    ),
+                                    SizedBox(
+                                      height: 1.h,
+                                    ),
+                                    Text(
+                                      tenantRDController
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .unitRefNo ??
+                                          "",
+                                      style: AppTextStyle.semiBoldGrey10,
+                                    ),
+                                    SizedBox(
+                                      height: 1.h,
+                                    ),
+                                    Row(
                                       children: [
                                         Text(
-                                          AppMetaLabels().requestDetails,
-                                          style: AppTextStyle.semiBoldBlack12,
-                                        ),
-                                        SizedBox(
-                                          height: 1.0.h,
-                                        ),
-                                        Text(
-                                          SessionController().getLanguage() == 1
-                                              ? tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .category ??
-                                                  ""
-                                              : tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .categoryAR ??
-                                                  "",
-                                          style: AppTextStyle.normalGrey10,
-                                        ),
-                                        SizedBox(
-                                          height: 1.h,
-                                        ),
-                                        Text(
-                                          SessionController().getLanguage() == 1
-                                              ? tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .subCategory ??
-                                                  ""
-                                              : tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .subCategoryAR ??
-                                                  " ",
-                                          style: AppTextStyle.normalGrey10,
-                                        ),
-                                        SizedBox(
-                                          height: 1.h,
-                                        ),
-                                        Text(
-                                          SessionController().getLanguage() == 1
-                                              ? tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .propertyName ??
-                                                  ""
-                                              : tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .propertyNameAr ??
-                                                  "",
-                                          style: AppTextStyle.normalGrey10,
-                                        ),
-                                        SizedBox(
-                                          height: 1.h,
-                                        ),
-                                        Text(
                                           tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .unitRefNo ??
-                                              "",
-                                          style: AppTextStyle.semiBoldGrey10,
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .date!
+                                              .trimLeft()
+                                              .trimRight()
+                                              .replaceAll(' ', '-'),
+                                          style: AppTextStyle.normalGrey10,
                                         ),
-                                        SizedBox(
-                                          height: 1.h,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .date!
-                                                  .trimLeft()
-                                                  .trimRight()
-                                                  .replaceAll(' ', '-'),
-                                              style: AppTextStyle.normalGrey10,
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 2.0.w, right: 2.w),
-                                              child: Text(
-                                                tenantRDController
-                                                        .tenantRequestDetails
-                                                        .value
-                                                        .detail!
-                                                        .time ??
-                                                    "",
-                                                style:
-                                                    AppTextStyle.normalGrey10,
-                                              ),
-                                            ),
-                                            Spacer(),
-                                            ConstrainedBox(
-                                                constraints: BoxConstraints(
-                                                    maxWidth: 55.w),
-                                                child: StatusWidget(
-                                                  text: SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .detail!
-                                                              .status ??
-                                                          ""
-                                                      : tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .detail!
-                                                              .statusAR ??
-                                                          "",
-                                                  valueToCompare:
-                                                      tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .detail!
-                                                              .status ??
-                                                          "",
-                                                )),
-                                          ],
-                                        ),
-                                        if (tenantRDController
-                                                .tenantRequestDetails
-                                                .value
-                                                .contractInfo!
-                                                .contractno !=
-                                            null)
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              AppDivider(),
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              Text(
-                                                AppMetaLabels().contractInfo,
-                                                style: AppTextStyle
-                                                    .semiBoldBlack12,
-                                              ),
-                                              SizedBox(
-                                                height: 2.0.h,
-                                              ),
-                                              InkWell(
-                                                onTap: () {
-                                                  SessionController()
-                                                      .setContractID(
-                                                          tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .contractInfo!
-                                                              .contractId);
-                                                  SessionController()
-                                                      .setContractNo(
-                                                          tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .contractInfo!
-                                                              .contractno);
-                                                  Get.to(() =>
-                                                      ContractsDetailsTabs(
-                                                          prevContractNo:
-                                                              null));
-                                                },
-                                                child: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Container(
-                                                      width: 47.0.w,
-                                                      child: Text(
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? tenantRDController
-                                                                    .tenantRequestDetails
-                                                                    .value
-                                                                    .contractInfo!
-                                                                    .propertyName ??
-                                                                ''
-                                                            : tenantRDController
-                                                                    .tenantRequestDetails
-                                                                    .value
-                                                                    .contractInfo!
-                                                                    .propertyNameAr ??
-                                                                '',
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack9,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                      ),
-                                                    ),
-                                                    Spacer(),
-                                                    Text(
-                                                      "${tenantRDController.tenantRequestDetails.value.contractInfo!.contractno}",
-                                                      style: AppTextStyle
-                                                          .semiBoldBlack9,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 2.0.w, right: 2.w),
+                                          child: Text(
+                                            tenantRDController
+                                                    .tenantRequestDetails
+                                                    .value
+                                                    .detail!
+                                                    .time ??
+                                                "",
+                                            style:
+                                                AppTextStyle.normalGrey10,
                                           ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                // Contact Person Detail
-                                Container(
-                                    width: 100.0.w,
-                                    padding: EdgeInsets.all(2.0.h),
-                                    margin: EdgeInsets.only(top: 3.h),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.circular(2.0.h),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black12,
-                                          blurRadius: 0.5.h,
-                                          spreadRadius: 0.1.h,
-                                          offset: Offset(0.1.h, 0.1.h),
                                         ),
+                                        const Spacer(),
+                                        ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                                maxWidth: 55.w),
+                                            child: StatusWidget(
+                                              text: SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? tenantRDController
+                                                          .tenantRequestDetails
+                                                          .value
+                                                          .detail!
+                                                          .status ??
+                                                      ""
+                                                  : tenantRDController
+                                                          .tenantRequestDetails
+                                                          .value
+                                                          .detail!
+                                                          .statusAR ??
+                                                      "",
+                                              valueToCompare:
+                                                  tenantRDController
+                                                          .tenantRequestDetails
+                                                          .value
+                                                          .detail!
+                                                          .status ??
+                                                      "",
+                                            )),
                                       ],
                                     ),
-                                    child: Column(
+                                    if (tenantRDController
+                                            .tenantRequestDetails
+                                            .value
+                                            .contractInfo!
+                                            .contractno !=
+                                        null)
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
+                                          SizedBox(
+                                            height: 1.0.h,
+                                          ),
+                                          const AppDivider(),
+                                          SizedBox(
+                                            height: 1.0.h,
+                                          ),
                                           Text(
-                                            AppMetaLabels()
-                                                .contactPersonDetails,
-                                            style: AppTextStyle.semiBoldBlack12,
+                                            AppMetaLabels().contractInfo,
+                                            style: AppTextStyle
+                                                .semiBoldBlack12,
                                           ),
                                           SizedBox(
                                             height: 2.0.h,
                                           ),
-                                          Row(
+                                          InkWell(
+                                            onTap: () {
+                                              SessionController()
+                                                  .setContractID(
+                                                      tenantRDController
+                                                          .tenantRequestDetails
+                                                          .value
+                                                          .contractInfo!
+                                                          .contractId);
+                                              SessionController()
+                                                  .setContractNo(
+                                                      tenantRDController
+                                                          .tenantRequestDetails
+                                                          .value
+                                                          .contractInfo!
+                                                          .contractno);
+                                              Get.to(() =>
+                                                  const ContractsDetailsTabs(
+                                                      prevContractNo:
+                                                          null));
+                                            },
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  width: 47.0.w,
+                                                  child: Text(
+                                                    SessionController()
+                                                                .getLanguage() ==
+                                                            1
+                                                        ? tenantRDController
+                                                                .tenantRequestDetails
+                                                                .value
+                                                                .contractInfo!
+                                                                .propertyName ??
+                                                            ''
+                                                        : tenantRDController
+                                                                .tenantRequestDetails
+                                                                .value
+                                                                .contractInfo!
+                                                                .propertyNameAr ??
+                                                            '',
+                                                    style: AppTextStyle
+                                                        .semiBoldBlack9,
+                                                    overflow: TextOverflow
+                                                        .ellipsis,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Text(
+                                                  "${tenantRDController.tenantRequestDetails.value.contractInfo!.contractno}",
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack9,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            // Contact Person Detail
+                            Container(
+                                width: 100.0.w,
+                                padding: EdgeInsets.all(2.0.h),
+                                margin: EdgeInsets.only(top: 3.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.circular(2.0.h),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 0.5.h,
+                                      spreadRadius: 0.1.h,
+                                      offset: Offset(0.1.h, 0.1.h),
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppMetaLabels()
+                                            .contactPersonDetails,
+                                        style: AppTextStyle.semiBoldBlack12,
+                                      ),
+                                      SizedBox(
+                                        height: 2.0.h,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '${AppMetaLabels().name}: ',
+                                            style:
+                                                AppTextStyle.normalGrey10,
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            tenantRDController
+                                                    .tenantRequestDetails
+                                                    .value
+                                                    .detail!
+                                                    .contactName ??
+                                                '-',
+                                            style:
+                                                AppTextStyle.normalGrey10,
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '${AppMetaLabels().phoneNumber}: ',
+                                            style:
+                                                AppTextStyle.normalGrey10,
+                                          ),
+                                          const Spacer(),
+                                          Directionality(
+                                            textDirection:
+                                                ui.TextDirection.ltr,
+                                            child: Text(
+                                              tenantRDController
+                                                      .tenantRequestDetails
+                                                      .value
+                                                      .detail!
+                                                      .contactPhone ??
+                                                  '-',
+                                              style:
+                                                  AppTextStyle.normalGrey10,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      if (tenantRDController
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .requestType ==
+                                          'FM')
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(top: 1.h),
+                                          child: Row(
                                             children: [
                                               Text(
-                                                '${AppMetaLabels().name}: ',
-                                                style:
-                                                    AppTextStyle.normalGrey10,
+                                                '${AppMetaLabels().contactTime}: ',
+                                                style: AppTextStyle
+                                                    .normalGrey10,
                                               ),
-                                              Spacer(),
-                                              Text(
-                                                tenantRDController
-                                                        .tenantRequestDetails
-                                                        .value
-                                                        .detail!
-                                                        .contactName ??
-                                                    '-',
-                                                style:
-                                                    AppTextStyle.normalGrey10,
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 1.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '${AppMetaLabels().phoneNumber}: ',
-                                                style:
-                                                    AppTextStyle.normalGrey10,
-                                              ),
-                                              Spacer(),
+                                              const Spacer(),
                                               Directionality(
                                                 textDirection:
                                                     ui.TextDirection.ltr,
@@ -439,248 +471,29 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                                           .tenantRequestDetails
                                                           .value
                                                           .detail!
-                                                          .contactPhone ??
+                                                          .contactTiming ??
                                                       '-',
-                                                  style:
-                                                      AppTextStyle.normalGrey10,
+                                                  style: AppTextStyle
+                                                      .normalGrey10,
                                                 ),
                                               )
                                             ],
                                           ),
-                                          if (tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .requestType ==
-                                              'FM')
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 1.h),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    '${AppMetaLabels().contactTime}: ',
-                                                    style: AppTextStyle
-                                                        .normalGrey10,
-                                                  ),
-                                                  Spacer(),
-                                                  Directionality(
-                                                    textDirection:
-                                                        ui.TextDirection.ltr,
-                                                    child: Text(
-                                                      tenantRDController
-                                                              .tenantRequestDetails
-                                                              .value
-                                                              .detail!
-                                                              .contactTiming ??
-                                                          '-',
-                                                      style: AppTextStyle
-                                                          .normalGrey10,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                        ])),
-                                SizedBox(
-                                  height:
-                                      tenantRDController.report.value.id == null
-                                          ? 1.h
-                                          : 3.0.h,
-                                ),
-                                // 112233 showing upload document in tenant
-                                // upload service request
-                                tenantRDController.report.value.id == null
-                                    ? SizedBox()
-                                    : Container(
-                                        padding: EdgeInsets.all(2.0.h),
-                                        width: 100.0.w,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(2.0.h),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black12,
-                                              blurRadius: 0.5.h,
-                                              spreadRadius: 0.1.h,
-                                              offset: Offset(0.1.h, 0.1.h),
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: 1.0.h,
-                                                bottom: 2.0.h,
-                                              ),
-                                              child: Text(
-                                                AppMetaLabels()
-                                                    .serviceCompletionReport,
-                                                style: AppTextStyle
-                                                    .semiBoldBlack12,
-                                              ),
-                                            ),
-                                            Obx(() {
-                                              return tenantRDController
-                                                      .loadingReport.value
-                                                  ? Container(
-                                                      height: 9.h,
-                                                      alignment:
-                                                          Alignment.center,
-                                                      margin:
-                                                          EdgeInsets.all(0.5.h),
-                                                      child:
-                                                          LoadingIndicatorBlue(),
-                                                    )
-                                                  : tenantRDController.report
-                                                              .value.id ==
-                                                          null
-                                                      ? Text(
-                                                          AppMetaLabels()
-                                                              .noReports,
-                                                          style: AppTextStyle
-                                                              .normalBlack10,
-                                                        )
-                                                      : tenantRDController
-                                                                  .errorLoadingReport !=
-                                                              ''
-                                                          ? Center(
-                                                              child: SizedBox(
-                                                                height: 12.h,
-                                                                child: Column(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Text(
-                                                                      tenantRDController
-                                                                          .errorLoadingReport,
-                                                                      style: AppTextStyle
-                                                                          .semiBoldGrey10,
-                                                                    ),
-                                                                    IconButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          tenantRDController
-                                                                              .getFiles();
-                                                                        },
-                                                                        icon: Icon(
-                                                                            Icons.refresh))
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            )
-                                                          : showReport();
-                                            }),
-                                          ],
-                                        )),
-                                SizedBox(height: 2.h),
-                                // Description
-                                Container(
-                                  width: 100.0.w,
-                                  margin: EdgeInsets.only(bottom: 1.h),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(2.0.h),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 0.5.h,
-                                        spreadRadius: 0.1.h,
-                                        offset: Offset(0.1.h, 0.1.h),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Padding(
+                                        )
+                                    ])),
+                            SizedBox(
+                              height:
+                                  tenantRDController.report.value.id == null
+                                      ? 1.h
+                                      : 3.0.h,
+                            ),
+                            // 112233 showing upload document in tenant
+                            // upload service request
+                            tenantRDController.report.value.id == null
+                                ? const SizedBox()
+                                : Container(
                                     padding: EdgeInsets.all(2.0.h),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          AppMetaLabels().description,
-                                          style: AppTextStyle.semiBoldBlack12,
-                                        ),
-                                        SizedBox(
-                                          height: 1.0.h,
-                                        ),
-                                        Text(
-                                          tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .description ??
-                                              '',
-                                          // ' {canTakeSurvey:=> ' +
-                                          // tenantRDController
-                                          //     .tenantRequestDetails
-                                          //     .value
-                                          //     .statusInfo
-                                          //     .canTakeSurvey
-                                          //     .toString() +
-                                          // '} showSurveyButton:=> ' +
-                                          // tenantRDController
-                                          //     .showSurveyButton
-                                          //     .toString(),
-                                          style: AppTextStyle.normalGrey10,
-                                        ),
-                                        if (tenantRDController
-                                                .tenantRequestDetails
-                                                .value
-                                                .detail!
-                                                .vacatingReason !=
-                                            null)
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.only(top: 1.0.h),
-                                            child: Text(
-                                              AppMetaLabels().vacatingReason +
-                                                  tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .vacatingReason
-                                                      .toString(),
-                                              style: AppTextStyle.normalGrey10,
-                                            ),
-                                          ),
-                                        if (tenantRDController
-                                                .tenantRequestDetails
-                                                .value
-                                                .detail!
-                                                .vacatingDate !=
-                                            null)
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.only(top: 1.0.h),
-                                            child: Text(
-                                              AppMetaLabels().vacatingDate +
-                                                  tenantRDController
-                                                      .tenantRequestDetails
-                                                      .value
-                                                      .detail!
-                                                      .vacatingDate
-                                                      .toString(),
-                                              style: AppTextStyle.normalGrey10,
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                if (tenantRDController.tenantRequestDetails
-                                        .value.detail!.requestType ==
-                                    'FM')
-                                  Container(
                                     width: 100.0.w,
-                                    margin:
-                                        EdgeInsets.only(bottom: 1.h, top: 2.h),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius:
@@ -694,551 +507,736 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                         ),
                                       ],
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(2.0.h),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppMetaLabels().photos,
-                                            style: AppTextStyle.semiBoldBlack12,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                            top: 1.0.h,
+                                            bottom: 2.0.h,
                                           ),
-                                          Obx(() {
-                                            return tenantRDController
-                                                    .gettingPhotos.value
-                                                ? Container(
-                                                    height: 9.h,
-                                                    alignment: Alignment.center,
-                                                    margin:
-                                                        EdgeInsets.all(0.5.h),
-                                                    child:
-                                                        LoadingIndicatorBlue(),
-                                                  )
-                                                : tenantRDController
-                                                            .errorGettingPhotos !=
-                                                        ''
-                                                    ? Center(
-                                                        child: SizedBox(
-                                                          height: 12.h,
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .end,
-                                                            children: [
-                                                              Text(
-                                                                tenantRDController
-                                                                    .errorGettingPhotos,
-                                                                style: AppTextStyle
-                                                                    .semiBoldGrey10,
-                                                              ),
-                                                              IconButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    tenantRDController
-                                                                        .getPhotos();
-                                                                  },
-                                                                  icon: Icon(Icons
-                                                                      .refresh))
-                                                            ],
+                                          child: Text(
+                                            AppMetaLabels()
+                                                .serviceCompletionReport,
+                                            style: AppTextStyle
+                                                .semiBoldBlack12,
+                                          ),
+                                        ),
+                                        Obx(() {
+                                          return tenantRDController
+                                                  .loadingReport.value
+                                              ? Container(
+                                                  height: 9.h,
+                                                  alignment:
+                                                      Alignment.center,
+                                                  margin:
+                                                      EdgeInsets.all(0.5.h),
+                                                  child:
+                                                      const LoadingIndicatorBlue(),
+                                                )
+                                              : tenantRDController.report
+                                                          .value.id ==
+                                                      null
+                                                  ? Text(
+                                                      AppMetaLabels()
+                                                          .noReports,
+                                                      style: AppTextStyle
+                                                          .normalBlack10,
+                                                    )
+                                                  : tenantRDController
+                                                              .errorLoadingReport !=
+                                                          ''
+                                                      ? Center(
+                                                          child: SizedBox(
+                                                            height: 12.h,
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Text(
+                                                                  tenantRDController
+                                                                      .errorLoadingReport,
+                                                                  style: AppTextStyle
+                                                                      .semiBoldGrey10,
+                                                                ),
+                                                                IconButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      tenantRDController
+                                                                          .getFiles();
+                                                                    },
+                                                                    icon: const Icon(
+                                                                        Icons.refresh))
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      )
-                                                    : GridView.builder(
-                                                        shrinkWrap: true,
-                                                        physics:
-                                                            NeverScrollableScrollPhysics(),
-                                                        padding:
-                                                            EdgeInsets
-                                                                .only(top: 1.h),
-                                                        gridDelegate:
-                                                            SliverGridDelegateWithMaxCrossAxisExtent(
-                                                                maxCrossAxisExtent:
-                                                                    25.w,
-                                                                childAspectRatio:
-                                                                    3 / 2,
-                                                                crossAxisSpacing:
-                                                                    1.w,
-                                                                mainAxisSpacing:
-                                                                    1.w),
-                                                        itemCount:
-                                                            tenantRDController
-                                                                .photos.length,
-                                                        itemBuilder:
-                                                            (BuildContext ctx,
-                                                                index) {
-                                                          return showImage(
-                                                              context, index);
-                                                        });
-                                          }),
-                                        ],
-                                      ),
-                                    ),
+                                                        )
+                                                      : showReport();
+                                        }),
+                                      ],
+                                    )),
+                            SizedBox(height: 2.h),
+                            // Description
+                            Container(
+                              width: 100.0.w,
+                              margin: EdgeInsets.only(bottom: 1.h),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(2.0.h),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 0.5.h,
+                                    spreadRadius: 0.1.h,
+                                    offset: Offset(0.1.h, 0.1.h),
                                   ),
-
-                                Obx(() {
-                                  return tenantRDController
-                                          .gettingFeedback.value
-                                      ? SizedBox()
-                                      : tenantRDController
-                                                  .errorGettingFeedback !=
-                                              ''
-                                          ? Center(
-                                              child: SizedBox(
-                                                height: 12.h,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
+                                ],
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(2.0.h),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      AppMetaLabels().description,
+                                      style: AppTextStyle.semiBoldBlack12,
+                                    ),
+                                    SizedBox(
+                                      height: 1.0.h,
+                                    ),
+                                    Text(
+                                      tenantRDController
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .description ??
+                                          '',
+                                      // ' {canTakeSurvey:=> ' +
+                                      // tenantRDController
+                                      //     .tenantRequestDetails
+                                      //     .value
+                                      //     .statusInfo
+                                      //     .canTakeSurvey
+                                      //     .toString() +
+                                      // '} showSurveyButton:=> ' +
+                                      // tenantRDController
+                                      //     .showSurveyButton
+                                      //     .toString(),
+                                      style: AppTextStyle.normalGrey10,
+                                    ),
+                                    if (tenantRDController
+                                            .tenantRequestDetails
+                                            .value
+                                            .detail!
+                                            .vacatingReason !=
+                                        null)
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(top: 1.0.h),
+                                        child: Text(
+                                          AppMetaLabels().vacatingReason +
+                                              tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .vacatingReason
+                                                  .toString(),
+                                          style: AppTextStyle.normalGrey10,
+                                        ),
+                                      ),
+                                    if (tenantRDController
+                                            .tenantRequestDetails
+                                            .value
+                                            .detail!
+                                            .vacatingDate !=
+                                        null)
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(top: 1.0.h),
+                                        child: Text(
+                                          AppMetaLabels().vacatingDate +
+                                              tenantRDController
+                                                  .tenantRequestDetails
+                                                  .value
+                                                  .detail!
+                                                  .vacatingDate
+                                                  .toString(),
+                                          style: AppTextStyle.normalGrey10,
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            if (tenantRDController.tenantRequestDetails
+                                    .value.detail!.requestType ==
+                                'FM')
+                              Container(
+                                width: 100.0.w,
+                                margin:
+                                    EdgeInsets.only(bottom: 1.h, top: 2.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.circular(2.0.h),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 0.5.h,
+                                      spreadRadius: 0.1.h,
+                                      offset: Offset(0.1.h, 0.1.h),
+                                    ),
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(2.0.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppMetaLabels().photos,
+                                        style: AppTextStyle.semiBoldBlack12,
+                                      ),
+                                      Obx(() {
+                                        return tenantRDController
+                                                .gettingPhotos.value
+                                            ? Container(
+                                                height: 9.h,
+                                                alignment: Alignment.center,
+                                                margin:
+                                                    EdgeInsets.all(0.5.h),
+                                                child:
+                                                    const LoadingIndicatorBlue(),
+                                              )
+                                            : tenantRDController
+                                                        .errorGettingPhotos !=
+                                                    ''
+                                                ? Center(
+                                                    child: SizedBox(
+                                                      height: 12.h,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Text(
+                                                            tenantRDController
+                                                                .errorGettingPhotos,
+                                                            style: AppTextStyle
+                                                                .semiBoldGrey10,
+                                                          ),
+                                                          IconButton(
+                                                              onPressed:
+                                                                  () {
+                                                                tenantRDController
+                                                                    .getPhotos();
+                                                              },
+                                                              icon: const Icon(Icons
+                                                                  .refresh))
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                : GridView.builder(
+                                                    shrinkWrap: true,
+                                                    physics:
+                                                        const NeverScrollableScrollPhysics(),
+                                                    padding:
+                                                        EdgeInsets
+                                                            .only(top: 1.h),
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithMaxCrossAxisExtent(
+                                                            maxCrossAxisExtent:
+                                                                25.w,
+                                                            childAspectRatio:
+                                                                3 / 2,
+                                                            crossAxisSpacing:
+                                                                1.w,
+                                                            mainAxisSpacing:
+                                                                1.w),
+                                                    itemCount:
+                                                        tenantRDController
+                                                            .photos.length,
+                                                    itemBuilder:
+                                                        (BuildContext ctx,
+                                                            index) {
+                                                      return showImage(
+                                                          context, index);
+                                                    });
+                                      }),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                      
+                            Obx(() {
+                              return tenantRDController
+                                      .gettingFeedback.value
+                                  ? const SizedBox()
+                                  : tenantRDController
+                                              .errorGettingFeedback !=
+                                          ''
+                                      ? Center(
+                                          child: SizedBox(
+                                            height: 12.h,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  tenantRDController
+                                                      .errorGettingFeedback,
+                                                  style: AppTextStyle
+                                                      .semiBoldGrey10,
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      tenantRDController
+                                                          .getFeedback();
+                                                    },
+                                                    icon:
+                                                        const Icon(Icons.refresh))
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      : tenantRDController.feedback.value
+                                                      .feedback !=
+                                                  null &&
+                                              tenantRDController
+                                                      .feedback
+                                                      .value
+                                                      .feedback!
+                                                      .rating !=
+                                                  0.0
+                                          ? Container(
+                                              width: 100.0.w,
+                                              padding:
+                                                  EdgeInsets.all(2.0.h),
+                                              margin:
+                                                  EdgeInsets.only(top: 2.h),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        2.0.h),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.black12,
+                                                    blurRadius: 0.5.h,
+                                                    spreadRadius: 0.1.h,
+                                                    offset: Offset(
+                                                        0.1.h, 0.1.h),
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .center,
                                                   children: [
                                                     Text(
-                                                      tenantRDController
-                                                          .errorGettingFeedback,
+                                                      AppMetaLabels()
+                                                          .feedback,
                                                       style: AppTextStyle
-                                                          .semiBoldGrey10,
+                                                          .semiBoldBlack12,
                                                     ),
-                                                    IconButton(
-                                                        onPressed: () {
-                                                          tenantRDController
-                                                              .getFeedback();
-                                                        },
-                                                        icon:
-                                                            Icon(Icons.refresh))
-                                                  ],
-                                                ),
-                                              ),
-                                            )
-                                          : tenantRDController.feedback.value
-                                                          .feedback !=
-                                                      null &&
-                                                  tenantRDController
-                                                          .feedback
-                                                          .value
-                                                          .feedback!
-                                                          .rating !=
-                                                      0.0
-                                              ? Container(
-                                                  width: 100.0.w,
-                                                  padding:
-                                                      EdgeInsets.all(2.0.h),
-                                                  margin:
-                                                      EdgeInsets.only(top: 2.h),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.0.h),
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color: Colors.black12,
-                                                        blurRadius: 0.5.h,
-                                                        spreadRadius: 0.1.h,
-                                                        offset: Offset(
-                                                            0.1.h, 0.1.h),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          AppMetaLabels()
-                                                              .feedback,
-                                                          style: AppTextStyle
-                                                              .semiBoldBlack12,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 2.0.h),
-                                                          child:
-                                                              SmoothStarRating(
-                                                            color: AppColors
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.only(
+                                                              top: 2.0.h),
+                                                      child:
+                                                          SmoothStarRating(
+                                                        color: AppColors
+                                                            .blueColor,
+                                                        borderColor:
+                                                            AppColors
                                                                 .blueColor,
-                                                            borderColor:
-                                                                AppColors
-                                                                    .blueColor,
-                                                            rating: tenantRDController
-                                                                    .feedback
-                                                                    .value
-                                                                    .feedback!
-                                                                    .rating ??
-                                                                0,
-                                                            // isReadOnly: true,
-                                                            size: 4.0.h,
-                                                            filledIconData:
-                                                                Icons.star,
-                                                            halfFilledIconData:
-                                                                Icons.star_half,
-                                                            defaultIconData:
-                                                                Icons
-                                                                    .star_border,
-                                                            starCount: 5,
-                                                            allowHalfRating:
-                                                                true,
-                                                            spacing: 2.0.w,
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 2.0.h,
-                                                        ),
-                                                        Text(
-                                                          tenantRDController
-                                                                  .feedback
-                                                                  .value
-                                                                  .feedback!
-                                                                  .description ??
-                                                              '',
-                                                          style: AppTextStyle
-                                                              .normalBlack10,
-                                                        ),
-                                                      ]),
-                                                )
-                                              : SizedBox();
-                                }),
-                                if (tenantRDController.tenantRequestDetails
-                                        .value.statusInfo!.canCancel! &&
-                                    tenantRDController.tenantRequestDetails
-                                            .value.stageInfo!.stageId! <
-                                        4)
-                                  Padding(
-                                      padding: EdgeInsets.only(top: 2.h),
-                                      child: SizedBox(
-                                        width: 90.0.w,
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(1.3.h),
-                                            ),
-                                            backgroundColor:
-                                                Color.fromRGBO(255, 36, 27, 1),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 6.0.h,
-                                                vertical: 1.8.h),
-                                          ),
-                                          onPressed: () {
-                                            showCancelSvcReqDialog(context);
-                                            // Get.to(() => TenantFeedback());
-                                          },
-                                          child: Text(
-                                            AppMetaLabels().cancelRequest,
-                                            style: AppTextStyle.semiBoldWhite12,
-                                          ),
-                                        ),
-                                      )),
-
-                                // IF COMING ON THIS SCREEN FROM contractRenewed (means contract flow)
-                                // then we will check feedback and rating
-                                if (widget.caller == 'contractRenewed')
-                                  if (tenantRDController
-                                                  .feedback.value.feedback ==
-                                              null &&
-                                          tenantRDController.feedback.value
-                                                  .feedback?.rating ==
-                                              0.0 ||
-                                      tenantRDController.feedback.value.feedback
-                                              ?.rating ==
-                                          null)
-                                    Container(
-                                      height: 6.5.h,
-                                      width: 90.0.w,
-                                      margin: EdgeInsets.only(top: 2.h),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          FocusScope.of(context).unfocus();
-                                          setState(() {
-                                            tenantRDController.rating = 0;
-                                            feedbackDescController.text = '';
-                                          });
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                content: FeedbackWidget(
-                                                  tenantRDController:
-                                                      tenantRDController,
-                                                  feedbackDescController:
-                                                      feedbackDescController,
-                                                  context: context,
-                                                ),
-                                              );
-                                            },
-                                          );
-                                          setState(() {});
-                                        },
-                                        child: Text(
-                                          AppMetaLabels().addFeedback,
-                                          style: AppTextStyle.semiBoldWhite12,
-                                        ),
-                                        style: ButtonStyle(
-                                            elevation: MaterialStateProperty
-                                                .all<double>(0.0),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(AppColors.blueColor),
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          2.0.w)),
-                                            )),
-                                      ),
-                                    ),
-
-                                // if (widget.caller == 'contractRenewed')
-                                //   if (tenantRDController.tenantRequestDetails
-                                //           .value.statusInfo.canTakeSurvey &&
-                                //       tenantRDController.showSurveyButton)
-                                //     Container(
-                                //       height: 6.5.h,
-                                //       width: 90.0.w,
-                                //       margin: EdgeInsets.only(top: 2.h),
-                                //       child: ElevatedButton(
-                                //         onPressed: () {
-                                //           Get.to(() => TakeSurvey(
-                                //                 reqNo: tenantRDController
-                                //                     .tenantRequestDetails
-                                //                     .value
-                                //                     .detail!
-                                //                     .caseNo,
-                                //                 catId: tenantRDController
-                                //                     .tenantRequestDetails
-                                //                     .value
-                                //                     .detail!
-                                //                     .caseCategouryId,
-                                //               ));
-                                //         },
-                                //         child: Text(
-                                //           AppMetaLabels().takeSurvey,
-                                //           style: AppTextStyle.semiBoldWhite12,
-                                //         ),
-                                //         style: ButtonStyle(
-                                //             elevation: MaterialStateProperty
-                                //                 .all<double>(0.0),
-                                //             backgroundColor:
-                                //                 MaterialStateProperty.all<
-                                //                     Color>(AppColors.blueColor),
-                                //             shape: MaterialStateProperty.all<
-                                //                 RoundedRectangleBorder>(
-                                //               RoundedRectangleBorder(
-                                //                 borderRadius:
-                                //                     BorderRadius.circular(
-                                //                         2.0.w),
-                                //                 // side: BorderSide(
-                                //                 //   color: AppColors.blueColor,
-                                //                 //   width: 1.0,
-                                //                 // )
-                                //               ),
-                                //             )),
-                                //       ),
-                                //     ),
-
-                                // IF  NOT COMING ON THIS SCREEN FROM contractRenewed (means contract flow)
-                                // then we will check only canAddFeedback
-                                if (widget.caller != 'contractRenewed')
-                                  if (tenantRDController.tenantRequestDetails
-                                      .value.statusInfo!.canAddFeedback!)
-                                    Container(
-                                      height: 6.5.h,
-                                      width: 90.0.w,
-                                      margin: EdgeInsets.only(top: 2.h),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          FocusScope.of(context).unfocus();
-                                          setState(() {
-                                            tenantRDController.rating = 0;
-                                            feedbackDescController.text = '';
-                                          });
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                content: FeedbackWidget(
-                                                  tenantRDController:
-                                                      tenantRDController,
-                                                  feedbackDescController:
-                                                      feedbackDescController,
-                                                  context: context,
-                                                ),
-                                              );
-                                            },
-                                          );
-                                          setState(() {});
-                                        },
-                                        child: Text(
-                                          AppMetaLabels().addFeedback,
-                                          style: AppTextStyle.semiBoldWhite12,
-                                        ),
-                                        style: ButtonStyle(
-                                            elevation: MaterialStateProperty
-                                                .all<double>(0.0),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(AppColors.blueColor),
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          2.0.w)),
-                                            )),
-                                      ),
-                                    ),
-
-                                // if (widget.caller != 'contractRenewed')
-                                //   if (tenantRDController.tenantRequestDetails
-                                //           .value.statusInfo.canTakeSurvey &&
-                                //       tenantRDController.showSurveyButton)
-                                //     Container(
-                                //       height: 6.5.h,
-                                //       width: 90.0.w,
-                                //       margin: EdgeInsets.only(top: 2.h),
-                                //       child: ElevatedButton(
-                                //         onPressed: () {
-                                //           Get.to(() => TakeSurvey(
-                                //                 reqNo: tenantRDController
-                                //                     .tenantRequestDetails
-                                //                     .value
-                                //                     .detail!
-                                //                     .caseNo,
-                                //                 catId: tenantRDController
-                                //                     .tenantRequestDetails
-                                //                     .value
-                                //                     .detail!
-                                //                     .caseCategouryId,
-                                //               ));
-                                //         },
-                                //         child: Text(
-                                //           AppMetaLabels().takeSurvey,
-                                //           style: AppTextStyle.semiBoldWhite12,
-                                //         ),
-                                //         style: ButtonStyle(
-                                //             elevation: MaterialStateProperty
-                                //                 .all<double>(0.0),
-                                //             backgroundColor:
-                                //                 MaterialStateProperty.all<
-                                //                     Color>(AppColors.blueColor),
-                                //             shape: MaterialStateProperty.all<
-                                //                 RoundedRectangleBorder>(
-                                //               RoundedRectangleBorder(
-                                //                 borderRadius:
-                                //                     BorderRadius.circular(
-                                //                         2.0.w),
-                                //                 // side: BorderSide(
-                                //                 //   color: AppColors.blueColor,
-                                //                 //   width: 1.0,
-                                //                 // )
-                                //               ),
-                                //             )),
-                                //       ),
-                                //     ),
-                                // old One
-                                // if (tenantRDController.tenantRequestDetails
-                                //     .value.statusInfo.canAddFeedback)
-                                //   Container(
-                                //     height: 6.5.h,
-                                //     width: 90.0.w,
-                                //     margin: EdgeInsets.only(top: 2.h),
-                                //     child: ElevatedButton(
-                                //       onPressed: () {
-                                //         FocusScope.of(context).unfocus();
-                                //         showDialog(
-                                //             context: context,
-                                //             builder: (BuildContext context) {
-                                //               return AlertDialog(
-                                //                   contentPadding:
-                                //                       EdgeInsets.fromLTRB(1.0.w,
-                                //                           1.0.h, 1.0.w, 1.0.h),
-                                //                   backgroundColor:
-                                //                       Colors.transparent,
-                                //                   content: showFeedbackField());
-                                //             });
-                                //       },
-                                //       child: Text(
-                                //         AppMetaLabels().addFeedback,
-                                //         style: AppTextStyle.semiBoldWhite12,
-                                //       ),
-                                //       style: ButtonStyle(
-                                //           elevation:
-                                //               MaterialStateProperty.all<double>(
-                                //                   0.0),
-                                //           backgroundColor:
-                                //               MaterialStateProperty.all<Color>(
-                                //                   AppColors.blueColor),
-                                //           shape: MaterialStateProperty.all<
-                                //               RoundedRectangleBorder>(
-                                //             RoundedRectangleBorder(
-                                //                 borderRadius:
-                                //                     BorderRadius.circular(
-                                //                         2.0.w)),
-                                //           )),
-                                //     ),
-                                //   ),
-
-                                if (tenantRDController.tenantRequestDetails
-                                        .value.statusInfo!.canTakeSurvey! &&
-                                    tenantRDController.showSurveyButton)
-                                  Container(
-                                    height: 6.5.h,
+                                                        rating: tenantRDController
+                                                                .feedback
+                                                                .value
+                                                                .feedback!
+                                                                .rating ??
+                                                            0,
+                                                        // isReadOnly: true,
+                                                        size: 4.0.h,
+                                                        filledIconData:
+                                                            Icons.star,
+                                                        halfFilledIconData:
+                                                            Icons.star_half,
+                                                        defaultIconData:
+                                                            Icons
+                                                                .star_border,
+                                                        starCount: 5,
+                                                        allowHalfRating:
+                                                            true,
+                                                        spacing: 2.0.w,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 2.0.h,
+                                                    ),
+                                                    Text(
+                                                      tenantRDController
+                                                              .feedback
+                                                              .value
+                                                              .feedback!
+                                                              .description ??
+                                                          '',
+                                                      style: AppTextStyle
+                                                          .normalBlack10,
+                                                    ),
+                                                  ]),
+                                            )
+                                          : const SizedBox();
+                            }),
+                            if (tenantRDController.tenantRequestDetails
+                                    .value.statusInfo!.canCancel! &&
+                                tenantRDController.tenantRequestDetails
+                                        .value.stageInfo!.stageId! <
+                                    4)
+                              Padding(
+                                  padding: EdgeInsets.only(top: 2.h),
+                                  child: SizedBox(
                                     width: 90.0.w,
-                                    margin: EdgeInsets.only(top: 2.h),
                                     child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(1.3.h),
+                                        ),
+                                        backgroundColor:
+                                            const Color.fromRGBO(255, 36, 27, 1),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 6.0.h,
+                                            vertical: 1.8.h),
+                                      ),
                                       onPressed: () {
-                                        Get.to(() => TakeSurvey(
-                                              reqNo: tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .caseNo,
-                                              catId: tenantRDController
-                                                  .tenantRequestDetails
-                                                  .value
-                                                  .detail!
-                                                  .caseCategouryId,
-                                            ));
+                                        showCancelSvcReqDialog(context);
+                                        // Get.to(() => TenantFeedback());
                                       },
                                       child: Text(
-                                        AppMetaLabels().takeSurvey,
+                                        AppMetaLabels().cancelRequest,
                                         style: AppTextStyle.semiBoldWhite12,
                                       ),
-                                      style: ButtonStyle(
-                                          elevation:
-                                              MaterialStateProperty.all<double>(
-                                                  0.0),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  AppColors.blueColor),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(2.0.w),
-                                              // side: BorderSide(
-                                              //   color: AppColors.blueColor,
-                                              //   width: 1.0,
-                                              // )
+                                    ),
+                                  )),
+                      
+                            // IF COMING ON THIS SCREEN FROM contractRenewed (means contract flow)
+                            // then we will check feedback and rating
+                            if (widget.caller == 'contractRenewed')
+                              if (tenantRDController
+                                              .feedback.value.feedback ==
+                                          null &&
+                                      tenantRDController.feedback.value
+                                              .feedback?.rating ==
+                                          0.0 ||
+                                  tenantRDController.feedback.value.feedback
+                                          ?.rating ==
+                                      null)
+                                Container(
+                                  height: 6.5.h,
+                                  width: 90.0.w,
+                                  margin: EdgeInsets.only(top: 2.h),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      FocusScope.of(context).unfocus();
+                                      setState(() {
+                                        tenantRDController.rating = 0;
+                                        feedbackDescController.text = '';
+                                      });
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            backgroundColor:
+                                                Colors.transparent,
+                                            content: FeedbackWidget(
+                                              tenantRDController:
+                                                  tenantRDController,
+                                              feedbackDescController:
+                                                  feedbackDescController,
+                                              context: context,
                                             ),
-                                          )),
+                                          );
+                                        },
+                                      );
+                                      setState(() {});
+                                    },
+                                    style: ButtonStyle(
+                                        elevation: MaterialStateProperty
+                                            .all<double>(0.0),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<
+                                                Color>(AppColors.blueColor),
+                                        shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      2.0.w)),
+                                        )),
+                                    child: Text(
+                                      AppMetaLabels().addFeedback,
+                                      style: AppTextStyle.semiBoldWhite12,
                                     ),
                                   ),
-
-                                SizedBox(
-                                  height: 2.h,
-                                )
-                              ]),
-                            ),
-                          ),
-                        );
+                                ),
+                      
+                            // if (widget.caller == 'contractRenewed')
+                            //   if (tenantRDController.tenantRequestDetails
+                            //           .value.statusInfo.canTakeSurvey &&
+                            //       tenantRDController.showSurveyButton)
+                            //     Container(
+                            //       height: 6.5.h,
+                            //       width: 90.0.w,
+                            //       margin: EdgeInsets.only(top: 2.h),
+                            //       child: ElevatedButton(
+                            //         onPressed: () {
+                            //           Get.to(() => TakeSurvey(
+                            //                 reqNo: tenantRDController
+                            //                     .tenantRequestDetails
+                            //                     .value
+                            //                     .detail!
+                            //                     .caseNo,
+                            //                 catId: tenantRDController
+                            //                     .tenantRequestDetails
+                            //                     .value
+                            //                     .detail!
+                            //                     .caseCategouryId,
+                            //               ));
+                            //         },
+                            //         child: Text(
+                            //           AppMetaLabels().takeSurvey,
+                            //           style: AppTextStyle.semiBoldWhite12,
+                            //         ),
+                            //         style: ButtonStyle(
+                            //             elevation: MaterialStateProperty
+                            //                 .all<double>(0.0),
+                            //             backgroundColor:
+                            //                 MaterialStateProperty.all<
+                            //                     Color>(AppColors.blueColor),
+                            //             shape: MaterialStateProperty.all<
+                            //                 RoundedRectangleBorder>(
+                            //               RoundedRectangleBorder(
+                            //                 borderRadius:
+                            //                     BorderRadius.circular(
+                            //                         2.0.w),
+                            //                 // side: BorderSide(
+                            //                 //   color: AppColors.blueColor,
+                            //                 //   width: 1.0,
+                            //                 // )
+                            //               ),
+                            //             )),
+                            //       ),
+                            //     ),
+                      
+                            // IF  NOT COMING ON THIS SCREEN FROM contractRenewed (means contract flow)
+                            // then we will check only canAddFeedback
+                            if (widget.caller != 'contractRenewed')
+                              if (tenantRDController.tenantRequestDetails
+                                  .value.statusInfo!.canAddFeedback!)
+                                Container(
+                                  height: 6.5.h,
+                                  width: 90.0.w,
+                                  margin: EdgeInsets.only(top: 2.h),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      FocusScope.of(context).unfocus();
+                                      setState(() {
+                                        tenantRDController.rating = 0;
+                                        feedbackDescController.text = '';
+                                      });
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            backgroundColor:
+                                                Colors.transparent,
+                                            content: FeedbackWidget(
+                                              tenantRDController:
+                                                  tenantRDController,
+                                              feedbackDescController:
+                                                  feedbackDescController,
+                                              context: context,
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      setState(() {});
+                                    },
+                                    style: ButtonStyle(
+                                        elevation: MaterialStateProperty
+                                            .all<double>(0.0),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<
+                                                Color>(AppColors.blueColor),
+                                        shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      2.0.w)),
+                                        )),
+                                    child: Text(
+                                      AppMetaLabels().addFeedback,
+                                      style: AppTextStyle.semiBoldWhite12,
+                                    ),
+                                  ),
+                                ),
+                      
+                            // if (widget.caller != 'contractRenewed')
+                            //   if (tenantRDController.tenantRequestDetails
+                            //           .value.statusInfo.canTakeSurvey &&
+                            //       tenantRDController.showSurveyButton)
+                            //     Container(
+                            //       height: 6.5.h,
+                            //       width: 90.0.w,
+                            //       margin: EdgeInsets.only(top: 2.h),
+                            //       child: ElevatedButton(
+                            //         onPressed: () {
+                            //           Get.to(() => TakeSurvey(
+                            //                 reqNo: tenantRDController
+                            //                     .tenantRequestDetails
+                            //                     .value
+                            //                     .detail!
+                            //                     .caseNo,
+                            //                 catId: tenantRDController
+                            //                     .tenantRequestDetails
+                            //                     .value
+                            //                     .detail!
+                            //                     .caseCategouryId,
+                            //               ));
+                            //         },
+                            //         child: Text(
+                            //           AppMetaLabels().takeSurvey,
+                            //           style: AppTextStyle.semiBoldWhite12,
+                            //         ),
+                            //         style: ButtonStyle(
+                            //             elevation: MaterialStateProperty
+                            //                 .all<double>(0.0),
+                            //             backgroundColor:
+                            //                 MaterialStateProperty.all<
+                            //                     Color>(AppColors.blueColor),
+                            //             shape: MaterialStateProperty.all<
+                            //                 RoundedRectangleBorder>(
+                            //               RoundedRectangleBorder(
+                            //                 borderRadius:
+                            //                     BorderRadius.circular(
+                            //                         2.0.w),
+                            //                 // side: BorderSide(
+                            //                 //   color: AppColors.blueColor,
+                            //                 //   width: 1.0,
+                            //                 // )
+                            //               ),
+                            //             )),
+                            //       ),
+                            //     ),
+                            // old One
+                            // if (tenantRDController.tenantRequestDetails
+                            //     .value.statusInfo.canAddFeedback)
+                            //   Container(
+                            //     height: 6.5.h,
+                            //     width: 90.0.w,
+                            //     margin: EdgeInsets.only(top: 2.h),
+                            //     child: ElevatedButton(
+                            //       onPressed: () {
+                            //         FocusScope.of(context).unfocus();
+                            //         showDialog(
+                            //             context: context,
+                            //             builder: (BuildContext context) {
+                            //               return AlertDialog(
+                            //                   contentPadding:
+                            //                       EdgeInsets.fromLTRB(1.0.w,
+                            //                           1.0.h, 1.0.w, 1.0.h),
+                            //                   backgroundColor:
+                            //                       Colors.transparent,
+                            //                   content: showFeedbackField());
+                            //             });
+                            //       },
+                            //       child: Text(
+                            //         AppMetaLabels().addFeedback,
+                            //         style: AppTextStyle.semiBoldWhite12,
+                            //       ),
+                            //       style: ButtonStyle(
+                            //           elevation:
+                            //               MaterialStateProperty.all<double>(
+                            //                   0.0),
+                            //           backgroundColor:
+                            //               MaterialStateProperty.all<Color>(
+                            //                   AppColors.blueColor),
+                            //           shape: MaterialStateProperty.all<
+                            //               RoundedRectangleBorder>(
+                            //             RoundedRectangleBorder(
+                            //                 borderRadius:
+                            //                     BorderRadius.circular(
+                            //                         2.0.w)),
+                            //           )),
+                            //     ),
+                            //   ),
+                      
+                            if (tenantRDController.tenantRequestDetails
+                                    .value.statusInfo!.canTakeSurvey! &&
+                                tenantRDController.showSurveyButton)
+                              Container(
+                                height: 6.5.h,
+                                width: 90.0.w,
+                                margin: EdgeInsets.only(top: 2.h),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Get.to(() => TakeSurvey(
+                                          reqNo: tenantRDController
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .caseNo,
+                                          catId: tenantRDController
+                                              .tenantRequestDetails
+                                              .value
+                                              .detail!
+                                              .caseCategouryId,
+                                        ));
+                                  },
+                                  style: ButtonStyle(
+                                      elevation:
+                                          MaterialStateProperty.all<double>(
+                                              0.0),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              AppColors.blueColor),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(2.0.w),
+                                          // side: BorderSide(
+                                          //   color: AppColors.blueColor,
+                                          //   width: 1.0,
+                                          // )
+                                        ),
+                                      )),
+                                  child: Text(
+                                    AppMetaLabels().takeSurvey,
+                                    style: AppTextStyle.semiBoldWhite12,
+                                  ),
+                                ),
+                              ),
+                      
+                            SizedBox(
+                              height: 2.h,
+                            )
+                          ]),
+                        ),
+                      );
             }),
           ),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -1279,7 +1277,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
@@ -1296,7 +1294,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             Padding(
               padding: EdgeInsets.all(2.0.h),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(255, 36, 27, 0.1),
                   shape: BoxShape.circle,
                 ),
@@ -1329,13 +1327,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
               padding: EdgeInsets.all(1.0.h),
               child: Obx(() {
                 return tenantRDController.cancellingRequest.value
-                    ? LoadingIndicatorBlue()
+                    ? const LoadingIndicatorBlue()
                     : ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1.3.h),
                           ),
-                          backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                          backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                           padding: EdgeInsets.symmetric(
                               horizontal: 11.0.h, vertical: 1.8.h),
                         ),
@@ -1372,11 +1370,11 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(
                     width: 0.2.w,
-                    color: Color.fromRGBO(0, 61, 166, 1),
+                    color: const Color.fromRGBO(0, 61, 166, 1),
                     style: BorderStyle.solid,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(1.3.h),
+                    borderRadius: BorderRadius.circular(1.3.h),
                   ),
                 ),
                 child: Padding(
@@ -1385,7 +1383,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                   child: Text(
                     AppMetaLabels().no,
                     style: AppTextStyle.semiBoldWhite12.copyWith(
-                      color: Color.fromRGBO(0, 61, 166, 1),
+                      color: const Color.fromRGBO(0, 61, 166, 1),
                     ),
                   ),
                 ),
@@ -1407,7 +1405,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(1.h),
         child: Container(
-          color: Color.fromRGBO(246, 248, 249, 1),
+          color: const Color.fromRGBO(246, 248, 249, 1),
           child: tenantRDController.photos[index] != null
               ? Stack(
                   children: [
@@ -1427,7 +1425,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                   height: 10.0.h,
                                   color: Colors.red[100],
                                   alignment: Alignment.center,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.error,
                                     color: Colors.red,
                                   ),
@@ -1464,11 +1462,11 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                   .photos[index]!.uploading.value ||
                               tenantRDController.photos[index]!.errorUploading
                           ? Container(
-                              color: Color.fromRGBO(255, 255, 255, 0.5),
+                              color: const Color.fromRGBO(255, 255, 255, 0.5),
                               alignment: Alignment.center,
                               child: tenantRDController
                                       .photos[index]!.uploading.value
-                                  ? LoadingIndicatorBlue(
+                                  ? const LoadingIndicatorBlue(
                                       size: 20,
                                     )
                                   : tenantRDController
@@ -1478,7 +1476,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             tenantRDController
                                                 .uploadPhoto(index);
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.refresh_outlined,
                                             color: Colors.red,
                                           ),
@@ -1495,13 +1493,13 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                     height: 28,
                                     decoration: BoxDecoration(
                                         color:
-                                            Color.fromRGBO(255, 255, 255, 0.5),
+                                            const Color.fromRGBO(255, 255, 255, 0.5),
                                         borderRadius:
                                             BorderRadius.circular(24)),
-                                    padding: EdgeInsets.all(2),
+                                    padding: const EdgeInsets.all(2),
                                     child: tenantRDController
                                             .photos[index]!.removing.value
-                                        ? LoadingIndicatorBlue(
+                                        ? const LoadingIndicatorBlue(
                                             size: 20,
                                           )
                                         : Icon(
@@ -1512,7 +1510,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                                             color: Colors.red),
                                   ),
                                 )
-                              : SizedBox();
+                              : const SizedBox();
                     }),
                   ],
                 )
@@ -1520,7 +1518,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                   child: Text(
                     "+",
                     style: AppTextStyle.semiBoldWhite16
-                        .copyWith(color: Color.fromRGBO(180, 180, 180, 1)),
+                        .copyWith(color: const Color.fromRGBO(180, 180, 180, 1)),
                   ),
                 ),
         ),
@@ -1539,19 +1537,19 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                child: new Wrap(
+                child: Wrap(
                   children: <Widget>[
-                    new ListTile(
-                        leading: new Icon(Icons.photo_library),
-                        title: new Text(AppMetaLabels().photoLibrary),
+                    ListTile(
+                        leading: const Icon(Icons.photo_library),
+                        title: Text(AppMetaLabels().photoLibrary),
                         onTap: () {
                           print(':::::::::::""""""""":::::::::::::::::');
                           tenantRDController.pickPhoto(ImageSource.gallery);
                           Navigator.of(context).pop();
                         }),
-                    new ListTile(
-                      leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppMetaLabels().camera),
+                    ListTile(
+                      leading: const Icon(Icons.photo_camera),
+                      title: Text(AppMetaLabels().camera),
                       onTap: () {
                         tenantRDController.pickPhoto(ImageSource.camera);
                         Navigator.of(context).pop();
@@ -1576,7 +1574,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             child: SafeArea(
               child: Container(
                 color: Colors.white,
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Wrap(
                   children: <Widget>[
                     Text(
@@ -1596,7 +1594,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(1.3.h),
                               ),
-                              backgroundColor: Color.fromRGBO(255, 36, 27, 1),
+                              backgroundColor: const Color.fromRGBO(255, 36, 27, 1),
                             ),
                             onPressed: () {
                               tenantRDController.removePhoto(index);
@@ -1646,7 +1644,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                    width: 5.h, height: 5.h, child: LoadingIndicatorBlue()),
+                    width: 5.h, height: 5.h, child: const LoadingIndicatorBlue()),
               )
             : tenantRDController.errorEditingReport
                 ? IconButton(
@@ -1686,8 +1684,9 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
   }
 
   showBigPhoto(BuildContext context, int index) {
-    if (tenantRDController.photos[index]!.file == null)
+    if (tenantRDController.photos[index]!.file == null) {
       tenantRDController.downloadDoc(index);
+    }
     showDialog(
         context: context,
         builder: (context) {
@@ -1706,7 +1705,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                           twoTouchOnly: true, // Defaults to false
                           child: tenantRDController
                                   .photos[index]!.downloading.value
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : tenantRDController
                                       .photos[index]!.errorDownloading
                                   ? AppErrorWidget(
@@ -1730,7 +1729,7 @@ class _TenantRequestDetailsState extends State<TenantRequestDetails> {
                         onPressed: () {
                           Get.back();
                         },
-                        icon: Icon(Icons.cancel)),
+                        icon: const Icon(Icons.cancel)),
                   )
                 ],
               ),
@@ -1895,7 +1894,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                             textAlign: TextAlign.start,
                             controller: widget.feedbackDescController,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
+                              contentPadding: const EdgeInsets.all(8),
                               hintText: AppMetaLabels().enterRemarks,
                               hintStyle: AppTextStyle.normalGrey9,
                               border: OutlineInputBorder(
@@ -1935,7 +1934,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                           child: Obx(() {
                             return widget
                                     .tenantRDController.addingFeedback.value
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
@@ -1943,7 +1942,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                             BorderRadius.circular(1.3.h),
                                       ),
                                       backgroundColor:
-                                          Color.fromRGBO(0, 61, 166, 1),
+                                          const Color.fromRGBO(0, 61, 166, 1),
                                     ),
                                     onPressed: () async {
                                       if (widget.tenantRDController.rating ==
@@ -1956,7 +1955,9 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                         if (await widget.tenantRDController
                                             .addFeedback(widget
                                                 .feedbackDescController
-                                                .text)) Navigator.pop(context);
+                                                .text)) {
+                                          Navigator.pop(context);
+                                        }
                                       }
                                     },
                                     child: Text(

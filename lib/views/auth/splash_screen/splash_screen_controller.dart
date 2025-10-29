@@ -1,6 +1,7 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/global_preferences.dart';
 import 'package:fap_properties/views/auth/otp_firebase/validate_user_fb.dart';
+import 'package:fap_properties/views/auth/select_role/select_role_screen.dart';
 import 'package:fap_properties/views/auth/select_role/select_roles_controller.dart';
 import 'package:fap_properties/views/choose_language/choose_language.dart';
 import 'package:fap_properties/views/auth/blocked_device/blocked_device_screen.dart';
@@ -24,6 +25,7 @@ class SplashScreenController extends GetxController {
   SelectRoloesController obj = Get.put(SelectRoloesController());
   @override
   void onInit() async {
+    await isSetupMpin();
     await setUserMobile();
     // want to set for the name latest
     // 12*
@@ -87,7 +89,7 @@ class SplashScreenController extends GetxController {
         Get.to(() => BlockedDeviceScreen());
       } else {
         if (!setLanguage) {
-          await Get.to(() => ChooseLanguage(
+          await Get.to(() => const ChooseLanguage(
                 cont: true,
                 loggedIn: false,
               ));
@@ -96,14 +98,14 @@ class SplashScreenController extends GetxController {
         print("Is phone.value ::::: ${phone.value}");
         if (isLoginBool) {
           print(phone.value);
-          obj.compareToken(phone.value).then((value) {
-            // Get.to(() => SelectRoleScreen());
-          });
-          // Get.to(() => SelectRoleScreen());
+          // obj.compareToken(phone.value).then((value) {
+          //   Get.to(() => const SelectRoleScreen());
+          // });
+          Get.to(() => const SelectRoleScreen());
         } else {
           Get.to(() => SessionController().enableFireBaseOTP
-              ? ValidateUserScreenFB()
-              : ValidateUserScreen());
+              ? const ValidateUserScreenFB()
+              : const ValidateUserScreen());
         }
 
         // isLoginBool.value == true

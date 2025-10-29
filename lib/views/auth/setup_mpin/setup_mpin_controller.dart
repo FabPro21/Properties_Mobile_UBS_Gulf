@@ -22,16 +22,12 @@ class SetupMpinController extends GetxController {
   RxString mobileNumber = "".obs;
   RxString error = "".obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> saveMpinBtn() async {
     error.value = '';
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     if (enterMpinController.value.length != 6 ||
         reEnterMpinController.value.length != 6) {
@@ -56,7 +52,7 @@ class SetupMpinController extends GetxController {
           mpinLength.value = true;
           mpinMatch.value = true;
           FocusScope.of(Get.context!).unfocus();
-          Get.to(() => SelectRoleScreen());
+          Get.to(() => const SelectRoleScreen());
 
           isUpdating.value = false;
         } else {
@@ -77,9 +73,9 @@ class SetupMpinController extends GetxController {
         return false;
       } else if (int.parse(pin[i - 1]) + 1 == int.parse(pin[i]) &&
           int.parse(pin[i + 1]) - 1 == int.parse(pin[i]))
-        return false;
+       { return false;}
       else if (int.parse(pin[i + 1]) + 1 == int.parse(pin[i]) &&
-          int.parse(pin[i - 1]) - 1 == int.parse(pin[i])) return false;
+          int.parse(pin[i - 1]) - 1 == int.parse(pin[i])){ return false;}
     }
     return true;
   }

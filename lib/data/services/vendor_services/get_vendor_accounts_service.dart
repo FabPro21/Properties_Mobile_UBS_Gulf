@@ -16,7 +16,8 @@ class GetVendorAccountsService {
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
-    } else
+    } else {
       return response;
+    }
   }
 }

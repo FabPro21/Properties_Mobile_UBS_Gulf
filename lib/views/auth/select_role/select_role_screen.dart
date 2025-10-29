@@ -26,7 +26,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SelectRoleScreen extends StatefulWidget {
   final bool? redirect;
-  SelectRoleScreen({Key? key, this.redirect = true}) : super(key: key);
+  const SelectRoleScreen({super.key, this.redirect = true});
 
   @override
   _SelectRoleScreenState createState() => _SelectRoleScreenState();
@@ -87,7 +87,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       // for app update
       if (updateInfo?.updateAvailability ==
           UpdateAvailability.updateAvailable) {
-        Get.off(() => AppUpdate());
+        Get.off(() => const AppUpdate());
       } else {
         selectRoloesController.initialize();
       }
@@ -104,7 +104,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       if (isAppUpdateAvailabel == false) {
         selectRoloesController.initialize();
       } else {
-        Get.off(() => AppUpdate());
+        Get.off(() => const AppUpdate());
       }
     }
   }
@@ -134,7 +134,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                             showModalBottomSheet(
                               context: context,
                               builder: (BuildContext context) {
-                                return Container(
+                                return SizedBox(
                                   height: 25.h,
                                   width: 100.0.w,
                                   child: Container(
@@ -197,7 +197,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                                                           .semiBoldGrey10,
                                                                     ),
                                                                   ),
-                                                                  AppDivider(),
+                                                                  const AppDivider(),
                                                                   InkWell(
                                                                     onTap: () {
                                                                       var phone = AppMetaLabels()
@@ -227,7 +227,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  AppDivider(),
+                                                                  const AppDivider(),
                                                                   InkWell(
                                                                     onTap: () {
                                                                       String phone = AppMetaLabels()
@@ -322,7 +322,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                                         .semiBoldBlack12,
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
                                                   color: AppColors.blackColor,
@@ -335,7 +335,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                         SizedBox(
                                           height: 1.5.h,
                                         ),
-                                        AppDivider(),
+                                        const AppDivider(),
                                         SizedBox(
                                           height: 3.0.h,
                                         ),
@@ -367,7 +367,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                                         .semiBoldBlack12,
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
                                                   color: AppColors.blackColor,
@@ -417,7 +417,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                         return selectRoloesController.loadingData.value == true
                             ? Padding(
                                 padding: EdgeInsets.only(top: 25.h),
-                                child: LoadingIndicatorWhite(),
+                                child: const LoadingIndicatorWhite(),
                               )
                             :
                             // return selectRoloesController.loadingData.value == true
@@ -454,7 +454,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                                       shrinkWrap: true,
                                       itemCount: selectRoloesController
                                           .userRoles.length,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       itemBuilder: (context, index) {
                                         return Column(
                                           children: [

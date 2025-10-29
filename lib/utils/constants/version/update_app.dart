@@ -14,8 +14,8 @@ import 'dart:ui' as ui;
 
 class AppUpdate extends StatefulWidget {
   const AppUpdate({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<AppUpdate> createState() => _AppUpdateState();
@@ -75,7 +75,7 @@ class _AppUpdateState extends State<AppUpdate> {
                               },
                               child: Align(
                                 alignment: Alignment.center,
-                                child: Container(
+                                child: SizedBox(
                                   width: 80.0.w,
                                   child: Align(
                                     alignment: Alignment.topRight,
@@ -193,7 +193,7 @@ class _AppUpdateState extends State<AppUpdate> {
                             SizedBox(
                               height: 3.h,
                             ),
-                            AppDivider(),
+                            const AppDivider(),
                             SizedBox(
                               height: 2.h,
                             ),

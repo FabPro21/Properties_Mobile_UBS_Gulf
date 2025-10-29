@@ -19,9 +19,9 @@ class LandlordReportEmirateController extends GetxController {
   }
 
   void getEmirate() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     loading.value = true;
     var resp = await LandlordRepository.getEmirate();

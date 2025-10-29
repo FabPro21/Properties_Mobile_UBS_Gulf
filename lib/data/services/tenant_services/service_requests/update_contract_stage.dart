@@ -19,8 +19,9 @@ class UpdateContractStage {
         print('Response::::: ${jsonResp['statusCode']}');
         if (jsonResp['statusCode'] == '200') {
           return 200;
-        } else
+        } else {
           return jsonResp['message'];
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
@@ -42,8 +43,9 @@ class UpdateContractStage {
         var jsonResp = json.decode(response.body);
         if (jsonResp['statusCode'] == '200') {
           return jsonResp;
-        } else
+        } else {
           return jsonResp['message'];
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
@@ -62,8 +64,9 @@ class UpdateContractStage {
         var jsonResp = json.decode(response.body);
         if (jsonResp['statusCode'] == '200') {
           return jsonResp;
-        } else
+        } else {
           return jsonResp['message'];
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

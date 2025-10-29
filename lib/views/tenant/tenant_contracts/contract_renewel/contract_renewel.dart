@@ -21,12 +21,11 @@ class ContractRenewel extends StatefulWidget {
   final String? caller;
   final int? dueActionid;
   const ContractRenewel(
-      {Key? key,
+      {super.key,
       this.contractId,
       this.contractNo,
       this.caller,
-      this.dueActionid = 0})
-      : super(key: key);
+      this.dueActionid = 0});
 
   @override
   _ContractRenewelState createState() => _ContractRenewelState();
@@ -61,7 +60,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
         child: Scaffold(
             backgroundColor: AppColors.greyBG,
             body: SingleChildScrollView(
-              child: Container(
+              child: SizedBox(
                 height: 100.h,
                 child: Column(children: [
                   CustomAppBar2(
@@ -138,7 +137,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                   right: 4.0.w),
                               child: Obx(() {
                                 return controller.loadingRenewalInfo.value
-                                    ? LoadingIndicatorBlue()
+                                    ? const LoadingIndicatorBlue()
                                     : controller.errorLoadingInfo != ''
                                         ? AppErrorWidget(
                                             errorText:
@@ -230,7 +229,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                               controller.renewalInfo?.record?.emirateName?.toLowerCase()
                                                           .trim() ==
                                                       'dubai'
-                                                  ? SizedBox()
+                                                  ? const SizedBox()
                                                   : controller.renewalInfo?.record?.amount ==
                                                               '0' ||
                                                           controller
@@ -239,7 +238,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                           controller
                                                                   .renewalInfo?.record?.amount ==
                                                               null
-                                                      ? SizedBox()
+                                                      ? const SizedBox()
                                                       : Padding(
                                                           padding:
                                                               EdgeInsets.only(
@@ -268,7 +267,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                     EdgeInsets.only(top: 3.h),
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: EdgeInsets.only(
+                                                  padding: const EdgeInsets.only(
                                                       top: 10,
                                                       right: 10,
                                                       bottom: 10,
@@ -277,7 +276,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                       top: 0.5.h,
                                                       left: 5,
                                                       right: 5),
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                       color: Color.fromRGBO(
                                                           255, 249, 235, 1),
                                                       borderRadius:
@@ -302,7 +301,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                       SizedBox(
                                                         width: Get.width * 0.02,
                                                       ),
-                                                      Container(
+                                                      SizedBox(
                                                         width: Get.width * 0.63,
                                                         child: Text(
                                                           AppMetaLabels()
@@ -323,7 +322,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                     EdgeInsets.only(top: 3.h),
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: EdgeInsets.only(
+                                                  padding: const EdgeInsets.only(
                                                       top: 10,
                                                       right: 10,
                                                       bottom: 10,
@@ -332,7 +331,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                       top: 0.5.h,
                                                       left: 5,
                                                       right: 5),
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                       color: Color.fromARGB(
                                                           255, 210, 229, 244),
                                                       borderRadius:
@@ -356,7 +355,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                       SizedBox(
                                                         width: Get.width * 0.02,
                                                       ),
-                                                      Container(
+                                                      SizedBox(
                                                         width: Get.width * 0.63,
                                                         child: Text(
                                                           AppMetaLabels()
@@ -390,7 +389,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                               //     ),
                                               //   ),
 
-                                              Spacer(),
+                                              const Spacer(),
 
                                               Align(
                                                 alignment: Alignment.center,
@@ -400,7 +399,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                   child: Obx(() {
                                                     return controller
                                                             .submitting.value
-                                                        ? LoadingIndicatorBlue()
+                                                        ? const LoadingIndicatorBlue()
                                                         : ElevatedButton(
                                                             style:
                                                                 ElevatedButton
@@ -413,7 +412,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                                                                             1.3.h),
                                                               ),
                                                               backgroundColor:
-                                                                  Color
+                                                                  const Color
                                                                       .fromRGBO(
                                                                           0,
                                                                           61,
@@ -555,7 +554,7 @@ class _ContractRenewelState extends State<ContractRenewel> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1.3.h),
                         ),
-                        backgroundColor: Color.fromRGBO(0, 61, 166, 1),
+                        backgroundColor: const Color.fromRGBO(0, 61, 166, 1),
                       ),
                       onPressed: () {
                         SessionController()

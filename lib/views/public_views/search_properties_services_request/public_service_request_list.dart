@@ -16,7 +16,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'public_service_request_controller.dart';
 
 class PublicServiceRequestList extends StatefulWidget {
-  const PublicServiceRequestList({Key? key}) : super(key: key);
+  const PublicServiceRequestList({super.key});
 
   @override
   _PublicServiceRequestState createState() => _PublicServiceRequestState();
@@ -47,7 +47,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
             ? TextDirection.ltr
             : TextDirection.rtl,
         child: Stack(children: [
-          AppBackgroundConcave(),
+          const AppBackgroundConcave(),
           SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -120,7 +120,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                               getServicesController.getSericeRequest();
                               //getTSRController.getData();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.refresh,
                             ),
                           )
@@ -149,9 +149,9 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                           ],
                         ),
                         child: getServicesController.loadingData.value == true
-                            ? LoadingIndicatorBlue()
+                            ? const LoadingIndicatorBlue()
                             : getServicesController.error.value != '' ||
-                                    getServicesController.serviceReq.length == 0
+                                    getServicesController.serviceReq.isEmpty
                                 ? Center(
                                     child: CustomErrorWidget(
                                       errorText: AppMetaLabels()
@@ -229,7 +229,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                           style: AppTextStyle
                                                               .semiBoldGrey10,
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         Text(
                                                           getServicesController
                                                               .serviceReq[index]
@@ -315,7 +315,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                                 .semiBoldGrey10,
                                                           ),
                                                         ),
-                                                        Spacer(),
+                                                        const Spacer(),
                                                         StatusWidget(
                                                           text: SessionController()
                                                                       .getLanguage() ==
@@ -347,7 +347,7 @@ class _PublicServiceRequestState extends State<PublicServiceRequestList> {
                                                                     .length -
                                                                 1
                                                         ? Container()
-                                                        : AppDivider(),
+                                                        : const AppDivider(),
                                                   ],
                                                 ),
                                               ),

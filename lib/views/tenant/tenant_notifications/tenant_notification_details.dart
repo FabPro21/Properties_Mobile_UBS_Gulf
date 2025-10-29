@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class TenantNotificationDetails extends StatefulWidget {
-  const TenantNotificationDetails({Key? key}) : super(key: key);
+  const TenantNotificationDetails({super.key});
 
   @override
   State<TenantNotificationDetails> createState() =>
@@ -53,7 +53,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                       AppMetaLabels().notifications,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -67,7 +67,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Directionality(
                 textDirection: SessionController().getLanguage() == 1
                     ? ui.TextDirection.ltr
@@ -80,7 +80,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                               true
                           ? Padding(
                               padding: EdgeInsets.only(top: 40.0.h),
-                              child: LoadingIndicatorBlue(),
+                              child: const LoadingIndicatorBlue(),
                             )
                           : getTNController.error.value != ''
                               ? Padding(
@@ -133,7 +133,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                   AppTextStyle.semiBoldBlack13,
                                             ),
                                           ),
-                                          AppDivider(),
+                                          const AppDivider(),
                                           Padding(
                                             padding: EdgeInsets.only(
                                                 left: 2.0.h,
@@ -224,7 +224,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                             ListView.builder(
                                                 shrinkWrap: true,
                                                 physics:
-                                                    NeverScrollableScrollPhysics(),
+                                                    const NeverScrollableScrollPhysics(),
                                                 itemCount: getTNController
                                                     .files!.record!.length,
                                                 itemBuilder: (context, index) {
@@ -255,7 +255,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                                           index]
                                                                       .downloading!
                                                                       .value
-                                                                  ? LoadingIndicatorBlue(
+                                                                  ? const LoadingIndicatorBlue(
                                                                       strokeWidth:
                                                                           2,
                                                                       size: 24,
@@ -269,7 +269,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                                               .downloadFile(index);
                                                                         },
                                                                         icon:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .download,
                                                                           color:
@@ -287,7 +287,7 @@ class _TenantNotificationDetailsState extends State<TenantNotificationDetails> {
                                                                   .record!
                                                                   .length -
                                                               1)
-                                                        AppDivider()
+                                                        const AppDivider()
                                                     ],
                                                   );
                                                 })

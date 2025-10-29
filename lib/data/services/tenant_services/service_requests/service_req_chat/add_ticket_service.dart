@@ -30,8 +30,9 @@ class AddTicketService {
             AppMetaLabels().error, AppMetaLabels().someThingWentWrong);
         return;
       } else
-        return response.statusCode;
-    } else
+        {return response.statusCode;}
+    } else {
       return response;
+    }
   }
 }

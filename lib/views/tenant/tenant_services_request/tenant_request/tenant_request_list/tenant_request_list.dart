@@ -20,7 +20,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../../data/models/tenant_models/get_tenant_service_requests_model.dart';
 
 class TenantRequestList extends StatefulWidget {
-  const TenantRequestList({Key? key}) : super(key: key);
+  const TenantRequestList({super.key});
 
   @override
   _TenantRequestListState createState() => _TenantRequestListState();
@@ -31,7 +31,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
   final TextEditingController searchControler = TextEditingController();
   final TextEditingController fromController = TextEditingController();
   final TextEditingController toController = TextEditingController();
-  GlobalKey _toolTipKey = GlobalKey();
+  final GlobalKey _toolTipKey = GlobalKey();
   int tabIndex = 0;
   bool? filterApplied;
   @override
@@ -43,8 +43,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final dynamic _toolTip = _toolTipKey.currentState;
-      _toolTip.ensureTooltipVisible();
+      final dynamic toolTip = _toolTipKey.currentState;
+      toolTip.ensureTooltipVisible();
     });
 
     return Directionality(
@@ -65,35 +65,35 @@ class _TenantRequestListState extends State<TenantRequestList> {
                   SizedBox(
                     width: 12.2.w,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     AppMetaLabels().serviceRequests,
                     style: AppTextStyle.semiBoldWhite15,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Tooltip(
                     key: _toolTipKey,
                     message: AppMetaLabels().createNewServiceRequest,
                     verticalOffset: 2.h,
                     margin: EdgeInsets.only(right: 2.h, left: 2.h),
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                     decoration: BoxDecoration(
                         color: AppColors.chartBlueColor,
                         borderRadius: BorderRadius.only(
                             topLeft: SessionController().getLanguage() == 1
-                                ? Radius.circular(8)
+                                ? const Radius.circular(8)
                                 : Radius.zero,
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(8),
+                            bottomLeft: const Radius.circular(8),
+                            bottomRight: const Radius.circular(8),
                             topRight: SessionController().getLanguage() == 1
                                 ? Radius.zero
-                                : Radius.circular(8))),
+                                : const Radius.circular(8))),
                     child: IconButton(
-                      icon: Icon(Icons.add_circle_outline_outlined),
+                      icon: const Icon(Icons.add_circle_outline_outlined),
                       iconSize: 4.0.h,
                       color: Colors.white,
                       onPressed: () async {
-                        Get.to(() => TenantAddServicesRequest());
+                        Get.to(() => const TenantAddServicesRequest());
                       },
                     ),
                   ),
@@ -190,7 +190,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                           // getTSRController.getDataPM('');
                           //*
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.refresh,
                         ),
                       )
@@ -247,7 +247,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                 )
                               ],
                             ),
-                            Expanded(
+                            const Expanded(
                               child: TabBarView(
                                 children: [
                                   //*
@@ -397,7 +397,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       labelText: AppMetaLabels().from,
                                       prefixIcon: SizedBox(
                                         height: 1.h,
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.calendar_month,
                                         ),
                                       )),
@@ -409,8 +409,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
 // locale: Locale('en'),
                                       locale:
                                           SessionController().getLanguage() == 1
-                                              ? Locale('en', '')
-                                              : Locale('ar', ''),
+                                              ? const Locale('en', '')
+                                              : const Locale('ar', ''),
                                       initialDate: DateTime.now(),
                                       firstDate:
                                           DateTime(DateTime.now().year - 10),
@@ -466,7 +466,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       labelText: AppMetaLabels().to,
                                       prefixIcon: SizedBox(
                                         height: 1.h,
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.calendar_month,
                                         ),
                                       )),
@@ -478,8 +478,8 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                       // locale: Locale('en'),
                                       locale:
                                           SessionController().getLanguage() == 1
-                                              ? Locale('en', '')
-                                              : Locale('ar', ''),
+                                              ? const Locale('en', '')
+                                              : const Locale('ar', ''),
                                       initialDate: DateTime.now(),
                                       firstDate:
                                           DateTime(DateTime.now().year - 10),
@@ -536,10 +536,10 @@ class _TenantRequestListState extends State<TenantRequestList> {
                                 child: Container(
                                   width: 85.0.w,
                                   decoration: BoxDecoration(
-                                    color: Color.fromRGBO(255, 59, 48, 0.6),
+                                    color: const Color.fromRGBO(255, 59, 48, 0.6),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                     border: Border.all(
-                                      color: Color.fromRGBO(255, 59, 48, 1),
+                                      color: const Color.fromRGBO(255, 59, 48, 1),
                                     ),
                                   ),
                                   child: Padding(
@@ -638,7 +638,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
                         getTSRController.fromController.clear();
                         getTSRController.toController.clear();
                         getTSRController.fromController.text = '';
-                        getTSRController.toController..text = '';
+                        getTSRController.toController.text = '';
                         getTSRController.toDateN.value = '';
                         getTSRController.fromDateN.value = '';
                         searchControler.clear();
@@ -665,7 +665,7 @@ class _TenantRequestListState extends State<TenantRequestList> {
 }
 
 class FMServiceRequests extends StatefulWidget {
-  FMServiceRequests({Key? key}) : super(key: key);
+  const FMServiceRequests({super.key});
 
   @override
   State<FMServiceRequests> createState() => _FMServiceRequestsState();
@@ -684,7 +684,7 @@ class _FMServiceRequestsState extends State<FMServiceRequests> {
   Widget build(BuildContext context) {
     return Obx(() {
       return getTSRController.loadingDataFM.value == true
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : getTSRController.errorFM.value != ''
               ? Center(
                   child: CustomErrorWidget(
@@ -701,7 +701,7 @@ class _FMServiceRequestsState extends State<FMServiceRequests> {
 }
 
 class PMServiceRequests extends StatefulWidget {
-  PMServiceRequests({Key? key}) : super(key: key);
+  const PMServiceRequests({super.key});
 
   @override
   State<PMServiceRequests> createState() => _PMServiceRequestsState();
@@ -720,7 +720,7 @@ class _PMServiceRequestsState extends State<PMServiceRequests> {
   Widget build(BuildContext context) {
     return Obx(() {
       return getTSRController.loadingDataPM.value == true
-          ? LoadingIndicatorBlue()
+          ? const LoadingIndicatorBlue()
           : getTSRController.errorPM.value != ''
               ? Center(
                   child: CustomErrorWidget(
@@ -739,8 +739,7 @@ class _PMServiceRequestsState extends State<PMServiceRequests> {
 class ServiceRequestsList extends StatelessWidget {
   final String? type;
   final List<ServiceRequest>? serviceRequests;
-  const ServiceRequestsList({Key? key, this.serviceRequests, this.type})
-      : super(key: key);
+  const ServiceRequestsList({super.key, this.serviceRequests, this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -780,7 +779,7 @@ class ServiceRequestsList extends StatelessWidget {
                                   : serviceRequests?[index].categoryAR ?? "",
                               style: AppTextStyle.semiBoldGrey10,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               serviceRequests![index].requestNo.toString(),
                               style: AppTextStyle.semiBoldGrey10,
@@ -820,13 +819,15 @@ class ServiceRequestsList extends StatelessWidget {
                               serviceRequests?[index].date ?? "",
                               style: AppTextStyle.semiBoldGrey10,
                             ),
-                            Spacer(),
-                            serviceRequests?[index].status == ''
-                                ? SizedBox()
+                            const Spacer(),
+                            serviceRequests![index].status == ''
+                                ? const SizedBox()
                                 : StatusWidget(
                                     text: SessionController().getLanguage() == 1
-                                        ? serviceRequests![index].status??"" + ' '
-                                        : serviceRequests?[index].statusAR ?? '',
+                                        ? serviceRequests![index].status ??
+                                            "" ' '
+                                        : serviceRequests![index].statusAR ??
+                                            '',
                                     valueToCompare:
                                         serviceRequests?[index].status,
                                   )
@@ -837,7 +838,7 @@ class ServiceRequestsList extends StatelessWidget {
                         ),
                         index == serviceRequests!.length - 1
                             ? Container()
-                            : AppDivider(),
+                            : const AppDivider(),
                       ],
                     ),
                   ),

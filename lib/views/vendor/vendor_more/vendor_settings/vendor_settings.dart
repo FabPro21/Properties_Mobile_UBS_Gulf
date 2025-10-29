@@ -14,7 +14,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../data/helpers/session_controller.dart';
 
 class VendorSettings extends StatefulWidget {
-  const VendorSettings({Key? key}) : super(key: key);
+  const VendorSettings({super.key});
 
   @override
   _VendorSettingsState createState() => _VendorSettingsState();
@@ -57,7 +57,7 @@ class _VendorSettingsState extends State<VendorSettings> {
                         AppMetaLabels().biometric,
                         style: AppTextStyle.semiBoldBlack13,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -73,7 +73,7 @@ class _VendorSettingsState extends State<VendorSettings> {
                           ],
                           activeBgColors: [
                             [AppColors.blueColor],
-                            [Colors.white]
+                            const [Colors.white]
                           ],
                           inactiveBgColor: Colors.grey[200],
                           initialLabelIndex: fPOption,
@@ -98,7 +98,7 @@ class _VendorSettingsState extends State<VendorSettings> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(() => ChooseLanguage(loggedIn: true));
+                      Get.to(() => const ChooseLanguage(loggedIn: true));
                     },
                     child: Row(
                       children: [
@@ -112,7 +112,7 @@ class _VendorSettingsState extends State<VendorSettings> {
                           AppMetaLabels().language,
                           style: AppTextStyle.semiBoldBlack13,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 2.5.h,

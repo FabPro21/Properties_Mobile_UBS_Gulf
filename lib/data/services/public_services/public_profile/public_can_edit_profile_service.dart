@@ -18,7 +18,8 @@ class PublicCanEditProfileService {
       } catch (e) {
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return resp;
+    }
   }
 }

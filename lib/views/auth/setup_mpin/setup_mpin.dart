@@ -16,7 +16,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 
 class SetupMpinScreen extends StatefulWidget {
-  SetupMpinScreen({Key? key}) : super(key: key);
+  const SetupMpinScreen({super.key});
 
   @override
   State<SetupMpinScreen> createState() => _SetupMpinScreenState();
@@ -169,11 +169,11 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                   Obx(() {
                                     return FlutterSwitch(
                                       inactiveColor:
-                                          Color.fromRGBO(188, 190, 192, 1),
+                                          const Color.fromRGBO(188, 190, 192, 1),
                                       activeColor: Colors.blue[600]??Colors.lightBlue,
                                       activeToggleColor: Colors.white,
                                       inactiveToggleColor:
-                                          Color.fromRGBO(76, 78, 84, 1),
+                                          const Color.fromRGBO(76, 78, 84, 1),
                                       width: 11.0.w,
                                       height: 3.0.h,
                                       toggleSize: 3.0.h,
@@ -204,12 +204,12 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                       : Container(
                                           // width: 85.0.w,
                                           decoration: BoxDecoration(
-                                            color: Color.fromRGBO(
+                                            color: const Color.fromRGBO(
                                                 255, 59, 48, 0.6),
                                             borderRadius:
                                                 BorderRadius.circular(1.0.h),
                                             border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   255, 59, 48, 1),
                                             ),
                                           ),
@@ -241,7 +241,7 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                   padding: EdgeInsets.only(top: 5.0.h),
                                   child: setupMpinController.isUpdating.value ==
                                           true
-                                      ? LoadingIndicatorWhite()
+                                      ? const LoadingIndicatorWhite()
                                       : ButtonWidget(
                                           buttonText: AppMetaLabels().saveMPIN,
                                           onPress: () async {
@@ -253,7 +253,7 @@ class _SetupMpinScreenState extends State<SetupMpinScreen> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Get.offAll(() => SelectRoleScreen());
+                                    Get.offAll(() => const SelectRoleScreen());
                                   },
                                   child: Text(
                                     AppMetaLabels().cancel,

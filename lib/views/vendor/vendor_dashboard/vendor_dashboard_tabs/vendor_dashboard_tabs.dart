@@ -19,7 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class VendorDashboardTabs extends StatefulWidget {
-  const VendorDashboardTabs({Key? key}) : super(key: key);
+  const VendorDashboardTabs({super.key});
 
   @override
   _VendorDashboardTabsState createState() => _VendorDashboardTabsState();
@@ -27,7 +27,7 @@ class VendorDashboardTabs extends StatefulWidget {
 
 class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
   // ignore: unused_field
-  VendorDashboardTabsController _dashboardTabsController =
+  final VendorDashboardTabsController _dashboardTabsController =
       Get.put(VendorDashboardTabsController());
   int _selectedIndex = 0;
   @override
@@ -50,8 +50,8 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                 });
               },
             ),
-            VendorRequestList(),
-            VendorOffers(),
+            const VendorRequestList(),
+            const VendorOffers(),
             VendorMoreScreen(
               manageMenu: (index) {
                 setState(() {
@@ -69,9 +69,9 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                 });
               },
             ),
-            VendorContractsScreen(),
-            LposScreen(),
-            InvoicesScreen(),
+            const VendorContractsScreen(),
+            const LposScreen(),
+            const InvoicesScreen(),
             VendorMoreScreen(
               manageMenu: (index) {
                 setState(() {
@@ -119,7 +119,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
             resizeToAvoidBottomInset: false,
             body: Stack(
               children: [
-                AppBackgroundConcave(),
+                const AppBackgroundConcave(),
                 SafeArea(
                   child: Column(
                     children: [
@@ -169,7 +169,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                                   icon: AppImagesPath.menu,
                                   title: AppMetaLabels().more,
                                   onTap: (pos) async {
-                                    int _res =
+                                    int res =
                                         await Get.to(() => VendorMoreScreen(
                                               manageMenu: (index) {
                                                 setState(() {
@@ -177,10 +177,11 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                                                 });
                                               },
                                             ));
-                                    if (_res != null)
+                                    if (res != null) {
                                       setState(() {
-                                        _selectedIndex = _res;
+                                        _selectedIndex = res;
                                       });
+                                    }
                                   },
                                   position: 3,
                                 )
@@ -240,7 +241,7 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                                   icon: AppImagesPath.menu,
                                   title: AppMetaLabels().more,
                                   onTap: (pos) async {
-                                    int _res =
+                                    int res =
                                         await Get.to(() => VendorMoreScreen(
                                               manageMenu: (index) {
                                                 setState(() {
@@ -248,10 +249,11 @@ class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
                                                 });
                                               },
                                             ));
-                                    if (_res != null)
+                                    if (res != null) {
                                       setState(() {
-                                        _selectedIndex = _res;
+                                        _selectedIndex = res;
                                       });
+                                    }
                                   },
                                   position: 4,
                                 )

@@ -23,15 +23,15 @@ class LandLordProfileModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['message'] = this.message;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -83,19 +83,19 @@ class Data {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['mobile'] = this.mobile;
-    data['landlordName'] = this.landlordName;
-    data['landlordNameAR'] = this.landlordNameAR;
-    data['landlordID'] = this.landlordID;
-    data['email'] = this.email;
-    data['nationality'] = this.nationality;
-    data['fax'] = this.fax;
-    data['phone'] = this.phone;
-    data['address'] = this.address;
-    data['addressAR'] = this.addressAR;
-    data['termsAndConditions'] = this.termsAndConditions;
-    data['photoUrl'] = this.photoUrl;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['mobile'] = mobile;
+    data['landlordName'] = landlordName;
+    data['landlordNameAR'] = landlordNameAR;
+    data['landlordID'] = landlordID;
+    data['email'] = email;
+    data['nationality'] = nationality;
+    data['fax'] = fax;
+    data['phone'] = phone;
+    data['address'] = address;
+    data['addressAR'] = addressAR;
+    data['termsAndConditions'] = termsAndConditions;
+    data['photoUrl'] = photoUrl;
     return data;
   }
 }

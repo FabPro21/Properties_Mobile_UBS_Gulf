@@ -19,8 +19,9 @@ class TenantGetDocsByType {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return response;
+    }
       // return response;
   }
 }

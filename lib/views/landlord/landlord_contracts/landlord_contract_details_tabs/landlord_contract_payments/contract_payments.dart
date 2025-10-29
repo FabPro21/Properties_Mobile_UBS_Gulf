@@ -18,8 +18,8 @@ import 'contract_payments_controller.dart';
 // unverified
 class LandlordPaymentsScreen extends StatefulWidget {
   const LandlordPaymentsScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _LandlordPaymentsScreenState createState() => _LandlordPaymentsScreenState();
@@ -66,7 +66,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                   children: [Expanded(child: verifiedPayments())],
                 ));
           }),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -77,7 +77,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
       children: [
         Expanded(
           child: paymentsController.loadingData.value == true
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : paymentsController.error.value != ''
                   ? CustomErrorWidget(
                       errorText: paymentsController.error.value,
@@ -129,7 +129,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                       AppMetaLabels().amount,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "${AppMetaLabels().aed} $amount",
                       style: AppTextStyle.semiBoldGrey11,
@@ -155,7 +155,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(247, 247, 247, 1),
+                      color: const Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.circular(1.0.h),
                     ),
                     child: Column(
@@ -166,7 +166,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                   true
                               ? Padding(
                                   padding: EdgeInsets.all(2.h),
-                                  child: LoadingIndicatorBlue(),
+                                  child: const LoadingIndicatorBlue(),
                                 )
                               : paymentsController.payments.payments?[index]
                                           .errorLoadingCheque !=
@@ -187,7 +187,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                       ? ListView.builder(
                                           shrinkWrap: true,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           padding: EdgeInsets.zero,
                                           itemCount: paymentsController
                                               .payments
@@ -286,12 +286,12 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                                                                 .transactionCheque!
                                                                 .length -
                                                             1
-                                                    ? SizedBox()
-                                                    : AppDivider(),
+                                                    ? const SizedBox()
+                                                    : const AppDivider(),
                                               ],
                                             );
                                           })
-                                      : SizedBox();
+                                      : const SizedBox();
                         }),
                       ],
                     ),
@@ -325,10 +325,9 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                           // padding: EdgeInsets.symmetric(
                           //     horizontal: 2.0.h, vertical: 2.h),
                           child: paymentsController.payments.payments?[index]
-                                      .downloadingReceipt?.value??"" ==
-                                  true
-                              ? LoadingIndicatorBlue()
-                              : SizedBox()
+                                      .downloadingReceipt?.value == true
+                              ? const LoadingIndicatorBlue()
+                              : const SizedBox()
                           // : InkWell(
                           //     onTap: () async {
                           //       paymentsController.downloadReceipt(
@@ -365,7 +364,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
               ],
             ),
           ),
-          index == paymentsController.length - 1 ? Container() : AppDivider(),
+          index == paymentsController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );
@@ -373,7 +372,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
 
   Widget unverifiedPayments() {
     return paymentsController.loadingUnverified.value == true
-        ? LoadingIndicatorBlue()
+        ? const LoadingIndicatorBlue()
         : paymentsController.errorLoadingUnverified != ''
             ? CustomErrorWidget(
                 errorText: paymentsController.errorLoadingUnverified,
@@ -415,7 +414,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                       AppMetaLabels().refNo,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       paymentsController.unverifiedPayments
                               .contractPayments?[index].referenceNo ??
@@ -477,7 +476,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                       AppMetaLabels().amount,
                       style: AppTextStyle.semiBoldGrey11,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "${AppMetaLabels().aed} $amount",
                       style: AppTextStyle.semiBoldGrey11,
@@ -487,7 +486,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
               ],
             ),
           ),
-          index == paymentsController.length - 1 ? Container() : AppDivider(),
+          index == paymentsController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );
@@ -502,7 +501,7 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
             style: AppTextStyle.normalGrey11,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 8,
         ),
         Expanded(

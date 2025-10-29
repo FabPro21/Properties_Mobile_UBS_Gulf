@@ -20,10 +20,10 @@ import 'tenant_contracts_detail_controller.dart';
 
 class ContractsDetailsTabs extends StatefulWidget {
   final String? prevContractNo;
-  ContractsDetailsTabs({
-    Key? key,
+  const ContractsDetailsTabs({
+    super.key,
     this.prevContractNo,
-  }) : super(key: key);
+  });
 
   @override
   State<ContractsDetailsTabs> createState() => _ContractsDetailsTabsState();
@@ -51,7 +51,7 @@ class _ContractsDetailsTabsState extends State<ContractsDetailsTabs> {
               Expanded(
                 child: Obx(() {
                   return getCDController.loadingContract.value == true
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : getCDController.errorLoadingContract.value != ''
                           ? AppErrorWidget(
                               errorText:
@@ -101,9 +101,9 @@ class _ContractsDetailsTabsState extends State<ContractsDetailsTabs> {
                                       MainInfo(
                                         prevContractNo: widget.prevContractNo??'',
                                       ),
-                                      UnitInfo(),
-                                      PaymentsScreen(),
-                                      ChargesScreen(),
+                                      const UnitInfo(),
+                                      const PaymentsScreen(),
+                                      const ChargesScreen(),
                                     ],
                                   ),
                                 ),

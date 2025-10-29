@@ -6,8 +6,4 @@ class ContractFlowsTabsController extends GetxController {
   RxString errorLoadingContract = "".obs;
   RxBool isEnableScreen = true.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

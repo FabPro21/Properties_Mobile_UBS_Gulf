@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison, library_private_types_in_public_api, use_build_context_synchronously
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/vendor_models/installmment_drop_sown_model.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -10,6 +10,7 @@ import 'package:fap_properties/views/vendor/vendor_invoice_detail/vendor_invoice
 import 'package:fap_properties/views/widgets/bottom_shadow.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -21,10 +22,10 @@ class VendorInvoiceMainDetails extends StatefulWidget {
   final String? caller;
   final String? caseNo;
   VendorInvoiceMainDetails({
-    Key? key,
+    super.key,
     this.caller,
     this.caseNo,
-  }) : super(key: key) {
+  }) {
     Get.put(VendorInvoiceDetailsController());
   }
 
@@ -69,7 +70,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
         vendorController.getLpodropDownForInvoice();
         vendorController.getAMCdropDownForInvoice();
       });
-      print('');
+     if (kDebugMode) print('');
       vendorController.isServiceRqTypeRadioButtonVal.value = -1;
       srNoController.clear();
       instNoController.clear();
@@ -84,7 +85,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
             widget.caseNo == null || widget.caseNo == ''
                 ? controller.caseNoInvoice
                 : int.parse(widget.caseNo!);
-        print('CALLING IN ADD NEW SERVICE :::::::: ELSE ++++++ >');
+       if (kDebugMode) print('CALLING IN ADD NEW SERVICE :::::::: ELSE ++++++ >');
         getdata();
       });
     }
@@ -95,7 +96,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
   Future<void> getdata() async {
     var result =
         await vendorController.getRequest(controller.caseNoInvoice.toString());
-    print('Result ::::::::::: Controller :::: $result');
+   if (kDebugMode) print('Result ::::::::::: Controller :::: $result');
 
     if (result['detail']['serviceType'].toString() == "LPO") {
       vendorController.isServiceRqTypeRadioButtonVal.value = 0;
@@ -112,19 +113,15 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
         result['detail']['workCompletionDate'].toString();
     descriptionController.text = result['detail']['description'].toString();
     invoiceNOController.text =
-        result['detail']['invoiceNumber'].toString() == null
-            ? ''
-            : result['detail']['invoiceNumber'].toString();
+        result['detail']['invoiceNumber'].toString();
     invoiceDateController.text =
-        result['detail']['invoiceDate'].toString() == null
-            ? ''
-            : result['detail']['invoiceDate'].toString();
+        result['detail']['invoiceDate'].toString();
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    print('caller :::: ******* :::::: => ${vendorController.callerInvoice}');
+   if (kDebugMode) print('caller :::: ******* :::::: => ${vendorController.callerInvoice}');
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -134,7 +131,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
             return vendorController.loadingData.value == true
                 ? Padding(
                     padding: EdgeInsets.only(top: 10.0.h),
-                    child: LoadingIndicatorBlue(),
+                    child: const LoadingIndicatorBlue(),
                   )
                 : Container(
                     margin: EdgeInsets.only(
@@ -239,8 +236,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                           instNoController
                                                               .clear();
                                                         });
-                                                        print(
-                                                            'Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
+                                                      if (kDebugMode)  print('Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
                                                       },
                                               ),
                                             ),
@@ -260,8 +256,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                   instNoController.text = '';
                                                   instNoController.clear();
                                                 });
-                                                print(
-                                                    'Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
+                                              if (kDebugMode)  print('Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
                                               },
                                               child: Text(
                                                 AppMetaLabels().lpo,
@@ -306,8 +301,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 .clear();
                                                           });
                                                         });
-                                                        print(
-                                                            'Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
+                                                       if (kDebugMode) print('Value ::: ${vendorController.isServiceRqTypeRadioButtonVal.value}');
                                                       },
                                               ),
                                             ),
@@ -351,11 +345,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                         : 0.5.h,
                               ),
                               vendorController.serviceTypeError.value == ''
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : Text(
-                                      '  ' +
-                                          vendorController
-                                              .serviceTypeError.value,
+                                      '  ${vendorController
+                                              .serviceTypeError.value}',
                                       style: AppTextStyle.normalErrorText1,
                                     ),
                               SizedBox(
@@ -461,7 +454,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       .value = '';
                                                 }
                                               },
-                                              keyboardType: TextInputType
+                                              keyboardType: const TextInputType
                                                   .numberWithOptions(
                                                       signed: true,
                                                       decimal: false),
@@ -476,18 +469,16 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 .lpos ==
                                                             null
                                                     ? AppMetaLabels().noLPOFound
-                                                    : AppMetaLabels()
+                                                    : '${AppMetaLabels()
                                                             .pleaseEnter
                                                             .replaceAll(
-                                                                '.', '') +
-                                                        ' ' +
-                                                        AppMetaLabels().lpo,
+                                                                '.', '')} ${AppMetaLabels().lpo}',
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           5.0),
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                   ),
                                                 ),
@@ -518,7 +509,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             : Icons
                                                                 .arrow_drop_up),
                                                       )
-                                                    : SizedBox(),
+                                                    : const SizedBox(),
                                               ),
                                             ),
                                           ),
@@ -534,11 +525,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 vendorController
                                                         .isShowListLPO.value ==
                                                     false
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : vendorController
                                                         .lopsNoModelData.lpos ==
                                                     null
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : Container(
                                                     width: 90.w,
                                                     height: vendorController
@@ -552,7 +543,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 .length *
                                                             3.5.h
                                                         : 15.h,
-                                                    margin: EdgeInsets.only(
+                                                    margin: const EdgeInsets.only(
                                                       left: 6,
                                                       right: 6,
                                                     ),
@@ -630,7 +621,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 child:
                                                                     Container(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               4),
                                                                   child: Text(
@@ -643,7 +634,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                         TextAlign
                                                                             .center,
                                                                     style:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                                       color: Colors
                                                                           .black,
                                                                     ),
@@ -657,8 +648,8 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 index ==
                                                                         vendorController.lopsNoModelData.lpos!.length -
                                                                             1
-                                                                    ? SizedBox()
-                                                                    : AppDivider(),
+                                                                    ? const SizedBox()
+                                                                    : const AppDivider(),
                                                             ],
                                                           );
                                                         },
@@ -708,7 +699,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       .value = '';
                                                 }
                                               },
-                                              keyboardType: TextInputType
+                                              keyboardType: const TextInputType
                                                   .numberWithOptions(
                                                       signed: true,
                                                       decimal: false),
@@ -724,24 +715,22 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             null
                                                     ? AppMetaLabels()
                                                         .noAMCNosFound
-                                                    : AppMetaLabels()
+                                                    : '${AppMetaLabels()
                                                             .pleaseEnter
                                                             .replaceAll(
-                                                                '.', '') +
-                                                        ' ' +
-                                                        AppMetaLabels().aMCNo,
+                                                                '.', '')} ${AppMetaLabels().aMCNo}',
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           5.0),
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                   ),
                                                 ),
                                                 suffixIcon: vendorController
                                                         .isEnableInvoiceNo.value
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : vendorController
                                                                 .aMCModelData
                                                                 .amcData !=
@@ -769,7 +758,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 : Icons
                                                                     .arrow_drop_up),
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                               ),
                                             ),
                                           ),
@@ -785,11 +774,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 vendorController
                                                         .isShowListAMC.value ==
                                                     false
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : vendorController
                                                         .aMCModelData.amcData ==
                                                     null
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : Container(
                                                     width: 90.w,
                                                     height: vendorController
@@ -803,7 +792,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 .length *
                                                             3.5.h
                                                         : 15.h,
-                                                    margin: EdgeInsets.only(
+                                                    margin: const EdgeInsets.only(
                                                       left: 6,
                                                       right: 6,
                                                     ),
@@ -890,7 +879,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 child:
                                                                     Container(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               4),
                                                                   child: Text(
@@ -903,7 +892,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                         TextAlign
                                                                             .center,
                                                                     style:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                                       color: Colors
                                                                           .black,
                                                                     ),
@@ -917,8 +906,8 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                 index == vendorController.aMCModelData.amcData!.length - 1 &&
                                                                         vendorController.isServiceRqTypeRadioButtonVal.value ==
                                                                             1
-                                                                    ? SizedBox()
-                                                                    : AppDivider(),
+                                                                    ? const SizedBox()
+                                                                    : const AppDivider(),
                                                             ],
                                                           );
                                                         },
@@ -936,11 +925,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       ),
                                       vendorController.serviceNoError.value ==
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Text(
-                                              ' ' +
-                                                  vendorController
-                                                      .serviceNoError.value,
+                                              ' ${vendorController
+                                                      .serviceNoError.value}',
                                               style:
                                                   AppTextStyle.normalErrorText1,
                                             ),
@@ -1012,7 +1000,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       .instNOError.value = '';
                                                 }
                                               },
-                                              keyboardType: TextInputType
+                                              keyboardType: const TextInputType
                                                   .numberWithOptions(
                                                       signed: true,
                                                       decimal: true),
@@ -1029,7 +1017,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       suffixIcon: vendorController
                                                               .isEnableInvoiceNo
                                                               .value
-                                                          ? SizedBox()
+                                                          ? const SizedBox()
                                                           : vendorController
                                                                       .isServiceRqTypeRadioButtonVal
                                                                       .value ==
@@ -1050,7 +1038,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                               .errorInstallment
                                                                               .value ==
                                                                           'No data found'
-                                                                      ? SizedBox()
+                                                                      ? const SizedBox()
                                                                       : Icon(vendorController.isShowListAMCIns.value !=
                                                                               true
                                                                           ? Icons
@@ -1058,13 +1046,13 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                           : Icons
                                                                               .arrow_drop_up),
                                                                 )
-                                                              : SizedBox(),
+                                                              : const SizedBox(),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5.0),
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                             color: Colors
                                                                 .transparent),
                                                       )),
@@ -1083,7 +1071,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                         vendorController
                                                     .isShowListAMCIns.value !=
                                                 true
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : vendorController.errorInstallment
                                                             .value ==
                                                         'No data found' ||
@@ -1095,10 +1083,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             .installmentModelData
                                                             .installmentData ==
                                                         null
-                                                ? SizedBox()
+                                                ? const SizedBox()
                                                 : Container(
                                                     width: 90.w,
-                                                    margin: EdgeInsets.only(
+                                                    margin: const EdgeInsets.only(
                                                       left: 6,
                                                       right: 6,
                                                     ),
@@ -1192,7 +1180,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                   width: double
                                                                       .infinity,
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               4),
                                                                   child: Text(
@@ -1206,7 +1194,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                         TextAlign
                                                                             .center,
                                                                     style:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                                       color: Colors
                                                                           .black,
                                                                     ),
@@ -1219,8 +1207,8 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                                               .installmentData!
                                                                               .length -
                                                                           1
-                                                                  ? SizedBox()
-                                                                  : AppDivider(),
+                                                                  ? const SizedBox()
+                                                                  : const AppDivider(),
                                                             ],
                                                           );
                                                         },
@@ -1252,11 +1240,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                   .value ==
                                               -1)
                                         vendorController.instNOError.value == ''
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : Text(
-                                                '  ' +
-                                                    vendorController
-                                                        .instNOError.value,
+                                                '  ${vendorController
+                                                        .instNOError.value}',
                                                 style: AppTextStyle
                                                     .normalErrorText1,
                                               ),
@@ -1269,11 +1256,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       ),
                                       // Invoice
                                       // Invoice Number
-                                      Container(
+                                      SizedBox(
                                         width: 90.w,
                                         child: Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 22.w,
                                               child: Text(
                                                 AppMetaLabels().invoicesNo,
@@ -1282,7 +1269,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
-                                            Container(
+                                            SizedBox(
                                               width: 62.w,
                                               child: Text(
                                                 AppMetaLabels()
@@ -1342,7 +1329,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5.0),
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent),
                                                     )),
@@ -1359,11 +1346,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       ),
                                       vendorController.invoiceNoError.value ==
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Text(
-                                              '  ' +
-                                                  vendorController
-                                                      .invoiceNoError.value,
+                                              '  ${vendorController
+                                                      .invoiceNoError.value}',
                                               style:
                                                   AppTextStyle.normalErrorText1,
                                             ),
@@ -1383,7 +1369,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                         onTap: () async {
                                           vendorController
                                               .invoiceDateError.value = '';
-                                          var expDate;
+                                          DateTime? expDate;
                                           expDate = await showRoundedDatePicker(
                                             theme: ThemeData(
                                                 primaryColor:
@@ -1394,12 +1380,12 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                             locale: SessionController()
                                                         .getLanguage() ==
                                                     1
-                                                ? Locale('en', '')
-                                                : Locale('ar', ''),
+                                                ? const Locale('en', '')
+                                                : const Locale('ar', ''),
                                             //  7300 =>  20 years
                                             initialDate: DateTime.now(),
                                             firstDate: DateTime.now()
-                                                .subtract(Duration(days: 7300)),
+                                                .subtract(const Duration(days: 7300)),
                                             lastDate: DateTime.now(),
                                             borderRadius: 2.0.h,
                                             styleDatePicker:
@@ -1450,7 +1436,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                           );
                                           if (expDate != null) {
                                             DateFormat dateFormat =
-                                                new DateFormat(AppMetaLabels()
+                                                DateFormat(AppMetaLabels()
                                                     .dateFormatForShowRoundedDatePicker);
                                             invoiceDateController.text =
                                                 dateFormat.format(expDate);
@@ -1516,9 +1502,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       // Error for Invoice Date
                                       vendorController.invoiceDateError.value ==
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Padding(
-                                              padding: EdgeInsets.only(left: 5),
+                                              padding: const EdgeInsets.only(left: 5),
                                               child: Text(
                                                 vendorController
                                                     .invoiceDateError.value,
@@ -1576,7 +1562,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                               }
                                             },
                                             keyboardType:
-                                                TextInputType.numberWithOptions(
+                                                const TextInputType.numberWithOptions(
                                                     signed: true,
                                                     decimal: true),
                                             decoration:
@@ -1588,7 +1574,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5.0),
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent),
                                                     )),
@@ -1606,11 +1592,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       vendorController
                                                   .invoiceAmountError.value ==
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Text(
-                                              '  ' +
-                                                  vendorController
-                                                      .invoiceAmountError.value,
+                                              '  ${vendorController
+                                                      .invoiceAmountError.value}',
                                               style:
                                                   AppTextStyle.normalErrorText1,
                                             ),
@@ -1697,11 +1682,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                       vendorController
                                                   .tRNofLandlordError.value ==
                                               ''
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Text(
-                                              '  ' +
-                                                  vendorController
-                                                      .tRNofLandlordError.value,
+                                              '  ${vendorController
+                                                      .tRNofLandlordError.value}',
                                               style:
                                                   AppTextStyle.normalErrorText1,
                                             ),
@@ -1738,7 +1722,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                           onTap: () async {
                                             vendorController
                                                 .workCompletionError.value = '';
-                                            var expDate;
+                                            DateTime? expDate;
                                             expDate =
                                                 await showRoundedDatePicker(
                                               theme: ThemeData(
@@ -1750,11 +1734,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                               locale: SessionController()
                                                           .getLanguage() ==
                                                       1
-                                                  ? Locale('en', '')
-                                                  : Locale('ar', ''),
+                                                  ? const Locale('en', '')
+                                                  : const Locale('ar', ''),
                                               initialDate: DateTime.now(),
                                               firstDate: DateTime.now()
-                                                  .subtract(Duration(days: 15)),
+                                                  .subtract(const Duration(days: 15)),
                                               lastDate: DateTime.now(),
                                               borderRadius: 2.0.h,
                                               styleDatePicker:
@@ -1805,7 +1789,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                             );
                                             if (expDate != null) {
                                               DateFormat dateFormat =
-                                                  new DateFormat(AppMetaLabels()
+                                                  DateFormat(AppMetaLabels()
                                                       .dateFormatForShowRoundedDatePicker);
                                               workCompletionDateController
                                                       .text =
@@ -1892,10 +1876,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                         vendorController.workCompletionError
                                                     .value ==
                                                 ''
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : Padding(
                                                 padding:
-                                                    EdgeInsets.only(left: 5),
+                                                    const EdgeInsets.only(left: 5),
                                                 child: Text(
                                                   vendorController
                                                       .workCompletionError
@@ -1990,10 +1974,10 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                         vendorController
                                                     .descriptionError.value ==
                                                 ''
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : Padding(
                                                 padding:
-                                                    EdgeInsets.only(left: 5),
+                                                    const EdgeInsets.only(left: 5),
                                                 child: Text(
                                                   vendorController
                                                       .descriptionError.value,
@@ -2012,9 +1996,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                               ),
                               Obx(() {
                                 return vendorController.isEnableInvoiceNo.value
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : vendorController.isLoading.value
-                                        ? Center(
+                                        ? const Center(
                                             child: LoadingIndicatorBlue(),
                                           )
                                         : SizedBox(
@@ -2026,7 +2010,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       BorderRadius.circular(
                                                           1.3.h),
                                                 ),
-                                                backgroundColor: Color.fromRGBO(
+                                                backgroundColor: const Color.fromRGBO(
                                                     0, 61, 166, 1),
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 6.0.h,
@@ -2066,13 +2050,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       vendorController
                                                               .serviceNoError
                                                               .value =
-                                                          AppMetaLabels()
+                                                          '${AppMetaLabels()
                                                                   .pleaseSelect
                                                                   .replaceAll(
-                                                                      '.', '') +
-                                                              ' ' +
-                                                              AppMetaLabels()
-                                                                  .lpoNo;
+                                                                      '.', '')} ${AppMetaLabels()
+                                                                  .lpoNo}';
                                                       return;
                                                     }
                                                     // Invoice NO error
@@ -2138,11 +2120,9 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       setState(() {
                                                         vendorController
                                                             .invoiceAmountError
-                                                            .value = AppMetaLabels()
-                                                                .yourBalanceAMount +
-                                                            "${vendorController.balanceAmountofSelectedLPO.value}" +
-                                                            AppMetaLabels()
-                                                                .pleaseEnterValidAMountSeparate;
+                                                            .value = "${AppMetaLabels()
+                                                                .yourBalanceAMount}${vendorController.balanceAmountofSelectedLPO.value}${AppMetaLabels()
+                                                                .pleaseEnterValidAMountSeparate}";
                                                       });
                                                       return;
                                                     }
@@ -2211,7 +2191,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       return;
                                                     }
 
-                                                    var serviceType;
+                                                    String serviceType = "";
                                                     setState(() {
                                                       serviceType = vendorController
                                                                   .isServiceRqTypeRadioButtonVal
@@ -2280,13 +2260,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       vendorController
                                                               .serviceNoError
                                                               .value =
-                                                          AppMetaLabels()
+                                                          '${AppMetaLabels()
                                                                   .pleaseSelect
                                                                   .replaceAll(
-                                                                      '.', '') +
-                                                              ' ' +
-                                                              AppMetaLabels()
-                                                                  .aMCNo;
+                                                                      '.', '')} ${AppMetaLabels()
+                                                                  .aMCNo}';
                                                       return;
                                                     }
 
@@ -2305,13 +2283,11 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             '') {
                                                       vendorController
                                                           .instNOError
-                                                          .value = AppMetaLabels()
+                                                          .value = '${AppMetaLabels()
                                                               .pleaseSelect
                                                               .replaceAll(
-                                                                  '.', '') +
-                                                          ' ' +
-                                                          AppMetaLabels()
-                                                              .instalmentNoWithoutColon;
+                                                                  '.', '')} ${AppMetaLabels()
+                                                              .instalmentNoWithoutColon}';
                                                       return;
                                                     }
                                                     // Invoice NO error
@@ -2428,8 +2404,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                             .text
                                                             .replaceAll(
                                                                 '\n', ' ');
-                                                    print(
-                                                        'descriptionController :::: $des');
+                                                  if (kDebugMode)  print('descriptionController :::: $des');
                                                     if (!textValidator
                                                         .hasMatch(des)) {
                                                       vendorController
@@ -2449,20 +2424,17 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                                                       return;
                                                     }
 
-                                                    var serviceType;
-                                                    setState(() {
-                                                      serviceType = vendorController
-                                                                  .selectedLopAmcDropDownVal
-                                                                  .value ==
-                                                              0
-                                                          ? 'LPO'
-                                                          : 'AMC';
-                                                    });
-                                                    print(
-                                                        'calling func for $serviceType');
-                                                    var currentDate;
+                                                  String serviceType = vendorController
+                                                              .selectedLopAmcDropDownVal
+                                                              .value ==
+                                                          0
+                                                      ? 'LPO'
+                                                      : 'AMC';
+                                                  setState(() {});
+                                                  if (kDebugMode)  print('calling func for $serviceType');
+                                                    String currentDate;
                                                     DateFormat dateFormat =
-                                                        new DateFormat(
+                                                        DateFormat(
                                                             AppMetaLabels()
                                                                 .dateFormatForShowRoundedDatePicker);
 
@@ -2550,15 +2522,15 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                     height: double.infinity,
                     width: double.infinity,
                     color: Colors.black.withOpacity(0.3),
-                    child: Center(
+                    child: const Center(
                         child: CircularProgressIndicator(
                       backgroundColor: Colors.white,
                       color: Colors.blue,
                     )),
                   )
-                : SizedBox();
+                : const SizedBox();
           }),
-          BottomShadow(),
+          const BottomShadow(),
         ],
       ),
     );
@@ -2605,7 +2577,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                           'Bad Request'
                       ? 'Incorrect Data'
                       : vendorController.errorMainInfo.value.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -2623,7 +2595,7 @@ class _VendorInvoiceMainDetailsState extends State<VendorInvoiceMainDetails> {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(3.0.w),
-                          side: BorderSide(color: Colors.blue))),
+                          side: const BorderSide(color: Colors.blue))),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                 ),

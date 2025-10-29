@@ -16,7 +16,7 @@ import '../../../widgets/common_widgets/status_widget.dart';
 import '../vendor_request_details/vendor_request_details.dart';
 
 class VendorRequestList extends StatefulWidget {
-  const VendorRequestList({Key? key}) : super(key: key);
+  const VendorRequestList({super.key});
 
   @override
   _VendorRequestListState createState() => _VendorRequestListState();
@@ -121,7 +121,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                     getVSRController.getDataPagination(
                                         getVSRController.pageNo, '');
                                   },
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.refresh,
                                   ),
                                 )
@@ -157,7 +157,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                               child: Obx(() {
                                 return getVSRController.loadingData.value ==
                                         true
-                                    ? Center(
+                                    ? const Center(
                                         child: LoadingIndicatorBlue(),
                                       )
                                     : getVSRController.error.value != ''
@@ -230,7 +230,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                   style: AppTextStyle
                                                                       .semiBoldGrey10,
                                                                 ),
-                                                                Spacer(),
+                                                                const Spacer(),
                                                                 Text(
                                                                   getVSRController
                                                                       .svcReqs[
@@ -308,7 +308,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                   style: AppTextStyle
                                                                       .semiBoldGrey10,
                                                                 ),
-                                                                Spacer(),
+                                                                const Spacer(),
                                                                 getVSRController.svcReqs[index].status!.trim() ==
                                                                             'Received' &&
                                                                         getVSRController.svcReqs[index].category!.trim() ==
@@ -341,7 +341,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                             .length -
                                                                         1
                                                                 ? Container()
-                                                                : AppDivider(),
+                                                                : const AppDivider(),
                                                             index ==
                                                                     getVSRController
                                                                             .svcReqs
@@ -351,7 +351,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                             .svcReqs
                                                                             .length <
                                                                         20
-                                                                    ? SizedBox()
+                                                                    ? const SizedBox()
                                                                     // : _controller
                                                                     //         .isSearch.value
                                                                     //     ? SizedBox()
@@ -366,7 +366,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                   ? SizedBox(
                                                                                       width: 75.w,
                                                                                       height: 5.h,
-                                                                                      child: Center(
+                                                                                      child: const Center(
                                                                                         child: LoadingIndicatorBlue(),
                                                                                       ),
                                                                                     )
@@ -393,12 +393,12 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                                 children: [
                                                                                                   TextSpan(
                                                                                                     text: AppMetaLabels().loadMoreData,
-                                                                                                    style: TextStyle(
+                                                                                                    style: const TextStyle(
                                                                                                       color: Colors.blue,
                                                                                                       fontWeight: FontWeight.bold,
                                                                                                     ),
                                                                                                   ),
-                                                                                                  WidgetSpan(
+                                                                                                  const WidgetSpan(
                                                                                                     child: Icon(
                                                                                                       Icons.arrow_forward_ios,
                                                                                                       size: 15,
@@ -412,7 +412,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                     );
                                                                         }),
                                                                       )
-                                                                : SizedBox(),
+                                                                : const SizedBox(),
                                                             SizedBox(
                                                               height: 1.5.h,
                                                             )
@@ -460,7 +460,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                   : TextDirection.rtl,
               child: Stack(
                 children: [
-                  AppBackgroundConcave(),
+                  const AppBackgroundConcave(),
                   SafeArea(
                     child: Column(
                       children: [
@@ -475,7 +475,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                       onTap: () {
                                         Get.back();
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios,
                                         color: Colors.white,
                                       ),
@@ -484,7 +484,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                       AppMetaLabels().serviceRequests,
                                       style: AppTextStyle.semiBoldWhite15,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 24,
                                     )
                                   ],
@@ -562,7 +562,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                       getVSRController.getDataPagination(
                                           getVSRController.pageNo, '');
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.refresh,
                                     ),
                                   )
@@ -598,7 +598,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                 child: Obx(() {
                                   return getVSRController.loadingData.value ==
                                           true
-                                      ? Center(
+                                      ? const Center(
                                           child: LoadingIndicatorBlue(),
                                         )
                                       : getVSRController.error.value != ''
@@ -668,7 +668,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                     style: AppTextStyle
                                                                         .semiBoldGrey10,
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   Text(
                                                                     getVSRController
                                                                         .svcReqs[
@@ -743,7 +743,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                     style: AppTextStyle
                                                                         .semiBoldGrey10,
                                                                   ),
-                                                                  Spacer(),
+                                                                  const Spacer(),
                                                                   getVSRController.svcReqs[index].status!.trim() ==
                                                                               'Received' &&
                                                                           getVSRController.svcReqs[index].category!.trim() ==
@@ -774,7 +774,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                               .length -
                                                                           1
                                                                   ? Container()
-                                                                  : AppDivider(),
+                                                                  : const AppDivider(),
                                                               index ==
                                                                       getVSRController
                                                                               .svcReqs
@@ -784,7 +784,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                               .svcReqs
                                                                               .length <
                                                                           20
-                                                                      ? SizedBox()
+                                                                      ? const SizedBox()
                                                                       // : _controller
                                                                       //         .isSearch.value
                                                                       //     ? SizedBox()
@@ -799,7 +799,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                     ? SizedBox(
                                                                                         width: 75.w,
                                                                                         height: 5.h,
-                                                                                        child: Center(
+                                                                                        child: const Center(
                                                                                           child: LoadingIndicatorBlue(),
                                                                                         ),
                                                                                       )
@@ -826,12 +826,12 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                                   children: [
                                                                                                     TextSpan(
                                                                                                       text: AppMetaLabels().loadMoreData,
-                                                                                                      style: TextStyle(
+                                                                                                      style: const TextStyle(
                                                                                                         color: Colors.blue,
                                                                                                         fontWeight: FontWeight.bold,
                                                                                                       ),
                                                                                                     ),
-                                                                                                    WidgetSpan(
+                                                                                                    const WidgetSpan(
                                                                                                       child: Icon(
                                                                                                         Icons.arrow_forward_ios,
                                                                                                         size: 15,
@@ -845,7 +845,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                                                       );
                                                                           }),
                                                                         )
-                                                                  : SizedBox(),
+                                                                  : const SizedBox(),
                                                               SizedBox(
                                                                 height: 1.5.h,
                                                               )

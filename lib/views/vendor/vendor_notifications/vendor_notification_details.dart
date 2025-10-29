@@ -13,7 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class VendorNotificationDetails extends StatefulWidget {
-  const VendorNotificationDetails({Key? key}) : super(key: key);
+  const VendorNotificationDetails({super.key});
 
   @override
   _VendorNotificationDetailsState createState() =>
@@ -21,7 +21,7 @@ class VendorNotificationDetails extends StatefulWidget {
 }
 
 class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
-  var _controller = Get.put(VendorNotificationsController());
+  final _controller = Get.put(VendorNotificationsController());
 
   _getData() async {
     await _controller.notificationsDetails();
@@ -52,7 +52,7 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                       AppMetaLabels().notifications,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -68,7 +68,7 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.all(2.0.h),
@@ -76,7 +76,7 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                     return _controller.loadingnotificationsDetail.value == true
                         ? Padding(
                             padding: EdgeInsets.only(top: 40.0.h),
-                            child: LoadingIndicatorBlue(),
+                            child: const LoadingIndicatorBlue(),
                           )
                         : _controller.error.value != ''
                             ? Padding(
@@ -120,7 +120,7 @@ class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
                                         style: AppTextStyle.semiBoldBlack13,
                                       ),
                                     ),
-                                    AppDivider(),
+                                    const AppDivider(),
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 2.0.h,

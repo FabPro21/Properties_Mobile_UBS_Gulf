@@ -18,16 +18,16 @@ import 'package:sizer/sizer.dart';
 import '../../../data/helpers/session_controller.dart';
 
 class InvoicesScreen extends StatefulWidget {
-  InvoicesScreen({Key? key}) : super(key: key);
+  const InvoicesScreen({super.key});
 
   @override
   State<InvoicesScreen> createState() => _InvoicesScreenState();
 }
 
 class _InvoicesScreenState extends State<InvoicesScreen> {
-  var _controller = Get.put(VendorDashboardAllInvoicesController());
+  final _controller = Get.put(VendorDashboardAllInvoicesController());
   final TextEditingController searchControler = TextEditingController();
-  GlobalKey _toolTipKey = GlobalKey();
+  final GlobalKey _toolTipKey = GlobalKey();
   @override
   void initState() {
     _controller.pageNo = '1';
@@ -61,48 +61,44 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                 Container(
                   width: 12.2.w,
                 ),
-                Spacer(),
-                Container(
-                  child: Text(
-                    AppMetaLabels().invoices,
-                    style: AppTextStyle.semiBoldWhite15,
-                  ),
+                const Spacer(),
+                Text(
+                  AppMetaLabels().invoices,
+                  style: AppTextStyle.semiBoldWhite15,
                 ),
-                Spacer(),
-                Container(
-                  child: Tooltip(
-                    key: _toolTipKey,
-                    message: AppMetaLabels().createNewServiceRequest,
-                    verticalOffset: 2.h,
-                    margin: EdgeInsets.only(right: 3.h, left: 2.h),
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                    decoration: BoxDecoration(
-                        color: AppColors.chartBlueColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: SessionController().getLanguage() == 1
-                                ? Radius.circular(8)
-                                : Radius.zero,
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(8),
-                            topRight: SessionController().getLanguage() == 1
-                                ? Radius.zero
-                                : Radius.circular(8))),
-                    child: IconButton(
-                      icon: Icon(Icons.add_circle_outline_outlined),
-                      iconSize: 4.0.h,
-                      color: Colors.white,
-                      onPressed: () async {
-                        // sending dumny req no for testing
-                        await Get.to(() => VendorInvoiceRequestTabs(
-                              requestNo: '',
-                              caller: 'Add New Invoice',
-                              title: AppMetaLabels().invoice,
-                              initialIndex: 0,
-                            ));
-                        _controller.getAllInvoicsePagination(
-                            _controller.pageNo, '');
-                      },
-                    ),
+                const Spacer(),
+                Tooltip(
+                  key: _toolTipKey,
+                  message: AppMetaLabels().createNewServiceRequest,
+                  verticalOffset: 2.h,
+                  margin: EdgeInsets.only(right: 3.h, left: 2.h),
+                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                  decoration: BoxDecoration(
+                      color: AppColors.chartBlueColor,
+                      borderRadius: BorderRadius.only(
+                          topLeft: SessionController().getLanguage() == 1
+                              ? const Radius.circular(8)
+                              : Radius.zero,
+                          bottomLeft: const Radius.circular(8),
+                          bottomRight: const Radius.circular(8),
+                          topRight: SessionController().getLanguage() == 1
+                              ? Radius.zero
+                              : const Radius.circular(8))),
+                  child: IconButton(
+                    icon: const Icon(Icons.add_circle_outline_outlined),
+                    iconSize: 4.0.h,
+                    color: Colors.white,
+                    onPressed: () async {
+                      // sending dumny req no for testing
+                      await Get.to(() => VendorInvoiceRequestTabs(
+                            requestNo: '',
+                            caller: 'Add New Invoice',
+                            title: AppMetaLabels().invoice,
+                            initialIndex: 0,
+                          ));
+                      _controller.getAllInvoicsePagination(
+                          _controller.pageNo, '');
+                    },
                   ),
                 ),
               ],
@@ -175,7 +171,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                           _controller.pageNo, '');
                       searchControler.clear();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.refresh,
                     ),
                   ),
@@ -210,7 +206,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                       ),
                       child: Obx(() {
                         return _controller.loadingData.value == true
-                            ? Center(
+                            ? const Center(
                                 child: LoadingIndicatorBlue(),
                               )
                             : _controller.error.value != ''
@@ -235,7 +231,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                       ],
                                     ),
                                     child: ListView.builder(
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
                                       padding: EdgeInsets.zero,
                                       itemCount: _controller.allInvoice.length,
@@ -269,23 +265,21 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                               ),
                                                               Expanded(
                                                                 child:
-                                                                    Container(
-                                                                  child: Text(
-                                                                    _controller
-                                                                            .allInvoice[index]
-                                                                            .invoiceNumber
-                                                                            .toString() ,
-                                                                    style: AppTextStyle
-                                                                        .semiBoldBlack10,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .right,
-                                                                    maxLines: 1,
-                                                                  ),
-                                                                ),
+                                                                    Text(
+                                                                      _controller
+                                                                              .allInvoice[index]
+                                                                              .invoiceNumber
+                                                                              .toString() ,
+                                                                      style: AppTextStyle
+                                                                          .semiBoldBlack10,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .right,
+                                                                      maxLines: 1,
+                                                                    ),
                                                               ),
                                                             ],
                                                           ),
@@ -299,13 +293,6 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                               AppMetaLabels()
                                                                   .invoiceDate,
                                                               _controller
-                                                                          .allInvoice[
-                                                                              index]
-                                                                          .invoiceDate
-                                                                          .toString() ==
-                                                                      null
-                                                                  ? ''
-                                                                  : _controller
                                                                           .allInvoice[
                                                                               index]
                                                                           .invoiceDate
@@ -328,7 +315,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                 style: AppTextStyle
                                                                     .semiBoldBlack10,
                                                               ),
-                                                              Spacer(),
+                                                              const Spacer(),
                                                               StatusWidgetVendor(
                                                                 text: _controller
                                                                         .allInvoice[
@@ -374,7 +361,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                             .allInvoice.length -
                                                         1
                                                 ? Container()
-                                                : AppDivider(),
+                                                : const AppDivider(),
                                             index ==
                                                     _controller
                                                             .allInvoice.length -
@@ -382,7 +369,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                 ? _controller
                                                             .allInvoice.length <
                                                         20
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     // : _controller
                                                     //         .isSearch.value
                                                     //     ? SizedBox()
@@ -392,7 +379,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                       .errorLoadMore
                                                                       .value !=
                                                                   ''
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : _controller
                                                                       .loadingDataLoadMore
                                                                       .value
@@ -402,7 +389,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                       height:
                                                                           5.h,
                                                                       child:
-                                                                          Center(
+                                                                          const Center(
                                                                         child:
                                                                             LoadingIndicatorBlue(),
                                                                       ),
@@ -436,12 +423,12 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                               children: [
                                                                                 TextSpan(
                                                                                   text: AppMetaLabels().loadMoreData,
-                                                                                  style: TextStyle(
+                                                                                  style: const TextStyle(
                                                                                     color: Colors.blue,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
                                                                                 ),
-                                                                                WidgetSpan(
+                                                                                const WidgetSpan(
                                                                                   child: Icon(
                                                                                     Icons.arrow_forward_ios,
                                                                                     size: 15,
@@ -454,7 +441,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                     );
                                                         }),
                                                       )
-                                                : SizedBox(),
+                                                : const SizedBox(),
                                             SizedBox(
                                               height: 1.5.h,
                                             )
@@ -478,7 +465,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

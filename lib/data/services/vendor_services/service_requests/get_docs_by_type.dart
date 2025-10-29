@@ -27,7 +27,8 @@ class VendorGetDocsByType {
         print('Catch::::::::::: ==== > $response');
         return AppMetaLabels().anyError;
       }
-    } else
+    } else {
       return response;
+    }
   }
 }

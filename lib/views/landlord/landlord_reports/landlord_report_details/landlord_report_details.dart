@@ -14,6 +14,7 @@ import 'package:fap_properties/views/widgets/clear_button.dart';
 import 'package:fap_properties/views/widgets/common_widgets/loading_indicator_blue.dart';
 import 'package:fap_properties/views/widgets/custom_app_bar2.dart';
 import 'package:fap_properties/views/widgets/snackbar_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
@@ -25,7 +26,7 @@ import 'package:fap_properties/data/models/landlord_models/report/get_dropdown_m
 
 class LandLordReportDetails extends StatefulWidget {
   final String? fileNmae;
-  const LandLordReportDetails({Key? key, this.fileNmae}) : super(key: key);
+  const LandLordReportDetails({super.key, this.fileNmae});
 
   @override
   _LandLordReportDetailsState createState() => _LandLordReportDetailsState();
@@ -55,7 +56,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
     await Permission.storage.request();
   }
 
-  ReceivePort _recivePort = ReceivePort();
+  final ReceivePort _recivePort = ReceivePort();
   initForSetState() {
     setState(() {
       print('testing ::::');
@@ -189,7 +190,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                   widget.fileNmae == 'Building Status Report' ||
                                           widget.fileNmae ==
                                               'Unit Status Report'
-                                      ? AppMetaLabels().property + ' *'
+                                      ? '${AppMetaLabels().property} *'
                                       : AppMetaLabels().property,
                                   style: AppTextStyle.normalGrey10,
                                 ),
@@ -199,10 +200,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                 InkWell(
                                   onTap: () async {
                                     lDReportController.selectedPropType.value =
-                                        await Get.to(
-                                            () => LandlordReportProperties(
-                                                  dropDownType: '4',
-                                                ));
+                                        await Get.to(() =>
+                                            const LandlordReportProperties(
+                                              dropDownType: '4',
+                                            ));
 
                                     if (lDReportController
                                             .selectedPropType.value ==
@@ -257,7 +258,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                     width: 100.0.w,
                                     height: 5.5.h,
                                     decoration: BoxDecoration(
-                                      color: Color.fromRGBO(246, 248, 249, 1),
+                                      color: const Color.fromRGBO(
+                                          246, 248, 249, 1),
                                       borderRadius:
                                           BorderRadius.circular(0.5.h),
                                     ),
@@ -292,9 +294,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               maxLines: 2,
                                             ),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Padding(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                                 horizontal: 0.1),
                                             child: ClearButton(
                                               clear: () {
@@ -304,7 +306,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           .value =
                                                       dropDownModel
                                                           .ServiceRequests();
-                                                  ;
                                                 });
                                               },
                                             ),
@@ -325,9 +326,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            AppMetaLabels().cheque +
-                                                ' ' +
-                                                AppMetaLabels().status,
+                                            '${AppMetaLabels().cheque} ${AppMetaLabels().status}',
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                           SizedBox(
@@ -339,7 +338,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       .selectedChequeStatus
                                                       .value =
                                                   await Get.to(() =>
-                                                      LandlordReportProperties(
+                                                      const LandlordReportProperties(
                                                         dropDownType: '7',
                                                       ));
                                               if (lDReportController
@@ -375,7 +374,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -408,11 +407,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       style: AppTextStyle
                                                           .normalBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -421,7 +420,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                                     .value =
                                                                 dropDownModel
                                                                     .ServiceRequests();
-                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -433,7 +431,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // Unit Status
                                 widget.fileNmae == 'Unit Status Report'
@@ -442,9 +440,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            AppMetaLabels().unit +
-                                                ' ' +
-                                                AppMetaLabels().status,
+                                            '${AppMetaLabels().unit} ${AppMetaLabels().status}',
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                           SizedBox(
@@ -456,7 +452,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       .selectedUnitStatus
                                                       .value =
                                                   await Get.to(() =>
-                                                      LandlordReportProperties(
+                                                      const LandlordReportProperties(
                                                         dropDownType: '6',
                                                       ));
                                               if (lDReportController
@@ -478,7 +474,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -511,11 +507,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       style: AppTextStyle
                                                           .normalBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -524,7 +520,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                                     .value =
                                                                 dropDownModel
                                                                     .ServiceRequests();
-                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -536,7 +531,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // Contractor
                                 widget.fileNmae == 'AMC Report' ||
@@ -560,7 +555,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       .selectedcontractorType
                                                       .value =
                                                   await Get.to(() =>
-                                                      LandlordReportProperties(
+                                                      const LandlordReportProperties(
                                                         dropDownType: '3',
                                                       ));
                                               if (lDReportController
@@ -596,7 +591,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -629,11 +624,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       style: AppTextStyle
                                                           .normalBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -642,7 +637,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                                     .value =
                                                                 dropDownModel
                                                                     .ServiceRequests();
-                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -654,13 +648,13 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                                 widget.fileNmae == 'AMC Report' ||
                                         widget.fileNmae == 'LPO Report'
                                     ? SizedBox(
                                         height: 1.5.h,
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // ContractCategory
                                 widget.fileNmae == "AMC Report" ||
@@ -672,9 +666,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            AppMetaLabels().contract +
-                                                ' ' +
-                                                AppMetaLabels().category,
+                                            '${AppMetaLabels().contract} ${AppMetaLabels().category}',
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                           SizedBox(
@@ -686,7 +678,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       .selectedcontractCategoryType
                                                       .value =
                                                   await Get.to(() =>
-                                                      LandlordReportProperties(
+                                                      const LandlordReportProperties(
                                                         dropDownType: '2',
                                                       ));
                                               if (lDReportController
@@ -723,7 +715,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -756,11 +748,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       style: AppTextStyle
                                                           .normalBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -769,7 +761,6 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                                     .value =
                                                                 dropDownModel
                                                                     .ServiceRequests();
-                                                            ;
                                                           });
                                                         },
                                                       ),
@@ -781,14 +772,14 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 widget.fileNmae == 'AMC Report' ||
                                         widget.fileNmae == 'LPO Report'
                                     ? SizedBox(
                                         height: 1.5.h,
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // ServiceContractStatus
                                 widget.fileNmae == 'AMC Report' ||
@@ -811,7 +802,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       .selectedserviceContractStatusType
                                                       .value =
                                                   await Get.to(() =>
-                                                      LandlordReportProperties(
+                                                      const LandlordReportProperties(
                                                         dropDownType: '1',
                                                       ));
                                               if (lDReportController
@@ -847,7 +838,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -880,11 +871,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       style: AppTextStyle
                                                           .normalBlack12,
                                                     ),
-                                                    Spacer(),
+                                                    const Spacer(),
                                                     Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 0.1),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 0.1),
                                                       child: ClearButton(
                                                         clear: () {
                                                           setState(() {
@@ -904,7 +895,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                                 SizedBox(
                                   height: widget.fileNmae == 'AMC Report' ||
                                           widget.fileNmae == 'LPO Report'
@@ -918,7 +909,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            AppMetaLabels().aSonoDate + ' *',
+                                            '${AppMetaLabels().aSonoDate} *',
                                             style: AppTextStyle.normalGrey10,
                                           ),
                                           SizedBox(
@@ -938,8 +929,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                   locale: SessionController()
                                                               .getLanguage() ==
                                                           1
-                                                      ? Locale('en', '')
-                                                      : Locale('ar', ''),
+                                                      ? const Locale('en', '')
+                                                      : const Locale('ar', ''),
                                                   initialDate: DateTime.now(),
                                                   firstDate: DateTime(
                                                       DateTime.now().year - 10),
@@ -1011,13 +1002,17 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       AppMetaLabels()
                                                           .validDateRange;
                                                 }
-                                              } catch (e) {}
+                                              } catch (e) {
+                                                if (kDebugMode) {
+                                                  print("Catch :: $e");
+                                                }
+                                              }
                                             },
                                             child: Container(
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -1042,11 +1037,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       ),
                                                     );
                                                   }),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 0.1),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 0.1),
                                                     child: ClearButton(
                                                       clear: () {
                                                         lDReportController
@@ -1065,12 +1060,12 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                                 widget.fileNmae == 'AMC Report'
                                     ? SizedBox(
                                         height: 1.5.h,
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // widget.fileNmae == 'Receipt Register Report'
                                 //     ? Column(
@@ -1193,7 +1188,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         widget.fileNmae ==
                                             'Building Status Report' ||
                                         widget.fileNmae == 'Legal Case Report'
-                                    ? Container(
+                                    ? SizedBox(
                                         height: 9.0.h,
                                         child: Column(
                                           crossAxisAlignment:
@@ -1210,7 +1205,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -1225,17 +1220,18 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 },
                                                 decoration: InputDecoration(
                                                   filled: true,
-                                                  fillColor: Color.fromRGBO(
-                                                      246, 248, 249, 1),
+                                                  fillColor:
+                                                      const Color.fromRGBO(
+                                                          246, 248, 249, 1),
                                                   focusColor: Colors.red,
                                                   enabledBorder:
-                                                      UnderlineInputBorder(
+                                                      const UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent),
                                                   ),
                                                   focusedBorder:
-                                                      UnderlineInputBorder(
+                                                      const UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent),
@@ -1251,10 +1247,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ],
                                         ),
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 widget.fileNmae == 'Tenancy Contracts Report'
-                                    ? Container(
+                                    ? SizedBox(
                                         height: 9.0.h,
                                         child: Column(
                                           crossAxisAlignment:
@@ -1271,7 +1267,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                               width: 100.0.w,
                                               height: 5.0.h,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     246, 248, 249, 1),
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -1286,17 +1282,18 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 },
                                                 decoration: InputDecoration(
                                                   filled: true,
-                                                  fillColor: Color.fromRGBO(
-                                                      246, 248, 249, 1),
+                                                  fillColor:
+                                                      const Color.fromRGBO(
+                                                          246, 248, 249, 1),
                                                   focusColor: Colors.red,
                                                   enabledBorder:
-                                                      UnderlineInputBorder(
+                                                      const UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent),
                                                   ),
                                                   focusedBorder:
-                                                      UnderlineInputBorder(
+                                                      const UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent),
@@ -1312,7 +1309,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           ],
                                         ),
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 widget.fileNmae == 'Receipt Register Report' ||
                                         widget.fileNmae ==
@@ -1326,7 +1323,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                     ? SizedBox(
                                         height: 1.5.h,
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
 
                                 // From & To Date
                                 widget.fileNmae == 'Building Status Report' ||
@@ -1334,7 +1331,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'Unit Status Report' ||
                                         widget.fileNmae ==
                                             'Occupancy Vacancy Register Report'
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -1344,7 +1341,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                AppMetaLabels().from + '*',
+                                                '${AppMetaLabels().from}*',
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
@@ -1357,8 +1354,8 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                     var dT =
                                                         await showRoundedDatePicker(
                                                       theme: ThemeData(
-                                                          primarySwatch: Colors
-                                                              .red),
+                                                          primarySwatch:
+                                                              Colors.red),
 
                                                       height: 50.0.h,
                                                       context: context,
@@ -1366,8 +1363,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       locale: SessionController()
                                                                   .getLanguage() ==
                                                               1
-                                                          ? Locale('en', '')
-                                                          : Locale('ar', ''),
+                                                          ? const Locale(
+                                                              'en', '')
+                                                          : const Locale(
+                                                              'ar', ''),
                                                       initialDate:
                                                           DateTime.now(),
                                                       firstDate: DateTime(
@@ -1453,13 +1452,17 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         isDownloaded = false;
                                                       });
                                                     }
-                                                  } catch (e) {}
+                                                  } catch (e) {
+                                                    if (kDebugMode) {
+                                                      print("Catch :: $e");
+                                                    }
+                                                  }
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,
                                                   height: 5.5.h,
                                                   decoration: BoxDecoration(
-                                                    color: Color.fromRGBO(
+                                                    color: const Color.fromRGBO(
                                                         246, 248, 249, 1),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1487,7 +1490,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           ),
                                                         );
                                                       }),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Padding(
                                                         padding: EdgeInsets
                                                             .symmetric(
@@ -1528,7 +1531,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                AppMetaLabels().to + ' *',
+                                                '${AppMetaLabels().to} *',
                                                 style:
                                                     AppTextStyle.normalGrey10,
                                               ),
@@ -1564,8 +1567,10 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       locale: SessionController()
                                                                   .getLanguage() ==
                                                               1
-                                                          ? Locale('en', '')
-                                                          : Locale('ar', ''),
+                                                          ? const Locale(
+                                                              'en', '')
+                                                          : const Locale(
+                                                              'ar', ''),
                                                       initialDate:
                                                           lDReportController
                                                               .fromDateDT,
@@ -1694,13 +1699,17 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           .value = '';
                                                       return;
                                                     }
-                                                  } catch (e) {}
+                                                  } catch (e) {
+                                                    if (kDebugMode) {
+                                                      print("Catch :: $e");
+                                                    }
+                                                  }
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,
                                                   height: 5.5.h,
                                                   decoration: BoxDecoration(
-                                                    color: Color.fromRGBO(
+                                                    color: const Color.fromRGBO(
                                                         246, 248, 249, 1),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1728,7 +1737,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           ),
                                                         );
                                                       }),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Padding(
                                                         padding: EdgeInsets
                                                             .symmetric(
@@ -1769,12 +1778,12 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           child: Container(
                                             width: 80.0.w,
                                             decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   255, 59, 48, 0.6),
                                               borderRadius:
                                                   BorderRadius.circular(1.0.h),
                                               border: Border.all(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     255, 59, 48, 1),
                                               ),
                                             ),
@@ -1815,14 +1824,16 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
               Obx(() {
                 return lDReportController.isLoading.value ||
                         lDReportController.isLoadingSummary.value
-                    ? Container(
+                    ? const SizedBox(
                         height: double.infinity,
                         width: double.infinity,
                         child: Center(child: LoadingIndicatorBlue()),
                       )
-                    : SizedBox();
+                    : const SizedBox();
               }),
-              isEnableScreen == false ? ScreenDisableWidget() : SizedBox(),
+              isEnableScreen == false
+                  ? const ScreenDisableWidget()
+                  : const SizedBox(),
             ],
           ),
           bottomNavigationBar: BottomAppBar(
@@ -1845,7 +1856,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                       width: 86.0.w,
                       margin: EdgeInsets.only(top: 0.0.h, bottom: 0.5.h),
                       child: lDReportController.isLoading.value
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : ElevatedButton(
                               onPressed: isButtonEnable == false
                                   ? null
@@ -1906,9 +1917,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             null) {
                                           SnakBarWidget.getSnackBarErrorBlue(
                                               AppMetaLabels().alert,
-                                              AppMetaLabels().pleaseSelect +
-                                                  ' ' +
-                                                  AppMetaLabels().property);
+                                              '${AppMetaLabels().pleaseSelect} ${AppMetaLabels().property}');
                                           return;
                                         }
                                       }
@@ -1919,8 +1928,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         propertyID = null;
                                       } else {
                                         propertyID = lDReportController
-                                                .selectedPropType.value.id ??
-                                            null;
+                                            .selectedPropType.value.id;
                                       }
                                       dynamic chequeStatusID;
                                       if (lDReportController
@@ -1929,10 +1937,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         chequeStatusID = null;
                                       } else {
                                         chequeStatusID = lDReportController
-                                                .selectedChequeStatus
-                                                .value
-                                                .id ??
-                                            null;
+                                            .selectedChequeStatus.value.id;
                                       }
                                       dynamic unitStatusID;
                                       if (lDReportController
@@ -1941,8 +1946,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         unitStatusID = null;
                                       } else {
                                         unitStatusID = lDReportController
-                                                .selectedUnitStatus.value.id ??
-                                            null;
+                                            .selectedUnitStatus.value.id;
                                       }
 
                                       dynamic contractorID;
@@ -1952,10 +1956,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         contractorID = null;
                                       } else {
                                         contractorID = lDReportController
-                                                .selectedcontractorType
-                                                .value
-                                                .id ??
-                                            null;
+                                            .selectedcontractorType.value.id;
                                       }
 
                                       dynamic contractCategoryStatusID;
@@ -1967,10 +1968,9 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                       } else {
                                         contractCategoryStatusID =
                                             lDReportController
-                                                    .selectedcontractCategoryType
-                                                    .value
-                                                    .id ??
-                                                null;
+                                                .selectedcontractCategoryType
+                                                .value
+                                                .id;
                                       }
                                       dynamic serviceContractStatusID;
                                       if (lDReportController
@@ -1979,11 +1979,11 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                           null) {
                                         serviceContractStatusID = null;
                                       } else {
-                                        serviceContractStatusID = lDReportController
+                                        serviceContractStatusID =
+                                            lDReportController
                                                 .selectedserviceContractStatusType
                                                 .value
-                                                .id ??
-                                            null;
+                                                .id;
                                       }
                                       dynamic transactionID;
                                       if (lDReportController
@@ -1992,32 +1992,15 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                         transactionID = null;
                                       } else {
                                         transactionID = lDReportController
-                                                .selectedTransactionID
-                                                .value
-                                                .id ??
-                                            null;
+                                            .selectedTransactionID.value.id;
                                       }
-                                      if (propertyID == null) {
-                                        propertyID = "-1";
-                                      }
-                                      if (contractorID == null) {
-                                        contractorID = "-1";
-                                      }
-                                      if (contractCategoryStatusID == null) {
-                                        contractCategoryStatusID = "-1";
-                                      }
-                                      if (serviceContractStatusID == null) {
-                                        serviceContractStatusID = "-1";
-                                      }
-                                      if (transactionID == null) {
-                                        transactionID = "-1";
-                                      }
-                                      if (chequeStatusID == null) {
-                                        chequeStatusID = "-1";
-                                      }
-                                      if (unitStatusID == null) {
-                                        unitStatusID = "-1";
-                                      }
+                                      propertyID ??= "-1";
+                                      contractorID ??= "-1";
+                                      contractCategoryStatusID ??= "-1";
+                                      serviceContractStatusID ??= "-1";
+                                      transactionID ??= "-1";
+                                      chequeStatusID ??= "-1";
+                                      unitStatusID ??= "-1";
                                       // Done
                                       Map data;
                                       if (widget.fileNmae == "AMC Report" ||
@@ -2311,17 +2294,17 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                             'Alert', 'Working... ');
                                       }
                                     },
-                              child: Text(
-                                AppMetaLabels().viewReport,
-                                style: isButtonEnable == false
-                                    ? AppTextStyle.semiBoldBlack11
-                                    : AppTextStyle.semiBoldWhite11,
-                              ),
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(2.0.w),
                                 ),
                                 backgroundColor: AppColors.blueColor,
+                              ),
+                              child: Text(
+                                AppMetaLabels().viewReport,
+                                style: isButtonEnable == false
+                                    ? AppTextStyle.semiBoldBlack11
+                                    : AppTextStyle.semiBoldWhite11,
                               ),
                             ),
                     ),

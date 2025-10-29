@@ -29,9 +29,9 @@ class LandlordContractMainInfoController extends GetxController {
   RxString obxError = '0'.obs;
   void getContractDetails(int contractId) async {
     obxError.value = '0';
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     errorLoadingContractDetails = '';
     loadingContractDetails.value = true;
@@ -61,16 +61,17 @@ class LandlordContractMainInfoController extends GetxController {
       loadingContractDetails.value = false;
       if (now.difference(endDate).inDays >= 15) showExtend = false;
       getContractPayables();
-    } else
+    } else {
       errorLoadingContractDetails = response;
+    }
     loadingContractDetails.value = false;
   }
 
   var contractPayables = LandLordContractPayableModel();
   void getContractPayables() async {
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     loadingContractPayables.value = true;
     contractPayables = LandLordContractPayableModel();
@@ -92,8 +93,9 @@ class LandlordContractMainInfoController extends GetxController {
           removeZeroBalance();
           sumPayments();
           print('Sum Val ::::: ${sumOfAllPayments.value}');
-          if (sumOfAllPayments.value == '0.00')
+          if (sumOfAllPayments.value == '0.00') {
             errorLoadingContractPayables.value = AppMetaLabels().noDatafound;
+          }
         }
       } else {
         errorLoadingContractPayables.value = resp;
@@ -106,22 +108,26 @@ class LandlordContractMainInfoController extends GetxController {
   }
 
   void removeZeroBalance() {
-    contractPayables.contractPayable!.forEach((element) {
-      if (element.balance == 0)
+    for (var element in contractPayables.contractPayable!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.additionalCharges!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.additionalCharges!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.vatCharges!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.vatCharges!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
-    contractPayables.vatOnRent!.forEach((element) {
-      if (element.balance == 0)
+      }
+    }
+    for (var element in contractPayables.vatOnRent!) {
+      if (element.balance == 0) {
         contractPayables.contractPayable!.remove(element);
-    });
+      }
+    }
   }
 
   void sumPayments() {
@@ -129,24 +135,24 @@ class LandlordContractMainInfoController extends GetxController {
     double additionalSum = 0;
     double vatRentSum = 0;
     double vatChargesSum = 0;
-    contractPayables.contractPayable!.forEach((element) {
+    for (var element in contractPayables.contractPayable!) {
       rentalSum = rentalSum + element.balance!;
-    });
-    contractPayables.additionalCharges!.forEach((element) {
+    }
+    for (var element in contractPayables.additionalCharges!) {
       additionalSum = additionalSum + element.balance!;
-    });
-    contractPayables.vatCharges!.forEach((element) {
+    }
+    for (var element in contractPayables.vatCharges!) {
       vatChargesSum = vatChargesSum + element.balance!;
-    });
-    contractPayables.vatOnRent!.forEach((element) {
+    }
+    for (var element in contractPayables.vatOnRent!) {
       vatRentSum = vatRentSum + element.balance!;
-    });
+    }
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    this.totalRentalPayment.value = amountFormat.format(rentalSum);
-    this.totalAdditionalCharges.value = amountFormat.format(additionalSum);
-    this.totalVatOnRent.value = amountFormat.format(vatRentSum);
-    this.totalVatOnCharges.value = amountFormat.format(vatChargesSum);
-    this.sumOfAllPayments.value = amountFormat
+    totalRentalPayment.value = amountFormat.format(rentalSum);
+    totalAdditionalCharges.value = amountFormat.format(additionalSum);
+    totalVatOnRent.value = amountFormat.format(vatRentSum);
+    totalVatOnCharges.value = amountFormat.format(vatChargesSum);
+    sumOfAllPayments.value = amountFormat
         .format(rentalSum + additionalSum + vatRentSum + vatChargesSum);
   }
 }

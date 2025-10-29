@@ -13,20 +13,20 @@ class LandlordContractsModelLatest {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['status'] = this.status;
-    data['totalRecord'] = this.totalRecord;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['status'] = status;
+    data['totalRecord'] = totalRecord;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -123,35 +123,35 @@ class Data {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['contractID'] = this.contractID;
-    data['contractno'] = this.contractno;
-    data['contractDate'] = this.contractDate;
-    data['contractStartDate'] = this.contractStartDate;
-    data['contractEndDate'] = this.contractEndDate;
-    data['rentforstay'] = this.rentforstay;
-    data['noOfDays'] = this.noOfDays;
-    data['gracePeriod'] = this.gracePeriod;
-    data['graceStartDate'] = this.graceStartDate;
-    data['graceEndDate'] = this.graceEndDate;
-    data['noOfContractYears'] = this.noOfContractYears;
-    data['installments'] = this.installments;
-    data['retention'] = this.retention;
-    data['otherCharges'] = this.otherCharges;
-    data['vatCharges'] = this.vatCharges;
-    data['vatAmount'] = this.vatAmount;
-    data['propertyName'] = this.propertyName;
-    data['propertyNameAR'] = this.propertyNameAR;
-    data['propertyImage'] = this.propertyImage;
-    data['unitType'] = this.unitType;
-    data['unitTypeAR'] = this.unitTypeAR;
-    data['unitNo'] = this.unitNo;
-    data['unitRefNo'] = this.unitRefNo;
-    data['total'] = this.total;
-    data['paid'] = this.paid;
-    data['contractStatus'] = this.contractStatus;
-    data['contractStatusAR'] = this.contractStatusAR;
-    data['totalRecord'] = this.totalRecord;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['contractID'] = contractID;
+    data['contractno'] = contractno;
+    data['contractDate'] = contractDate;
+    data['contractStartDate'] = contractStartDate;
+    data['contractEndDate'] = contractEndDate;
+    data['rentforstay'] = rentforstay;
+    data['noOfDays'] = noOfDays;
+    data['gracePeriod'] = gracePeriod;
+    data['graceStartDate'] = graceStartDate;
+    data['graceEndDate'] = graceEndDate;
+    data['noOfContractYears'] = noOfContractYears;
+    data['installments'] = installments;
+    data['retention'] = retention;
+    data['otherCharges'] = otherCharges;
+    data['vatCharges'] = vatCharges;
+    data['vatAmount'] = vatAmount;
+    data['propertyName'] = propertyName;
+    data['propertyNameAR'] = propertyNameAR;
+    data['propertyImage'] = propertyImage;
+    data['unitType'] = unitType;
+    data['unitTypeAR'] = unitTypeAR;
+    data['unitNo'] = unitNo;
+    data['unitRefNo'] = unitRefNo;
+    data['total'] = total;
+    data['paid'] = paid;
+    data['contractStatus'] = contractStatus;
+    data['contractStatusAR'] = contractStatusAR;
+    data['totalRecord'] = totalRecord;
     return data;
   }
 }

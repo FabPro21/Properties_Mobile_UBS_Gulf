@@ -25,9 +25,9 @@ class TenantUnitInfoDetailsController extends GetxController {
   }
 
   getData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     loadingData.value = true;
     var result = await TenantRepository.getContractUnitDetails();
@@ -45,9 +45,9 @@ class TenantUnitInfoDetailsController extends GetxController {
   }
 
   getAdditionalData() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     loadingAdditionalData.value = true;
     var result = await TenantRepository.getUnitAditionalDetails();

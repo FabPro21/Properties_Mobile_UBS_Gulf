@@ -20,8 +20,9 @@ class LandlordGetPropertiesServices {
       if (response is Response) {
         log(response.body);
         return landlordPropertiesModelFromJson(response.body);
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;
@@ -41,8 +42,9 @@ class LandlordGetPropertiesServices {
       if (response is Response) {
         log(response.body);
         return landlordPropertiesModelFromJson(response.body);
-      } else
+      } else {
         return response;
+      }
     } catch (e) {
       if (kDebugMode) print(e);
       return AppMetaLabels().someThingWentWrong;

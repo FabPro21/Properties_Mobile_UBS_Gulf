@@ -2,6 +2,8 @@
 //
 //     final publicLocationModel = publicLocationModelFromJson(jsonString);
 
+// ignore_for_file: library_prefixes
+
 import 'dart:convert';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -90,11 +92,11 @@ class LocationVm {
       lat1 = double.parse(latlan[0]!);
       lng1 = double.parse(latlan[1]!);
     } else {
-      position = CameraPosition(
+      position = const CameraPosition(
         target: LatLng(23.4241, 53.8478),
         zoom: 8,
       );
-      positionAm = Am.CameraPosition(
+      positionAm = const Am.CameraPosition(
         target: Am.LatLng(23.4241, 53.8478),
         zoom: 8,
       );

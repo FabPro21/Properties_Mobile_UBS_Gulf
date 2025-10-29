@@ -9,10 +9,10 @@ class CustomAppBar2 extends StatelessWidget {
   final String? title;
   final Function? onBackPressed;
   const CustomAppBar2({
-    Key? key,
+    super.key,
     @required this.title,
     this.onBackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,37 +38,36 @@ class CustomAppBar2 extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 5.0.h),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                      size: 3.h,
-                    ),
-                    onPressed: () {
-                      if (onBackPressed != null)
-                        onBackPressed!();
-                      else
-                        Get.back();
-                    },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 3.h,
                   ),
-                  Expanded(
-                    child: Text(
-                      title!,
-                      style: AppTextStyle.semiBoldWhite14,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
+                  onPressed: () {
+                    if (onBackPressed != null) {
+                      onBackPressed!();
+                    } else {
+                      Get.back();
+                    }
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    title!,
+                    style: AppTextStyle.semiBoldWhite14,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
-                  SizedBox(
-                    width: 5.h,
-                  )
-                ],
-              ),
+                ),
+                SizedBox(
+                  width: 5.h,
+                )
+              ],
             ),
           ),
         ],
@@ -81,10 +80,10 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
   final String? title;
   final Function? onBackPressed;
   const CustomAppBar2ForVendorTechniance({
-    Key? key,
+    super.key,
     @required this.title,
     this.onBackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -110,32 +109,31 @@ class CustomAppBar2ForVendorTechniance extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 2.0.h),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SessionController().vendorUserType == 'Technician'
-                      ? SizedBox()
-                      : IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                            size: 3.h,
-                          ),
-                          onPressed: () {
-                            if (onBackPressed != null)
-                              onBackPressed!();
-                            else
-                              Get.back();
-                          },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SessionController().vendorUserType == 'Technician'
+                    ? const SizedBox()
+                    : IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                          size: 3.h,
                         ),
-                  Text(title!, style: AppTextStyle.semiBoldWhite14),
-                  SizedBox(
-                    width: 5.h,
-                  )
-                ],
-              ),
+                        onPressed: () {
+                          if (onBackPressed != null) {
+                            onBackPressed!();
+                          } else {
+                            Get.back();
+                          }
+                        },
+                      ),
+                Text(title!, style: AppTextStyle.semiBoldWhite14),
+                SizedBox(
+                  width: 5.h,
+                )
+              ],
             ),
           ),
         ],

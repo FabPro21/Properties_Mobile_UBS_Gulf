@@ -10,8 +10,7 @@ class StatusWidget extends StatelessWidget {
   final String? text;
   final String? valueToCompare;
   const StatusWidget(
-      {Key? key, @required this.text, @required this.valueToCompare})
-      : super(key: key);
+      {super.key, @required this.text, @required this.valueToCompare});
 
   @override
   Widget build(BuildContext context) {
@@ -115,8 +114,7 @@ class StatusWidgetVendor extends StatelessWidget {
   final String? text;
   final String? valueToCompare;
   const StatusWidgetVendor(
-      {Key? key, @required this.text, @required this.valueToCompare})
-      : super(key: key);
+      {super.key, @required this.text, @required this.valueToCompare});
 
   @override
   Widget build(BuildContext context) {

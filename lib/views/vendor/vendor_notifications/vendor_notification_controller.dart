@@ -38,9 +38,9 @@ class VendorNotificationsController extends GetxController {
   String pagaNoPAll = '1';
   getData(String pagaNoP) async {
     print(':::::::::: getData()');
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       error.value = '';
@@ -74,9 +74,9 @@ class VendorNotificationsController extends GetxController {
   RxString noMoreDataPageAll = "".obs;
   getData1(String pagaNoP) async {
     print(':::::::::: getData()');
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       noMoreDataPageAll.value = '';
@@ -121,9 +121,9 @@ class VendorNotificationsController extends GetxController {
   String pagaNoPURead = '1';
   List<notif.Notification>? notificationsUnRead;
   unReadNotifications(String pagaNoP) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       errorUnread.value = '';
@@ -155,9 +155,9 @@ class VendorNotificationsController extends GetxController {
   RxBool isLoadingUnReadNotification = false.obs;
   RxString noMoreDataUnRead = "".obs;
   unReadNotifications1(String pagaNoP) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       noMoreDataUnRead.value = '';
@@ -199,9 +199,9 @@ class VendorNotificationsController extends GetxController {
   }
 
   Future<bool> readNotifications(int index) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingReadData.value = true;
@@ -229,9 +229,9 @@ class VendorNotificationsController extends GetxController {
   }
 
   Future<bool> archiveNotifications() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingArchiveData.value = true;
@@ -259,9 +259,9 @@ class VendorNotificationsController extends GetxController {
   }
 
   Future<void> notificationsDetails() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingnotificationsDetail.value = true;

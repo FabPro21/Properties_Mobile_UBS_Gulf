@@ -22,8 +22,7 @@ import '../../../../../utils/text_validator.dart';
 class VendorCommuncation extends StatefulWidget {
   final String? reqNo;
   final bool? canCommunicate;
-  VendorCommuncation({Key? key, this.reqNo, this.canCommunicate = true})
-      : super(key: key) {
+  VendorCommuncation({super.key, this.reqNo, this.canCommunicate = true}) {
     Get.put(VendorCommunicationController(reqNo: reqNo));
   }
 
@@ -34,7 +33,7 @@ class VendorCommuncation extends StatefulWidget {
 class _VendorCommuncationState extends State<VendorCommuncation> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -95,7 +94,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                   } else if (value.trim().isEmpty == true) {
                                     return AppMetaLabels().invalidText;
                                   } else
-                                    return null;
+                                   { return null;}
                                 },
                               ),
                             ),
@@ -115,7 +114,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                   },
                                   child: Row(
                                     children: [
-                                      Icon(Icons.attach_file),
+                                      const Icon(Icons.attach_file),
                                       Text(
                                         AppMetaLabels().addFile,
                                         style: AppTextStyle.normalBlack12,
@@ -132,7 +131,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                       },
                                       child: Row(
                                         children: [
-                                          Icon(Icons.file_open),
+                                          const Icon(Icons.file_open),
                                           SizedBox(
                                             width: 2.w,
                                           ),
@@ -154,14 +153,14 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                           _controller.fileToUpload.value =
                                               DocFile();
                                         },
-                                        icon: Icon(Icons.cancel_outlined))
+                                        icon: const Icon(Icons.cancel_outlined))
                                   ],
                                 ),
                           SizedBox(
                             height: 2.h,
                           ),
                           _controller.addingReply.value
-                              ? LoadingIndicatorBlue()
+                              ? const LoadingIndicatorBlue()
                               : Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -181,17 +180,18 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                     InkWell(
                                       onTap: () async {
                                         _focusNode.unfocus();
-                                        if (formKey.currentState!.validate()) if (await _controller
+                                        if (formKey.currentState!.validate()) {if (await _controller
                                             .addTicketReply(widget.reqNo??"",
                                                 _messageTextController.text)) {
                                           _controller.typing.value = false;
                                           _messageTextController.clear();
                                           scrollToEndofChat();
-                                        } else
+                                        } else {
                                           SnakBarWidget.getSnackBarErrorBlue(
                                             AppMetaLabels().error,
                                             _controller.errorReplying,
                                           );
+                                        }}
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -270,7 +270,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 70.0.w,
                                     child: Directionality(
                                       textDirection:
@@ -296,7 +296,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                           focusedBorder: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0.w),
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.white,
                                               width: 1.0,
                                             ),
@@ -304,7 +304,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0.w),
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.white,
                                               width: 1.0,
                                             ),
@@ -313,7 +313,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                           filled: true,
                                           hintText: AppMetaLabels().yourMessage,
                                           hintStyle: AppTextStyle.normalGrey11,
-                                          errorStyle: TextStyle(fontSize: 0),
+                                          errorStyle: const TextStyle(fontSize: 0),
                                           contentPadding: EdgeInsets.only(
                                               top: 4.w, left: 4.0.w),
                                         ),
@@ -351,7 +351,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                           )))
               ],
             ),
-            BottomShadow(),
+            const BottomShadow(),
           ],
         ),
       );
@@ -367,18 +367,18 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
             scrollToEndofChat();
           });
           return _controller.gettingReplies.value
-              ? Center(
+              ? const Center(
                   child: LoadingIndicatorBlue(),
                 )
               : _controller.errorGettingReplies != ''
-                  ? Center(
+                  ? const Center(
                       child: AppErrorWidget(),
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
                       itemCount: _controller.ticketReplies?.ticketReply?.length,
                       shrinkWrap: true,
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
                           alignment: (_controller.ticketReplies?.ticketReply?[index].userId ==
@@ -406,7 +406,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                       ),
                                       color: (AppColors.sendchatclr),
                                     ),
-                              padding: EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
                               child: Column(
                                 crossAxisAlignment: _controller.ticketReplies?.ticketReply?[index].userId ==
                                         null
@@ -436,7 +436,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                                     .ticketReplies!
                                                     .ticketReply![index].downloadingFile!
                                                     .value
-                                                ? LoadingIndicatorBlue(
+                                                ? const LoadingIndicatorBlue(
                                                     strokeWidth: 2,
                                                     size: 24,
                                                   )
@@ -446,7 +446,7 @@ class _VendorCommuncationState extends State<VendorCommuncation> {
                                                         _controller
                                                             .isLoadingDownload
                                                             .value
-                                                    ? LoadingIndicatorBlue(
+                                                    ? const LoadingIndicatorBlue(
                                                         strokeWidth: 2,
                                                         size: 24,
                                                       )

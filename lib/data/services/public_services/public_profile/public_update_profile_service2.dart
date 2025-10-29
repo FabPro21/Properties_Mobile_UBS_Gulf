@@ -21,10 +21,11 @@ class PublicUpdateProfileService2 {
     if (resp is http.Response) {
       try {
         final jsonResp = json.decode(resp.body);
-        if (jsonResp["status"] == 'Ok')
+        if (jsonResp["status"] == 'Ok') {
           return 'Ok';
-        else
+        } else {
           return jsonResp["message"];
+        }
       } catch (e) {
         return AppMetaLabels().anyError;
       }

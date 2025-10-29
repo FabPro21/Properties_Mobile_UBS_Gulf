@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class ContractInvoices extends StatefulWidget {
-  const ContractInvoices({Key? key}) : super(key: key);
+  const ContractInvoices({super.key});
 
   @override
   _ContractInvoicesState createState() => _ContractInvoicesState();
@@ -27,7 +27,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          BottomShadow(),
+          const BottomShadow(),
           SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(2.0.h),
@@ -35,7 +35,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                 return contractInvoicesController.loadingData.value == true
                     ? Padding(
                         padding: EdgeInsets.only(top: 25.0.h),
-                        child: LoadingIndicatorBlue(),
+                        child: const LoadingIndicatorBlue(),
                       )
                     : contractInvoicesController.error.value != ''
                         ? Padding(
@@ -58,7 +58,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                               ],
                             ),
                             child: ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               padding: EdgeInsets.zero,
                               itemCount: contractInvoicesController.length,
@@ -87,7 +87,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                                         style: AppTextStyle
                                                             .semiBoldBlack11,
                                                       ),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       Text(
                                                         contractInvoicesController
                                                                 .contractInvoices
@@ -133,7 +133,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                                         style: AppTextStyle
                                                             .semiBoldBlack10,
                                                       ),
-                                                      Spacer(),
+                                                      const Spacer(),
                                                       StatusWidget(
                                                         text: contractInvoicesController
                                                                 .contractInvoices
@@ -164,7 +164,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
                                             contractInvoicesController.length -
                                                 1
                                         ? Container()
-                                        : AppDivider(),
+                                        : const AppDivider(),
                                   ],
                                 );
                               },
@@ -185,7 +185,7 @@ class _ContractInvoicesState extends State<ContractInvoices> {
           t1,
           style: AppTextStyle.normalBlack10,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           t2,
           style: AppTextStyle.normalBlack10,

@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 
 class UnitInfoDetails extends StatelessWidget {
   final String? unitRefNo;
-  UnitInfoDetails({Key? key, this.unitRefNo}) : super(key: key);
+  UnitInfoDetails({super.key, this.unitRefNo});
   final TenantUnitInfoDetailsController _unitInfoDetailsController =
       Get.put(TenantUnitInfoDetailsController());
 
@@ -30,7 +30,7 @@ class UnitInfoDetails extends StatelessWidget {
         body: SafeArea(
           child: Obx(() {
             return _unitInfoDetailsController.loadingData.value
-                ? LoadingIndicatorBlue()
+                ? const LoadingIndicatorBlue()
                 : _unitInfoDetailsController.error.value != ''
                     ? CustomErrorWidget(
                         errorText: _unitInfoDetailsController.error.value,
@@ -43,7 +43,7 @@ class UnitInfoDetails extends StatelessWidget {
                                 top: 4.0.h, left: 4.0.w, right: 4.0.w),
                             child: Row(
                               children: [
-                                Container(
+                                SizedBox(
                                   width: 80.w,
                                   child: Text(
                                     SessionController().getLanguage() == 1
@@ -67,11 +67,11 @@ class UnitInfoDetails extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                   // width: 7.5.w,
 
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Color.fromRGBO(241, 241, 245, 1),
                                       shape: BoxShape.circle),
                                   child: Padding(
@@ -82,14 +82,14 @@ class UnitInfoDetails extends StatelessWidget {
                                       },
                                       child: Icon(Icons.close,
                                           size: 2.5.h,
-                                          color: Color.fromRGBO(70, 82, 95, 1)),
+                                          color: const Color.fromRGBO(70, 82, 95, 1)),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          AppDivider(),
+                          const AppDivider(),
                           Expanded(
                             child: SingleChildScrollView(
                                 child: Padding(
@@ -119,7 +119,7 @@ class UnitInfoDetails extends StatelessWidget {
                                   ),
                                   child: Column(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: 92.0.w,
                                         height: 30.5.h,
                                         child: ClipRRect(
@@ -167,144 +167,142 @@ class UnitInfoDetails extends StatelessWidget {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(2.0.h),
-                                        child: Container(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                unitRefNo ?? '',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AppTextStyle
-                                                    .semiBoldBlack12,
-                                              ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
-                                                    241,
-                                                    248,
-                                                    252,
-                                                    0.1,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          1.0.h),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              unitRefNo ?? '',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: AppTextStyle
+                                                  .semiBoldBlack12,
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: const Color.fromRGBO(
+                                                  241,
+                                                  248,
+                                                  252,
+                                                  0.1,
                                                 ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 1.2.h),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Container(
-                                                        width: 25.0.w,
-                                                        child: columnList(
-                                                            AppMetaLabels()
-                                                                .unitCategory,
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitCategory ??
-                                                                    ''
-                                                                : _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitCategoryAr ??
-                                                                    ''),
-                                                      ),
-                                                      Container(
-                                                        width: 25.0.w,
-                                                        child: columnList(
-                                                            AppMetaLabels()
-                                                                .unitType,
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitType ??
-                                                                    ''
-                                                                : _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitTypeAr ??
-                                                                    ''),
-                                                      ),
-                                                      Container(
-                                                        width: 25.0.w,
-                                                        child: columnList(
-                                                            AppMetaLabels()
-                                                                .unitView,
-                                                            SessionController()
-                                                                        .getLanguage() ==
-                                                                    1
-                                                                ? _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitView ??
-                                                                    ''
-                                                                : _unitInfoDetailsController
-                                                                        .unitDetails
-                                                                        .value
-                                                                        .contractUnit!
-                                                                        .unitViewAr ??
-                                                                    ''),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        1.0.h),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: 1.2.h),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 25.0.w,
+                                                      child: columnList(
+                                                          AppMetaLabels()
+                                                              .unitCategory,
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitCategory ??
+                                                                  ''
+                                                              : _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitCategoryAr ??
+                                                                  ''),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 25.0.w,
+                                                      child: columnList(
+                                                          AppMetaLabels()
+                                                              .unitType,
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitType ??
+                                                                  ''
+                                                              : _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitTypeAr ??
+                                                                  ''),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 25.0.w,
+                                                      child: columnList(
+                                                          AppMetaLabels()
+                                                              .unitView,
+                                                          SessionController()
+                                                                      .getLanguage() ==
+                                                                  1
+                                                              ? _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitView ??
+                                                                  ''
+                                                              : _unitInfoDetailsController
+                                                                      .unitDetails
+                                                                      .value
+                                                                      .contractUnit!
+                                                                      .unitViewAr ??
+                                                                  ''),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    width: 25.0.w,
-                                                    child: columnList(
-                                                        AppMetaLabels().area,
-                                                        _unitInfoDetailsController
-                                                                .unitDetails
-                                                                .value
-                                                                .contractUnit!
-                                                                .areasize ??
-                                                            'N/A'),
-                                                  ),
-                                                  Container(
-                                                    width: 25.0.w,
-                                                    child: columnList(
-                                                        AppMetaLabels()
-                                                            .currentRent,
-                                                        "${AppMetaLabels().aed} ${_unitInfoDetailsController.unitDetails.value.contractUnit!.currentRent ?? 0.0}"),
-                                                  ),
-                                                  Container(
-                                                    width: 25.0.w,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                            ),
+                                            SizedBox(
+                                              height: 1.0.h,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                SizedBox(
+                                                  width: 25.0.w,
+                                                  child: columnList(
+                                                      AppMetaLabels().area,
+                                                      _unitInfoDetailsController
+                                                              .unitDetails
+                                                              .value
+                                                              .contractUnit!
+                                                              .areasize ??
+                                                          'N/A'),
+                                                ),
+                                                SizedBox(
+                                                  width: 25.0.w,
+                                                  child: columnList(
+                                                      AppMetaLabels()
+                                                          .currentRent,
+                                                      "${AppMetaLabels().aed} ${_unitInfoDetailsController.unitDetails.value.contractUnit!.currentRent ?? 0.0}"),
+                                                ),
+                                                Container(
+                                                  width: 25.0.w,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       _unitInfoDetailsController
                                               .loadingAdditionalData.value
                                           ? Padding(
                                               padding: EdgeInsets.all(1.5.h),
-                                              child: LoadingIndicatorBlue(),
+                                              child: const LoadingIndicatorBlue(),
                                             )
                                           : _unitInfoDetailsController
                                                           .errorLoadingAdditional
@@ -314,11 +312,11 @@ class UnitInfoDetails extends StatelessWidget {
                                                       .errorLoadingAdditional
                                                       .value
                                                       .contains('No data found')
-                                              ? SizedBox()
+                                              ? const SizedBox()
                                               : Container(
                                                   padding:
                                                       EdgeInsets.all(1.5.h),
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color.fromRGBO(
                                                         247, 247, 247, 1),
                                                   ),
@@ -349,7 +347,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                           : ListView.builder(
                                                               shrinkWrap: true,
                                                               physics:
-                                                                  NeverScrollableScrollPhysics(),
+                                                                  const NeverScrollableScrollPhysics(),
                                                               itemCount:
                                                                   _unitInfoDetailsController
                                                                       .length,
@@ -383,7 +381,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                       SizedBox(
                                                         height: 1.h,
                                                       ),
-                                                      AppDivider(),
+                                                      const AppDivider(),
                                                     ],
                                                   )),
                                       _unitInfoDetailsController
@@ -394,7 +392,7 @@ class UnitInfoDetails extends StatelessWidget {
                                               AppMetaLabels().residential
                                           ? Container(
                                               decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
+                                                  color: const Color.fromRGBO(
                                                       247, 247, 247, 1),
                                                   borderRadius:
                                                       BorderRadius.only(
@@ -523,7 +521,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                                     CrossAxisAlignment
                                                                         .start),
                                                           ),
-                                                          Expanded(
+                                                          const Expanded(
                                                             child: SizedBox(),
                                                           )
                                                         ],
@@ -531,7 +529,7 @@ class UnitInfoDetails extends StatelessWidget {
                                                     ],
                                                   )),
                                             )
-                                          : SizedBox(),
+                                          : const SizedBox(),
                                     ],
                                   ),
                                 ),

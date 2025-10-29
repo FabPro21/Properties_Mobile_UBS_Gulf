@@ -35,19 +35,15 @@ class SelectRoloesController extends GetxController {
   bool redirect = true;
   String devToken = '';
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void initialize() async {
     if (ui.Platform.isAndroid) {
       print(':::: Without app update ::::');
     }
 
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // RefreshToken
     loadingData.value = true;
@@ -71,8 +67,12 @@ class SelectRoloesController extends GetxController {
     // Pad the shorter version list with zeros
     int length =
         v1Parts.length > v2Parts.length ? v1Parts.length : v2Parts.length;
-    while (v1Parts.length < length) v1Parts.add(0);
-    while (v2Parts.length < length) v2Parts.add(0);
+    while (v1Parts.length < length) {
+      v1Parts.add(0);
+    }
+    while (v2Parts.length < length) {
+      v2Parts.add(0);
+    }
 
     // Compare versions
     for (int i = 0; i < length; i++) {
@@ -90,10 +90,10 @@ class SelectRoloesController extends GetxController {
     return false;
   }
 
-  Future<void> compareToken(num) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+  Future<void> compareToken(dynamic num) async {
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       error.value = '';
@@ -105,7 +105,7 @@ class SelectRoloesController extends GetxController {
         if (resp.tokenValid == 1) {
           // await   getNewTokenfun().then((value) => getUserRoles());
           // await getUserRoles();
-          Get.offAll(() => SelectRoleScreen());
+          Get.offAll(() => const SelectRoleScreen());
         } else {
           logout();
           return;
@@ -123,9 +123,9 @@ class SelectRoloesController extends GetxController {
 
   // Not moving toward the public side
   Future getUserRoles() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     loadingData.value = true;
     var response = await CommonRepository.getUserRoles();
@@ -192,9 +192,9 @@ class SelectRoloesController extends GetxController {
   }
 
   Future validatePublicRole() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     var resp;
     loadingData.value = true;
@@ -203,7 +203,7 @@ class SelectRoloesController extends GetxController {
       SessionController().setSelectedRoleId(4);
       SessionController().setPublicToken(resp.token);
 
-      Get.offAll(() => SearchPropertiesDashboardTabs());
+      Get.offAll(() => const SearchPropertiesDashboardTabs());
       loadingData.value = false;
     } else {
       loadingData.value = false;
@@ -252,22 +252,22 @@ class SelectRoloesController extends GetxController {
     GlobalPreferences.setbool(GlobalPreferencesLabels.isLoginBool, false);
     bool isEnglish = SessionController().getLanguage() == 1;
     GlobalPreferences.setbool(GlobalPreferencesLabels.isEnglish, isEnglish);
-    Get.offAll(() => SplashScreen());
+    Get.offAll(() =>const SplashScreen());
   }
 
   void logout() async {
     GlobalPreferences.setbool(GlobalPreferencesLabels.isLoginBool, false);
     FirebaseAuth.instance.signOut();
     Get.offAll(() => SessionController().enableFireBaseOTP
-        ? ValidateUserScreenFB()
-        : ValidateUserScreen());
+        ? const ValidateUserScreenFB()
+        : const ValidateUserScreen());
   }
 
   Future<void> refreshtokenFunc(String userid) async {
     var data = {"UserRole": userid};
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       loadingData.value = true;
@@ -300,7 +300,7 @@ class SelectRoloesController extends GetxController {
           validatePublicRole();
         } else {
           Get.to(
-            () => LoginMpinScreen(),
+            () => const LoginMpinScreen(),
           );
         }
         loadingData.value = false;
@@ -321,9 +321,9 @@ class SelectRoloesController extends GetxController {
       "mobile": SessionController().getPhone(),
     };
     encriptdata(data);
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       var url = AppConfig().getNewToken;

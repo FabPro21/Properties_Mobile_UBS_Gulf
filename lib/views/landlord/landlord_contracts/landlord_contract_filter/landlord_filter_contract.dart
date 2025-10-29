@@ -11,6 +11,7 @@ import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contra
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_property/landlord_filter_property.dart';
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_contract_controller.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -18,8 +19,7 @@ import 'package:sizer/sizer.dart';
 
 class LandLordFilterContract extends StatefulWidget {
   final bool clear;
-  const LandLordFilterContract({Key? key, required this.clear})
-      : super(key: key);
+  const LandLordFilterContract({super.key, required this.clear});
 
   @override
   _LandLordFilterContractState createState() => _LandLordFilterContractState();
@@ -64,14 +64,14 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                           AppMetaLabels().filter,
                           style: AppTextStyle.semiBoldBlack16,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         InkWell(
                           onTap: () {
                             lDFilterController.filterError.value = '';
                             Get.back();
                           },
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromRGBO(118, 118, 128, 0.12),
                             ),
@@ -79,13 +79,14 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                               padding: EdgeInsets.all(0.5.h),
                               child: Icon(Icons.close,
                                   size: 2.0.h,
-                                  color: Color.fromRGBO(158, 158, 158, 1)),
+                                  color:
+                                      const Color.fromRGBO(158, 158, 158, 1)),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    AppDivider(),
+                    const AppDivider(),
                     ////////////////////////////////////
                     ////   Property
                     ////////////////////////////////////
@@ -102,7 +103,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                     Container(
                       width: 100.0.w,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(246, 248, 249, 1),
+                        color: const Color.fromRGBO(246, 248, 249, 1),
                         borderRadius: BorderRadius.circular(1.0.h),
                       ),
                       child: Row(
@@ -139,16 +140,17 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                     InkWell(
                       onTap: () async {
                         var propType =
-                            await Get.to(() => LandlordFilterProperty());
-                        if (propType != null)
+                            await Get.to(() => const LandlordFilterProperty());
+                        if (propType != null) {
                           lDFilterController.propType.value = propType;
+                        }
                       },
                       child: Container(
                         width: 100.0.w,
                         height: 5.5.h,
                         padding: EdgeInsets.only(left: 3.w),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(246, 248, 249, 1),
+                          color: const Color.fromRGBO(246, 248, 249, 1),
                           borderRadius: BorderRadius.circular(1.0.h),
                         ),
                         alignment: Alignment.centerLeft,
@@ -167,7 +169,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                               '',
                                   style: AppTextStyle.normalBlack12);
                             }),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                               child: ClearButton(
@@ -194,17 +196,18 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                     InkWell(
                       onTap: () async {
                         var contractStatus =
-                            await Get.to(() => LandlordFilterCS());
-                        if (contractStatus != null)
+                            await Get.to(() => const LandlordFilterCS());
+                        if (contractStatus != null) {
                           lDFilterController.contractStatus.value =
                               contractStatus;
+                        }
                       },
                       child: Container(
                           width: 100.0.w,
                           height: 5.5.h,
                           padding: EdgeInsets.only(left: 3.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                           ),
                           alignment: Alignment.centerLeft,
@@ -225,12 +228,12 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                                         .contractStatus
                                                         .value
                                                         .contractType ??
-                                                    "" + ' / Expired'
+                                                    "" ' / Expired'
                                                 : lDFilterController
                                                         .contractStatus
                                                         .value
                                                         .contractTypeAR ??
-                                                    "" + ' / منتهي الصلاحية'
+                                                    "" ' / منتهي الصلاحية'
                                             : SessionController()
                                                         .getLanguage() ==
                                                     1
@@ -246,7 +249,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                                     '',
                                     style: AppTextStyle.normalBlack12);
                               }),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 2.0.h),
@@ -295,8 +298,8 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     // locale: Locale('en'),
                                     locale:
                                         SessionController().getLanguage() == 1
-                                            ? Locale('en', '')
-                                            : Locale('ar', ''),
+                                            ? const Locale('en', '')
+                                            : const Locale('ar', ''),
                                     initialDate: DateTime.now(),
                                     firstDate:
                                         DateTime(DateTime.now().year - 10),
@@ -347,13 +350,17 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {
+                                  if (kDebugMode) {
+                                    print("Catch :: $e");
+                                  }
+                                }
                               },
                               child: Container(
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -371,7 +378,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -413,8 +420,8 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     // locale: Locale('en'),
                                     locale:
                                         SessionController().getLanguage() == 1
-                                            ? Locale('en', '')
-                                            : Locale('ar', ''),
+                                            ? const Locale('en', '')
+                                            : const Locale('ar', ''),
                                     initialDate: DateTime.now(),
                                     firstDate:
                                         DateTime(DateTime.now().year - 10),
@@ -465,13 +472,17 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {
+                                  if (kDebugMode) {
+                                    print("Catch :: $e");
+                                  }
+                                }
                               },
                               child: Container(
                                 width: 40.0.w,
                                 height: 5.5.h,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(246, 248, 249, 1),
+                                  color: const Color.fromRGBO(246, 248, 249, 1),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                 ),
                                 child: Row(
@@ -489,7 +500,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                         ),
                                       );
                                     }),
-                                    Spacer(),
+                                    const Spacer(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 1.0.h),
@@ -517,10 +528,10 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                               child: Container(
                                 width: 85.0.w,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 59, 48, 0.6),
+                                  color: const Color.fromRGBO(255, 59, 48, 0.6),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                   border: Border.all(
-                                    color: Color.fromRGBO(255, 59, 48, 1),
+                                    color: const Color.fromRGBO(255, 59, 48, 1),
                                   ),
                                 ),
                                 child: Padding(
@@ -551,12 +562,12 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                   padding: EdgeInsets.only(bottom: 2.0.h),
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
+                    child: SizedBox(
                       height: 5.0.h,
                       width: 28.0.w,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(0, 98, 255, 1),
+                          backgroundColor: const Color.fromRGBO(0, 98, 255, 1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(3.0.h),
                           ),
@@ -598,12 +609,12 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color.fromRGBO(246, 248, 249, 1),
+        fillColor: const Color.fromRGBO(246, 248, 249, 1),
         focusColor: Colors.red,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
         border: OutlineInputBorder(
@@ -616,7 +627,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
 
 class ClearButton extends StatelessWidget {
   final Function clear;
-  const ClearButton({Key? key, required this.clear}) : super(key: key);
+  const ClearButton({super.key, required this.clear});
 
   @override
   Widget build(BuildContext context) {
@@ -625,14 +636,14 @@ class ClearButton extends StatelessWidget {
         clear();
       },
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Color.fromRGBO(118, 118, 128, 0.12),
         ),
         child: Padding(
           padding: EdgeInsets.all(0.5.h),
           child: Icon(Icons.close,
-              size: 2.0.h, color: Color.fromRGBO(158, 158, 158, 1)),
+              size: 2.0.h, color: const Color.fromRGBO(158, 158, 158, 1)),
         ),
       ),
     );

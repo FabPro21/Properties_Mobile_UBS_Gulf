@@ -19,8 +19,7 @@ import 'package:sizer/sizer.dart';
 class TenantServiceRequestUpdates extends StatefulWidget {
   final String? reqNo;
   final bool? canCommunicate;
-  TenantServiceRequestUpdates({Key? key, this.reqNo, this.canCommunicate})
-      : super(key: key) {
+  TenantServiceRequestUpdates({super.key, this.reqNo, this.canCommunicate}) {
     Get.put(TenantServiceUpdatesController(reqNo));
   }
 
@@ -39,7 +38,7 @@ class _TenantServiceRequestUpdatesState
     super.initState();
   }
 
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
         keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
@@ -102,7 +101,7 @@ class _TenantServiceRequestUpdatesState
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
                                     } else
-                                      return null;
+                                   {   return null;}
                                   },
                                 ),
                               ),
@@ -123,10 +122,7 @@ class _TenantServiceRequestUpdatesState
                                     },
                                     child: Row(
                                       children: [
-                                        Icon(
-                                          Icons.attach_file,
-                                          color: AppColors.blueColor,
-                                        ),
+                                        const Icon(Icons.attach_file),
                                         Text(
                                           AppMetaLabels().addFile,
                                           style: AppTextStyle.normalBlack12,
@@ -143,15 +139,12 @@ class _TenantServiceRequestUpdatesState
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(
-                                              Icons.file_open,
-                                              color: AppColors.blueColor,
-                                            ),
+                                            const Icon(Icons.file_open),
                                             SizedBox(
                                               width: 2.w,
                                             ),
-                                            Container(
-                                              width: Get.width * 0.71,
+                                            SizedBox(
+                                              width: Get.width * 0.72,
                                               child: Text(
                                                 _controller.fileToUpload.value
                                                         .name ??
@@ -164,20 +157,20 @@ class _TenantServiceRequestUpdatesState
                                           ],
                                         ),
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
                                           onPressed: () {
                                             _controller.fileToUpload.value =
                                                 DocFile();
                                           },
-                                          icon: Icon(Icons.cancel_outlined))
+                                          icon: const Icon(Icons.cancel_outlined))
                                     ],
                                   ),
                             SizedBox(
                               height: 2.h,
                             ),
                             _controller.addingReply.value
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -198,7 +191,7 @@ class _TenantServiceRequestUpdatesState
                                       InkWell(
                                         onTap: () async {
                                           _focusNode.unfocus();
-                                          if (formKey.currentState!.validate()) if (await _controller
+                                          if (formKey.currentState!.validate()) {if (await _controller
                                               .addTicketReply(
                                                   widget.reqNo ?? '',
                                                   _messageTextController
@@ -206,13 +199,14 @@ class _TenantServiceRequestUpdatesState
                                             _controller.typing.value = false;
                                             _messageTextController.clear();
                                             scrollToEndofChat();
-                                          } else
+                                          } else {
                                             Get.snackbar(
                                               AppMetaLabels().error,
                                               _controller.errorReplying,
                                               backgroundColor:
                                                   AppColors.white54,
                                             );
+                                          }}
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -293,7 +287,7 @@ class _TenantServiceRequestUpdatesState
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 72.0.w,
                                       child: Directionality(
                                         textDirection:
@@ -325,7 +319,7 @@ class _TenantServiceRequestUpdatesState
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(4.0.w),
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.white,
                                                 width: 1.0,
                                               ),
@@ -333,7 +327,7 @@ class _TenantServiceRequestUpdatesState
                                             enabledBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(4.0.w),
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.white,
                                                 width: 1.0,
                                               ),
@@ -344,7 +338,7 @@ class _TenantServiceRequestUpdatesState
                                                 AppMetaLabels().yourMessage,
                                             hintStyle:
                                                 AppTextStyle.normalGrey11,
-                                            errorStyle: TextStyle(fontSize: 0),
+                                            errorStyle: const TextStyle(fontSize: 0),
                                             contentPadding: EdgeInsets.only(
                                                 top: 4.w,
                                                 left: 4.0.w,
@@ -377,7 +371,7 @@ class _TenantServiceRequestUpdatesState
                             )))
                 ],
               ),
-              BottomShadow(),
+              const BottomShadow(),
             ],
           ),
         );
@@ -394,18 +388,18 @@ class _TenantServiceRequestUpdatesState
             scrollToEndofChat();
           });
           return _controller.gettingReplies.value
-              ? Center(
+              ? const Center(
                   child: LoadingIndicatorBlue(),
                 )
               : _controller.errorGettingReplies != ''
-                  ? Center(
+                  ? const Center(
                       child: AppErrorWidget(),
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
                       itemCount: _controller.ticketReplies!.ticketReply!.length,
                       shrinkWrap: true,
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
                           alignment: (_controller.ticketReplies!
@@ -435,7 +429,7 @@ class _TenantServiceRequestUpdatesState
                                       ),
                                       color: (AppColors.sendchatclr),
                                     ),
-                              padding: EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
                               child: Column(
                                 crossAxisAlignment: _controller.ticketReplies!
                                             .ticketReply![index].userId ==
@@ -471,7 +465,7 @@ class _TenantServiceRequestUpdatesState
                                                     .ticketReply![index]
                                                     .downloadingFile!
                                                     .value
-                                                ? LoadingIndicatorBlue(
+                                                ? const LoadingIndicatorBlue(
                                                     strokeWidth: 2,
                                                     size: 24,
                                                   )
@@ -481,7 +475,7 @@ class _TenantServiceRequestUpdatesState
                                                         _controller
                                                             .isLoadingDownload
                                                             .value
-                                                    ? LoadingIndicatorRed(
+                                                    ? const LoadingIndicatorRed(
                                                         strokeWidth: 2,
                                                         size: 24,
                                                       )

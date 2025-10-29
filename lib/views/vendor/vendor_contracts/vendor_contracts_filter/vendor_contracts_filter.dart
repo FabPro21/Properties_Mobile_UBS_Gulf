@@ -6,6 +6,7 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_contracts_filter_controller.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_filter_contract_status/vendor_filter_contracts_status.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ import 'package:sizer/sizer.dart';
 
 class VendorContractsFilter extends StatefulWidget {
   final bool? clear;
-  const VendorContractsFilter({Key? key, this.clear}) : super(key: key);
+  const VendorContractsFilter({super.key, this.clear});
 
   @override
   _VendorContractsFilterState createState() => _VendorContractsFilterState();
@@ -57,13 +58,13 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                             AppMetaLabels().filter,
                             style: AppTextStyle.semiBoldBlack16,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           InkWell(
                             onTap: () {
                               Get.back();
                             },
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color.fromRGBO(118, 118, 128, 0.12),
                               ),
@@ -71,13 +72,14 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                 padding: EdgeInsets.all(0.5.h),
                                 child: Icon(Icons.close,
                                     size: 2.0.h,
-                                    color: Color.fromRGBO(158, 158, 158, 1)),
+                                    color:
+                                        const Color.fromRGBO(158, 158, 158, 1)),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      AppDivider(),
+                      const AppDivider(),
                       SizedBox(
                         height: 3.0.h,
                       ),
@@ -91,7 +93,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                       Container(
                         width: 100.0.w,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(246, 248, 249, 1),
+                          color: const Color.fromRGBO(246, 248, 249, 1),
                           borderRadius: BorderRadius.circular(1.0.h),
                         ),
                         child: Row(
@@ -126,8 +128,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                       ),
                       InkWell(
                         onTap: () async {
-                          var res =
-                              await Get.to(() => VendorContractsStatusFilter());
+                          var res = await Get.to(
+                              () => const VendorContractsStatusFilter());
                           if (res != null) {
                             vCFilterController.contractStatusNew.value = res;
                           }
@@ -140,7 +142,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                           height: 5.5.h,
                           padding: EdgeInsets.only(left: 3.w),
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(246, 248, 249, 1),
+                            color: const Color.fromRGBO(246, 248, 249, 1),
                             borderRadius: BorderRadius.circular(1.0.h),
                           ),
                           alignment: Alignment.centerLeft,
@@ -159,7 +161,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                         '',
                                 style: AppTextStyle.normalBlack12,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -210,8 +212,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       // locale: Locale('en'),
                                       locale:
                                           SessionController().getLanguage() == 1
-                                              ? Locale('en', '')
-                                              : Locale('ar', ''),
+                                              ? const Locale('en', '')
+                                              : const Locale('ar', ''),
                                       initialDate: DateTime.now(),
                                       firstDate:
                                           DateTime(DateTime.now().year - 10),
@@ -260,13 +262,18 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) {
+                                    if (kDebugMode) {
+                                      print("Catch :: $e");
+                                    }
+                                  }
                                 },
                                 child: Container(
                                   width: 40.0.w,
                                   height: 5.5.h,
                                   decoration: BoxDecoration(
-                                    color: Color.fromRGBO(246, 248, 249, 1),
+                                    color:
+                                        const Color.fromRGBO(246, 248, 249, 1),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                   ),
                                   child: Row(
@@ -285,7 +292,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                           ),
                                         );
                                       }),
-                                      Spacer(),
+                                      const Spacer(),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 1.0.h),
@@ -325,8 +332,8 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       // locale: Locale('en'),
                                       locale:
                                           SessionController().getLanguage() == 1
-                                              ? Locale('en', '')
-                                              : Locale('ar', ''),
+                                              ? const Locale('en', '')
+                                              : const Locale('ar', ''),
                                       initialDate: DateTime.now(),
                                       firstDate:
                                           DateTime(DateTime.now().year - 10),
@@ -361,7 +368,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                         textStyleButtonNegative: TextStyle(
                                           color: AppColors.blueColor,
                                         ),
-                                        
+
                                         // Heading year like 'S M T W TH FR SA ' button
                                         // textStyleDayHeader: TextStyle(
                                         //   fontSize: 30.sp,
@@ -376,13 +383,18 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) {
+                                    if (kDebugMode) {
+                                      print("Catch :: $e");
+                                    }
+                                  }
                                 },
                                 child: Container(
                                   width: 40.0.w,
                                   height: 5.5.h,
                                   decoration: BoxDecoration(
-                                    color: Color.fromRGBO(246, 248, 249, 1),
+                                    color:
+                                        const Color.fromRGBO(246, 248, 249, 1),
                                     borderRadius: BorderRadius.circular(1.0.h),
                                   ),
                                   child: Row(
@@ -399,7 +411,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                           ),
                                         );
                                       }),
-                                      Spacer(),
+                                      const Spacer(),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 1.0.h),
@@ -427,10 +439,10 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                               child: Container(
                                 width: 85.0.w,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 59, 48, 0.6),
+                                  color: const Color.fromRGBO(255, 59, 48, 0.6),
                                   borderRadius: BorderRadius.circular(1.0.h),
                                   border: Border.all(
-                                    color: Color.fromRGBO(255, 59, 48, 1),
+                                    color: const Color.fromRGBO(255, 59, 48, 1),
                                   ),
                                 ),
                                 child: Padding(
@@ -461,12 +473,12 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                   padding: EdgeInsets.only(bottom: 2.0.h),
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
+                    child: SizedBox(
                       height: 5.0.h,
                       width: 30.0.w,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(0, 98, 255, 1),
+                          backgroundColor: const Color.fromRGBO(0, 98, 255, 1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(3.0.h),
                           ),
@@ -508,12 +520,12 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color.fromRGBO(246, 248, 249, 1),
+        fillColor: const Color.fromRGBO(246, 248, 249, 1),
         focusColor: Colors.red,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
         border: OutlineInputBorder(
@@ -526,7 +538,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
 
 class ClearButton extends StatelessWidget {
   final Function? clear;
-  const ClearButton({Key? key, this.clear}) : super(key: key);
+  const ClearButton({super.key, this.clear});
 
   @override
   Widget build(BuildContext context) {
@@ -535,14 +547,14 @@ class ClearButton extends StatelessWidget {
         clear!();
       },
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Color.fromRGBO(118, 118, 128, 0.12),
         ),
         child: Padding(
           padding: EdgeInsets.all(0.5.h),
           child: Icon(Icons.close,
-              size: 2.0.h, color: Color.fromRGBO(158, 158, 158, 1)),
+              size: 2.0.h, color: const Color.fromRGBO(158, 158, 158, 1)),
         ),
       ),
     );

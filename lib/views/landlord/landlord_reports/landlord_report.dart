@@ -16,7 +16,7 @@ import 'landlord_report_details/landlord_report_details.dart';
 import 'dart:ui' as ui;
 
 class LandLordReports extends StatefulWidget {
-  const LandLordReports({Key? key}) : super(key: key);
+  const LandLordReports({super.key});
 
   @override
   _LandLordReportsState createState() => _LandLordReportsState();
@@ -42,36 +42,35 @@ class _LandLordReportsState extends State<LandLordReports> {
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
         body: Stack(children: [
-          AppBackgroundConcave(),
+          const AppBackgroundConcave(),
           SafeArea(
             child: Column(children: [
-              Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                        size: 3.h,
-                      ),
-                      onPressed: () {
-                        Get.back();
-                      },
-                    ),
-                    Expanded(
-                      child: Text(
-                        AppMetaLabels().report,
-                        style: AppTextStyle.semiBoldWhite14,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5.h,
-                    )
-                  ])),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 3.h,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    AppMetaLabels().report,
+                    style: AppTextStyle.semiBoldWhite14,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ),
+                SizedBox(
+                  width: 5.h,
+                )
+              ]),
               Padding(
                 padding: EdgeInsets.only(left: 2.0.h, right: 2.0.h, top: 2.0.h),
                 child: Container(
@@ -113,9 +112,7 @@ class _LandLordReportsState extends State<LandLordReports> {
                                 borderSide: BorderSide(
                                     color: AppColors.whiteColor, width: 0.1.h),
                               ),
-                              hintText: AppMetaLabels().search +
-                                  ' ' +
-                                  AppMetaLabels().report,
+                              hintText: '${AppMetaLabels().search} ${AppMetaLabels().report}',
                               hintStyle: AppTextStyle.normalBlack10
                                   .copyWith(color: Colors.grey),
                             ),
@@ -129,7 +126,7 @@ class _LandLordReportsState extends State<LandLordReports> {
                             lDreportController.errorLoadingReport.value = '';
                             setState(() {});
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.refresh,
                           ),
                         )
@@ -164,7 +161,7 @@ class _LandLordReportsState extends State<LandLordReports> {
                           ),
                           child: Obx(() {
                             return lDreportController.isLoading.value == true
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : lDreportController.errorLoadingReport.value !=
                                         ''
                                     ? AppErrorWidget(
@@ -176,7 +173,7 @@ class _LandLordReportsState extends State<LandLordReports> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         padding: EdgeInsets.zero,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         itemCount:
                                             SessionController().getLanguage() ==
                                                     1
@@ -222,7 +219,7 @@ class _LandLordReportsState extends State<LandLordReports> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 70.0.w,
                           child: Text(
                             SessionController().getLanguage() == 1
@@ -256,7 +253,7 @@ class _LandLordReportsState extends State<LandLordReports> {
             ),
             index == lDreportController.reportsList.length - 1
                 ? Container()
-                : AppDivider(),
+                : const AppDivider(),
           ],
         ),
       ),

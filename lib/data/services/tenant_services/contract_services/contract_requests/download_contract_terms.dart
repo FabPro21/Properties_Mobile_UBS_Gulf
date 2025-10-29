@@ -16,8 +16,9 @@ class DownloadContractTerms {
         String doc = jsonResp['path'];
         if (doc.isNotEmpty) {
           return base64Decode(doc.replaceAll('\n', ''));
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
@@ -37,8 +38,9 @@ class DownloadContractTermsNew{
         String doc = jsonResp['path'];
         if (doc.isNotEmpty) {
           return base64Decode(doc.replaceAll('\n', ''));
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

@@ -10,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'get_cities_controller.dart';
 
 class GetCities extends StatefulWidget {
-  GetCities({Key? key}) : super(key: key);
+  const GetCities({super.key});
 
   @override
   State<GetCities> createState() => _GetCitiesState();
@@ -40,7 +40,7 @@ class _GetCitiesState extends State<GetCities> {
                       AppMetaLabels().locationType,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Get.back();
@@ -54,7 +54,7 @@ class _GetCitiesState extends State<GetCities> {
                   ],
                 ),
               ),
-              AppDivider(),
+              const AppDivider(),
               Padding(
                 padding: EdgeInsets.all(2.0.h),
                 child: Container(
@@ -122,7 +122,7 @@ class _GetCitiesState extends State<GetCities> {
                           return getCitiesController.loadingData.value == true
                               ? Padding(
                                   padding: EdgeInsets.only(top: 10.0.h),
-                                  child: LoadingIndicatorBlue(),
+                                  child: const LoadingIndicatorBlue(),
                                 )
                               : getCitiesController.error.value != ''
                                   ? AppErrorWidget(
@@ -132,7 +132,7 @@ class _GetCitiesState extends State<GetCities> {
                                   : ListView.builder(
                                       shrinkWrap: true,
                                       itemCount: getCitiesController.length,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
                                       itemBuilder: (context, index) {
                                         if (searchControler.text.isEmpty) {
@@ -191,7 +191,7 @@ class _GetCitiesState extends State<GetCities> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == getCitiesController.length - 1 ? Container() : AppDivider(),
+          index == getCitiesController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

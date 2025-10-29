@@ -88,10 +88,6 @@ class LandLordReportPropController extends GetxController {
     toDateText.value = '';
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   DateTime? fromDateDT;
   DateTime? toDateDT;
@@ -204,11 +200,7 @@ class LandLordReportPropController extends GetxController {
               'Nov',
               'Dec'
             ];
-            var fileName = response.name! +
-                ' ' +
-                '${dt.day} ${months[dt.month - 1]} ${dt.hour}-${dt.minute}-${dt.second}' +
-                '.' +
-                response.extension!;
+            var fileName = '${response.name!} ${dt.day} ${months[dt.month - 1]} ${dt.hour}-${dt.minute}-${dt.second}.${response.extension!}';
             // var fileName = response.name + '.' + response.extension;
             var res = await saveFileInsideTheDevice(base64Decoded, fileName);
 
@@ -246,15 +238,15 @@ class LandLordReportPropController extends GetxController {
     try {
       // Get the directory where the file will be saved
       final status = await Permission.storage.status;
-      Directory _directory = Directory("");
+      Directory directory = Directory("");
       if (status.isGranted) {
         if (Platform.isAndroid) {
           // Redirects it to download folder in android
-          _directory = Directory("/storage/emulated/0/Download");
+          directory = Directory("/storage/emulated/0/Download");
         } else {
-          _directory = await getApplicationDocumentsDirectory();
+          directory = await getApplicationDocumentsDirectory();
         }
-        final exPath = _directory.path;
+        final exPath = directory.path;
         print("Saved Path: $exPath");
         print("File Name: $fileName");
         await Directory(exPath).create(recursive: false);
@@ -311,9 +303,9 @@ class LandLordReportPropController extends GetxController {
   var vatReportSummaryModel = VATReportSummaryModel().obs; //  9
   var lpoReportSummaryModel = LpoReportSummaryModel().obs; //  10
   getreportSummary(Map data, String reportName) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       errorSummaryReport.value = '';

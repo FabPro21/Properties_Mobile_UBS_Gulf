@@ -15,7 +15,7 @@ import 'package:video_player/video_player.dart';
 
 class RenewalTutorialVideo extends StatefulWidget {
   final String? path;
-  const RenewalTutorialVideo({Key? key, this.path}) : super(key: key);
+  const RenewalTutorialVideo({super.key, this.path});
 
   @override
   State<RenewalTutorialVideo> createState() => _RenewalTutorialVideoState();
@@ -111,6 +111,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
   VideoPlayerController? controller;
   RxBool loading = true.obs;
 
+  @override
   initState() {
     // **************
     print('widget.path : ${widget.path}');
@@ -122,6 +123,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
     super.initState();
   }
 
+  @override
   void dispose() {
     controller!.dispose();
     super.dispose();
@@ -153,7 +155,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                 }
                 Get.back();
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
                 size: 22,
@@ -166,7 +168,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
             )),
         body: Obx(() {
           return loading.value == true
-              ? Center(child: const CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,14 +189,13 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                     //   child: Text("Total Duration: " +
                     //       controller!.value.duration.toString()),
                     // ),
-                    Container(
-                        child: VideoProgressIndicator(controller!,
-                            allowScrubbing: true,
-                            colors: VideoProgressColors(
-                              backgroundColor: Colors.white24,
-                              playedColor: Colors.blue,
-                              bufferedColor: Colors.grey,
-                            ))),
+                    VideoProgressIndicator(controller!,
+                        allowScrubbing: true,
+                        colors: const VideoProgressColors(
+                          backgroundColor: Colors.white24,
+                          playedColor: Colors.blue,
+                          bufferedColor: Colors.grey,
+                        )),
                     SizedBox(
                       height: 1.h,
                     ),
@@ -223,7 +224,7 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         // RESTART THE VIDEO
@@ -234,11 +235,11 @@ class _RenewalTutorialVideoState extends State<RenewalTutorialVideo> {
                             heroTag: "btn2",
                             onPressed: () {
                               setState(() {
-                                controller!.seekTo(Duration(seconds: 0));
+                                controller!.seekTo(const Duration(seconds: 0));
                                 setState(() {});
                               });
                             },
-                            child: Icon(Icons.stop),
+                            child: const Icon(Icons.stop),
                           ),
                         ),
                       ],

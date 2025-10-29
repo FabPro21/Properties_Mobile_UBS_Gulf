@@ -27,8 +27,9 @@ class VendorGetReqPhotos {
                 id: photoIds[i]));
           }
           return reqPhotos;
-        } else
+        } else {
           return 404;
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

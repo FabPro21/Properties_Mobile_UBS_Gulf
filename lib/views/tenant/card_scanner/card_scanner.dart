@@ -245,6 +245,7 @@ import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -255,7 +256,7 @@ import '../../../data/models/tenant_models/card_model.dart';
 
 class CardScanner extends StatefulWidget {
   final File? file;
-  const CardScanner({Key? key, @required this.file}) : super(key: key);
+  const CardScanner({super.key, @required this.file});
 
   @override
   _CardScannerState createState() => _CardScannerState();
@@ -271,8 +272,8 @@ class _CardScannerState extends State<CardScanner>
 
   @override
   void initState() {
-    _animationController = new AnimationController(
-        duration: new Duration(seconds: 1), vsync: this);
+    _animationController =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
     startAnimation();
     scanImage();
     super.initState();
@@ -281,8 +282,12 @@ class _CardScannerState extends State<CardScanner>
   void startAnimation() async {
     try {
       animateScanAnimation();
-    } catch (e) {}
-    await Future.delayed(Duration(seconds: 1));
+    } catch (e) {
+      if (kDebugMode) {
+        print("Catch :: $e");
+      }
+    }
+    await Future.delayed(const Duration(seconds: 1));
     startAnimation();
   }
 
@@ -338,7 +343,7 @@ class _CardScannerState extends State<CardScanner>
           ),
         ),
         body: Center(
-          child: Container(
+          child: SizedBox(
             height: 30.h,
             child: Stack(
               children: [
@@ -419,13 +424,21 @@ class _CardScannerState extends State<CardScanner>
         else if (line.text.length == 10 && line.text.contains('/')) {
           try {
             dates.add(DateFormat('dd/MM/yyyy').parse(line.text));
-          } catch (e) {}
+          } catch (e) {
+            if (kDebugMode) {
+              print("Catch :: $e");
+            }
+          }
         } else {
           for (TextElement element in line.elements) {
             if (element.text.length == 10 && element.text.contains('/')) {
               try {
                 dates.add(DateFormat('dd/MM/yyyy').parse(element.text));
-              } catch (e) {}
+              } catch (e) {
+                if (kDebugMode) {
+                  print("Catch :: $e");
+                }
+              }
             }
           }
         }
@@ -470,7 +483,7 @@ class _CardScannerState extends State<CardScanner>
     print('"""""::::::::::::::::::::::::::::::::""""""');
 
     // await Future.delayed(Duration(seconds: 6));
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     setState(() {
       isScanning = false;
     });
@@ -481,33 +494,34 @@ class _CardScannerState extends State<CardScanner>
 class ImageScannerAnimation extends AnimatedWidget {
   final double width;
 
-  ImageScannerAnimation(this.width, {Key? key, Animation<double>? animation})
-      : super(key: key, listenable: animation!);
+  ImageScannerAnimation(this.width, {super.key, Animation<double>? animation})
+      : super(listenable: animation!);
 
+  @override
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable as Animation<double>;
     final scorePosition = (animation.value * 24.h);
 
-    Color color1 = Color(0x5532CD32);
-    Color color2 = Color(0x0032CD32);
+    Color color1 = const Color(0x5532CD32);
+    Color color2 = const Color(0x0032CD32);
 
     if (animation.status == AnimationStatus.reverse) {
-      color1 = Color(0x0032CD32);
-      color2 = Color(0x5532CD32);
+      color1 = const Color(0x0032CD32);
+      color2 = const Color(0x5532CD32);
     }
 
-    return new Positioned(
+    return Positioned(
         bottom: scorePosition,
-        child: new Opacity(
+        child: Opacity(
             opacity: 1.0,
             child: Container(
               height: 60.0,
               width: width,
-              decoration: new BoxDecoration(
-                  gradient: new LinearGradient(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                stops: [0.1, 0.9],
+                stops: const [0.1, 0.9],
                 colors: [color1, color2],
               )),
             )));

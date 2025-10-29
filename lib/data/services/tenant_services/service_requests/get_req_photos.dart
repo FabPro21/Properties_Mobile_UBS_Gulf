@@ -19,8 +19,9 @@ class GetReqThumbnails {
             resp["data"].map((x) => PhotoFile?.fromJson(x)));
         if (photos.isNotEmpty) {
           return photos;
-        } else
+        } else {
           return 404;
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

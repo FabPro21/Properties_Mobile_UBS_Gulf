@@ -12,10 +12,11 @@ class UpdateContractDocumentStage {
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);
-        if (jsonResp['statusCode'] == '200')
+        if (jsonResp['statusCode'] == '200') {
           return 200;
-        else
+        } else {
           return jsonResp['message'];
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

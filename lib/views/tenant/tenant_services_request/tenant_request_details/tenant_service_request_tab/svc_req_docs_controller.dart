@@ -64,9 +64,9 @@ class SvcReqDocsController extends GetxController {
     try {
       DateTime d;
       if (format == null) {
-        d = new DateFormat.yMd().parseStrict(value);
+        d = DateFormat.yMd().parseStrict(value);
       } else {
-        d = new DateFormat(format).parseStrict(value);
+        d = DateFormat(format).parseStrict(value);
       }
       //print('Validated $value using the locale of ${Intl.getCurrentLocale()} - result $d');
       return d != null;
@@ -90,7 +90,7 @@ class SvcReqDocsController extends GetxController {
           isDocUploaded.add('false');
         }
 
-        if (resp.docs?.length == 0) {
+        if (resp.docs?.isEmpty == true) {
           isLength.value = true;
           print(
               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
@@ -160,13 +160,13 @@ class SvcReqDocsController extends GetxController {
   // passport and other select from gallery
   pickDoc(int index) async {
     docsModel?.docs?[index].loading.value = true;
-    final ImagePicker _picker = ImagePicker();
-    XFile? result = await _picker.pickImage(source: ImageSource.gallery);
+    final ImagePicker picker = ImagePicker();
+    XFile? result = await picker.pickImage(source: ImageSource.gallery);
     docsModel?.docs?[index].loading.value = false;
 
     if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       docsModel?.docs?[index].loading.value = false;
@@ -211,7 +211,7 @@ class SvcReqDocsController extends GetxController {
           )
         ]);
 
-        var editedImage;
+        Uint8List editedImage;
         if (crop == null) {
           docsModel?.docs?[index].loading.value = false;
           return;
@@ -234,7 +234,7 @@ class SvcReqDocsController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           return;
@@ -280,7 +280,7 @@ class SvcReqDocsController extends GetxController {
 
     if (!CheckFileExtenstion().checkFileExtFunc(result!)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       docsModel?.docs?[index].loading.value = false;
@@ -325,7 +325,7 @@ class SvcReqDocsController extends GetxController {
             ],
           )
         ]);
-        var editedImage;
+        Uint8List editedImage;
         if (crop == null) {
           docsModel?.docs?[index].loading.value = false;
           return;
@@ -348,7 +348,7 @@ class SvcReqDocsController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           return;
@@ -387,8 +387,8 @@ class SvcReqDocsController extends GetxController {
     docsModel?.docs?[index].loading.value = true;
 
     // picking file
-    final ImagePicker _picker = ImagePicker();
-    XFile? result = await _picker.pickImage(
+    final ImagePicker picker = ImagePicker();
+    XFile? result = await picker.pickImage(
       source: ImageSource.camera,
     );
     docsModel?.docs?[index].loading.value = false;
@@ -396,7 +396,7 @@ class SvcReqDocsController extends GetxController {
     // checking extension
     if (!CheckFileExtenstion().checkImageExtFunc(result!.path)) {
       Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           backgroundColor: AppColors.redColor,
           colorText: AppColors.white54);
       docsModel?.docs?[index].loading.value = false;
@@ -433,7 +433,7 @@ class SvcReqDocsController extends GetxController {
         )
       ]);
 
-      var editedImage;
+      Uint8List editedImage;
       if (crop == null) {
         docsModel?.docs?[index].loading.value = false;
         return;
@@ -451,7 +451,7 @@ class SvcReqDocsController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           return;
@@ -506,7 +506,7 @@ class SvcReqDocsController extends GetxController {
       docsModel?.docs?[index].loading.value = false;
       if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-            duration: Duration(seconds: 5),
+            duration: const Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
             colorText: AppColors.white54);
         docsModel?.docs?[index].loading.value = false;
@@ -532,7 +532,7 @@ class SvcReqDocsController extends GetxController {
       if (extension.contains('MB')) {
         if (double.parse(size) > 10) {
           Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               backgroundColor: AppColors.redColor,
               colorText: AppColors.white54);
           return;
@@ -563,7 +563,7 @@ class SvcReqDocsController extends GetxController {
           ],
         )
       ]);
-      var editedImage;
+      Uint8List editedImage;
       if (crop == null) {
         await SnakBarWidget.getSnackBarErrorBlue(
             AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
@@ -635,7 +635,7 @@ class SvcReqDocsController extends GetxController {
                   ? await SnakBarWidget.getSnackBarErrorBlueRichTExt(
                       AppMetaLabels().alert, AppMetaLabels().otherSide)
                   : await SnakBarWidget.getSnackBarTAKEBlueRichTExt();
-              await Future.delayed(Duration(seconds: 5));
+              await Future.delayed(const Duration(seconds: 5));
               isbothScane.value = true;
               await scanEmirateId(source, index);
             } else if (!isbothScane.value) {
@@ -661,7 +661,7 @@ class SvcReqDocsController extends GetxController {
       update();
       await SnakBarWidget.getSnackBarErrorBlue(
           AppMetaLabels().alert, AppMetaLabels().bothSideScaneFullMessage);
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       return;
     }
@@ -674,10 +674,10 @@ class SvcReqDocsController extends GetxController {
                 AppMetaLabels().alert, AppMetaLabels().data)
             : await SnakBarWidget
                 .getSnackBarErrorBlueRichTExtForPrepareDataAr();
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
       }
       await mergeEmirateIdSides();
-      var byteFile;
+      Uint8List byteFile;
       if (mergedId != null) {
         isDocUploaded[index] = 'true';
         byteFile = await mergedId!.readAsBytes();
@@ -694,7 +694,7 @@ class SvcReqDocsController extends GetxController {
       } else {
         try {
           bool isValid = isValidDate(
-              '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry!)}',
+              DateFormat('dd-MM-yyyy').format(cardScanModel.expiry!),
               'dd-MM-yyyy');
           print(
             'Date is valid :::::: $isValid',
@@ -706,7 +706,7 @@ class SvcReqDocsController extends GetxController {
               cardScanModel.expiry = null;
             } else {
               docsModel?.docs?[index].expiry =
-                  '${DateFormat('dd-MM-yyyy').format(cardScanModel.expiry!)}';
+                  DateFormat('dd-MM-yyyy').format(cardScanModel.expiry!);
             }
           } else {
             docsModel?.docs?[index].expiry = '.';
@@ -721,7 +721,7 @@ class SvcReqDocsController extends GetxController {
       if (cardScanModel.dob != null) {
         try {
           bool isValid = isValidDate(
-              '${DateFormat('dd-MM-yyyy').format(cardScanModel.dob!)}',
+              DateFormat('dd-MM-yyyy').format(cardScanModel.dob!),
               'dd-MM-yyyy');
           print(
             'Date is valid :::::: $isValid',
@@ -1018,7 +1018,7 @@ class SvcReqDocsController extends GetxController {
           type: '.jpg',
           file: resizedImage));
 
-      mergedId = new File(path);
+      mergedId = File(path);
     } catch (e) {
       print('Exception :::::: mergeEmirateIdSides $e');
     }
@@ -1213,7 +1213,7 @@ class SvcReqDocsController extends GetxController {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(bytes) / log(1024)).floor();
-    return ((bytes / pow(1024, i)).toStringAsFixed(2)) + ' ' + suffixes[i];
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${suffixes[i]}';
   }
 
   void downloadDoc(int index) async {
@@ -1223,8 +1223,9 @@ class SvcReqDocsController extends GetxController {
     docsModel?.docs?[index].loading.value = false;
 
     if (resp is Uint8List) {
-      if (docsModel?.docs?[index].isRejected! == false)
+      if (docsModel?.docs?[index].isRejected! == false) {
         docsModel?.docs?[index].file = resp;
+      }
       showFile(docsModel?.docs?[index]);
     } else {
       SnakBarWidget.getSnackBarSuccess(
@@ -1248,7 +1249,7 @@ class SvcReqDocsController extends GetxController {
         // if (await getStoragePermission()) {
         var name = docsModel?.docs?[index].name ?? "";
         var type = docsModel?.docs?[index].type ?? "";
-        String path = await createFile(result, name + '.' + type);
+        String path = await createFile(result, '$name.$type');
         final result1 = await OpenFile.open(path);
         print('Result 1 :::: 111 :::: 1 1 $result1');
         isLoadingForScanning.value = false;
@@ -1284,7 +1285,7 @@ class SvcReqDocsController extends GetxController {
       // if (await getStoragePermission()) {
       var name = file?.name ?? "";
       var type = file?.type ?? "";
-      String path = await createFile(file?.file, name + '.' + type);
+      String path = await createFile(file?.file, '$name.$type');
       try {
         final result = await OpenFile.open(path);
         if (result.message != 'done') {

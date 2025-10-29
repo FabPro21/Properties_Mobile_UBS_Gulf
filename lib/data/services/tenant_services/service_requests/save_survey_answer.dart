@@ -17,10 +17,11 @@ class SaveSurveyAnswer {
     if (response is http.Response) {
       try {
         var jsonResp = json.decode(response.body);
-        if (jsonResp['status'] == 'Ok')
+        if (jsonResp['status'] == 'Ok') {
           return 'ok';
-        else
+        } else {
           return jsonResp['message'];
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

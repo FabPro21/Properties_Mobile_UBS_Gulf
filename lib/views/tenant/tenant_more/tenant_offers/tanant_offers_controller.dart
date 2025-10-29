@@ -22,15 +22,15 @@ class TenantOffersController extends GetxController {
   RxString errorDetailsMore = "".obs;
   List<model.Record>? record;
   getOffers(String pageNo) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingOffers.value = true;
       var result = await TenantRepository.getOffers(pageNo);
       if (result is model.TenantOffersModel) {
-        if (result.record!.length == 0) {
+        if (result.record!.isEmpty) {
           errorOffers.value = AppMetaLabels().noDatafound;
           loadingOffers.value = false;
         } else {
@@ -50,15 +50,15 @@ class TenantOffersController extends GetxController {
   }
 
   getOffers1(String pageNo) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingOffers.value = true;
       var result = await TenantRepository.getOffers(pageNo);
       if (result is model.TenantOffersModel) {
-        if (result.record!.length == 0) {
+        if (result.record!.isEmpty) {
           errorDetailsMore.value = AppMetaLabels().noDatafound;
           loadingOffers.value = false;
         } else {
@@ -79,9 +79,9 @@ class TenantOffersController extends GetxController {
   }
 
   getOffersDetails(String offerId) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(const NoInternetScreen());
     }
     try {
       loadingDetails.value = true;

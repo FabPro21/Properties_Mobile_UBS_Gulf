@@ -16,9 +16,9 @@ class VendorDashboardAllInvoicesController extends GetxController {
   List<Invoice> allInvoice = [Invoice()].obs;
 
   getAllInvoicse() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingData.value = true;
@@ -47,9 +47,9 @@ class VendorDashboardAllInvoicesController extends GetxController {
 
   String pageNo = '1';
   getAllInvoicsePagination(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       error.value = '';
@@ -82,9 +82,9 @@ class VendorDashboardAllInvoicesController extends GetxController {
   RxString errorLoadMore = ''.obs;
   var loadingDataLoadMore = true.obs;
   getAllInvoicsePaginationLoadMore(String pageNoP, searchtext) async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
     loadingDataLoadMore.value = true;
@@ -128,10 +128,11 @@ class VendorDashboardAllInvoicesController extends GetxController {
           allInvoice.add(allInvoicesData.value.invoice![i]);
         }
       }
-      if (allInvoice.length == 0)
+      if (allInvoice.isEmpty) {
         error.value = AppMetaLabels().noInvoicesFound;
-      else
+      } else {
         error.value = '';
+      }
 
       loadingData.value = false;
     }

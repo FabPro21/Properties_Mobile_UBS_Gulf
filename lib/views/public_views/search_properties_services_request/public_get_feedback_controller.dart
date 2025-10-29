@@ -12,9 +12,9 @@ class PublicGetFeedbackController extends GetxController {
 
   Future<bool> getFeedback(caseNo) async {
     loadingData.value = true;
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     // try {
 

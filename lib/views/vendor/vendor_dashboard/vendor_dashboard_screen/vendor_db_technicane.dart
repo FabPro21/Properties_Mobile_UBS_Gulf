@@ -22,8 +22,7 @@ class VendorDashboardTechnicane extends StatefulWidget {
   final Function(int)? manageServiceReq;
   final BuildContext? parentContext;
   const VendorDashboardTechnicane(
-      {Key? key, this.manageServiceReq, this.parentContext})
-      : super(key: key);
+      {super.key, this.manageServiceReq, this.parentContext});
 
   @override
   State<VendorDashboardTechnicane> createState() =>
@@ -75,7 +74,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                 padding: EdgeInsets.symmetric(horizontal: 2.0.h),
                 child: Row(
                   children: [
-                    SizedBox(width: 45.0.w, child: AppLogo()),
+                    SizedBox(width: 45.0.w, child: const AppLogo()),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(
@@ -84,7 +83,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                       ),
                       child: TextButton(
                         onPressed: () async {
-                          await Get.to(() => VendorProfile());
+                          await Get.to(() => const VendorProfile());
                           getData();
                         },
                         child: Text(
@@ -98,7 +97,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                           horizontal: 2.0.w, vertical: 0.0.h),
                       child: InkWell(
                         onTap: () async {
-                          await Get.to(() => VendorNotification());
+                          await Get.to(() => const VendorNotification());
                           getData();
                         },
                         child: badge.Badge(
@@ -115,7 +114,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                           ),
                           position: badge.BadgePosition.topEnd(
                               top: -1.0.h, end: 0.0.h),
-                          badgeAnimation: badge.BadgeAnimation.rotation(
+                          badgeAnimation: const badge.BadgeAnimation.rotation(
                             animationDuration: Duration(seconds: 300),
                             colorChangeAnimationDuration: Duration(seconds: 1),
                             loopAnimation: false,
@@ -161,7 +160,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                     ],
                   ),
                   child: controller.loadingData.value
-                      ? LoadingIndicatorBlue()
+                      ? const LoadingIndicatorBlue()
                       : controller.error.value != ''
                           ? Center(
                               child: SizedBox(
@@ -186,7 +185,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                     maxLines: 2,
                                   ),
                                 ),
-                                AppDivider(),
+                                const AppDivider(),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 1.0.h,
@@ -219,7 +218,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                                 ),
                                               ]),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 66.0.w,
                                           height: 7.0.h,
                                           child: Column(
@@ -240,14 +239,12 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 4,
                                                   ),
                                                   Text(
-                                                    AppMetaLabels().total +
-                                                        ' ' +
-                                                        AppMetaLabels()
-                                                            .serviceRequest,
+                                                    '${AppMetaLabels().total} ${AppMetaLabels()
+                                                            .serviceRequest}',
                                                     style: AppTextStyle
                                                         .semiBoldBlack8,
                                                   ),
@@ -275,7 +272,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 4,
                                                   ),
                                                   Text(
@@ -305,7 +302,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 4,
                                                   ),
                                                   Text(
@@ -329,7 +326,7 @@ class _VendorDashboardTechnicaneState extends State<VendorDashboardTechnicane> {
                                     );
                                   }),
                                 ),
-                                AppDivider(),
+                                const AppDivider(),
                                 TextButton(
                                   style: TextButton.styleFrom(
                                     minimumSize: Size.zero,

@@ -10,8 +10,7 @@ class CustomButton2 extends StatelessWidget {
   final String? text;
   final bool? loading;
   const CustomButton2(
-      {Key? key, this.onPressed, this.text, this.loading = false})
-      : super(key: key);
+      {super.key, this.onPressed, this.text, this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,17 @@ class CustomButton2 extends StatelessWidget {
           : () {
               onPressed!();
             },
+      style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.blueColor2, shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(3.0.sp),
+          ),
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 8)),
       child: loading!
           ? AnimatedTextKit(
               isRepeatingAnimation: true,
               repeatForever: true,
-              pause: Duration(milliseconds: 10),
+              pause: const Duration(milliseconds: 10),
               animatedTexts: [
                 ColorizeAnimatedText(text ?? '',
                     textStyle: AppTextStyle.normalBlue11,
@@ -34,19 +39,13 @@ class CustomButton2 extends StatelessWidget {
                       AppColors.blueColor2,
                       AppColors.blueColor
                     ],
-                    speed: Duration(milliseconds: 200)),
+                    speed: const Duration(milliseconds: 200)),
               ],
             )
           : Text(
               text ?? '',
               style: AppTextStyle.normalBlue11,
             ),
-      style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.blueColor2, shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(3.0.sp),
-          ),
-          shadowColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 8)),
     );
   }
 }

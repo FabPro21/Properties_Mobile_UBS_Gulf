@@ -27,8 +27,7 @@ class UploadDocs extends StatefulWidget {
   final int? caseNo;
   final int? docCode;
 
-  UploadDocs({Key? key, this.caseNo, this.title, this.docCode})
-      : super(key: key);
+  const UploadDocs({super.key, this.caseNo, this.title, this.docCode});
 
   @override
   State<UploadDocs> createState() => _UploadDocsState();
@@ -60,7 +59,7 @@ class _UploadDocsState extends State<UploadDocs> {
                 Expanded(
                   child: Obx(() {
                     return controller!.loadingDocs.value
-                        ? Center(child: LoadingIndicatorBlue())
+                        ? const Center(child: LoadingIndicatorBlue())
                         : controller!.errorLoadingDocs != ''
                             ? AppErrorWidget(
                                 errorText: controller!.errorLoadingDocs,
@@ -85,7 +84,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                       ],
                                     ),
                                   ),
-                                  AppDivider(),
+                                  const AppDivider(),
                                   Expanded(
                                     child: ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -203,7 +202,7 @@ class _UploadDocsState extends State<UploadDocs> {
                   }),
                 ),
               ]),
-              isEnableScreen == false ? ScreenDisableWidget() : SizedBox(),
+              isEnableScreen == false ? const ScreenDisableWidget() : const SizedBox(),
             ],
           ),
         ));
@@ -245,8 +244,9 @@ class _UploadDocsState extends State<UploadDocs> {
                                       isEnableScreen = false;
                                     });
 
-                                    if (!controller!.docs[index].loading.value)
+                                    if (!controller!.docs[index].loading.value) {
                                       await controller!.downloadDoc(index);
+                                    }
 
                                     setState(() {
                                       isEnableScreen = true;
@@ -257,7 +257,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                 style: AppTextStyle.normalErrorText3)
                           ]),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Obx(() {
@@ -340,11 +340,11 @@ class _UploadDocsState extends State<UploadDocs> {
 
                             // locale: Locale('en'),
                             locale: SessionController().getLanguage() == 1
-                                ? Locale('en', '')
-                                : Locale('ar', ''),
+                                ? const Locale('en', '')
+                                : const Locale('ar', ''),
                             initialDate: DateTime.now(),
                             firstDate:
-                                DateTime.now().subtract(Duration(seconds: 1)),
+                                DateTime.now().subtract(const Duration(seconds: 1)),
                             lastDate: DateTime(DateTime.now().year + 20),
                             borderRadius: 2.0.h,
                             styleDatePicker: MaterialRoundedDatePickerStyle(
@@ -392,7 +392,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                 AppMetaLabels().selectFuturedate,
                               );
                             } else {
-                              intl.DateFormat dateFormat = new intl.DateFormat(
+                              intl.DateFormat dateFormat = intl.DateFormat(
                                   AppMetaLabels()
                                       .dateFormatForShowRoundedDatePicker);
                               // intl.DateFormat dateFormat = new intl.DateFormat(
@@ -414,7 +414,7 @@ class _UploadDocsState extends State<UploadDocs> {
                           width: 40.0.w,
                           height: 5.5.h,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(246, 248, 249, 1),
+                              color: const Color.fromRGBO(246, 248, 249, 1),
                               borderRadius: BorderRadius.circular(1.0.h),
                               border: Border.all(
                                   color: index ==
@@ -436,7 +436,7 @@ class _UploadDocsState extends State<UploadDocs> {
                                   );
                                 }),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 1.0.h),
@@ -459,9 +459,9 @@ class _UploadDocsState extends State<UploadDocs> {
                               child: Text(
                             // 'Please select expiry date',
                             AppMetaLabels().pleaseSelectExpiryDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: const TextStyle(color: Colors.blue),
                           )))
-                      : SizedBox(
+                      : const SizedBox(
                           height: 10,
                         ),
                   Container(
@@ -503,28 +503,29 @@ class _UploadDocsState extends State<UploadDocs> {
                                               });
 
                                               if (controller!
-                                                  .docs[index].isRejected!)
+                                                  .docs[index].isRejected!) {
                                                 await controller!
                                                     .updateDoc(index);
-                                              else
+                                              } else {
                                                 await controller!
                                                     .uploadDoc(index);
+                                              }
 
                                               setState(() {
                                                 isEnableScreen = true;
                                               });
                                             },
-                                      child: Text(
-                                        AppMetaLabels().submit,
-                                        style: AppTextStyle.semiBoldWhite12,
-                                      ),
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(1.3.h),
                                         ),
                                         backgroundColor:
-                                            Color.fromRGBO(0, 61, 166, 1),
+                                            const Color.fromRGBO(0, 61, 166, 1),
+                                      ),
+                                      child: Text(
+                                        AppMetaLabels().submit,
+                                        style: AppTextStyle.semiBoldWhite12,
                                       ),
                                     );
                                   });

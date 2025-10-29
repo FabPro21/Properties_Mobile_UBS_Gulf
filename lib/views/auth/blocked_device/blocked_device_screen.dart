@@ -11,7 +11,7 @@ import '../../../data/helpers/session_controller.dart';
 import 'blocked_device_controller.dart';
 
 class BlockedDeviceScreen extends StatelessWidget {
-  BlockedDeviceScreen({Key? key}) : super(key: key);
+  BlockedDeviceScreen({super.key});
 
   final btController = Get.put(BlockedDeviceController());
   // Testing purpose
@@ -46,26 +46,22 @@ class BlockedDeviceScreen extends StatelessWidget {
                       Obx(() {
                         return Padding(
                           padding: EdgeInsets.only(top: 2.h),
-                          child: Container(
-                            // width: 40.0.w,
-                            // color: AppColors.redColor,
-                            child: Column(
-                              children: [
-                                Text(
-                                  AppMetaLabels().deviceBlocked,
-                                  style: AppTextStyle.semiBoldWhite10,
-                                  textAlign: TextAlign.center,
-                                ),
-                                SizedBox(
-                                  height: 2.0.h,
-                                ),
-                                Text(
-                                  '${btController.secText} ${AppMetaLabels().seconds}',
-                                  style: AppTextStyle.semiBoldWhite14,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                AppMetaLabels().deviceBlocked,
+                                style: AppTextStyle.semiBoldWhite10,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 2.0.h,
+                              ),
+                              Text(
+                                '${btController.secText} ${AppMetaLabels().seconds}',
+                                style: AppTextStyle.semiBoldWhite14,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         );
                       }),

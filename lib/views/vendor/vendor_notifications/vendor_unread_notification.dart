@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class VendorUnreadNotification extends StatefulWidget {
-  const VendorUnreadNotification({Key? key}) : super(key: key);
+  const VendorUnreadNotification({super.key});
 
   @override
   _VendorUnreadNotificationState createState() =>
@@ -23,7 +23,7 @@ class VendorUnreadNotification extends StatefulWidget {
 }
 
 class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
-  var _controller = Get.find<VendorNotificationsController>();
+  final _controller = Get.find<VendorNotificationsController>();
   _getUnreadNotifications() async {
     await _controller.unReadNotifications(_controller.pagaNoPURead);
   }
@@ -50,7 +50,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
         resizeToAvoidBottomInset: false,
         body: Obx(() {
           return _controller.unreadNotificationsLoading.value
-              ? LoadingIndicatorBlue()
+              ? const LoadingIndicatorBlue()
               : _controller.errorUnread.value != ''
                   ? AppErrorWidget(
                       errorText: _controller.errorUnread.value,
@@ -101,7 +101,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                                             });
                                           }
                                           await Get.to(() =>
-                                              VendorNotificationDetails());
+                                              const VendorNotificationDetails());
                                           _controller.unreadNotificationsLoading
                                               .value = false;
                                           _getUnreadNotifications();
@@ -124,7 +124,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                                 return _controller.noMoreDataUnRead.value != ''
                                     ? Text(
                                         AppMetaLabels().noMoreData,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.blue,
                                         ).copyWith(fontWeight: FontWeight.bold),
                                       )
@@ -133,7 +133,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                                         ? SizedBox(
                                             width: 75.w,
                                             height: 5.h,
-                                            child: Center(
+                                            child: const Center(
                                               child: LoadingIndicatorBlue(),
                                             ),
                                           )
@@ -160,14 +160,14 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                                                       TextSpan(
                                                         text: AppMetaLabels()
                                                             .loadMoreData,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.blue,
                                                         ).copyWith(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
                                                       ),
-                                                      WidgetSpan(
+                                                      const WidgetSpan(
                                                         child: Icon(
                                                           Icons
                                                               .arrow_forward_ios,
@@ -243,7 +243,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
           ),
         ],
       ),
-      child: Container(
+      child: SizedBox(
         width: 90.0.w,
         child: ListTile(
           title: Column(
@@ -256,14 +256,14 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                       : Container(
                           height: 1.0.h,
                           width: 2.0.w,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.red,
                             shape: BoxShape.circle,
                           ),
                         ),
                   Padding(
                     padding: EdgeInsets.only(left: 1.0.h),
-                    child: Container(
+                    child: SizedBox(
                       width:
                           _controller.editTap.value == true ? 30.0.w : 60.0.w,
                       child: Text(
@@ -277,8 +277,8 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.more_horiz),
+                  const Spacer(),
+                  const Icon(Icons.more_horiz),
                 ],
               ),
               Padding(
@@ -311,7 +311,7 @@ class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
               SizedBox(height: 2.0.h),
               index == _controller.unreadLength - 1
                   ? Container()
-                  : AppDivider(),
+                  : const AppDivider(),
             ],
           ),
         ),

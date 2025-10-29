@@ -21,8 +21,7 @@ import 'package:sizer/sizer.dart';
 class VendorInvoiceCommunication extends StatefulWidget {
   final String? reqNo;
   final bool? canCommunicate;
-  VendorInvoiceCommunication({Key? key, this.reqNo, this.canCommunicate})
-      : super(key: key) {
+  VendorInvoiceCommunication({super.key, this.reqNo, this.canCommunicate}) {
     Get.put(CommunicationInvoiceController(reqNo: reqNo));
   }
 
@@ -42,7 +41,7 @@ class _VendorInvoiceCommunicationState
     super.initState();
   }
 
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
         keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
@@ -102,7 +101,7 @@ class _VendorInvoiceCommunicationState
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
                                     } else
-                                      return null;
+                                      {return null;}
                                   },
                                 ),
                               ),
@@ -123,7 +122,7 @@ class _VendorInvoiceCommunicationState
                                     },
                                     child: Row(
                                       children: [
-                                        Icon(Icons.attach_file),
+                                        const Icon(Icons.attach_file),
                                         Text(
                                           AppMetaLabels().addFile,
                                           style: AppTextStyle.normalBlack12,
@@ -140,11 +139,11 @@ class _VendorInvoiceCommunicationState
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(Icons.file_open),
+                                            const Icon(Icons.file_open),
                                             SizedBox(
                                               width: 2.w,
                                             ),
-                                            Container(
+                                            SizedBox(
                                               width: Get.width * 0.7,
                                               child: Text(
                                                 _controller.fileToUpload.value
@@ -158,20 +157,20 @@ class _VendorInvoiceCommunicationState
                                           ],
                                         ),
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
                                           onPressed: () {
                                             _controller.fileToUpload.value =
                                                 DocFile();
                                           },
-                                          icon: Icon(Icons.cancel_outlined))
+                                          icon: const Icon(Icons.cancel_outlined))
                                     ],
                                   ),
                             SizedBox(
                               height: 2.h,
                             ),
                             _controller.addingReply.value
-                                ? LoadingIndicatorBlue()
+                                ? const LoadingIndicatorBlue()
                                 : Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -192,7 +191,7 @@ class _VendorInvoiceCommunicationState
                                       InkWell(
                                         onTap: () async {
                                           _focusNode.unfocus();
-                                          if (formKey.currentState!.validate()) if (await _controller
+                                          if (formKey.currentState!.validate()) {if (await _controller
                                               .addTicketReply(
                                                   detailController.caseNoInvoice
                                                       .toString(),
@@ -201,7 +200,7 @@ class _VendorInvoiceCommunicationState
                                             _controller.typing.value = false;
                                             _messageTextController.clear();
                                             scrollToEndofChat();
-                                          } else
+                                          } else {
                                             SnakBarWidget.getSnackBarErrorBlue(
                                               AppMetaLabels().error,
                                               _controller.errorReplying
@@ -210,6 +209,7 @@ class _VendorInvoiceCommunicationState
                                                       .someThingWentWrong
                                                   : _controller.errorReplying,
                                             );
+                                          }}
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -290,7 +290,7 @@ class _VendorInvoiceCommunicationState
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 73.0.w,
                                       child: Directionality(
                                         textDirection:
@@ -318,7 +318,7 @@ class _VendorInvoiceCommunicationState
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(4.0.w),
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.white,
                                                 width: 1.0,
                                               ),
@@ -326,7 +326,7 @@ class _VendorInvoiceCommunicationState
                                             enabledBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(4.0.w),
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.white,
                                                 width: 1.0,
                                               ),
@@ -337,7 +337,7 @@ class _VendorInvoiceCommunicationState
                                                 AppMetaLabels().yourMessage,
                                             hintStyle:
                                                 AppTextStyle.normalGrey11,
-                                            errorStyle: TextStyle(fontSize: 0),
+                                            errorStyle: const TextStyle(fontSize: 0),
                                             contentPadding: EdgeInsets.only(
                                                 top: 4.w, left: 4.0.w),
                                           ),
@@ -368,7 +368,7 @@ class _VendorInvoiceCommunicationState
                             )))
                 ],
               ),
-              BottomShadow(),
+              const BottomShadow(),
             ],
           ),
         );
@@ -385,18 +385,18 @@ class _VendorInvoiceCommunicationState
             scrollToEndofChat();
           });
           return _controller.gettingReplies!.value
-              ? Center(
+              ? const Center(
                   child: LoadingIndicatorBlue(),
                 )
               : _controller.errorGettingReplies != ''
-                  ? Center(
+                  ? const Center(
                       child: AppErrorWidget(),
                     )
                   : ListView.builder(
                       controller: _chatListScrollController,
                       itemCount: _controller.ticketReplies!.ticketReply!.length,
                       shrinkWrap: true,
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       itemBuilder: (context, index) {
                         return Align(
                           alignment: (_controller.ticketReplies!
@@ -426,7 +426,7 @@ class _VendorInvoiceCommunicationState
                                       ),
                                       color: (AppColors.sendchatclr),
                                     ),
-                              padding: EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
                               child: Column(
                                 crossAxisAlignment: _controller.ticketReplies!
                                             .ticketReply![index].userId ==
@@ -462,7 +462,7 @@ class _VendorInvoiceCommunicationState
                                                     .ticketReply![index]
                                                     .downloadingFile!
                                                     .value
-                                                ? LoadingIndicatorBlue(
+                                                ? const LoadingIndicatorBlue(
                                                     strokeWidth: 2,
                                                     size: 24,
                                                   )

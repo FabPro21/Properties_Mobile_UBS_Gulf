@@ -20,8 +20,9 @@ class VendorDownloadDoc {
         var doc = resp['path'] as List;
         if (doc.isNotEmpty) {
           return base64Decode(doc.first.replaceAll('\n', ''));
-        } else
+        } else {
           return AppMetaLabels().noDatafound;
+        }
       } catch (e) {
         if (kDebugMode) print(e);
         return AppMetaLabels().anyError;

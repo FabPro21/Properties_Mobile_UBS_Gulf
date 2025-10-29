@@ -20,10 +20,11 @@ class AddAramexAddress {
     if (resp is http.Response) {
       try {
         final status = json.decode(resp.body)['status'];
-        if (status == 'ok')
+        if (status == 'ok') {
           return status;
-        else
+        } else {
           return AppMetaLabels().someThingWentWrong;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }
@@ -45,10 +46,11 @@ class AddAramexAddressNew {
     if (resp is http.Response) {
       try {
         final status = json.decode(resp.body)['status'];
-        if (status == 'ok')
+        if (status == 'ok') {
           return status;
-        else
+        } else {
           return AppMetaLabels().someThingWentWrong;
+        }
       } catch (e) {
         return AppMetaLabels().someThingWentWrong;
       }

@@ -53,9 +53,9 @@ class VerifyUserOtpController extends GetxController {
   Future<void> verifyOtpBtn(String? otp, String? otpCodeForVerifyOTP) async {
     loadingData.value = true;
 
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
 
     var result = await CommonRepository.verifyOtp(otp, otpCodeForVerifyOTP);
@@ -82,12 +82,13 @@ class VerifyUserOtpController extends GetxController {
       //////////////////////////////
       /// update device info ///
       //////////////////////////////
-      bool _updatedDeviceInfo = await updateDeviceInfo();
-      if (_updatedDeviceInfo) {
-        if (model.value.user!.mpinSet! && !SessionController().getResetMpin())
-          Get.offAll(() => SelectRoleScreen());
-        else
-          Get.offAll(() => SetupMpinScreen());
+      bool updatedDeviceInfo = await updateDeviceInfo();
+      if (updatedDeviceInfo) {
+        if (model.value.user!.mpinSet! && !SessionController().getResetMpin()) {
+          Get.offAll(() => const SelectRoleScreen());
+        } else {
+          Get.offAll(() => const SetupMpinScreen());
+        }
       }
     } else {
       validOTP.value = false;
@@ -149,9 +150,9 @@ class VerifyUserOtpController extends GetxController {
   }
 
   void resendOtpBtn() async {
-    bool _isInternetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isInternetConnected) {
-      await Get.to(() => NoInternetScreen());
+    bool isInternetConnected = await BaseClientClass.isInternetConnected();
+    if (!isInternetConnected) {
+      await Get.to(() => const NoInternetScreen());
     }
     try {
       validOTP.value = true;

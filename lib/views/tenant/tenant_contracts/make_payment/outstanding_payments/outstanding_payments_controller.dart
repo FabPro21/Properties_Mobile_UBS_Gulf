@@ -51,9 +51,9 @@ class OutstandingPaymentsController extends GetxController {
   RxBool isChequeSampleShow = false.obs;
 
   Future<int> getOutstandingPayments() async {
-    bool _isIntenetConnected = await BaseClientClass.isInternetConnected();
-    if (!_isIntenetConnected) {
-      Get.to(() => NoInternetScreen());
+    bool isIntenetConnected = await BaseClientClass.isInternetConnected();
+    if (!isIntenetConnected) {
+      Get.to(() => const NoInternetScreen());
     }
     errorLoadingOutstandingPayments.value = '';
     loadingOutstandingPayments.value = true;
@@ -90,8 +90,9 @@ class OutstandingPaymentsController extends GetxController {
           insertInPaymentsToShow();
           shouldShowAddressField();
           shouldGoToOnlinePayments();
-          if (sumOfAllPayments.value == '0.00')
+          if (sumOfAllPayments.value == '0.00') {
             errorLoadingOutstandingPayments.value = AppMetaLabels().noDatafound;
+          }
         }
       } else {
         errorLoadingOutstandingPayments.value = resp;
@@ -102,8 +103,9 @@ class OutstandingPaymentsController extends GetxController {
       loadingOutstandingPayments.value = false;
     }
     int noOfPayments = 0;
-    if (outstandingPayments.record! != null)
+    if (outstandingPayments.record! != null) {
       noOfPayments = outstandingPayments.record!.length;
+    }
     return noOfPayments;
   }
 
@@ -187,9 +189,9 @@ class OutstandingPaymentsController extends GetxController {
   }
 
   void removeZeroBalance() {
-    outstandingPayments.record!.forEach((element) {
+    for (var element in outstandingPayments.record!) {
       if (element.amount == 0) outstandingPayments.record!.remove(element);
-    });
+    }
   }
 
   void sumPayments() {
@@ -198,28 +200,28 @@ class OutstandingPaymentsController extends GetxController {
     double vatRentSum = 0;
     double vatChargesSum = 0;
     for (int i = 0; i < outstandingPayments.record!.length; i++) {
-      if (outstandingPayments.record?[i].type == 'Contract Payable')
+      if (outstandingPayments.record?[i].type == 'Contract Payable') {
         rentalSum = rentalSum + (outstandingPayments.record![i].amount ?? 0);
-      else if (outstandingPayments.record![i].type == 'Additional Charges')
-        additionalSum =
-            additionalSum + (outstandingPayments.record![i].amount ?? 0);
+      } else if (outstandingPayments.record![i].type == 'Additional Charges')
+        {additionalSum =
+            additionalSum + (outstandingPayments.record![i].amount ?? 0);}
       else if (outstandingPayments.record![i].type?.toLowerCase() ==
           'Vat On Rent'.toLowerCase())
-        vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);
+        {vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);}
       else if (outstandingPayments.record![i].type?.toLowerCase() ==
           'Vat On Charges'.toLowerCase())
-        vatChargesSum =
-            vatChargesSum + (outstandingPayments.record![i].amount ?? 0);
+        {vatChargesSum =
+            vatChargesSum + (outstandingPayments.record![i].amount ?? 0);}
       if (outstandingPayments.record![i].isRejected!) {
         outstandingPayments.record![i].filePath = null;
       }
     }
     final amountFormat = NumberFormat('#,##0.00', 'AR');
-    this.totalRentalPayment.value = amountFormat.format(rentalSum);
-    this.totalAdditionalCharges.value = amountFormat.format(additionalSum);
-    this.totalVatOnRent.value = amountFormat.format(vatRentSum);
-    this.totalVatOnCharges.value = amountFormat.format(vatChargesSum);
-    this.sumOfAllPayments.value = amountFormat
+    totalRentalPayment.value = amountFormat.format(rentalSum);
+    totalAdditionalCharges.value = amountFormat.format(additionalSum);
+    totalVatOnRent.value = amountFormat.format(vatRentSum);
+    totalVatOnCharges.value = amountFormat.format(vatChargesSum);
+    sumOfAllPayments.value = amountFormat
         .format(rentalSum + additionalSum + vatRentSum + vatChargesSum);
   }
 
@@ -312,7 +314,7 @@ class OutstandingPaymentsController extends GetxController {
 
       if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-            duration: Duration(seconds: 5),
+            duration: const Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
             colorText: AppColors.white54);
         return;
@@ -351,7 +353,7 @@ class OutstandingPaymentsController extends GetxController {
           )
         ]);
 
-        var editedImage;
+        Uint8List editedImage;
         if (crop == null) {
           return;
         }
@@ -370,7 +372,7 @@ class OutstandingPaymentsController extends GetxController {
         if (extension.contains('MB')) {
           if (double.parse(size) > 10) {
             Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-                duration: Duration(seconds: 5),
+                duration: const Duration(seconds: 5),
                 backgroundColor: AppColors.redColor,
                 colorText: AppColors.white54);
             return;
@@ -404,7 +406,7 @@ class OutstandingPaymentsController extends GetxController {
 
       if (!CheckFileExtenstion().checkImageExtFunc(xfile!.path)) {
         Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileExtensionError,
-            duration: Duration(seconds: 5),
+            duration: const Duration(seconds: 5),
             backgroundColor: AppColors.redColor,
             colorText: AppColors.white54);
         return;
@@ -442,7 +444,7 @@ class OutstandingPaymentsController extends GetxController {
           )
         ]);
 
-        var editedImage;
+        Uint8List editedImage;
         if (crop == null) {
           return;
         }
@@ -464,7 +466,7 @@ class OutstandingPaymentsController extends GetxController {
         if (extension.contains('MB')) {
           if (double.parse(size) > 10) {
             Get.snackbar(AppMetaLabels().error, AppMetaLabels().fileSizenError,
-                duration: Duration(seconds: 5),
+                duration: const Duration(seconds: 5),
                 backgroundColor: AppColors.redColor,
                 colorText: AppColors.white54);
             return;
@@ -502,8 +504,9 @@ class OutstandingPaymentsController extends GetxController {
       payable.cheque = null;
       // adding this
       payable.chequeNo = '';
-    } else
+    } else {
       payable.errorRemovingCheque.value = true;
+    }
   }
 
   int areAllChequesUploaded() {

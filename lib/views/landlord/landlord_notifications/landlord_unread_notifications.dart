@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 
 class LandLordUnReadNotifications extends StatefulWidget {
   final int? index;
-  const LandLordUnReadNotifications({Key? key, this.index}) : super(key: key);
+  const LandLordUnReadNotifications({super.key, this.index});
 
   @override
   _LandLordUnReadNotificationsState createState() =>
@@ -49,7 +49,7 @@ class _LandLordUnReadNotificationsState
       resizeToAvoidBottomInset: false,
       body: Obx(() {
         return getLandLController.unreadNotificationsLoading.value
-            ? LoadingIndicatorBlue()
+            ? const LoadingIndicatorBlue()
             : getLandLController.errorUnread.value != ''
                 ? AppErrorWidget(
                     errorText: getLandLController.errorUnread.value,
@@ -115,10 +115,11 @@ class _LandLordUnReadNotificationsState
                                             .notificationId
                                             .toString());
                                     if (!getLandLController.unreadNotifications
-                                        .value.notifications![index].isRead!)
+                                        .value.notifications![index].isRead!) {
                                       getLandLController
                                           .unreadNotificationsLoading
                                           .value = true;
+                                    }
                                     bool res = await getLandLController
                                         .readNotifications(index, 'unread');
                                     print('Result ::::: $res');
@@ -130,7 +131,7 @@ class _LandLordUnReadNotificationsState
                                             getLandLController.unreadLength - 1;
                                       });
                                     }
-                                    Get.to(() => LandlordNotificationDetails());
+                                    Get.to(() => const LandlordNotificationDetails());
                                   },
                                   contentPadding: EdgeInsets.zero,
                                   horizontalTitleGap: 0,
@@ -337,7 +338,7 @@ class _LandLordUnReadNotificationsState
                       height: 1.0.h,
                       width: 2.0.w,
                       margin: EdgeInsets.symmetric(horizontal: 1.6.w),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.red,
                         shape: BoxShape.circle,
                       ),
@@ -399,7 +400,7 @@ class _LandLordUnReadNotificationsState
               ),
               index == getLandLController.unreadLength - 1
                   ? Container()
-                  : AppDivider(),
+                  : const AppDivider(),
             ],
           ),
         ),

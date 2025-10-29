@@ -12,6 +12,8 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
 class CountryPicker extends StatefulWidget {
+  const CountryPicker({super.key});
+
   @override
   State<CountryPicker> createState() => _CountryPickerState();
 }
@@ -24,8 +26,9 @@ class _CountryPickerState extends State<CountryPicker> {
   @override
   void initState() {
     if (cPController.countryPicker.value.countries == null ||
-        cPController.countryPicker.value.countries!.isEmpty)
+        cPController.countryPicker.value.countries!.isEmpty) {
       cPController.getData();
+    }
     super.initState();
   }
 
@@ -68,10 +71,7 @@ class _CountryPickerState extends State<CountryPicker> {
                                 Padding(
                                   padding: EdgeInsets.only(top: 1.0.h),
                                   child: Text(
-                                    AppMetaLabels().countryCode +
-                                        ' ' +
-                                        cPController.loadingData.value
-                                            .toString(),
+                                    '${AppMetaLabels().countryCode} ${cPController.loadingData.value}',
                                     style: AppTextStyle.semiBoldWhite13,
                                   ),
                                 ),
@@ -83,7 +83,7 @@ class _CountryPickerState extends State<CountryPicker> {
                               onPressed: () {
                                 Get.back();
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.cancel_outlined,
                                 color: Colors.white,
                               ),
@@ -94,7 +94,7 @@ class _CountryPickerState extends State<CountryPicker> {
                     ),
                     Obx(() {
                       return cPController.loadingData.value == true
-                          ? SizedBox()
+                          ? const SizedBox()
                           : Padding(
                               padding: EdgeInsets.all(2.0.h),
                               child: TextField(
@@ -148,7 +148,7 @@ class _CountryPickerState extends State<CountryPicker> {
                       return cPController.loadingData.value == true
                           ? Padding(
                               padding: EdgeInsets.only(top: 30.0.h),
-                              child: LoadingIndicatorWhite(),
+                              child: const LoadingIndicatorWhite(),
                             )
                           : cPController.error.value != ''
                               ? Padding(
@@ -217,17 +217,16 @@ class _CountryPickerState extends State<CountryPicker> {
             padding: EdgeInsets.fromLTRB(2.0.h, 1.3.h, 2.0.h, 1.3.h),
             child: Row(
               children: [
-                Container(
+                SizedBox(
                   width: 7.0.w,
                   height: 3.0.h,
                   child: Image.network(
-                    'http://' +
-                        cPController
-                            .countryPicker.value.countries![index].flag!,
+                    'http://${cPController
+                            .countryPicker.value.countries![index].flag!}',
                     fit: BoxFit.contain,
                     errorBuilder: (BuildContext context, Object? exception,
                         StackTrace? stackTrace) {
-                      return Icon(Icons.error);
+                      return const Icon(Icons.error);
                     },
                   ),
                 ),
@@ -247,19 +246,19 @@ class _CountryPickerState extends State<CountryPicker> {
                     style: AppTextStyle.normalWhite13,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Obx(() {
                   return cPController.selectedIndex.value == index
-                      ? Icon(
+                      ? const Icon(
                           Icons.done,
                           color: Colors.white,
                         )
-                      : SizedBox();
+                      : const SizedBox();
                 })
               ],
             ),
           ),
-          index == cPController.length - 1 ? Container() : AppDivider(),
+          index == cPController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

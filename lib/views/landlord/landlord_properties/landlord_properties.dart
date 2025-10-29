@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class LandLordProperties extends StatefulWidget {
-  const LandLordProperties({Key? key}) : super(key: key);
+  const LandLordProperties({super.key});
 
   @override
   _LandLordPropertiesState createState() => _LandLordPropertiesState();
@@ -101,7 +101,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                           borderSide: BorderSide(
                               color: AppColors.whiteColor, width: 0.1.h),
                         ),
-                        hintText: AppMetaLabels().search+' '+AppMetaLabels().properties,
+                        hintText: '${AppMetaLabels().search} ${AppMetaLabels().properties}',
                         hintStyle: AppTextStyle.normalBlack10
                             .copyWith(color: Colors.grey),
                       ),
@@ -121,7 +121,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                       setState(() {});
                       setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.refresh,
                     ),
                   )
@@ -157,167 +157,165 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     ),
                     child: Obx(() {
                       return controller.loadingProperties.value == true
-                          ? LoadingIndicatorBlue()
+                          ? const LoadingIndicatorBlue()
                           : controller.errorLoadingProperties.value != ''
                               ? CustomErrorWidget(
                                   errorText:
                                       controller.errorLoadingProperties.value,
                                   errorImage: AppImagesPath.noContractsFound,
                                 )
-                              : Container(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    padding: EdgeInsets.zero,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemCount: controller.props.length,
-                                    itemBuilder: (context, index) {
-                                      return Column(
-                                        children: [
-                                          inkWell(index),
-                                          index == controller.props.length - 1
-                                              ? Container()
-                                              : AppDivider(),
-                                          index != controller.props.length - 1
-                                              ? SizedBox()
-                                              : controller.props.length < 19
-                                                  ? SizedBox()
-                                                  : controller.isFilter.value ==
-                                                          false
-                                                      ? controller.errorLoadMore
-                                                                  .value !=
-                                                              ''
-                                                          ? Container(
-                                                              height: 1.h,
-                                                            )
-                                                          : Container(
-                                                              height: 5.h,
-                                                              width: 87.w,
-                                                              child: Row(
-                                                                children: [
-                                                                  Spacer(),
-                                                                  Obx(() {
-                                                                    return controller.errorLoadMore.value !=
-                                                                            ''
-                                                                        ? SizedBox()
-                                                                        : InkWell(
-                                                                            onTap:
-                                                                                () async {
-                                                                              int pageSize = int.parse(controller.pageNo);
-                                                                              int naePageNo = pageSize + 1;
-                                                                              controller.pageNo = naePageNo.toString();
-                                                                              if (searchTextController.text == '') {
-                                                                                await controller.getPropertiesPaginationLoadMore(controller.pageNo, '');
-                                                                              } else {
-                                                                                await controller.getPropertiesPaginationLoadMore(controller.pageNo, searchTextController.text);
-                                                                              }
-                                                                              setState(() {});
-                                                                            },
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.only(top: 0.5.h),
-                                                                              child: SizedBox(
-                                                                                  width: 85.w,
-                                                                                  height: 3.h,
-                                                                                  child: RichText(
-                                                                                    textAlign: TextAlign.right,
-                                                                                    text: TextSpan(
-                                                                                      children: [
-                                                                                        TextSpan(
-                                                                                          text: AppMetaLabels().loadMoreData,
-                                                                                          style: TextStyle(
-                                                                                            color: Colors.blue,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
-                                                                                        ),
-                                                                                        WidgetSpan(
-                                                                                          child: Icon(
-                                                                                            Icons.arrow_forward_ios,
-                                                                                            size: 15,
-                                                                                            color: Colors.blue,
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
+                              : ListView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: controller.props.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      inkWell(index),
+                                      index == controller.props.length - 1
+                                          ? Container()
+                                          : const AppDivider(),
+                                      index != controller.props.length - 1
+                                          ? const SizedBox()
+                                          : controller.props.length < 19
+                                              ? const SizedBox()
+                                              : controller.isFilter.value ==
+                                                      false
+                                                  ? controller.errorLoadMore
+                                                              .value !=
+                                                          ''
+                                                      ? Container(
+                                                          height: 1.h,
+                                                        )
+                                                      : SizedBox(
+                                                          height: 5.h,
+                                                          width: 87.w,
+                                                          child: Row(
+                                                            children: [
+                                                              const Spacer(),
+                                                              Obx(() {
+                                                                return controller.errorLoadMore.value !=
+                                                                        ''
+                                                                    ? const SizedBox()
+                                                                    : InkWell(
+                                                                        onTap:
+                                                                            () async {
+                                                                          int pageSize = int.parse(controller.pageNo);
+                                                                          int naePageNo = pageSize + 1;
+                                                                          controller.pageNo = naePageNo.toString();
+                                                                          if (searchTextController.text == '') {
+                                                                            await controller.getPropertiesPaginationLoadMore(controller.pageNo, '');
+                                                                          } else {
+                                                                            await controller.getPropertiesPaginationLoadMore(controller.pageNo, searchTextController.text);
+                                                                          }
+                                                                          setState(() {});
+                                                                        },
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsets.only(top: 0.5.h),
+                                                                          child: SizedBox(
+                                                                              width: 85.w,
+                                                                              height: 3.h,
+                                                                              child: RichText(
+                                                                                textAlign: TextAlign.right,
+                                                                                text: TextSpan(
+                                                                                  children: [
+                                                                                    TextSpan(
+                                                                                      text: AppMetaLabels().loadMoreData,
+                                                                                      style: const TextStyle(
+                                                                                        color: Colors.blue,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
                                                                                     ),
-                                                                                  )),
-                                                                            ),
-                                                                          );
-                                                                  }),
-                                                                ],
-                                                              ),
-                                                            )
-                                                      : controller.errorLoadMoreFilter
-                                                                  .value !=
-                                                              ''
-                                                          ? Container(
-                                                              height: 1.h,
-                                                            )
-                                                          : InkWell(
-                                                              onTap: () async {
-                                                                int pageSize =
-                                                                    int.parse(
-                                                                        controller
-                                                                            .pageNoFilter);
-                                                                int naePageNo =
-                                                                    pageSize +
-                                                                        1;
-                                                                controller
-                                                                        .pageNoFilter =
-                                                                    naePageNo
-                                                                        .toString();
-                                                                await controller.getFilteredDataPagiationLoadMore(
+                                                                                    const WidgetSpan(
+                                                                                      child: Icon(
+                                                                                        Icons.arrow_forward_ios,
+                                                                                        size: 15,
+                                                                                        color: Colors.blue,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              )),
+                                                                        ),
+                                                                      );
+                                                              }),
+                                                            ],
+                                                          ),
+                                                        )
+                                                  : controller.errorLoadMoreFilter
+                                                              .value !=
+                                                          ''
+                                                      ? Container(
+                                                          height: 1.h,
+                                                        )
+                                                      : InkWell(
+                                                          onTap: () async {
+                                                            int pageSize =
+                                                                int.parse(
                                                                     controller
-                                                                        .pageNoFilter,
-                                                                    searchTextController
-                                                                        .text);
-                                                                setState(() {});
-                                                                setState(() {});
-                                                              },
-                                                              child: Container(
-                                                                height: 5.h,
-                                                                width: 95.w,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Spacer(),
-                                                                    RichText(
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                      text:
-                                                                          TextSpan(
-                                                                        children: [
-                                                                          TextSpan(
-                                                                            text:
-                                                                                AppMetaLabels().loadMoreData,
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: Colors.blue,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
-                                                                          WidgetSpan(
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.arrow_forward_ios,
-                                                                              size: 15,
-                                                                              color: Colors.blue,
-                                                                            ),
-                                                                          ),
-                                                                        ],
+                                                                        .pageNoFilter);
+                                                            int naePageNo =
+                                                                pageSize +
+                                                                    1;
+                                                            controller
+                                                                    .pageNoFilter =
+                                                                naePageNo
+                                                                    .toString();
+                                                            await controller.getFilteredDataPagiationLoadMore(
+                                                                controller
+                                                                    .pageNoFilter,
+                                                                searchTextController
+                                                                    .text);
+                                                            setState(() {});
+                                                            setState(() {});
+                                                          },
+                                                          child: SizedBox(
+                                                            height: 5.h,
+                                                            width: 95.w,
+                                                            child: Row(
+                                                              children: [
+                                                                const Spacer(),
+                                                                RichText(
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  text:
+                                                                      TextSpan(
+                                                                    children: [
+                                                                      TextSpan(
+                                                                        text:
+                                                                            AppMetaLabels().loadMoreData,
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          color: Colors.blue,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      width:
-                                                                          1.w,
-                                                                    )
-                                                                  ],
+                                                                      const WidgetSpan(
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons.arrow_forward_ios,
+                                                                          size: 15,
+                                                                          color: Colors.blue,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            )
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                );
+                                                                SizedBox(
+                                                                  width:
+                                                                      1.w,
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                    ],
+                                  );
+                                },
+                              );
                     }),
                   ),
                 ))))
@@ -326,11 +324,11 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
         padding: EdgeInsets.only(bottom: 2.0.h),
         child: Align(
           alignment: Alignment.bottomCenter,
-          child: Container(
+          child: SizedBox(
             width: 100.0.w,
             height: 4.0.h,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
+              SizedBox(
                 height: 4.0.h,
                 width: 30.0.w,
                 child: ElevatedButton(
@@ -370,7 +368,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     ? Container()
                     : Padding(
                         padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                        child: Container(
+                        child: SizedBox(
                           height: 4.0.h,
                           width: SessionController().getLanguage() == 1
                               ? 30.0.w
@@ -416,12 +414,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
       ),
       Obx(() {
         return controller.loadingDataLoadMore.value
-            ? Container(
+            ? const SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: Center(child: LoadingIndicatorBlue()),
               )
-            : SizedBox();
+            : const SizedBox();
       })
     ]);
   }
@@ -458,7 +456,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                     SizedBox(
                       width: 4.w,
                     ),
-                    Container(
+                    SizedBox(
                       width: 78.0.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -486,7 +484,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().emirate,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,
@@ -532,7 +530,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().type,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,
@@ -555,7 +553,7 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                 AppMetaLabels().category,
                                 style: AppTextStyle.normalGrey11,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
                                 alignment: Alignment.centerRight,
                                 width: 58.w,

@@ -11,7 +11,7 @@ import 'dart:ui' as ui;
 import 'select_city_controller.dart';
 
 class SelectCity extends StatefulWidget {
-  SelectCity({Key? key}) : super(key: key);
+  const SelectCity({super.key});
 
   @override
   State<SelectCity> createState() => _SelectCityState();
@@ -45,7 +45,7 @@ class _SelectCityState extends State<SelectCity> {
                         AppMetaLabels().city,
                         style: AppTextStyle.semiBoldBlack16,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           Get.back();
@@ -59,7 +59,7 @@ class _SelectCityState extends State<SelectCity> {
                     ],
                   ),
                 ),
-                AppDivider(),
+                const AppDivider(),
                 Padding(
                   padding: EdgeInsets.all(2.0.h),
                   child: Container(
@@ -129,7 +129,7 @@ class _SelectCityState extends State<SelectCity> {
                                     true
                                 ? Padding(
                                     padding: EdgeInsets.only(top: 10.0.h),
-                                    child: LoadingIndicatorBlue(),
+                                    child: const LoadingIndicatorBlue(),
                                   )
                                 : selectCityController.error.value != ''
                                     ? AppErrorWidget(
@@ -139,7 +139,7 @@ class _SelectCityState extends State<SelectCity> {
                                     : ListView.builder(
                                         shrinkWrap: true,
                                         itemCount: selectCityController.length,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         padding: EdgeInsets.zero,
                                         itemBuilder: (context, index) {
                                           if (searchControler.text.isEmpty) {
@@ -240,7 +240,7 @@ class _SelectCityState extends State<SelectCity> {
               style: AppTextStyle.normalGrey10,
             ),
           ),
-          index == selectCityController.length - 1 ? Container() : AppDivider(),
+          index == selectCityController.length - 1 ? Container() : const AppDivider(),
         ],
       ),
     );

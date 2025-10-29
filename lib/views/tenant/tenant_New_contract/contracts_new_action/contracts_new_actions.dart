@@ -35,7 +35,7 @@ import 'contracts_new_actions_controller.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class ContractNewAction extends StatefulWidget {
-  ContractNewAction({Key? key}) : super(key: key);
+  const ContractNewAction({super.key});
 
   @override
   State<ContractNewAction> createState() => _ContractNewActionState();
@@ -127,7 +127,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                         return controller
                                                     .loadingContracts.value ==
                                                 true
-                                            ? LoadingIndicatorBlue()
+                                            ? const LoadingIndicatorBlue()
                                             : controller.errorLoadingContracts !=
                                                     ''
                                                 ? CustomErrorWidget(
@@ -156,8 +156,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .caseId ==
                                                                   0
-                                                              ? SizedBox()
-                                                              : Container(
+                                                              ? const SizedBox()
+                                                              : SizedBox(
                                                                   width: double
                                                                       .infinity,
                                                                   child: Align(
@@ -191,7 +191,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                                     initialIndex: 0,
                                                                                   ));
                                                                             },
-                                                                            child: Text(AppMetaLabels().requestno + ' ' + controller.contractsList[index].caseId.toString() + ' ',
+                                                                            child: Text('${AppMetaLabels().requestno} ${controller.contractsList[index].caseId} ',
                                                                                 textAlign: TextAlign.left,
                                                                                 style: TextStyle(
                                                                                   fontWeight: FontWeight.normal,
@@ -222,7 +222,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   2
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -250,7 +250,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -291,7 +291,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   5
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -319,7 +319,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -360,7 +360,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   6
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -414,7 +414,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -456,7 +456,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                           index]
                                                                       .stageId !=
                                                                   8
-                                                              ? SizedBox()
+                                                              ? const SizedBox()
                                                               : InkWell(
                                                                   onTap: controller.contractsList[index].isCanceled ==
                                                                               1 ||
@@ -477,7 +477,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                         },
                                                                   child: Center(
                                                                     child:
-                                                                        new Container(
+                                                                        Container(
                                                                       width:
                                                                           50.w,
                                                                       padding: EdgeInsets.symmetric(
@@ -518,7 +518,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                             alignment: Alignment
                                                                 .center,
                                                             padding:
-                                                                EdgeInsets.only(
+                                                                const EdgeInsets.only(
                                                                     top: 10,
                                                                     right: 10,
                                                                     bottom: 10),
@@ -530,7 +530,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                     left: 20,
                                                                     right: 20),
                                                             decoration:
-                                                                BoxDecoration(
+                                                                const BoxDecoration(
                                                                     color: Color
                                                                         .fromRGBO(
                                                                             255,
@@ -576,7 +576,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                                               .width *
                                                                           0.03,
                                                                     ),
-                                                                    Container(
+                                                                    SizedBox(
                                                                       width: Get
                                                                               .width *
                                                                           0.66,
@@ -613,7 +613,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                                               ],
                                                             ),
                                                           ),
-                                                          AppDivider()
+                                                          const AppDivider()
                                                         ],
                                                       );
                                                     },
@@ -727,8 +727,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
                     ),
                   ),
                   controller.isEnableScreen.value == false
-                      ? ScreenDisableWidget()
-                      : SizedBox()
+                      ? const ScreenDisableWidget()
+                      : const SizedBox()
                 ]);
               }))),
     );
@@ -784,8 +784,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
               ),
               content: Container(
                 height: Get.height * 0.35,
-                decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.all(new Radius.circular(32.0)),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   shape: BoxShape.rectangle,
                 ),
                 child: SingleChildScrollView(
@@ -796,7 +796,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                           style: AppTextStyle.semiBoldBlack14),
                       Obx(() {
                         return loading.value == true
-                            ? Center(child: const CircularProgressIndicator())
+                            ? const Center(child: CircularProgressIndicator())
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -818,15 +818,13 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                             videoCotroller!.value.aspectRatio,
                                         child: VideoPlayer(videoCotroller!)),
                                   ),
-                                  Container(
-                                    child: VideoProgressIndicator(
-                                      videoCotroller!,
-                                      allowScrubbing: true,
-                                      colors: VideoProgressColors(
-                                        backgroundColor: Colors.white24,
-                                        playedColor: Colors.blue,
-                                        bufferedColor: Colors.grey,
-                                      ),
+                                  VideoProgressIndicator(
+                                    videoCotroller!,
+                                    allowScrubbing: true,
+                                    colors: const VideoProgressColors(
+                                      backgroundColor: Colors.white24,
+                                      playedColor: Colors.blue,
+                                      bufferedColor: Colors.grey,
                                     ),
                                   ),
                                   SizedBox(
@@ -861,131 +859,129 @@ class _ContractNewActionState extends State<ContractNewAction> {
                           controller.contractsList[index].previousContractNo,
                     ));
               },
-              child: Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SrNoWidget(text: index + 1, size: 4.h),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: 1.h, left: 1.5.h, right: 0.5.h),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 40.0.w,
-                                  child: Text(
-                                    SessionController().getLanguage() == 1
-                                        ? controller.contractsList[index]
-                                                .propertyName ??
-                                            ''
-                                        : controller.contractsList[index]
-                                                .propertyNameAr ??
-                                            '',
-                                    style: AppTextStyle.semiBoldBlack12,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                Spacer(),
-                                Text(
-                                  "${controller.contractsList[index].contractno}",
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SrNoWidget(text: index + 1, size: 4.h),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 1.h, left: 1.5.h, right: 0.5.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 40.0.w,
+                                child: Text(
+                                  SessionController().getLanguage() == 1
+                                      ? controller.contractsList[index]
+                                              .propertyName ??
+                                          ''
+                                      : controller.contractsList[index]
+                                              .propertyNameAr ??
+                                          '',
                                   style: AppTextStyle.semiBoldBlack12,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.0.h,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "${controller.contractsList[index].fromdate}",
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 0.5.w),
-                                      child: Icon(Icons.arrow_forward,
-                                          size: 10.sp,
-                                          color: AppColors.greyColor),
-                                    ),
-                                    Text(
-                                      "${controller.contractsList[index].toDate}",
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                  ],
-                                ),
-                                Spacer(),
-                                ConstrainedBox(
-                                  constraints: BoxConstraints(maxWidth: 27.w),
-                                  child: FittedBox(
-                                    child: StatusWidget(
-                                      text:
-                                          SessionController().getLanguage() == 1
-                                              ? controller
-                                                  .contractsList[index].status
-                                              : controller.contractsList[index]
-                                                  .statusAr,
-                                      valueToCompare: controller
-                                          .contractsList[index].status,
-                                    ),
+                              ),
+                              const Spacer(),
+                              Text(
+                                "${controller.contractsList[index].contractno}",
+                                style: AppTextStyle.semiBoldBlack12,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 1.0.h,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${controller.contractsList[index].fromdate}",
+                                    style: AppTextStyle.normalGrey10,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 0.5.w),
+                                    child: Icon(Icons.arrow_forward,
+                                        size: 10.sp,
+                                        color: AppColors.greyColor),
+                                  ),
+                                  Text(
+                                    "${controller.contractsList[index].toDate}",
+                                    style: AppTextStyle.normalGrey10,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: 27.w),
+                                child: FittedBox(
+                                  child: StatusWidget(
+                                    text:
+                                        SessionController().getLanguage() == 1
+                                            ? controller
+                                                .contractsList[index].status
+                                            : controller.contractsList[index]
+                                                .statusAr,
+                                    valueToCompare: controller
+                                        .contractsList[index].status,
                                   ),
                                 ),
-                              ],
-                            ),
-                            if (controller.contractsList[index]
-                                        .previousContractNo !=
-                                    null &&
-                                controller.contractsList[index].contractno !=
-                                    controller.contractsList[index]
-                                        .previousContractNo)
-                              controller.contractsList[index].stageId! < 4
-                                  ? SizedBox()
-                                  : Padding(
-                                      padding: EdgeInsets.only(top: 5.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            AppMetaLabels().prevContractNo,
-                                            style: AppTextStyle.normalGrey10,
-                                          ),
-                                          Text(
-                                            controller.contractsList[index]
-                                                    .previousContractNo ??
-                                                '',
-                                            style: AppTextStyle.semiBoldBlack10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                          if (controller.contractsList[index]
+                                      .previousContractNo !=
+                                  null &&
+                              controller.contractsList[index].contractno !=
+                                  controller.contractsList[index]
+                                      .previousContractNo)
+                            controller.contractsList[index].stageId! < 4
+                                ? const SizedBox()
+                                : Padding(
+                                    padding: const EdgeInsets.only(top: 5.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          AppMetaLabels().prevContractNo,
+                                          style: AppTextStyle.normalGrey10,
+                                        ),
+                                        Text(
+                                          controller.contractsList[index]
+                                                  .previousContractNo ??
+                                              '',
+                                          style: AppTextStyle.semiBoldBlack10,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 2.5.h),
-                      child: SizedBox(
-                        width: 0.15.w,
-                        child: Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: AppColors.grey1,
-                          size: 20,
-                        ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 2.5.h),
+                    child: SizedBox(
+                      width: 0.15.w,
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: AppColors.grey1,
+                        size: 20,
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
 
@@ -1000,8 +996,8 @@ class _ContractNewActionState extends State<ContractNewAction> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: index == controller.contractsList.length - 1
-                  ? SizedBox()
-                  : SizedBox(),
+                  ? const SizedBox()
+                  : const SizedBox(),
             ),
           ],
         ),
@@ -1058,7 +1054,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                   style: AppTextStyle.normalBlue11,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             width: 3,
           ),
           // if (controller.contractsList[index].showExtend)
@@ -1316,7 +1312,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                   controller.contractsList[index].contractno);
                               SnakBarWidget.getLoadingWithColor();
 
-                              await Future.delayed(Duration(seconds: 0));
+                              await Future.delayed(const Duration(seconds: 0));
                               SnakBarWidget.getSnackBarErrorBlueWith20Sec(
                                 AppMetaLabels().loading,
                                 AppMetaLabels().generatingContractInfo,
@@ -1420,7 +1416,7 @@ class _ContractNewActionState extends State<ContractNewAction> {
           ? null
           : const PageStorageKey(0),
       physics: SessionController().getLanguage() == 1
-          ? NeverScrollableScrollPhysics()
+          ? const NeverScrollableScrollPhysics()
           : null,
       itemScrollController: itemScrollController,
       scrollDirection: Axis.horizontal,
@@ -1433,12 +1429,13 @@ class _ContractNewActionState extends State<ContractNewAction> {
         // will work on it later
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           if (itemScrollController.isAttached &&
-              SessionController().getLanguage() == 1)
+              SessionController().getLanguage() == 1) {
             itemScrollController.scrollTo(
               index: dueActionIndex > 3 ? 3 : dueActionIndex,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeIn,
             );
+          }
         });
         return actionList[index2];
       },

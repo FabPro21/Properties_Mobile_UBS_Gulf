@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'dart:ui' as ui;
 
 class LandlordFilterEmirate extends StatefulWidget {
-  const LandlordFilterEmirate({Key? key}) : super(key: key);
+  const LandlordFilterEmirate({super.key});
 
   @override
   _LandlordFilterEmiratetate createState() => _LandlordFilterEmiratetate();
@@ -48,13 +48,13 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                       AppMetaLabels().emirate,
                       style: AppTextStyle.semiBoldBlack16,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromRGBO(118, 118, 128, 0.12),
                         ),
@@ -62,7 +62,7 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                           padding: EdgeInsets.all(0.5.h),
                           child: Icon(Icons.close,
                               size: 2.0.h,
-                              color: Color.fromRGBO(158, 158, 158, 1)),
+                              color: const Color.fromRGBO(158, 158, 158, 1)),
                         ),
                       ),
                     ),
@@ -71,7 +71,7 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                 SizedBox(
                   height: 1.0.h,
                 ),
-                AppDivider(),
+                const AppDivider(),
                 ////////////////////////////////////
                 ////   Property
                 ////////////////////////////////////
@@ -81,7 +81,7 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                 Expanded(
                   child: Obx(() {
                     return _filterContractsStatusController.loading.value
-                        ? Center(
+                        ? const Center(
                             child: LoadingIndicatorBlue(),
                           )
                         : _filterContractsStatusController.error.value != ''
@@ -140,7 +140,7 @@ class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
                                                         .propertyEmirateModelLength -
                                                     1
                                             ? Container()
-                                            : AppDivider(),
+                                            : const AppDivider(),
                                         SizedBox(height: 1.0.h),
                                       ],
                                     ),

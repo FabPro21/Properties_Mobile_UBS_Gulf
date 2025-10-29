@@ -14,7 +14,8 @@ class LandlordChargesReceiptsController extends GetxController {
     loading.value = false;
     if (resp is ContractChargeReceiptsModel) {
       receipts = resp.receipts!;
-    } else
+    } else {
       error = resp;
+    }
   }
 }

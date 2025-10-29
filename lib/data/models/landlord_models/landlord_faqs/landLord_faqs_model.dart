@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final landLordFaqsModel = landLordFaqsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 LandLordFaqsModel landLordFaqsModelFromJson(String? str) =>
@@ -23,15 +19,15 @@ class LandLordFaqsModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['statusCode'] = this.statusCode;
-    data['message'] = this.message;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['statusCode'] = statusCode;
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -53,10 +49,10 @@ class Data {
   }
 
   Map<String?, dynamic> toJson() {
-    final Map<String?, dynamic> data = new Map<String?, dynamic>();
-    data['categoryId'] = this.categoryId;
-    data['title'] = this.title;
-    data['titleAR'] = this.titleAR;
+    final Map<String?, dynamic> data = <String?, dynamic>{};
+    data['categoryId'] = categoryId;
+    data['title'] = title;
+    data['titleAR'] = titleAR;
     return data;
   }
 }
