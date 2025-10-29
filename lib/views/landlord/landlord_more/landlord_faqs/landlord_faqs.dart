@@ -54,86 +54,85 @@ class _LandLordFaqsState extends State<LandLordFaqs> {
                           ),
                         )
                       : Expanded(
-                          child: Container(
-                              child: ListView.builder(
-                                  padding: EdgeInsets.only(top: 1.5.h),
-                                  shrinkWrap: true,
-                                  itemCount: _controller.length,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 5.0.w,
-                                          top: 3.0.h,
-                                          right: 5.0.w),
-                                      child: Column(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Get.to(() => LandLordFaqsDetails(
-                                                    categoryId: int.parse(
-                                                        _controller
-                                                                .faqsCategories
-                                                                .value
-                                                                .data?[index]
-                                                                .categoryId ??
-                                                            ''),
-                                                  ));
-                                            },
-                                            child: Directionality(
-                                              textDirection: SessionController()
-                                                          .getLanguage() ==
-                                                      1
-                                                  ? TextDirection.ltr
-                                                  : TextDirection.rtl,
-                                              child: SizedBox(
-                                                width: 90.w,
-                                                child: Row(children: [
-                                                  SizedBox(
-                                                    width: 84.w,
-                                                    child: Text(
-                                                      _controller.faqsCategories
-                                                                  .value.data ==
-                                                              null
-                                                          ? ''
-                                                          : SessionController()
-                                                                      .getLanguage() ==
-                                                                  1
-                                                              ? _controller
-                                                                      .faqsCategories
-                                                                      .value
-                                                                      .data![
-                                                                          index]
-                                                                      .title ??
-                                                                  ""
-                                                              : _controller
-                                                                      .faqsCategories
-                                                                      .value
-                                                                      .data![
-                                                                          index]
-                                                                      .titleAR ??
-                                                                  "",
-                                                      style: AppTextStyle
-                                                          .semiBoldBlack13,
-                                                      maxLines: null,
-                                                      textAlign:
-                                                          TextAlign.justify,
-                                                    ),
-                                                  ),
-                                                  const Spacer(),
-                                                  Icon(
-                                                    Icons
-                                                        .arrow_forward_ios_rounded,
-                                                    size: 2.0.h,
-                                                    color: AppColors.blackColor,
-                                                  )
-                                                ]),
+                          child: ListView.builder(
+                              padding: EdgeInsets.only(top: 1.5.h),
+                              shrinkWrap: true,
+                              itemCount: _controller.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 5.0.w,
+                                      top: 3.0.h,
+                                      right: 5.0.w),
+                                  child: Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() => LandLordFaqsDetails(
+                                                categoryId: int.parse(
+                                                    _controller
+                                                            .faqsCategories
+                                                            .value
+                                                            .data?[index]
+                                                            .categoryId ??
+                                                        ''),
+                                              ));
+                                        },
+                                        child: Directionality(
+                                          textDirection: SessionController()
+                                                      .getLanguage() ==
+                                                  1
+                                              ? TextDirection.ltr
+                                              : TextDirection.rtl,
+                                          child: SizedBox(
+                                            width: 90.w,
+                                            child: Row(children: [
+                                              SizedBox(
+                                                width: 84.w,
+                                                child: Text(
+                                                  _controller.faqsCategories
+                                                              .value.data ==
+                                                          null
+                                                      ? ''
+                                                      : SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? _controller
+                                                                  .faqsCategories
+                                                                  .value
+                                                                  .data![
+                                                                      index]
+                                                                  .title ??
+                                                              ""
+                                                          : _controller
+                                                                  .faqsCategories
+                                                                  .value
+                                                                  .data![
+                                                                      index]
+                                                                  .titleAR ??
+                                                              "",
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack13,
+                                                  maxLines: null,
+                                                  textAlign:
+                                                      TextAlign.justify,
+                                                ),
                                               ),
-                                            ),
+                                              const Spacer(),
+                                              Icon(
+                                                Icons
+                                                    .arrow_forward_ios_rounded,
+                                                size: 2.0.h,
+                                                color: AppColors.blackColor,
+                                              )
+                                            ]),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    );
-                                  })),
+                                    ],
+                                  ),
+                                );
+                              }),
                         );
             })
           ])),
