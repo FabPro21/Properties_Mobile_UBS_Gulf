@@ -551,10 +551,10 @@ class BookingRequest extends StatefulWidget {
   });
 
   @override
-  _BookingRequestState createState() => _BookingRequestState();
+  BookingRequestState createState() => BookingRequestState();
 }
 
-class _BookingRequestState extends State<BookingRequest> {
+class BookingRequestState extends State<BookingRequest> {
   final gPDController = Get.put(GetPropertyDetailController());
   final bookingRequestController = Get.put(BookingRequestController());
 
@@ -744,7 +744,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      widget.property?.bedRooms == '0' ||
+                                     
                                               widget.property?.bedRooms == 0 ||
                                               widget.property?.bedRooms == null
                                           ? const SizedBox()
@@ -753,7 +753,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      widget.property?.noofWashrooms == '0' ||
+                                     
                                               widget.property?.noofWashrooms ==
                                                   0 ||
                                               widget.property?.noofWashrooms ==
@@ -829,7 +829,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                 } else if (!nameValidator.hasMatch(value)) {
                                   return AppMetaLabels().invalidName;
                                 } else
-                                  return null;
+                                 { return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().pleaseEnter),
@@ -859,7 +859,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                 } else if (!phoneValidator.hasMatch(value)) {
                                   return AppMetaLabels().invalidPhone;
                                 } else
-                                  return null;
+                                 { return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().pleaseEnter),
@@ -917,7 +917,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                     .hasMatch(value.replaceAll('\n', ' '))) {
                                   return AppMetaLabels().invalidText;
                                 } else
-                                  return null;
+                               {   return null;}
                               },
                               decoration: textFieldDecoration.copyWith(
                                   hintText: AppMetaLabels().enterRemarks),

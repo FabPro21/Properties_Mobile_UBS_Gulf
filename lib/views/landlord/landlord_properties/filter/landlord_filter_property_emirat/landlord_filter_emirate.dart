@@ -15,10 +15,10 @@ class LandlordFilterEmirate extends StatefulWidget {
   const LandlordFilterEmirate({super.key});
 
   @override
-  _LandlordFilterEmiratetate createState() => _LandlordFilterEmiratetate();
+  LandlordFilterEmiratetate createState() => LandlordFilterEmiratetate();
 }
 
-class _LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
+class LandlordFilterEmiratetate extends State<LandlordFilterEmirate> {
   final LandlordFilterEmirateController _filterContractsStatusController =
       Get.put(LandlordFilterEmirateController());
 

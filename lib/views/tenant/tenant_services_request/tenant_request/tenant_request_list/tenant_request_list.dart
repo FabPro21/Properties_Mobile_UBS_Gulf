@@ -23,10 +23,10 @@ class TenantRequestList extends StatefulWidget {
   const TenantRequestList({super.key});
 
   @override
-  _TenantRequestListState createState() => _TenantRequestListState();
+  TenantRequestListState createState() => TenantRequestListState();
 }
 
-class _TenantRequestListState extends State<TenantRequestList> {
+class TenantRequestListState extends State<TenantRequestList> {
   var getTSRController = Get.put(GetTenantServiceRequestsController());
   final TextEditingController searchControler = TextEditingController();
   final TextEditingController fromController = TextEditingController();
@@ -889,10 +889,10 @@ class ServiceRequestsList extends StatelessWidget {
 //   const TenantRequestList({Key? key}) : super(key: key);
 
 //   @override
-//   _TenantRequestListState createState() => _TenantRequestListState();
+//   TenantRequestListState createState() => TenantRequestListState();
 // }
 
-// class _TenantRequestListState extends State<TenantRequestList> {
+// class TenantRequestListState extends State<TenantRequestList> {
 //   var getTSRController = Get.put(GetTenantServiceRequestsController());
 //   final TextEditingController searchControler = TextEditingController();
 

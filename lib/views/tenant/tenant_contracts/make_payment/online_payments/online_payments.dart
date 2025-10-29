@@ -22,10 +22,10 @@ class OnlinePayments extends StatefulWidget {
   const OnlinePayments({super.key, this.contractNo});
 
   @override
-  _OnlinePaymentsState createState() => _OnlinePaymentsState();
+  OnlinePaymentsState createState() => OnlinePaymentsState();
 }
 
-class _OnlinePaymentsState extends State<OnlinePayments> {
+class OnlinePaymentsState extends State<OnlinePayments> {
   final _controller = Get.put(OnlinePaymentsController());
   bool value = false;
 
@@ -1570,131 +1570,129 @@ class _OnlinePaymentsState extends State<OnlinePayments> {
         Obx(() {
           return payable.defaultpaymentmethodtype!.value ==
                   _controller.isPayemntValue.value
-              ? Container(
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          if (payable.type!.toLowerCase() ==
-                              'contract payable') {
-                            payable.isChecked.value = !payable.isChecked.value;
-                            _controller.sumSelectedPayments();
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Obx(() {
-                              return Checkbox(
-                                activeColor: AppColors.blueColor,
-                                value: payable.isChecked.value,
-                                onChanged: (bool? value) {
-                                  if (payable.type!.toLowerCase() ==
-                                      'contract payable') {
-                                    payable.isChecked.value = value!;
-                                    _controller.sumSelectedPayments();
-                                  }
-                                },
-                              );
-                            }), //Check
-                            // Expanded(
-                            //   child: Text(
-                            //     SessionController().getLanguage() == 1
-                            //         ? payable.title
-                            //         : payable.titleAr != null
-                            //             ? payable.titleAr.replaceAll(':', '') ??
-                            //                 ""
-                            //             : payable.titleAr ?? "",
-                            //     style: AppTextStyle.normalBlack10,
-                            //   ),
-                            // ),
-
-                            Expanded(
-                              child: SessionController().getLanguage() == 1
-                                  ? Padding(
-                                    padding:  const EdgeInsets.only(right:8.0),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          // Instalment No etc
-                                          Expanded(
-                                            child: Text(
-                                              payable.title ?? '',
-                                              style: AppTextStyle.normalBlack10,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          // AED 25,99,0008
-                                          Text(
-                                            '${AppMetaLabels().aed} ${payable.amountFormatted}',
-                                            style: AppTextStyle.semiBoldBlack10,
-                                            textAlign: TextAlign.end,
-                                          ),
-                                        ],
+              ? Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if (payable.type!.toLowerCase() ==
+                          'contract payable') {
+                        payable.isChecked.value = !payable.isChecked.value;
+                        _controller.sumSelectedPayments();
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Obx(() {
+                          return Checkbox(
+                            activeColor: AppColors.blueColor,
+                            value: payable.isChecked.value,
+                            onChanged: (bool? value) {
+                              if (payable.type!.toLowerCase() ==
+                                  'contract payable') {
+                                payable.isChecked.value = value!;
+                                _controller.sumSelectedPayments();
+                              }
+                            },
+                          );
+                        }), //Check
+                        // Expanded(
+                        //   child: Text(
+                        //     SessionController().getLanguage() == 1
+                        //         ? payable.title
+                        //         : payable.titleAr != null
+                        //             ? payable.titleAr.replaceAll(':', '') ??
+                        //                 ""
+                        //             : payable.titleAr ?? "",
+                        //     style: AppTextStyle.normalBlack10,
+                        //   ),
+                        // ),
+              
+                        Expanded(
+                          child: SessionController().getLanguage() == 1
+                              ? Padding(
+                                padding:  const EdgeInsets.only(right:8.0),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      // Instalment No etc
+                                      Expanded(
+                                        child: Text(
+                                          payable.title ?? '',
+                                          style: AppTextStyle.normalBlack10,
+                                        ),
                                       ),
-                                  )
-                                  : Directionality(
-                                      textDirection: ui.TextDirection.ltr,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 4.0.w),
-                                            child: Text(
-                                              '${AppMetaLabels().aed} ${payable.amountFormatted}',
-                                              style: AppTextStyle.normalBlack10,
-                                              textAlign: TextAlign.end,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          // Instalment No etc
-                                          Expanded(
-                                            child: Text(
-                                              payable.titleAr != null
-                                                  ? payable.titleAr!.replaceAll(
-                                                          ':', '') 
-                                                  : payable.titleAr ?? "",
-                                              style: AppTextStyle.normalBlack10,
-                                              textAlign: TextAlign.right,
-                                            ),
-                                          ),
-                                        ],
+                                      const SizedBox(
+                                        width: 8,
                                       ),
-                                    ),
-                            ),
-                          ],
+                                      // AED 25,99,0008
+                                      Text(
+                                        '${AppMetaLabels().aed} ${payable.amountFormatted}',
+                                        style: AppTextStyle.semiBoldBlack10,
+                                        textAlign: TextAlign.end,
+                                      ),
+                                    ],
+                                  ),
+                              )
+                              : Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 4.0.w),
+                                        child: Text(
+                                          '${AppMetaLabels().aed} ${payable.amountFormatted}',
+                                          style: AppTextStyle.normalBlack10,
+                                          textAlign: TextAlign.end,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      // Instalment No etc
+                                      Expanded(
+                                        child: Text(
+                                          payable.titleAr != null
+                                              ? payable.titleAr!.replaceAll(
+                                                      ':', '') 
+                                              : payable.titleAr ?? "",
+                                          style: AppTextStyle.normalBlack10,
+                                          textAlign: TextAlign.right,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppMetaLabels().dueDate,
-                              style: AppTextStyle.normalBlack10,
-                            ),
-                            Text(
-                              payable.paymentDate??"",
-                              style: AppTextStyle.normalBlue10,
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Text(
-                      //   'Payment Method ID : ${payable.paymentMethodId.value}',
-                      // ),
-                    ],
+                      ],
+                    ),
                   ),
-                )
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppMetaLabels().dueDate,
+                          style: AppTextStyle.normalBlack10,
+                        ),
+                        Text(
+                          payable.paymentDate??"",
+                          style: AppTextStyle.normalBlue10,
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Text(
+                  //   'Payment Method ID : ${payable.paymentMethodId.value}',
+                  // ),
+                ],
+              )
               : const SizedBox();
         }),
         payable.defaultpaymentmethodtype!.value ==

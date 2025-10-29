@@ -17,7 +17,7 @@ import '../../widgets/common_widgets/button_widget.dart';
 import 'public_login_controller.dart';
 
 class PublicLoginScreen extends GetView<PublicLoginController> {
-  PublicLoginScreen({Key? key}) : super(key: key) {
+  PublicLoginScreen({super.key}) {
     Get.put(PublicLoginController());
   }
 
@@ -76,8 +76,9 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                           padding: EdgeInsets.only(
                                               top: 6.0.h, bottom: 1.h),
                                           child: Text(
-                                            controller.profileData!.profileDetail!
-                                                .mobile??"",
+                                            controller.profileData!
+                                                    .profileDetail!.mobile ??
+                                                "",
                                             style: AppTextStyle.normalWhite12,
                                           ),
                                         ),
@@ -148,8 +149,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().name,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
-                                                    errorStyle:
-                                                        const TextStyle(fontSize: 0),
+                                                    errorStyle: const TextStyle(
+                                                        fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),
@@ -197,8 +198,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                         AppMetaLabels().email,
                                                     labelStyle: AppTextStyle
                                                         .normalWhite12,
-                                                    errorStyle:
-                                                        const TextStyle(fontSize: 0),
+                                                    errorStyle: const TextStyle(
+                                                        fontSize: 0),
                                                     contentPadding:
                                                         EdgeInsets.all(4.w),
                                                   ),
@@ -217,7 +218,8 @@ class PublicLoginScreen extends GetView<PublicLoginController> {
                                                     ? () {
                                                         FocusScope.of(context)
                                                             .unfocus();
-                                                        if (formKey.currentState!
+                                                        if (formKey
+                                                            .currentState!
                                                             .validate()) {
                                                           controller
                                                               .updateProfile();

@@ -17,10 +17,10 @@ class LpoServices extends StatefulWidget {
   const LpoServices({super.key});
 
   @override
-  _LpoServicesState createState() => _LpoServicesState();
+  LpoServicesState createState() => LpoServicesState();
 }
 
-class _LpoServicesState extends State<LpoServices> {
+class LpoServicesState extends State<LpoServices> {
   final getLpoServicesController = Get.put(GetLpoServicesController());
   // _getData() async {
   //   await getLpoServicesController.getData();
@@ -161,28 +161,26 @@ class _LpoServicesState extends State<LpoServices> {
                                                       height: 1.0.h,
                                                     ),
 
-                                                    Container(
-                                                      child: Text(
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? getLpoServicesController
-                                                                    .lpoServices
-                                                                    .value
-                                                                    .lpoServices![
-                                                                        index]
-                                                                    .description ??
-                                                                '_'
-                                                            : getLpoServicesController
-                                                                    .lpoServices
-                                                                    .value
-                                                                    .lpoServices![
-                                                                        index]
-                                                                    .descriptionAr ??
-                                                                '_',
-                                                        style: AppTextStyle
-                                                            .normalBlack10,
-                                                      ),
+                                                    Text(
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getLpoServicesController
+                                                                  .lpoServices
+                                                                  .value
+                                                                  .lpoServices![
+                                                                      index]
+                                                                  .description ??
+                                                              '_'
+                                                          : getLpoServicesController
+                                                                  .lpoServices
+                                                                  .value
+                                                                  .lpoServices![
+                                                                      index]
+                                                                  .descriptionAr ??
+                                                              '_',
+                                                      style: AppTextStyle
+                                                          .normalBlack10,
                                                     ),
                                                     SizedBox(
                                                       height: 1.0.h,

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
@@ -36,6 +38,7 @@ class PhoneNoField extends StatelessWidget {
       },
       onEditingComplete: () async {
         await vUController.getOtpBtn();
+        if (!context.mounted) return; // ✅ Check if widget still exists
         FocusScope.of(context).unfocus();
 
         vUController.textFieldTap.value = false;

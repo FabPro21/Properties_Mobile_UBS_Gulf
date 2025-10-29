@@ -15,10 +15,10 @@ class LandlordFilterCS extends StatefulWidget {
   const LandlordFilterCS({super.key});
 
   @override
-  _LandlordFilterCSState createState() => _LandlordFilterCSState();
+  LandlordFilterCSState createState() => LandlordFilterCSState();
 }
 
-class _LandlordFilterCSState extends State<LandlordFilterCS> {
+class LandlordFilterCSState extends State<LandlordFilterCS> {
   final LandlordFilterCSController _filterContractsStatusController =
       Get.put(LandlordFilterCSController());
 

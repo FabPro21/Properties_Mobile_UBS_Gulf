@@ -1,5 +1,6 @@
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +79,10 @@ class PublicLoginController extends GetxController {
       } else {
         Get.snackbar(AppMetaLabels().error, result);
       }
-    } catch (e) {}
+    } catch (e) {
+      if(kDebugMode){print("Catch: $e  ${e.toString()}");}
+       
+    }
   }
 
   String getPhone(String phone) {

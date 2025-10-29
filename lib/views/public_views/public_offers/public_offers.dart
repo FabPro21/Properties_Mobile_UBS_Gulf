@@ -16,10 +16,10 @@ class PublicOffers extends StatefulWidget {
   const PublicOffers({super.key});
 
   @override
-  _PublicOffersState createState() => _PublicOffersState();
+  PublicOffersState createState() => PublicOffersState();
 }
 
-class _PublicOffersState extends State<PublicOffers> {
+class PublicOffersState extends State<PublicOffers> {
   final _controller = Get.put(PublicOffersController());
   @override
   void initState() {
@@ -63,58 +63,57 @@ class _PublicOffersState extends State<PublicOffers> {
                     ? AppErrorWidget(
                         errorText: _controller.errorOffers.value,
                       )
-                    : Container(
-                        child: ListView.builder(
-                            padding: EdgeInsets.only(top: 1.5.h),
-                            shrinkWrap: true,
-                            itemCount: _controller.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 5.0.w, top: 3.0.h, right: 5.0.w),
-                                child: Column(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Get.to(() => PublicOfferDetails(
-                                            offerId: _controller.offers.value
-                                                .record?[index].offerid
-                                                .toString()));
-                                      },
-                                      child: Row(children: [
-                                        Text(
-                                            _controller.offers.value.record ==
-                                                    null
-                                                ? ''
-                                                : SessionController()
-                                                            .getLanguage() ==
-                                                        1
-                                                    ? _controller
-                                                            .offers
-                                                            .value
-                                                            .record![index]
-                                                            .title ??
-                                                        "".trim()
-                                                    : _controller
-                                                            .offers
-                                                            .value
-                                                            .record?[index]
-                                                            .titleAr ??
-                                                        "".trim(),
-                                            style:
-                                                AppTextStyle.semiBoldBlack13),
-                                        const Spacer(),
-                                        Icon(
-                                          Icons.arrow_forward_ios_rounded,
-                                          size: 2.0.h,
-                                          color: AppColors.grey1,
-                                        )
-                                      ]),
-                                    ),
-                                  ],
+                    : ListView.builder(
+                        padding: EdgeInsets.only(top: 1.5.h),
+                        shrinkWrap: true,
+                        itemCount: _controller.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                left: 5.0.w, top: 3.0.h, right: 5.0.w),
+                            child: Column(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Get.to(() => PublicOfferDetails(
+                                        offerId: _controller.offers.value
+                                            .record?[index].offerid
+                                            .toString()));
+                                  },
+                                  child: Row(children: [
+                                    Text(
+                                        _controller.offers.value.record ==
+                                                null
+                                            ? ''
+                                            : SessionController()
+                                                        .getLanguage() ==
+                                                    1
+                                                ? _controller
+                                                        .offers
+                                                        .value
+                                                        .record![index]
+                                                        .title ??
+                                                    "".trim()
+                                                : _controller
+                                                        .offers
+                                                        .value
+                                                        .record?[index]
+                                                        .titleAr ??
+                                                    "".trim(),
+                                        style:
+                                            AppTextStyle.semiBoldBlack13),
+                                    const Spacer(),
+                                    Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      size: 2.0.h,
+                                      color: AppColors.grey1,
+                                    )
+                                  ]),
                                 ),
-                              );
-                            }));
+                              ],
+                            ),
+                          );
+                        });
           }),
         ));
   }

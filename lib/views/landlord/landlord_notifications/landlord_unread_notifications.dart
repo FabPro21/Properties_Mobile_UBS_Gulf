@@ -19,11 +19,11 @@ class LandLordUnReadNotifications extends StatefulWidget {
   const LandLordUnReadNotifications({super.key, this.index});
 
   @override
-  _LandLordUnReadNotificationsState createState() =>
-      _LandLordUnReadNotificationsState();
+  LandLordUnReadNotificationsState createState() =>
+      LandLordUnReadNotificationsState();
 }
 
-class _LandLordUnReadNotificationsState
+class LandLordUnReadNotificationsState
     extends State<LandLordUnReadNotifications> {
   final getLandLController = Get.put(LandlordNotificationsController());
   _getUnreadNotifications() async {

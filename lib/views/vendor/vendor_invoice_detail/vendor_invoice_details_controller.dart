@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:contained_tab_bar_view_with_custom_page_navigator/contained_tab_bar_view_with_custom_page_navigator.dart';
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/models/vendor_models/amc-drop_dpwn_model.dart';

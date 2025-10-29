@@ -21,7 +21,7 @@ class GetRenewalActions {
         } else if (jsonResp['statusCode'] == '404') {
           return AppMetaLabels().noContractsFound;
         } else
-          return jsonResp['message'];
+          {return jsonResp['message'];}
       } catch (e) {
         return AppMetaLabels().anyError;
       }
@@ -43,7 +43,7 @@ class GetNewActions {
         } else if (jsonResp['statusCode'] == '404') {
           return AppMetaLabels().noContractsFound;
         } else
-          return jsonResp['message'];
+          {return jsonResp['message'];}
       } catch (e) {
         return AppMetaLabels().anyError;
       }

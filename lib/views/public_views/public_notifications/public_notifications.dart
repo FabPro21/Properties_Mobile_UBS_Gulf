@@ -19,10 +19,10 @@ class PublicNotification extends StatefulWidget {
   const PublicNotification({super.key});
 
   @override
-  _PublicNotificationState createState() => _PublicNotificationState();
+  PublicNotificationState createState() => PublicNotificationState();
 }
 
-class _PublicNotificationState extends State<PublicNotification> {
+class PublicNotificationState extends State<PublicNotification> {
   final _controller = Get.put(PublicNotificationsController());
 
   final _countController = Get.put(PublicCountNotificationsController());

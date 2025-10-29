@@ -18,11 +18,11 @@ class LandlordContractUnitInfo extends StatefulWidget {
   const LandlordContractUnitInfo({ super.key, required this.contractId});
 
   @override
-  _LandlordContractUnitInfoState createState() =>
-      _LandlordContractUnitInfoState();
+  LandlordContractUnitInfoState createState() =>
+      LandlordContractUnitInfoState();
 }
 
-class _LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
+class LandlordContractUnitInfoState extends State<LandlordContractUnitInfo> {
   final controller = Get.put(LandlordUnitInfoController());
   @override
   void initState() {

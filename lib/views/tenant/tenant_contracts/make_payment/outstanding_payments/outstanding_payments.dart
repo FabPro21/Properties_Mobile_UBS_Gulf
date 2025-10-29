@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use, use_build_context_synchronously
 
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -30,10 +30,10 @@ class OutstandingPayments extends StatefulWidget {
   const OutstandingPayments({super.key, this.contractNo, this.contractId});
 
   @override
-  _OutstandingPaymentsState createState() => _OutstandingPaymentsState();
+  OutstandingPaymentsState createState() => OutstandingPaymentsState();
 }
 
-class _OutstandingPaymentsState extends State<OutstandingPayments> {
+class OutstandingPaymentsState extends State<OutstandingPayments> {
   final _controller = Get.put(OutstandingPaymentsController());
 
 // chequeController is just to clear the field when cancel the selected copy of cheque
@@ -1554,41 +1554,39 @@ class _OutstandingPaymentsState extends State<OutstandingPayments> {
                   return payable.errorUploadingCheque
                       ? Column(
                           children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      OpenFile.open(
-                                        payable.filePath,
-                                      );
-                                    },
-                                    child: SizedBox(
-                                      width: Get.width * 0.66,
-                                      child: Text(
-                                        payable.filePath!.split('/').last,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 5,
-                                      ),
+                            Row(
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    OpenFile.open(
+                                      payable.filePath,
+                                    );
+                                  },
+                                  child: SizedBox(
+                                    width: Get.width * 0.66,
+                                    child: Text(
+                                      payable.filePath!.split('/').last,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 5,
                                     ),
                                   ),
-                                  const Spacer(),
-                                  InkWell(
-                                      onTap: () {
-                                        print('Exactly here');
-                                        setState(() {
-                                          payable.filePath = null;
-                                          payable.errorUploadingCheque = false;
-                                        });
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.cancel,
-                                        size: 23,
-                                        color: AppColors.grey1,
-                                      ))
-                                ],
-                              ),
+                                ),
+                                const Spacer(),
+                                InkWell(
+                                    onTap: () {
+                                      print('Exactly here');
+                                      setState(() {
+                                        payable.filePath = null;
+                                        payable.errorUploadingCheque = false;
+                                      });
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      Icons.cancel,
+                                      size: 23,
+                                      color: AppColors.grey1,
+                                    ))
+                              ],
                             ),
                             InkWell(
                               child: const Icon(

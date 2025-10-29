@@ -19,11 +19,11 @@ class SearchPropertiesServiceDetails extends StatefulWidget {
   const SearchPropertiesServiceDetails({super.key, this.categoryId});
 
   @override
-  _SearchPropertiesServiceDetailsState createState() =>
-      _SearchPropertiesServiceDetailsState();
+  SearchPropertiesServiceDetailsState createState() =>
+      SearchPropertiesServiceDetailsState();
 }
 
-class _SearchPropertiesServiceDetailsState
+class SearchPropertiesServiceDetailsState
     extends State<SearchPropertiesServiceDetails> {
   final _controller = Get.put(PublicGetServicesController());
 

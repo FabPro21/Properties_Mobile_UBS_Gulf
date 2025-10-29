@@ -34,12 +34,10 @@ class PermissionHandlerClass {
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      child: Text(
-                          '${AppMetaLabels().fabPropertiesSource} $source',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyle.semiBoldBlack11),
-                    ),
+                    Text(
+                        '${AppMetaLabels().fabPropertiesSource} $source',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.semiBoldBlack11),
                     const SizedBox(
                       height: 15,
                     ),
@@ -47,11 +45,9 @@ class PermissionHandlerClass {
                     const SizedBox(
                       height: 15,
                     ),
-                    Container(
-                      child: ElevatedButton(
-                        child: const Text('Allow access'),
-                        onPressed: () => openAppSettings(),
-                      ),
+                    ElevatedButton(
+                      child: const Text('Allow access'),
+                      onPressed: () => openAppSettings(),
                     ),
                   ],
                 )),

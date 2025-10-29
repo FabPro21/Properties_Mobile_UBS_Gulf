@@ -18,11 +18,11 @@ class PublicFaqsQuestionsAndDescription extends StatefulWidget {
   const PublicFaqsQuestionsAndDescription({super.key, this.categoryId});
 
   @override
-  _PublicFaqsQuestionsAndDescriptionState createState() =>
-      _PublicFaqsQuestionsAndDescriptionState();
+  PublicFaqsQuestionsAndDescriptionState createState() =>
+      PublicFaqsQuestionsAndDescriptionState();
 }
 
-class _PublicFaqsQuestionsAndDescriptionState
+class PublicFaqsQuestionsAndDescriptionState
     extends State<PublicFaqsQuestionsAndDescription> {
   final PublicFaqsController _controller = Get.put(PublicFaqsController());
   bool isShowDivider = true;

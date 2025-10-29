@@ -121,4 +121,12 @@ android/gradle-8.0-all.zip
 .dart_tool/package_config.json
 .flutter-plugins-dependencies
 android/gradle-8.0-all.zip
+<<<<<<< HEAD
 *.zip
+=======
+android/gradle-8.0-all.zip
+*.zip
+android/gradle-*.zip
+*.zip
+android/gradle-*.zip
+>>>>>>> 73e0ae2427b1495417afda82a816cb580dc49a2e

@@ -84,20 +84,20 @@ class Invoice {
     };
 }
 
-enum InvoiceDate { THE_22032016, THE_31012016, THE_29022016 }
+enum InvoiceDate { the_22032016, the_31012016, the_29022016 }
 
 final invoiceDateValues = EnumValues({
-    "22-03-2016": InvoiceDate.THE_22032016,
-    "29-02-2016": InvoiceDate.THE_29022016,
-    "31-01-2016": InvoiceDate.THE_31012016
+    "22-03-2016": InvoiceDate.the_22032016,
+    "29-02-2016": InvoiceDate.the_29022016,
+    "31-01-2016": InvoiceDate.the_31012016
 });
 
-enum StatusName { UNDER_REVIEW, UNDER_APPROVAL, DRAFT }
+enum StatusName { under_review, under_approval, DRAFT }
 
 final statusNameValues = EnumValues({
     "Draft": StatusName.DRAFT,
-    "Under Approval": StatusName.UNDER_APPROVAL,
-    "Under Review": StatusName.UNDER_REVIEW
+    "Under Approval": StatusName.under_approval,
+    "Under Review": StatusName.under_review
 });
 
 class EnumValues<T> {

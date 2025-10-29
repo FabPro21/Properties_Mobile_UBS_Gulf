@@ -13,10 +13,10 @@ class PublicBookingAgentList extends StatefulWidget {
   const PublicBookingAgentList({super.key});
 
   @override
-  _PublicBookingAgentListState createState() => _PublicBookingAgentListState();
+  PublicBookingAgentListState createState() => PublicBookingAgentListState();
 }
 
-class _PublicBookingAgentListState extends State<PublicBookingAgentList> {
+class PublicBookingAgentListState extends State<PublicBookingAgentList> {
   final TextEditingController searchControler = TextEditingController();
 
   var agentController = Get.put(BookingRequestController());

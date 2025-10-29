@@ -13,11 +13,11 @@ class VendorContractsStatusFilter extends StatefulWidget {
   const VendorContractsStatusFilter({super.key});
 
   @override
-  _VendorContractsStatusFilterState createState() =>
-      _VendorContractsStatusFilterState();
+  VendorContractsStatusFilterState createState() =>
+      VendorContractsStatusFilterState();
 }
 
-class _VendorContractsStatusFilterState
+class VendorContractsStatusFilterState
     extends State<VendorContractsStatusFilter> {
   final VendorFilterContractsStatusController _filterContractsStatusController =
       Get.put(VendorFilterContractsStatusController());

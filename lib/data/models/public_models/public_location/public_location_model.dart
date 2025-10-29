@@ -2,6 +2,8 @@
 //
 //     final publicLocationModel = publicLocationModelFromJson(jsonString);
 
+// ignore_for_file: library_prefixes
+
 import 'dart:convert';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';

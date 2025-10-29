@@ -24,10 +24,10 @@ class LandLordSummaryReports extends StatefulWidget {
   const LandLordSummaryReports({super.key, this.reportName, this.data});
 
   @override
-  _LandLordSummaryReportsState createState() => _LandLordSummaryReportsState();
+  LandLordSummaryReportsState createState() => LandLordSummaryReportsState();
 }
 
-class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
+class LandLordSummaryReportsState extends State<LandLordSummaryReports> {
   final LandLordReportPropController lDReportController = Get.find();
 
   bool isTapOnDownload = false;
@@ -50,7 +50,7 @@ class _LandLordSummaryReportsState extends State<LandLordSummaryReports> {
             Column(children: [
               CustomAppBar2(
                   title:
-                      widget.reportName ?? "" ' ' + AppMetaLabels().summary),
+                      '${widget.reportName ?? ""} ${AppMetaLabels().summary}',),
               Expanded(
                   child: Padding(
                       padding: EdgeInsets.only(

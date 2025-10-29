@@ -39,10 +39,10 @@ class MainInfo extends StatefulWidget {
   const MainInfo({super.key, @required this.prevContractNo});
 
   @override
-  _MainInfoState createState() => _MainInfoState();
+  MainInfoState createState() => MainInfoState();
 }
 
-class _MainInfoState extends State<MainInfo> {
+class MainInfoState extends State<MainInfo> {
   final getCDController = Get.put(GetContractsDetailsController());
   // final getCDController = Get.find<GetContractsDetailsController>();
   final contractDownloadController = Get.put(ContractDownloadController());
@@ -399,26 +399,24 @@ class _MainInfoState extends State<MainInfo> {
                                                   Padding(
                                                     padding: EdgeInsets.only(
                                                         top: 1.5.h),
-                                                    child: Container(
-                                                      child: Text(
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? getCDController
-                                                                .getContractsDetails
-                                                                .value
-                                                                .contract!
-                                                                .address
-                                                                .toString()
-                                                            : getCDController
-                                                                .getContractsDetails
-                                                                .value
-                                                                .contract!
-                                                                .addressAr
-                                                                .toString(),
-                                                        style: AppTextStyle
-                                                            .semiBoldBlack10,
-                                                      ),
+                                                    child: Text(
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? getCDController
+                                                              .getContractsDetails
+                                                              .value
+                                                              .contract!
+                                                              .address
+                                                              .toString()
+                                                          : getCDController
+                                                              .getContractsDetails
+                                                              .value
+                                                              .contract!
+                                                              .addressAr
+                                                              .toString(),
+                                                      style: AppTextStyle
+                                                          .semiBoldBlack10,
                                                     ),
                                                   ),
                                                 ],
@@ -659,7 +657,7 @@ class _MainInfoState extends State<MainInfo> {
                                                                             child:
                                                                                 Text(
                                                                               // getCDController.outstandingPaymentsController.gotoOnlinePayments.value?
-                                                                              '${AppMetaLabels().proceedTopay}',
+                                                                              AppMetaLabels().proceedTopay,
                                                                               // : AppMetaLabels().chequeDetailsC,
                                                                               style: AppTextStyle.semiBoldBlue10,
                                                                             ),
@@ -1923,9 +1921,9 @@ class _MainInfoState extends State<MainInfo> {
                           } else if (getCDController
                                   .canDownloadContract.canDownload ==
                               '2')
-                            Get.snackbar(AppMetaLabels().error,
+                            {Get.snackbar(AppMetaLabels().error,
                                 getCDController.canDownloadContract.message??"",
-                                backgroundColor: AppColors.white54);
+                                backgroundColor: AppColors.white54);}
                         })
               : StepNoWidget(
                   label: '8', tooltip: AppMetaLabels().downloadContract)),

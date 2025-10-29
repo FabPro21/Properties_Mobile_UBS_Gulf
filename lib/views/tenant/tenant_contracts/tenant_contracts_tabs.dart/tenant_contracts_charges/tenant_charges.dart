@@ -23,10 +23,10 @@ class ChargesScreen extends StatefulWidget {
   const ChargesScreen({super.key});
 
   @override
-  _ChargesScreenState createState() => _ChargesScreenState();
+  ChargesScreenState createState() => ChargesScreenState();
 }
 
-class _ChargesScreenState extends State<ChargesScreen> {
+class ChargesScreenState extends State<ChargesScreen> {
   final getCCController = Get.put(GetContractChargesController());
 
   String amount = "";

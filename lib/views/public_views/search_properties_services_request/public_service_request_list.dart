@@ -19,10 +19,10 @@ class PublicServiceRequestList extends StatefulWidget {
   const PublicServiceRequestList({super.key});
 
   @override
-  _PublicServiceRequestState createState() => _PublicServiceRequestState();
+  PublicServiceRequestState createState() => PublicServiceRequestState();
 }
 
-class _PublicServiceRequestState extends State<PublicServiceRequestList> {
+class PublicServiceRequestState extends State<PublicServiceRequestList> {
   var getServicesController = Get.put(PublicServiceRequestController());
   final TextEditingController searchControler = TextEditingController();
   //GlobalKey _toolTipKey = GlobalKey();

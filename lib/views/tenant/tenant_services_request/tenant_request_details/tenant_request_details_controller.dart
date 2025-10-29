@@ -217,7 +217,7 @@ class TenantRequestDetailsController extends GetxController {
         errorGettingPhotos = AppMetaLabels().noPhotos;
       }
     } else
-      errorGettingPhotos = resp;
+      {errorGettingPhotos = resp;}
     gettingPhotos.value = false;
   }
 

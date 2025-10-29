@@ -31,11 +31,11 @@ class OutstandingPaymentsNewContract extends StatefulWidget {
       {super.key, this.contractNo, this.contractId});
 
   @override
-  _OutstandingPaymentsNewContractState createState() =>
-      _OutstandingPaymentsNewContractState();
+  OutstandingPaymentsNewContractState createState() =>
+      OutstandingPaymentsNewContractState();
 }
 
-class _OutstandingPaymentsNewContractState
+class OutstandingPaymentsNewContractState
     extends State<OutstandingPaymentsNewContract> {
   final _controller = Get.put(OutstandingPaymentsNewContractController());
   bool value = false;

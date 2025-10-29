@@ -12,10 +12,10 @@ class LandLordProfile extends StatefulWidget {
   const LandLordProfile({super.key});
 
   @override
-  _LandLordProfileState createState() => _LandLordProfileState();
+  LandLordProfileState createState() => LandLordProfileState();
 }
 
-class _LandLordProfileState extends State<LandLordProfile> {
+class LandLordProfileState extends State<LandLordProfile> {
   final landlordProfileController = Get.put(LandLordProfileController());
 
   String name = "";

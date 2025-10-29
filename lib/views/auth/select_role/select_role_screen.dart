@@ -29,10 +29,10 @@ class SelectRoleScreen extends StatefulWidget {
   const SelectRoleScreen({super.key, this.redirect = true});
 
   @override
-  _SelectRoleScreenState createState() => _SelectRoleScreenState();
+  SelectRoleScreenState createState() => SelectRoleScreenState();
 }
 
-class _SelectRoleScreenState extends State<SelectRoleScreen> {
+class SelectRoleScreenState extends State<SelectRoleScreen> {
   final selectRoloesController = Get.put(SelectRoloesController());
 
   @override

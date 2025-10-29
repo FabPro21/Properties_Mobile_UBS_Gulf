@@ -6,6 +6,7 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_contracts_filter_controller.dart';
 import 'package:fap_properties/views/vendor/vendor_contracts/vendor_contracts_filter/vendor_filter_contract_status/vendor_filter_contracts_status.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -16,10 +17,10 @@ class VendorContractsFilter extends StatefulWidget {
   const VendorContractsFilter({super.key, this.clear});
 
   @override
-  _VendorContractsFilterState createState() => _VendorContractsFilterState();
+  VendorContractsFilterState createState() => VendorContractsFilterState();
 }
 
-class _VendorContractsFilterState extends State<VendorContractsFilter> {
+class VendorContractsFilterState extends State<VendorContractsFilter> {
   final TextEditingController propertyController = TextEditingController();
   final VendorContractsFilterController vCFilterController = Get.find();
 
@@ -250,7 +251,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) { if(kDebugMode){print("Catch: $e  ${e.toString()}");}}
                                 },
                                 child: Container(
                                   width: 40.0.w,
@@ -355,7 +356,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {}
+                                  } catch (e) { if(kDebugMode){print("Catch: $e  ${e.toString()}");}}
                                 },
                                 child: Container(
                                   width: 40.0.w,

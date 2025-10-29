@@ -310,7 +310,7 @@ class TenantDashboardGetDataController extends GetxController {
     } else if (resp is ContractExpire30Days) {
       contractsExpiring = resp;
     } else
-      errorLoadingExpiringContracts = resp;
+      {errorLoadingExpiringContracts = resp;}
     loadingContractsExpiring.value = false;
   }
 }

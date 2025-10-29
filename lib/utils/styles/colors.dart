@@ -1,6 +1,4 @@
-///////////////////
-///    App Colors
-///////////////////
+
 
 import 'package:flutter/material.dart';
 

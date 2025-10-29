@@ -20,10 +20,10 @@ class UnitInfo extends StatefulWidget {
   const UnitInfo({super.key});
 
   @override
-  _UnitInfoState createState() => _UnitInfoState();
+  UnitInfoState createState() => UnitInfoState();
 }
 
-class _UnitInfoState extends State<UnitInfo> {
+class UnitInfoState extends State<UnitInfo> {
   final unitInfoController = Get.put(UnitInfoController());
 
   String propertyName = "";

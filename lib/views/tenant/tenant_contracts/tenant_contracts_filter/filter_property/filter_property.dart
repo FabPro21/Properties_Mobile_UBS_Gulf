@@ -13,11 +13,11 @@ class ContracrsPropertyFilter extends StatefulWidget {
   const ContracrsPropertyFilter({super.key});
 
   @override
-  _ContracrsPropertyFilterState createState() =>
-      _ContracrsPropertyFilterState();
+  ContracrsPropertyFilterState createState() =>
+      ContracrsPropertyFilterState();
 }
 
-class _ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
+class ContracrsPropertyFilterState extends State<ContracrsPropertyFilter> {
   final FilterPropertyController _filterPropertyController = Get.find();
 
   @override

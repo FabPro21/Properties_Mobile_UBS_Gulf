@@ -13,10 +13,10 @@ class TenantConsentSetting extends StatefulWidget {
   const TenantConsentSetting({super.key});
 
   @override
-  _TenantConsentSettingState createState() => _TenantConsentSettingState();
+  TenantConsentSettingState createState() => TenantConsentSettingState();
 }
 
-class _TenantConsentSettingState extends State<TenantConsentSetting> {
+class TenantConsentSettingState extends State<TenantConsentSetting> {
   final TenantConsentSettingController _controller =
       Get.put(TenantConsentSettingController());
   @override

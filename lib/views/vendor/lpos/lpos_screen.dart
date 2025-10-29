@@ -19,10 +19,10 @@ class LposScreen extends StatefulWidget {
   const LposScreen({super.key});
 
   @override
-  _LposScreenState createState() => _LposScreenState();
+  LposScreenState createState() => LposScreenState();
 }
 
-class _LposScreenState extends State<LposScreen> {
+class LposScreenState extends State<LposScreen> {
   final GetAllLpoController getAllLpoController = Get.find();
   // final getAllLpoController getAllLpoController = Get.find();
   final TextEditingController searchControler = TextEditingController();

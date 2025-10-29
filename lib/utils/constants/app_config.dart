@@ -472,35 +472,32 @@ class AppConfig {
     //     'https://provisuat.uaenorth.cloudapp.azure.com/collandlord01/api/';
 
     // FABP -> fabp (fabpauth01,fabppublic01,fabptenant01,fabplandlord01)
-    // baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
-    // commonAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
-    // publicAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
-    // tenantAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
-    // appConfigVendor =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
-    // landlordAppConfig =
-    //     'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
+    baseUrl = 'https://provisuat.uaenorth.cloudapp.azure.com';
+    commonAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabpauth01/api/';
+    publicAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabppublic01/';
+    tenantAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabptenant01/api/';
+    appConfigVendor =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabpvendor01/api/';
+    landlordAppConfig =
+        'https://provisuat.uaenorth.cloudapp.azure.com/fabplandlord01/api/';
 
 
     // FAB 229
-    baseUrl = 'https://auth.api.ubspropt.com';
-    commonAppConfig =
-        'https://auth.api.ubspropt.com/api/';
-    publicAppConfig =
-        'https://public.api.ubspropt.com/';
-    tenantAppConfig =
-        'https://tenant.api.ubspropt.com/api/';
-    appConfigVendor =
-        'https://vendor.api.ubspropt.com/api/';
-
-
-
+    // baseUrl = 'https://auth.api.ubspropt.com';
+    // commonAppConfig =
+    //     'https://auth.api.ubspropt.com/api/';
+    // publicAppConfig =
+    //     'https://public.api.ubspropt.com/';
+    // tenantAppConfig =
+    //     'https://tenant.api.ubspropt.com/api/';
         
-    landlordAppConfig =
-        'https://landlord.api.ubspropt.com/api/';
+    // appConfigVendor =
+    //     'https://vendor.api.ubspropt.com/api/';
+    // landlordAppConfig =
+    //     'https://landlord.api.ubspropt.com/api/';
 
 
 ///////////////////////////////////////////////////////////////////////////

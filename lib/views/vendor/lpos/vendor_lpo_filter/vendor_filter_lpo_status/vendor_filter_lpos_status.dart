@@ -12,10 +12,10 @@ class VendorLpoStatusFilter extends StatefulWidget {
   const VendorLpoStatusFilter({super.key});
 
   @override
-  _VendorLpoStatusFilterState createState() => _VendorLpoStatusFilterState();
+  VendorLpoStatusFilterState createState() => VendorLpoStatusFilterState();
 }
 
-class _VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
+class VendorLpoStatusFilterState extends State<VendorLpoStatusFilter> {
   final LpoStatusController _controller = Get.find();
 
   @override

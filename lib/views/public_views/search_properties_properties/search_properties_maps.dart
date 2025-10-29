@@ -14,10 +14,10 @@ class SearchPropertiesMaps extends StatefulWidget {
   const SearchPropertiesMaps({super.key});
 
   @override
-  _SearchPropertiesMapsState createState() => _SearchPropertiesMapsState();
+  SearchPropertiesMapsState createState() => SearchPropertiesMapsState();
 }
 
-class _SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
+class SearchPropertiesMapsState extends State<SearchPropertiesMaps> {
   final Completer<Gm.GoogleMapController> _mapsController = Completer();
   final Completer<Am.AppleMapController> _mapsAppleController = Completer();
 

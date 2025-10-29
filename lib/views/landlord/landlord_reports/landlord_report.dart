@@ -19,10 +19,10 @@ class LandLordReports extends StatefulWidget {
   const LandLordReports({super.key});
 
   @override
-  _LandLordReportsState createState() => _LandLordReportsState();
+  LandLordReportsState createState() => LandLordReportsState();
 }
 
-class _LandLordReportsState extends State<LandLordReports> {
+class LandLordReportsState extends State<LandLordReports> {
   final searchController = TextEditingController();
   LandlordReportController lDreportController =
       Get.put(LandlordReportController());
@@ -45,33 +45,32 @@ class _LandLordReportsState extends State<LandLordReports> {
           const AppBackgroundConcave(),
           SafeArea(
             child: Column(children: [
-              Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                        size: 3.h,
-                      ),
-                      onPressed: () {
-                        Get.back();
-                      },
-                    ),
-                    Expanded(
-                      child: Text(
-                        AppMetaLabels().report,
-                        style: AppTextStyle.semiBoldWhite14,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5.h,
-                    )
-                  ])),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 3.h,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    AppMetaLabels().report,
+                    style: AppTextStyle.semiBoldWhite14,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ),
+                SizedBox(
+                  width: 5.h,
+                )
+              ]),
               Padding(
                 padding: EdgeInsets.only(left: 2.0.h, right: 2.0.h, top: 2.0.h),
                 child: Container(

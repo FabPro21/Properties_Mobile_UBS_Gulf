@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:fap_properties/views/auth/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
