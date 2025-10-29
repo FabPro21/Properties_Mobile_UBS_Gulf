@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:fap_properties/data/helpers/base_client.dart';
 import 'package:fap_properties/data/helpers/encription.dart';
 import 'package:fap_properties/data/services/tenant_services/response_of_multipart.dart';

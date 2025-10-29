@@ -19,7 +19,7 @@ class AppLogo extends StatelessWidget {
 }
 
 class AppLogoCollier extends StatelessWidget {
-  const AppLogoCollier({Key? key}) : super(key: key);
+  const AppLogoCollier({super.key});
 
   @override
   Widget build(BuildContext context) {

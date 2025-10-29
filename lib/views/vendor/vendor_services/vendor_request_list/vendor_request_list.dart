@@ -19,10 +19,10 @@ class VendorRequestList extends StatefulWidget {
   const VendorRequestList({super.key});
 
   @override
-  _VendorRequestListState createState() => _VendorRequestListState();
+  VendorRequestListState createState() => VendorRequestListState();
 }
 
-class _VendorRequestListState extends State<VendorRequestList> {
+class VendorRequestListState extends State<VendorRequestList> {
   final getVSRController = Get.put(GetVendorServiceRequestsController());
   final searchTextController = TextEditingController();
 
@@ -214,7 +214,7 @@ class _VendorRequestListState extends State<VendorRequestList> {
                                                             ),
                                                             Row(
                                                               children: [
-                                                                Container(
+                                                                SizedBox(
                                                                   width:
                                                                       Get.width *
                                                                           0.60,

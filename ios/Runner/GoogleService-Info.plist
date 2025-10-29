@@ -3,32 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>669371315916-bo6sc4baatljfn7ppl3a46902kl9fgtp.apps.googleusercontent.com</string>
+	<string>166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.669371315916-bo6sc4baatljfn7ppl3a46902kl9fgtp</string>
+	<string>com.googleusercontent.apps.166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>166669147827-e4pnt7rk9522734d14lg61jm1pi1jpfo.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCVmyUnIez7cRp16HoGkaKdXm9-8-2zDtk</string>
+	<string>AIzaSyC4ur8ikZMzvqdHrO5CDK_hznm_oTURs5A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>669371315916</string>
+	<string>166669147827</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.fab.properties</string>
+	<string>com.mena.realestate</string>
 	<key>PROJECT_ID</key>
-	<string>fab-properties-mobile-app</string>
+	<string>project-platinum-6019d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fab-properties-mobile-app.appspot.com</string>
+	<string>project-platinum-6019d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:669371315916:ios:187a54d2d5085079f6b469</string>
+	<string>1:166669147827:ios:0a0f4e919fc24f07a31ac6</string>
 </dict>
 </plist>

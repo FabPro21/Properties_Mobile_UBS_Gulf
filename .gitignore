@@ -69,3 +69,9 @@ android/gradle-8.0-all.zip
 android/gradle-*.zip
 *.zip
 android/gradle-*.zip
+
+# Ignore unwanted platform folders
+/linux/
+/macos/
+/web/
+/windows/
