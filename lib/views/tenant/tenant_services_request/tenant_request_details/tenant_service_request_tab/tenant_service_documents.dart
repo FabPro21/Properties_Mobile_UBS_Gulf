@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, unnecessary_null_comparison, deprecated_member_use
+// ignore_for_file: unused_local_variable, unnecessary_null_comparison, deprecated_member_use, use_build_context_synchronously
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/tenant_models/card_model.dart';
@@ -36,10 +36,10 @@ class TenantServiceDocuments extends StatefulWidget {
   }
 
   @override
-  _TenantServiceDocumentsState createState() => _TenantServiceDocumentsState();
+  TenantServiceDocumentsState createState() => TenantServiceDocumentsState();
 }
 
-class _TenantServiceDocumentsState extends State<TenantServiceDocuments> {
+class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
   final controller = Get.find<SvcReqDocsController>();
   final mainScreenController = Get.find<TenantRequestDetailsController>();
 

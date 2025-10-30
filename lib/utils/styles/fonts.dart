@@ -1,6 +1,4 @@
-///////////////////
-///    App Fonts
-///////////////////
+
 
 class AppFonts {
   static String graphikRegular = 'GraphikRegular';

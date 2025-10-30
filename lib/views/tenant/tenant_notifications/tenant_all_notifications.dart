@@ -19,10 +19,10 @@ class TenantAllNotifications extends StatefulWidget {
   const TenantAllNotifications({super.key, this.index});
 
   @override
-  _TenantAllNotificationsState createState() => _TenantAllNotificationsState();
+  TenantAllNotificationsState createState() => TenantAllNotificationsState();
 }
 
-class _TenantAllNotificationsState extends State<TenantAllNotifications> {
+class TenantAllNotificationsState extends State<TenantAllNotifications> {
   final getTNController = Get.put(GetTenantNotificationsController());
 
   @override
@@ -337,75 +337,73 @@ class _TenantAllNotificationsState extends State<TenantAllNotifications> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          child: SizedBox(
-            width: 85.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    if (!getTNController.notifications![index].isRead!)
-                      Container(
-                        height: 1.0.h,
-                        width: 2.0.w,
-                        margin: EdgeInsets.symmetric(horizontal: 1.w),
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
+        SizedBox(
+          width: 85.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (!getTNController.notifications![index].isRead!)
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 1.6.w),
-                      width: getTNController.editTap.value == true
-                          ? 25.0.w
-                          : 75.0.w,
-                      child: Text(
-                        SessionController().getLanguage() == 1
-                            ? getTNController.notifications![index].title ?? ""
-                            : getTNController.notifications![index].titleAR ??
-                                "",
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyle.semiBoldBlack11,
+                      height: 1.0.h,
+                      width: 2.0.w,
+                      margin: EdgeInsets.symmetric(horizontal: 1.w),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 1.6.w),
-                  child: Html(
-                    data: SessionController().getLanguage() == 1
-                        ? getTNController.notifications![index].description ??
-                            ""
-                        : getTNController.notifications![index].descriptionAR ??
-                            "",
-                    style: {
-                      'html': Style(
-                        textAlign: SessionController().getLanguage() == 1
-                            ? TextAlign.left
-                            : TextAlign.right,
-                        color: Colors.black,
-                        fontFamily: AppFonts.graphikRegular,
-                        fontSize: FontSize(10.0),
-                      ),
-                    },
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 1.6.w),
+                    width: getTNController.editTap.value == true
+                        ? 25.0.w
+                        : 75.0.w,
+                    child: Text(
+                      SessionController().getLanguage() == 1
+                          ? getTNController.notifications![index].title ?? ""
+                          : getTNController.notifications![index].titleAR ??
+                              "",
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyle.semiBoldBlack11,
+                    ),
                   ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 1.6.w),
+                child: Html(
+                  data: SessionController().getLanguage() == 1
+                      ? getTNController.notifications![index].description ??
+                          ""
+                      : getTNController.notifications![index].descriptionAR ??
+                          "",
+                  style: {
+                    'html': Style(
+                      textAlign: SessionController().getLanguage() == 1
+                          ? TextAlign.left
+                          : TextAlign.right,
+                      color: Colors.black,
+                      fontFamily: AppFonts.graphikRegular,
+                      fontSize: FontSize(10.0),
+                    ),
+                  },
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2.w),
-                  child: Text(
-                    getTNController.notifications![index].createdOn ?? "",
-                    style: AppTextStyle.normalBlack10,
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 2.w),
+                child: Text(
+                  getTNController.notifications![index].createdOn ?? "",
+                  style: AppTextStyle.normalBlack10,
                 ),
-                SizedBox(
-                  height: 2.0.h,
-                ),
-                index == getTNController.allLength - 1
-                    ? Container()
-                    : const AppDivider(),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 2.0.h,
+              ),
+              index == getTNController.allLength - 1
+                  ? Container()
+                  : const AppDivider(),
+            ],
           ),
         ),
         Padding(

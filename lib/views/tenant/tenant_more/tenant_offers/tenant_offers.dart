@@ -17,12 +17,12 @@ class TenantOffers extends StatefulWidget {
   const TenantOffers({super.key});
 
   @override
-  _TenantOffersState createState() => _TenantOffersState();
+  TenantOffersState createState() => TenantOffersState();
 }
 
 TenantOffersController _controller = Get.put(TenantOffersController());
 
-class _TenantOffersState extends State<TenantOffers> {
+class TenantOffersState extends State<TenantOffers> {
   @override
   void initState() {
     _controller.getOffers(_controller.pagaNo);
@@ -56,64 +56,63 @@ class _TenantOffersState extends State<TenantOffers> {
                             errorText: _controller.errorOffers.value,
                             errorImage: AppImagesPath.noServicesFound,
                           )
-                        : Container(
-                            child: ListView.builder(
-                                padding: EdgeInsets.only(top: 1.5.h),
-                                shrinkWrap: true,
-                                itemCount: _controller.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 5.0.w, top: 3.0.h, right: 5.0.w),
-                                    child: Directionality(
-                                      textDirection:
-                                          SessionController().getLanguage() == 1
-                                              ? TextDirection.ltr
-                                              : TextDirection.rtl,
-                                      child: Column(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Get.to(() => TenantOffersDetails(
-                                                  offerId: _controller
-                                                      .offers
-                                                      .value
-                                                      .record![index]
-                                                      .offerid
-                                                      .toString()));
-                                            },
-                                            child: Row(children: [
-                                              Text(
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? _controller
-                                                              .offers
-                                                              .value
-                                                              .record![index]
-                                                              .title ??
-                                                          ""
-                                                      : _controller
-                                                              .offers
-                                                              .value
-                                                              .record![index]
-                                                              .titleAr  ??
-                                                          "",
-                                                  style: AppTextStyle
-                                                      .semiBoldBlack13),
-                                              const Spacer(),
-                                              Icon(
-                                                Icons.arrow_forward_ios_rounded,
-                                                size: 2.0.h,
-                                                color: AppColors.grey1,
-                                              )
-                                            ]),
-                                          ),
-                                        ],
+                        : ListView.builder(
+                            padding: EdgeInsets.only(top: 1.5.h),
+                            shrinkWrap: true,
+                            itemCount: _controller.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    left: 5.0.w, top: 3.0.h, right: 5.0.w),
+                                child: Directionality(
+                                  textDirection:
+                                      SessionController().getLanguage() == 1
+                                          ? TextDirection.ltr
+                                          : TextDirection.rtl,
+                                  child: Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() => TenantOffersDetails(
+                                              offerId: _controller
+                                                  .offers
+                                                  .value
+                                                  .record![index]
+                                                  .offerid
+                                                  .toString()));
+                                        },
+                                        child: Row(children: [
+                                          Text(
+                                              SessionController()
+                                                          .getLanguage() ==
+                                                      1
+                                                  ? _controller
+                                                          .offers
+                                                          .value
+                                                          .record![index]
+                                                          .title ??
+                                                      ""
+                                                  : _controller
+                                                          .offers
+                                                          .value
+                                                          .record![index]
+                                                          .titleAr  ??
+                                                      "",
+                                              style: AppTextStyle
+                                                  .semiBoldBlack13),
+                                          const Spacer(),
+                                          Icon(
+                                            Icons.arrow_forward_ios_rounded,
+                                            size: 2.0.h,
+                                            color: AppColors.grey1,
+                                          )
+                                        ]),
                                       ),
-                                    ),
-                                  );
-                                }));
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
               }),
             ),
             SizedBox(

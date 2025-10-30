@@ -16,11 +16,11 @@ class LandlordReportProperties extends StatefulWidget {
   const LandlordReportProperties({super.key, @required this.dropDownType});
 
   @override
-  _LandlordReportPropertiesState createState() =>
-      _LandlordReportPropertiesState();
+  LandlordReportPropertiesState createState() =>
+      LandlordReportPropertiesState();
 }
 
-class _LandlordReportPropertiesState extends State<LandlordReportProperties> {
+class LandlordReportPropertiesState extends State<LandlordReportProperties> {
   final LandLordReportPropertiesController _filterPropertyController =
       Get.put(LandLordReportPropertiesController());
 

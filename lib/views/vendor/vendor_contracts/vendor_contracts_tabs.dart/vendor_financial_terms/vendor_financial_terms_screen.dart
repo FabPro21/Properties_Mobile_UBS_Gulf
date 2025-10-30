@@ -21,10 +21,10 @@ class VendorFinancialTerms extends StatefulWidget {
   const VendorFinancialTerms({super.key});
 
   @override
-  _VendorFinancialTermsState createState() => _VendorFinancialTermsState();
+  VendorFinancialTermsState createState() => VendorFinancialTermsState();
 }
 
-class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
+class VendorFinancialTermsState extends State<VendorFinancialTerms> {
   final getContractFinancialTermsController =
       Get.put(GetContractFinancialTermsController());
 
@@ -83,28 +83,27 @@ class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
                                   child: SfCircularChart(
                                       annotations: <CircularChartAnnotation>[
                                         CircularChartAnnotation(
-                                          widget: Container(
-                                              child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                AppMetaLabels().total,
-                                                style:
-                                                    AppTextStyle.normalBlack10,
+                                          widget: Column(
+                                                                                      mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                                                                      children: [
+                                          Text(
+                                            AppMetaLabels().total,
+                                            style:
+                                                AppTextStyle.normalBlack10,
+                                          ),
+                                          SizedBox(
+                                            width: 22.w,
+                                            child: FittedBox(
+                                              child: Text(
+                                                "${AppMetaLabels().aed} ${getContractFinancialTermsController.totalAmountSumFormat.value.toString() }",
+                                                style: AppTextStyle
+                                                    .semiBoldBlack10,
                                               ),
-                                              SizedBox(
-                                                width: 22.w,
-                                                child: FittedBox(
-                                                  child: Text(
-                                                    "${AppMetaLabels().aed} ${getContractFinancialTermsController.totalAmountSumFormat.value.toString() }",
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack10,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          )),
+                                            ),
+                                          ),
+                                                                                      ],
+                                                                                    ),
                                         )
                                       ],
                                       series: <CircularSeries>[

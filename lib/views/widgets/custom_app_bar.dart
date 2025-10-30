@@ -26,33 +26,31 @@ class CustomAppBar extends StatefulWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          Image.asset(
-            AppImagesPath.concave,
-            width: double.infinity,
-            fit: BoxFit.fitWidth,
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(3.w, 8.h, 3.w, 4.h),
-                child: Text(widget.title??"", style: AppTextStyle.semiBoldWhite12),
+    return Stack(
+      children: [
+        Image.asset(
+          AppImagesPath.concave,
+          width: double.infinity,
+          fit: BoxFit.fitWidth,
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(3.w, 8.h, 3.w, 4.h),
+              child: Text(widget.title??"", style: AppTextStyle.semiBoldWhite12),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
+              child: SearchField(
+                hint: widget.searchHint??"",
+                searchController: widget.searchTextController!,
+                onChanged: widget.onSearchTextChanged!,
+                onPressed: widget.onRefreshPressed!,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4.w),
-                child: SearchField(
-                  hint: widget.searchHint??"",
-                  searchController: widget.searchTextController!,
-                  onChanged: widget.onSearchTextChanged!,
-                  onPressed: widget.onRefreshPressed!,
-                ),
-              )
-            ],
-          )
-        ],
-      ),
+            )
+          ],
+        )
+      ],
     );
   }
 }

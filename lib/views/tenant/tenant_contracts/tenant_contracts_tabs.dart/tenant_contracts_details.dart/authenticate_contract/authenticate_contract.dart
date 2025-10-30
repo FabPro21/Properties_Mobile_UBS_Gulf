@@ -36,10 +36,10 @@ class AuthenticateContract extends StatefulWidget {
       this.caseId});
 
   @override
-  _AuthenticateContractState createState() => _AuthenticateContractState();
+  AuthenticateContractState createState() => AuthenticateContractState();
 }
 
-class _AuthenticateContractState extends State<AuthenticateContract> {
+class AuthenticateContractState extends State<AuthenticateContract> {
   final controller = Get.put(AuthenticateContractController());
   bool acceptTerms = false;
   final SignatureController signatureController = SignatureController(

@@ -21,10 +21,10 @@ class TenantContracrsFilter extends StatefulWidget {
   const TenantContracrsFilter({super.key, this.clear});
 
   @override
-  _TenantContracrsFilterState createState() => _TenantContracrsFilterState();
+  TenantContracrsFilterState createState() => TenantContracrsFilterState();
 }
 
-class _TenantContracrsFilterState extends State<TenantContracrsFilter> {
+class TenantContracrsFilterState extends State<TenantContracrsFilter> {
   final TextEditingController propertyController = TextEditingController();
   final TenantContracrsFilterController tCFilterController = Get.find();
 

@@ -682,10 +682,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   } else if (!nameValidator
                                                                       .hasMatch(
                                                                           value))
-                                                                    return AppMetaLabels()
-                                                                        .invalidName;
+                                                                    {return AppMetaLabels()
+                                                                        .invalidName;}
                                                                   else
-                                                                    return null;
+                                                                   { return null;}
                                                                 },
                                                                 onChanged:
                                                                     (value) {
@@ -733,10 +733,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   } else if (!phoneValidator
                                                                       .hasMatch(
                                                                           value))
-                                                                    return AppMetaLabels()
-                                                                        .invalidPhone;
+                                                                   { return AppMetaLabels()
+                                                                        .invalidPhone;}
                                                                   else
-                                                                    return null;
+                                                                   { return null;}
                                                                 },
                                                                 onChanged:
                                                                     (value) {
@@ -934,10 +934,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     .replaceAll(
                                                                         '\n',
                                                                         ' ')))
-                                                              return AppMetaLabels()
-                                                                  .invalidText;
+                                                              {return AppMetaLabels()
+                                                                  .invalidText;}
                                                             else
-                                                              return null;
+                                                              {return null;}
                                                           },
                                                           onChanged: (value) {
                                                             tASRController

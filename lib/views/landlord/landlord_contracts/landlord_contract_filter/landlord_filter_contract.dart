@@ -11,6 +11,7 @@ import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contra
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_property/landlord_filter_property.dart';
 import 'package:fap_properties/views/landlord/landlord_contracts/landlord_contract_filter/landlord_filter_contract_controller.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -21,10 +22,10 @@ class LandLordFilterContract extends StatefulWidget {
   const LandLordFilterContract({super.key, required this.clear});
 
   @override
-  _LandLordFilterContractState createState() => _LandLordFilterContractState();
+  LandLordFilterContractState createState() => LandLordFilterContractState();
 }
 
-class _LandLordFilterContractState extends State<LandLordFilterContract> {
+class LandLordFilterContractState extends State<LandLordFilterContract> {
   final TextEditingController propertyController = TextEditingController();
   final LandLordFilterContractController lDFilterController =
       Get.put(LandLordFilterContractController());
@@ -338,7 +339,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {if(kDebugMode) print("Catch : $e ");}
                               },
                               child: Container(
                                 width: 40.0.w,
@@ -446,7 +447,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {if(kDebugMode) print("Catch : $e ");}
                               },
                               child: Container(
                                 width: 40.0.w,

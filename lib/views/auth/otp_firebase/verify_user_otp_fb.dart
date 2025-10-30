@@ -135,21 +135,18 @@ class _VerifyUserOtpScreenFBState extends State<VerifyUserOtpScreenFB> {
                               child: authController.loadingData.value
                                   ? Padding(
                                       padding: EdgeInsets.only(top: 24.0.h),
-                                      child: Container(
-                                        // height: 8.0.h,
-                                        child: Column(
-                                          children: [
-                                            const LoadingIndicatorWhite(),
-                                            SizedBox(
-                                              height: 2.0.h,
-                                            ),
-                                            Text(
-                                              AppMetaLabels().verifyingOtp,
-                                              style:
-                                                  AppTextStyle.semiBoldWhite10,
-                                            ),
-                                          ],
-                                        ),
+                                      child: Column(
+                                        children: [
+                                          const LoadingIndicatorWhite(),
+                                          SizedBox(
+                                            height: 2.0.h,
+                                          ),
+                                          Text(
+                                            AppMetaLabels().verifyingOtp,
+                                            style:
+                                                AppTextStyle.semiBoldWhite10,
+                                          ),
+                                        ],
                                       ),
                                     )
                                   : SizedBox(

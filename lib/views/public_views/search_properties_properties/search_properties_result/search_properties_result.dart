@@ -40,10 +40,10 @@ class SearchPropertiesResult extends StatefulWidget {
       this.maxRoom});
 
   @override
-  _SearchPropertiesResultState createState() => _SearchPropertiesResultState();
+  SearchPropertiesResultState createState() => SearchPropertiesResultState();
 }
 
-class _SearchPropertiesResultState extends State<SearchPropertiesResult>
+class SearchPropertiesResultState extends State<SearchPropertiesResult>
     with SingleTickerProviderStateMixin {
   final sPRController = Get.put(SearchPropertiesResultController());
   AnimationController? _controller;
@@ -424,42 +424,39 @@ class _SearchPropertiesResultState extends State<SearchPropertiesResult>
                                                                 height: 1.2.h,
                                                               ),
                                                               // Residentail and Commercial
-                                                              Container(
-                                                                // color: Colors.red,
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    sPRController.properties[index].bedRooms.toString() !=
-                                                                            0.toString()
-                                                                        ? SizedBox(
-                                                                            width:
-                                                                                16.w,
-                                                                            child:
-                                                                                columnList(AppMetaLabels().beds, "${sPRController.properties[index].bedRooms ?? ""}"),
-                                                                          )
-                                                                        : const SizedBox(),
-                                                                    sPRController.properties[index].bath.toString() !=
-                                                                            0.toString()
-                                                                        ? SizedBox(
-                                                                            width:
-                                                                                16.w,
-                                                                            child:
-                                                                                columnList(AppMetaLabels().bath, "${sPRController.properties[index].bath ?? ""}"),
-                                                                          )
-                                                                        : const SizedBox(),
-                                                                    sPRController.properties[index].areaSize !=
-                                                                            0.00
-                                                                        ? SizedBox(
-                                                                            width:
-                                                                                25.w,
-                                                                            child:
-                                                                                columnList(sPRController.properties[index].uom, "${sPRController.properties[index].areaSize}"),
-                                                                          )
-                                                                        : const SizedBox(),
-                                                                  ],
-                                                                ),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  sPRController.properties[index].bedRooms.toString() !=
+                                                                          0.toString()
+                                                                      ? SizedBox(
+                                                                          width:
+                                                                              16.w,
+                                                                          child:
+                                                                              columnList(AppMetaLabels().beds, "${sPRController.properties[index].bedRooms ?? ""}"),
+                                                                        )
+                                                                      : const SizedBox(),
+                                                                  sPRController.properties[index].bath.toString() !=
+                                                                          0.toString()
+                                                                      ? SizedBox(
+                                                                          width:
+                                                                              16.w,
+                                                                          child:
+                                                                              columnList(AppMetaLabels().bath, "${sPRController.properties[index].bath ?? ""}"),
+                                                                        )
+                                                                      : const SizedBox(),
+                                                                  sPRController.properties[index].areaSize !=
+                                                                          0.00
+                                                                      ? SizedBox(
+                                                                          width:
+                                                                              25.w,
+                                                                          child:
+                                                                              columnList(sPRController.properties[index].uom, "${sPRController.properties[index].areaSize}"),
+                                                                        )
+                                                                      : const SizedBox(),
+                                                                ],
                                                               ),
                                                               SizedBox(
                                                                 height: sPRController.properties[index].bedRooms.toString() != 0.toString() &&

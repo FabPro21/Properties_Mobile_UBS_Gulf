@@ -13,10 +13,10 @@ class ContractsStatusFilter extends StatefulWidget {
   const ContractsStatusFilter({super.key});
 
   @override
-  _ContractsStatusFilterState createState() => _ContractsStatusFilterState();
+  ContractsStatusFilterState createState() => ContractsStatusFilterState();
 }
 
-class _ContractsStatusFilterState extends State<ContractsStatusFilter> {
+class ContractsStatusFilterState extends State<ContractsStatusFilter> {
   final FilterContractsStatusController _filterContractsStatusController =
       // Get.find();
       Get.put(FilterContractsStatusController()); //11223344

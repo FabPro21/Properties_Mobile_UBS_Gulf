@@ -21,10 +21,10 @@ class LpoDetails extends StatefulWidget {
   });
 
   @override
-  _LpoDetailsState createState() => _LpoDetailsState();
+  LpoDetailsState createState() => LpoDetailsState();
 }
 
-class _LpoDetailsState extends State<LpoDetails> {
+class LpoDetailsState extends State<LpoDetails> {
   @override
   void initState() {
     super.initState();

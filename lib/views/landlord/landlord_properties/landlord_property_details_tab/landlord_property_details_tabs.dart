@@ -16,11 +16,11 @@ class LandlordPropertDetailsTabs extends StatefulWidget {
   const LandlordPropertDetailsTabs({super.key, this.propertyId, this.propertyNo});
 
   @override
-  _LandlordPropertDetailsTabsState createState() =>
-      _LandlordPropertDetailsTabsState();
+  LandlordPropertDetailsTabsState createState() =>
+      LandlordPropertDetailsTabsState();
 }
 
-class _LandlordPropertDetailsTabsState
+class LandlordPropertDetailsTabsState
     extends State<LandlordPropertDetailsTabs> {
   @override
   Widget build(BuildContext context) {

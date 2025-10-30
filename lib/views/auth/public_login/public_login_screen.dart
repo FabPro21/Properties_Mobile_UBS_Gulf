@@ -17,7 +17,7 @@ import '../../widgets/common_widgets/button_widget.dart';
 import 'public_login_controller.dart';
 
 class PublicLoginScreen extends GetView<PublicLoginController> {
-  PublicLoginScreen({Key? key}) : super(key: key) {
+  PublicLoginScreen({super.key}) {
     Get.put(PublicLoginController());
   }
 

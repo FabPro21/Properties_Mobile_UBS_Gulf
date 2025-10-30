@@ -296,349 +296,345 @@ class _GetPropertyDetailsState extends State<GetPropertyDetails> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(2.0.h),
-                                        child: Container(
-                                          // height: 13.0.h,
-                                          // color: Colors.red,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              SizedBox(
-                                                width: 90.0.w,
-                                                child: Text(
-                                                  SessionController()
-                                                              .getLanguage() ==
-                                                          1
-                                                      ? gPDController
-                                                              .data
-                                                              .value
-                                                              .property
-                                                              ?.propertyName ??
-                                                          ""
-                                                      : gPDController
-                                                              .data
-                                                              .value
-                                                              .property
-                                                              ?.propertyNameAr ??
-                                                          "",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: AppTextStyle
-                                                      .semiBoldBlack12,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    AppMetaLabels().unitRefNo,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack10,
-                                                  ),
-                                                  const Spacer(),
-                                                  Text(
-                                                    gPDController
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SizedBox(
+                                              width: 90.0.w,
+                                              child: Text(
+                                                SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? gPDController
                                                             .data
                                                             .value
                                                             .property
-                                                            ?.unitRefNo ??
+                                                            ?.propertyName ??
+                                                        ""
+                                                    : gPDController
+                                                            .data
+                                                            .value
+                                                            .property
+                                                            ?.propertyNameAr ??
                                                         "",
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack10,
-                                                  ),
-                                                ],
+                                                overflow:
+                                                    TextOverflow.ellipsis,
+                                                style: AppTextStyle
+                                                    .semiBoldBlack12,
                                               ),
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    AppMetaLabels().targetRent,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack10,
-                                                  ),
-                                                  const Spacer(),
-                                                  Text(
-                                                    price,
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack10,
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 1.0.h,
-                                              ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromRGBO(
-                                                    241,
-                                                    248,
-                                                    252,
-                                                    0.1,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          1.0.h),
+                                            ),
+                                            SizedBox(
+                                              height: 1.0.h,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  AppMetaLabels().unitRefNo,
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack10,
                                                 ),
+                                                const Spacer(),
+                                                Text(
+                                                  gPDController
+                                                          .data
+                                                          .value
+                                                          .property
+                                                          ?.unitRefNo ??
+                                                      "",
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack10,
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 1.0.h,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  AppMetaLabels().targetRent,
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack10,
+                                                ),
+                                                const Spacer(),
+                                                Text(
+                                                  price,
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack10,
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 1.0.h,
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: const Color.fromRGBO(
+                                                  241,
+                                                  248,
+                                                  252,
+                                                  0.1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        1.0.h),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: 1.2.h),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    columnList(
+                                                      AppMetaLabels()
+                                                          .unitCategory,
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitCategoryName ??
+                                                              ""
+                                                          : gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitCategoryNameAr ??
+                                                              "",
+                                                    ),
+                                                    columnList(
+                                                      AppMetaLabels()
+                                                          .unitType,
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitType ??
+                                                              ""
+                                                          : gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitTypeAR ??
+                                                              "",
+                                                    ),
+                                                    columnList(
+                                                      AppMetaLabels()
+                                                          .unitView,
+                                                      SessionController()
+                                                                  .getLanguage() ==
+                                                              1
+                                                          ? gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitView ??
+                                                              ""
+                                                          : gPDController
+                                                                  .data
+                                                                  .value
+                                                                  .property
+                                                                  ?.unitViewAR ??
+                                                              "",
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            // SizedBox(
+                                            //   height: 1.0.h,
+                                            // ),
+                                            // Row(
+                                            //   children: [
+                                            //     Container(
+                                            //       decoration: BoxDecoration(
+                                            //         color: Color.fromRGBO(
+                                            //             72, 88, 106, 1),
+                                            //         shape: BoxShape.circle,
+                                            //       ),
+                                            //       child: Padding(
+                                            //         padding:
+                                            //             EdgeInsets.all(1.5.h),
+                                            //         child: Text(
+                                            //           gPDController
+                                            //               .data
+                                            //               .value
+                                            //               .property?
+                                            //               .landlordName[0],
+                                            //           style: AppTextStyle
+                                            //               .semiBoldWhite14,
+                                            //         ),
+                                            //       ),
+                                            //     ),
+                                            //     Padding(
+                                            //       padding: EdgeInsets.only(
+                                            //           left: 1.5.h),
+                                            //       child: Column(
+                                            //         crossAxisAlignment:
+                                            //             CrossAxisAlignment
+                                            //                 .start,
+                                            //         children: [
+                                            //           Text(
+                                            //             gPDController
+                                            //                     .data
+                                            //                     .value
+                                            //                     .property?
+                                            //                     .landlordName ??
+                                            //                 "",
+                                            //             style: AppTextStyle
+                                            //                 .semiBoldBlack12,
+                                            //           ),
+                                            //           Text(
+                                            //             AppMetaLabels()
+                                            //                 .landLord,
+                                            //             style: AppTextStyle
+                                            //                 .normalGrey10,
+                                            //           ),
+                                            //         ],
+                                            //       ),
+                                            //     ),
+                                            //   ],
+                                            // ),
+                                            if (gPDController
+                                                    .data
+                                                    .value
+                                                    .property
+                                                    ?.unitCategoryName ==
+                                                'Residential')
+                                              Container(
+                                                margin:
+                                                    EdgeInsets.only(top: 2.h),
+                                                decoration: BoxDecoration(
+                                                    color: const Color.fromRGBO(
+                                                        247, 247, 247, 1),
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            bottomLeft: Radius
+                                                                .circular(
+                                                                    2.h),
+                                                            bottomRight: Radius
+                                                                .circular(
+                                                                    2.h))),
                                                 child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 1.2.h),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                  padding:
+                                                      EdgeInsets.all(2.0.h),
+                                                  child: Column(
                                                     children: [
-                                                      columnList(
-                                                        AppMetaLabels()
-                                                            .unitCategory,
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitCategoryName ??
-                                                                ""
-                                                            : gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitCategoryNameAr ??
-                                                                "",
+                                                      Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .bedRooms,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.bedRooms ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .start),
+                                                          ),
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .kitchens,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.noofKitchens ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .center),
+                                                          ),
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .maidRooms,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.maidRooms ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .end),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      columnList(
-                                                        AppMetaLabels()
-                                                            .unitType,
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitType ??
-                                                                ""
-                                                            : gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitTypeAR ??
-                                                                "",
+                                                      SizedBox(
+                                                        height: 1.5.h,
                                                       ),
-                                                      columnList(
-                                                        AppMetaLabels()
-                                                            .unitView,
-                                                        SessionController()
-                                                                    .getLanguage() ==
-                                                                1
-                                                            ? gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitView ??
-                                                                ""
-                                                            : gPDController
-                                                                    .data
-                                                                    .value
-                                                                    .property
-                                                                    ?.unitViewAR ??
-                                                                "",
+                                                      Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .livingRooms,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.noofLivingRooms ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .start),
+                                                          ),
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .balconies,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.noofBalconies ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .center),
+                                                          ),
+                                                          Expanded(
+                                                            child: containerList(
+                                                                AppMetaLabels()
+                                                                    .washrooms,
+                                                                (gPDController
+                                                                            .data
+                                                                            .value
+                                                                            .property
+                                                                            ?.noofWashrooms ??
+                                                                        0)
+                                                                    .toString(),
+                                                                alignment:
+                                                                    CrossAxisAlignment
+                                                                        .end),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
-                                              // SizedBox(
-                                              //   height: 1.0.h,
-                                              // ),
-                                              // Row(
-                                              //   children: [
-                                              //     Container(
-                                              //       decoration: BoxDecoration(
-                                              //         color: Color.fromRGBO(
-                                              //             72, 88, 106, 1),
-                                              //         shape: BoxShape.circle,
-                                              //       ),
-                                              //       child: Padding(
-                                              //         padding:
-                                              //             EdgeInsets.all(1.5.h),
-                                              //         child: Text(
-                                              //           gPDController
-                                              //               .data
-                                              //               .value
-                                              //               .property?
-                                              //               .landlordName[0],
-                                              //           style: AppTextStyle
-                                              //               .semiBoldWhite14,
-                                              //         ),
-                                              //       ),
-                                              //     ),
-                                              //     Padding(
-                                              //       padding: EdgeInsets.only(
-                                              //           left: 1.5.h),
-                                              //       child: Column(
-                                              //         crossAxisAlignment:
-                                              //             CrossAxisAlignment
-                                              //                 .start,
-                                              //         children: [
-                                              //           Text(
-                                              //             gPDController
-                                              //                     .data
-                                              //                     .value
-                                              //                     .property?
-                                              //                     .landlordName ??
-                                              //                 "",
-                                              //             style: AppTextStyle
-                                              //                 .semiBoldBlack12,
-                                              //           ),
-                                              //           Text(
-                                              //             AppMetaLabels()
-                                              //                 .landLord,
-                                              //             style: AppTextStyle
-                                              //                 .normalGrey10,
-                                              //           ),
-                                              //         ],
-                                              //       ),
-                                              //     ),
-                                              //   ],
-                                              // ),
-                                              if (gPDController
-                                                      .data
-                                                      .value
-                                                      .property
-                                                      ?.unitCategoryName ==
-                                                  'Residential')
-                                                Container(
-                                                  margin:
-                                                      EdgeInsets.only(top: 2.h),
-                                                  decoration: BoxDecoration(
-                                                      color: const Color.fromRGBO(
-                                                          247, 247, 247, 1),
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      2.h),
-                                                              bottomRight: Radius
-                                                                  .circular(
-                                                                      2.h))),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.all(2.0.h),
-                                                    child: Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .bedRooms,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.bedRooms ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .start),
-                                                            ),
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .kitchens,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.noofKitchens ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .center),
-                                                            ),
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .maidRooms,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.maidRooms ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .end),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 1.5.h,
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .livingRooms,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.noofLivingRooms ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .start),
-                                                            ),
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .balconies,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.noofBalconies ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .center),
-                                                            ),
-                                                            Expanded(
-                                                              child: containerList(
-                                                                  AppMetaLabels()
-                                                                      .washrooms,
-                                                                  (gPDController
-                                                                              .data
-                                                                              .value
-                                                                              .property
-                                                                              ?.noofWashrooms ??
-                                                                          0)
-                                                                      .toString(),
-                                                                  alignment:
-                                                                      CrossAxisAlignment
-                                                                          .end),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                            ],
-                                          ),
+                                          ],
                                         ),
                                       ),
                                       Padding(

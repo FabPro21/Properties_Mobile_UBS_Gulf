@@ -19,10 +19,10 @@ class UpdatePublicProfile extends StatefulWidget {
   const UpdatePublicProfile({super.key, this.model});
 
   @override
-  _UpdatePublicProfileState createState() => _UpdatePublicProfileState();
+  UpdatePublicProfileState createState() => UpdatePublicProfileState();
 }
 
-class _UpdatePublicProfileState extends State<UpdatePublicProfile> {
+class UpdatePublicProfileState extends State<UpdatePublicProfile> {
   final PublicProfileController _controller = Get.put(PublicProfileController());
   final formKey = GlobalKey<FormState>();
   var nameError = "";

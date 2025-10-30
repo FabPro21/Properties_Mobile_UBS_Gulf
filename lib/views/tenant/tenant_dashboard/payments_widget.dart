@@ -67,24 +67,22 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
               padding: EdgeInsets.only(bottom: 2.0.h),
               child: const AppDivider(),
             ),
-            Container(
-              child: Obx(() {
-                return paymentsController.loadingPaymentsData.value == true
-                    ? const LoadingIndicatorBlue()
-                    : paymentsController.errorPayments.value != ''
-                        ? AppErrorWidget(
-                            errorText: paymentsController.errorPayments.value,
-                          )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: paymentsController.paymentsLength2,
-                            itemBuilder: (context, index) {
-                              return inkWell(index);
-                            },
-                          );
-              }),
-            ),
+            Obx(() {
+              return paymentsController.loadingPaymentsData.value == true
+                  ? const LoadingIndicatorBlue()
+                  : paymentsController.errorPayments.value != ''
+                      ? AppErrorWidget(
+                          errorText: paymentsController.errorPayments.value,
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: paymentsController.paymentsLength2,
+                          itemBuilder: (context, index) {
+                            return inkWell(index);
+                          },
+                        );
+            }),
             Padding(
               padding: EdgeInsets.only(top: 2.0.h, bottom: 2.0.h),
               child: TextButton(

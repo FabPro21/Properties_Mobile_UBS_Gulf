@@ -26,11 +26,11 @@ class VendorInvoiceCommunication extends StatefulWidget {
   }
 
   @override
-  _VendorInvoiceCommunicationState createState() =>
-      _VendorInvoiceCommunicationState();
+  VendorInvoiceCommunicationState createState() =>
+      VendorInvoiceCommunicationState();
 }
 
-class _VendorInvoiceCommunicationState
+class VendorInvoiceCommunicationState
     extends State<VendorInvoiceCommunication> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
@@ -101,7 +101,7 @@ class _VendorInvoiceCommunicationState
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
                                     } else
-                                      return null;
+                                      {return null;}
                                   },
                                 ),
                               ),
@@ -191,7 +191,7 @@ class _VendorInvoiceCommunicationState
                                       InkWell(
                                         onTap: () async {
                                           _focusNode.unfocus();
-                                          if (formKey.currentState!.validate()) if (await _controller
+                                          if (formKey.currentState!.validate()) {if (await _controller
                                               .addTicketReply(
                                                   detailController.caseNoInvoice
                                                       .toString(),
@@ -209,7 +209,7 @@ class _VendorInvoiceCommunicationState
                                                       .someThingWentWrong
                                                   : _controller.errorReplying,
                                             );
-                                          }
+                                          }}
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(

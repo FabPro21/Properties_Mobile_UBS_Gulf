@@ -25,10 +25,10 @@ class PaymentsScreen extends StatefulWidget {
   });
 
   @override
-  _PaymentsScreenState createState() => _PaymentsScreenState();
+  PaymentsScreenState createState() => PaymentsScreenState();
 }
 
-class _PaymentsScreenState extends State<PaymentsScreen> {
+class PaymentsScreenState extends State<PaymentsScreen> {
   final paymentsController = Get.put(ContractPaymentsController());
   final paymentDownloadReceiptController =
       Get.put(PaymentDownloadReceiptController());

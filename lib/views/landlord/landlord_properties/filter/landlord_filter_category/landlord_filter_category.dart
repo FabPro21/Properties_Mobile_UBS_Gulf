@@ -15,11 +15,11 @@ class LandlordFilterPCategory extends StatefulWidget {
   const LandlordFilterPCategory({super.key});
 
   @override
-  _LandlordFilterPCategoryState createState() =>
-      _LandlordFilterPCategoryState();
+  LandlordFilterPCategoryState createState() =>
+      LandlordFilterPCategoryState();
 }
 
-class _LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
+class LandlordFilterPCategoryState extends State<LandlordFilterPCategory> {
   final LandLordFilterCategoryController _filterPropertyController =
       Get.put(LandLordFilterCategoryController());
 

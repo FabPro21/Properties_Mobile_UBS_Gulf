@@ -30,11 +30,11 @@ class VendorInvoiceDocumentsDetails extends StatefulWidget {
   }
 
   @override
-  _VendorInvoiceDocumentsDetailsState createState() =>
-      _VendorInvoiceDocumentsDetailsState();
+  VendorInvoiceDocumentsDetailsState createState() =>
+      VendorInvoiceDocumentsDetailsState();
 }
 
-class _VendorInvoiceDocumentsDetailsState
+class VendorInvoiceDocumentsDetailsState
     extends State<VendorInvoiceDocumentsDetails> {
   final controller = Get.find<VendorInvoiceDocsController>();
   final detailController = Get.find<VendorInvoiceDetailsController>();
@@ -97,108 +97,106 @@ class _VendorInvoiceDocumentsDetailsState
                                                   errorText: controller
                                                       .errorLoadingDocs,
                                                 )
-                                              : Container(
-                                                  child: ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      itemCount: controller
-                                                          .docs.length,
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        return Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    2.0.h),
-                                                            child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                        left: 4.0
-                                                                            .w,
-                                                                        bottom: 2.0
-                                                                            .h,
-                                                                        right: 4.0
-                                                                            .w),
-                                                                    child: Text(
-                                                                      SessionController().getLanguage() ==
-                                                                              1
-                                                                          ? controller.docs[index].name ??
-                                                                              ""
-                                                                          : controller.docs[index].nameAr ??
-                                                                              '',
-                                                                      style: AppTextStyle
-                                                                          .semiBoldBlack12,
-                                                                    ),
-                                                                  ),
-                                                                  controller.docs[index].id ==
-                                                                              null ||
-                                                                          controller
-                                                                              .docs[
-                                                                                  index]
-                                                                              .isRejected!
-                                                                      ? uploadFile(
-                                                                          context,
-                                                                          index)
-                                                                      : Container(
-                                                                          width:
-                                                                              100.0.w,
-                                                                          padding: EdgeInsets.symmetric(
-                                                                              vertical: 1.h,
-                                                                              horizontal: 4.w),
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(2.0.h),
-                                                                            boxShadow: [
-                                                                              BoxShadow(
-                                                                                color: Colors.black12,
-                                                                                blurRadius: 0.5.h,
-                                                                                spreadRadius: 0.1.h,
-                                                                                offset: Offset(0.1.h, 0.1.h),
-                                                                              ),
-                                                                            ],
+                                              : ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  itemCount: controller
+                                                      .docs.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                        padding:
+                                                            EdgeInsets.all(
+                                                                2.0.h),
+                                                        child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsets.only(
+                                                                    left: 4.0
+                                                                        .w,
+                                                                    bottom: 2.0
+                                                                        .h,
+                                                                    right: 4.0
+                                                                        .w),
+                                                                child: Text(
+                                                                  SessionController().getLanguage() ==
+                                                                          1
+                                                                      ? controller.docs[index].name ??
+                                                                          ""
+                                                                      : controller.docs[index].nameAr ??
+                                                                          '',
+                                                                  style: AppTextStyle
+                                                                      .semiBoldBlack12,
+                                                                ),
+                                                              ),
+                                                              controller.docs[index].id ==
+                                                                          null ||
+                                                                      controller
+                                                                          .docs[
+                                                                              index]
+                                                                          .isRejected!
+                                                                  ? uploadFile(
+                                                                      context,
+                                                                      index)
+                                                                  : Container(
+                                                                      width:
+                                                                          100.0.w,
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          vertical: 1.h,
+                                                                          horizontal: 4.w),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color:
+                                                                            Colors.white,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(2.0.h),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            color: Colors.black12,
+                                                                            blurRadius: 0.5.h,
+                                                                            spreadRadius: 0.1.h,
+                                                                            offset: Offset(0.1.h, 0.1.h),
                                                                           ),
-                                                                          child:
-                                                                              FileView(
-                                                                            file:
-                                                                                controller.docs[index],
-                                                                            onDelete:
-                                                                                () {
-                                                                              print('Anhan:::');
-                                                                            },
-                                                                            //     () async {
-                                                                            //       print('Anhan:::');
-                                                                            //   setState(() {
-                                                                            //     controller.isEnableScreen.value = false;
-                                                                            //   });
-                                                                            //   await controller.removeFile(index);
-                                                                            //   setState(() {
-                                                                            //     controller.isEnableScreen.value = true;
-                                                                            //   });
-                                                                            // },
-                                                                            onPressed:
-                                                                                () {
-                                                                              setState(() {
-                                                                                controller.isEnableScreen.value = false;
-                                                                              });
-                                                                              print('downloading ::::: ${int.parse(detailController.caseNoInvoice.toString())}');
-                                                                              controller.downloadDoc(index, int.parse(detailController.caseNoInvoice.toString()));
-
-                                                                              setState(() {
-                                                                                controller.isEnableScreen.value = true;
-                                                                              });
-                                                                            },
-                                                                            canDelete:
-                                                                                false,
-                                                                          ),
-                                                                        )
-                                                                ]));
-                                                      }),
-                                                );
+                                                                        ],
+                                                                      ),
+                                                                      child:
+                                                                          FileView(
+                                                                        file:
+                                                                            controller.docs[index],
+                                                                        onDelete:
+                                                                            () {
+                                                                          print('Anhan:::');
+                                                                        },
+                                                                        //     () async {
+                                                                        //       print('Anhan:::');
+                                                                        //   setState(() {
+                                                                        //     controller.isEnableScreen.value = false;
+                                                                        //   });
+                                                                        //   await controller.removeFile(index);
+                                                                        //   setState(() {
+                                                                        //     controller.isEnableScreen.value = true;
+                                                                        //   });
+                                                                        // },
+                                                                        onPressed:
+                                                                            () {
+                                                                          setState(() {
+                                                                            controller.isEnableScreen.value = false;
+                                                                          });
+                                                                          print('downloading ::::: ${int.parse(detailController.caseNoInvoice.toString())}');
+                                                                          controller.downloadDoc(index, int.parse(detailController.caseNoInvoice.toString()));
+                                              
+                                                                          setState(() {
+                                                                            controller.isEnableScreen.value = true;
+                                                                          });
+                                                                        },
+                                                                        canDelete:
+                                                                            false,
+                                                                      ),
+                                                                    )
+                                                            ]));
+                                                  });
                                     }),
                                   ),
                                   // SingleChildScrollView(

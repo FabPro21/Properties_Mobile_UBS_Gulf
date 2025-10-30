@@ -322,7 +322,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                             index]
                                                                         .statusName!
                                                                         .contains(
-                                                                            'Draft')
+                                                                            'draft')
                                                                     ? AppMetaLabels()
                                                                         .submitted
                                                                     : SessionController().getLanguage() ==
@@ -336,7 +336,7 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
                                                                             index]
                                                                         .statusName!
                                                                         .contains(
-                                                                            'Draft')
+                                                                            'draft')
                                                                     ? AppMetaLabels()
                                                                         .submitted
                                                                     : _controller

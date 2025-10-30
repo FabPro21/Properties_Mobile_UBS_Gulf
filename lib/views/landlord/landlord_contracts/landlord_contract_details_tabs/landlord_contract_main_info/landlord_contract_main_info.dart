@@ -19,11 +19,11 @@ class LandlordContractMainInfo extends StatefulWidget {
       {super.key, @required this.contractId, this.previousContactNo});
 
   @override
-  _LandlordContractMainInfoState createState() =>
-      _LandlordContractMainInfoState();
+  LandlordContractMainInfoState createState() =>
+      LandlordContractMainInfoState();
 }
 
-class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
+class LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
   final controller = Get.put(LandlordContractMainInfoController());
 
   @override
@@ -374,19 +374,17 @@ class _LandlordContractMainInfoState extends State<LandlordContractMainInfo> {
                                                                           top: 1.5
                                                                               .h),
                                                                   child:
-                                                                      Container(
-                                                                    child: Text(
-                                                                      SessionController().getLanguage() == 1
-                                                                          ? controller
-                                                                              .contractDetails?.contract?.address
-                                                                              .toString()??""
-                                                                          : controller
-                                                                              .contractDetails?.contract?.addressAr
-                                                                              .toString()??"",
-                                                                      style: AppTextStyle
-                                                                          .semiBoldBlack10,
-                                                                    ),
-                                                                  ),
+                                                                      Text(
+                                                                        SessionController().getLanguage() == 1
+                                                                            ? controller
+                                                                                .contractDetails?.contract?.address
+                                                                                .toString()??""
+                                                                            : controller
+                                                                                .contractDetails?.contract?.addressAr
+                                                                                .toString()??"",
+                                                                        style: AppTextStyle
+                                                                            .semiBoldBlack10,
+                                                                      ),
                                                                 ),
                                                               ],
                                                             ),

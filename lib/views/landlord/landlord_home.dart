@@ -17,10 +17,10 @@ class LandlordHome extends StatefulWidget {
   const LandlordHome({super.key});
 
   @override
-  _LandlordHomeState createState() => _LandlordHomeState();
+  LandlordHomeState createState() => LandlordHomeState();
 }
 
-class _LandlordHomeState extends State<LandlordHome> {
+class LandlordHomeState extends State<LandlordHome> {
   List<Widget>? _buildScreens;
   int _selectedIndex = 0;
 

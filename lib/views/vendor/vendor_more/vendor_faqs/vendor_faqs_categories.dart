@@ -17,10 +17,10 @@ class VendorFaqsCategories extends StatefulWidget {
   const VendorFaqsCategories({super.key});
 
   @override
-  _VendorFaqsCategoriesState createState() => _VendorFaqsCategoriesState();
+  VendorFaqsCategoriesState createState() => VendorFaqsCategoriesState();
 }
 
-class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
+class VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
   final VendorFaqsController _controller = Get.put(VendorFaqsController());
   @override
   void initState() {
@@ -54,80 +54,79 @@ class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
                               errorImage: AppImagesPath.noServicesFound,
                               errorText: _controller.errorFaqsCatg.value,
                             )
-                          : Container(
-                              child: ListView.builder(
-                                  padding: EdgeInsets.only(top: 1.5.h),
-                                  shrinkWrap: true,
-                                  itemCount: _controller.length,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 5.0.w,
-                                          top: 3.0.h,
-                                          right: 5.0.w),
-                                      child: Column(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Get.to(() =>
-                                                  VendorFaqsQuestionsAndDescription(
-                                                    categoryId: _controller
-                                                        .faqsCategories
-                                                        .value
-                                                        .faqCategories?[index]
-                                                        .categoryId??0,
-                                                  ));
-                                            },
-                                            child: Directionality(
-                                              textDirection: SessionController()
-                                                          .getLanguage() ==
-                                                      1
-                                                  ? TextDirection.ltr
-                                                  : TextDirection.rtl,
-                                              child: SizedBox(
-                                                width: 90.w,
-                                                child: Row(children: [
-                                                  SizedBox(
-                                                    width: 84.w,
-                                                    child: Text(
-                                                      SessionController()
-                                                                  .getLanguage() ==
-                                                              1
-                                                          // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
-                                                          ? _controller
-                                                              .faqsCategories
-                                                              .value
-                                                              .faqCategories![
-                                                                  index]
-                                                              .title??""
-                                                          : _controller
-                                                              .faqsCategories
-                                                              .value
-                                                              .faqCategories![
-                                                                  index]
-                                                              .titleAr??"",
-                                                      style: AppTextStyle
-                                                          .semiBoldBlack13,
-                                                      textAlign:
-                                                          TextAlign.justify,
-                                                      maxLines: null,
-                                                    ),
-                                                  ),
-                                                  const Spacer(),
-                                                  Icon(
-                                                    Icons
-                                                        .arrow_forward_ios_rounded,
-                                                    size: 2.0.h,
-                                                    color: AppColors.grey1,
-                                                  )
-                                                ]),
+                          : ListView.builder(
+                              padding: EdgeInsets.only(top: 1.5.h),
+                              shrinkWrap: true,
+                              itemCount: _controller.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 5.0.w,
+                                      top: 3.0.h,
+                                      right: 5.0.w),
+                                  child: Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() =>
+                                              VendorFaqsQuestionsAndDescription(
+                                                categoryId: _controller
+                                                    .faqsCategories
+                                                    .value
+                                                    .faqCategories?[index]
+                                                    .categoryId??0,
+                                              ));
+                                        },
+                                        child: Directionality(
+                                          textDirection: SessionController()
+                                                      .getLanguage() ==
+                                                  1
+                                              ? TextDirection.ltr
+                                              : TextDirection.rtl,
+                                          child: SizedBox(
+                                            width: 90.w,
+                                            child: Row(children: [
+                                              SizedBox(
+                                                width: 84.w,
+                                                child: Text(
+                                                  SessionController()
+                                                              .getLanguage() ==
+                                                          1
+                                                      // ? 'It is the world\'s fifth-most populous country, with a population of almost 243 million people, and has the world\'s \nsecond-largest Muslim population just behind Indonesia.[15] Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan\'s Wakhan Corridor in the north, and also shares a maritime border with Oman. Islamabad is the nations capital, while Karachi is its largest city and financial centre.'
+                                                      ? _controller
+                                                          .faqsCategories
+                                                          .value
+                                                          .faqCategories![
+                                                              index]
+                                                          .title??""
+                                                      : _controller
+                                                          .faqsCategories
+                                                          .value
+                                                          .faqCategories![
+                                                              index]
+                                                          .titleAr??"",
+                                                  style: AppTextStyle
+                                                      .semiBoldBlack13,
+                                                  textAlign:
+                                                      TextAlign.justify,
+                                                  maxLines: null,
+                                                ),
                                               ),
-                                            ),
+                                              const Spacer(),
+                                              Icon(
+                                                Icons
+                                                    .arrow_forward_ios_rounded,
+                                                size: 2.0.h,
+                                                color: AppColors.grey1,
+                                              )
+                                            ]),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    );
-                                  }));
+                                    ],
+                                  ),
+                                );
+                              });
                 }),
               ),
             ],

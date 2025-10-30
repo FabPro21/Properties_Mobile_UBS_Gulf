@@ -32,7 +32,7 @@ class StatusWidget extends StatelessWidget {
                         valueToCompare!.contains('Terminated') ||
                         valueToCompare!.contains('Closed')
                     ? const Color.fromRGBO(158, 158, 158, 0.35)
-                    : valueToCompare!.contains('Draft') ||
+                    : valueToCompare!.contains('draft') ||
                             valueToCompare!.contains('Received')
                         ? AppColors.amberWithOpacity035
                         : AppColors.amberWithOpacity035,
@@ -46,7 +46,7 @@ class StatusWidget extends StatelessWidget {
         //         : valueToCompare!.contains('Ended') ||
         //                 valueToCompare!.contains('Terminated')
         //             ? AppColors.greyBG
-        //             : valueToCompare!.contains('Draft') ||
+        //             : valueToCompare!.contains('draft') ||
         //                     valueToCompare!.contains('Received')
         //                 ? AppColors.blueColor2
         //                 : AppColors.amber2,
@@ -72,7 +72,7 @@ class StatusWidget extends StatelessWidget {
                       : valueToCompare!.contains('Ended') ||
                               valueToCompare!.contains('Terminated')
                           ? AppColors.blackColor
-                          : valueToCompare!.contains('Draft') ||
+                          : valueToCompare!.contains('draft') ||
                                   valueToCompare!.contains('Received')
                               ? AppColors.blackColor
                               : AppColors.blackColor)
@@ -98,7 +98,7 @@ class StatusWidget extends StatelessWidget {
           //         : valueToCompare!.contains('Ended') ||
           //                 valueToCompare!.contains('Terminated')
           //             ? AppColors.greyColor
-          //             : valueToCompare!.contains('Draft') ||
+          //             : valueToCompare!.contains('draft') ||
           //                     valueToCompare!.contains('Received')
           //                 ? AppColors.blueColor
           //                 : AppColors.amber),
@@ -134,7 +134,7 @@ class StatusWidgetVendor extends StatelessWidget {
                         valueToCompare!.contains('Terminated') ||
                         valueToCompare!.contains('Closed')
                     ? const Color.fromRGBO(158, 158, 158, 0.35)
-                    : valueToCompare!.contains('Draft') ||
+                    : valueToCompare!.contains('draft') ||
                             valueToCompare!.contains('Received')
                         ? AppColors.amberWithOpacity035
                         : AppColors.amberWithOpacity035,
@@ -148,7 +148,7 @@ class StatusWidgetVendor extends StatelessWidget {
         //         : valueToCompare!.contains('Ended') ||
         //                 valueToCompare!.contains('Terminated')
         //             ? AppColors.greyBG
-        //             : valueToCompare!.contains('Draft') ||
+        //             : valueToCompare!.contains('draft') ||
         //                     valueToCompare!.contains('Received')
         //                 ? AppColors.blueColor2
         //                 : AppColors.amber2,
@@ -174,7 +174,7 @@ class StatusWidgetVendor extends StatelessWidget {
                       : valueToCompare!.contains('Ended') ||
                               valueToCompare!.contains('Terminated')
                           ? AppColors.blackColor
-                          : valueToCompare!.contains('Draft') ||
+                          : valueToCompare!.contains('draft') ||
                                   valueToCompare!.contains('Received')
                               ? AppColors.blackColor
                               : AppColors.blackColor)
@@ -194,7 +194,7 @@ class StatusWidgetVendor extends StatelessWidget {
           //         : valueToCompare!.contains('Ended') ||
           //                 valueToCompare!.contains('Terminated')
           //             ? AppColors.greyColor
-          //             : valueToCompare!.contains('Draft') ||
+          //             : valueToCompare!.contains('draft') ||
           //                     valueToCompare!.contains('Received')
           //                 ? AppColors.blueColor
           //                 : AppColors.amber),

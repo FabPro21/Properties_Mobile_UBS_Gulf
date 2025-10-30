@@ -2622,7 +2622,7 @@ class AppMetaLabels {
 
   String ended = SessionController().getLanguage() == 1 ? "Ended" : 'انتهى';
 
-  String draft = SessionController().getLanguage() == 1 ? "Draft" : 'مسودة';
+  String draft = SessionController().getLanguage() == 1 ? "draft" : 'مسودة';
 
   String reqtAlreadySubmitted = SessionController().getLanguage() == 1
       ? "Update profile request already submitted. Case No. "

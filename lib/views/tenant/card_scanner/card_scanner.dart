@@ -245,6 +245,7 @@ import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
 import 'package:fap_properties/utils/styles/colors.dart';
 import 'package:fap_properties/utils/styles/text_styles.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -258,10 +259,10 @@ class CardScanner extends StatefulWidget {
   const CardScanner({super.key, @required this.file});
 
   @override
-  _CardScannerState createState() => _CardScannerState();
+  CardScannerState createState() => CardScannerState();
 }
 
-class _CardScannerState extends State<CardScanner>
+class CardScannerState extends State<CardScanner>
     with SingleTickerProviderStateMixin {
   AnimationController? _animationController;
   bool reverse = true;
@@ -281,7 +282,7 @@ class _CardScannerState extends State<CardScanner>
   void startAnimation() async {
     try {
       animateScanAnimation();
-    } catch (e) {}
+    } catch (e) {if(kDebugMode){}}
     await Future.delayed(const Duration(seconds: 1));
     startAnimation();
   }
@@ -419,13 +420,15 @@ class _CardScannerState extends State<CardScanner>
         else if (line.text.length == 10 && line.text.contains('/')) {
           try {
             dates.add(DateFormat('dd/MM/yyyy').parse(line.text));
-          } catch (e) {}
+          } catch (e) {
+            if(kDebugMode)print("Catch: $e");
+          }
         } else {
           for (TextElement element in line.elements) {
             if (element.text.length == 10 && element.text.contains('/')) {
               try {
                 dates.add(DateFormat('dd/MM/yyyy').parse(element.text));
-              } catch (e) {}
+              } catch (e) {   if(kDebugMode)print("Catch: $e");}
             }
           }
         }

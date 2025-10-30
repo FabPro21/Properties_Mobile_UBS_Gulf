@@ -18,11 +18,11 @@ class VendorUnreadNotification extends StatefulWidget {
   const VendorUnreadNotification({super.key});
 
   @override
-  _VendorUnreadNotificationState createState() =>
-      _VendorUnreadNotificationState();
+  VendorUnreadNotificationState createState() =>
+      VendorUnreadNotificationState();
 }
 
-class _VendorUnreadNotificationState extends State<VendorUnreadNotification> {
+class VendorUnreadNotificationState extends State<VendorUnreadNotification> {
   final _controller = Get.find<VendorNotificationsController>();
   _getUnreadNotifications() async {
     await _controller.unReadNotifications(_controller.pagaNoPURead);

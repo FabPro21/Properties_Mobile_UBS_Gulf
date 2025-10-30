@@ -6,6 +6,7 @@ import 'package:fap_properties/utils/styles/text_styles.dart';
 import 'package:fap_properties/views/widgets/common_widgets/divider_widget.dart';
 import 'package:fap_properties/views/vendor/lpos/vendor_lpo_filter/vendor_filter_lpo_status/vendor_filter_lpos_status.dart';
 import 'package:fap_properties/views/vendor/lpos/vendor_lpo_filter/vendor_lpo_filter_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
@@ -16,10 +17,10 @@ class VendorLpoFilter extends StatefulWidget {
   const VendorLpoFilter({super.key, this.clear});
 
   @override
-  _VendorLpoFilterState createState() => _VendorLpoFilterState();
+  VendorLpoFilterState createState() => VendorLpoFilterState();
 }
 
-class _VendorLpoFilterState extends State<VendorLpoFilter> {
+class VendorLpoFilterState extends State<VendorLpoFilter> {
   final TextEditingController propertyController = TextEditingController();
   final VendorLpoFilterController _controller = Get.find();
 
@@ -241,7 +242,9 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {
+                                  if(kDebugMode)print("Catch: $e");
+                                }
                               },
                               child: Container(
                                 width: 40.0.w,
@@ -342,7 +345,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {}
+                                } catch (e) {if(kDebugMode)print("Catch: $e");}
                               },
                               child: Container(
                                 width: 40.0.w,

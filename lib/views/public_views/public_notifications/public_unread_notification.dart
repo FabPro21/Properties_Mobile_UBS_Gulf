@@ -19,11 +19,11 @@ class PublicUnreadNotification extends StatefulWidget {
   const PublicUnreadNotification({super.key});
 
   @override
-  _PublicUnreadNotificationState createState() =>
-      _PublicUnreadNotificationState();
+  PublicUnreadNotificationState createState() =>
+      PublicUnreadNotificationState();
 }
 
-class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
+class PublicUnreadNotificationState extends State<PublicUnreadNotification> {
   final _controller = Get.find<PublicNotificationsController>();
   _getUnreadNotifications() async {
     await _controller.unReadNotifications(_controller.pagaNoPURead);
@@ -306,11 +306,9 @@ class _PublicUnreadNotificationState extends State<PublicUnreadNotification> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 1.8.h, top: 1.0.h),
-                child: Container(
-                  child: Text(
-                    _controller.notificationsUnRead![index].createdOn ?? "",
-                    style: AppTextStyle.normalBlack10,
-                  ),
+                child: Text(
+                  _controller.notificationsUnRead![index].createdOn ?? "",
+                  style: AppTextStyle.normalBlack10,
                 ),
               ),
               SizedBox(

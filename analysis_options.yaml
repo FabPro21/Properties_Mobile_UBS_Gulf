@@ -6,5 +6,5 @@ analyzer:
     unused_local_variable: ignore
     file_names: ignore
     collection_methods_unrelated_type: ignore
-    constant_identifier_names: ignore ignore
+    constant_identifier_names: ignore
     library_prefixes: ignore

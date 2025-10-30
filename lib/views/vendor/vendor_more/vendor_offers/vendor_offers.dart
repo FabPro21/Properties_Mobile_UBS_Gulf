@@ -17,10 +17,10 @@ class VendorOffers extends StatefulWidget {
   const VendorOffers({super.key});
 
   @override
-  _VendorOffersState createState() => _VendorOffersState();
+  VendorOffersState createState() => VendorOffersState();
 }
 
-class _VendorOffersState extends State<VendorOffers> {
+class VendorOffersState extends State<VendorOffers> {
   final _controller = Get.put(VendorOffersController());
 
   @override
@@ -140,62 +140,61 @@ class _VendorOffersState extends State<VendorOffers> {
                                 errorText: _controller.errorOffers.value,
                                 errorImage: AppImagesPath.noServicesFound,
                               )
-                            : Container(
-                                child: ListView.builder(
-                                    padding: EdgeInsets.only(top: 1.5.h),
-                                    shrinkWrap: true,
-                                    itemCount: _controller.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 5.0.w,
-                                            top: 3.0.h,
-                                            right: 5.0.w),
-                                        child: Column(
-                                          children: [
-                                            InkWell(
-                                              onTap: () {
-                                                Get.to(() =>
-                                                    VendorOffersDetails(
-                                                        offerId: _controller
+                            : ListView.builder(
+                                padding: EdgeInsets.only(top: 1.5.h),
+                                shrinkWrap: true,
+                                itemCount: _controller.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 5.0.w,
+                                        top: 3.0.h,
+                                        right: 5.0.w),
+                                    child: Column(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(() =>
+                                                VendorOffersDetails(
+                                                    offerId: _controller
+                                                        .offers
+                                                        .value
+                                                        .record?[index]
+                                                        .offerid
+                                                        .toString()));
+                                          },
+                                          child: Row(children: [
+                                            Text(
+                                                SessionController()
+                                                            .getLanguage() ==
+                                                        1
+                                                    ? _controller
                                                             .offers
                                                             .value
-                                                            .record?[index]
-                                                            .offerid
-                                                            .toString()));
-                                              },
-                                              child: Row(children: [
-                                                Text(
-                                                    SessionController()
-                                                                .getLanguage() ==
-                                                            1
-                                                        ? _controller
-                                                                .offers
-                                                                .value
-                                                                .record![index]
-                                                                .title ??
-                                                            ""
-                                                        : _controller
-                                                                .offers
-                                                                .value
-                                                                .record![index]
-                                                                .titleAr ??
-                                                            "",
-                                                    style: AppTextStyle
-                                                        .semiBoldBlack13),
-                                                const Spacer(),
-                                                Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_rounded,
-                                                  size: 2.0.h,
-                                                  color: AppColors.grey1,
-                                                )
-                                              ]),
-                                            ),
-                                          ],
+                                                            .record![index]
+                                                            .title ??
+                                                        ""
+                                                    : _controller
+                                                            .offers
+                                                            .value
+                                                            .record![index]
+                                                            .titleAr ??
+                                                        "",
+                                                style: AppTextStyle
+                                                    .semiBoldBlack13),
+                                            const Spacer(),
+                                            Icon(
+                                              Icons
+                                                  .arrow_forward_ios_rounded,
+                                              size: 2.0.h,
+                                              color: AppColors.grey1,
+                                            )
+                                          ]),
                                         ),
-                                      );
-                                    }));
+                                      ],
+                                    ),
+                                  );
+                                });
                   }),
                 )
               ]),

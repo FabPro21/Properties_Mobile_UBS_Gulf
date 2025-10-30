@@ -8,10 +8,10 @@ class InAppUpdateClass extends StatefulWidget {
   const InAppUpdateClass({super.key});
 
   @override
-  _InAppUpdateClassState createState() => _InAppUpdateClassState();
+  InAppUpdateClassState createState() => InAppUpdateClassState();
 }
 
-class _InAppUpdateClassState extends State<InAppUpdateClass> {
+class InAppUpdateClassState extends State<InAppUpdateClass> {
   AppUpdateInfo? _updateInfo;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();

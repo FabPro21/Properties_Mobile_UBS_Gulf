@@ -818,15 +818,13 @@ class _ContractNewActionState extends State<ContractNewAction> {
                                             videoCotroller!.value.aspectRatio,
                                         child: VideoPlayer(videoCotroller!)),
                                   ),
-                                  Container(
-                                    child: VideoProgressIndicator(
-                                      videoCotroller!,
-                                      allowScrubbing: true,
-                                      colors: const VideoProgressColors(
-                                        backgroundColor: Colors.white24,
-                                        playedColor: Colors.blue,
-                                        bufferedColor: Colors.grey,
-                                      ),
+                                  VideoProgressIndicator(
+                                    videoCotroller!,
+                                    allowScrubbing: true,
+                                    colors: const VideoProgressColors(
+                                      backgroundColor: Colors.white24,
+                                      playedColor: Colors.blue,
+                                      bufferedColor: Colors.grey,
                                     ),
                                   ),
                                   SizedBox(
@@ -861,131 +859,129 @@ class _ContractNewActionState extends State<ContractNewAction> {
                           controller.contractsList[index].previousContractNo,
                     ));
               },
-              child: Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SrNoWidget(text: index + 1, size: 4.h),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: 1.h, left: 1.5.h, right: 0.5.h),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 40.0.w,
-                                  child: Text(
-                                    SessionController().getLanguage() == 1
-                                        ? controller.contractsList[index]
-                                                .propertyName ??
-                                            ''
-                                        : controller.contractsList[index]
-                                                .propertyNameAr ??
-                                            '',
-                                    style: AppTextStyle.semiBoldBlack12,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  "${controller.contractsList[index].contractno}",
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SrNoWidget(text: index + 1, size: 4.h),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 1.h, left: 1.5.h, right: 0.5.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 40.0.w,
+                                child: Text(
+                                  SessionController().getLanguage() == 1
+                                      ? controller.contractsList[index]
+                                              .propertyName ??
+                                          ''
+                                      : controller.contractsList[index]
+                                              .propertyNameAr ??
+                                          '',
                                   style: AppTextStyle.semiBoldBlack12,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.0.h,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "${controller.contractsList[index].fromdate}",
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 0.5.w),
-                                      child: Icon(Icons.arrow_forward,
-                                          size: 10.sp,
-                                          color: AppColors.greyColor),
-                                    ),
-                                    Text(
-                                      "${controller.contractsList[index].toDate}",
-                                      style: AppTextStyle.normalGrey10,
-                                    ),
-                                  ],
-                                ),
-                                const Spacer(),
-                                ConstrainedBox(
-                                  constraints: BoxConstraints(maxWidth: 27.w),
-                                  child: FittedBox(
-                                    child: StatusWidget(
-                                      text:
-                                          SessionController().getLanguage() == 1
-                                              ? controller
-                                                  .contractsList[index].status
-                                              : controller.contractsList[index]
-                                                  .statusAr,
-                                      valueToCompare: controller
-                                          .contractsList[index].status,
-                                    ),
+                              ),
+                              const Spacer(),
+                              Text(
+                                "${controller.contractsList[index].contractno}",
+                                style: AppTextStyle.semiBoldBlack12,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 1.0.h,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${controller.contractsList[index].fromdate}",
+                                    style: AppTextStyle.normalGrey10,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 0.5.w),
+                                    child: Icon(Icons.arrow_forward,
+                                        size: 10.sp,
+                                        color: AppColors.greyColor),
+                                  ),
+                                  Text(
+                                    "${controller.contractsList[index].toDate}",
+                                    style: AppTextStyle.normalGrey10,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: 27.w),
+                                child: FittedBox(
+                                  child: StatusWidget(
+                                    text:
+                                        SessionController().getLanguage() == 1
+                                            ? controller
+                                                .contractsList[index].status
+                                            : controller.contractsList[index]
+                                                .statusAr,
+                                    valueToCompare: controller
+                                        .contractsList[index].status,
                                   ),
                                 ),
-                              ],
-                            ),
-                            if (controller.contractsList[index]
-                                        .previousContractNo !=
-                                    null &&
-                                controller.contractsList[index].contractno !=
-                                    controller.contractsList[index]
-                                        .previousContractNo)
-                              controller.contractsList[index].stageId! < 4
-                                  ? const SizedBox()
-                                  : Padding(
-                                      padding: const EdgeInsets.only(top: 5.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            AppMetaLabels().prevContractNo,
-                                            style: AppTextStyle.normalGrey10,
-                                          ),
-                                          Text(
-                                            controller.contractsList[index]
-                                                    .previousContractNo ??
-                                                '',
-                                            style: AppTextStyle.semiBoldBlack10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                          if (controller.contractsList[index]
+                                      .previousContractNo !=
+                                  null &&
+                              controller.contractsList[index].contractno !=
+                                  controller.contractsList[index]
+                                      .previousContractNo)
+                            controller.contractsList[index].stageId! < 4
+                                ? const SizedBox()
+                                : Padding(
+                                    padding: const EdgeInsets.only(top: 5.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          AppMetaLabels().prevContractNo,
+                                          style: AppTextStyle.normalGrey10,
+                                        ),
+                                        Text(
+                                          controller.contractsList[index]
+                                                  .previousContractNo ??
+                                              '',
+                                          style: AppTextStyle.semiBoldBlack10,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 2.5.h),
-                      child: SizedBox(
-                        width: 0.15.w,
-                        child: Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: AppColors.grey1,
-                          size: 20,
-                        ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 2.5.h),
+                    child: SizedBox(
+                      width: 0.15.w,
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: AppColors.grey1,
+                        size: 20,
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
 

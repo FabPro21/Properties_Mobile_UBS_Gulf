@@ -17,10 +17,10 @@ class VendorSettings extends StatefulWidget {
   const VendorSettings({super.key});
 
   @override
-  _VendorSettingsState createState() => _VendorSettingsState();
+  VendorSettingsState createState() => VendorSettingsState();
 }
 
-class _VendorSettingsState extends State<VendorSettings> {
+class VendorSettingsState extends State<VendorSettings> {
   int fPOption = 0;
   @override
   void initState() {
