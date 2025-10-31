@@ -3,7 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-<<<<<<< HEAD
 	<string>166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.166669147827-1bli6v2cg90lbg6dhrpjv2q2jfnc562r</string>
@@ -11,15 +10,6 @@
 	<string>166669147827-e4pnt7rk9522734d14lg61jm1pi1jpfo.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyC4ur8ikZMzvqdHrO5CDK_hznm_oTURs5A</string>
-=======
-	<string>166669147827-k1fgms0ic7vcohq7dpcfnjhb2ni5hgbk.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.166669147827-k1fgms0ic7vcohq7dpcfnjhb2ni5hgbk</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>166669147827-e4pnt7rk9522734d14lg61jm1pi1jpfo.apps.googleusercontent.com</string>
-	<key>API_KEY</key>
-	<string>AIzaSyCS86SvkvNUxEWFcnn4ScgGwliIAc4VwLQ</string>
->>>>>>> 99ba6056bd062c2b90bf40a950c29ab7edb2d1ee
 	<key>GCM_SENDER_ID</key>
 	<string>166669147827</string>
 	<key>PLIST_VERSION</key>
@@ -41,10 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-<<<<<<< HEAD
 	<string>1:166669147827:ios:0a0f4e919fc24f07a31ac6</string>
-=======
-	<string>1:166669147827:ios:493cd309334a30fea31ac6</string>
->>>>>>> 99ba6056bd062c2b90bf40a950c29ab7edb2d1ee
 </dict>
 </plist>

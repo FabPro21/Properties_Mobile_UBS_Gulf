@@ -100,14 +100,8 @@ class VendorInvoiceCommunicationState
                                       return AppMetaLabels().invalidText;
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
-<<<<<<< HEAD
-                                    } else {
-                                      return null;
-                                    }
-=======
                                     } else
                                       {return null;}
->>>>>>> 99ba6056bd062c2b90bf40a950c29ab7edb2d1ee
                                   },
                                 ),
                               ),
