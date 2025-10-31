@@ -22,10 +22,10 @@ class VendorDashboardTabs extends StatefulWidget {
   const VendorDashboardTabs({super.key});
 
   @override
-  _VendorDashboardTabsState createState() => _VendorDashboardTabsState();
+  VendorDashboardTabsState createState() => VendorDashboardTabsState();
 }
 
-class _VendorDashboardTabsState extends State<VendorDashboardTabs> {
+class VendorDashboardTabsState extends State<VendorDashboardTabs> {
   // ignore: unused_field
   final VendorDashboardTabsController _dashboardTabsController =
       Get.put(VendorDashboardTabsController());

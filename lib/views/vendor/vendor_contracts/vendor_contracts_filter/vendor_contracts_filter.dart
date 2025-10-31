@@ -17,10 +17,10 @@ class VendorContractsFilter extends StatefulWidget {
   const VendorContractsFilter({super.key, this.clear});
 
   @override
-  _VendorContractsFilterState createState() => _VendorContractsFilterState();
+  VendorContractsFilterState createState() => VendorContractsFilterState();
 }
 
-class _VendorContractsFilterState extends State<VendorContractsFilter> {
+class VendorContractsFilterState extends State<VendorContractsFilter> {
   final TextEditingController propertyController = TextEditingController();
   final VendorContractsFilterController vCFilterController = Get.find();
 
@@ -262,11 +262,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {
-                                    if (kDebugMode) {
-                                      print("Catch :: $e");
-                                    }
-                                  }
+                                  } catch (e) {if(kDebugMode)print("Catch: $e");}
                                 },
                                 child: Container(
                                   width: 40.0.w,
@@ -383,11 +379,7 @@ class _VendorContractsFilterState extends State<VendorContractsFilter> {
                                       vCFilterController.filterError.value =
                                           AppMetaLabels().validDateRange;
                                     }
-                                  } catch (e) {
-                                    if (kDebugMode) {
-                                      print("Catch :: $e");
-                                    }
-                                  }
+                                  } catch (e) {if(kDebugMode)print("Catch: $e");}
                                 },
                                 child: Container(
                                   width: 40.0.w,

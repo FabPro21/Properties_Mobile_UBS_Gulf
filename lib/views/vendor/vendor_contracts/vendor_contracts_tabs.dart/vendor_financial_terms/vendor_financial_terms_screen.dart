@@ -21,10 +21,10 @@ class VendorFinancialTerms extends StatefulWidget {
   const VendorFinancialTerms({super.key});
 
   @override
-  _VendorFinancialTermsState createState() => _VendorFinancialTermsState();
+  VendorFinancialTermsState createState() => VendorFinancialTermsState();
 }
 
-class _VendorFinancialTermsState extends State<VendorFinancialTerms> {
+class VendorFinancialTermsState extends State<VendorFinancialTerms> {
   final getContractFinancialTermsController =
       Get.put(GetContractFinancialTermsController());
 

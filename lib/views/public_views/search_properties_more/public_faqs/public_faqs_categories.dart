@@ -17,10 +17,10 @@ class PublicFaqsCategories extends StatefulWidget {
   const PublicFaqsCategories({super.key});
 
   @override
-  _PublicFaqsCategoriesState createState() => _PublicFaqsCategoriesState();
+  PublicFaqsCategoriesState createState() => PublicFaqsCategoriesState();
 }
 
-class _PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
+class PublicFaqsCategoriesState extends State<PublicFaqsCategories> {
   final PublicFaqsController _controller = Get.put(PublicFaqsController());
   @override
   void initState() {

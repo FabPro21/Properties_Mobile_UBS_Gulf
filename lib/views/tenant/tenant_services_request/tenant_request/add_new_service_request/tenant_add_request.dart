@@ -688,7 +688,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     {return AppMetaLabels()
                                                                         .invalidName;}
                                                                   else
-                                                                    {return null;}
+                                                                   { return null;}
                                                                 },
                                                                 onChanged:
                                                                     (value) {
@@ -738,7 +738,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                    { return AppMetaLabels()
                                                                         .invalidPhone;}
                                                                   else
-                                                                    {return null;}
+                                                                   { return null;}
                                                                 },
                                                                 onChanged:
                                                                     (value) {
@@ -927,10 +927,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                     .replaceAll(
                                                                         '\n',
                                                                         ' ')))
-                                                             { return AppMetaLabels()
+                                                              {return AppMetaLabels()
                                                                   .invalidText;}
                                                             else
-                                                            {  return null;}
+                                                              {return null;}
                                                           },
                                                           onChanged: (value) {
                                                             tASRController

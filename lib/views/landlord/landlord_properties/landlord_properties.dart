@@ -16,10 +16,10 @@ class LandLordProperties extends StatefulWidget {
   const LandLordProperties({super.key});
 
   @override
-  _LandLordPropertiesState createState() => _LandLordPropertiesState();
+  LandLordPropertiesState createState() => LandLordPropertiesState();
 }
 
-class _LandLordPropertiesState extends State<LandLordProperties> {
+class LandLordPropertiesState extends State<LandLordProperties> {
   final searchTextController = TextEditingController();
   final controller = Get.put(LandlordPropertiesController());
   @override

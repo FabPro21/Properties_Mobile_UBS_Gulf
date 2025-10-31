@@ -16,10 +16,10 @@ class LandLordFaqs extends StatefulWidget {
   const LandLordFaqs({super.key});
 
   @override
-  _LandLordFaqsState createState() => _LandLordFaqsState();
+  LandLordFaqsState createState() => LandLordFaqsState();
 }
 
-class _LandLordFaqsState extends State<LandLordFaqs> {
+class LandLordFaqsState extends State<LandLordFaqs> {
   final LandLordFaqsController _controller = Get.put(LandLordFaqsController());
   @override
   void initState() {

@@ -198,14 +198,14 @@ class OutstandingPaymentsNewContractController extends GetxController {
       if (outstandingPayments.record![i].type! == 'Contract Payable') {
         rentalSum = rentalSum + (outstandingPayments.record![i].amount ?? 0);
       } else if (outstandingPayments.record![i].type! == 'Additional Charges')
-     {   additionalSum =
+        {additionalSum =
             additionalSum + (outstandingPayments.record![i].amount ?? 0);}
       else if (outstandingPayments.record![i].type!.toLowerCase() ==
           'Vat On Rent'.toLowerCase())
         {vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);}
       else if (outstandingPayments.record![i].type!.toLowerCase() ==
           'Vat On Charges'.toLowerCase())
-       { vatChargesSum =
+        {vatChargesSum =
             vatChargesSum + (outstandingPayments.record![i].amount ?? 0);}
       if (outstandingPayments.record![i].isRejected!) {
         outstandingPayments.record![i].filePath = null;

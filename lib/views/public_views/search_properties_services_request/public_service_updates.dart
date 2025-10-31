@@ -25,10 +25,10 @@ class PublicServiceUpdates extends StatefulWidget {
       {super.key, @required this.reqNo, @required this.canCommunicate});
 
   @override
-  _PublicServiceUpdatesState createState() => _PublicServiceUpdatesState();
+  PublicServiceUpdatesState createState() => PublicServiceUpdatesState();
 }
 
-class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
+class PublicServiceUpdatesState extends State<PublicServiceUpdates> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
@@ -93,7 +93,7 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                   } else if (value.trim().isEmpty == true) {
                                     return AppMetaLabels().invalidText;
                                   } else
-                                 {   return null;}
+                                   { return null;}
                                 },
                               ),
                             ),

@@ -22,10 +22,10 @@ class LandlordPaymentsScreen extends StatefulWidget {
   });
 
   @override
-  _LandlordPaymentsScreenState createState() => _LandlordPaymentsScreenState();
+  LandlordPaymentsScreenState createState() => LandlordPaymentsScreenState();
 }
 
-class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
+class LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
   final paymentsController = Get.put(LandlordContractPaymentsController());
   final getCDController = Get.find<LandlordContractMainInfoController>();
 
@@ -325,7 +325,8 @@ class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
                           // padding: EdgeInsets.symmetric(
                           //     horizontal: 2.0.h, vertical: 2.h),
                           child: paymentsController.payments.payments?[index]
-                                      .downloadingReceipt?.value == true
+                                      .downloadingReceipt?.value ==
+                                  true
                               ? const LoadingIndicatorBlue()
                               : const SizedBox()
                           // : InkWell(

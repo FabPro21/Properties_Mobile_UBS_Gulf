@@ -24,11 +24,11 @@ class TenantServiceRequestUpdates extends StatefulWidget {
   }
 
   @override
-  _TenantServiceRequestUpdatesState createState() =>
-      _TenantServiceRequestUpdatesState();
+  TenantServiceRequestUpdatesState createState() =>
+      TenantServiceRequestUpdatesState();
 }
 
-class _TenantServiceRequestUpdatesState
+class TenantServiceRequestUpdatesState
     extends State<TenantServiceRequestUpdates> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
@@ -101,7 +101,7 @@ class _TenantServiceRequestUpdatesState
                                     } else if (value.trim().isEmpty == true) {
                                       return AppMetaLabels().invalidText;
                                     } else
-                                   {   return null;}
+                                     { return null;}
                                   },
                                 ),
                               ),

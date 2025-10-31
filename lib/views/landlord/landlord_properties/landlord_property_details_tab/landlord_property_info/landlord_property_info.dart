@@ -16,10 +16,10 @@ class LandlordPropertyInfo extends StatefulWidget {
   const LandlordPropertyInfo({super.key, this.propertID});
 
   @override
-  _LandlordPropertyInfoState createState() => _LandlordPropertyInfoState();
+  LandlordPropertyInfoState createState() => LandlordPropertyInfoState();
 }
 
-class _LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
+class LandlordPropertyInfoState extends State<LandlordPropertyInfo> {
   LandlordPropertiesTabDetailController controller =
       Get.put(LandlordPropertiesTabDetailController());
   CameraPosition kGooglePlex = const CameraPosition(

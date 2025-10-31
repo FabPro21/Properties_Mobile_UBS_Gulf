@@ -12,10 +12,10 @@ class TenantCancelRequest extends StatefulWidget {
   const TenantCancelRequest({super.key});
 
   @override
-  _TenantCancelRequestState createState() => _TenantCancelRequestState();
+  TenantCancelRequestState createState() => TenantCancelRequestState();
 }
 
-class _TenantCancelRequestState extends State<TenantCancelRequest> {
+class TenantCancelRequestState extends State<TenantCancelRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -39,10 +39,10 @@ class MainInfo extends StatefulWidget {
   const MainInfo({super.key, @required this.prevContractNo});
 
   @override
-  _MainInfoState createState() => _MainInfoState();
+  MainInfoState createState() => MainInfoState();
 }
 
-class _MainInfoState extends State<MainInfo> {
+class MainInfoState extends State<MainInfo> {
   final getCDController = Get.put(GetContractsDetailsController());
   // final getCDController = Get.find<GetContractsDetailsController>();
   final contractDownloadController = Get.put(ContractDownloadController());
@@ -1921,7 +1921,7 @@ class _MainInfoState extends State<MainInfo> {
                           } else if (getCDController
                                   .canDownloadContract.canDownload ==
                               '2')
-                            {Get.snackbar(AppMetaLabels().error,
+                           { Get.snackbar(AppMetaLabels().error,
                                 getCDController.canDownloadContract.message??"",
                                 backgroundColor: AppColors.white54);}
                         })

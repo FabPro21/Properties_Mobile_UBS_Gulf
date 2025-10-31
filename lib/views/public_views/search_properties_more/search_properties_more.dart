@@ -25,10 +25,10 @@ class SearchPropertiesMore extends StatefulWidget {
   const SearchPropertiesMore({super.key});
 
   @override
-  _SearchPropertiesMoreState createState() => _SearchPropertiesMoreState();
+  SearchPropertiesMoreState createState() => SearchPropertiesMoreState();
 }
 
-class _SearchPropertiesMoreState extends State<SearchPropertiesMore> {
+class SearchPropertiesMoreState extends State<SearchPropertiesMore> {
   String name = "";
   _getName() {
     String mystring = SessionController().getUserName() ?? "";

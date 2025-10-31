@@ -25,11 +25,11 @@ class PublicServiceRequestTab extends StatefulWidget {
       this.canCommunicate});
 
   @override
-  _PublicServiceRequestTabState createState() =>
-      _PublicServiceRequestTabState();
+  PublicServiceRequestTabState createState() =>
+      PublicServiceRequestTabState();
 }
 
-class _PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
+class PublicServiceRequestTabState extends State<PublicServiceRequestTab> {
   @override
   Widget build(BuildContext context) {
     return Directionality(

@@ -1870,7 +1870,7 @@
 //   "List" : 'قائمة';
 //  "Ended" : 'انتهى';
 
-//  "Draft" : 'مسودة';
+//  "draft" : 'مسودة';
 
 
 //        "Update profile request already submitted. Case No. ": 'تم إرسال طلب تحديث الملف الشخصي بالفعل. القضية رقم.';

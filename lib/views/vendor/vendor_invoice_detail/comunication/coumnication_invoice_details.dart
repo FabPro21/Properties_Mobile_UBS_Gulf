@@ -26,11 +26,11 @@ class VendorInvoiceCommunication extends StatefulWidget {
   }
 
   @override
-  _VendorInvoiceCommunicationState createState() =>
-      _VendorInvoiceCommunicationState();
+  VendorInvoiceCommunicationState createState() =>
+      VendorInvoiceCommunicationState();
 }
 
-class _VendorInvoiceCommunicationState
+class VendorInvoiceCommunicationState
     extends State<VendorInvoiceCommunication> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();

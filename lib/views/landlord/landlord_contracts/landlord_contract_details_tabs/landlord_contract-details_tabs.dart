@@ -24,11 +24,11 @@ class LandlordContractDetailsTabs extends StatefulWidget {
       required this.prevContractNo});
 
   @override
-  _LandlordContractDetailsTabsState createState() =>
-      _LandlordContractDetailsTabsState();
+  LandlordContractDetailsTabsState createState() =>
+      LandlordContractDetailsTabsState();
 }
 
-class _LandlordContractDetailsTabsState
+class LandlordContractDetailsTabsState
     extends State<LandlordContractDetailsTabs> {
   @override
   Widget build(BuildContext context) {

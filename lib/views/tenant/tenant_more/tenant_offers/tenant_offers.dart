@@ -17,12 +17,12 @@ class TenantOffers extends StatefulWidget {
   const TenantOffers({super.key});
 
   @override
-  _TenantOffersState createState() => _TenantOffersState();
+  TenantOffersState createState() => TenantOffersState();
 }
 
 TenantOffersController _controller = Get.put(TenantOffersController());
 
-class _TenantOffersState extends State<TenantOffers> {
+class TenantOffersState extends State<TenantOffers> {
   @override
   void initState() {
     _controller.getOffers(_controller.pagaNo);

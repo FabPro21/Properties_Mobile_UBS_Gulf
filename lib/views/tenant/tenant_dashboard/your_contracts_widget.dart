@@ -131,19 +131,17 @@ class _YourContractsState extends State<YourContracts> {
                                                                   .getLanguage() ==
                                                               1
                                                           ? getContractsController
-                                                                  .getContracts
-                                                                  .value
-                                                                  .contracts![
-                                                                      index]
-                                                                  .propertyName ??
-                                                              ""
+                                                              .getContracts
+                                                              .value
+                                                              .contracts![
+                                                                  index]
+                                                              .propertyName??""
                                                           : getContractsController
-                                                                  .getContracts
-                                                                  .value
-                                                                  .contracts![
-                                                                      index]
-                                                                  .propertyNameAr ??
-                                                              "",
+                                                              .getContracts
+                                                              .value
+                                                              .contracts![
+                                                                  index]
+                                                              .propertyNameAr??"",
                                                       style: AppTextStyle
                                                           .semiBoldBlack12,
                                                       overflow: TextOverflow

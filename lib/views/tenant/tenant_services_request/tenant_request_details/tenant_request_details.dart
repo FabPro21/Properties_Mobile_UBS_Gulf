@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison, use_build_context_synchronously
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -39,10 +39,10 @@ class TenantRequestDetails extends StatefulWidget {
   }
 
   @override
-  _TenantRequestDetailsState createState() => _TenantRequestDetailsState();
+  TenantRequestDetailsState createState() => TenantRequestDetailsState();
 }
 
-class _TenantRequestDetailsState extends State<TenantRequestDetails> {
+class TenantRequestDetailsState extends State<TenantRequestDetails> {
   final tenantRDController = Get.find<TenantRequestDetailsController>();
   TextEditingController feedbackDescController = TextEditingController();
   ScrollController controller = ScrollController();

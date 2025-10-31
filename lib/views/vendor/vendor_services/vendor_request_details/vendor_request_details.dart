@@ -22,10 +22,10 @@ class VendorRequestDetails extends StatefulWidget {
   const VendorRequestDetails({super.key, this.caseNo, this.status});
 
   @override
-  _VendorRequestDetailsState createState() => _VendorRequestDetailsState();
+  VendorRequestDetailsState createState() => VendorRequestDetailsState();
 }
 
-class _VendorRequestDetailsState extends State<VendorRequestDetails> {
+class VendorRequestDetailsState extends State<VendorRequestDetails> {
   final controller = Get.put(SvcReqMainInfoController());
   @override
   Widget build(BuildContext context) {

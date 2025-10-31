@@ -80,9 +80,7 @@ class PublicLoginController extends GetxController {
         Get.snackbar(AppMetaLabels().error, result);
       }
     } catch (e) {
-      if(kDebugMode){
-        print("Catch :: $e");
-      }
+      if(kDebugMode) print("Catch : $e ");
     }
   }
 

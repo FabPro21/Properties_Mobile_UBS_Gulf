@@ -22,10 +22,10 @@ class LandLordFilterContract extends StatefulWidget {
   const LandLordFilterContract({super.key, required this.clear});
 
   @override
-  _LandLordFilterContractState createState() => _LandLordFilterContractState();
+  LandLordFilterContractState createState() => LandLordFilterContractState();
 }
 
-class _LandLordFilterContractState extends State<LandLordFilterContract> {
+class LandLordFilterContractState extends State<LandLordFilterContract> {
   final TextEditingController propertyController = TextEditingController();
   final LandLordFilterContractController lDFilterController =
       Get.put(LandLordFilterContractController());
@@ -350,11 +350,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {
-                                  if (kDebugMode) {
-                                    print("Catch :: $e");
-                                  }
-                                }
+                                } catch (e) {if(kDebugMode) print("Catch : $e ");}
                               },
                               child: Container(
                                 width: 40.0.w,
@@ -472,11 +468,7 @@ class _LandLordFilterContractState extends State<LandLordFilterContract> {
                                     lDFilterController.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {
-                                  if (kDebugMode) {
-                                    print("Catch :: $e");
-                                  }
-                                }
+                                } catch (e) {if(kDebugMode) print("Catch : $e ");}
                               },
                               child: Container(
                                 width: 40.0.w,

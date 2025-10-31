@@ -40,10 +40,10 @@ class SearchPropertiesResult extends StatefulWidget {
       this.maxRoom});
 
   @override
-  _SearchPropertiesResultState createState() => _SearchPropertiesResultState();
+  SearchPropertiesResultState createState() => SearchPropertiesResultState();
 }
 
-class _SearchPropertiesResultState extends State<SearchPropertiesResult>
+class SearchPropertiesResultState extends State<SearchPropertiesResult>
     with SingleTickerProviderStateMixin {
   final sPRController = Get.put(SearchPropertiesResultController());
   AnimationController? _controller;

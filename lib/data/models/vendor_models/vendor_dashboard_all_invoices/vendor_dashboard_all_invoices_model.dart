@@ -92,11 +92,11 @@ final invoiceDateValues = EnumValues({
     "31-01-2016": InvoiceDate.the_31012016
 });
 
-enum StatusName { under_review, UNDER_APPROVAL, DRAFT }
+enum StatusName { under_review, under_approval, draft }
 
 final statusNameValues = EnumValues({
-    "Draft": StatusName.DRAFT,
-    "Under Approval": StatusName.UNDER_APPROVAL,
+    "draft": StatusName.draft,
+    "Under Approval": StatusName.under_approval,
     "Under Review": StatusName.under_review
 });
 

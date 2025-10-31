@@ -22,10 +22,10 @@ class OnlinePayments extends StatefulWidget {
   const OnlinePayments({super.key, this.contractNo});
 
   @override
-  _OnlinePaymentsState createState() => _OnlinePaymentsState();
+  OnlinePaymentsState createState() => OnlinePaymentsState();
 }
 
-class _OnlinePaymentsState extends State<OnlinePayments> {
+class OnlinePaymentsState extends State<OnlinePayments> {
   final _controller = Get.put(OnlinePaymentsController());
   bool value = false;
 

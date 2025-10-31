@@ -551,10 +551,10 @@ class BookingRequest extends StatefulWidget {
   });
 
   @override
-  _BookingRequestState createState() => _BookingRequestState();
+  BookingRequestState createState() => BookingRequestState();
 }
 
-class _BookingRequestState extends State<BookingRequest> {
+class BookingRequestState extends State<BookingRequest> {
   final gPDController = Get.put(GetPropertyDetailController());
   final bookingRequestController = Get.put(BookingRequestController());
 
@@ -744,6 +744,7 @@ class _BookingRequestState extends State<BookingRequest> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
+                                      
                                               widget.property?.bedRooms == 0 ||
                                               widget.property?.bedRooms == null
                                           ? const SizedBox()
@@ -752,7 +753,8 @@ class _BookingRequestState extends State<BookingRequest> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      widget.property?.noofWashrooms ==
+                                   
+                                              widget.property?.noofWashrooms ==
                                                   0 ||
                                               widget.property?.noofWashrooms ==
                                                   null

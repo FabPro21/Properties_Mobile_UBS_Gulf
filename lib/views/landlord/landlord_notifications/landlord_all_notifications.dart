@@ -19,11 +19,11 @@ class LandLordAllNotifications extends StatefulWidget {
   const LandLordAllNotifications({super.key, this.index});
 
   @override
-  _LandLordAllNotificationsState createState() =>
-      _LandLordAllNotificationsState();
+  LandLordAllNotificationsState createState() =>
+      LandLordAllNotificationsState();
 }
 
-class _LandLordAllNotificationsState extends State<LandLordAllNotifications> {
+class LandLordAllNotificationsState extends State<LandLordAllNotifications> {
   final getLandLController = Get.put(LandlordNotificationsController());
 
   @override

@@ -20,10 +20,10 @@ class LandLordMore extends StatefulWidget {
   const LandLordMore({super.key});
 
   @override
-  _LandLordMoreState createState() => _LandLordMoreState();
+  LandLordMoreState createState() => LandLordMoreState();
 }
 
-class _LandLordMoreState extends State<LandLordMore> {
+class LandLordMoreState extends State<LandLordMore> {
   String name = "";
   _getName() {
     String mystring = SessionController().getUserName() ?? "";

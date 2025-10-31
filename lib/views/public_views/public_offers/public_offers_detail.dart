@@ -19,10 +19,10 @@ class PublicOfferDetails extends StatefulWidget {
   const PublicOfferDetails({super.key, this.offerId});
 
   @override
-  _PublicOfferDetailsState createState() => _PublicOfferDetailsState();
+  PublicOfferDetailsState createState() => PublicOfferDetailsState();
 }
 
-class _PublicOfferDetailsState extends State<PublicOfferDetails> {
+class PublicOfferDetailsState extends State<PublicOfferDetails> {
   final _controller = Get.put(PublicOffersController());
 
   @override
@@ -154,7 +154,10 @@ class _PublicOfferDetailsState extends State<PublicOfferDetails> {
                                       ),
                                       Expanded(
                                         child:
-                                            _controller.offersDetails.value.offerProperties?.isEmpty ?? true
+                                            _controller
+                                                        .offersDetails
+                                                        .value
+                                                        .offerProperties?.isEmpty==true
                                                 ? AppErrorWidget(
                                                     errorText: AppMetaLabels()
                                                         .noDatafound,

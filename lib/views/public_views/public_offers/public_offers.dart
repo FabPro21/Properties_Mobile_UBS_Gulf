@@ -16,10 +16,10 @@ class PublicOffers extends StatefulWidget {
   const PublicOffers({super.key});
 
   @override
-  _PublicOffersState createState() => _PublicOffersState();
+  PublicOffersState createState() => PublicOffersState();
 }
 
-class _PublicOffersState extends State<PublicOffers> {
+class PublicOffersState extends State<PublicOffers> {
   final _controller = Get.put(PublicOffersController());
   @override
   void initState() {

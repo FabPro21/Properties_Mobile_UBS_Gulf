@@ -17,11 +17,11 @@ class LandlordPropertyUnitInfo extends StatefulWidget {
   const LandlordPropertyUnitInfo({super.key, this.propertID});
 
   @override
-  _LandlordPropertyUnitInfoState createState() =>
-      _LandlordPropertyUnitInfoState();
+  LandlordPropertyUnitInfoState createState() =>
+      LandlordPropertyUnitInfoState();
 }
 
-class _LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
+class LandlordPropertyUnitInfoState extends State<LandlordPropertyUnitInfo> {
   LandlordPropertiesTabDetailController controller =
       Get.put(LandlordPropertiesTabDetailController());
   String propertyName = "";
