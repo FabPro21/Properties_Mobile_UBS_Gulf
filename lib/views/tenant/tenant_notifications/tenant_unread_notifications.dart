@@ -19,11 +19,11 @@ class TenantUnReadNotifications extends StatefulWidget {
   const TenantUnReadNotifications({super.key, this.index});
 
   @override
-  _TenantUnReadNotificationsState createState() =>
-      _TenantUnReadNotificationsState();
+  TenantUnReadNotificationsState createState() =>
+      TenantUnReadNotificationsState();
 }
 
-class _TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
+class TenantUnReadNotificationsState extends State<TenantUnReadNotifications> {
   final getTNController = Get.put(GetTenantNotificationsController());
 
   _getUnreadNotifications() async {

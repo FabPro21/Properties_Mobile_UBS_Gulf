@@ -18,11 +18,11 @@ class PublicNotificationDetails extends StatefulWidget {
   const PublicNotificationDetails({super.key});
 
   @override
-  _PublicNotificationDetailsState createState() =>
-      _PublicNotificationDetailsState();
+  PublicNotificationDetailsState createState() =>
+      PublicNotificationDetailsState();
 }
 
-class _PublicNotificationDetailsState extends State<PublicNotificationDetails> {
+class PublicNotificationDetailsState extends State<PublicNotificationDetails> {
   final _controller = Get.put(PublicNotificationsController());
 
   _getData() async {

@@ -17,10 +17,10 @@ class VendorLpoFilter extends StatefulWidget {
   const VendorLpoFilter({super.key, this.clear});
 
   @override
-  _VendorLpoFilterState createState() => _VendorLpoFilterState();
+  VendorLpoFilterState createState() => VendorLpoFilterState();
 }
 
-class _VendorLpoFilterState extends State<VendorLpoFilter> {
+class VendorLpoFilterState extends State<VendorLpoFilter> {
   final TextEditingController propertyController = TextEditingController();
   final VendorLpoFilterController _controller = Get.find();
 
@@ -258,9 +258,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                         AppMetaLabels().validDateRange;
                                   }
                                 } catch (e) {
-                                  if (kDebugMode) {
-                                    print('Exception :::: $e');
-                                  }
+                                  if(kDebugMode)print("Catch: $e");
                                 }
                               },
                               child: Container(
@@ -372,11 +370,7 @@ class _VendorLpoFilterState extends State<VendorLpoFilter> {
                                     _controller.filterError.value =
                                         AppMetaLabels().validDateRange;
                                   }
-                                } catch (e) {
-                                  if (kDebugMode) {
-                                    print('Exception :::: $e');
-                                  }
-                                }
+                                } catch (e) {if(kDebugMode)print("Catch: $e");}
                               },
                               child: Container(
                                 width: 40.0.w,

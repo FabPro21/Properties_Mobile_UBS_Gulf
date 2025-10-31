@@ -29,10 +29,10 @@ class LandLordReportDetails extends StatefulWidget {
   const LandLordReportDetails({super.key, this.fileNmae});
 
   @override
-  _LandLordReportDetailsState createState() => _LandLordReportDetailsState();
+  LandLordReportDetailsState createState() => LandLordReportDetailsState();
 }
 
-class _LandLordReportDetailsState extends State<LandLordReportDetails> {
+class LandLordReportDetailsState extends State<LandLordReportDetails> {
   final LandLordReportPropController lDReportController =
       Get.put(LandLordReportPropController());
   //  final LandlordPropertiesController controller = Get.find();
@@ -984,11 +984,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                       AppMetaLabels()
                                                           .validDateRange;
                                                 }
-                                              } catch (e) {
-                                                if (kDebugMode) {
-                                                  print('Exception ::::: $e');
-                                                }
-                                              }
+                                              } catch (e) {if(kDebugMode) print("Catch : $e ");}
                                             },
                                             child: Container(
                                               width: 100.0.w,
@@ -1416,12 +1412,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                         isDownloaded = false;
                                                       });
                                                     }
-                                                  } catch (e) {
-                                                    if (kDebugMode) {
-                                                      print(
-                                                          'Exception ::::: $e');
-                                                    }
-                                                  }
+                                                  } catch (e) {if(kDebugMode) print("Catch : $e ");}
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,
@@ -1646,12 +1637,7 @@ class _LandLordReportDetailsState extends State<LandLordReportDetails> {
                                                           .value = '';
                                                       return;
                                                     }
-                                                  } catch (e) {
-                                                    if (kDebugMode) {
-                                                      print(
-                                                          'Exception ::::: $e');
-                                                    }
-                                                  }
+                                                  } catch (e) {if(kDebugMode) print("Catch : $e ");}
                                                 },
                                                 child: Container(
                                                   width: 40.0.w,

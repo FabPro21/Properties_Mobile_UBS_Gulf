@@ -25,10 +25,10 @@ class PublicServiceUpdates extends StatefulWidget {
       {super.key, @required this.reqNo, @required this.canCommunicate});
 
   @override
-  _PublicServiceUpdatesState createState() => _PublicServiceUpdatesState();
+  PublicServiceUpdatesState createState() => PublicServiceUpdatesState();
 }
 
-class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
+class PublicServiceUpdatesState extends State<PublicServiceUpdates> {
   final TextEditingController _messageTextController = TextEditingController();
   final ScrollController _chatListScrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
@@ -92,9 +92,8 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     return AppMetaLabels().invalidText;
                                   } else if (value.trim().isEmpty == true) {
                                     return AppMetaLabels().invalidText;
-                                  } else {
-                                    return null;
-                                  }
+                                  } else
+                                   { return null;}
                                 },
                               ),
                             ),
@@ -187,22 +186,20 @@ class _PublicServiceUpdatesState extends State<PublicServiceUpdates> {
                                     InkWell(
                                       onTap: () async {
                                         _focusNode.unfocus();
-                                        if (formKey.currentState!.validate()) {
-                                          if (await _controller.addTicketReply(
-                                              widget.reqNo.toString(),
-                                              _messageTextController.text)) {
-                                            _controller.typing.value = false;
-                                            _messageTextController.clear();
-                                            scrollToEndofChat();
-                                          } else {
-                                            Get.snackbar(
-                                              AppMetaLabels().error,
-                                              _controller.errorReplying,
-                                              backgroundColor:
-                                                  AppColors.white54,
-                                            );
-                                          }
-                                        }
+                                        if (formKey.currentState!.validate()) {if (await _controller
+                                            .addTicketReply(
+                                                widget.reqNo.toString(),
+                                                _messageTextController.text)) {
+                                          _controller.typing.value = false;
+                                          _messageTextController.clear();
+                                          scrollToEndofChat();
+                                        } else {
+                                          Get.snackbar(
+                                            AppMetaLabels().error,
+                                            _controller.errorReplying,
+                                            backgroundColor: AppColors.white54,
+                                          );
+                                        }}
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(

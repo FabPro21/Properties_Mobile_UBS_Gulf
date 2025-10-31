@@ -255,10 +255,10 @@ class PublicProfile extends StatefulWidget {
   const PublicProfile({super.key});
 
   @override
-  _PublicProfileState createState() => _PublicProfileState();
+  PublicProfileState createState() => PublicProfileState();
 }
 
-class _PublicProfileState extends State<PublicProfile> {
+class PublicProfileState extends State<PublicProfile> {
   final PublicProfileController _controller = Get.put(PublicProfileController());
   String name = "";
   _getName() {

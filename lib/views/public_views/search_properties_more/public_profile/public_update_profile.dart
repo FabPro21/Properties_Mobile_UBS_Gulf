@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/data/models/public_models/public_profile/public_get_profile_model.dart';
 
@@ -16,10 +18,10 @@ class PublicUpdateProfile extends StatefulWidget {
   const PublicUpdateProfile({super.key, this.profile});
 
   @override
-  _PublicUpdateProfileState createState() => _PublicUpdateProfileState();
+  PublicUpdateProfileState createState() => PublicUpdateProfileState();
 }
 
-class _PublicUpdateProfileState extends State<PublicUpdateProfile> {
+class PublicUpdateProfileState extends State<PublicUpdateProfile> {
   final _controller = Get.put(PublicProfileController());
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();

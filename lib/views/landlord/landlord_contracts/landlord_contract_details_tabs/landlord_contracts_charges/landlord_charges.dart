@@ -21,10 +21,10 @@ class LandlordChargesScreen extends StatefulWidget {
   const LandlordChargesScreen({super.key});
 
   @override
-  _LandlordChargesScreenState createState() => _LandlordChargesScreenState();
+  LandlordChargesScreenState createState() => LandlordChargesScreenState();
 }
 
-class _LandlordChargesScreenState extends State<LandlordChargesScreen> {
+class LandlordChargesScreenState extends State<LandlordChargesScreen> {
   final getCCController = Get.put(GetLandlordChargesController());
 
   String amount = "";

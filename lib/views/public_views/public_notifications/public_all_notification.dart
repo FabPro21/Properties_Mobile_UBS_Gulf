@@ -19,10 +19,10 @@ class PublicAllNotifications extends StatefulWidget {
   const PublicAllNotifications({super.key});
 
   @override
-  _PublicAllNotificationsState createState() => _PublicAllNotificationsState();
+  PublicAllNotificationsState createState() => PublicAllNotificationsState();
 }
 
-class _PublicAllNotificationsState extends State<PublicAllNotifications> {
+class PublicAllNotificationsState extends State<PublicAllNotifications> {
   final _controller = Get.find<PublicNotificationsController>();
 
   @override

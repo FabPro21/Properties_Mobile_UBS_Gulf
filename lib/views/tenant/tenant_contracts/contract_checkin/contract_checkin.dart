@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -26,10 +26,10 @@ class ContractCheckin extends StatefulWidget {
       this.caseId});
 
   @override
-  _ContractCheckinState createState() => _ContractCheckinState();
+  ContractCheckinState createState() => ContractCheckinState();
 }
 
-class _ContractCheckinState extends State<ContractCheckin> {
+class ContractCheckinState extends State<ContractCheckin> {
   final controller = Get.put(CheckinContractController());
   bool? isDialogOpen;
   @override

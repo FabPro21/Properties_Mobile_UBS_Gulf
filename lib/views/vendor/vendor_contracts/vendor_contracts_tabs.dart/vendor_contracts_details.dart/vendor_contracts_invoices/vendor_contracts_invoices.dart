@@ -15,10 +15,10 @@ class ContractInvoices extends StatefulWidget {
   const ContractInvoices({super.key});
 
   @override
-  _ContractInvoicesState createState() => _ContractInvoicesState();
+  ContractInvoicesState createState() => ContractInvoicesState();
 }
 
-class _ContractInvoicesState extends State<ContractInvoices> {
+class ContractInvoicesState extends State<ContractInvoices> {
   var contractInvoicesController = Get.put(ContractInvoicesController());
   @override
   Widget build(BuildContext context) {

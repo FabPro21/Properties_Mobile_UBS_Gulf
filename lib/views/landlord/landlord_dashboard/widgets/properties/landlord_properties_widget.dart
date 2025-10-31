@@ -17,10 +17,10 @@ class PropertiesWidget extends StatefulWidget {
   const PropertiesWidget({super.key, this.manageProperties});
 
   @override
-  _PropertiesWidgetState createState() => _PropertiesWidgetState();
+  PropertiesWidgetState createState() => PropertiesWidgetState();
 }
 
-class _PropertiesWidgetState extends State<PropertiesWidget> {
+class PropertiesWidgetState extends State<PropertiesWidget> {
   @override
   void initState() {
     super.initState();

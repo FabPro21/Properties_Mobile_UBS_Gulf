@@ -16,11 +16,11 @@ class SearchPropertiesServices extends StatefulWidget {
   const SearchPropertiesServices({super.key});
 
   @override
-  _SearchPropertiesServicesState createState() =>
-      _SearchPropertiesServicesState();
+  SearchPropertiesServicesState createState() =>
+      SearchPropertiesServicesState();
 }
 
-class _SearchPropertiesServicesState extends State<SearchPropertiesServices> {
+class SearchPropertiesServicesState extends State<SearchPropertiesServices> {
   final _controller = Get.put(PublicGetServicesController());
 
 // @override

@@ -11,10 +11,10 @@ class SignaturePad extends StatefulWidget {
   const SignaturePad({super.key, this.height, this.controller});
 
   @override
-  _SignaturePadState createState() => _SignaturePadState();
+  SignaturePadState createState() => SignaturePadState();
 }
 
-class _SignaturePadState extends State<SignaturePad> {
+class SignaturePadState extends State<SignaturePad> {
   @override
   void initState() {
     super.initState();

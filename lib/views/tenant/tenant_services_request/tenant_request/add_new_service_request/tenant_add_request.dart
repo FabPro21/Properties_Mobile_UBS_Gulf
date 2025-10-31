@@ -739,10 +739,10 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                                   } else if (!phoneValidator
                                                                       .hasMatch(
                                                                           value))
-                                                                    {return AppMetaLabels()
+                                                                   { return AppMetaLabels()
                                                                         .invalidPhone;}
                                                                   else
-                                                                 {   return null;}
+                                                                   { return null;}
                                                                 },
                                                                 onChanged:
                                                                     (value) {
@@ -943,7 +943,7 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                                                               {return AppMetaLabels()
                                                                   .invalidText;}
                                                             else
-                                                          {    return null;}
+                                                              {return null;}
                                                           },
                                                           onChanged: (value) {
                                                             tASRController

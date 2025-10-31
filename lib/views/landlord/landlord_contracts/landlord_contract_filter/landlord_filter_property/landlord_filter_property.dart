@@ -15,10 +15,10 @@ class LandlordFilterProperty extends StatefulWidget {
   const LandlordFilterProperty({super.key});
 
   @override
-  _LandlordFilterPropertyState createState() => _LandlordFilterPropertyState();
+  LandlordFilterPropertyState createState() => LandlordFilterPropertyState();
 }
 
-class _LandlordFilterPropertyState extends State<LandlordFilterProperty> {
+class LandlordFilterPropertyState extends State<LandlordFilterProperty> {
   final LandLordFilterPropertyController _filterPropertyController =
       Get.put(LandLordFilterPropertyController());
 

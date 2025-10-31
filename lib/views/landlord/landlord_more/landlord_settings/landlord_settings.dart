@@ -15,10 +15,10 @@ class LandLordSettings extends StatefulWidget {
   const LandLordSettings({super.key});
 
   @override
-  _LandLordSettingsState createState() => _LandLordSettingsState();
+  LandLordSettingsState createState() => LandLordSettingsState();
 }
 
-class _LandLordSettingsState extends State<LandLordSettings> {
+class LandLordSettingsState extends State<LandLordSettings> {
   int fPOption = 0;
   @override
   void initState() {

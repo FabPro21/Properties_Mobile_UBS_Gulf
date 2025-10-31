@@ -17,10 +17,10 @@ class PublicSettings extends StatefulWidget {
   const PublicSettings({super.key});
 
   @override
-  _PublicSettingsState createState() => _PublicSettingsState();
+  PublicSettingsState createState() => PublicSettingsState();
 }
 
-class _PublicSettingsState extends State<PublicSettings> {
+class PublicSettingsState extends State<PublicSettings> {
   int fPOption = 0;
   @override
   void initState() {

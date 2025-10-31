@@ -30,11 +30,11 @@ class VendorInvoiceDocumentsDetails extends StatefulWidget {
   }
 
   @override
-  _VendorInvoiceDocumentsDetailsState createState() =>
-      _VendorInvoiceDocumentsDetailsState();
+  VendorInvoiceDocumentsDetailsState createState() =>
+      VendorInvoiceDocumentsDetailsState();
 }
 
-class _VendorInvoiceDocumentsDetailsState
+class VendorInvoiceDocumentsDetailsState
     extends State<VendorInvoiceDocumentsDetails> {
   final controller = Get.find<VendorInvoiceDocsController>();
   final detailController = Get.find<VendorInvoiceDetailsController>();

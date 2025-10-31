@@ -38,13 +38,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(3.w, 8.h, 3.w, 4.h),
-              child: Text(widget.title ?? "",
-                  style: AppTextStyle.semiBoldWhite12),
+              child: Text(widget.title??"", style: AppTextStyle.semiBoldWhite12),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 4.w),
               child: SearchField(
-                hint: widget.searchHint ?? "",
+                hint: widget.searchHint??"",
                 searchController: widget.searchTextController!,
                 onChanged: widget.onSearchTextChanged!,
                 onPressed: widget.onRefreshPressed!,

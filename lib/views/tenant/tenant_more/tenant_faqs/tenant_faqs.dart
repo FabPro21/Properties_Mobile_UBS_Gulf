@@ -16,10 +16,10 @@ class TenantFaqs extends StatefulWidget {
   const TenantFaqs({super.key});
 
   @override
-  _TenantFaqsState createState() => _TenantFaqsState();
+  TenantFaqsState createState() => TenantFaqsState();
 }
 
-class _TenantFaqsState extends State<TenantFaqs> {
+class TenantFaqsState extends State<TenantFaqs> {
   final TenantFaqsController _controller = Get.put(TenantFaqsController());
   @override
   void initState() {

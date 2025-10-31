@@ -19,10 +19,10 @@ class TenantAllNotifications extends StatefulWidget {
   const TenantAllNotifications({super.key, this.index});
 
   @override
-  _TenantAllNotificationsState createState() => _TenantAllNotificationsState();
+  TenantAllNotificationsState createState() => TenantAllNotificationsState();
 }
 
-class _TenantAllNotificationsState extends State<TenantAllNotifications> {
+class TenantAllNotificationsState extends State<TenantAllNotifications> {
   final getTNController = Get.put(GetTenantNotificationsController());
 
   @override

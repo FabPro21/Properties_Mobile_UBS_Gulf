@@ -16,11 +16,11 @@ class VendorNotificationDetails extends StatefulWidget {
   const VendorNotificationDetails({super.key});
 
   @override
-  _VendorNotificationDetailsState createState() =>
-      _VendorNotificationDetailsState();
+  VendorNotificationDetailsState createState() =>
+      VendorNotificationDetailsState();
 }
 
-class _VendorNotificationDetailsState extends State<VendorNotificationDetails> {
+class VendorNotificationDetailsState extends State<VendorNotificationDetails> {
   final _controller = Get.put(VendorNotificationsController());
 
   _getData() async {

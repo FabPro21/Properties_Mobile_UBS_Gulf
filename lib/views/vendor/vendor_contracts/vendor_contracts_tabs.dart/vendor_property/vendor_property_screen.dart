@@ -18,10 +18,10 @@ class VendorPropertyScreen extends StatefulWidget {
   const VendorPropertyScreen({super.key});
 
   @override
-  _UnitInfoState createState() => _UnitInfoState();
+  UnitInfoState createState() => UnitInfoState();
 }
 
-class _UnitInfoState extends State<VendorPropertyScreen> {
+class UnitInfoState extends State<VendorPropertyScreen> {
   final vendorPropertiesController = Get.put(VendorPropertiesController());
 
   @override
@@ -208,9 +208,7 @@ class _UnitInfoState extends State<VendorPropertyScreen> {
                                                     ? vendorPropertiesController
                                                             .vendorProperty
                                                             .value
-                                                            .contractProperties![
-                                                                index]
-                                                            .propertyName ??
+                                                            .contractProperties![index].propertyName ??
                                                         ""
                                                     : vendorPropertiesController
                                                             .vendorProperty

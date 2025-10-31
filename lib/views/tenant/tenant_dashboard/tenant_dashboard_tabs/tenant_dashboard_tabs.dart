@@ -28,10 +28,10 @@ class TenantDashboardTabs extends StatefulWidget {
   });
 
   @override
-  _TenantDashboardTabsState createState() => _TenantDashboardTabsState();
+  TenantDashboardTabsState createState() => TenantDashboardTabsState();
 }
 
-class _TenantDashboardTabsState extends State<TenantDashboardTabs> {
+class TenantDashboardTabsState extends State<TenantDashboardTabs> {
   // ignore: unused_field
   final TenantDashboardTabsController _dashboardTabsController =
       Get.put(TenantDashboardTabsController());

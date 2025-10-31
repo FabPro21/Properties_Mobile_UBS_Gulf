@@ -205,7 +205,7 @@ class OutstandingPaymentsNewContractController extends GetxController {
         {vatRentSum = vatRentSum + (outstandingPayments.record![i].amount ?? 0);}
       else if (outstandingPayments.record![i].type!.toLowerCase() ==
           'Vat On Charges'.toLowerCase())
-       { vatChargesSum =
+        {vatChargesSum =
             vatChargesSum + (outstandingPayments.record![i].amount ?? 0);}
       if (outstandingPayments.record![i].isRejected!) {
         outstandingPayments.record![i].filePath = null;

@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
@@ -28,10 +28,10 @@ class ContractRenewel extends StatefulWidget {
       this.dueActionid = 0});
 
   @override
-  _ContractRenewelState createState() => _ContractRenewelState();
+  ContractRenewelState createState() => ContractRenewelState();
 }
 
-class _ContractRenewelState extends State<ContractRenewel> {
+class ContractRenewelState extends State<ContractRenewel> {
   final controller = Get.put(RenewContractController());
 
   bool? isDialogOpen;

@@ -22,10 +22,10 @@ class LandlordPaymentsScreen extends StatefulWidget {
   });
 
   @override
-  _LandlordPaymentsScreenState createState() => _LandlordPaymentsScreenState();
+  LandlordPaymentsScreenState createState() => LandlordPaymentsScreenState();
 }
 
-class _LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
+class LandlordPaymentsScreenState extends State<LandlordPaymentsScreen> {
   final paymentsController = Get.put(LandlordContractPaymentsController());
   final getCDController = Get.find<LandlordContractMainInfoController>();
 

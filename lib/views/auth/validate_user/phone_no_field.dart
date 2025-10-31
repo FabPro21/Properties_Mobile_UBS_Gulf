@@ -36,6 +36,7 @@ class PhoneNoField extends StatelessWidget {
       },
       onEditingComplete: () async {
         await vUController.getOtpBtn();
+        if (!context.mounted) return;
         FocusScope.of(context).unfocus();
 
         vUController.textFieldTap.value = false;
@@ -105,6 +106,7 @@ class PhoneNoFieldFB extends StatelessWidget {
       },
       onEditingComplete: () async {
         await vUController.validateMobileUser();
+       if (!context.mounted) return;
         FocusScope.of(context).unfocus();
         vUController.textFieldTap.value = false;
       },

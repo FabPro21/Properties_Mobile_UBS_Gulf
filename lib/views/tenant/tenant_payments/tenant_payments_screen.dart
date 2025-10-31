@@ -20,10 +20,10 @@ class TenantPaymentsScreen extends StatefulWidget {
   });
 
   @override
-  _TenantPaymentsScreenState createState() => _TenantPaymentsScreenState();
+  TenantPaymentsScreenState createState() => TenantPaymentsScreenState();
 }
 
-class _TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
+class TenantPaymentsScreenState extends State<TenantPaymentsScreen> {
   final TextEditingController searchControler = TextEditingController();
 
   final TenantPaymentsController paymentsController = Get.find();

@@ -17,10 +17,10 @@ class VendorFaqsCategories extends StatefulWidget {
   const VendorFaqsCategories({super.key});
 
   @override
-  _VendorFaqsCategoriesState createState() => _VendorFaqsCategoriesState();
+  VendorFaqsCategoriesState createState() => VendorFaqsCategoriesState();
 }
 
-class _VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
+class VendorFaqsCategoriesState extends State<VendorFaqsCategories> {
   final VendorFaqsController _controller = Get.put(VendorFaqsController());
   @override
   void initState() {

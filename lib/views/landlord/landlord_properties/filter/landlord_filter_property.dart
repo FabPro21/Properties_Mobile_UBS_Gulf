@@ -20,11 +20,11 @@ class LandLordFilterProperties extends StatefulWidget {
   const LandLordFilterProperties({super.key, this.clear});
 
   @override
-  _LandLordFilterPropertiesState createState() =>
-      _LandLordFilterPropertiesState();
+  LandLordFilterPropertiesState createState() =>
+      LandLordFilterPropertiesState();
 }
 
-class _LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
+class LandLordFilterPropertiesState extends State<LandLordFilterProperties> {
   final TextEditingController propertyController = TextEditingController();
   final LandLordFilterPropController lDFilterController =
       Get.put(LandLordFilterPropController());

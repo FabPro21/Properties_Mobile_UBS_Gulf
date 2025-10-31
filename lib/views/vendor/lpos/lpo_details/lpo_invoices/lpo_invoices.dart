@@ -18,10 +18,10 @@ class LpoInvoicesSereen extends StatefulWidget {
   const LpoInvoicesSereen({super.key});
 
   @override
-  _LpoInvoicesSereenState createState() => _LpoInvoicesSereenState();
+  LpoInvoicesSereenState createState() => LpoInvoicesSereenState();
 }
 
-class _LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
+class LpoInvoicesSereenState extends State<LpoInvoicesSereen> {
   final _controller = Get.put(LpoInvoicesController());
   String amount = "";
 

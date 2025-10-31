@@ -17,10 +17,10 @@ class LandLordFaqsDetails extends StatefulWidget {
   const LandLordFaqsDetails({super.key, this.categoryId});
 
   @override
-  _LandLordFaqsDetailsState createState() => _LandLordFaqsDetailsState();
+  LandLordFaqsDetailsState createState() => LandLordFaqsDetailsState();
 }
 
-class _LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
+class LandLordFaqsDetailsState extends State<LandLordFaqsDetails> {
   final LandLordFaqsController _controller = Get.put(LandLordFaqsController());
   bool isShowDivider = true;
   @override

@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';
@@ -32,10 +32,10 @@ class PublicMainInfo extends StatefulWidget {
   });
 
   @override
-  _PublicMainInfoState createState() => _PublicMainInfoState();
+  PublicMainInfoState createState() => PublicMainInfoState();
 }
 
-class _PublicMainInfoState extends State<PublicMainInfo> {
+class PublicMainInfoState extends State<PublicMainInfo> {
   final sPRController = Get.put(SearchPropertiesResultController());
   TextEditingController remarkEditingController = TextEditingController();
   final PublicServiceMaininfoController _mainInfoController =

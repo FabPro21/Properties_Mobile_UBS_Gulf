@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:fap_properties/data/helpers/session_controller.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -31,10 +31,10 @@ class ContractTerminate extends StatefulWidget {
       this.dueActionid = 0});
 
   @override
-  _ContractTerminateState createState() => _ContractTerminateState();
+  ContractTerminateState createState() => ContractTerminateState();
 }
 
-class _ContractTerminateState extends State<ContractTerminate> {
+class ContractTerminateState extends State<ContractTerminate> {
   final controller = Get.put(TerminateContractController());
   final formKey = GlobalKey<FormState>();
   final descTextController = TextEditingController();
@@ -178,7 +178,7 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                         controller
                                                             .addDesc.value = 2;
                                                       } else
-                                                        {controller
+                                                       { controller
                                                             .addDesc.value = 0;}
                                                     },
                                                     child: Row(
@@ -576,7 +576,6 @@ class _ContractTerminateState extends State<ContractTerminate> {
                                                                             .selectNewUnit();
                                                                       } else {
                                                                         showDialog(
-                                                                            // ignore: use_build_context_synchronously
                                                                             context:
                                                                                 context,
                                                                             barrierDismissible:

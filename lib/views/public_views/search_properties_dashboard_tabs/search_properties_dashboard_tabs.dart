@@ -25,11 +25,11 @@ class SearchPropertiesDashboardTabs extends StatefulWidget {
 //   const SearchPropertiesDashboardTabs({Key? key}) : super(key: key);
 
   @override
-  _SearchPropertiesDashboardTabsState createState() =>
-      _SearchPropertiesDashboardTabsState();
+  SearchPropertiesDashboardTabsState createState() =>
+      SearchPropertiesDashboardTabsState();
 }
 
-class _SearchPropertiesDashboardTabsState
+class SearchPropertiesDashboardTabsState
     extends State<SearchPropertiesDashboardTabs> {
   final _countController = Get.put(PublicCountNotificationsController());
   final GlobalKey _toolTipKey = GlobalKey();

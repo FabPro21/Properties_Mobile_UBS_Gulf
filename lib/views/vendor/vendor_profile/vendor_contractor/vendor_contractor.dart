@@ -103,14 +103,12 @@ class _VendorContractorState extends State<VendorContractor> {
                                               ? vendorProfileContrller
                                                       .vendorProfile
                                                       .value
-                                                      .profile
-                                                      ?.address ??
+                                                      .profile?.address ??
                                                   ""
                                               : vendorProfileContrller
                                                       .vendorProfile
                                                       .value
-                                                      .profile
-                                                      ?.addressAR ??
+                                                      .profile?.addressAR ??
                                                   "",
                                           style: AppTextStyle.semiBoldBlack9,
                                           textAlign: TextAlign.right,
@@ -246,15 +244,9 @@ class _VendorContractorState extends State<VendorContractor> {
           style: AppTextStyle.normalGrey10,
         ),
         const Spacer(),
-        SizedBox(
-          width: Get.width * 0.5,
-          child: Text(
-            t2,
-            style: AppTextStyle.semiBoldBlack9,
-            textAlign: SessionController().getLanguage() == 1
-                ? TextAlign.end
-                : TextAlign.start,
-          ),
+        Text(
+          t2,
+          style: AppTextStyle.semiBoldBlack9,
         ),
       ],
     );

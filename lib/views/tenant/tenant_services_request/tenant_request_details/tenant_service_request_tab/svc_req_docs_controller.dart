@@ -90,7 +90,7 @@ class SvcReqDocsController extends GetxController {
           isDocUploaded.add('false');
         }
 
-        if (resp.docs?.length == 0) {
+        if (resp.docs?.isEmpty == true) {
           isLength.value = true;
           print(
               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');

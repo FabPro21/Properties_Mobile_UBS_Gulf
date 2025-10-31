@@ -16,10 +16,10 @@ class LandLordProperties extends StatefulWidget {
   const LandLordProperties({super.key});
 
   @override
-  _LandLordPropertiesState createState() => _LandLordPropertiesState();
+  LandLordPropertiesState createState() => LandLordPropertiesState();
 }
 
-class _LandLordPropertiesState extends State<LandLordProperties> {
+class LandLordPropertiesState extends State<LandLordProperties> {
   final searchTextController = TextEditingController();
   final controller = Get.put(LandlordPropertiesController());
   @override
@@ -293,12 +293,12 @@ class _LandLordPropertiesState extends State<LandLordProperties> {
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
                                                                       ),
-                                                                       WidgetSpan(
+                                                                      const WidgetSpan(
                                                                         child:
                                                                             Icon(
                                                                           Icons.arrow_forward_ios,
                                                                           size: 15,
-                                                                          color: AppColors.blueColor,
+                                                                          color: Colors.blue,
                                                                         ),
                                                                       ),
                                                                     ],

@@ -19,10 +19,10 @@ class VendorAllNotification extends StatefulWidget {
   const VendorAllNotification({super.key, this.index});
 
   @override
-  _VendorAllNotificationState createState() => _VendorAllNotificationState();
+  VendorAllNotificationState createState() => VendorAllNotificationState();
 }
 
-class _VendorAllNotificationState extends State<VendorAllNotification> {
+class VendorAllNotificationState extends State<VendorAllNotification> {
   final _controller = Get.find<VendorNotificationsController>();
 
   @override

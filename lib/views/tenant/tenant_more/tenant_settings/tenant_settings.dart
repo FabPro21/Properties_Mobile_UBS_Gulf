@@ -18,10 +18,10 @@ class TenantSettings extends StatefulWidget {
   const TenantSettings({super.key});
 
   @override
-  _TenantSettingsState createState() => _TenantSettingsState();
+  TenantSettingsState createState() => TenantSettingsState();
 }
 
-class _TenantSettingsState extends State<TenantSettings> {
+class TenantSettingsState extends State<TenantSettings> {
   final TenantDashboardGetDataController tDGDController =
       Get.put(TenantDashboardGetDataController());
   int fPOption = 0;

@@ -259,10 +259,10 @@ class CardScanner extends StatefulWidget {
   const CardScanner({super.key, @required this.file});
 
   @override
-  _CardScannerState createState() => _CardScannerState();
+  CardScannerState createState() => CardScannerState();
 }
 
-class _CardScannerState extends State<CardScanner>
+class CardScannerState extends State<CardScanner>
     with SingleTickerProviderStateMixin {
   AnimationController? _animationController;
   bool reverse = true;
@@ -282,11 +282,7 @@ class _CardScannerState extends State<CardScanner>
   void startAnimation() async {
     try {
       animateScanAnimation();
-    } catch (e) {
-      if (kDebugMode) {
-        print('Exception :::: $e');
-      }
-    }
+    } catch (e) {if(kDebugMode){}}
     await Future.delayed(const Duration(seconds: 1));
     startAnimation();
   }
@@ -425,20 +421,14 @@ class _CardScannerState extends State<CardScanner>
           try {
             dates.add(DateFormat('dd/MM/yyyy').parse(line.text));
           } catch (e) {
-            if (kDebugMode) {
-              print('Exception :::: $e');
-            }
+            if(kDebugMode)print("Catch: $e");
           }
         } else {
           for (TextElement element in line.elements) {
             if (element.text.length == 10 && element.text.contains('/')) {
               try {
                 dates.add(DateFormat('dd/MM/yyyy').parse(element.text));
-              } catch (e) {
-                if (kDebugMode) {
-                  print('Exception :::: $e');
-                }
-              }
+              } catch (e) {   if(kDebugMode)print("Catch: $e");}
             }
           }
         }

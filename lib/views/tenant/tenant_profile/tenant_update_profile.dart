@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fap_properties/data/models/tenant_models/tenant_profile/tenant_profile_model.dart';
 import 'package:fap_properties/utils/constants/assets_path.dart';
 import 'package:fap_properties/utils/constants/meta_labels.dart';
@@ -16,10 +18,10 @@ class TenantUpdatesProfile extends StatefulWidget {
   const TenantUpdatesProfile({super.key, this.profile});
 
   @override
-  _TenantUpdatesProfileState createState() => _TenantUpdatesProfileState();
+  TenantUpdatesProfileState createState() => TenantUpdatesProfileState();
 }
 
-class _TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
+class TenantUpdatesProfileState extends State<TenantUpdatesProfile> {
   final tenantProfileController = Get.put(TenantProfileController());
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();

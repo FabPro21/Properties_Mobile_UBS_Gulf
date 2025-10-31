@@ -17,10 +17,10 @@ class LpoServices extends StatefulWidget {
   const LpoServices({super.key});
 
   @override
-  _LpoServicesState createState() => _LpoServicesState();
+  LpoServicesState createState() => LpoServicesState();
 }
 
-class _LpoServicesState extends State<LpoServices> {
+class LpoServicesState extends State<LpoServices> {
   final getLpoServicesController = Get.put(GetLpoServicesController());
   // _getData() async {
   //   await getLpoServicesController.getData();

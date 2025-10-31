@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, unnecessary_null_comparison
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison, use_build_context_synchronously
 import 'dart:typed_data';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fap_properties/data/helpers/session_controller.dart';

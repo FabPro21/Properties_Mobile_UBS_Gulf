@@ -19,10 +19,10 @@ class VendorOffersDetails extends StatefulWidget {
   const VendorOffersDetails({super.key, this.offerId});
 
   @override
-  _VendorOffersDetailsState createState() => _VendorOffersDetailsState();
+  VendorOffersDetailsState createState() => VendorOffersDetailsState();
 }
 
-class _VendorOffersDetailsState extends State<VendorOffersDetails> {
+class VendorOffersDetailsState extends State<VendorOffersDetails> {
   final _controller = Get.put(VendorOffersController());
 
   @override

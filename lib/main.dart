@@ -15,8 +15,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sizer/sizer.dart';
 
+<<<<<<< HEAD
 
 
+=======
+// Test
+>>>>>>> 99ba6056bd062c2b90bf40a950c29ab7edb2d1ee
 // Enable Firebase
 // by using Enable Firebase we can find the place where we can enable/disable firebase
 
