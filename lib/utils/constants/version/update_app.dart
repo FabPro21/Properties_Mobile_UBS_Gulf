@@ -146,7 +146,7 @@ class _AppUpdateState extends State<AppUpdate> {
                                   print('iOS');
                                   try {
                                     LaunchReview.launch(
-                                      androidAppId: "com.fab.properties",
+                                      androidAppId: "com.ubspropt.com",
                                       writeReview: false,
                                       isiOSBeta: false,
                                       iOSAppId: '1588897544',
@@ -162,7 +162,7 @@ class _AppUpdateState extends State<AppUpdate> {
                                     print('Android');
                                     LaunchReview.launch(
                                       androidAppId:
-                                          "com.fab.fabpropertiesEnterprise",
+                                          "com.ubspropt.com",
                                     );
                                   } catch (e) {
                                     print('Exception ::: $e');

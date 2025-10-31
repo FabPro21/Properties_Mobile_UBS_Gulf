@@ -37,7 +37,7 @@ def keystoreProperties = new Properties()
    }
 
 android {
-    namespace  "com.fab.fabpropertiesEnterprise"
+    namespace  "com.ubspropt.com"
     compileSdkVersion 35
     ndkVersion flutter.ndkVersion
     lintOptions {
@@ -68,7 +68,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.fab.fabpropertiesEnterprise"
+        applicationId "com.ubspropt.com"
         // applicationId "com.fab.flutterjailbreakdetection"
         minSdkVersion 24 //23
         targetSdkVersion 35 //34

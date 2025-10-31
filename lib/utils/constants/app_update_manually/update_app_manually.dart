@@ -184,10 +184,10 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                 print('IOS');
                                 try {
                                   LaunchReview.launch(
-                                    androidAppId: "com.fab.properties",
+                                    androidAppId: "com.ubspropt.com",
                                     writeReview: false,
                                     isiOSBeta: false,
-                                    iOSAppId: '1588897544',
+                                    iOSAppId: '',
                                   );
                                 } catch (e) {
                                   print('Exception ::: $e');
@@ -197,7 +197,7 @@ class _AppUpdateManuallyState extends State<AppUpdateManually> {
                                 try {
                                   LaunchReview.launch(
                                     androidAppId:
-                                        "com.fab.fabpropertiesEnterprise",
+                                        "com.ubspropt.com",
                                   );
 
                                   await Future.delayed(const Duration(seconds: 2));
