@@ -20,6 +20,7 @@ class AddTicketService {
 
     var response;
     print('File Path:');
+    print('data: $data');
     print(filePath);
     response = await BaseClientClass.uploadFile(url ?? "", data, "File", filePath);
     print(response);

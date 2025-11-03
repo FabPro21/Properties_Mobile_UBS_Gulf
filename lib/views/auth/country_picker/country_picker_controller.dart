@@ -35,6 +35,13 @@ class CountryPickerController extends GetxController {
       loadingData.value = true;
       countryPicker.value = CountryPickerModel();
       var result = await CommonRepository.countryPicker();
+      countryPicker.value.countries!.add(Country(
+        countryId: 1,
+        countryName: '',
+        countryCode: '+971',
+        dialingCode: '+971',
+        flag: '',
+      ));
       loadingData.value = false;
       if (result is CountryPickerModel) {
         countryPicker.value = result;
