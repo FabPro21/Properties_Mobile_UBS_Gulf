@@ -231,6 +231,7 @@ class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                                       .semiBoldBlack12,
                                                                 ),
                                                               ),
+                                                              
                                                               controller.docsModel?.docs?[index].id ==
                                                                           null ||
                                                                       controller.docsModel?.docs?[index].isRejected ==
@@ -814,6 +815,7 @@ class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                   });
                                 }
                               }
+                              var s = expDate;
                               await controller.setExpDate(
                                   index, dateFormat.format(expDate));
                               setState(() {
@@ -1036,6 +1038,7 @@ class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                                   },
                                                 );
                                               }
+                                              // .isRejected == true
                                               if (controller.docsModel
                                                       ?.docs?[index].name!
                                                       .toLowerCase() !=
@@ -1897,6 +1900,7 @@ class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 } else {
                                   WidgetsBinding.instance.addPostFrameCallback(
                                     (timeStamp) async {
+                                      // .isRejected == true
                                       if (controller.docsModel?.docs?[index]
                                               .isRejected ==
                                           true) {
@@ -2070,6 +2074,7 @@ class TenantServiceDocumentsState extends State<TenantServiceDocuments> {
                                 } else {
                                   WidgetsBinding.instance.addPostFrameCallback(
                                     (timeStamp) async {
+                                      // .isRejected == true
                                       if (controller.docsModel?.docs?[index]
                                               .isRejected ==
                                           true) {

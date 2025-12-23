@@ -107,12 +107,14 @@ class _TenantAddServicesRequestState extends State<TenantAddServicesRequest> {
                           )
                         : propertiesController.getTenantProperties.value
                                     .properties!.isEmpty
-                            ? Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: CustomErrorWidget(
-                                  errorText: AppMetaLabels().cannotAddSvcReq,
+                            ? Center(
+                              child: Padding(
+                                  padding: EdgeInsets.only(top: 10.h),
+                                  child: CustomErrorWidget(
+                                    errorText: AppMetaLabels().cannotAddSvcReq,
+                                  ),
                                 ),
-                              )
+                            )
                             : SizedBox(
                               height: 88.h,
                               child: Form(

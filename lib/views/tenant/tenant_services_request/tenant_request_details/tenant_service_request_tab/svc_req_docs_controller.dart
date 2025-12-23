@@ -86,6 +86,7 @@ class SvcReqDocsController extends GetxController {
       loadingDocs.value = false;
       if (resp is GetDocsModel) {
         isDocUploaded.clear();
+       
         for (int i = 0; i < resp.docs!.length; i++) {
           isDocUploaded.add('false');
         }
@@ -96,7 +97,9 @@ class SvcReqDocsController extends GetxController {
               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
           errorLoadingDocs = AppMetaLabels().noDatafound;
           loadingDocs.value = false;
+
         } else {
+          
           docsModel = resp;
           // if documents are rejected then will make empty the expiry
           for (int i = 0; i < docsModel!.docs!.length; i++) {
@@ -104,10 +107,12 @@ class SvcReqDocsController extends GetxController {
               docsModel?.docs?[i].expiry = '';
             }
           }
+
           print(
               '=====resp.docs?.length=======>>>>>> doc length ${resp.docs?.length}  $isDocUploaded');
           print(docsModel?.caseStageInfo?.stageId);
           update();
+          
           enableSubmitButton();
         }
         // Future.delayed(Duration(seconds: 1));

@@ -25,6 +25,7 @@ class CountryPickerController extends GetxController {
     super.onInit();
   }
 
+
   Future<void> getData() async {
     bool isInternetConnected = await BaseClientClass.isInternetConnected();
     if (!isInternetConnected) {

@@ -61,6 +61,7 @@ class SvcReqReportController extends GetxController {
     gettingPhotos.value = true;
     var resp = await VendorRepository.getReqPhotos(caseNo ?? 0, 3);
     gettingPhotos.value = false;
+    
     if (resp is List<PhotoFile?>) {
       photos = resp;
       gettingPhotos.value = false;

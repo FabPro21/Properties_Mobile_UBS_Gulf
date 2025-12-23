@@ -25,18 +25,20 @@ class _CountryPickerState extends State<CountryPicker> {
 
   @override
   void initState() {
-    if (cPController.countryPicker.value.countries == null ||
-        cPController.countryPicker.value.countries!.isEmpty) {
-      cPController.getData();
-    }
+    // if (cPController.countryPicker.value.countries == null ||
+    //     cPController.countryPicker.value.countries!.isEmpty) {
+    //   cPController.getData();
+    // }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // if (cPController.countryPicker.value.countries == null ||
-    //     cPController.countryPicker.value.countries.isEmpty)
-    //   cPController.getData();
+    if (cPController.countryPicker.value.countries == null ||
+        cPController.countryPicker.value.countries!.isEmpty)
+      {
+        cPController.getData();
+      }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Directionality(

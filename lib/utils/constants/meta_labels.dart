@@ -1685,12 +1685,12 @@ class AppMetaLabels {
       SessionController().getLanguage() == 1 ? 'Expiry Date' : 'تاريخ الانتهاء';
 
   String dateFormat =
-      SessionController().getLanguage() == 1 ? 'dd-mm-yyyy' : 'يوم- شهر- سنة';
+      SessionController().getLanguage() == 1 ? 'dd-MM-yyyy' : 'يوم- شهر- سنة';
 
   String dateFormatForShowRoundedDatePicker =
       SessionController().getLanguage() == 1
-          ? 'dd-mm-yyyy'
-          : 'dd-mm-yyyy'; // يوم- شهر- سنة
+          ? 'dd-MM-yyyy'
+          : 'dd-MM-yyyy'; // يوم- شهر- سنة
 
   String selectFuturedate = SessionController().getLanguage() == 1
       ? 'Please select future date'

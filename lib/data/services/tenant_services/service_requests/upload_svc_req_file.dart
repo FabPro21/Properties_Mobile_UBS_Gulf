@@ -125,6 +125,7 @@ class UploadSvcReqFile {
       'AttachmentType': encriptdatasingle(fileType).toString(),
       'ExpireDate': encriptdatasingle(exp).toString(),
       'DocumentTypeId': encriptdatasingle(docTypeId).toString(),
+      
       'EmirateIdNumber': emirateIdNumber != ''
           ? encriptdatasingle(emirateIdNumber.toString()).toString()
           : emirateIdNumber,

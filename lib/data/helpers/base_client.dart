@@ -221,8 +221,8 @@ class BaseClientClass {
         print('Request :::::::: $request');
       }
       http.StreamedResponse response = await request.send();
-      var res = await http.Response.fromStream(response);
-      print('Respone :11::22:: ${res.body}');
+      // var res = await http.Response.fromStream(response);
+      // print('Respone :11::22:: ${res.body}');
 
       if (response.statusCode == 404) {
         final respStr = await response.stream.bytesToString();

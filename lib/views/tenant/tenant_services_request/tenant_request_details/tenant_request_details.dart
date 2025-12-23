@@ -1037,7 +1037,7 @@ class TenantRequestDetailsState extends State<TenantRequestDetails> {
                             //       ),
                             //     ),
                       
-                            // IF  NOT COMING ON THIS SCREEN FROM contractRenewed (means contract flow)
+                            // IF  NOT COMING ON THIS SCREEN FROM contractRenewed (means not contract flow)
                             // then we will check only canAddFeedback
                             if (widget.caller != 'contractRenewed')
                               if (tenantRDController.tenantRequestDetails
