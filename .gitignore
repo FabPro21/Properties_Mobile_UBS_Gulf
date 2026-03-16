@@ -69,3 +69,5 @@ android/gradle-8.0-all.zip
 android/gradle-*.zip
 *.zip
 android/gradle-*.zip
+.dart_tool/package_config.json
+ios/.DS_Store

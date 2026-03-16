@@ -34,11 +34,11 @@ class _CountryPickerState extends State<CountryPicker> {
 
   @override
   Widget build(BuildContext context) {
-    if (cPController.countryPicker.value.countries == null ||
-        cPController.countryPicker.value.countries!.isEmpty)
-      {
-        cPController.getData();
-      }
+    // if (cPController.countryPicker.value.countries == null ||
+    //     cPController.countryPicker.value.countries!.isEmpty)
+    //   {
+    //     cPController.getData();
+    //   }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Directionality(

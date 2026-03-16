@@ -66,7 +66,7 @@ class CountryPickerController extends GetxController {
         error.value = result;
       }
     } catch (e) {
-      getData();
+      // getData();
     }
   }
 

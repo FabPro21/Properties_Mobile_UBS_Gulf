@@ -217,7 +217,7 @@ class AuthenticateContractState extends State<AuthenticateContract> {
                                       ),
                                     ],
                                   ),
-                                  // 112233 SUbmit button enable disable for Sign Contract
+                                  // 112233 Submit button enable disable for Sign Contract
                                   Center(
                                     child: SizedBox(
                                       height: 5.0.h,

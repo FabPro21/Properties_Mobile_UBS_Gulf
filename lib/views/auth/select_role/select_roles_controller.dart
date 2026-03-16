@@ -318,7 +318,13 @@ class SelectRoloesController extends GetxController {
 
   Future<void> getNewTokenfun() async {
     loadingData.value = true;
+    var phone = SessionController().getPhone();
+    if(phone == null || phone == ""){
+      resetApp();
+      return;
+    }
     print("phone num is=====${SessionController().getPhone()}");
+
     var data = {
       "mobile": SessionController().getPhone(),
     };

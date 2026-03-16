@@ -96,11 +96,9 @@ class SplashScreenController extends GetxController {
         }
         print("Is Login ::::: $isLoginBool");
         print("Is phone.value ::::: ${phone.value}");
+        // Changed here must update *********>
         if (isLoginBool) {
           print(phone.value);
-          // obj.compareToken(phone.value).then((value) {
-          //   Get.to(() => const SelectRoleScreen());
-          // });
           Get.to(() => const SelectRoleScreen());
         } else {
           Get.to(() => SessionController().enableFireBaseOTP
